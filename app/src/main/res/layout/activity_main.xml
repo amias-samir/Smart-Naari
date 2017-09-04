@@ -29,7 +29,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -47,10 +46,13 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
+
+            app:layout_anchor="@id/toolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <RelativeLayout
+                android:descendantFocusability="blocksDescendants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -69,10 +71,20 @@
                     android:layoutAnimation="@anim/grid_layout_animation"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/main_act_recycler_hori"
+                    android:layout_below="@id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
             </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
+            android:visibility="gone"
             android:id="@+id/fab"
             style="@style/FabStyle"
             android:layout_gravity="bottom|end" />

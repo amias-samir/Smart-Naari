@@ -17,30 +17,31 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:foreground="?attr/selectableItemBackground">
+    android:id="@+id/root_layout_item_recycler"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:padding="@dimen/spacing_xsmall">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_xsmall">
 
         <com.nepal.naxa.smartnaari.homescreen.widgets.SquareImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@android:color/black"
-            android:scaleType="centerCrop"/>
+
+            android:scaleType="centerCrop" />
 
         <TextView
+            android:textAlignment="center"
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_large"
-            android:textColor="@android:color/white"
-            android:background="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 

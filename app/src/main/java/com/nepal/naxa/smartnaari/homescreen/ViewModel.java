@@ -16,20 +16,45 @@
 
 package com.nepal.naxa.smartnaari.homescreen;
 
+import android.support.annotation.DrawableRes;
+
+import com.nepal.naxa.smartnaari.R;
+
+import java.util.ArrayList;
+
 public class ViewModel {
     private String text;
-    private String image;
 
-    public ViewModel(String text, String image) {
-        this. text = text;
+
+    private int image;
+
+    public ViewModel(String text, int image) {
+        this.text = text;
         this.image = image;
     }
+
 
     public String getText() {
         return text;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
+    }
+
+
+    public static ArrayList<ViewModel> getHorizontalViewItems() {
+        ArrayList<ViewModel> viewModels = new ArrayList<>();
+
+
+        ViewModel viewModel;
+        viewModel = new ViewModel("First", R.color.colorPrimary);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Second", R.color.colorAccent);
+        viewModels.add(viewModel);
+
+        return viewModels;
+
     }
 }

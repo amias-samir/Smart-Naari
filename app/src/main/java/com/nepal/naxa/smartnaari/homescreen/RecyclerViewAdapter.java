@@ -16,10 +16,12 @@
 
 package com.nepal.naxa.smartnaari.homescreen;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +30,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
+
 
     private List<ViewModel> items;
     private OnItemClickListener onItemClickListener;
@@ -41,25 +47,44 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.onItemClickListener = onItemClickListener;
     }
 
-    @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
         v.setOnClickListener(this);
         return new ViewHolder(v);
     }
 
-    @Override public void onBindViewHolder(ViewHolder holder, int position) {
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
         ViewModel item = items.get(position);
         holder.text.setText(item.getText());
-        holder.image.setImageBitmap(null);
-        Picasso.with(holder.image.getContext()).load(item.getImage()).into(holder.image);
+        holder.image.setImageResource(item.getImage());
+
         holder.itemView.setTag(item);
+
+        boolean setBgRed = shouldSetRedBg(position);
+
+        if (setBgRed) {
+            holder.rootLayoutItemRecycler.setBackgroundColor(Color.RED);
+            holder.text.setTextColor(Color.WHITE);
+        }else {
+            holder.rootLayoutItemRecycler.setBackgroundColor(Color.WHITE);
+            holder.text.setTextColor(Color.BLACK);
+        }
     }
 
-    @Override public int getItemCount() {
+    private boolean shouldSetRedBg(int pos) {
+
+        return (pos == 0) || (pos == 3) || (pos == 4);
+    }
+
+    @Override
+    public int getItemCount() {
         return items.size();
     }
 
-    @Override public void onClick(final View v) {
+    @Override
+    public void onClick(final View v) {
         onItemClickListener.onItemClick(v, (ViewModel) v.getTag());
     }
 
@@ -67,10 +92,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ImageView image;
         public TextView text;
 
+
+        @BindView(R.id.root_layout_item_recycler)
+        FrameLayout rootLayoutItemRecycler;
+
         public ViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.image);
             text = (TextView) itemView.findViewById(R.id.text);
+            ButterKnife.bind(this, itemView);
         }
     }
 
