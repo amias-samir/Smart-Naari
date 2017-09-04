@@ -18,6 +18,7 @@ package com.nepal.naxa.smartnaari.homescreen;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -51,7 +52,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener, HorizontalRecyclerViewAdapter.OnItemClickListener {
 
 
     private static List<ViewModel> items = new ArrayList<>();
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-
+    private HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter;
+    private Handler handler;
 
 
     @Override
@@ -84,17 +86,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        initRecyclerView();
-
+        initGridRecyclerView();
+        initHorizontalRecyclerView();
         initToolbar();
         setupDrawerLayout();
 
 
         startIntroAnimation();
-
-
+        autoScrollHorizontalRecycler();
 
         final ImageView avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar);
+        avatar.setImageResource(R.mipmap.ic_launcher_round);
 
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -115,21 +117,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         recyclerView.scheduleLayoutAnimation();
     }
 
-    private void initRecyclerView() {
+    private void initGridRecyclerView() {
 
-
-        List<ViewModel> framelist = ViewModel.getHorizontalViewItems();
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_medium);
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
+    }
 
-        HorizontalRecyclerViewAdapter adapter = new HorizontalRecyclerViewAdapter(framelist);
-        horizontalRecyclerView.setAdapter(adapter);
+    private void initHorizontalRecyclerView(){
+        List<ViewModel> framelist = ViewModel.getHorizontalViewItems();
+        horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(framelist);
+
+        horizontalRecyclerView.setAdapter(horizontalRecyclerViewAdapter);
         horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false));
+
+        horizontalRecyclerViewAdapter.setOnItemClickListener(this);
 
         // add pager behavior
         PagerSnapHelper snapHelper = new PagerSnapHelper();
@@ -137,6 +143,27 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         // pager indicator
         horizontalRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
+
+    }
+
+
+    public void autoScrollHorizontalRecycler() {
+        final int speedScroll = 5000;
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            int positionToScrollTo = 0;
+
+            @Override
+            public void run() {
+                if (positionToScrollTo == horizontalRecyclerViewAdapter.getItemCount())
+                    positionToScrollTo = 0;
+                if (positionToScrollTo < horizontalRecyclerViewAdapter.getItemCount()) {
+                    horizontalRecyclerView.smoothScrollToPosition(++positionToScrollTo);
+                    handler.postDelayed(this, speedScroll);
+                }
+            }
+        };
+        handler.postDelayed(runnable, speedScroll);
     }
 
     private void setRecyclerAdapter(RecyclerView recyclerView) {
@@ -248,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private void startIntroAnimation() {
 
-        final int ANIM_DURATION_TOOLBAR = 1000;
+        final int ANIM_DURATION_TOOLBAR = 800;
 
 
         float actionbarSize = ScreenUtils.dpToPx(56);
@@ -259,6 +286,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 .setDuration(ANIM_DURATION_TOOLBAR)
                 .setStartDelay(300);
 
+
+    }
+
+
+    @Override
+    public void onHorizontalItemClick(View view, ViewModel viewModel) {
 
     }
 

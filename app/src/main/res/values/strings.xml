@@ -9,4 +9,15 @@
     <string name="downloaded">Downloaded</string>
     <string name="more">More</string>
     <string name="settings">Settings</string>
+    <string name="my_circle">My Circle</string>
+    <string name="about_smart_naari">About Smart Naari</string>
+    <string name="meet_the_board">Meet The Board</string>
+    <string name="sn_enthusiasts">SN Enthusiasts</string>
+    <string name="celebrating_professionals">Celebrating Professionals</string>
+    <string name="glossary_of_terms">Glossary Of Terms</string>
+    <string name="data_on_gender_based_violence">Data On Gender Based Violence</string>
+    <string name="tutorials">Tutorials</string>
+    <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
+    <string name="copyright">Copyright</string>
+    <string name="donate">Donate</string>
 </resources>

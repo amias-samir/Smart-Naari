@@ -24,67 +24,68 @@
             android:id="@+id/drawer_my_circle"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="My Circle"/>
+            android:title="@string/my_circle"/>
 
         <item
             android:id="@+id/drawer_about_smart_naari"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="About Smart Naari"/>
+            android:title="@string/about_smart_naari"/>
 
         <item
             android:id="@+id/drawer_meet_the_board"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Meet The Board"/>
+            android:title="@string/meet_the_board"/>
 
         <item
             android:id="@+id/drawer_sn_enthu"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="SN Enthusiasts"/>
+            android:title="@string/sn_enthusiasts"/>
 
         <item
             android:id="@+id/drawer_celeb_pro"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Celebrating Professionals"/>
+            android:title="@string/celebrating_professionals"/>
 
         <item
             android:id="@+id/drawer_glossary"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Glossary Of Terms"/>
+            android:title="@string/glossary_of_terms"/>
 
         <item
             android:id="@+id/drawer_data_gender"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Data On Gender Based Violence"/>
+            android:title="@string/data_on_gender_based_violence"/>
 
         <item
             android:id="@+id/drawer_tutorials"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Tutorials"/>
+            android:title="@string/tutorials"/>
 
         <item
             android:id="@+id/drawer_privacy"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Privacy Policy and Data Protection"/>
+            android:title="@string/privacy_policy_and_data_protection"/>
 
         <item
             android:id="@+id/drawer_copyright"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Copyright"/>
+            android:title="@string/copyright"/>
+
 
         <item
             android:id="@+id/drawer_donate"
             android:checked="true"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Donate"/>
+            android:title="@string/donate"/>
 
 
     </group>

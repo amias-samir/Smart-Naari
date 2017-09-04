@@ -63,7 +63,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onItemClick(v, (ViewModel) v.getTag());
+        onItemClickListener.onHorizontalItemClick(v, (ViewModel) v.getTag());
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
@@ -83,7 +83,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, ViewModel viewModel);
+        void onHorizontalItemClick(View view, ViewModel viewModel);
 
     }
 
