@@ -29,6 +29,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_medium);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
 
         HorizontalRecyclerViewAdapter adapter = new HorizontalRecyclerViewAdapter(framelist);
@@ -175,6 +176,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
+
+
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -187,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-        DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+       // DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
     }
 
     @Override
