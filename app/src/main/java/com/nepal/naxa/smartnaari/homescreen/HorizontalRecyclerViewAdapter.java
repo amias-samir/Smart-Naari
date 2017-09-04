@@ -50,6 +50,10 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
         ViewModel item = items.get(position);
         holder.text.setText(item.getText());
         holder.itemView.setTag(item);
+
+        holder.rootLayoutItemRecycler.setBackgroundColor(item.getImage());
+
+
     }
 
     @Override

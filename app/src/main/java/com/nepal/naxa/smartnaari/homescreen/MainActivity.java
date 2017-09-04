@@ -18,6 +18,8 @@ package com.nepal.naxa.smartnaari.homescreen;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -33,13 +35,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.homescreen.picasso.CircleTransform;
-import com.squareup.picasso.Picasso;
+import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
+import com.nepal.naxa.smartnaari.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,15 +53,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener {
 
-    public static final String AVATAR_URL = "http://lorempixel.com/200/200/people/1/";
 
     private static List<ViewModel> items = new ArrayList<>();
 
-    static {
-        for (int i = 1; i <= 6; i++) {
-            items.add(new ViewModel("Item " + i, R.drawable.slider1));
-        }
-    }
 
     @BindView(R.id.slider)
     SliderLayout slider;
@@ -67,12 +63,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     Toolbar toolbar;
     @BindView(R.id.main_act_recycler_hori)
     RecyclerView horizontalRecyclerView;
+    @BindView(R.id.appBarLayout)
+    AppBarLayout appBarLayout;
+    @BindView(R.id.act_main_logo)
+    TextView actMainLogo;
+    @BindView(R.id.recycler)
+    GridRecyclerView recyclerView;
+    @BindView(R.id.content)
+    CoordinatorLayout content;
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
 
-    private DrawerLayout drawerLayout;
-    private View content;
-    private RecyclerView recyclerView;
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,15 +85,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         ButterKnife.bind(this);
 
         initRecyclerView();
-        initFab();
+
         initToolbar();
         setupDrawerLayout();
 
 
-        content = findViewById(R.id.content);
+        startIntroAnimation();
+
+
 
         final ImageView avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar);
-        Picasso.with(this).load(AVATAR_URL).transform(new CircleTransform()).into(avatar);
+
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             setRecyclerAdapter(recyclerView);
@@ -114,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         List<ViewModel> framelist = ViewModel.getHorizontalViewItems();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_medium);
@@ -134,20 +140,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     private void setRecyclerAdapter(RecyclerView recyclerView) {
+
+        items = ViewModel.getGridItems();
         recyclerView.setNestedScrollingEnabled(false);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(items);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
-    private void initFab() {
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(content, "FAB Clicked", Snackbar.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -177,13 +177,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
 
 
     }
-
-
 
 
     @Override
@@ -199,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-       // DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+        // DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
     }
 
     @Override
@@ -235,7 +233,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
 
 
-
             sliderLayout.setDuration(5000);
 
         }
@@ -248,4 +245,22 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         return file_maps;
     }
+
+    private void startIntroAnimation() {
+
+        final int ANIM_DURATION_TOOLBAR = 1000;
+
+
+        float actionbarSize = ScreenUtils.dpToPx(56);
+        toolbar.setTranslationY(-actionbarSize);
+
+        toolbar.animate()
+                .translationY(0)
+                .setDuration(ANIM_DURATION_TOOLBAR)
+                .setStartDelay(300);
+
+
+    }
+
+
 }

@@ -48,10 +48,46 @@ public class ViewModel {
 
 
         ViewModel viewModel;
-        viewModel = new ViewModel("First", R.color.colorPrimary);
+        viewModel = new ViewModel("X's and Y's", R.color.colorPrimary);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Second", R.color.colorAccent);
+        viewModel = new ViewModel("What's the Difference", R.color.accent_translucent);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Crime and Punishment", R.color.accent_bright);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Myth Busters", R.color.colorPrimary);
+        viewModels.add(viewModel);
+
+        return viewModels;
+
+    }
+
+
+    public static ArrayList<ViewModel> getGridItems() {
+        ArrayList<ViewModel> viewModels = new ArrayList<>();
+
+
+        ViewModel viewModel;
+
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
         viewModels.add(viewModel);
 
         return viewModels;

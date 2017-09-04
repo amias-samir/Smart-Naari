@@ -53,28 +53,51 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <RelativeLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants">
 
 
                 <TextView
-
-                    android:textSize="@dimen/material_text_display1"
-                    android:id="@+id/logo"
+                    android:visibility="gone"
+                    android:id="@+id/act_main_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="@dimen/spacing_xlarge"
                     android:drawableTop="@mipmap/ic_launcher"
-                    android:text="@string/app_name" />
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/material_text_display1" />
+
+
+                <com.github.pavlospt.CircleView
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/spacing_xlarge"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:cv_titleText="title"
+                    app:cv_subtitleText="subtitle"
+                    app:cv_titleSize="12dp"
+                    app:cv_subtitleSize="9dp"
+                    app:cv_titleColor="@color/colorPrimaryDark"
+                    app:cv_subtitleColor="@color/colorPrimary"
+                    app:cv_strokeColorValue="@color/cardview_dark_background"
+                    app:cv_backgroundColorValue="@color/colorAccent"
+                    app:cv_fillColor="@color/cardview_light_background"
+                    app:cv_fillRadius="0.9"
+                    app:cv_strokeWidthSize="5"/>
+
+
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_below="@+id/logo" />
+                    android:layout_below="@+id/act_main_logo" />
 
 
                 <com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView
@@ -97,11 +120,6 @@
             </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            style="@style/FabStyle"
-            android:layout_gravity="bottom|end"
-            android:visibility="gone" />
 
     </android.support.design.widget.CoordinatorLayout>
 
