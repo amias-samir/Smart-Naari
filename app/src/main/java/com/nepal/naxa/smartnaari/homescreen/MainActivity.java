@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         HashMap<String, Integer> file_maps = getTopSliderImages();
 
         for (String name : file_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(this);
+            ArrowSliderView textSliderView = new ArrowSliderView(this);
             // initialize a SliderLayout
             textSliderView
                     .description(name)
