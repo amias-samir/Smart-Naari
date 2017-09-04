@@ -29,13 +29,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
             <android.support.v7.widget.Toolbar
+
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
@@ -46,22 +48,33 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
-
-            app:layout_anchor="@id/toolbar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <RelativeLayout
-                android:descendantFocusability="blocksDescendants"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+
+
+                <TextView
+
+                    android:textSize="@dimen/material_text_display1"
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:text="@string/app_name" />
 
                 <com.daimajia.slider.library.SliderLayout
-
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/logo" />
 
 
                 <com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView
@@ -70,15 +83,14 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/slider"
                     android:layout_gravity="bottom"
-                    android:layoutAnimation="@anim/grid_layout_animation"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    android:layoutAnimation="@anim/grid_layout_animation" />
 
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/main_act_recycler_hori"
-                    android:layout_below="@id/recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recycler">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -86,10 +98,10 @@
         </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
-            android:visibility="gone"
             android:id="@+id/fab"
             style="@style/FabStyle"
-            android:layout_gravity="bottom|end" />
+            android:layout_gravity="bottom|end"
+            android:visibility="gone" />
 
     </android.support.design.widget.CoordinatorLayout>
 

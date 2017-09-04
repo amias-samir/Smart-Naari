@@ -218,7 +218,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             textSliderView
                     .description(name)
                     .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop).setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                @Override
+                public void onSliderClick(BaseSliderView slider) {
+
+                }
+            });
 
 
             textSliderView.bundle(new Bundle());
@@ -228,6 +233,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.addSlider(textSliderView);
             sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+
+
+
             sliderLayout.setDuration(5000);
 
         }
