@@ -35,9 +35,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     Toolbar toolbar;
     @BindView(R.id.main_act_recycler_hori)
     RecyclerView horizontalRecyclerView;
-    @BindView(R.id.appBarLayout)
+    @BindView(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
     @BindView(R.id.act_main_logo)
     TextView actMainLogo;

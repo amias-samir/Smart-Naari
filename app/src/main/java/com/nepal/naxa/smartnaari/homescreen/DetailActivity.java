@@ -32,6 +32,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,11 +48,11 @@ public class DetailActivity extends AppCompatActivity {
     private static final String EXTRA_TITLE = "mainactivity.extraTitle";
 
 
-    public static void navigate(AppCompatActivity activity, View transitionImage, ViewModel viewModel) {
+    public static void navigate(AppCompatActivity activity, View toolbar, ViewModel viewModel) {
         Intent intent = new Intent(activity, DetailActivity.class);
         intent.putExtra(EXTRA_TITLE, viewModel.getText());
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, transitionImage, EXTRA_TITLE);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, toolbar, EXTRA_TITLE);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 
@@ -59,19 +60,16 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initActivityTransitions();
         setContentView(R.layout.activity_detail);
 
         String itemTitle = getIntent().getStringExtra(EXTRA_TITLE);
         initToolbar(itemTitle);
 
-        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_TITLE);
-        supportPostponeEnterTransition();
-        supportStartPostponedEnterTransition();
-
-
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(itemTitle);
+
+
+        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_TITLE);
     }
 
     @Override
@@ -87,8 +85,10 @@ public class DetailActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Slide transition = new Slide();
             transition.excludeTarget(android.R.id.statusBarBackground, true);
+
             getWindow().setEnterTransition(transition);
             getWindow().setReturnTransition(transition);
+
         }
     }
 

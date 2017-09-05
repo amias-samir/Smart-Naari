@@ -11,6 +11,20 @@
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
 
+        <!-- specify enter and exit transitions -->
+        <!-- options are: explode, slide, fade -->
+        <item name="android:windowEnterTransition">@transition/explode_no_flicker</item>
+        <item name="android:windowExitTransition">@transition/explode_no_flicker</item>
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/explode_no_flicker</item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/explode_no_flicker</item>
+
+
+
+
 
     </style>
 
