@@ -51,10 +51,10 @@ public class ViewModel {
         viewModel = new ViewModel("X's and Y's", R.color.colorPrimary);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("What's the Difference", R.color.accent_translucent);
+        viewModel = new ViewModel("What's the Difference", R.color.colorPrimaryDark);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Crime and Punishment", R.color.accent_bright);
+        viewModel = new ViewModel("Crime and Punishment", R.color.colorPrimaryDark);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Myth Busters", R.color.colorPrimary);
