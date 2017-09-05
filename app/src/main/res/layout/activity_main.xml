@@ -34,6 +34,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="@dimen/elevation_high"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
             <android.support.v7.widget.Toolbar
@@ -73,25 +74,23 @@
 
                 <com.github.pavlospt.CircleView
                     android:visibility="gone"
-                    android:layout_margin="@dimen/spacing_xlarge"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    app:cv_titleText="title"
-                    app:cv_subtitleText="subtitle"
-                    app:cv_titleSize="12dp"
-                    app:cv_subtitleSize="9dp"
-                    app:cv_titleColor="@color/colorPrimaryDark"
-                    app:cv_subtitleColor="@color/colorPrimary"
-                    app:cv_strokeColorValue="@color/cardview_dark_background"
+                    android:layout_margin="@dimen/spacing_xlarge"
+                    android:layout_toRightOf="@id/act_main_logo"
+                    android:layout_toEndOf="@id/act_main_logo"
                     app:cv_backgroundColorValue="@color/colorAccent"
                     app:cv_fillColor="@color/cardview_light_background"
-                    app:cv_fillRadius="0.9"
-                    app:cv_strokeWidthSize="5"/>
-
-
+                    app:cv_fillRadius="0"
+                    app:cv_strokeColorValue="@color/cardview_dark_background"
+                    app:cv_strokeWidthSize="2"
+                    app:cv_subtitleColor="@color/colorPrimary"
+                    app:cv_subtitleSize="@dimen/material_text_subhead"
+                    app:cv_subtitleText="subtitle"
+                    app:cv_titleColor="@color/colorPrimaryDark"
+                    app:cv_titleSize="@dimen/material_text_headline"
+                    app:cv_titleText="This is the title" />
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slider"

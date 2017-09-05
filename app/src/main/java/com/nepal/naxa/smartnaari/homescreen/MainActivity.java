@@ -35,6 +35,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -90,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         initHorizontalRecyclerView();
         initToolbar();
         setupDrawerLayout();
+        setupTopSlider(slider);
 
 
-        startIntroAnimation();
         autoScrollHorizontalRecycler();
 
         final ImageView avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar);
@@ -105,9 +108,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+//        if (hasFocus) {
+//            slider.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,
+//                    android.R.anim.fade_in));
+//        }
+    }
+
+
+
+    @Override
     protected void onResume() {
         super.onResume();
-        setupTopSlider(slider);
+
     }
 
     @Override
@@ -115,10 +128,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onEnterAnimationComplete();
         setRecyclerAdapter(recyclerView);
         recyclerView.scheduleLayoutAnimation();
+        slider.startAutoCycle();
     }
 
     private void initGridRecyclerView() {
-
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -127,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
     }
 
-    private void initHorizontalRecyclerView(){
+    private void initHorizontalRecyclerView() {
         List<ViewModel> framelist = ViewModel.getHorizontalViewItems();
         horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(framelist);
 
@@ -178,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
@@ -206,10 +220,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -224,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-        // DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+        DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
     }
 
     @Override
@@ -239,28 +250,27 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         for (String name : file_maps.keySet()) {
             ArrowSliderView textSliderView = new ArrowSliderView(this);
-            // initialize a SliderLayout
             textSliderView
                     .description(name)
                     .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.CenterCrop).setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                @Override
-                public void onSliderClick(BaseSliderView slider) {
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop)
+                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                        @Override
+                        public void onSliderClick(BaseSliderView slider) {
 
-                }
-            });
+                        }
+                    });
 
 
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
+            sliderLayout.stopAutoCycle();
 
             sliderLayout.addSlider(textSliderView);
             sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-
-
             sliderLayout.setDuration(5000);
+
+
+
 
         }
     }
@@ -277,7 +287,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         final int ANIM_DURATION_TOOLBAR = 800;
 
-
         float actionbarSize = ScreenUtils.dpToPx(56);
         toolbar.setTranslationY(-actionbarSize);
 
@@ -285,8 +294,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 .translationY(0)
                 .setDuration(ANIM_DURATION_TOOLBAR)
                 .setStartDelay(300);
-
-
     }
 
 

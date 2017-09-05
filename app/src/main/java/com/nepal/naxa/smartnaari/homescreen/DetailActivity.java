@@ -74,6 +74,8 @@ public class DetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
 
         final ImageView image = (ImageView) findViewById(R.id.image);
+        image.setImageResource(getIntent().getIntExtra(EXTRA_IMAGE,R.drawable.ic_add_black));
+
         Picasso.with(this).load(getIntent().getStringExtra(EXTRA_IMAGE)).into(image, new Callback() {
             @Override public void onSuccess() {
                 Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
@@ -83,7 +85,6 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 });
             }
-
             @Override public void onError() {
 
             }
