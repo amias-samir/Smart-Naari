@@ -277,8 +277,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     private HashMap<String, Integer> getTopSliderImages() {
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("First", R.drawable.slider1);
-        file_maps.put("Second", R.drawable.slider2);
+        file_maps.put("First", R.drawable.food_1);
+        file_maps.put("Second", R.drawable.food_2);
 
         return file_maps;
     }

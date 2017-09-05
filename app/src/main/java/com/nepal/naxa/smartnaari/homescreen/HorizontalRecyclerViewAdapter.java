@@ -1,6 +1,8 @@
 package com.nepal.naxa.smartnaari.homescreen;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +53,10 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
         holder.text.setText(item.getText());
         holder.itemView.setTag(item);
 
-        holder.rootLayoutItemRecycler.setBackgroundColor(item.getImage());
 
+        Context context = holder.itemView.getContext();
+        int color = ContextCompat.getColor(context,item.getImage());
+        holder.rootLayoutItemRecycler.setBackgroundColor(color);
 
     }
 
