@@ -88,9 +88,9 @@
                     app:cv_subtitleSize="9dp"
                     app:cv_titleColor="@android:color/white"
                     app:cv_subtitleColor="@android:color/white"
-                    app:cv_strokeColorValue="@color/colorPrimaryDark"
+                    app:cv_strokeColorValue="@color/colorAccent"
                     app:cv_backgroundColorValue="@android:color/white"
-                    app:cv_fillColor="@color/colorPrimaryDark"
+                    app:cv_fillColor="@color/colorAccent"
                     app:cv_fillRadius="0.92"
                     app:cv_strokeWidthSize="1"/>
 

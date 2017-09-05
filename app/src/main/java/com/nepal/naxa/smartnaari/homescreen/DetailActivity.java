@@ -27,6 +27,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -43,8 +44,7 @@ import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private static final String EXTRA_IMAGE = "com.antonioleiva.materializeyourapp.extraImage";
-    private static final String EXTRA_TITLE = "com.antonioleiva.materializeyourapp.extraTitle";
+    private static final String EXTRA_TITLE = "mainactivity.extraTitle";
 
 
     public static void navigate(AppCompatActivity activity, View transitionImage, ViewModel viewModel) {
@@ -62,19 +62,11 @@ public class DetailActivity extends AppCompatActivity {
         initActivityTransitions();
         setContentView(R.layout.activity_detail);
 
+        String itemTitle = getIntent().getStringExtra(EXTRA_TITLE);
+        initToolbar(itemTitle);
+
         ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_TITLE);
         supportPostponeEnterTransition();
-
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        String itemTitle = getIntent().getStringExtra(EXTRA_TITLE);
-
-
-        final ImageView image = (ImageView) findViewById(R.id.image);
-        image.setImageResource(getIntent().getIntExtra(EXTRA_IMAGE, R.drawable.ic_add_black));
-
-
         supportStartPostponedEnterTransition();
 
 
@@ -97,6 +89,22 @@ public class DetailActivity extends AppCompatActivity {
             transition.excludeTarget(android.R.id.statusBarBackground, true);
             getWindow().setEnterTransition(transition);
             getWindow().setReturnTransition(transition);
+        }
+    }
+
+
+    private void initToolbar(String toolbarName) {
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(toolbarName);
+
+
+
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 

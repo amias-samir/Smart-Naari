@@ -66,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         boolean setBgRed = shouldSetRedBg(position);
 
         if (setBgRed) {
-            holder.rootLayoutItemRecycler.setBackgroundColor(ContextCompat.getColor(holder.rootLayoutItemRecycler.getContext(),R.color.colorPrimaryDark));
+            holder.rootLayoutItemRecycler.setBackgroundColor(ContextCompat.getColor(holder.rootLayoutItemRecycler.getContext(),R.color.colorAccent));
             holder.text.setTextColor(Color.WHITE);
         }else {
             holder.rootLayoutItemRecycler.setBackgroundColor(Color.WHITE);
