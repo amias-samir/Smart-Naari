@@ -74,6 +74,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
+
+
     private boolean shouldSetRedBg(int pos) {
 
         return (pos == 0) || (pos == 3) || (pos == 4);

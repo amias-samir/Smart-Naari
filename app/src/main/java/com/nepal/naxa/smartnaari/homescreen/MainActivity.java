@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     DrawerLayout drawerLayout;
     private HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter;
     private Handler handler;
+    private RecyclerViewAdapter adapter;
 
 
     @Override
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        startIntroAnimation();
         initGridRecyclerView();
         initHorizontalRecyclerView();
         initToolbar();
@@ -134,18 +135,26 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
 
-
     private void initGridRecyclerView() {
 
-
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
         recyclerView.setNestedScrollingEnabled(false);
 
 
+    }
 
+
+    private void setRecyclerAdapter(RecyclerView recyclerView) {
+
+        items = ViewModel.getGridItems();
+        recyclerView.setNestedScrollingEnabled(false);
+        adapter = new RecyclerViewAdapter(items);
+        adapter.setOnItemClickListener(this);
+        recyclerView.setAdapter(adapter);
     }
 
     private void initHorizontalRecyclerView() {
@@ -185,15 +194,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             }
         };
         handler.postDelayed(runnable, speedScroll);
-    }
-
-    private void setRecyclerAdapter(RecyclerView recyclerView) {
-
-        items = ViewModel.getGridItems();
-        recyclerView.setNestedScrollingEnabled(false);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(items);
-        adapter.setOnItemClickListener(this);
-        recyclerView.setAdapter(adapter);
     }
 
 
@@ -307,8 +307,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     public void onHorizontalItemClick(View view, ViewModel viewModel) {
 
     }
-
-
 
 
 }

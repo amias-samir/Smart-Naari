@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|snap"
+
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.AppBarLayout>
@@ -67,7 +67,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_margin="@dimen/spacing_xlarge"
+                    android:layout_margin="@dimen/spacing_large"
                     android:textStyle="normal"
                     android:drawableTop="@mipmap/ic_launcher"
                     android:text="@string/app_name"
@@ -84,15 +84,15 @@
                     android:layout_height="300dp"
                     app:cv_titleText="title"
                     app:cv_subtitleText="subtitle"
-                    app:cv_titleSize="12dp"
+                    app:cv_titleSize="@dimen/material_text_headline"
                     app:cv_subtitleSize="9dp"
                     app:cv_titleColor="@android:color/white"
-                    app:cv_subtitleColor="@android:color/holo_red_dark"
-                    app:cv_strokeColorValue="@android:color/holo_blue_dark"
-                    app:cv_backgroundColorValue="@android:color/darker_gray"
-                    app:cv_fillColor="@android:color/holo_green_dark"
-                    app:cv_fillRadius="0.9"
-                    app:cv_strokeWidthSize="5"/>
+                    app:cv_subtitleColor="@android:color/white"
+                    app:cv_strokeColorValue="@color/colorPrimaryDark"
+                    app:cv_backgroundColorValue="@android:color/white"
+                    app:cv_fillColor="@color/colorPrimaryDark"
+                    app:cv_fillRadius="0.92"
+                    app:cv_strokeWidthSize="1"/>
 
 
 
