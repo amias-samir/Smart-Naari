@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-        DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+        DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
     }
 
     @Override

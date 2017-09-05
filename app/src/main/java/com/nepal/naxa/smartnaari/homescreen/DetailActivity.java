@@ -45,56 +45,45 @@ public class DetailActivity extends AppCompatActivity {
 
     private static final String EXTRA_IMAGE = "com.antonioleiva.materializeyourapp.extraImage";
     private static final String EXTRA_TITLE = "com.antonioleiva.materializeyourapp.extraTitle";
-    private CollapsingToolbarLayout collapsingToolbarLayout;
+
 
     public static void navigate(AppCompatActivity activity, View transitionImage, ViewModel viewModel) {
         Intent intent = new Intent(activity, DetailActivity.class);
-        intent.putExtra(EXTRA_IMAGE, viewModel.getImage());
         intent.putExtra(EXTRA_TITLE, viewModel.getText());
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, transitionImage, EXTRA_IMAGE);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, transitionImage, EXTRA_TITLE);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 
     @SuppressWarnings("ConstantConditions")
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActivityTransitions();
         setContentView(R.layout.activity_detail);
 
-        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_IMAGE);
+        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), EXTRA_TITLE);
         supportPostponeEnterTransition();
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String itemTitle = getIntent().getStringExtra(EXTRA_TITLE);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(itemTitle);
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+
 
         final ImageView image = (ImageView) findViewById(R.id.image);
-        image.setImageResource(getIntent().getIntExtra(EXTRA_IMAGE,R.drawable.ic_add_black));
+        image.setImageResource(getIntent().getIntExtra(EXTRA_IMAGE, R.drawable.ic_add_black));
 
-        Picasso.with(this).load("http://sc01.alicdn.com/kf/UTB8NK9bf0oSdeJk43Owq6ya4XXam/Best-Price-Fresh-Apple-Fruits.jpg").into(image, new Callback() {
-            @Override public void onSuccess() {
-                Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-                Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                    public void onGenerated(Palette palette) {
-                        applyPalette(palette);
-                    }
-                });
-            }
-            @Override public void onError() {
 
-            }
-        });
+        supportStartPostponedEnterTransition();
+
 
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(itemTitle);
     }
 
-    @Override public boolean dispatchTouchEvent(MotionEvent motionEvent) {
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent motionEvent) {
         try {
             return super.dispatchTouchEvent(motionEvent);
         } catch (NullPointerException e) {
@@ -111,20 +100,4 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    private void applyPalette(Palette palette) {
-        int primaryDark = getResources().getColor(R.color.colorPrimaryDark);
-        int primary = getResources().getColor(R.color.colorPrimaryDark);
-        collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(primary));
-        collapsingToolbarLayout.setStatusBarScrimColor(palette.getDarkMutedColor(primaryDark));
-
-        supportStartPostponedEnterTransition();
-    }
-
-    private void updateBackground(FloatingActionButton fab, Palette palette) {
-        int lightVibrantColor = palette.getLightVibrantColor(getResources().getColor(android.R.color.white));
-        int vibrantColor = palette.getVibrantColor(getResources().getColor(R.color.colorAccent));
-
-        fab.setRippleColor(lightVibrantColor);
-        fab.setBackgroundTintList(ColorStateList.valueOf(vibrantColor));
-    }
 }
