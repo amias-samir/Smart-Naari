@@ -75,8 +75,8 @@
                 <com.github.pavlospt.CircleView
                     android:visibility="gone"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:layout_margin="@dimen/spacing_xlarge"
                     android:layout_toRightOf="@id/act_main_logo"
                     android:layout_toEndOf="@id/act_main_logo"

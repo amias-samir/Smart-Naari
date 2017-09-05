@@ -72,22 +72,22 @@ public class ViewModel {
         ViewModel viewModel;
 
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("Report a cause", R.drawable.grid_ma_chup_basdina);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("Sakshyam Chu", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("Yuwa asda", R.drawable.grid_yuwa_pusta);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("Smart Parenting", R.drawable.grid_yuwa_pusta);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("GRID", R.mipmap.ic_launcher);
+        viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
         viewModels.add(viewModel);
 
         return viewModels;

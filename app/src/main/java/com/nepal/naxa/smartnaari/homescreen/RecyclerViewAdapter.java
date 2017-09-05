@@ -17,6 +17,7 @@
 package com.nepal.naxa.smartnaari.homescreen;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         boolean setBgRed = shouldSetRedBg(position);
 
         if (setBgRed) {
-            holder.rootLayoutItemRecycler.setBackgroundColor(Color.RED);
+            holder.rootLayoutItemRecycler.setBackgroundColor(ContextCompat.getColor(holder.rootLayoutItemRecycler.getContext(),R.color.colorPrimaryDark));
             holder.text.setTextColor(Color.WHITE);
         }else {
             holder.rootLayoutItemRecycler.setBackgroundColor(Color.WHITE);

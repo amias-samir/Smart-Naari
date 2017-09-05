@@ -23,68 +23,68 @@
         <item
             android:id="@+id/drawer_my_circle"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/my_circle"/>
 
         <item
             android:id="@+id/drawer_about_smart_naari"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/about_smart_naari"/>
 
         <item
             android:id="@+id/drawer_meet_the_board"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/meet_the_board"/>
 
         <item
             android:id="@+id/drawer_sn_enthu"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/sn_enthusiasts"/>
 
         <item
             android:id="@+id/drawer_celeb_pro"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/celebrating_professionals"/>
 
         <item
             android:id="@+id/drawer_glossary"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/glossary_of_terms"/>
 
         <item
             android:id="@+id/drawer_data_gender"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/data_on_gender_based_violence"/>
 
         <item
             android:id="@+id/drawer_tutorials"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/tutorials"/>
 
         <item
             android:id="@+id/drawer_privacy"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/privacy_policy_and_data_protection"/>
 
         <item
             android:id="@+id/drawer_copyright"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/copyright"/>
 
 
         <item
             android:id="@+id/drawer_donate"
             android:checked="true"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_add_black"
             android:title="@string/donate"/>
 
 

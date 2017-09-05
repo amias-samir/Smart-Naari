@@ -4,13 +4,13 @@
 
     <item android:id="@+id/item_call"
         android:title="Tap It Stop It"
-        android:icon="@drawable/ic_add_black"
+        android:icon="@drawable/ic_tap_it_stop_it"
         android:visible="true"
         app:showAsAction="always"/>
 
     <item android:id="@+id/item_notification"
         android:title="Notification"
-        android:icon="@drawable/ic_add_black"
+        android:icon="@drawable/ic_notifications_none_red_24dp"
         android:visible="true"
         app:showAsAction="always"/>
 </menu>
