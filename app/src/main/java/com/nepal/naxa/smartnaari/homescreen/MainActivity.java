@@ -112,9 +112,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 //        if (hasFocus) {
 //            slider.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,
 //                    android.R.anim.fade_in));
+//            actMainLogo.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,
+//                    android.R.anim.fade_in));
 //        }
     }
-
 
 
     @Override
@@ -128,8 +129,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onEnterAnimationComplete();
         setRecyclerAdapter(recyclerView);
         recyclerView.scheduleLayoutAnimation();
+
         slider.startAutoCycle();
     }
+
+
 
     private void initGridRecyclerView() {
 
@@ -138,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
+
     }
 
     private void initHorizontalRecyclerView() {
@@ -235,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-      //  DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+        DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
     }
 
     @Override
@@ -267,9 +272,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.addSlider(textSliderView);
             sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-            sliderLayout.setDuration(5000);
-
-
+            sliderLayout.setDuration(10000);
 
 
         }
@@ -301,6 +304,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     public void onHorizontalItemClick(View view, ViewModel viewModel) {
 
     }
+
+
 
 
 }

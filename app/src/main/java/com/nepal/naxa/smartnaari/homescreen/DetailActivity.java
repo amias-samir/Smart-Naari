@@ -76,7 +76,7 @@ public class DetailActivity extends AppCompatActivity {
         final ImageView image = (ImageView) findViewById(R.id.image);
         image.setImageResource(getIntent().getIntExtra(EXTRA_IMAGE,R.drawable.ic_add_black));
 
-        Picasso.with(this).load(getIntent().getStringExtra(EXTRA_IMAGE)).into(image, new Callback() {
+        Picasso.with(this).load("http://sc01.alicdn.com/kf/UTB8NK9bf0oSdeJk43Owq6ya4XXam/Best-Price-Fresh-Apple-Fruits.jpg").into(image, new Callback() {
             @Override public void onSuccess() {
                 Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
                 Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
