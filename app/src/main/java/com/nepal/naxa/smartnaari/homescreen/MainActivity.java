@@ -142,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
+        recyclerView.setNestedScrollingEnabled(false);
+
+
 
     }
 
@@ -161,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         // pager indicator
         horizontalRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
-
+        horizontalRecyclerView.setNestedScrollingEnabled(false);
     }
 
 
