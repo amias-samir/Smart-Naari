@@ -116,7 +116,7 @@ public class DetailActivity extends AppCompatActivity {
         int primary = getResources().getColor(R.color.primary);
         collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(primary));
         collapsingToolbarLayout.setStatusBarScrimColor(palette.getDarkMutedColor(primaryDark));
-        updateBackground((FloatingActionButton) findViewById(R.id.fab), palette);
+
         supportStartPostponedEnterTransition();
     }
 
