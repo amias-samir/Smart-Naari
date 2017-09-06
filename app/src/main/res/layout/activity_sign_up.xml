@@ -137,7 +137,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
                 android:paddingTop="10dp">
 
                 <!-- first name input layout-->
@@ -182,44 +181,46 @@
 
             </LinearLayout>
 
-            <!--Age and sex layout-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <!--&lt;!&ndash;Age and sex layout&ndash;&gt;-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
 
-                <!-- first name input layout-->
+                <!-- age input layout-->
                 <EditText
                     android:id="@+id/user_age_input_id"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/edit_text_boarder_recg"
                     android:ems="10"
                     android:hint="Age"
                     android:inputType="date"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/textSecondary"
                     android:gravity="center"
                     android:textSize="16dp"
-                    android:layout_marginRight="5dp"
                     android:focusable="false"/>
 
+                <!--se input layout-->
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="5dp">
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp">
 
                     <RadioButton android:id="@+id/radio_sex_male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" M "
+                        android:text="  M   "
                         android:checked="true"
                         android:textColor="@color/colorWhite"
                         android:onClick="onRadioButtonClicked"
@@ -228,7 +229,7 @@
                     <RadioButton android:id="@+id/radio_sex_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" F "
+                        android:text="  F   "
                         android:textColor="@color/colorWhite"
                         android:onClick="onRadioButtonClicked"
                         style="@style/radionbutton" />
@@ -236,14 +237,14 @@
                     <RadioButton android:id="@+id/radio_sex_other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Other"
+                        android:text="   Other"
                         android:textColor="@color/colorWhite"
                         android:onClick="onRadioButtonClicked"
                         style="@style/radionbutton" />
                 </RadioGroup>
 
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
             <!-- birth place input layout-->
             <EditText
@@ -382,6 +383,7 @@
 
 
                 <Button
+                    android:id="@+id/btnSignUp"
                     android:drawableRight="@drawable/ic_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
