@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         avatar.setImageResource(R.mipmap.ic_launcher_round);
 
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+
             setRecyclerAdapter(recyclerView);
-        }
+
     }
 
     @Override

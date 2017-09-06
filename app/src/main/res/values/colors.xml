@@ -3,4 +3,12 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#BDBDBD</color>
     <color name="colorAccent">#F3514F</color>
+
+
+    <color name="colorSignupBackground">#F3514F</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="textSecondary">#f9a0a0</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00ffffff</color>
+
 </resources>
