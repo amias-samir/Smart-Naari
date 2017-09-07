@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nepal.naxa.smartnaari.mycircle.MyCircleActivity"
+    android:background="@color/colorMyCircleBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
+            <TextView
+                android:id="@+id/txtLBLcreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/material_text_headline"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                />
+
+            <TextView
+                android:id="@+id/txtLBLmycircle"
+                android:layout_below="@+id/txtLBLcreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Circle"
+                android:textSize="@dimen/material_text_display1"
+                android:gravity="center"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                />
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_below="@id/txtLBLmycircle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_my_circle"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

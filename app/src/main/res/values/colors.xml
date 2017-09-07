@@ -6,6 +6,7 @@
 
 
     <color name="colorSignupBackground">#F3514F</color>
+    <color name="colorMyCircleBackground">#F3514F</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="textSecondary">#e9c1c1</color>
     <color name="black">#000000</color>
