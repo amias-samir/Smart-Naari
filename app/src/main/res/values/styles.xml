@@ -11,7 +11,6 @@
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
 
-
     </style>
 
 
