@@ -16,6 +16,7 @@
 
 package com.nepal.naxa.smartnaari.homescreen;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,6 +43,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
+import com.nepal.naxa.smartnaari.login.LoginActivity;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
 
 import java.util.ArrayList;
@@ -100,9 +103,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         avatar.setImageResource(R.mipmap.ic_launcher_round);
 
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+
             setRecyclerAdapter(recyclerView);
-        }
+
     }
 
     @Override
@@ -216,6 +219,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 Snackbar.make(content, menuItem.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
+
+                if(menuItem.getTitle().equals("My Circle")){
+                    Intent intent = new Intent(MainActivity.this, MyCircleActivity.class);
+                    startActivity(intent);
+                }
+
                 return true;
             }
         });
