@@ -1,91 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2015 Antonio Leiva
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~       http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/drawer_my_circle"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/my_circle"/>
+            android:icon="@drawable/ic_circle_people_grey"
+            android:title="@string/my_circle" />
 
         <item
             android:id="@+id/drawer_about_smart_naari"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/about_smart_naari"/>
+            android:icon="@drawable/ic_app_logo_bnw"
+            android:title="@string/about_smart_naari" />
 
         <item
             android:id="@+id/drawer_meet_the_board"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/meet_the_board"/>
+            android:icon="@drawable/ic_meet_the_board"
+            android:title="@string/meet_the_board" />
 
         <item
             android:id="@+id/drawer_sn_enthu"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/sn_enthusiasts"/>
+            android:icon="@drawable/ic_sn_enthusiasts"
+            android:title="@string/sn_enthusiasts" />
 
         <item
             android:id="@+id/drawer_celeb_pro"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/celebrating_professionals"/>
+            android:icon="@drawable/ic_celebrating_prof"
+            android:title="@string/celebrating_professionals" />
 
         <item
             android:id="@+id/drawer_glossary"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/glossary_of_terms"/>
+            android:icon="@drawable/ic_glossary_of_terms"
+            android:title="@string/glossary_of_terms" />
 
         <item
             android:id="@+id/drawer_data_gender"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/data_on_gender_based_violence"/>
+            android:icon="@drawable/ic_data_on_gender_based_voilence"
+            android:title="@string/data_on_gender_based_violence" />
 
         <item
             android:id="@+id/drawer_tutorials"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/tutorials"/>
+            android:icon="@drawable/ic_tutorials"
+            android:title="@string/tutorials" />
 
         <item
             android:id="@+id/drawer_privacy"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/privacy_policy_and_data_protection"/>
+            android:icon="@drawable/ic_privacy_policy"
+            android:title="@string/privacy_policy_and_data_protection" />
 
         <item
             android:id="@+id/drawer_copyright"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/copyright"/>
+            android:icon="@drawable/ic_copy_right"
+            android:title="@string/copyright" />
 
 
         <item
             android:id="@+id/drawer_donate"
             android:checked="true"
-            android:icon="@drawable/ic_add_black"
-            android:title="@string/donate"/>
+            android:icon="@drawable/ic_donate"
+            android:title="@string/donate" />
 
 
     </group>

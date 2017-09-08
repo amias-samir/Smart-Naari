@@ -16,8 +16,6 @@
 
 package com.nepal.naxa.smartnaari.homescreen;
 
-import android.support.annotation.DrawableRes;
-
 import com.nepal.naxa.smartnaari.R;
 
 import java.util.ArrayList;
@@ -84,7 +82,7 @@ public class ViewModel {
         viewModel = new ViewModel("Yuwa asda", R.drawable.grid_yuwa_pusta);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Smart Parenting", R.drawable.grid_yuwa_pusta);
+        viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);

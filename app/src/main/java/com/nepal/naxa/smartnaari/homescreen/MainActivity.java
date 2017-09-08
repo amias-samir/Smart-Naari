@@ -100,11 +100,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         autoScrollHorizontalRecycler();
 
         final ImageView avatar = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar);
-        avatar.setImageResource(R.mipmap.ic_launcher_round);
+        avatar.setImageResource(R.drawable.ic_camera_profile_photo);
 
-
-
-            setRecyclerAdapter(recyclerView);
+        setRecyclerAdapter(recyclerView);
 
     }
 
@@ -220,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
 
-                if(menuItem.getTitle().equals("My Circle")){
+                if (menuItem.getTitle().equals("My Circle")) {
                     Intent intent = new Intent(MainActivity.this, MyCircleActivity.class);
                     startActivity(intent);
                 }

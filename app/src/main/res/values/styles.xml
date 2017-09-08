@@ -1,4 +1,3 @@
-
 <resources>
 
     <style name="AppTheme" parent="BaseTheme" />
@@ -6,13 +5,12 @@
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@android:color/white</item> 
         <item name="colorPrimaryDark">@android:color/white</item> 
-        <item name="colorControlHighlight">@color/colorPrimaryDark</item> 
+        <item name="colorControlHighlight">@color/colorAccent</item> 
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
 
     </style>
-
 
 
     <!-- custom style -->
@@ -40,13 +38,15 @@
         <item name="colorPrimaryDark">@color/colorAccent</item> 
         <item name="colorControlHighlight">@color/colorPrimaryDark</item> 
         <item name="colorAccent">@color/colorPrimaryDark</item>
-        <item name="android:textColor"> @color/colorWhite</item>
-        <item name="android:textColorSecondary"> @color/textSecondary</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
         <item name="android:windowBackground">@color/colorMyCircleBackground</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
 
 
     </style>
+
+
 
 </resources>

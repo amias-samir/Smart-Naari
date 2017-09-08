@@ -12,4 +12,6 @@
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
 
+    <color name="colorPrimaryDarkTransparent">#8cbdbdbd</color>
+
 </resources>
