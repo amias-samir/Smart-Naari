@@ -85,7 +85,7 @@
                     android:paddingTop="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/textSecondary"
-                    android:textSize="16dp" />
+                    android:textSize="@dimen/material_text_subhead" />
 
                 <!-- Password layout-->
                 <EditText
