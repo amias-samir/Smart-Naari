@@ -12,7 +12,7 @@
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
 
-    <color name="colorPrimaryDarkTransparent">#8cbdbdbd</color>
+    <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
 
 
     <!--Colors from design-->
@@ -24,10 +24,6 @@
 
     <color name="empower">#008F45</color>
     <color name="inactiveText">#E3E3E3</color>
-
-
-
-
 
 
 
