@@ -1,68 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nepal.naxa.smartnaari.mycircle.MyCircleActivity"
-    android:background="@color/colorMyCircleBackground">
+    android:background="@color/colorMyCircleBackground"
+    tools:context="com.nepal.naxa.smartnaari.mycircle.MyCircleActivity">
+
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <!--header-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5">
-
-            <TextView
-                android:id="@+id/txtLBLcreate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create"
-                android:textColor="@color/textSecondary"
-                android:textSize="@dimen/material_text_headline"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:paddingLeft="@dimen/default_padding"
-                android:paddingRight="@dimen/default_padding"
-                />
-
-            <TextView
-                android:id="@+id/txtLBLmycircle"
-                android:layout_below="@+id/txtLBLcreate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Circle"
-                android:textSize="@dimen/material_text_display1"
-                android:gravity="center"
-                android:paddingLeft="@dimen/default_padding"
-                android:paddingRight="@dimen/default_padding"
-                />
-
-            <ImageView
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_below="@id/txtLBLmycircle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_my_circle"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="4">
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtLBLcreate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:text="Create"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/material_text_headline" />
+
+                <TextView
+                    android:id="@+id/txtLBLmycircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtLBLcreate"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:text="My Circle"
+                    android:textSize="@dimen/material_text_display1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/txtLBLmycircle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_my_circle" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- body- contact input-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtLBLenterContacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:text="@string/enter_at_least_two_phone_numbers"
+                    android:textSize="@dimen/material_text_subhead" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/layoutSelectContactNo"
+                    android:layout_below="@id/txtLBLenterContacts">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp">
+
+                        <LinearLayout
+                            android:id="@+id/top_linear_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:orientation="vertical">
+
+
+                            <!-- first contact input layout-->
+                            <EditText
+                                android:id="@+id/my_circle_first_contact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/edit_text_boarder_recg"
+                                android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint="Mobile Number"
+                                android:inputType="textPersonName"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/textSecondary"
+                                android:textSize="@dimen/material_text_subhead" />
+
+                            <!-- second contact input layout-->
+                            <EditText
+                                android:id="@+id/my_circle_second_contact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/edit_text_boarder_recg"
+                                android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint="Mobile Number"
+                                android:inputType="textPersonName"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/textSecondary"
+                                android:textSize="@dimen/material_text_subhead" />
+
+                            <!-- Third contact input layout-->
+                            <EditText
+                                android:id="@+id/my_circle_third_contact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/edit_text_boarder_recg"
+                                android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint="Mobile Number"
+                                android:inputType="textPersonName"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/textSecondary"
+                                android:textSize="@dimen/material_text_subhead"
+                                android:visibility="visible" />
+
+                            <!-- fourth contact input layout-->
+                            <EditText
+                                android:id="@+id/my_circle_fourth_contact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/edit_text_boarder_recg"
+                                android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint="Mobile Number"
+                                android:inputType="textPersonName"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/textSecondary"
+                                android:textSize="@dimen/material_text_subhead"
+                                android:visibility="visible" />
+
+                            <!-- fifth contact input layout-->
+                            <EditText
+                                android:id="@+id/my_circle_fifth_contact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/edit_text_boarder_recg"
+                                android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint="Mobile Number"
+                                android:inputType="textPersonName"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/textSecondary"
+                                android:textSize="@dimen/material_text_subhead"
+                                android:visibility="visible" />
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_large">
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/button_pressed_transparent"
+                                    android:paddingBottom="@dimen/default_padding"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:paddingRight="@dimen/default_padding"
+                                    android:paddingTop="@dimen/default_padding"
+                                    android:src="@drawable/ic_add_circle_outline_black_24dp" />
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/layoutSelectContactNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:src="@drawable/ic_contact_24_dp" />
+
+
+                    <Button
+                        android:id="@+id/btnSelectContactNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/default_padding"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/button_get_contact_my_circle"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/default_padding"
+
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:text="Select from your Contacts"
+                        android:textAllCaps="false"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="@dimen/material_text_subhead" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--footer-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/button_pressed_transparent"
+                    android:drawableRight="@drawable/ic_right"
+                    android:gravity="right"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="Done"
+                    android:textAllCaps="false"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/material_text_subhead" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
 
+
+    <!--</ScrollView>-->
 </RelativeLayout>
