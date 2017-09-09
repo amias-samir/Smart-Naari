@@ -4,7 +4,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="BaseTheme">
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:colorControlHighlight">@color/colorAccent</item> 
         <item name="android:windowSharedElementsUseOverlay">false</item>
 

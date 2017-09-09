@@ -46,16 +46,16 @@ public class ViewModel {
 
 
         ViewModel viewModel;
-        viewModel = new ViewModel("X's and Y's", R.color.colorPrimary);
+        viewModel = new ViewModel("X's and Y's", R.color.xandy);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("What's the Difference", R.color.colorPrimaryDark);
+        viewModel = new ViewModel("What's the Difference", R.color.whatdiff);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Crime and Punishment", R.color.colorPrimaryDark);
+        viewModel = new ViewModel("Crime and Punishment", R.color.crimepunis);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Myth Busters", R.color.colorPrimary);
+        viewModel = new ViewModel("Myth Busters", R.color.mythbus);
         viewModels.add(viewModel);
 
         return viewModels;
