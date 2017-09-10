@@ -44,6 +44,9 @@ dependencies {
 
     // If you want to use data binding
     compile 'com.github.devahamed:multi-view-adapter-databinding:1.2.2'
+
+    compile 'com.github.jd-alexander:LikeButton:0.2.2'
+
 }
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->

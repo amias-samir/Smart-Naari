@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.ahamed.multiviewadapter.BaseViewHolder;
 import com.ahamed.multiviewadapter.ItemBinder;
 import com.ahamed.multiviewadapter.util.ItemDecorator;
+import com.like.LikeButton;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.passion_of_life.model.Article;
 
@@ -85,6 +86,7 @@ public class NewsPhotoExpandableBinder extends ItemBinder<Article, NewsPhotoExpa
     private TextView tvCategory;
     private ImageView ivCover, ivIndicator;
     private LinearLayout linearContent;
+    private LikeButton ivFavorite;
 
     ViewHolder(View itemView) {
       super(itemView);
@@ -96,6 +98,7 @@ public class NewsPhotoExpandableBinder extends ItemBinder<Article, NewsPhotoExpa
       ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
       ivIndicator = (ImageView) itemView.findViewById(R.id.iv_expandable_indicator);
       tvContent = (TextView) itemView.findViewById(R.id.tv_content);
+      ivFavorite = (LikeButton) itemView.findViewById(R.id.iv_favorite);
 
       setItemClickListener(new OnItemClickListener<Article>() {
         @Override public void onItemClick(View view, Article item) {

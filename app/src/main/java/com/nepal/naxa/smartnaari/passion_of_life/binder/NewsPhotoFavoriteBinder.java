@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.ahamed.multiviewadapter.BaseViewHolder;
 import com.ahamed.multiviewadapter.ItemBinder;
 import com.ahamed.multiviewadapter.util.ItemDecorator;
+import com.like.LikeButton;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.passion_of_life.model.Article;
 
@@ -78,6 +79,7 @@ public class NewsPhotoFavoriteBinder extends ItemBinder<Article, NewsPhotoFavori
     private TextView tvTime;
     private TextView tvCategory;
     private ImageView ivCover;
+    private LikeButton ivFavorite;
 
     ViewHolder(View itemView) {
       super(itemView);
@@ -85,6 +87,31 @@ public class NewsPhotoFavoriteBinder extends ItemBinder<Article, NewsPhotoFavori
       tvTime = (TextView) itemView.findViewById(R.id.tv_time);
       tvCategory = (TextView) itemView.findViewById(R.id.tv_category);
       ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
+      ivFavorite = (LikeButton) itemView.findViewById(R.id.iv_favorite);
+
+//      likeButton.setLiked(true);
+//      likeButton.setEnabled(false);
+
+//      likeButton.setIconSizePx(40);
+//      likeButton.setIconSizeDp(20);
+
+//      likeButton.setLikeDrawable(heart_on);
+//      likeButton.setUnlikeDrawable(heart_off);
+//
+//      likeButton.setUnlikeDrawableRes(R.drawable.heart_off);
+//      likeButton.setLikeDrawableRes(R.drawable.heart_on);
+
+//      ivFavorite.setOnLikeListener(new OnLikeListener() {
+//        @Override
+//        public void liked(LikeButton likeButton) {
+//
+//        }
+//
+//        @Override
+//        public void unLiked(LikeButton likeButton) {
+//
+//        }
+//      });
     }
   }
 }

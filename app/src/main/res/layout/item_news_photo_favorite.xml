@@ -25,7 +25,7 @@
     <ImageView
         android:id="@+id/iv_cover"
         android:layout_width="0dp"
-        android:layout_height="260dp"
+        android:layout_height="230dp"
         android:layout_marginBottom="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,10 +34,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:src="@drawable/ic_profile_background" />
 
-    <ImageView
+    <com.like.LikeButton
         android:id="@+id/iv_favorite"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        app:icon_type="heart"
+        app:icon_size="32dp"
+        app:like_drawable="@drawable/ic_favorite_full_red"
+        app:unlike_drawable="@drawable/ic_favorite_white"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="2dp"
@@ -45,7 +49,6 @@
         android:layout_marginRight="2dp"
         android:layout_marginTop="2dp"
         android:foregroundGravity="center_vertical"
-        android:src="@drawable/ic_favorite_white"
         app:layout_constraintBottom_toBottomOf="@+id/iv_cover"
         app:layout_constraintHorizontal_bias="0.975"
         app:layout_constraintLeft_toLeftOf="parent"

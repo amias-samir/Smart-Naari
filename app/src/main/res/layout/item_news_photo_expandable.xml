@@ -26,8 +26,6 @@
         android:id="@+id/iv_cover"
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,13 +81,32 @@
         app:layout_constraintVertical_bias="1.0"
         tools:text="Article title in two lines" />
 
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-21dp"
+        android:background="#b9262626"
+        app:layout_constraintBottom_toTopOf="@+id/linear_content"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_expandable_indicator"
+            android:layout_width="28dp"
+            android:layout_height="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:foregroundGravity="center_vertical"
+            android:src="@drawable/ic_circle_down_white" />
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/linear_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,19 +114,50 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/expand_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/ic_facebook" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#662e2e2e"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/expand_photo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Recipe: Thai Curry"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
         <TextView
             android:id="@+id/iv_expand_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_header"
             android:layout_marginEnd="35dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="Title"
-            android:textSize="24dp" />
+            android:textColor="#959595"
+            android:textSize="24dp"
+            tools:ignore="ObsoleteLayoutParam" />
 
         <TextView
             android:id="@+id/tv_content"
@@ -120,24 +168,25 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="30dp"
-            android:text="Some interesting text which is hidden by default. It can be expanded or collapsed." />
+            android:layout_marginTop="25dp"
+            android:text="Some interesting text which is hidden by default. It can be expanded or collapsed."
+            android:textColor="#959595" />
 
         <TextView
             android:id="@+id/tv_share_on"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginEnd="35dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginStart="35dp"
-            android:text="Share On" />
+            android:text="Share On"
+            android:textColor="#666666" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_weight="2"
@@ -147,7 +196,7 @@
                 android:id="@+id/iv_facebook_btn"
                 android:layout_width="28dp"
                 android:layout_height="31dp"
-                app:srcCompat="@drawable/ic_facebook" />
+                app:srcCompat="@drawable/ic_facebook_red" />
 
             <ImageView
                 android:id="@+id/iv_insta_btn"
@@ -174,7 +223,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Favorite" />
+                android:text="Favorite"
+                android:textColor="#666666" />
 
             <TextView
                 android:id="@+id/iv_expand_title4"
@@ -182,14 +232,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Rate" />
+                android:text="Rate"
+                android:textColor="#666666" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_weight="4"
@@ -200,12 +251,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="left">
 
-                <ImageView
+                <com.like.LikeButton
                     android:id="@+id/iv_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_favorite_red" />
+                    app:icon_size="32dp"
+                    app:like_drawable="@drawable/ic_favorite_full_red"
+                    app:unlike_drawable="@drawable/ic_favorite_red"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -216,29 +268,37 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-                <ImageView
+                <com.like.LikeButton
                     android:id="@+id/iv_rate_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_rate_red" />
+                    app:icon_size="32dp"
+                    app:like_drawable="@drawable/ic_rate_full_red"
+                    app:unlike_drawable="@drawable/ic_rate_red"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
 
-                <ImageView
+                <com.like.LikeButton
                     android:id="@+id/iv_rate_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_rate_red" />
+                    app:icon_size="32dp"
+                    app:like_drawable="@drawable/ic_rate_full_red"
+                    app:unlike_drawable="@drawable/ic_rate_red"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
 
-                <ImageView
+                <com.like.LikeButton
                     android:id="@+id/iv_rate_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_rate_red" />
+                    app:icon_size="32dp"
+                    app:like_drawable="@drawable/ic_rate_full_red"
+                    app:unlike_drawable="@drawable/ic_rate_red"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
 
-                <ImageView
+                <com.like.LikeButton
                     android:id="@+id/iv_rate_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_rate_red" />
+                    app:icon_size="32dp"
+                    app:like_drawable="@drawable/ic_rate_full_red"
+                    app:unlike_drawable="@drawable/ic_rate_red"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -265,30 +325,10 @@
         android:padding="8dp"
         android:textSize="12sp"
         android:visibility="gone"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="160dp"
         tools:text="Two hours" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:background="#c3000000"
-        app:layout_constraintBottom_toTopOf="@+id/linear_content"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_expandable_indicator"
-            android:layout_width="28dp"
-            android:layout_height="31dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:foregroundGravity="center_vertical"
-            android:src="@drawable/ic_circle_down_white" />
-    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
