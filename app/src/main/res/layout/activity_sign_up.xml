@@ -56,285 +56,299 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/top_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:orientation="vertical">
 
-            <!-- username input layout-->
-            <EditText
-                android:id="@+id/user_name_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Enter your name"
-                android:inputType="textPersonName"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
-
-            <!-- password input layout-->
-            <EditText
-                android:id="@+id/user_password_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Enter your Password"
-                android:inputType="textPersonName"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
-
-            <!-- confirm password input layout-->
-            <EditText
-                android:id="@+id/user_confirm_password_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Confirm your Password"
-                android:inputType="textPersonName"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
-
-            <!--Name and surname layout-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
-
-                <!-- first name input layout-->
-                <EditText
-                    android:id="@+id/user_firstname_input_id"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edit_text_boarder_recg"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Name"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/textSecondary"
-                    android:textSize="16dp" />
-
-                <!-- Sur name input layout-->
-                <EditText
-                    android:id="@+id/user_surname_input_id"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_boarder_recg"
-                    android:ems="10"
-                    android:hint="Surname"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/textSecondary"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="5dp"/>
-
-            </LinearLayout>
-
-            <!--&lt;!&ndash;Age and sex layout&ndash;&gt;-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal">-->
-
-                <!-- age input layout-->
-                <EditText
-                    android:id="@+id/user_age_input_id"
+                <LinearLayout
+                    android:id="@+id/top_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/edit_text_boarder_recg"
-                    android:ems="10"
-                    android:hint="Age"
-                    android:inputType="date"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/textSecondary"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:focusable="false"/>
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
 
-                <!--se input layout-->
-                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp">
-
-                    <RadioButton android:id="@+id/radio_sex_male"
-                        android:layout_width="wrap_content"
+                    <!-- username input layout-->
+                    <EditText
+                        android:id="@+id/user_name_input_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  M   "
-                        android:checked="true"
-                        android:textColor="@color/colorWhite"
-                        android:onClick="onRadioButtonClicked"
-                        style="@style/radionbutton" />
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Enter your name"
+                        android:inputType="textPersonName"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp" />
 
-                    <RadioButton android:id="@+id/radio_sex_female"
-                        android:layout_width="wrap_content"
+                    <!-- password input layout-->
+                    <EditText
+                        android:id="@+id/user_password_input_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="  F   "
-                        android:textColor="@color/colorWhite"
-                        android:onClick="onRadioButtonClicked"
-                        style="@style/radionbutton" />
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Enter your Password"
+                        android:inputType="textPersonName"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp" />
 
-                    <RadioButton android:id="@+id/radio_sex_other"
-                        android:layout_width="wrap_content"
+                    <!-- confirm password input layout-->
+                    <EditText
+                        android:id="@+id/user_confirm_password_input_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="   Other"
-                        android:textColor="@color/colorWhite"
-                        android:onClick="onRadioButtonClicked"
-                        style="@style/radionbutton" />
-                </RadioGroup>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Confirm your Password"
+                        android:inputType="textPersonName"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp" />
+
+                    <!--Name and surname layout-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp">
+
+                        <!-- first name input layout-->
+                        <EditText
+                            android:id="@+id/user_firstname_input_id"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edit_text_boarder_recg"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="Name"
+                            android:inputType="textPersonName"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/textSecondary"
+                            android:textSize="16dp" />
+
+                        <!-- Sur name input layout-->
+                        <EditText
+                            android:id="@+id/user_surname_input_id"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edit_text_boarder_recg"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="Surname"
+                            android:inputType="textPersonName"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/textSecondary"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <!--Age and sex layout-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- age input layout-->
+                        <EditText
+                            android:id="@+id/user_age_input_id"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="3.5"
+                            android:background="@drawable/edit_text_boarder_recg"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="Age"
+                            android:inputType="date"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/textSecondary"
+                            android:textSize="16dp" />
+
+                        <!--se input layout-->
+                        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_sex_male"
+                                style="@style/radionbutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked"
+                                android:text=" M "
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/material_text_caption" />
+
+                            <RadioButton
+                                android:id="@+id/radio_sex_female"
+                                style="@style/radionbutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked"
+                                android:text=" F "
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/material_text_caption" />
+
+                            <RadioButton
+                                android:id="@+id/radio_sex_other"
+                                style="@style/radionbutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked"
+                                android:text=" Other"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/material_text_caption" />
+                        </RadioGroup>
 
 
-            <!--</LinearLayout>-->
+                    </LinearLayout>
 
-            <!-- birth place input layout-->
-            <EditText
-                android:id="@+id/user_birth_place_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Place of Birth"
-                android:inputType="textAutoComplete"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
+                    <!-- birth place input layout-->
+                    <EditText
+                        android:id="@+id/user_birth_place_input_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Place of Birth"
+                        android:inputType="textAutoComplete"
+                        android:paddingBottom="7dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="7dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp"
+                        android:focusable="false"/>
 
-            <!-- current place input layout-->
-            <EditText
-                android:id="@+id/user_current_place_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Current Residence"
-                android:inputType="textAutoComplete"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
+                    <!-- current place input layout-->
+                    <EditText
+                        android:id="@+id/user_current_place_input_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Current Residence"
+                        android:inputType="textAutoComplete"
+                        android:paddingBottom="7dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="7dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp"
+                        android:focusable="false"/>
 
-            <!-- email input layout-->
-            <EditText
-                android:id="@+id/user_email_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Email Address"
-                android:inputType="textEmailAddress"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
 
-            <!-- contct no input layout-->
-            <EditText
-                android:id="@+id/user_contact_no_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_boarder_recg"
-                android:ems="10"
-                android:hint="Mobile Number"
-                android:inputType="number"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/textSecondary"
-                android:gravity="center"
-                android:textSize="16dp" />
 
-        </LinearLayout>
+
+                    <!-- email input layout-->
+                    <EditText
+                        android:id="@+id/user_email_input_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Email Address"
+                        android:inputType="textEmailAddress"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp" />
+
+                    <!-- contct no input layout-->
+                    <EditText
+                        android:id="@+id/user_contact_no_input_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Mobile Number"
+                        android:inputType="number"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
 
 
                 <!-- Terms and condition-->
