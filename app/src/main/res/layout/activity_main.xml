@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     tools:context=".homescreen.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
@@ -73,10 +73,10 @@
                     app:cv_strokeWidthSize="1"
                     app:cv_subtitleColor="@android:color/white"
                     app:cv_subtitleSize="9dp"
-                    app:cv_subtitleText="subtitle"
+                    app:cv_subtitleText="भाद्र २४, शनिवार"
                     app:cv_titleColor="@android:color/white"
-                    app:cv_titleSize="@dimen/material_text_headline"
-                    app:cv_titleText="title" />
+                    app:cv_titleSize="@dimen/material_text_subhead"
+                    app:cv_titleText="9th August" />
 
 
                 <com.daimajia.slider.library.SliderLayout
@@ -111,7 +111,8 @@
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
-
+        app:itemIconTint="@drawable/menu_color"
+        app:itemTextColor="@drawable/menu_color"
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
