@@ -73,6 +73,12 @@
             android:windowSoftInputMode="stateHidden">
         </activity>
 
+        <activity android:name=".passion_of_life.ComplexListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCircleTheme"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
     </application>
 
 </manifest>

@@ -45,6 +45,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
 
 import java.util.ArrayList;
@@ -269,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                         @Override
                         public void onSliderClick(BaseSliderView slider) {
-
+                            startActivity(new Intent(MainActivity.this, ComplexListActivity.class));
                         }
                     });
 
