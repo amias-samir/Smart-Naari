@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/signup_white_background_header" />
+                android:src="@drawable/ic_half_bottom_circle_svg" />
 
             <ImageView
                 android:id="@+id/tapitImg"
@@ -38,14 +38,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="In Case of Emergency"
-                android:textColor="@color/textSecondary"
+                android:textColor="@color/colorLoginIncaseText"
                 android:gravity="center"
                 android:paddingBottom="@dimen/default_padding"
                 android:paddingLeft="@dimen/default_padding"
                 android:paddingRight="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding"
-               android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/below_tap_it_icon_text_margin"/>
+               android:layout_alignParentBottom="true" />
 
         </RelativeLayout>
 
@@ -63,6 +62,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
+                android:layout_marginTop="@dimen/spacing_mlarge"
                 android:orientation="vertical">
 
                 <!-- username input layout-->
@@ -130,8 +130,8 @@
 
                     <ImageButton
                         android:id="@+id/btnDown"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/spacing_large"
                         android:background="@drawable/button_pressed_transparent"
@@ -144,7 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_pressed_transparent"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:paddingBottom="@dimen/default_padding"
                         android:paddingLeft="@dimen/default_padding"
                         android:paddingRight="@dimen/default_padding"
@@ -152,7 +152,8 @@
                         android:text="New User Sign in"
                         android:textAllCaps="false"
                         android:textColor="@color/textSecondary"
-                        android:textSize="@dimen/material_text_subhead"/>
+                        android:textSize="@dimen/material_text_subhead"
+                        android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
 
 
@@ -172,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_footer" />
+                android:src="@drawable/ic_half_top_circle" />
 
                 <TextView
                     android:id="@+id/registerLBL"
