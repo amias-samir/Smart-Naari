@@ -40,6 +40,7 @@
     <dimen name="material_text_display3">56sp</dimen>
     <dimen name="material_text_display4">112sp</dimen>
     <dimen name="default_padding">10dp</dimen>
+    <dimen name="or_textview_padding">6dp</dimen>
     <dimen name="below_tap_it_icon_text_margin">24dp</dimen>
 
     <dimen name="big_icon_size">64dp</dimen>

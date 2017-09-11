@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_half_bottom_circle_svg" />
+                android:src="@drawable/ic_half_bottom_circle_svg"
+                />
 
             <ImageView
                 android:id="@+id/tapitImg"
@@ -44,7 +45,8 @@
                 android:paddingLeft="@dimen/default_padding"
                 android:paddingRight="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding"
-               android:layout_alignParentBottom="true" />
+               android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/spacing_medium"/>
 
         </RelativeLayout>
 
@@ -62,7 +64,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginTop="@dimen/spacing_mlarge"
+                android:layout_marginTop="@dimen/spacing_large"
                 android:orientation="vertical">
 
                 <!-- username input layout-->
@@ -113,7 +115,7 @@
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xlarge"
+                    android:layout_marginTop="@dimen/spacing_mlarge"
                     android:background="@drawable/button_pressed"
                     android:gravity="center"
                     android:paddingBottom="@dimen/default_padding"
@@ -129,13 +131,29 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
+                        android:visibility="gone"
                         android:id="@+id/btnDown"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/spacing_large"
-                        android:background="@drawable/button_pressed_transparent"
-                        android:src="@drawable/ic_down_arrow" />
+                        android:background="@drawable/ic_down_arrow_white" />
+
+                    <TextView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:paddingBottom="@dimen/or_textview_padding"
+                        android:paddingLeft="@dimen/or_textview_padding"
+                        android:paddingRight="@dimen/or_textview_padding"
+                        android:layout_centerHorizontal="true"
+                        android:text="or"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/material_text_menu"
+                        android:background="@drawable/textview_border_center_or_text"
+                        />
 
                     <Button
                         android:layout_below="@+id/btnDown"
@@ -153,7 +171,8 @@
                         android:textAllCaps="false"
                         android:textColor="@color/textSecondary"
                         android:textSize="@dimen/material_text_subhead"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"/>
                 </RelativeLayout>
 
 
@@ -188,10 +207,11 @@
                     android:layout_centerVertical="true"/>
 
                 <TextView
+                    android:id="@+id/registerBeTheOneLBL"
                     android:layout_below="@+id/registerLBL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Be the one to say NO to Gender Based Violence"
+                    android:text="@string/be_the_one_to_say_no_to_gender_based_violence"
                     android:textColor="@color/colorAccent"
                     android:gravity="center"
                     android:paddingBottom="@dimen/default_padding"
