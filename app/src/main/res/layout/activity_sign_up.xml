@@ -7,13 +7,13 @@
     android:background="@color/colorSignupBackground"
     tools:context="com.nepal.naxa.smartnaari.register.SignUpActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -47,9 +47,7 @@
         </RelativeLayout>
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -386,7 +384,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingTop="10dp"
-                        android:text="I agree that all the information about me is correct and willingly given. I do not support false reporting and i am fully responsible for any report that i make on Gender Based Violence."
+                        android:text="@string/string_terms_and_condition"
                         android:textColor="@color/textSecondary"
                         android:textSize="16dp" />
 
@@ -432,9 +430,9 @@
             </LinearLayout>
 
 
-        </ScrollView>
+
 
     </LinearLayout>
-
+    </ScrollView>
 
 </RelativeLayout>
