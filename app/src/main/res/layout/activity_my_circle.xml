@@ -27,18 +27,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/txtLBLmyCircleSafety"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:text="My Circle for my Safety"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/material_text_body1" />
 
                 <TextView
+                    android:layout_below="@+id/txtLBLmyCircleSafety"
                     android:id="@+id/txtLBLcreate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium"
                     android:gravity="center"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
                     android:text="Create"
                     android:textColor="@color/textSecondary"
-                    android:textSize="@dimen/material_text_headline" />
+                    android:textSize="@dimen/material_text_title" />
 
                 <TextView
                     android:id="@+id/txtLBLmycircle"
@@ -49,7 +60,9 @@
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
                     android:text="My Circle"
-                    android:textSize="@dimen/material_text_display1" />
+                    android:textSize="@dimen/material_text_headline" />
+
+
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -316,7 +329,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:background="@drawable/button_pressed_transparent"
                                     android:drawableRight="@drawable/ic_right"
-                                    android:gravity="right"
+                                    android:gravity="center"
                                     android:paddingBottom="@dimen/default_padding"
                                     android:paddingLeft="@dimen/default_padding"
                                     android:paddingRight="@dimen/default_padding"
