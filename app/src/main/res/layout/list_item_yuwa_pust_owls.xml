@@ -6,27 +6,35 @@
 
 
     <ImageView
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:id="@+id/list_item_yuwa_pusta_iv1"
         android:layout_width="@dimen/large_icon_size"
         android:layout_height="@dimen/large_icon_size"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/list_item_yuwa_pusta_iv2"
-     />
+        android:layout_toLeftOf="@+id/list_item_yuwa_pusta_iv2" />
 
     <ImageView
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:id="@+id/list_item_yuwa_pusta_iv2"
         android:layout_width="@dimen/large_icon_size"
         android:layout_height="@dimen/large_icon_size"
         android:layout_centerInParent="true"
-      />
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_large" />
 
     <ImageView
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:id="@+id/list_item_yuwa_pusta_iv3"
         android:layout_width="@dimen/large_icon_size"
         android:layout_height="@dimen/large_icon_size"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/list_item_yuwa_pusta_iv2"
 
-/>
+        />
 
 </RelativeLayout>

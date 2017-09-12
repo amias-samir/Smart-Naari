@@ -21,27 +21,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
+public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapter.ViewHolder> implements View.OnClickListener {
 
 
-    private List<Owl> items;
+
+    private List<YuwaQuery> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
 
-    public RecyclerViewAdapter(List<Owl> items) {
+    public YuwaQuestionAdapter(List<YuwaQuery> items) {
         this.items = items;
     }
 
@@ -53,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         context = parent.getContext();
-        int layoutRes = R.layout.list_item_yuwa_pust_owls;
+        int layoutRes = R.layout.list_item_yuwa_pusta_questions;
         View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
         v.setOnClickListener(this);
         return new ViewHolder(v);
@@ -62,24 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Owl item = items.get(position);
-
-        String photoUrl = "http://www.istockphoto.com/resources/images/PhotoFTLP/img_67920257.jpg";
-
-//        for (Map.Entry<String, String> entry : item.getNameAndPhotos().entrySet()) {
-//            String personName = entry.getKey();
-//            String photoUrl = entry.getValue();
-
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv1);
-        holder.itemView.setTag(item);
-
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv2);
-        holder.itemView.setTag(item);
-
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv3);
-        holder.itemView.setTag(item);
-
-//        }
+        YuwaQuery item = items.get(position);
 
 
     }
@@ -92,18 +72,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onItemClick(v, (Owl) v.getTag());
+        onItemClickListener.onItemClick(v, (YuwaQuery) v.getTag());
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
 
-
-        @BindView(R.id.list_item_yuwa_pusta_iv1)
-        ImageView listItemYuwaPustaIv1;
-        @BindView(R.id.list_item_yuwa_pusta_iv2)
-        ImageView listItemYuwaPustaIv2;
-        @BindView(R.id.list_item_yuwa_pusta_iv3)
-        ImageView listItemYuwaPustaIv3;
+        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+        TextView question;
+        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+        TextView answer;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -114,7 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, Owl owl);
+        void onItemClick(View view, YuwaQuery yuwaQuery);
 
     }
 }

@@ -84,7 +84,7 @@
         </activity>
         <activity
             android:exported="true"
-            android:name=".yuwapusta.YuwaPustActivity"
+            android:name=".yuwapusta.YuwaPustaActivity"
             android:label="@string/title_activity_yuwa_pust"
             android:theme="@style/AppTheme"/>
     </application>

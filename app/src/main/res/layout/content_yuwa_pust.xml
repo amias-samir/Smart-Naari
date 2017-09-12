@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustActivity"
+    tools:context="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity"
     tools:showIn="@layout/activity_yuwa_pust">
 
 
@@ -18,52 +15,64 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/grid_yuwa_pusta"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+
 
         />
 
     <TextView
-
         android:id="@+id/yuwa_pusta_act_tv_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
         android:text="Yuwa Pusta"
         android:textAlignment="center"
-        android:textSize="@dimen/material_text_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yuwa_pusta_iv_header" />
+        android:textSize="@dimen/material_text_title" />
 
-    <TextView
-        android:layout_margin="@dimen/spacing_large"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Owl at your disposal, about LIFE, LOVE, and yes even SEX "
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yuwa_pusta_act_tv_header" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:padding="@dimen/spacing_large"
         android:background="@android:color/white"
-        android:id="@+id/yuwa_pusta_act_rv_owlslist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
 
-    <android.support.v7.widget.RecyclerView
-        android:padding="@dimen/spacing_large"
-        android:background="@android:color/white"
-        android:id="@+id/yuwa_pusta_act_rv_reviewslist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ask an Owl" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_large"
+            android:text="@string/yuwa_pusta_heading"
+            android:textAlignment="center"
+            android:textSize="@dimen/material_text_subhead"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yuwa_pusta_act_tv_header" />
+
+        <include layout="@layout/short_red_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="@dimen/spacing_large"
+            android:id="@+id/yuwa_pusta_act_rv_owlslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/yuwa_pusta_act_rv_reviewslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+        <Button
+            android:layout_gravity="center"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_ask_an_owl" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
 
