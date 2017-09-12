@@ -13,6 +13,7 @@
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
     <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
+    <color name="colorLoginIncaseText">#454545</color>
 
 
     <!--Colors from design-->

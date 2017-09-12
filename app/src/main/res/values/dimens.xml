@@ -20,6 +20,7 @@
     <dimen name="spacing_small">6dp</dimen>
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_mlarge">24dp</dimen>
     <dimen name="spacing_xlarge">32dp</dimen>
 
     <dimen name="elevation_low">9dp</dimen>
@@ -42,6 +43,7 @@
 
 
     <dimen name="default_padding">10dp</dimen>
+    <dimen name="or_textview_padding">6dp</dimen>
     <dimen name="below_tap_it_icon_text_margin">24dp</dimen>
 
     <dimen name="big_icon_size">64dp</dimen>

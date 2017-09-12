@@ -22,5 +22,10 @@
     <string name="copyright">Copyright</string>
     <string name="donate">Donate</string>
     <string name="enter_at_least_two_phone_numbers">Enter at least TWO Phone Numbers</string>
+
     <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
+
+    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
+    <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
+
 </resources>
