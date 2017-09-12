@@ -83,10 +83,20 @@
                 android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
         </activity>
         <activity
-            android:exported="true"
             android:name=".yuwapusta.YuwaPustaActivity"
+            android:exported="true"
             android:label="@string/title_activity_yuwa_pust"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:exported="true"
+            android:name=".yuwapusta.AskOwlActivity"
+            android:label="@string/title_activity_ask_owl"
+            android:parentActivityName=".yuwapusta.YuwaPustaActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
+        </activity>
     </application>
 
 </manifest>

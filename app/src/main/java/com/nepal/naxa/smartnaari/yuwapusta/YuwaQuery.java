@@ -11,6 +11,15 @@ public class YuwaQuery {
 
     private String question;
     private String answer;
+    private boolean isFooter;
+
+    public boolean isFooter() {
+        return isFooter;
+    }
+
+    public void setFooter(boolean footer) {
+        isFooter = footer;
+    }
 
     public String getQuestion() {
         return question;
@@ -35,6 +44,11 @@ public class YuwaQuery {
         yuwaQueries.add(new YuwaQuery());
         yuwaQueries.add(new YuwaQuery());
         yuwaQueries.add(new YuwaQuery());
+
+        YuwaQuery yuwaQuery = new YuwaQuery();
+        yuwaQuery.setFooter(true);
+        yuwaQueries.add(yuwaQuery);
+
 
         return yuwaQueries;
 

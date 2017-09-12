@@ -29,9 +29,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Optional;
 
 public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapter.ViewHolder> implements View.OnClickListener {
-
 
 
     private List<YuwaQuery> items;
@@ -50,7 +50,17 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         context = parent.getContext();
-        int layoutRes = R.layout.list_item_yuwa_pusta_questions;
+        int layoutRes;
+
+        switch (viewType) {
+            case VIEW_TYPES.Footer:
+                layoutRes = R.layout.list_item_yuwa_pusta_questions;
+                break;
+            default:
+                layoutRes = R.layout.list_item_yuwa_pusta_questions;
+                break;
+        }
+
         View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
         v.setOnClickListener(this);
         return new ViewHolder(v);
@@ -70,12 +80,24 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
         return items.size();
     }
 
+
+    @Override
+    public int getItemViewType(int position) {
+
+        if (items.get(position).isFooter())
+            return VIEW_TYPES.Footer;
+        else
+            return VIEW_TYPES.Normal;
+
+    }
+
     @Override
     public void onClick(final View v) {
         onItemClickListener.onItemClick(v, (YuwaQuery) v.getTag());
     }
 
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
+    protected  class ViewHolder extends RecyclerView.ViewHolder {
+
 
         @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
         TextView question;
@@ -89,9 +111,30 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
         }
     }
 
+    protected  class FooterHolder extends RecyclerView.ViewHolder {
+
+
+        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+        TextView question;
+        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+        TextView answer;
+
+        public FooterHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+
+        }
+    }
+
+    private class VIEW_TYPES {
+        public static final int Normal = 2;
+        public static final int Footer = 3;
+    }
+
     public interface OnItemClickListener {
 
         void onItemClick(View view, YuwaQuery yuwaQuery);
 
     }
+
 }

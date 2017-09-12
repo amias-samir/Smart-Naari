@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class YuwaPustaActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
 
@@ -44,7 +46,6 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
         initHorizontalRecyclerView();
         initQuestionsRecyclerView();
     }
-
 
     private void initHorizontalRecyclerView() {
         List<Owl> owlslist = Owl.getOwlsList();
@@ -94,7 +95,6 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public void onItemClick(View view, Owl owl) {
 
@@ -102,6 +102,15 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
 
     @Override
     public void onItemClick(View view, YuwaQuery yuwaQuery) {
+
+    }
+
+
+    @OnClick(R.id.btn_ask_a_owl)
+    public void toAskAOwnActivity(){
+
+        Intent toAskOwlActivity = new Intent(this,AskOwlActivity.class);
+        startActivity(toAskOwlActivity);
 
     }
 }
