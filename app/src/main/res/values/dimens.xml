@@ -37,5 +37,10 @@
     <dimen name="fab_margin">16dp</dimen>
 
 
+
     <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
+
+    <dimen name="ma_chup_basdina_header_upper">90dp</dimen>
+    <dimen name="ma_chup_basdina_header_lower">160dp</dimen>
+
 </resources>

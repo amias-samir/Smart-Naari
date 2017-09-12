@@ -27,6 +27,7 @@
 
     <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
+
     <string name="title_activity_yuwa_pust">YuwaPustActivity</string>
 
     <string name="yuwa_pusta_heading">\"Owl\" at your disposal, about LIFE,\n LOVE, and yes even SEX and\n SEXUALITY, CONTRACEPTION,\nSTIGMA, TABOOS and much more.</string>
@@ -39,5 +40,8 @@
     <string name="general_form_hint_question">Write your question here.</string>
     <string name="general_form_button_ask">Ask</string>
     <string name="title_activity_ask_owl">AskOwlActivity</string>
+
+    <string name="understanding">Understanding</string>
+
 
 </resources>
