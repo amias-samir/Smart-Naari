@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nepal.naxa.smartnaari">
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.STORAGE" />
@@ -30,6 +29,7 @@
         <!-- android:exported="true" -->
         <!-- android:label="@string/app_name" -->
         <!-- android:screenOrientation="portrait" /> -->
+
         <activity
             android:name=".splashscreen.SplashScreenActivity"
             android:label="@string/app_name"
@@ -54,31 +54,34 @@
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
-            android:exported="true"
             android:name=".homescreen.MainActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
-
-        <activity android:name=".mycircle.MyCircleActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".mycircle.MyCircleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
-
-        <activity android:name=".passion_of_life.ComplexListActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".MaSakchamChuCoachActivity"
+            android:label="@string/title_activity_ma_sakcham_chu_coach"
+            android:parentActivityName=".homescreen.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
         </activity>
-
     </application>
 
 </manifest>

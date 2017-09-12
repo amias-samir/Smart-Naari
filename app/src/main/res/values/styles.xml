@@ -9,10 +9,9 @@
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
 
     </style>
-
-
 
 
     <!-- custom style -->
@@ -50,6 +49,8 @@
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

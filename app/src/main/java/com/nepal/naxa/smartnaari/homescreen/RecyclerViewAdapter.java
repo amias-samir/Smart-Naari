@@ -27,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,6 +35,9 @@ import butterknife.ButterKnife;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
 
+
+    private final static int RED_VIEW = 0;
+    private final static int BORDER_VIEW = 1;
 
     private List<ViewModel> items;
     private OnItemClickListener onItemClickListener;
@@ -50,9 +52,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
+
+        int layoutRes = 0;
+        switch (viewType) {
+            case RED_VIEW:
+                layoutRes = R.layout.grid_list_item_red;
+                break;
+            case BORDER_VIEW:
+                layoutRes = R.layout.grid_list_item_border;
+                break;
+        }
+
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
         v.setOnClickListener(this);
         return new ViewHolder(v);
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        switch (position) {
+            case 0:
+            case 3:
+            case 4:
+                return RED_VIEW;
+            default:
+                return BORDER_VIEW;
+        }
     }
 
     @Override
@@ -63,23 +90,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.itemView.setTag(item);
 
-        boolean setBgRed = shouldSetRedBg(position);
 
-        if (setBgRed) {
-            holder.rootLayoutItemRecycler.setBackgroundColor(ContextCompat.getColor(holder.rootLayoutItemRecycler.getContext(),R.color.colorAccent));
-            holder.text.setTextColor(Color.WHITE);
-        }else {
-            holder.rootLayoutItemRecycler.setBackgroundColor(Color.WHITE);
-            holder.text.setTextColor(Color.BLACK);
-        }
     }
 
 
-
-    private boolean shouldSetRedBg(int pos) {
-
-        return (pos == 0) || (pos == 3) || (pos == 4);
-    }
 
     @Override
     public int getItemCount() {

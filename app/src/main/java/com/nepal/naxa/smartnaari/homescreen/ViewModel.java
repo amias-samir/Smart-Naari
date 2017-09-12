@@ -70,7 +70,7 @@ public class ViewModel {
         ViewModel viewModel;
 
 
-        viewModel = new ViewModel("Report a cause", R.drawable.grid_ma_chup_basdina);
+        viewModel = new ViewModel("Report a case", R.drawable.grid_ma_chup_basdina);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
@@ -79,7 +79,7 @@ public class ViewModel {
         viewModel = new ViewModel("Sakshyam Chu", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Yuwa asda", R.drawable.grid_yuwa_pusta);
+        viewModel = new ViewModel("Yuwa पुस्ता", R.drawable.grid_yuwa_pusta);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);

@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        startIntroAnimation();
+
         initGridRecyclerView();
         initHorizontalRecyclerView();
         initToolbar();
@@ -129,8 +129,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onEnterAnimationComplete();
         setRecyclerAdapter(recyclerView);
         recyclerView.scheduleLayoutAnimation();
-
         slider.startAutoCycle();
+        startIntroAnimation();
     }
 
 
@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.stopAutoCycle();
 
             sliderLayout.addSlider(textSliderView);
-            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
+            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
             sliderLayout.setDuration(10000);
 

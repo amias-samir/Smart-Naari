@@ -22,4 +22,5 @@
     <string name="copyright">Copyright</string>
     <string name="donate">Donate</string>
     <string name="enter_at_least_two_phone_numbers">Enter at least TWO Phone Numbers</string>
+    <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
 </resources>

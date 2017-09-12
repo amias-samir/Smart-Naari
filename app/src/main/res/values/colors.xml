@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#BDBDBD</color>
     <color name="colorAccent">#F3514F</color>
 
+    <color name="windowBackground">#EEEEEE</color>
 
     <color name="colorSignupBackground">#F3514F</color>
     <color name="colorMyCircleBackground">#F3514F</color>
@@ -11,7 +12,6 @@
     <color name="textSecondary">#e9c1c1</color>
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
-
     <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
 
 
@@ -24,7 +24,6 @@
 
     <color name="empower">#008F45</color>
     <color name="inactiveText">#E3E3E3</color>
-
 
 
 </resources>
