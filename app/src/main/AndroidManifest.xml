@@ -82,6 +82,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
         </activity>
+        <activity
+            android:exported="true"
+            android:name=".yuwapusta.YuwaPustActivity"
+            android:label="@string/title_activity_yuwa_pust"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
