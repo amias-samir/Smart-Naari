@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 
@@ -77,6 +78,6 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
 
     @Override
     public void onItemClick(View view, YuwaQuery yuwaQuery) {
-
+        Toast.makeText(this, "SOmething", Toast.LENGTH_SHORT).show();
     }
 }

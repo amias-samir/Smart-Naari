@@ -31,7 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Optional;
 
-public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapter.ViewHolder> implements View.OnClickListener {
+public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
 
     private List<YuwaQuery> items;
@@ -47,31 +47,30 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         context = parent.getContext();
-        int layoutRes;
+        View v;
 
         switch (viewType) {
-            case VIEW_TYPES.Footer:
-                layoutRes = R.layout.list_item_yuwa_pusta_questions;
-                break;
-            default:
-                layoutRes = R.layout.list_item_yuwa_pusta_questions;
-                break;
-        }
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
-        v.setOnClickListener(this);
-        return new ViewHolder(v);
+
+            case VIEW_TYPES.Footer:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_reycler_view, parent, false);
+                v.setOnClickListener(this);
+                return new FooterHolder(v);
+
+            default:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_yuwa_pusta_questions, parent, false);
+                v.setOnClickListener(this);
+                return new ViewHolder(v);
+
+        }
     }
 
-
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         YuwaQuery item = items.get(position);
-
-
     }
 
 
@@ -96,7 +95,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
         onItemClickListener.onItemClick(v, (YuwaQuery) v.getTag());
     }
 
-    protected  class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder {
 
 
         @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
@@ -111,13 +110,8 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<YuwaQuestionAdapte
         }
     }
 
-    protected  class FooterHolder extends RecyclerView.ViewHolder {
+    protected class FooterHolder extends RecyclerView.ViewHolder {
 
-
-        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
-        TextView question;
-        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
-        TextView answer;
 
         public FooterHolder(View itemView) {
             super(itemView);
