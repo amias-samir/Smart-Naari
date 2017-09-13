@@ -89,7 +89,7 @@ public class ViewModel {
         viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Sakshyam Chu", R.drawable.grid_ma_saksam_chu);
+        viewModel = new ViewModel("Saksham Chu", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Yuwa पुस्ता", R.drawable.grid_yuwa_pusta);

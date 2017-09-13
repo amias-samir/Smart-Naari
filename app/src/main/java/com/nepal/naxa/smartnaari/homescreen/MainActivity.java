@@ -47,6 +47,7 @@ import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
@@ -264,6 +265,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         }
         else if(viewModel.getText().equals("I am Amazing")){
             startActivity(new Intent(MainActivity.this, IAmAmazingActivity.class));
+        }
+        else if(viewModel.getText().equals("Saksham Chu")){
+            startActivity(new Intent(MainActivity.this, MaSakchamChuMainActivity.class));
         }
         else {
             DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);

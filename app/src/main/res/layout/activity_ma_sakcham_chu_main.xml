@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    >
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation_high"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_bar_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_main_activity_sakshyamchu"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/imageBackgroundGrey"
+                android:foregroundGravity="center"
+                android:padding="@dimen/spacing_medium"
+                android:src="@drawable/grid_ma_saksam_chu" />
+
+            <ImageView
+                android:id="@+id/iv_main_activity_motto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/spacing_xlarge"
+                android:paddingTop="@dimen/spacing_xlarge"
+                android:src="@drawable/ic_ma_sakshyam_chu_motto" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <RadioButton
+                    android:id="@+id/rb_main_activitylifecoaching"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_drawable"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_main_activity_angermanagement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rb_drawable"/>
+
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/spacing_large"
+                android:paddingTop="@dimen/spacing_medium"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="@string/life_coaching"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_xlarge"
+                        android:paddingRight="@dimen/spacing_xlarge"
+                        android:text="@string/anger_management_ma_sakcham_chu_detail"
+                        android:textColor="@color/colorGray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="1sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="@string/anger_management"
+                        android:textColor="@color/colorAccent"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_xlarge"
+                        android:paddingRight="@dimen/spacing_xlarge"
+                        android:text="@string/life_coaching_ma_sakcham_chu_detail"
+                        android:textColor="@color/colorGray" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/bt_main_activity_takeatest"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_xlarge"
+                android:background="@drawable/button_red_background"
+                android:text="Take a Test"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/bt_main_activity_freeonlinecource"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:background="@drawable/button_red_border"
+                android:text="Free Online Course "
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent" />
+
+
+            <Button
+                android:id="@+id/bt_main_activity_bookanappointment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:background="@drawable/button_red_background"
+                android:text="Book an Appointment"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:layout_marginBottom="@dimen/spacing_large"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
