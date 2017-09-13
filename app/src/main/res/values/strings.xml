@@ -28,5 +28,8 @@
     <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
     <string name="understanding">Understanding</string>
+    <string name="report_gender_based_violence">Report Gender Based Violence</string>
+    <string name="report_i_am_the_victim">I am the Victim</string>
+    <string name="report_other">Other</string>
 
 </resources>
