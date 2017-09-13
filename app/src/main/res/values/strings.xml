@@ -60,7 +60,11 @@
     <string name="report_gender_based_violence">Report Gender Based Violence</string>
     <string name="report_i_am_the_victim">I am the Victim</string>
     <string name="report_other">Other</string>
-
+    <string name="when_did_the_voilence_occur">When did the voilence occur</string>
+    <string name="types_of_voilence">Types of Voilence</string>
+    <string name="core_gvb">Core GVB</string>
+    <string name="perpetrator">Perpetrator</string>
+    <string name="desc_GBV_ma_chup_basdina">Description (Further details of the Reported GBV)</string>
 
 
 </resources>
