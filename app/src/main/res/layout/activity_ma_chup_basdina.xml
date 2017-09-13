@@ -196,22 +196,27 @@
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/report_i_am_the_victim"
-                    android:textColor="@color/colorMaChupBasdinaHeaderLower"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_caption" />
 
                 <RadioButton
-                    android:id="@+id/radio_sex_female"
+                    android:id="@+id/radio_machupbasdina_other"
                     style="@style/radionbuttonMaChupBasdina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/default_padding"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/report_other"
-                    android:textColor="@color/colorMaChupBasdinaHeaderLower"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_caption" />
 
             </RadioGroup>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
 
 
         </LinearLayout>

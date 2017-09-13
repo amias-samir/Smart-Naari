@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
 
 import com.nepal.naxa.smartnaari.R;
 
@@ -33,6 +35,28 @@ public class MaChupBasdinaActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
+
+
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.radio_machupbasdina_victim:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.radio_machupbasdina_other:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
