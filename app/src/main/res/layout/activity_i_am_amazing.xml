@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:background="@color/imageBackgroundGrey"
+                android:padding="@dimen/spacing_large"
+                android:src="@drawable/grid_i_am_amazing" />
+
+            <TextView
+                android:id="@+id/tvIAmAmazingDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/spacing_mlarge"
+                android:text="@string/i_am_amazing_detail"
+                android:textColor="@color/colorGray"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="@dimen/line_size"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_xxlarge"
+                android:background="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:gravity="center"
+                android:text="@string/person_of_the_month"
+                android:textColor="@color/colorAccent" />
+
+            <ImageView
+                android:id="@+id/ivIAmAmazingPersonOfTheMonth"
+                android:layout_width="@dimen/big_icon_size"
+                android:layout_height="@dimen/big_icon_size"
+                android:layout_gravity="center"
+                android:background="@drawable/image_view_person_of_the_month" />
+
+            <TextView
+                android:id="@+id/tvIAmAmazingPersonOfTheMonthDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/spacing_mlarge"
+                android:text="@string/person_of_the_month_detail"
+                android:textColor="@color/colorGray"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tvIAmAmazingReadMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Read More  >>"
+                android:textColor="@color/colorAccent" />
+
+            <ImageView
+                android:id="@+id/ivIAmAmazingFlappingPheonix"
+                android:layout_width="@dimen/big_icon_size"
+                android:layout_height="@dimen/big_icon_size"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_medium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/i_am_amazing_pheonix"
+                android:textColor="@color/colorGray"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/i_am_amazing_click_to_look"
+                android:textColor="@color/colorGray"
+                android:textStyle="italic"
+                android:layout_marginBottom="@dimen/spacing_medium"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

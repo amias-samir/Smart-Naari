@@ -7,15 +7,18 @@
     <color name="windowBackground">#EEEEEE</color>
 
     <color name="colorSignupBackground">#F3514F</color>
+    <color name="colorRedLight">#FE9A9A</color>
+    <color name="colorGray">#909090</color>
     <color name="colorMyCircleBackground">#F3514F</color>
     <color name="colorWhite">#FFFFFF</color>
+
     <color name="textSecondary">#e9c1c1</color>
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
     <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
     <color name="colorLoginIncaseText">#454545</color>
 
-
+    <color name="imageBackgroundGrey">#f3f3f3</color>
     <!--Colors from design-->
     <color name="xandy">#64fc0202</color>
     <color name="whatdiff">#6439a64a</color>

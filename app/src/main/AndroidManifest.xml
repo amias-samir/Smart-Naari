@@ -68,6 +68,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
             android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".masakchamchu.IAmAmazingActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+
+        <activity android:name=".masakchamchu.LifeCoachingActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+
+        <activity android:name=".masakchamchu.ServicesActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
@@ -82,6 +95,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
         </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
+
     </application>
 
 </manifest>

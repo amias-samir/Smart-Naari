@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/imageBackgroundGrey"
+                android:padding="@dimen/spacing_large"
+                android:src="@drawable/grid_ma_saksam_chu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_xlarge"
+                android:text="@string/life_coaching"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/tvLifeCoachingDetail"
+                android:padding="@dimen/spacing_xlarge"
+                android:text="@string/life_coaching_detail"
+                android:textColor="@color/colorGray"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="@dimen/line_size"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_xxlarge"
+                android:background="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/btnLifeCoachingTakeaTest"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_xxlarge"
+                android:background="@drawable/button_red_background"
+                android:text="@string/take_a_test_here"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+
+            <Button
+                android:id="@+id/btnLifeCoachingFreeOnlineCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:background="@drawable/button_red_border"
+                android:text="@string/free_online_course"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

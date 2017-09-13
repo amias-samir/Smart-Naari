@@ -21,11 +21,25 @@
     <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
     <string name="copyright">Copyright</string>
     <string name="donate">Donate</string>
+
     <string name="enter_at_least_two_phone_numbers">Enter at least TWO Phone Numbers</string>
 
     <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
 
     <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
+
+    <string name="life_coaching">Life Coaching</string>
+    <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical peoerson who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
+    <string name="take_a_test_here">Take a Test here</string>
+    <string name="free_online_course">Free Online Course</string>
+    <string name="i_am_amazing_detail">Smart Naari presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string name="person_of_the_month_detail">Smart Naari presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string name="person_of_the_month">Person of the Month</string>
+    <string name="i_am_amazing_pheonix">image of phoenix flapping wings</string>
+    <string name="i_am_amazing_click_to_look">click to Look for more Nepali Society</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="google_maps_key">AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU</string>
 
 </resources>
