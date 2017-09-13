@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation_high"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_below="@id/app_bar_layout"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -31,10 +51,10 @@
                 android:textColor="@color/colorAccent" />
 
             <TextView
+                android:id="@+id/tvLifeCoachingDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:id="@+id/tvLifeCoachingDetail"
                 android:padding="@dimen/spacing_xlarge"
                 android:text="@string/life_coaching_detail"
                 android:textColor="@color/colorGray"
@@ -68,8 +88,7 @@
                 android:background="@drawable/button_red_border"
                 android:text="@string/free_online_course"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

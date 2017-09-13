@@ -33,6 +33,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +45,9 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
@@ -220,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 drawerLayout.closeDrawers();
 
                 if (menuItem.getTitle().equals("My Circle")) {
-                    Intent intent = new Intent(MainActivity.this, MyCircleActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
                     startActivity(intent);
                 }
 
@@ -248,7 +252,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-        DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
+
+        Log.e("MainActivity", "onItemClick: "+ viewModel.getText());
+
+        if(viewModel.getText().equals("Report a case")){
+            Intent maChupBasdinaIntent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
+            startActivity(maChupBasdinaIntent);
+        }
+        else if(viewModel.getText().equals("Time is of the essence")){
+            startActivity(new Intent(MainActivity.this, ServicesActivity.class));
+        }
+        else if(viewModel.getText().equals("I am Amazing")){
+            startActivity(new Intent(MainActivity.this, IAmAmazingActivity.class));
+        }
+        else {
+            DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
+
+        }
+
+
     }
 
     @Override

@@ -19,14 +19,14 @@
         <RelativeLayout
             android:id="@+id/top_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="110dp">
 
             <ImageView
                 android:id="@+id/top_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                android:src="@drawable/signup_white_background_header" />
+                android:src="@drawable/ic_half_top_circle_signup" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                         android:background="@drawable/edit_text_boarder_recg"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="Enter your name"
+                        android:hint="Username"
                         android:inputType="textPersonName"
                         android:paddingBottom="10dp"
                         android:paddingLeft="10dp"

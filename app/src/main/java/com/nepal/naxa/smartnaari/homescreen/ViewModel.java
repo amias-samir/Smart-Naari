@@ -22,15 +22,28 @@ import java.util.ArrayList;
 
 public class ViewModel {
     private String text;
-
-
     private int image;
+    private String imageUrl;
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public ViewModel(String text, int image) {
         this.text = text;
+
         this.image = image;
     }
 
+    public ViewModel(String text, String imageUrl) {
+        this.text = text;
+        this.imageUrl = imageUrl;
+    }
 
     public String getText() {
         return text;
@@ -85,7 +98,28 @@ public class ViewModel {
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
+        viewModel = new ViewModel("I am Amazing", R.drawable.grid_i_am_amazing);
+        viewModels.add(viewModel);
+
+        return viewModels;
+
+    }
+
+    public static ArrayList<ViewModel> getOwlsList() {
+        ArrayList<ViewModel> viewModels = new ArrayList<>();
+
+
+        ViewModel viewModel;
+        viewModel = new ViewModel("X's and Y's","http://lorempixel.com/500/500/animals/1/");
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("What's the Difference", "http://lorempixel.com/500/500/animals/1/");
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Crime and Punishment", R.color.crimepunis);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Myth Busters", R.color.mythbus);
         viewModels.add(viewModel);
 
         return viewModels;

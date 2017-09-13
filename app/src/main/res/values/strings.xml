@@ -13,7 +13,7 @@
     <string name="my_circle">My Circle</string>
     <string name="about_smart_naari">About Smart Naari</string>
     <string name="meet_the_board">Meet The Board</string>
-    <string name="sn_enthusiasts">SN Enthusiasts</string>
+    <string name="sn_enthusiasts">Friends Of Smart नारी</string>
     <string name="celebrating_professionals">Celebrating Professionals</string>
     <string name="glossary_of_terms">Glossary Of Terms</string>
     <string name="data_on_gender_based_violence">Data On Gender Based Violence</string>
@@ -29,6 +29,7 @@
     <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
 
+
     <string name="life_coaching">Life Coaching</string>
     <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical peoerson who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
     <string name="take_a_test_here">Take a Test here</string>
@@ -41,5 +42,25 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="google_maps_key">AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU</string>
+
+    <string name="title_activity_yuwa_pust">YuwaPustActivity</string>
+
+    <string name="yuwa_pusta_heading">\"Owl\" at your disposal, about LIFE,\n LOVE, and yes even SEX and\n SEXUALITY, CONTRACEPTION,\nSTIGMA, TABOOS and much more.</string>
+
+
+    <string name="question">What can i know about drugs?</string>
+    <string name="answer">28 year old mother replies. \K bhaneko testo? Testo Bhannu hudaina! Chii!!\n Hey Bhagwan, how embarrassing!!</string>
+    <string name="btn_ask_an_owl">Ask an Owl</string>
+    <string name="select_an_owl">Select an Owl</string>
+    <string name="general_form_hint_question">Write your question here.</string>
+    <string name="general_form_button_ask">Ask</string>
+    <string name="title_activity_ask_owl">AskOwlActivity</string>
+
+    <string name="understanding">Understanding</string>
+    <string name="report_gender_based_violence">Report Gender Based Violence</string>
+    <string name="report_i_am_the_victim">I am the Victim</string>
+    <string name="report_other">Other</string>
+
+
 
 </resources>

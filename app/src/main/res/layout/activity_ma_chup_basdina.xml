@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!--heade layout-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<include layout="@layout/toolbar_layout"-->
+                <!--android:id="@id/toolbar"/>-->
+
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/elevation_high"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:background="?attr/colorPrimary"
+
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--header Upper-->
+                <RelativeLayout
+                    android:id="@+id/headerTopLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ma_chup_basdina_header_upper"
+                    android:background="@color/colorMaChupBasdinaHeaderUpper">
+
+                </RelativeLayout>
+                <!--Header Lower-->
+                <RelativeLayout
+                    android:layout_below="@+id/headerTopLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/ma_chup_basdina_header_lower"
+                    android:background="@color/colorMaChupBasdinaHeaderLower">
+                </RelativeLayout>
+
+                <!--ma chup badina image layout-->
+                <FrameLayout
+                    android:id="@+id/maChupBasdinaImgFrameLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp">
+                    <ImageView
+                        android:id="@+id/imgViewMaChupBasdina"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:src="@drawable/grid_ma_chup_basdina"/>
+                </FrameLayout>
+
+                <!--text lbl understanding-->
+                <TextView
+                    android:id="@+id/txtLBLUnderstanding"
+                    android:layout_below="@id/maChupBasdinaImgFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/understanding"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/material_text_caption"
+                    android:padding="@dimen/default_padding"/>
+
+                <!--consent no-consent text layout-->
+                <LinearLayout
+                    android:id="@+id/consentNoConsentLayout"
+                    android:layout_below="@id/txtLBLUnderstanding"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Consent"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="No Consent"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite" />
+
+                </LinearLayout>
+
+                <!-- consent no consent spinner-->
+                <LinearLayout
+                    android:layout_below="@id/consentNoConsentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                    <!-- spinner Consent NoConsent input layout-->
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/spacing_small"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/damage_label"
+                        android:background="@drawable/edit_text_boarder_recg">
+
+                        <Spinner
+                            android:id="@+id/spinner_user_birth_place_input_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/damage_label"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/spinner_boarder_recg_consent_noconsent"
+                            android:gravity="left"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="7dp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center|center_vertical|center_horizontal"
+                            android:background="@drawable/ic_down_arrow_white" />
+                    </FrameLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            
+            
+        </RelativeLayout>
+
+            <!--textview Report Gender Based Violence-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:padding="@dimen/default_padding"
+                android:text="@string/report_gender_based_violence"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"/>
+
+            <!--victim radio button input layout-->
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radio_machupbasdina_victim"
+                    style="@style/radionbuttonMaChupBasdina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/report_i_am_the_victim"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_caption" />
+
+                <RadioButton
+                    android:id="@+id/radio_machupbasdina_other"
+                    style="@style/radionbuttonMaChupBasdina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/report_other"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_caption" />
+
+            </RadioGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        
+    </ScrollView>
+
+</RelativeLayout>
