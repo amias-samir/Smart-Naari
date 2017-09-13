@@ -33,10 +33,6 @@ dependencies {
     compile "com.android.support:palette-v7:$rootProject.supportLibraryVersion"
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2679436225a7c6d317a9f4524a49e5f5feefda63
 
 
     compile 'com.github.bumptech.glide:glide:4.1.1'
