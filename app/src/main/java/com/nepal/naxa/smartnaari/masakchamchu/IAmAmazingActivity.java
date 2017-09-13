@@ -1,32 +1,46 @@
-package com.nepal.naxa.smartnaari.machupbasdina;
+package com.nepal.naxa.smartnaari.masakchamchu;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.RadioButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
 
-public class MaChupBasdinaActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * Created by Majestic on 9/12/2017.
+ */
+
+public class IAmAmazingActivity extends AppCompatActivity {
+    @BindView(R.id.tvIAmAmazingDetail)
+    TextView tvIAmAmazingDetail;
+    @BindView(R.id.ivIAmAmazingPersonOfTheMonth)
+    ImageView ivIAmAmazingPersonOfTheMonth;
+    @BindView(R.id.tvIAmAmazingPersonOfTheMonthDetail)
+    TextView tvIAmAmazingPersonOfTheMonthDetail;
+    @BindView(R.id.tvIAmAmazingReadMore)
+    TextView tvIAmAmazingReadMore;
+    @BindView(R.id.ivIAmAmazingFlappingPheonix)
+    ImageView ivIAmAmazingFlappingPheonix;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ma_chup_basdina);
-
+        setContentView(R.layout.activity_i_am_amazing);
+        ButterKnife.bind(this);
         initToolbar();
     }
-
-
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Report a case");
+        toolbar.setTitle("I am Amazing");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
@@ -35,28 +49,6 @@ public class MaChupBasdinaActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
-
-
-
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.radio_machupbasdina_victim:
-                if (checked)
-                    // Pirates are the best
-                    break;
-            case R.id.radio_machupbasdina_other:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

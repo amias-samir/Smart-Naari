@@ -46,9 +46,13 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -222,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 drawerLayout.closeDrawers();
 
                 if (menuItem.getTitle().equals("My Circle")) {
-                    Intent intent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MyCircleActivity.class);
                     startActivity(intent);
                 }
 
@@ -256,6 +260,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         if(viewModel.getText().equals("Report a case")){
             Intent maChupBasdinaIntent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
             startActivity(maChupBasdinaIntent);
+        }
+        else if(viewModel.getText().equals("Time is of the essence")){
+            startActivity(new Intent(MainActivity.this, ServicesActivity.class));
+        }
+        else if(viewModel.getText().equals("I am Amazing")){
+            startActivity(new Intent(MainActivity.this, IAmAmazingActivity.class));
+        }
+        else if(viewModel.getText().equals("Saksham Chu")){
+            startActivity(new Intent(MainActivity.this, MaSakchamChuMainActivity.class));
+        }
+        else if(viewModel.getText().equals("Yuwa पुस्ता")){
+            startActivity(new Intent(MainActivity.this, YuwaPustaActivity.class));
         }
         else {
             DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);

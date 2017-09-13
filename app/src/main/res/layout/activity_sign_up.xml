@@ -19,14 +19,14 @@
         <RelativeLayout
             android:id="@+id/top_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="110dp">
 
             <ImageView
                 android:id="@+id/top_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                android:src="@drawable/signup_white_background_header" />
+                android:src="@drawable/ic_half_top_circle_signup" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -413,16 +413,6 @@
                         android:textAllCaps="false"
                         android:textColor="@color/textSecondary"
                         android:textSize="18dp" />
-
-                    <!--<ImageButton-->
-                    <!--android:id="@+id/btnRight"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_centerHorizontal="true"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:background="@color/transparent"-->
-                    <!--android:src="@drawable/ic_right" />-->
 
                 </RelativeLayout>
 
