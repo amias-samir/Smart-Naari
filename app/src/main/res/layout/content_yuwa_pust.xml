@@ -64,13 +64,24 @@
 
             />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/btn_ask_a_owl"
-            android:layout_gravity="center"
-            style="@style/Widget.AppCompat.Button.Colored"
+            android:background="@drawable/button_get_contact_my_circle"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_ask_an_owl" />
+            android:text="@string/btn_ask_an_owl"
+            android:layout_centerHorizontal="true"
+            />
+        </RelativeLayout>
 
     </LinearLayout>
 

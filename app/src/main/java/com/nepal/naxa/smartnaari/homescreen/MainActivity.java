@@ -52,6 +52,7 @@ import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -268,6 +269,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         }
         else if(viewModel.getText().equals("Saksham Chu")){
             startActivity(new Intent(MainActivity.this, MaSakchamChuMainActivity.class));
+        }
+        else if(viewModel.getText().equals("Yuwa पुस्ता")){
+            startActivity(new Intent(MainActivity.this, YuwaPustaActivity.class));
         }
         else {
             DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
