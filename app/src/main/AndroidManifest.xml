@@ -96,67 +96,78 @@
             android:exported="true"
             android:screenOrientation="portrait">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".homescreen.MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
 
-    </activity>
+        </activity>
 
-    <activity
-        android:name=".passion_of_life.ComplexListActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/MyCircleTheme"
-        android:windowSoftInputMode="stateHidden" />
-    <activity
-        android:name=".MaSakchamChuCoachActivity"
-        android:label="@string/title_activity_ma_sakcham_chu_coach"
-        android:parentActivityName=".homescreen.MainActivity"
-        android:theme="@style/AppTheme">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
-    </activity>
+        <activity
+            android:name=".masakchamchu.MaSakchamChuMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
 
-    <!--
-         The API key for Google Maps-based APIs is defined as a string resource.
-         (See the file "res/values/google_maps_api.xml").
-         Note that the API key is linked to the encryption key used to sign the APK.
-         You need a different API key for each encryption key, including the release key that is used to
-         sign the APK for publishing.
-         You can define the keys for the debug and release targets in src/debug/ and src/release/.
-    --><meta-data
-    android:name="com.google.android.geo.API_KEY"
-    android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
 
+        </activity>
 
-    <activity
-        android:name=".yuwapusta.YuwaPustaActivity"
-        android:exported="true"
-        android:label="@string/title_activity_yuwa_pust"
-        android:theme="@style/AppTheme" />
-    <activity
-        android:name=".yuwapusta.AskOwlActivity"
-        android:exported="true"
-        android:label="@string/title_activity_ask_owl"
-        android:parentActivityName=".yuwapusta.YuwaPustaActivity"
-        android:theme="@style/AppTheme">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
+        <activity
+            android:name=".passion_of_life.ComplexListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyCircleTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".MaSakchamChuCoachActivity"
+            android:label="@string/title_activity_ma_sakcham_chu_coach"
+            android:parentActivityName=".homescreen.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
+        </activity>
 
-    </activity>
-
-    <activity
-        android:name=".machupbasdina.MaChupBasdinaActivity"
-        android:screenOrientation="portrait"
-        android:windowSoftInputMode="stateHidden">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".homescreen.MainActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        --><meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
 
 
-    </activity>
+        <activity
+            android:name=".yuwapusta.YuwaPustaActivity"
+            android:exported="true"
+            android:label="@string/title_activity_yuwa_pust"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".yuwapusta.AskOwlActivity"
+            android:exported="true"
+            android:label="@string/title_activity_ask_owl"
+            android:parentActivityName=".yuwapusta.YuwaPustaActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
 
-</application>
+        </activity>
 
-    </manifest>
+        <activity
+            android:name=".machupbasdina.MaChupBasdinaActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
+
+
+        </activity>
+
+    </application>
+
+</manifest>
