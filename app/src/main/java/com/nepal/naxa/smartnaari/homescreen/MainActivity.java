@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 drawerLayout.closeDrawers();
 
                 if (menuItem.getTitle().equals("My Circle")) {
-                    Intent intent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MyCircleActivity.class);
                     startActivity(intent);
                 }
 
