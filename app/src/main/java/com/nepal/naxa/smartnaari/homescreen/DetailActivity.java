@@ -25,8 +25,7 @@ import android.widget.TextView;
 
 
 import com.nepal.naxa.smartnaari.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+
 
 public class DetailActivity extends AppCompatActivity {
 

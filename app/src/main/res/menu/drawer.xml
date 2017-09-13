@@ -3,10 +3,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
 
-
-
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/drawer_my_circle"
@@ -14,17 +14,45 @@
             android:icon="@drawable/ic_circle_people_grey"
             android:title="@string/my_circle" />
 
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+
         <item
             android:id="@+id/drawer_about_smart_naari"
             android:checked="true"
             android:icon="@drawable/ic_app_logo_bnw"
             android:title="@string/about_smart_naari" />
 
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/drawer_meet_the_board"
+            android:id="@+id/drawer_data_gender"
             android:checked="true"
-            android:icon="@drawable/ic_meet_the_board"
-            android:title="@string/meet_the_board" />
+            android:icon="@drawable/ic_data_on_gender_based_voilence"
+            android:title="@string/data_on_gender_based_violence" />
+
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_glossary"
+            android:checked="true"
+            android:icon="@drawable/ic_glossary_of_terms"
+            android:title="@string/glossary_of_terms" />
+    </group>
+
+    <group
+        android:id="@+id/group5"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/drawer_sn_enthu"
@@ -32,42 +60,21 @@
             android:icon="@drawable/ic_sn_enthusiasts"
             android:title="@string/sn_enthusiasts" />
 
+    </group>
+
+    <group
+        android:id="@+id/group6"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_celeb_pro"
             android:checked="true"
             android:icon="@drawable/ic_celebrating_prof"
             android:title="@string/celebrating_professionals" />
+    </group>
 
-        <item
-            android:id="@+id/drawer_glossary"
-            android:checked="true"
-            android:icon="@drawable/ic_glossary_of_terms"
-            android:title="@string/glossary_of_terms" />
-
-        <item
-            android:id="@+id/drawer_data_gender"
-            android:checked="true"
-            android:icon="@drawable/ic_data_on_gender_based_voilence"
-            android:title="@string/data_on_gender_based_violence" />
-
-        <item
-            android:id="@+id/drawer_tutorials"
-            android:checked="true"
-            android:icon="@drawable/ic_tutorials"
-            android:title="@string/tutorials" />
-
-        <item
-            android:id="@+id/drawer_privacy"
-            android:checked="true"
-            android:icon="@drawable/ic_privacy_policy"
-            android:title="@string/privacy_policy_and_data_protection" />
-
-        <item
-            android:id="@+id/drawer_copyright"
-            android:checked="true"
-            android:icon="@drawable/ic_copy_right"
-            android:title="@string/copyright" />
-
+    <group
+        android:id="@+id/group7"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/drawer_donate"
@@ -75,6 +82,51 @@
             android:icon="@drawable/ic_donate"
             android:title="@string/donate" />
 
+    </group>
 
+
+    <group
+        android:id="@+id/group8"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_copyright"
+            android:checked="true"
+            android:icon="@drawable/ic_copy_right"
+            android:title="@string/copyright" />
+
+    </group>
+
+    <group
+        android:id="@+id/group9"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_meet_the_board"
+            android:checked="true"
+            android:icon="@drawable/ic_meet_the_board"
+            android:title="@string/meet_the_board" />
+
+    </group>
+
+    <group
+        android:id="@+id/group10"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_privacy"
+            android:checked="true"
+            android:icon="@drawable/ic_privacy_policy"
+            android:title="@string/privacy_policy_and_data_protection" />
+
+    </group>
+
+
+    <group
+        android:id="@+id/group11"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_tutorials"
+            android:checked="true"
+            android:icon="@drawable/ic_tutorials"
+            android:title="@string/tutorials" />
     </group>
 </menu>

@@ -1,19 +1,3 @@
-<!--
-  ~ Copyright (C) 2015 Antonio Leiva
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~       http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="spacing_xsmall">2dp</dimen>
@@ -46,10 +30,17 @@
     <dimen name="or_textview_padding">6dp</dimen>
     <dimen name="below_tap_it_icon_text_margin">24dp</dimen>
 
+    <dimen name="large_icon_size">82dp</dimen>
     <dimen name="big_icon_size">64dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
     <dimen name="small_icon_size">24dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+
+    <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
+
     <dimen name="ma_chup_basdina_header_upper">90dp</dimen>
     <dimen name="ma_chup_basdina_header_lower">160dp</dimen>
+
 </resources>

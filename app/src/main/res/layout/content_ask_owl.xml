@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity"
+    tools:showIn="@layout/activity_yuwa_pust">
+
+
+    <ImageView
+        android:id="@+id/yuwa_pusta_iv_header"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/grid_yuwa_pusta"
+
+        />
+
+    <TextView
+        android:id="@+id/yuwa_pusta_act_tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
+        android:text="Yuwa Pusta"
+        android:textAlignment="center"
+        android:textSize="@dimen/material_text_title" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:text="@string/btn_ask_an_owl"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/material_text_subhead" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/select_an_owl"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/material_text_subhead" />
+
+
+        <Spinner
+            android:id="@+id/spinner_user_birth_place_input_id"
+            style="@style/SmartNaariSpinnerTheme"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center" />
+
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="120">
+
+            <EditText
+                style="@style/SmartNaariInputLayoutTheme"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_ask_a_owl"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btn_ask_an_owl"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/yuwa_pusta_act_rv_questionlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
