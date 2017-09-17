@@ -2,15 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/item_call"
-        android:title="Tap It Stop It"
-        android:icon="@drawable/ic_tap_it_stop_it_no_text"
-        android:visible="true"
-        app:showAsAction="always"/>
+    <item
 
-    <item android:id="@+id/item_notification"
-        android:title="Notification"
-        android:icon="@drawable/ic_notifications_none_red_24dp"
+        android:checkable="false"
+        android:icon="@drawable/ic_app_logo_bnw"
+        android:title="Share" />
+
+    <item android:title="Like us on Facebook" />
+
+    <item android:title="Follow us on Instagram" />
+
+    <item android:title="Rate Smart nari" />
+
+    <item android:title="Print" />
+
+    <item android:title="Repot Bug" />
+
+    <item android:title="Setting/Change" />
+
+    <item
+        android:id="@+id/item_call"
+        android:icon="@drawable/ic_tap_it_stop_it_no_text"
+        android:title="Tap It Stop It"
         android:visible="true"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_notification"
+        android:icon="@drawable/ic_notifications_none_red_24dp"
+        android:title="Notification"
+        android:visible="true"
+        app:showAsAction="always" />
+
 </menu>

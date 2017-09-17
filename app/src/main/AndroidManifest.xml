@@ -112,7 +112,16 @@
                 android:value=".homescreen.MainActivity" />
 
         </activity>
+        <activity
+            android:name=".masakchamchu.AddANewPostActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
+
+        </activity>
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
