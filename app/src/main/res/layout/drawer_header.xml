@@ -6,7 +6,6 @@
     android:layout_height="180dp"
     android:background="@drawable/ic_profile_background"
     android:orientation="vertical"
-
     android:padding="@dimen/spacing_large"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -50,6 +49,8 @@
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginStart="@dimen/spacing_large"
         android:text="Username"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/material_text_subhead"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 

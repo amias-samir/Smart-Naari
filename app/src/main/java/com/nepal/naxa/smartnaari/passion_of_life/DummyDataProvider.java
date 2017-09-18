@@ -53,14 +53,14 @@ public class DummyDataProvider {
 
     private static int[] drawableList =
             {R.drawable.ic_profile_background, R.drawable.ic_profile_background, R.drawable.ic_profile_background, R.drawable.ic_profile_background,
-            R.drawable.ic_profile_background, R.drawable.ic_profile_background, R.drawable.ic_profile_background};
+                    R.drawable.ic_profile_background, R.drawable.ic_profile_background, R.drawable.ic_profile_background};
 
     public static List<Article> getArticles() {
         List<Article> articles = new ArrayList<>();
 
         int i = -1;
         for (String title : articleDummyTitles) {
-            Article article = new Article(++i, title, "TEXT", articleDummyTimes[i], true, drawableList[random.nextInt(3)], colorList[i]);
+            Article article = new Article(++i, title, "TEXT", articleDummyTimes[i], true, drawableList[random.nextInt(3)], colorList[i], "http://lorempixel.com/1000/500/food/" + i);
             articles.add(article);
         }
         return articles;
@@ -71,7 +71,7 @@ public class DummyDataProvider {
 
         int i = -1;
         for (String title : articleDummyTitles) {
-            Article article = new Article(++i, title, "EXPAND", articleDummyTimes[i], false, drawableList[random.nextInt(3)], colorList[i]);
+            Article article = new Article(++i, title, "EXPAND", articleDummyTimes[i], false, drawableList[random.nextInt(3)], colorList[i], "http://lorempixel.com/400/200/food/" + i);
             articles.add(article);
         }
         return articles;
@@ -82,7 +82,7 @@ public class DummyDataProvider {
 
         int i = -1;
         for (String title : articleDummyTitles) {
-            Article article = new Article(++i, title, "FAVORITE", articleDummyTimes[i], false, drawableList[random.nextInt(3)], colorList[i]);
+            Article article = new Article(++i, title, "FAVORITE", articleDummyTimes[i], false, drawableList[random.nextInt(3)], colorList[i], "http://lorempixel.com/400/200/food/" + i);
             articles.add(article);
         }
         return articles;

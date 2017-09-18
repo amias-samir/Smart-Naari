@@ -16,6 +16,7 @@
 
 package com.nepal.naxa.smartnaari.passion_of_life.binder;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import com.ahamed.multiviewadapter.BaseViewHolder;
 import com.ahamed.multiviewadapter.ItemBinder;
 import com.ahamed.multiviewadapter.util.ItemDecorator;
+import com.bumptech.glide.Glide;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.passion_of_life.model.Article;
 
@@ -37,54 +39,61 @@ public class NewsTextPhotoBinder extends ItemBinder<Article, NewsTextPhotoBinder
 
 //  public Context context;
 
-  View rootView;
-  Typeface face;
-  public NewsTextPhotoBinder(ItemDecorator itemDecorator) {
-    super(itemDecorator);
-  }
+    View rootView;
+    Typeface face;
 
-  @Override public ViewHolder create(LayoutInflater layoutInflater, ViewGroup parent) {
-    rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_only_photo_text, null);
-    face = Typeface.createFromAsset(rootView.getContext().getAssets(), "RockwellFett.ttf");
+    public NewsTextPhotoBinder(ItemDecorator itemDecorator) {
+        super(itemDecorator);
+    }
 
-    // create ViewHolder
-    ViewHolder viewHolder = new ViewHolder(rootView);
+    @Override
+    public ViewHolder create(LayoutInflater layoutInflater, ViewGroup parent) {
+        rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_only_photo_text, null);
+        face = Typeface.createFromAsset(rootView.getContext().getAssets(), "RockwellFett.ttf");
 
-    return viewHolder;
-  }
+        // create ViewHolder
+        ViewHolder viewHolder = new ViewHolder(rootView);
 
-  @Override
-  public void bind(ViewHolder holder, Article item) {
+        return viewHolder;
+    }
+
+    @Override
+    public void bind(ViewHolder holder, Article item) {
 
 //        holder.tvTitle.setTypeface(face);
-    holder.tvTitle.setText(item.getTitle());
-    holder.tvTime.setText(item.getLastUpdated());
-    holder.tvCategory.setText(item.getCategory());
-    holder.ivCover.setBackgroundColor(item.getCategoryColor());
-    holder.ivCover.setImageResource(item.getCoverImageId());
-  }
+        holder.tvTitle.setText(item.getTitle());
+        holder.tvTime.setText(item.getLastUpdated());
+        holder.tvCategory.setText(item.getCategory());
+        holder.ivCover.setBackgroundColor(item.getCategoryColor());
+        holder.ivCover.setImageResource(item.getCoverImageId());
 
-  @Override public int getSpanSize(int maxSpanCount) {
-    return maxSpanCount;
-  }
-
-  @Override public boolean canBindData(Object item) {
-    return item instanceof Article && ((Article) item).getCategory().equals("TEXT");
-  }
-
-  static class ViewHolder extends BaseViewHolder<Article> {
-
-    private TextView tvTitle;
-    private TextView tvTime;
-    private TextView tvCategory;
-    private ImageView ivCover;
-
-    ViewHolder(View itemView) {
-      super(itemView);
-      tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
-      tvTime = (TextView) itemView.findViewById(R.id.tv_time);
-      tvCategory = (TextView) itemView.findViewById(R.id.tv_category);
-      ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
+        Context context = holder.itemView.getContext();
+        Glide.with(context).load(item.getImageUrl()).into(holder.ivCover);
     }
-  }
+
+    @Override
+    public int getSpanSize(int maxSpanCount) {
+        return maxSpanCount;
+    }
+
+    @Override
+    public boolean canBindData(Object item) {
+        return item instanceof Article && ((Article) item).getCategory().equals("TEXT");
+    }
+
+    static class ViewHolder extends BaseViewHolder<Article> {
+
+        private TextView tvTitle;
+        private TextView tvTime;
+        private TextView tvCategory;
+        private ImageView ivCover;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time);
+            tvCategory = (TextView) itemView.findViewById(R.id.tv_category);
+            ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
+        }
+    }
 }

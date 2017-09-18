@@ -16,6 +16,7 @@
 
 package com.nepal.naxa.smartnaari.passion_of_life.binder;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import com.ahamed.multiviewadapter.BaseViewHolder;
 import com.ahamed.multiviewadapter.ItemBinder;
 import com.ahamed.multiviewadapter.util.ItemDecorator;
+import com.bumptech.glide.Glide;
 import com.like.LikeButton;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.passion_of_life.model.Article;
@@ -62,7 +64,11 @@ public class NewsPhotoFavoriteBinder extends ItemBinder<Article, NewsPhotoFavori
     holder.tvTime.setText(item.getLastUpdated());
     holder.tvCategory.setText(item.getCategory());
     holder.ivCover.setBackgroundColor(item.getCategoryColor());
-    holder.ivCover.setImageResource(item.getCoverImageId());
+
+
+
+    Context context = holder.itemView.getContext();
+    Glide.with(context).load(item.getImageUrl()).into(holder.ivCover);
   }
 
   @Override public int getSpanSize(int maxSpanCount) {
