@@ -57,11 +57,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:drawablePadding="-20dp"
                         android:drawableTop="@mipmap/ic_launcher"
-                        android:text="@string/app_name"
                         android:textAlignment="center"
-                        android:textSize="@dimen/material_text_headline"
+                        android:textSize="@dimen/material_text_display1"
                         android:textStyle="normal" />
 
 
@@ -83,6 +81,9 @@
                         app:cv_titleText="9th August" />
                 </LinearLayout>
 
+
+
+
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
@@ -90,14 +91,14 @@
                     android:layout_below="@+id/act_main_brand_header" />
 
 
-                <com.nepal.naxa.smartnaari.homescreen.widgets.GridRecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:background="@android:color/white"
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/slider"
                     android:layout_gravity="bottom"
-                    android:layoutAnimation="@anim/grid_layout_animation" />
+                    />
 
 
                 <android.support.v7.widget.RecyclerView

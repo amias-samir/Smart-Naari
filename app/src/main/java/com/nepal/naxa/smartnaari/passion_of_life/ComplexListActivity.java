@@ -49,6 +49,7 @@ public class ComplexListActivity extends BaseActivity {
     recyclerView.setLayoutManager(glm);
     recyclerView.setAdapter(adapter);
 
+
     // Single list
     List<Article> dataListThree = DummyDataProvider.getArticles();
 

@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.MainActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
+import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,14 +44,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        setupUI();
 
-//        Be the one to say NO to Gender Based Violence
 
-        final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.be_the_one_to_say_no_to_gender_based_violence));
-        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
-        final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
-        sb.setSpan(bss, 18, 20, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 18-20 characters Bold
-//        sb.setSpan(iss, 10, 91, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last 2 characters Italic
+
+    }
+
+    private void setupUI(){
+
+        String rawString = getResources().getString(R.string.be_the_one_to_say_no_to_gender_based_violence);
+        String textToBigSize = "No";
+        int bigSize = getResources().getDimensionPixelSize(R.dimen.material_text_headline);
+        SpannableStringBuilder sb = SpanUtils.makeSectionOfTextBigger(rawString, bigSize, textToBigSize);
+
         tvRegisterBeTheOneLBL.setText(sb);
 
     }

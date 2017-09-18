@@ -51,6 +51,7 @@
                 android:value=".homescreen.MainActivity" />
         </activity>
         <activity
+            android:theme="@style/SignUpTheme"
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
@@ -60,6 +61,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:theme="@style/SignUpTheme"
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
@@ -100,10 +102,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".masakchamchu.AddANewPostActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
+
+        </activity>
+
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyCircleTheme"
+            android:parentActivityName=".homescreen.MainActivity"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MaSakchamChuCoachActivity"

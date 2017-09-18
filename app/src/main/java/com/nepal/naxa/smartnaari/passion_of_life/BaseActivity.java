@@ -48,6 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
     if (null != getSupportActionBar()) {
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

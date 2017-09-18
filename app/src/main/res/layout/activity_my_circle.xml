@@ -20,13 +20,13 @@
 
         <!--header-->
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4">
+            android:layout_height="wrap_content"
+           >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+
+
                 <TextView
                     android:id="@+id/txtLBLmyCircleSafety"
                     android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
                     android:text="Create"
-                    android:textColor="@color/textSecondary"
+                    android:textColor="@color/colorWhite"
                     android:textSize="@dimen/material_text_title" />
 
                 <TextView
@@ -65,20 +65,19 @@
 
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/txtLBLmycircle"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:scaleType="fitCenter"
+                    android:layout_gravity="center"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_my_circle" />
 
-            </RelativeLayout>
+
 
         </LinearLayout>
 
         <!-- body- contact input-->
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7">
@@ -107,7 +106,7 @@
                             android:gravity="center"
                             android:paddingLeft="@dimen/default_padding"
                             android:paddingRight="@dimen/default_padding"
-                            android:text="@string/enter_at_least_two_phone_numbers"
+
                             android:textSize="@dimen/material_text_subhead" />
 
 
@@ -299,14 +298,15 @@
                                 android:layout_marginRight="50dp"
                                 android:background="@drawable/button_get_contact_my_circle"
                                 android:gravity="center"
+                                android:stateListAnimator="@null"
                                 android:paddingBottom="@dimen/default_padding"
                                 android:paddingLeft="@dimen/default_padding"
                                 android:paddingRight="@dimen/default_padding"
                                 android:paddingTop="@dimen/default_padding"
                                 android:text="Select from your Contacts"
                                 android:textAllCaps="false"
-                                android:textColor="@color/textSecondary"
-                                android:textSize="@dimen/material_text_subhead" />
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/material_text_title" />
                         </LinearLayout>
 
                         <!--footer-->
@@ -321,13 +321,14 @@
                                 android:layout_height="match_parent">
 
                                 <Button
+                                    android:textSize="@dimen/material_text_headline"
                                     android:id="@+id/btnDone"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
-                                    android:background="@drawable/button_pressed_transparent"
-                                    android:drawableRight="@drawable/ic_right"
+                                   style="@style/Base.Widget.AppCompat.Button.Borderless"
+                                    android:drawableRight="@drawable/ic_right_arrow_white"
                                     android:gravity="center"
                                     android:paddingBottom="@dimen/default_padding"
                                     android:paddingLeft="@dimen/default_padding"
@@ -335,8 +336,8 @@
                                     android:paddingTop="@dimen/default_padding"
                                     android:text="Done"
                                     android:textAllCaps="false"
-                                    android:textColor="@color/textSecondary"
-                                    android:textSize="@dimen/material_text_subhead" />
+                                    android:textColor="@color/colorWhite"
+                                    />
 
 
                             </RelativeLayout>

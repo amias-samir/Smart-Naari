@@ -47,7 +47,19 @@ public class YuwaQuery {
 
         YuwaQuery yuwaQuery = new YuwaQuery();
         yuwaQuery.setFooter(true);
+
+
         yuwaQueries.add(yuwaQuery);
+        return yuwaQueries;
+
+    }
+
+    public static ArrayList<YuwaQuery> getDemoQueries2() {
+
+        ArrayList<YuwaQuery> yuwaQueries = new ArrayList<>();
+        yuwaQueries.add(new YuwaQuery());
+        yuwaQueries.add(new YuwaQuery());
+        yuwaQueries.add(new YuwaQuery());
 
 
         return yuwaQueries;

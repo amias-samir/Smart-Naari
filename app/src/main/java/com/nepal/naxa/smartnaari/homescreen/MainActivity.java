@@ -33,6 +33,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,7 @@ import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
+import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.ArrayList;
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     @BindView(R.id.act_main_logo)
     TextView actMainLogo;
     @BindView(R.id.recycler)
-    GridRecyclerView recyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.content)
     CoordinatorLayout content;
     @BindView(R.id.navigation_view)
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setupUI();
 
         initGridRecyclerView();
         initHorizontalRecyclerView();
@@ -112,6 +115,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         setRecyclerAdapter(recyclerView);
 
     }
+
+    private void setupUI() {
+        String text ="Smart नारी ";
+        String textToBold = "नारी";
+        SpannableStringBuilder sb = SpanUtils.makeSectionOfTextBold(text, textToBold);
+        actMainLogo.setText(sb);
+
+    }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -255,25 +267,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
 
-        Log.e("MainActivity", "onItemClick: "+ viewModel.getText());
+        Log.e("MainActivity", "onItemClick: " + viewModel.getText());
 
-        if(viewModel.getText().equals("Report a case")){
+        if (viewModel.getText().equals("Report a case")) {
             Intent maChupBasdinaIntent = new Intent(MainActivity.this, MaChupBasdinaActivity.class);
             startActivity(maChupBasdinaIntent);
-        }
-        else if(viewModel.getText().equals("Time is of the essence")){
+        } else if (viewModel.getText().equals("Time is of the essence")) {
             startActivity(new Intent(MainActivity.this, ServicesActivity.class));
-        }
-        else if(viewModel.getText().equals("I am Amazing")){
+        } else if (viewModel.getText().equals("I am Amazing")) {
             startActivity(new Intent(MainActivity.this, IAmAmazingActivity.class));
-        }
-        else if(viewModel.getText().equals("Saksham Chu")){
+        } else if (viewModel.getText().equals("Saksham Chu")) {
             startActivity(new Intent(MainActivity.this, MaSakchamChuMainActivity.class));
-        }
-        else if(viewModel.getText().equals("Yuwa पुस्ता")){
+        } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
             startActivity(new Intent(MainActivity.this, YuwaPustaActivity.class));
-        }
-        else {
+        } else {
             DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
 
         }
@@ -308,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.stopAutoCycle();
 
             sliderLayout.addSlider(textSliderView);
-            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
+            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
             sliderLayout.setDuration(10000);
 

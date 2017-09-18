@@ -70,7 +70,19 @@
     <string name="life_coaching_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="lets_have_the_talk">Lets Have the TALK</string>
-    >>>>>>> 597b8c85600539d202646fa305640d8e527d70e8
+
+
+    <string-array name="add_a_new_post_categories">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 
 
 </resources>

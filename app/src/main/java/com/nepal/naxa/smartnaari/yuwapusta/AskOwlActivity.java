@@ -59,16 +59,19 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
 
     }
 
+
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle("Report a case");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
+//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
