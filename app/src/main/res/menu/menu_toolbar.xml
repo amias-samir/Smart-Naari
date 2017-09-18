@@ -15,48 +15,44 @@
         android:visible="true"
         app:showAsAction="always" />
     <item
-        android:icon="@drawable/ic_tap_it_stop_it_no_text"
+        android:icon="@drawable/ic_menuitem_option"
         android:title="Menu"
         app:showAsAction="always">
         <menu>
-            <group
-                android:id="@+id/group1"
-                android:checkableBehavior="single">
-                <item
-                    android:id="@+id/item_share"
-                    android:icon="@drawable/ic_add_black"
-                    android:title="Share" />
-            </group>
 
+            <item
+                android:id="@+id/item_share"
+                android:icon="@drawable/ic_menuitem_share"
+                android:title="Share" />
 
             <item
                 android:id="@+id/item_like_us_on_facebook"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_like_us_on_facebook"
                 android:title="Like us on Facebook" />
 
             <item
                 android:id="@+id/item_follow_us_on_instagram"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_follow_us_on_instagram"
                 android:title="Follow us on Instagram" />
 
             <item
                 android:id="@+id/item_rate_smart_nari"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_rate_smart_nari"
                 android:title="Rate Smart nari" />
 
             <item
                 android:id="@+id/item_print"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_print"
                 android:title="Print" />
 
             <item
                 android:id="@+id/item_report_bug"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_report_bug"
                 android:title="Report Bug" />
 
             <item
                 android:id="@+id/item_setting_change"
-                android:icon="@drawable/ic_add_black"
+                android:icon="@drawable/ic_menuitem_setting_change"
                 android:title="Setting/Change" />
 
 
