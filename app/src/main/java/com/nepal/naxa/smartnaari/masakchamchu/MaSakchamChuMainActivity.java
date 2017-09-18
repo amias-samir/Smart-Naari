@@ -50,7 +50,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
+
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

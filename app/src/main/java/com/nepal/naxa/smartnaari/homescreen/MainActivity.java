@@ -52,6 +52,7 @@ import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.ServicesActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -280,9 +281,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             startActivity(new Intent(MainActivity.this, MaSakchamChuMainActivity.class));
         } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
             startActivity(new Intent(MainActivity.this, YuwaPustaActivity.class));
-        } else {
-            DetailActivity.navigate(this, view.findViewById(R.id.root_layout_item_recycler), viewModel);
+        } else if((viewModel.getText().equals("Smart Parenting")))
+        {
 
+            startActivity(new Intent(MainActivity.this, SmartParentActivity.class));
         }
 
 
