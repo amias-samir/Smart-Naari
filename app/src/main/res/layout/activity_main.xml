@@ -58,7 +58,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:drawableTop="@mipmap/ic_launcher"
-                        android:text="@string/app_name"
                         android:textAlignment="center"
                         android:textSize="@dimen/material_text_display1"
                         android:textStyle="normal" />
@@ -81,6 +80,9 @@
                         app:cv_titleSubtitleSpace="20"
                         app:cv_titleText="9th August" />
                 </LinearLayout>
+
+
+
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slider"
