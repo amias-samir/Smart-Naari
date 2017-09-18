@@ -29,16 +29,32 @@ public class Article {
   private boolean isFeatured;
   private int coverImageId;
   private int categoryColor;
+  private String imageUrl;
+
+  public Article(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
 
   public Article(int id, String title, String category, String lastUpdated, boolean isFeatured,
-                 int coverImageId, int categoryColor) {
+                 int coverImageId, int categoryColor, String imageUrl) {
     this.id = id;
     this.title = title;
     this.category = category;
     this.lastUpdated = lastUpdated;
     this.isFeatured = isFeatured;
     this.coverImageId = coverImageId;
+
     this.categoryColor = categoryColor;
+    this.imageUrl = imageUrl;
+
   }
 
   public String getTitle() {
