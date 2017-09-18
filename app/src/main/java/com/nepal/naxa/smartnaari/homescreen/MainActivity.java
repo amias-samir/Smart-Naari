@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     @BindView(R.id.act_main_logo)
     TextView actMainLogo;
     @BindView(R.id.recycler)
-    GridRecyclerView recyclerView;
+    RecyclerView recyclerView;
     @BindView(R.id.content)
     CoordinatorLayout content;
     @BindView(R.id.navigation_view)
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
             sliderLayout.stopAutoCycle();
 
             sliderLayout.addSlider(textSliderView);
-            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Tablet);
+            sliderLayout.setPresetTransformer(SliderLayout.Transformer.Stack);
             sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
             sliderLayout.setDuration(10000);
 
