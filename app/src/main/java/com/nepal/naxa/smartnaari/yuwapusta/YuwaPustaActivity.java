@@ -88,6 +88,7 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {

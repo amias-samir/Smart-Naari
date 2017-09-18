@@ -70,50 +70,39 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".masakchamchu.IAmAmazingActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
-
         </activity>
-
         <activity
             android:name=".masakchamchu.LifeCoachingActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
-
         </activity>
-
         <activity
             android:name=".masakchamchu.ServicesActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
-
         </activity>
-
         <activity
             android:name=".masakchamchu.MaSakchamChuMainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
-
         </activity>
+
         <activity
             android:name=".masakchamchu.AddANewPostActivity"
             android:exported="true"
@@ -124,6 +113,7 @@
                 android:value=".homescreen.MainActivity" />
 
         </activity>
+
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
@@ -147,16 +137,20 @@
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        --><meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
-
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
 
         <activity
             android:name=".yuwapusta.YuwaPustaActivity"
             android:exported="true"
             android:label="@string/title_activity_yuwa_pust"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
+        </activity>
         <activity
             android:name=".yuwapusta.AskOwlActivity"
             android:exported="true"
@@ -166,9 +160,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
-
         </activity>
-
         <activity
             android:name=".machupbasdina.MaChupBasdinaActivity"
             android:screenOrientation="portrait"
@@ -176,10 +168,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
-
-
         </activity>
-
+        <activity android:name=".smartparent.SmartParentActivity"></activity>
     </application>
 
 </manifest>

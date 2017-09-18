@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         setupUI();
 
 
+
     }
 
     private void setupUI(){
@@ -55,7 +56,9 @@ public class LoginActivity extends AppCompatActivity {
         String textToBigSize = "No";
         int bigSize = getResources().getDimensionPixelSize(R.dimen.material_text_headline);
         SpannableStringBuilder sb = SpanUtils.makeSectionOfTextBigger(rawString, bigSize, textToBigSize);
+
         tvRegisterBeTheOneLBL.setText(sb);
+
     }
 
     @OnClick({R.id.btnLogin, R.id.btnLinkToSignup})
