@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nepal.naxa.smartnaari.smartparent.SmartParentActivity">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbarTopLayout"/>
+
+    <ScrollView
+        android:layout_below="@+id/toolbarTopLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
+
+            <!--smart parenting img and text-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/windowBackground">
+
+                <ImageView
+                    android:id="@+id/imgViewSmartParenting"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/ic_smart_parenting"/>
+
+                <!--<TextView-->
+                    <!--android:id="@+id/smart_parenting_tvLBL"-->
+                    <!--android:layout_below="@+id/imgViewSmartParenting"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="SMART Parenting"-->
+                    <!--android:gravity="center"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:textSize="@dimen/material_text_headline" />-->
+
+            <!--smart Parentinf lbl-->
+            <LinearLayout
+                android:layout_below="@id/imgViewSmartParenting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="SMART "
+                    android:textSize="@dimen/material_text_display1"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Parenting"
+                    android:textSize="@dimen/material_text_display1"
+                    android:paddingRight="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"/>
+
+            </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_xlarge"
+                android:background="@color/colorWhite">
+
+                <TextView
+                android:id="@+id/smart_parenting_lets_have_talkLBL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lets_have_the_talk"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:textSize="@dimen/material_text_headline" />
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

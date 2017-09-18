@@ -48,9 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         final SpannableStringBuilder sb = new SpannableStringBuilder(getResources().getString(R.string.be_the_one_to_say_no_to_gender_based_violence));
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
         final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
-        sb.setSpan(bss, 18, 20, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 10 characters Bold
+        sb.setSpan(bss, 18, 20, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 18-20 characters Bold
 //        sb.setSpan(iss, 10, 91, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last 2 characters Italic
         tvRegisterBeTheOneLBL.setText(sb);
+
     }
 
     @OnClick({R.id.btnLogin, R.id.btnLinkToSignup})
