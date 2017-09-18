@@ -12,7 +12,7 @@
     <dimen name="elevation_high">12dp</dimen>
     <dimen name="status_bar_height">25dp</dimen>
 
-    <dimen name="button_height">26dp</dimen>
+    <dimen name="button_height">30dp</dimen>
     <dimen name="line_size">100dp</dimen>
 
 

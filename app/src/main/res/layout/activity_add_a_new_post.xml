@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="@dimen/spacing_large">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_mlarge"
+                android:gravity="center"
+                android:text="Add a new post"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <Spinner
+                android:id="@+id/spinnerAddANewPostCatagories"
+                style="@style/SmartNaariSpinnerTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_mlarge">
+
+            </Spinner>
+
+            <EditText
+                android:id="@+id/etAddANewPostTitle"
+                style="@style/SmartNaariInputLayoutTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_mlarge"
+                android:hint="Title"
+                android:inputType="text"
+                android:paddingBottom="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_small"
+                android:textColorHint="@color/colorRedLight"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <Button
+                android:id="@+id/btnAddANewAddPostAddAnImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_mlarge"
+                android:background="@color/inactiveText"
+                android:text="Add an Image"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_mlarge"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Spinner
+                    android:id="@+id/spinnerAddANewPostMonth"
+                    style="@style/SmartNaariSpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_weight="1"></Spinner>
+
+                <Spinner
+                    android:id="@+id/spinnerAddANewPostDay"
+                    style="@style/SmartNaariSpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_weight="1"></Spinner>
+
+                <Spinner
+                    android:id="@+id/spinnerAddANewPostYear"
+                    style="@style/SmartNaariSpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_weight="1"></Spinner>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etAddANewPostDescription"
+                style="@style/SmartNaariInputLayoutTheme"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginBottom="@dimen/spacing_mlarge"
+                android:gravity="left"
+                android:padding="@dimen/spacing_small" />
+
+
+            <Button
+                android:id="@+id/btnAddANewPostSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:background="@color/inactiveText"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

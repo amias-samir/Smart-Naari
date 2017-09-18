@@ -1,16 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:id="@+id/item_call"
-        android:title="Tap It Stop It"
+    <item
+        android:id="@+id/item_call"
         android:icon="@drawable/ic_tap_it_stop_it_no_text"
+        android:title="Tap It Stop It"
         android:visible="true"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
-    <item android:id="@+id/item_notification"
-        android:title="Notification"
+    <item
+        android:id="@+id/item_notification"
         android:icon="@drawable/ic_notifications_none_red_24dp"
+        android:title="Notification"
         android:visible="true"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_tap_it_stop_it_no_text"
+        android:title="Menu"
+        app:showAsAction="always">
+        <menu>
+            <group
+                android:id="@+id/group1"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_share"
+                    android:icon="@drawable/ic_add_black"
+                    android:title="Share" />
+            </group>
+
+
+            <item
+                android:id="@+id/item_like_us_on_facebook"
+                android:icon="@drawable/ic_add_black"
+                android:title="Like us on Facebook" />
+
+            <item
+                android:id="@+id/item_follow_us_on_instagram"
+                android:icon="@drawable/ic_add_black"
+                android:title="Follow us on Instagram" />
+
+            <item
+                android:id="@+id/item_rate_smart_nari"
+                android:icon="@drawable/ic_add_black"
+                android:title="Rate Smart nari" />
+
+            <item
+                android:id="@+id/item_print"
+                android:icon="@drawable/ic_add_black"
+                android:title="Print" />
+
+            <item
+                android:id="@+id/item_report_bug"
+                android:icon="@drawable/ic_add_black"
+                android:title="Report Bug" />
+
+            <item
+                android:id="@+id/item_setting_change"
+                android:icon="@drawable/ic_add_black"
+                android:title="Setting/Change" />
+
+
+        </menu>
+    </item>
+
 </menu>

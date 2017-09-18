@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="BaseTheme" />
 
@@ -13,16 +13,18 @@
 
 
 
+
     </style>
 
 
 
 
 
+g
+
+
     <style name="NavigationView">
         <item name="android:listDivider">@color/colorAccent</item>
-
-
     </style>
 
 
@@ -36,6 +38,7 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <!-- custom style ma cgup basdina radio button -->
     <style name="radionbuttonMaChupBasdina" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:button">@drawable/rb_drawable_ma_chup_basdina</item>
@@ -51,7 +54,6 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
-
     </style>
 
 
@@ -71,9 +73,9 @@
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
 
 
     <style name="SmartNaariSpinnerTheme" parent="android:Widget.Spinner">
@@ -83,6 +85,7 @@
     <style name="SmartNaariInputLayoutTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/smart_naari_edit_text_bg</item>
     </style>
+
 
     <style name="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">
         <item name="android:layout_width">match_parent</item>
@@ -95,4 +98,10 @@
         <item name="android:gravity">center_vertical</item>
 
     </style>
+
+    <style name="CustomOverflowBack" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@color/colorAccent</item>
+    </style>
+
+
 </resources>
