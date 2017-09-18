@@ -51,6 +51,7 @@
                 android:value=".homescreen.MainActivity" />
         </activity>
         <activity
+            android:theme="@style/SignUpTheme"
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
@@ -60,6 +61,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:theme="@style/SignUpTheme"
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />

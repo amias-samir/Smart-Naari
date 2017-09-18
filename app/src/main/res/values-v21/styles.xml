@@ -12,6 +12,7 @@
 
 
 
+
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
 
@@ -29,6 +30,16 @@
 
 
 
+
+    </style>
+
+
+    <style name="SignUpTheme" parent="BaseTheme">
+
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:colorControlActivated">@color/colorWhite</item>
+        <item name="android:colorControlNormal">@color/colorWhite</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
 
     </style>
 

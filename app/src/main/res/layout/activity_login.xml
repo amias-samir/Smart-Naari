@@ -35,10 +35,10 @@
                 android:src="@drawable/ic_tap_it_stop_it" />
 
             <TextView
-
-              android:layout_alignBottom="@+id/tapitImg"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tapitImg"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/spacing_medium"
                 android:gravity="center"
@@ -115,7 +115,6 @@
 
                 <Button
 
-                    android:textSize="@dimen/material_text_headline"
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -123,9 +122,10 @@
                     android:background="@drawable/button_pressed"
                     android:gravity="center"
                     android:text="Login"
-                    android:textStyle="normal"
                     android:textAllCaps="false"
-                    android:textColor="@color/inactiveText" />
+                    android:textColor="@color/inactiveText"
+                    android:textSize="@dimen/material_text_headline"
+                    android:textStyle="normal" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -144,27 +144,26 @@
                         android:layout_width="@dimen/spacing_xxlarge"
                         android:layout_height="@dimen/spacing_xxlarge"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/spacing_xlarge"
                         android:layout_marginBottom="@dimen/spacing_xlarge"
+                        android:layout_marginTop="@dimen/spacing_xlarge"
 
                         android:background="@drawable/textview_border_center_or_text"
                         android:gravity="center"
                         android:text="or"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/material_text_body1"
-                      />
+                        android:textSize="@dimen/material_text_body1" />
 
                     <Button
-                        android:textStyle="normal"
                         android:id="@+id/btnLinkToSignup"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_below="@+id/btnDown"
                         android:layout_centerHorizontal="true"
-                        style="@style/Base.Widget.AppCompat.Button.Borderless"
-                        android:drawableRight="@drawable/ic_right_arrow_white"
                         android:drawableEnd="@drawable/ic_right_arrow_white"
+                        android:drawablePadding="-40dp"
+                        android:drawableRight="@drawable/ic_right_arrow_white"
                         android:gravity="center"
                         android:paddingBottom="@dimen/default_padding"
                         android:paddingLeft="@dimen/default_padding"
@@ -173,8 +172,8 @@
                         android:text="New User Sign in"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
-                        android:drawablePadding="-40dp"
-                        android:textSize="@dimen/material_text_headline" />
+                        android:textSize="@dimen/material_text_headline"
+                        android:textStyle="normal" />
                 </RelativeLayout>
 
 
@@ -196,7 +195,6 @@
                 android:src="@drawable/ic_half_top_circle" />
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/registerLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -206,10 +204,10 @@
                 android:gravity="center"
                 android:text="Register"
                 android:textAllCaps="true"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/registerBeTheOneLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -219,8 +217,9 @@
                 android:paddingLeft="@dimen/default_padding"
                 android:paddingRight="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding"
+                android:textColor="@color/colorAccent"
 
-                android:textColor="@color/colorAccent" />
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
