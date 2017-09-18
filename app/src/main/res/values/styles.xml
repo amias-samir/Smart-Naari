@@ -11,16 +11,7 @@
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:windowBackground">@color/windowBackground</item>
 
-
-
-
     </style>
-
-
-
-
-
-g
 
 
     <style name="NavigationView">
@@ -87,17 +78,17 @@ g
     </style>
 
 
-    <style name="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textAllCaps">true</item>
-        <!--<item name="android:background">@drawable/list_section_divider</item>-->
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:gravity">center_vertical</item>
+    <!--<style name="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">-->
+        <!--<item name="android:layout_width">match_parent</item>-->
+        <!--<item name="android:textAllCaps">true</item>-->
+        <!--&lt;!&ndash;<item name="android:background">@drawable/list_section_divider</item>&ndash;&gt;-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:textStyle">bold</item>-->
+        <!--<item name="android:textColor">@color/colorAccent</item>-->
+        <!--<item name="android:textSize">14sp</item>-->
+        <!--<item name="android:gravity">center_vertical</item>-->
 
-    </style>
+    <!--</style>-->
 
     <style name="CustomOverflowBack" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
         <item name="android:popupBackground">@color/colorAccent</item>
