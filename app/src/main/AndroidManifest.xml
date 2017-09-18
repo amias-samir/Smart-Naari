@@ -127,7 +127,8 @@
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyCircleTheme"
+            android:parentActivityName=".homescreen.MainActivity"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MaSakchamChuCoachActivity"
