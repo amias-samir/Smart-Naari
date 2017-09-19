@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -59,13 +60,13 @@
                 android:background="@color/colorAccent" />
 
             <TextView
-                android:textSize="@dimen/material_text_subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_medium"
                 android:gravity="center"
                 android:text="@string/person_of_the_month"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
 
             <ImageView
                 android:id="@+id/ivIAmAmazingPersonOfTheMonth"
@@ -74,38 +75,54 @@
                 android:layout_gravity="center"
                 android:background="@drawable/image_view_person_of_the_month" />
 
-            <TextView
-                android:id="@+id/tvIAmAmazingPersonOfTheMonthDetail"
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                android:id="@+id/expandable_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/spacing_mlarge"
-                android:text="@string/person_of_the_month_detail"
-                android:textColor="@color/colorGray"
-                android:textStyle="italic" />
+                app:animDuration="100"
+                app:maxCollapsedLines="4">
 
-            <TextView
-                android:id="@+id/tvIAmAmazingReadMore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Read More  >>"
-                android:textColor="@color/colorAccent" />
+                <TextView
+                    android:id="@+id/expandable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/spacing_mlarge"
+                    android:textColor="@color/colorGray"
+                    android:textStyle="italic" />
 
-            <ImageView
-                android:id="@+id/ivIAmAmazingFlappingPheonix"
-                android:layout_width="@dimen/big_icon_size"
-                android:layout_height="@dimen/big_icon_size"
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/spacing_mlarge">
+
+
+                    <ImageButton
+                        android:id="@+id/expand_collapse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="20dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Read More >>"
+                        android:textColor="@color/colorAccent" />
+
+                </FrameLayout>
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_medium" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/i_am_amazing_pheonix"
-                android:textColor="@color/colorGray"
-                android:textStyle="italic" />
+                android:background="@color/colorWhite"
+                android:src="@drawable/pheonix" />
 
             <TextView
                 android:layout_width="match_parent"
