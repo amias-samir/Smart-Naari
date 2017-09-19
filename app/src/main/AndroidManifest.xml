@@ -51,9 +51,9 @@
                 android:value=".homescreen.MainActivity" />
         </activity>
         <activity
-            android:theme="@style/SignUpTheme"
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/SignUpTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".homescreen.MainActivity"
@@ -61,9 +61,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:theme="@style/SignUpTheme"
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/SignUpTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".mycircle.MyCircleActivity"
@@ -116,13 +116,13 @@
 
         <activity
             android:name=".passion_of_life.ComplexListActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".homescreen.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MaSakchamChuCoachActivity"
-            android:label="@string/title_activity_ma_sakcham_chu_coach"
+
             android:parentActivityName=".homescreen.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
@@ -145,7 +145,7 @@
         <activity
             android:name=".yuwapusta.YuwaPustaActivity"
             android:exported="true"
-            android:label="@string/title_activity_yuwa_pust"
+
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -154,9 +154,8 @@
         <activity
             android:name=".yuwapusta.AskOwlActivity"
             android:exported="true"
-            android:label="@string/title_activity_ask_owl"
-            android:parentActivityName=".yuwapusta.YuwaPustaActivity"
-            android:theme="@style/AppTheme">
+
+            android:parentActivityName=".yuwapusta.YuwaPustaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
@@ -169,7 +168,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
         </activity>
-        <activity android:name=".smartparent.SmartParentActivity"></activity>
+        <activity android:name=".smartparent.SmartParentActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homescreen.MainActivity" />
+
+        </activity>
     </application>
 
 </manifest>

@@ -45,12 +45,11 @@ public class IAmAmazingActivity extends AppCompatActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("I am Amazing");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
+
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -59,16 +58,5 @@ public class IAmAmazingActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

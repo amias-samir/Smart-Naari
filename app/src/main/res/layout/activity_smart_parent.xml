@@ -112,6 +112,23 @@
             <include layout="@layout/short_red_line"/>
 
 
+            <TextView
+                android:textColor="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/question"
+                android:textAlignment="center"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <TextView
+                android:textColor="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/answer"
+                android:textAlignment="center"
+                android:textSize="@dimen/material_text_subhead" />
 
 
 
