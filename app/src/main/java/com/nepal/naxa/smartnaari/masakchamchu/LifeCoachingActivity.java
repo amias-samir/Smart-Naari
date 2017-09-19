@@ -34,14 +34,14 @@ public class LifeCoachingActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolbar();
     }
+
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Life Coaching");
+
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

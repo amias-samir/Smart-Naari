@@ -17,9 +17,11 @@
 package com.nepal.naxa.smartnaari.passion_of_life;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nepal.naxa.smartnaari.R;
@@ -54,6 +56,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     setUpAdapter();
   }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
+
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == android.R.id.home) {

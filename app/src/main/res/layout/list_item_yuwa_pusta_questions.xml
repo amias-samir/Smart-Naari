@@ -12,6 +12,7 @@
         android:layout_margin="@dimen/spacing_large" />
 
     <TextView
+        android:textColor="@color/colorGray"
         android:id="@+id/list_item_yuwa_pusta_question_tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +22,7 @@
         android:textSize="@dimen/material_text_subhead" />
 
     <TextView
+        android:textColor="@color/colorGray"
         android:id="@+id/list_item_yuwa_pusta_question_tv_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

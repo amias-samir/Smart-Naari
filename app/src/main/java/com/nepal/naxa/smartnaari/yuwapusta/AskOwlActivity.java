@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +11,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
 
@@ -33,7 +36,11 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
     @BindView(R.id.yuwa_pusta_act_rv_questionlist)
     RecyclerView questionList;
 
+    @BindView(R.id.yuwa_pusta_act_tv_header)
+    TextView tvHeader;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_owl);
@@ -41,6 +48,10 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
 
         initToolbar();
         initQuestionsRecyclerView();
+
+
+        int color = ContextCompat.getColor(getApplicationContext(),R.color.colorAccent);
+        SpanUtils.setColor(tvHeader,"Yuwa Pusta","Yuwa",color);
 
     }
 
@@ -62,7 +73,7 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Report a case");
+
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 

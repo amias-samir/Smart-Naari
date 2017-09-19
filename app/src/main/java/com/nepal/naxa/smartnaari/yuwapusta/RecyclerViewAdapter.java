@@ -30,6 +30,7 @@ import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,11 +65,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         Owl item = items.get(position);
 
-        String photoUrl = "http://www.istockphoto.com/resources/images/PhotoFTLP/img_67920257.jpg";
 
-//        for (Map.Entry<String, String> entry : item.getNameAndPhotos().entrySet()) {
-//            String personName = entry.getKey();
-//            String photoUrl = entry.getValue();
+        Random rand = new Random();
+
+        int randomNumber = rand.nextInt(50) + 1;
+        String photoUrl = "http://lorempixel.com/500/500/people/"+randomNumber;
+
 
         Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv1);
         holder.itemView.setTag(item);

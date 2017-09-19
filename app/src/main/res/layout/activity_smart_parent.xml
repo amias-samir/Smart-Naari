@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nepal.naxa.smartnaari.smartparent.SmartParentActivity">
 
-    <include layout="@layout/toolbar_layout"
-        android:id="@+id/toolbarTopLayout"/>
+    <include
+        android:id="@+id/toolbarTopLayout"
+        layout="@layout/toolbar_layout" />
 
     <ScrollView
-        android:layout_below="@+id/toolbarTopLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_below="@+id/toolbarTopLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/colorWhite">
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
 
             <!--smart parenting img and text-->
             <RelativeLayout
@@ -32,73 +31,85 @@
                     android:id="@+id/imgViewSmartParenting"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@drawable/ic_smart_parenting"/>
+                    android:src="@drawable/ic_smart_parenting" />
 
                 <!--<TextView-->
-                    <!--android:id="@+id/smart_parenting_tvLBL"-->
-                    <!--android:layout_below="@+id/imgViewSmartParenting"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="SMART Parenting"-->
-                    <!--android:gravity="center"-->
-                    <!--android:padding="@dimen/default_padding"-->
-                    <!--android:textSize="@dimen/material_text_headline" />-->
+                <!--android:id="@+id/smart_parenting_tvLBL"-->
+                <!--android:layout_below="@+id/imgViewSmartParenting"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="SMART Parenting"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/default_padding"-->
+                <!--android:textSize="@dimen/material_text_headline" />-->
 
-            <!--smart Parentinf lbl-->
-            <LinearLayout
-                android:layout_below="@id/imgViewSmartParenting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                <!--smart Parentinf lbl-->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="SMART "
-                    android:textSize="@dimen/material_text_display1"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingTop="@dimen/default_padding"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorAccent"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="Parenting"
-                    android:textSize="@dimen/material_text_display1"
-                    android:paddingRight="@dimen/default_padding"
-                    android:paddingTop="@dimen/default_padding"
-                    android:paddingBottom="@dimen/default_padding"/>
+                    android:layout_below="@id/imgViewSmartParenting"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:text="SMART "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/material_text_display1"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:text="Parenting"
+                        android:textSize="@dimen/material_text_display1" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
 
-
-            <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_xlarge"
-                android:background="@color/colorWhite">
-
-                <TextView
+            <TextView
                 android:id="@+id/smart_parenting_lets_have_talkLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lets_have_the_talk"
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:textSize="@dimen/material_text_headline" />
 
 
+            <TextView
+                android:textColor="@color/colorGray"
+                android:id="@+id/list_item_yuwa_pusta_question_tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/question"
+                android:textAlignment="center"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <TextView
+                android:textColor="@color/colorGray"
+                android:id="@+id/list_item_yuwa_pusta_question_tv_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/answer"
+                android:textAlignment="center"
+                android:textSize="@dimen/material_text_subhead" />
 
 
-            </RelativeLayout>
+            <include layout="@layout/short_red_line"/>
 
 
 

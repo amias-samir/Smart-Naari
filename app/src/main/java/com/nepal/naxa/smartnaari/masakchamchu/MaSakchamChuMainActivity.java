@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.masakchamchu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -11,10 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import com.nepal.naxa.smartnaari.MaSakchamChuCoachActivity;
 import com.nepal.naxa.smartnaari.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Majestic on 9/13/2017.
@@ -27,7 +30,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
     @BindView(R.id.rb_main_activity_angermanagement)
     RadioButton rbMainActivityAngermanagement;
     @BindView(R.id.bt_main_activity_takeatest)
-    Button btMainActivityTakeatest;
+    Button btnTakeATest;
     @BindView(R.id.bt_main_activity_freeonlinecource)
     Button btMainActivityFreeonlinecource;
     @BindView(R.id.bt_main_activity_bookanappointment)
@@ -43,12 +46,11 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Services");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
+
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -59,14 +61,10 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
-//        }
 
-        return super.onOptionsItemSelected(item);
+    @OnClick(R.id.bt_main_activity_takeatest)
+    public void toTakeATest(){
+        startActivity(new Intent(this, LifeCoachingActivity.class));
     }
+
 }
