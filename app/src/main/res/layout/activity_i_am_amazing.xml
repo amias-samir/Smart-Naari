@@ -52,17 +52,13 @@
                 android:textColor="@color/colorGray"
                 android:textStyle="italic" />
 
-            <TextView
-                android:layout_width="@dimen/line_size"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_xxlarge"
-                android:background="@color/colorAccent" />
+            <include layout="@layout/short_red_line" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_marginTop="@dimen/spacing_xxlarge"
                 android:gravity="center"
                 android:text="@string/person_of_the_month"
                 android:textColor="@color/colorAccent"
@@ -127,7 +123,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_margin="@dimen/spacing_medium"
                 android:gravity="center"
                 android:text="@string/i_am_amazing_click_to_look"
                 android:textColor="@color/colorGray"
