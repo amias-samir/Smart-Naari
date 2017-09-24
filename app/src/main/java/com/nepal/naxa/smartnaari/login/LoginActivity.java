@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     String jsonToSend = null;
+    ProgressDialog mProgressDlg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setupUI();
 
-
-
-
-
+        mProgressDlg = new ProgressDialog(this);
     }
 
     private void setupUI(){
@@ -80,10 +79,16 @@ public class LoginActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
+
                 String username = tvUserName.getText().toString();
                 String password = tvUserPassword.getText().toString();
 
                 if(!username.isEmpty() && !username.equals("") && !password.isEmpty() && !password.equals("")){
+
+                    mProgressDlg.setMessage("Please Wait...\nLogging In");
+                    mProgressDlg.setIndeterminate(false);
+                    mProgressDlg.setCancelable(false);
+                    mProgressDlg.show();
 
                     convertDataToJSON();
 
@@ -132,37 +137,56 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<UserDetail>() {
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
-                int statusCode = response.code();
+
+//                int statusCode = response.code();
 
                 Log.e(TAG, "Retrofit onResponse: "+response.body().toString());
-                String status = response.body().getStatus();
-
-                if(status.equals("200")){
-
-
-//                    Log.e(TAG, "onResponse: success"+ loginDetailsModel.get(2) );
-
-//                    SugarRecord.saveInTx(nagarBudgetDetails);
-
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+//                String status = response.body().getStatus();
 
 
 
+
+                if (response != null) {
+                    String status = "";
+                    String data = "";
+
+                    try {
+
+                        status = response.body().getStatus();
+                        data = response.body().getData();
+
+                        if(status.equals("200")){
+                            mProgressDlg.dismiss();
+                            Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else if (status.equals("401")) {
+                            mProgressDlg.dismiss();
+                            Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT).show();
+
+                        } else if (status.equals("400")) {
+                            mProgressDlg.dismiss();
+                            Toast.makeText(LoginActivity.this, data, Toast.LENGTH_SHORT).show();
+
+                        }else {
+                            mProgressDlg.dismiss();
+                            Toast.makeText(LoginActivity.this, "Unknown Error", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.getLocalizedMessage();
+                    }
+                }else {
+                    mProgressDlg.dismiss();
+                    Toast.makeText(LoginActivity.this, "Unknown Error", Toast.LENGTH_SHORT).show();
                 }
-//                String receiveddata = response.body().getDevice_id() + ", "+ response.body().getToken();
-
-
-
-
-//                List<Movie> movies = response.body().getResults();
-//                Log.e(TAG, "onResponse: "+ movies );
-//                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie, getApplicationContext()));
             }
 
             @Override
             public void onFailure(Call<UserDetail> call, Throwable t) {
                 // Log error here since request failed
+                mProgressDlg.dismiss();
                 Log.e("LoginActivity"+"Failure", t.toString());
             }
         });
