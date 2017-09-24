@@ -87,5 +87,19 @@
     </string-array>
 
 
+    <string name="dialog_action_ok">OK</string>
+    <string name="dialog_error_title">Unexpected Error Occured.</string>
+    <string name="dialog_error_title_sync_failed">Data Sync Failed (Code: %1$s)</string>
+
+    <string name="dialog_title_warning_logout">Proceed with caution.</string>
+    <string name="dialog_warning_logout">Logout will result in deletion of all your saved forms.Consider uploading them before proceeding.</string>
+    <string name="dialog_warning_logout_pos">Yes, Delete my forms and logout</string>
+    <string name="dialog_warning_logout_neg">No, I don\'t want to logout</string>
+
+    <string name="dialog_title_error_register">Error Registering.</string>
+    <string name="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
+    <string name="dialog_action_hide">Hide</string>
+
+
 
 </resources>

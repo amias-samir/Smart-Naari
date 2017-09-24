@@ -120,15 +120,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".MaSakchamChuCoachActivity"
-
-            android:parentActivityName=".homescreen.MainActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.nepal.naxa.smartnaari.homescreen.MainActivity" />
-        </activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

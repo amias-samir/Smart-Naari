@@ -55,6 +55,7 @@ import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.utils.ScreenUtils;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+import com.nepal.naxa.smartnaari.yuwapusta.RedLinePagerIndicatorDecoration;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.ArrayList;
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         snapHelper.attachToRecyclerView(horizontalRecyclerView);
 
         // pager indicator
-        horizontalRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
+        horizontalRecyclerView.addItemDecoration(new RedLinePagerIndicatorDecoration());
         horizontalRecyclerView.setNestedScrollingEnabled(false);
     }
 
@@ -234,7 +235,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Snackbar.make(content, menuItem.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
 

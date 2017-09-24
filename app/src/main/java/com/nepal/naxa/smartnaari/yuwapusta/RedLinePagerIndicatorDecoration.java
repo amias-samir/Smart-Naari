@@ -26,6 +26,7 @@ public class RedLinePagerIndicatorDecoration extends RecyclerView.ItemDecoration
     /**
      * Height of the space the indicator takes up at the bottom of the view.
      */
+
     private final int mIndicatorHeight = (int) (DP * 16);
 
     /**
@@ -99,10 +100,13 @@ public class RedLinePagerIndicatorDecoration extends RecyclerView.ItemDecoration
         // width of item indicator including padding
         final float itemWidth = mIndicatorItemLength + mIndicatorItemPadding;
 
+        float pageFillRadius = mPaint.getStrokeWidth();
+
         float start = indicatorStartX;
         for (int i = 0; i < itemCount; i++) {
             // draw the line for every item
-            c.drawLine(start, indicatorPosY, start + mIndicatorItemLength, indicatorPosY, mPaint);
+
+            c.drawCircle(start, indicatorPosY, pageFillRadius, mPaint);
             start += itemWidth;
         }
     }
@@ -110,6 +114,8 @@ public class RedLinePagerIndicatorDecoration extends RecyclerView.ItemDecoration
     private void drawHighlights(Canvas c, float indicatorStartX, float indicatorPosY,
                                 int highlightPosition, float progress, int itemCount) {
         mPaint.setColor(colorActive);
+        float pageFillRadius = mPaint.getStrokeWidth() ;
+
 
         // width of item indicator including padding
         final float itemWidth = mIndicatorItemLength + mIndicatorItemPadding;
@@ -117,22 +123,19 @@ public class RedLinePagerIndicatorDecoration extends RecyclerView.ItemDecoration
         if (progress == 0F) {
             // no swipe, draw a normal indicator
             float highlightStart = indicatorStartX + itemWidth * highlightPosition;
-            c.drawLine(highlightStart, indicatorPosY,
-                    highlightStart + mIndicatorItemLength, indicatorPosY, mPaint);
+            c.drawCircle(highlightStart, indicatorPosY, pageFillRadius, mPaint);
         } else {
             float highlightStart = indicatorStartX + itemWidth * highlightPosition;
             // calculate partial highlight
             float partialLength = mIndicatorItemLength * progress;
 
             // draw the cut off highlight
-            c.drawLine(highlightStart + partialLength, indicatorPosY,
-                    highlightStart + mIndicatorItemLength, indicatorPosY, mPaint);
+            c.drawCircle(highlightStart, indicatorPosY, pageFillRadius, mPaint);
 
             // draw the highlight overlapping to the next item as well
             if (highlightPosition < itemCount - 1) {
                 highlightStart += itemWidth;
-                c.drawLine(highlightStart, indicatorPosY,
-                        highlightStart + partialLength, indicatorPosY, mPaint);
+                c.drawCircle(highlightStart, indicatorPosY, pageFillRadius, mPaint);
             }
         }
     }
