@@ -87,7 +87,7 @@
                 android:value=".homescreen.MainActivity" />
         </activity>
         <activity
-            android:name=".masakchamchu.ServicesActivity"
+            android:name=".services.ServicesActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
