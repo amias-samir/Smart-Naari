@@ -21,9 +21,6 @@ import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Majestic on 9/13/2017.
- */
 
 public class ServicesActivity extends AppCompatActivity implements OnMapReadyCallback {
 
