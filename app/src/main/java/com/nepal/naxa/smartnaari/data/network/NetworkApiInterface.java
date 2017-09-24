@@ -12,8 +12,8 @@ public interface NetworkApiInterface {
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("control/check_ime")
-    Call<LoginResponse> getLoginDetails(@Field("data") String data);
+    @POST("Smartapi/login")
+    Call<UserDetail> getUserData(@Field("data") String data);
 
 
 

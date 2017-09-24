@@ -108,30 +108,24 @@ public class SignUpActivity extends Activity {
 
     public void convertDataToJson() {
         //function in the activity that corresponds to the layout button
-        try {
 
-            JSONObject header = new JSONObject();
+        JSONObject header = new JSONObject();
 
-            header.put("username", );
-            header.put("password", );
-            header.put("first_name", );
-            header.put("surname", );
-            header.put("dob", );
-            header.put("gender", );
-            header.put("birth_district", );
-            header.put("current_district", );
-            header.put("email", );
-            header.put("personal_mobile_number", );
-            header.put("circle_mobile_number_1", );
-            header.put("circle_mobile_number_2", );
-            header.put("circle_mobile_number_3", );
-            header.put("circle_mobile_number_4", );
-            header.put("circle_mobile_number_5", );
-            jsonToSend = header.toString();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//            header.put("password");
+//            header.put("first_name");
+//            header.put("surname");
+//            header.put("dob");
+//            header.put("gender");
+//            header.put("birth_district");
+//            header.put("current_district");
+//            header.put("email");
+//            header.put("personal_mobile_number");
+//            header.put("circle_mobile_number_1");
+//            header.put("circle_mobile_number_2");
+//            header.put("circle_mobile_number_3");
+//            header.put("circle_mobile_number_4");
+//            header.put("circle_mobile_number_5");
+        jsonToSend = header.toString();
 
     }
 

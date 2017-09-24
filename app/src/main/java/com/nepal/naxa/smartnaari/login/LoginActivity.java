@@ -2,11 +2,8 @@ package com.nepal.naxa.smartnaari.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,18 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.LoginDetailsModel;
-import com.nepal.naxa.smartnaari.data.network.LoginResponse;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.homescreen.MainActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -134,10 +128,10 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.e(TAG, "Retrofit Json to send: "+jsonToSend.toString());
 
-        Call<LoginResponse> call = apiService.getLoginDetails(jsonToSend);
-        call.enqueue(new Callback<LoginResponse>() {
+        Call<UserDetail> call = apiService.getUserData(jsonToSend);
+        call.enqueue(new Callback<UserDetail>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
                 int statusCode = response.code();
 
                 Log.e(TAG, "Retrofit onResponse: "+response.body().toString());
@@ -145,9 +139,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(status.equals("200")){
 
-                    List<LoginDetailsModel> loginDetailsModel = response.body().getUser_data();
 
-                    Log.e(TAG, "onResponse: success"+ loginDetailsModel.get(2) );
+//                    Log.e(TAG, "onResponse: success"+ loginDetailsModel.get(2) );
 
 //                    SugarRecord.saveInTx(nagarBudgetDetails);
 
@@ -168,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<UserDetail> call, Throwable t) {
                 // Log error here since request failed
                 Log.e("LoginActivity"+"Failure", t.toString());
             }
