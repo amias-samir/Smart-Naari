@@ -10,7 +10,9 @@ import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,45 @@ public class SignUpActivity extends Activity {
 
     @BindView(R.id.tv_terms_and_condition)
     TextView textViewTermsAndCondition;
+
+    @BindView(R.id.user_name_input_id)
+    EditText etUserName;
+
+    @BindView(R.id.user_password_input_id)
+    EditText etPassword;
+
+    @BindView(R.id.user_confirm_password_input_id)
+    EditText etConformPassword;
+
+    @BindView(R.id.user_firstname_input_id)
+    EditText etFirstName;
+
+    @BindView(R.id.user_surname_input_id)
+    EditText etSurName;
+
+    @BindView(R.id.user_age_input_id)
+    EditText etAge;
+
+    @BindView(R.id.radio_sex_male)
+    RadioButton rdMale;
+
+    @BindView(R.id.radio_sex_female)
+    RadioButton rdFemale;
+
+    @BindView(R.id.radio_sex_other)
+    RadioButton rdOther;
+
+    @BindView(R.id.spinner_user_birth_place_input_id)
+    Spinner spBirthPlace;
+
+    @BindView(R.id.spinner_user_current_place_input_id)
+    Spinner spCurrentPlace;
+
+    @BindView(R.id.user_email_input_id)
+    EditText etEmail;
+
+    @BindView(R.id.user_contact_no_input_id)
+    EditText etContact;
 
     //todo write style for api < 21 for checkbox
 
@@ -112,11 +153,11 @@ public class SignUpActivity extends Activity {
 
             JSONObject header = new JSONObject();
 
-            header.put("username", );
-            header.put("password", );
-            header.put("first_name", );
-            header.put("surname", );
-            header.put("dob", );
+            header.put("username", etUserName.getText());
+            header.put("password", etPassword.getText());
+            header.put("first_name", etFirstName.getText());
+            header.put("surname", etSurName.getText());
+            header.put("dob", etAge.getText());
             header.put("gender", );
             header.put("birth_district", );
             header.put("current_district", );
