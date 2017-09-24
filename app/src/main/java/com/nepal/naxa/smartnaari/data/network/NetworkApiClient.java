@@ -1,8 +1,10 @@
 package com.nepal.naxa.smartnaari.data.network;
 
+
 import com.github.simonpercic.oklog3.OkLogInterceptor;
 
 import okhttp3.OkHttpClient;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -17,7 +19,9 @@ public class NetworkApiClient {
     private static Retrofit retrofit = null;
 
 
+
     public static Retrofit getNotifictionApiClient() {
+
 
         if (retrofit==null) {
 

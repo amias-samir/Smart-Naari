@@ -70,6 +70,9 @@
     <string name="life_coaching_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="lets_have_the_talk">Lets Have the TALK</string>
+    <string name="headline_mycircle1">My Circle</string>
+    <string name="headline_mycircle2">for my Safety</string>
+    <string name="general_btn_form_submission">Submit</string>
 
 
     <string-array name="add_a_new_post_categories">
