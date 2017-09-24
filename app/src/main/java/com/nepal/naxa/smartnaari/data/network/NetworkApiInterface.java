@@ -11,4 +11,14 @@ public interface NetworkApiInterface {
     @POST(UrlClass.SIGNUP_URL)
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
+    @FormUrlEncoded
+    @POST("Smartapi/login")
+    Call<UserDetail> getUserData(@Field("data") String data);
+
+
+
+
+
+
+
 }

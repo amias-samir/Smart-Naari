@@ -8,5 +8,7 @@ public class UrlClass {
 
     public static final String BASE_URL = "http://naxa.com.np/smartnaari/";
     public static final String SIGNUP_URL = BASE_URL + "Smartapi/register";
+    public static final String LOGIN_URL = BASE_URL + "Smartapi/login";
+
 
 }

@@ -247,6 +247,7 @@ public class SignUpActivity extends Activity {
 
     public void convertDataToJson() {
         //function in the activity that corresponds to the layout button
+
         try {
 
             JSONObject header = new JSONObject();
@@ -272,11 +273,12 @@ public class SignUpActivity extends Activity {
             e.printStackTrace();
         }
 
+
     }
 
     private void signUpRetrofitAPI(String jsonData) {
 
-        NetworkApiInterface apiService = getNotifictionApiClient(getApplicationContext()).create(NetworkApiInterface.class);
+        NetworkApiInterface apiService = getNotifictionApiClient().create(NetworkApiInterface.class);
         Call<SignUpDetailsResponse> call = apiService.getSignupDetails(jsonData);
         call.enqueue(new Callback<SignUpDetailsResponse>() {
             @Override
