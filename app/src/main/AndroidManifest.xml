@@ -152,6 +152,7 @@
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
         <activity
+            android:exported="true"
             android:name=".machupbasdina.MaChupBasdinaActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
