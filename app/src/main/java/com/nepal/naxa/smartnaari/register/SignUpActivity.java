@@ -281,8 +281,9 @@ public class SignUpActivity extends Activity {
         call.enqueue(new Callback<SignUpDetailsResponse>() {
             @Override
             public void onResponse(Call<SignUpDetailsResponse> call, Response<SignUpDetailsResponse> response) {
+                Log.d("SUSAN", "onPostExecute: " + response.toString());
 
-                if (response != null) {
+                if (response.body() != null) {
                     String status = "";
                     String data = "";
 
@@ -305,7 +306,6 @@ public class SignUpActivity extends Activity {
                         e.getLocalizedMessage();
                     }
                 }
-                Log.d("SUSAN", "onPostExecute: " + response.toString());
             }
 
             @Override
