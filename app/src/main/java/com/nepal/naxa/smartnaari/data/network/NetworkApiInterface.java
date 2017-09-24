@@ -11,6 +11,11 @@ public interface NetworkApiInterface {
     @POST("control/check_ime")
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
+    @FormUrlEncoded
+    @POST("control/check_ime")
+    Call<LoginResponse> getLoginDetails(@Field("data") String data);
+
+
 
 
 
