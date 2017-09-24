@@ -1,7 +1,5 @@
 package com.nepal.naxa.smartnaari.data.network;
 
-import com.nepal.naxa.smartnaari.utils.UrlClass;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
