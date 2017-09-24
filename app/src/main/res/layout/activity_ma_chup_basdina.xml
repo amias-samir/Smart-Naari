@@ -220,7 +220,7 @@
             </RadioGroup>
 
 
-            <!--  types of  violence-->
+            <!--  district of incident-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -230,7 +230,7 @@
                     android:id="@+id/txtLBLVoilenceTypes"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/types_of_voilence"
+                    android:text="@string/district_of_incident"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_body1"
                     android:paddingTop="@dimen/default_padding"
@@ -281,6 +281,38 @@
                     android:gravity="center"
                     android:layout_toEndOf="@id/txtLBLVoilenceOccur"
                     android:layout_toRightOf="@id/txtLBLVoilenceOccur"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <!--perpetrator-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/txtLBLPerpetrator"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perpetrator"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_subhead"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:paddingBottom="@dimen/default_padding" android:gravity="right"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner_ma_chup_basdina_perpetrator"
+                    style="@style/SmartNaariSpinnerTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_toEndOf="@id/txtLBLPerpetrator"
+                    android:layout_toRightOf="@id/txtLBLPerpetrator"
                     android:layout_alignParentRight="true"/>
 
             </RelativeLayout>

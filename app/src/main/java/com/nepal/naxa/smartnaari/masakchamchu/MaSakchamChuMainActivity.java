@@ -47,7 +47,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-
+            actionBar.setTitle("");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
