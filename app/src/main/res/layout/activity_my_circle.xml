@@ -35,7 +35,6 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
-                    android:text="My Circle for my Safety"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/material_text_body1" />
 
@@ -47,7 +46,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
-                    android:text="Create"
+                    android:text="@string/headline_mycircle1"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/material_text_title" />
 
@@ -59,7 +58,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/default_padding"
-                    android:text="My Circle"
+                    android:text="@string/headline_mycircle2"
                     android:textSize="@dimen/material_text_headline" />
 
 
@@ -137,7 +136,6 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/edit_text_boarder_recg"
-                                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
                                     android:ems="10"
                                     android:gravity="center"
                                     android:hint="Mobile Number"
@@ -160,7 +158,6 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/edit_text_boarder_recg"
-                                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
                                     android:ems="10"
                                     android:gravity="center"
                                     android:hint="Mobile Number"
@@ -334,7 +331,7 @@
                                     android:paddingLeft="@dimen/default_padding"
                                     android:paddingRight="@dimen/default_padding"
                                     android:paddingTop="@dimen/default_padding"
-                                    android:text="Done"
+                                    android:text="@string/general_btn_form_submission"
                                     android:textAllCaps="false"
                                     android:textColor="@color/colorWhite"
                                     />

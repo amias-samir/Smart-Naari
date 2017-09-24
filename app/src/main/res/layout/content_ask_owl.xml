@@ -94,7 +94,7 @@
             android:layout_gravity="center"
             android:drawableEnd="@drawable/ic_right_arrow"
             android:drawableRight="@drawable/ic_right_arrow"
-            android:text="@string/btn_ask_an_owl" />
+            android:text="@string/general_btn_form_submission" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_below="@+id/btn_ask_a_owl"
