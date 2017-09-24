@@ -50,6 +50,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homescreen.MainActivity" />
         </activity>
+
+        <activity
+            android:exported="true"
+            android:name=".utils.ui.BeautifulMainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
         <activity
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
