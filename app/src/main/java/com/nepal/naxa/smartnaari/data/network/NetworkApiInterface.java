@@ -16,9 +16,4 @@ public interface NetworkApiInterface {
     Call<UserDetail> getUserData(@Field("data") String data);
 
 
-
-
-
-
-
 }

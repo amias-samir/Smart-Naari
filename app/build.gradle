@@ -53,6 +53,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+    compile 'com.github.GrenderG:Toasty:1.2.5'
 }
 
 

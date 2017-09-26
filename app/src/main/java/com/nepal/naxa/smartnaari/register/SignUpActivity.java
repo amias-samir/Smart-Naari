@@ -3,17 +3,14 @@ package com.nepal.naxa.smartnaari.register;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,10 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
-import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.DistrictAndAgeGroupConstants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
@@ -33,22 +28,13 @@ import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Calendar;
 import java.util.TimeZone;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +42,7 @@ import retrofit2.Response;
 import static com.nepal.naxa.smartnaari.data.network.NetworkApiClient.getNotifictionApiClient;
 
 //public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
-public class SignUpActivity extends Activity {
+public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
 
     @BindView(R.id.btnSignUp)
     Button btnSignUp;
@@ -82,6 +68,9 @@ public class SignUpActivity extends Activity {
     @BindView(R.id.user_age_input_id)
     EditText etAge;
 
+    @BindView(R.id.is_checked_radio_btn_group)
+    RadioButton rgGender;
+
     @BindView(R.id.radio_sex_male)
     RadioButton rdMale;
 
@@ -103,12 +92,23 @@ public class SignUpActivity extends Activity {
     @BindView(R.id.user_contact_no_input_id)
     EditText etContact;
 
+    @BindView(R.id.cb_terms_and_condition)
+    CheckBox cbAgreement;
+
     ProgressDialog mProgressDlg;
     String jsonToSend = "";
 
+    String userName = "";
+    String password = "";
+    String confirmPassword = "";
+    String firstName = "";
+    String surName = "";
+    String age = "";
     String gender = "";
     String birthPlace = "";
     String currentPlace = "";
+    String email = "";
+    String mobileNumber = "";
 
 
     //todo write style for api < 21 for checkbox
@@ -121,15 +121,13 @@ public class SignUpActivity extends Activity {
 
         mProgressDlg = new ProgressDialog(this);
 
-        ArrayAdapter<String> birthDistArray= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
+        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spBirthPlace.setAdapter(birthDistArray);
-        birthPlace = spBirthPlace.getSelectedItem().toString();
 
-        ArrayAdapter<String> currentDistArray= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
+        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
         currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCurrentPlace.setAdapter(currentDistArray);
-        currentPlace = spCurrentPlace.getSelectedItem().toString();
     }
 
     private void setupUI() {
@@ -161,44 +159,183 @@ public class SignUpActivity extends Activity {
                 break;
         }
     }
-//
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        int spinnerId = parent.getId();
-//
-//        if (spinnerId == R.id.spinner_user_birth_place_input_id) {
-//            switch (position) {
-//                case 0:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[0];
-//                    break;
-//                case 1:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[1];
-//                    break;
-//                case 2:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[2];
-//                    break;
-//                case 3:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[3];
-//                    break;
-//                case 4:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[4];
-//                    break;
-//                case 5:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[5];
-//                    break;
-//                case 6:
-//                    birthPlace = DistrictAndAgeGroupConstants.districtListEnglish[6];
-//                    break;
-//            }
-//        }
-//
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//
-//    }
 
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+
+        switch (v.getId()) {
+            case R.id.user_name_input_id:
+                if (hasFocus) {
+
+                } else {
+                    userName = etUserName.getText().toString().trim();
+                    if (userName.equals("")) {
+                        Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.user_password_input_id:
+                if (hasFocus) {
+
+                } else {
+                    password = etPassword.getText().toString().trim();
+                    if (password.equals("")) {
+                        Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.user_confirm_password_input_id:
+                if (hasFocus) {
+
+                } else {
+                    confirmPassword = etConformPassword.getText().toString().trim();
+                    if (confirmPassword.equals("")) {
+                        Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+                    } else {
+                        if (confirmPassword.equals(password)) {
+
+                        } else {
+                            Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                        }
+                    }
+                }
+                break;
+
+
+            case R.id.user_firstname_input_id:
+                if (hasFocus) {
+
+                } else {
+                    firstName = etFirstName.getText().toString().trim();
+                    if (firstName.equals("")) {
+                        Toasty.error(getApplicationContext(), "First name field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.user_surname_input_id:
+                if (hasFocus) {
+
+                } else {
+                    surName = etSurName.getText().toString().trim();
+                    if (surName.equals("")) {
+                        Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.user_age_input_id:
+                if (hasFocus) {
+
+                } else {
+                    age = etAge.getText().toString().trim();
+                    if (age.equals("")) {
+                        Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.is_checked_radio_btn_group:
+                if (hasFocus) {
+
+                } else {
+                    if (!rgGender.isChecked()) {
+                        Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.spinner_user_birth_place_input_id:
+
+                if (hasFocus) {
+
+                } else {
+                    birthPlace = spBirthPlace.getSelectedItem().toString();
+                    Log.d("SUSAN", "birthPlace: " + birthPlace);
+
+                    if (birthPlace.equals("")) {
+                        Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.spinner_user_current_place_input_id:
+
+                if (hasFocus) {
+
+                } else {
+                    currentPlace = spCurrentPlace.getSelectedItem().toString();
+                    Log.d("SUSAN", "currentPlace: " + currentPlace);
+
+                    if (currentPlace.equals("")) {
+                        Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+
+
+            case R.id.user_email_input_id:
+
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                if (hasFocus) {
+
+                } else {
+                    email = etEmail.getText().toString().trim();
+
+                    if (!email.equals("")) {
+
+                        if (email.matches(emailPattern)) {
+
+                            Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+
+                        } else {
+
+                            Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
+                        }
+
+                    } else {
+                        Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
+
+                    }
+                }
+                break;
+
+
+            case R.id.user_contact_no_input_id:
+
+                if (hasFocus) {
+
+                } else {
+                    mobileNumber = etContact.getText().toString().trim();
+                    if (mobileNumber.equals("")) {
+                        Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+            case R.id.cb_terms_and_condition:
+                if (hasFocus) {
+
+                } else {
+                    if (cbAgreement.isChecked()) {
+                        mobileNumber = etContact.getText().toString().trim();
+                    } else {
+                        Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
+                    }
+                }
+                break;
+        }
+
+    }
 
     @OnClick(R.id.btnSignUp)
     public void SignUpBtnClicked() {
@@ -209,14 +346,11 @@ public class SignUpActivity extends Activity {
         mProgressDlg.show();
 
         convertDataToJson();
-
-        signUpRetrofitAPI(jsonToSend);
-
-        startActivity(new Intent(this, LoginActivity.class));
     }
 
+
     @OnClick(R.id.user_age_input_id)
-    public void getDOB_BtnClicked(){
+    public void getDOB_BtnClicked() {
         Calendar cal = Calendar.getInstance(TimeZone.getDefault()); // Get current date
 
 // Create the DatePickerDialog instance
@@ -246,34 +380,29 @@ public class SignUpActivity extends Activity {
     };
 
     public void convertDataToJson() {
-        //function in the activity that corresponds to the layout button
 
         try {
 
             JSONObject header = new JSONObject();
 
-            header.put("username", etUserName.getText());
-            header.put("password", etPassword.getText());
-            header.put("first_name", etFirstName.getText());
-            header.put("surname", etSurName.getText());
-            header.put("dob", etAge.getText());
+            header.put("username", userName);
+            header.put("password", password);
+            header.put("first_name", confirmPassword);
+            header.put("surname", surName);
+            header.put("dob", age);
             header.put("gender", gender);
             header.put("birth_district", birthPlace);
             header.put("current_district", currentPlace);
-            header.put("email", etEmail.getText());
-//            header.put("personal_mobile_number", "");
-//            header.put("circle_mobile_number_1", "");
-//            header.put("circle_mobile_number_2", "");
-//            header.put("circle_mobile_number_3", "");
-//            header.put("circle_mobile_number_4", "");
-//            header.put("circle_mobile_number_5", "");
+            header.put("email", email);
+            header.put("personal_mobile_number", mobileNumber);
+
             jsonToSend = header.toString();
+
+            signUpRetrofitAPI(jsonToSend);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void signUpRetrofitAPI(String jsonData) {
@@ -294,16 +423,21 @@ public class SignUpActivity extends Activity {
                         status = response.body().getStatus();
                         data = response.body().getData();
 
-                        if (status.equals("406")) {
-                            mProgressDlg.dismiss();
-                            Toast.makeText(SignUpActivity.this, data, Toast.LENGTH_SHORT).show();
-
-                        } else if (status.equals("201")) {
-                            mProgressDlg.dismiss();
-                            Toast.makeText(SignUpActivity.this, data, Toast.LENGTH_SHORT).show();
-
+                        switch (status) {
+                            case "200":
+                                mProgressDlg.dismiss();
+                                Toasty.success(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
+                                startActivity(new Intent(getApplication(), LoginActivity.class));
+                                break;
+                            case "201":
+                                mProgressDlg.dismiss();
+                                Toasty.error(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
+                                break;
+                            case "406":
+                                mProgressDlg.dismiss();
+                                Toasty.error(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
+                                break;
                         }
-
                     } catch (Exception e) {
                         e.getLocalizedMessage();
                     }
@@ -315,6 +449,5 @@ public class SignUpActivity extends Activity {
                 mProgressDlg.dismiss();
             }
         });
-
     }
 }
