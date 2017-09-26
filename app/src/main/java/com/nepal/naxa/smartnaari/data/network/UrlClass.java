@@ -11,4 +11,5 @@ public class UrlClass {
     public static final String LOGIN_URL = BASE_URL + "Smartapi/login";
 
 
+    public static  String SMART_NARI_BASE_URL ;
 }

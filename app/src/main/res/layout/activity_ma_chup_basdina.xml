@@ -182,6 +182,7 @@
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"/>
 
+
             <!--victim radio button input layout-->
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
@@ -218,6 +219,40 @@
 
             </RadioGroup>
 
+
+            <!--  district of incident-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/txtLBLVoilenceTypes"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/district_of_incident"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_body1"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:gravity="right"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner_ma_chup_basdina_voilence_type"
+                    style="@style/SmartNaariSpinnerTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_toEndOf="@id/txtLBLVoilenceTypes"
+                    android:layout_toRightOf="@id/txtLBLVoilenceTypes"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
             <!--when did the violence occur-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -250,68 +285,34 @@
 
             </RelativeLayout>
 
-            <!--  types of  violence-->
+            <!--perpetrator-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_small">
 
                 <TextView
-                    android:id="@+id/txtLBLVoilenceTypes"
+                    android:id="@+id/txtLBLPerpetrator"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/types_of_voilence"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_body1"
-                    android:paddingTop="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:gravity="right"
-                    />
-
-                <Spinner
-                    android:id="@+id/spinner_ma_chup_basdina_voilence_type"
-                    style="@style/SmartNaariSpinnerTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:layout_toEndOf="@id/txtLBLVoilenceTypes"
-                    android:layout_toRightOf="@id/txtLBLVoilenceTypes"
-                    android:layout_alignParentRight="true"/>
-
-            </RelativeLayout>
-
-            <!--core GBV-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
-
-                <TextView
-                    android:id="@+id/txtLBLcoreGVB"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/core_gvb"
+                    android:text="@string/perpetrator"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead"
                     android:paddingTop="@dimen/default_padding"
                     android:paddingLeft="@dimen/default_padding"
                     android:paddingRight="@dimen/spacing_large"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:gravity="right"
+                    android:paddingBottom="@dimen/default_padding" android:gravity="right"
                     />
 
                 <Spinner
-                    android:id="@+id/spinner_ma_chup_basdina_core_gvb"
+                    android:id="@+id/spinner_ma_chup_basdina_perpetrator"
                     style="@style/SmartNaariSpinnerTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:layout_toEndOf="@id/txtLBLcoreGVB"
-                    android:layout_toRightOf="@id/txtLBLcoreGVB"
+                    android:layout_toEndOf="@id/txtLBLPerpetrator"
+                    android:layout_toRightOf="@id/txtLBLPerpetrator"
                     android:layout_alignParentRight="true"/>
 
             </RelativeLayout>
@@ -367,32 +368,32 @@
                     android:paddingBottom="@dimen/default_padding"
                     android:gravity="right"
                     />
-                 <!-- desc further details input layout-->
+                <!-- desc further details input layout-->
                 <!--<EditText-->
-                    <!--android:id="@+id/ma_chup_basdina_desc_GBV_input_id"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_centerHorizontal="true"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textMultiLine"-->
-                    <!--android:maxLines="10"-->
-                    <!--android:minLines="6"-->
-                    <!--android:gravity="top|left"-->
-                    <!--android:scrollbars="vertical"-->
-                    <!--android:hint=""-->
-                    <!--android:paddingBottom="10dp"-->
-                    <!--android:paddingLeft="10dp"-->
-                    <!--android:paddingRight="10dp"-->
-                    <!--android:paddingTop="10dp"-->
-                    <!--android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"-->
-                    <!--android:textColor="@color/black"-->
-                    <!--android:textColorHint="@color/textSecondary"-->
-                    <!--android:textSize="@dimen/material_text_caption"-->
-                    <!--android:layout_toEndOf="@id/txtLBLDescGBV"-->
-                    <!--android:layout_toRightOf="@id/txtLBLDescGBV"/>-->
+                <!--android:id="@+id/ma_chup_basdina_desc_GBV_input_id"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textMultiLine"-->
+                <!--android:maxLines="10"-->
+                <!--android:minLines="6"-->
+                <!--android:gravity="top|left"-->
+                <!--android:scrollbars="vertical"-->
+                <!--android:hint=""-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textColorHint="@color/textSecondary"-->
+                <!--android:textSize="@dimen/material_text_caption"-->
+                <!--android:layout_toEndOf="@id/txtLBLDescGBV"-->
+                <!--android:layout_toRightOf="@id/txtLBLDescGBV"/>-->
 
                 <android.support.design.widget.TextInputLayout
 
@@ -415,6 +416,9 @@
             </RelativeLayout>
 
 
+
+
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -433,7 +437,7 @@
                     android:layout_alignParentRight="true"
                     android:background="@color/transparent"
                     android:drawableRight="@drawable/ic_right_arrow"
-                    android:text="Done"
+                    android:text="@string/general_btn_form_submission"
                     android:textAllCaps="false"
                     android:textColor="@color/textSecondary"
                     android:textSize="18dp" />

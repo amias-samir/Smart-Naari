@@ -373,6 +373,7 @@ public class SignUpActivity extends Activity {
         email = etEmail.getText().toString().trim();
         mobileNumber = etContact.getText().toString().trim();
 
+
         if (confirmPassword.equals("")) {
             Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
         } else {
@@ -402,6 +403,7 @@ public class SignUpActivity extends Activity {
         datePicker.show();
 
     }
+
 
     // Listener
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {

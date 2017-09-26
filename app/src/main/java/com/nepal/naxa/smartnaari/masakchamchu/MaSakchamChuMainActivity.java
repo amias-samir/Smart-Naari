@@ -7,12 +7,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 
-import com.nepal.naxa.smartnaari.MaSakchamChuCoachActivity;
 import com.nepal.naxa.smartnaari.R;
 
 import butterknife.BindView;
@@ -50,7 +47,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-
+            actionBar.setTitle("");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
