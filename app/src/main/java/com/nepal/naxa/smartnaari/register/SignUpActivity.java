@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +43,8 @@ import retrofit2.Response;
 import static com.nepal.naxa.smartnaari.data.network.NetworkApiClient.getNotifictionApiClient;
 
 //public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
-public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
+//public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
+public class SignUpActivity extends Activity {
 
     @BindView(R.id.btnSignUp)
     Button btnSignUp;
@@ -69,7 +71,7 @@ public class SignUpActivity extends Activity implements View.OnFocusChangeListen
     EditText etAge;
 
     @BindView(R.id.is_checked_radio_btn_group)
-    RadioButton rgGender;
+    RadioGroup rgGender;
 
     @BindView(R.id.radio_sex_male)
     RadioButton rdMale;
@@ -155,187 +157,202 @@ public class SignUpActivity extends Activity implements View.OnFocusChangeListen
                     gender = "Female";
                 break;
             case R.id.radio_sex_other:
-                gender = "Others";
+                if (checked)
+                    gender = "Others";
                 break;
         }
     }
 
-    @Override
-    public void onFocusChange(View v, boolean hasFocus) {
-
-        switch (v.getId()) {
-            case R.id.user_name_input_id:
-                if (hasFocus) {
-
-                } else {
-                    userName = etUserName.getText().toString().trim();
-                    if (userName.equals("")) {
-                        Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.user_password_input_id:
-                if (hasFocus) {
-
-                } else {
-                    password = etPassword.getText().toString().trim();
-                    if (password.equals("")) {
-                        Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.user_confirm_password_input_id:
-                if (hasFocus) {
-
-                } else {
-                    confirmPassword = etConformPassword.getText().toString().trim();
-                    if (confirmPassword.equals("")) {
-                        Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
-                    } else {
-                        if (confirmPassword.equals(password)) {
-
-                        } else {
-                            Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
-                        }
-                    }
-                }
-                break;
-
-
-            case R.id.user_firstname_input_id:
-                if (hasFocus) {
-
-                } else {
-                    firstName = etFirstName.getText().toString().trim();
-                    if (firstName.equals("")) {
-                        Toasty.error(getApplicationContext(), "First name field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.user_surname_input_id:
-                if (hasFocus) {
-
-                } else {
-                    surName = etSurName.getText().toString().trim();
-                    if (surName.equals("")) {
-                        Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.user_age_input_id:
-                if (hasFocus) {
-
-                } else {
-                    age = etAge.getText().toString().trim();
-                    if (age.equals("")) {
-                        Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.is_checked_radio_btn_group:
-                if (hasFocus) {
-
-                } else {
-                    if (!rgGender.isChecked()) {
-                        Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.spinner_user_birth_place_input_id:
-
-                if (hasFocus) {
-
-                } else {
-                    birthPlace = spBirthPlace.getSelectedItem().toString();
-                    Log.d("SUSAN", "birthPlace: " + birthPlace);
-
-                    if (birthPlace.equals("")) {
-                        Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.spinner_user_current_place_input_id:
-
-                if (hasFocus) {
-
-                } else {
-                    currentPlace = spCurrentPlace.getSelectedItem().toString();
-                    Log.d("SUSAN", "currentPlace: " + currentPlace);
-
-                    if (currentPlace.equals("")) {
-                        Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-
-
-            case R.id.user_email_input_id:
-
-                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-                if (hasFocus) {
-
-                } else {
-                    email = etEmail.getText().toString().trim();
-
-                    if (!email.equals("")) {
-
-                        if (email.matches(emailPattern)) {
-
-                            Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
-
-                        } else {
-
-                            Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
-                        }
-
-                    } else {
-                        Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
-
-                    }
-                }
-                break;
-
-
-            case R.id.user_contact_no_input_id:
-
-                if (hasFocus) {
-
-                } else {
-                    mobileNumber = etContact.getText().toString().trim();
-                    if (mobileNumber.equals("")) {
-                        Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-            case R.id.cb_terms_and_condition:
-                if (hasFocus) {
-
-                } else {
-                    if (cbAgreement.isChecked()) {
-                        mobileNumber = etContact.getText().toString().trim();
-                    } else {
-                        Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
-                    }
-                }
-                break;
-        }
-
-    }
+//    @Override
+//    public void onFocusChange(View v, boolean hasFocus) {
+//
+//        switch (v.getId()) {
+//            case R.id.user_name_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    userName = etUserName.getText().toString().trim();
+//                    if (userName.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_password_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    password = etPassword.getText().toString().trim();
+//                    if (password.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_confirm_password_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    confirmPassword = etConformPassword.getText().toString().trim();
+//                    if (confirmPassword.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+//                    } else {
+//                        if (confirmPassword.equals(password)) {
+//
+//                        } else {
+//                            Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+//                        }
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_firstname_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    firstName = etFirstName.getText().toString().trim();
+//                    if (firstName.equals("")) {
+//                        Toasty.error(getApplicationContext(), "First name field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_surname_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    surName = etSurName.getText().toString().trim();
+//                    if (surName.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_age_input_id:
+//                if (hasFocus) {
+//
+//                } else {
+//                    age = etAge.getText().toString().trim();
+//                    if (age.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.is_checked_radio_btn_group:
+//                if (hasFocus) {
+//
+//                } else {
+//                    int id = rgGender.getCheckedRadioButtonId();
+//
+//                    if (id != -1) {
+//                        switch (id) {
+//                            case R.id.radio_sex_male:
+//                                gender = "Male";
+//                                break;
+//                            case R.id.radio_sex_female:
+//                                gender = "Female";
+//                                break;
+//                            case R.id.radio_sex_other:
+//                                gender = "Others";
+//                                break;
+//
+//                        }
+//                    } else {
+//                        Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.spinner_user_birth_place_input_id:
+//
+//                if (hasFocus) {
+//
+//                } else {
+//                    birthPlace = spBirthPlace.getSelectedItem().toString();
+//                    Log.d("SUSAN", "birthPlace: " + birthPlace);
+//
+//                    if (birthPlace.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.spinner_user_current_place_input_id:
+//
+//                if (hasFocus) {
+//
+//                } else {
+//                    currentPlace = spCurrentPlace.getSelectedItem().toString();
+//                    Log.d("SUSAN", "currentPlace: " + currentPlace);
+//
+//                    if (currentPlace.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_email_input_id:
+//
+//                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+//
+//                if (hasFocus) {
+//
+//                } else {
+//                    email = etEmail.getText().toString().trim();
+//
+//                    if (!email.equals("")) {
+//
+//                        if (email.matches(emailPattern)) {
+//
+//                            Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+//
+//                        } else {
+//
+//                            Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
+//                        }
+//
+//                    } else {
+//                        Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
+//
+//                    }
+//                }
+//                break;
+//
+//
+//            case R.id.user_contact_no_input_id:
+//
+//                if (hasFocus) {
+//
+//                } else {
+//                    mobileNumber = etContact.getText().toString().trim();
+//                    if (mobileNumber.equals("")) {
+//                        Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//            case R.id.cb_terms_and_condition:
+//                if (hasFocus) {
+//
+//                } else {
+//                    if (cbAgreement.isChecked()) {
+//                        mobileNumber = etContact.getText().toString().trim();
+//                    } else {
+//                        Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
+//                    }
+//                }
+//                break;
+//        }
+//    }
 
     @OnClick(R.id.btnSignUp)
     public void SignUpBtnClicked() {
@@ -345,7 +362,28 @@ public class SignUpActivity extends Activity implements View.OnFocusChangeListen
         mProgressDlg.setCancelable(false);
         mProgressDlg.show();
 
-        convertDataToJson();
+        userName = etUserName.getText().toString().trim();
+        password = etPassword.getText().toString().trim();
+        confirmPassword = etConformPassword.getText().toString().trim();
+        firstName = etFirstName.getText().toString().trim();
+        surName = etSurName.getText().toString().trim();
+        age = etAge.getText().toString().trim();
+        birthPlace = spBirthPlace.getSelectedItem().toString();
+        currentPlace = spCurrentPlace.getSelectedItem().toString();
+        email = etEmail.getText().toString().trim();
+        mobileNumber = etContact.getText().toString().trim();
+
+        if (confirmPassword.equals("")) {
+            Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+        } else {
+            if (confirmPassword.equals(password)) {
+                convertDataToJson();
+
+            } else {
+                mProgressDlg.dismiss();
+                Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+            }
+        }
     }
 
 
@@ -384,6 +422,18 @@ public class SignUpActivity extends Activity implements View.OnFocusChangeListen
         try {
 
             JSONObject header = new JSONObject();
+
+            Log.d("SUSAN", "convertDataToJson: " + "\n"
+                    + userName + "\n"
+                    + password + "\n"
+                    + confirmPassword + "\n"
+                    + surName + "\n"
+                    + age + "\n"
+                    + gender + "\n"
+                    + birthPlace + "\n"
+                    + currentPlace + "\n"
+                    + email + "\n"
+                    + mobileNumber);
 
             header.put("username", userName);
             header.put("password", password);
