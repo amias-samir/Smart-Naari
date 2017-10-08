@@ -8,9 +8,9 @@
     tools:context="com.nepal.naxa.smartnaari.mycircle.MyCircleActivity">
 
 
-    <!--<ScrollView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -78,8 +78,7 @@
         <LinearLayout
 
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7">
+            android:layout_height="wrap_content">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -180,7 +179,6 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/edit_text_boarder_recg"
-                                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
                                     android:ems="10"
                                     android:gravity="center"
                                     android:hint="Mobile Number"
@@ -204,7 +202,6 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/edit_text_boarder_recg"
-                                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
                                     android:ems="10"
                                     android:gravity="center"
                                     android:hint="Mobile Number"
@@ -228,7 +225,6 @@
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/edit_text_boarder_recg"
-                                    android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
                                     android:ems="10"
                                     android:gravity="center"
                                     android:hint="Mobile Number"
@@ -349,5 +345,5 @@
     </LinearLayout>
 
 
-    <!--</ScrollView>-->
+    </ScrollView>
 </RelativeLayout>
