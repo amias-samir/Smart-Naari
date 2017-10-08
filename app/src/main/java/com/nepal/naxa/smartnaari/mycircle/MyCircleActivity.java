@@ -135,8 +135,15 @@ public class MyCircleActivity extends Activity {
 
             case R.id.btnSelectContactNo:
 
+                Constants.first_contact = tvFirstContact.getText().toString();
+                Constants.second_contact = tvSecondContact.getText().toString();
+                Constants.third_contact = tvThirdContact.getText().toString();
+                Constants.fourth_contact = tvFourthContact.getText().toString();
+                Constants.fifth_contact = tvFifthContact.getText().toString();
 
-                if (Constants.fifth_contact.equals("")) {
+
+                if (Constants.first_contact.equals("") || Constants.second_contact.equals("") ||Constants.third_contact.equals("") ||
+                        Constants.fourth_contact.equals("") || Constants.fifth_contact.equals("")) {
                     Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
                     startActivityForResult(intentContact, PICK_CONTACT);
                 } else {
