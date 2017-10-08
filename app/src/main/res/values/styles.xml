@@ -99,6 +99,7 @@
 
 
     <style name="RiseUpDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor"> @color/black </item>
         <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
 
     </style>

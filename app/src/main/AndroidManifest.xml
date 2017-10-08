@@ -136,7 +136,6 @@
         <activity
             android:name=".yuwapusta.YuwaPustaActivity"
             android:exported="true"
-
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
