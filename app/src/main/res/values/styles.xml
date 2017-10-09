@@ -96,5 +96,9 @@
         <item name="android:popupBackground">@color/colorAccent</item>
     </style>
 
+    <style name="BootstrapButton" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:background">@drawable/smart_naari_edit_text_bg_transparent</item>
+    </style>
+
 
 </resources>

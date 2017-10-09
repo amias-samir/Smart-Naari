@@ -32,8 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText tvUserName;
     @BindView(R.id.user_password_input_id)
     EditText tvUserPassword;
-    @BindView(R.id.btnDown)
-    ImageButton btnDown;
+
     @BindView(R.id.registerLBL)
     TextView registerLBL;
     @BindView(R.id.registerBeTheOneLBL)

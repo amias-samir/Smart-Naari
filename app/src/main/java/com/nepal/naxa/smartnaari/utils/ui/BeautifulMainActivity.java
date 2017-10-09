@@ -2,32 +2,51 @@ package com.nepal.naxa.smartnaari.utils.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
-import com.nepal.naxa.smartnaari.homescreen.MainActivity;
+import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
+import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
+import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
+import com.nepal.naxa.smartnaari.homescreen.RecyclerViewAdapter;
+import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 
 import java.util.HashMap;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class BeautifulMainActivity extends AppCompatActivity
-    implements AppBarLayout.OnOffsetChangedListener {
+        implements AppBarLayout.OnOffsetChangedListener {
 
-    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
-    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
-    private static final int ALPHA_ANIMATIONS_DURATION              = 200;
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
+    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
+    private static final int ALPHA_ANIMATIONS_DURATION = 200;
+    @BindView(R.id.toolbar_image_switcher)
+    ViewSwitcher toolbarImageSwitcher;
+    @BindView(R.id.main_act_recycler_hori)
+    RecyclerView horizontalRecyclerView;
 
-    private boolean mIsTheTitleVisible          = false;
+
+    private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
 
     private LinearLayout mTitleContainer;
@@ -36,6 +55,11 @@ public class BeautifulMainActivity extends AppCompatActivity
     private Toolbar mToolbar;
     SliderLayout slider;
 
+    @BindView(R.id.recycler)
+    RecyclerView recyclerView;
+
+    private RecyclerViewAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +67,87 @@ public class BeautifulMainActivity extends AppCompatActivity
         setContentView(R.layout.activity_beutiful_main);
 
         bindActivity();
+        ButterKnife.bind(this);
 
         mAppBarLayout.addOnOffsetChangedListener(this);
 
-      //  mToolbar.inflateMenu(R.menu.menu_main);
+        //  mToolbar.inflateMenu(R.menu.menu_main);
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
+
+        initGridRecyclerView();
+        setRecyclerAdapter(recyclerView);
+        initHorizontalRecyclerView();
+        scrollToolBarImages();
+
+        ;
     }
 
+    public void scrollToolBarImages() {
+        final int speedScroll = 2000;
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                toolbarImageSwitcher.showNext();
+                handler.postDelayed(this, speedScroll);
+
+            }
+        };
+        handler.postDelayed(runnable, speedScroll);
+    }
+
+
     private void bindActivity() {
-        mToolbar        = (Toolbar) findViewById(R.id.main_toolbar);
-        mTitle          = (TextView) findViewById(R.id.main_textview_title);
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mTitle = (TextView) findViewById(R.id.main_textview_title);
         mTitleContainer = (LinearLayout) findViewById(R.id.main_linearlayout_title);
-        mAppBarLayout   = (AppBarLayout) findViewById(R.id.main_appbar);
+        mAppBarLayout = (AppBarLayout) findViewById(R.id.main_appbar);
         slider = (SliderLayout) findViewById(R.id.slider);
     }
 
+
+    private void initGridRecyclerView() {
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_large);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, true, 0));
+        recyclerView.setNestedScrollingEnabled(false);
+
+
+    }
+
+    private void setRecyclerAdapter(RecyclerView recyclerView) {
+
+        List<ViewModel> items = ViewModel.getGridItems();
+        recyclerView.setNestedScrollingEnabled(false);
+        adapter = new RecyclerViewAdapter(items);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initHorizontalRecyclerView() {
+        List<ViewModel> framelist = ViewModel.getHorizontalViewItems();
+        HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(framelist);
+
+        horizontalRecyclerView.setAdapter(horizontalRecyclerViewAdapter);
+        horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false));
+
+
+        // add pager behavior
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(horizontalRecyclerView);
+
+        // pager indicator
+        horizontalRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
+        horizontalRecyclerView.setNestedScrollingEnabled(false);
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-     //   getMenuInflater().inflate(R.menu.menu_main, menu);
+        //   getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -74,25 +161,25 @@ public class BeautifulMainActivity extends AppCompatActivity
     }
 
     private void handleToolbarTitleVisibility(float percentage) {
-            if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
+        if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
 
-                if(!mIsTheTitleVisible) {
-                    startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
-                    mIsTheTitleVisible = true;
-                }
-
-            } else {
-
-                if (mIsTheTitleVisible) {
-                    startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
-                    mIsTheTitleVisible = false;
-                }
+            if (!mIsTheTitleVisible) {
+                startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
+                mIsTheTitleVisible = true;
             }
+
+        } else {
+
+            if (mIsTheTitleVisible) {
+                startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
+                mIsTheTitleVisible = false;
+            }
+        }
     }
 
     private void handleAlphaOnTitle(float percentage) {
         if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
-            if(mIsTheTitleContainerVisible) {
+            if (mIsTheTitleContainerVisible) {
                 startAlphaAnimation(mTitleContainer, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
                 mIsTheTitleContainerVisible = false;
             }
@@ -106,10 +193,10 @@ public class BeautifulMainActivity extends AppCompatActivity
         }
     }
 
-    public static void startAlphaAnimation (View v, long duration, int visibility) {
+    public static void startAlphaAnimation(View v, long duration, int visibility) {
         AlphaAnimation alphaAnimation = (visibility == View.VISIBLE)
-            ? new AlphaAnimation(0f, 1f)
-            : new AlphaAnimation(1f, 0f);
+                ? new AlphaAnimation(0f, 1f)
+                : new AlphaAnimation(1f, 0f);
 
         alphaAnimation.setDuration(duration);
         alphaAnimation.setFillAfter(true);

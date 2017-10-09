@@ -1,206 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorSignupBackground"
-    tools:context="com.nepal.naxa.smartnaari.login.LoginActivity">
+    android:scrollbars="none"
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/colorSignupBackground"
+        android:orientation="vertical"
+        tools:context="com.nepal.naxa.smartnaari.login.LoginActivity">
 
-        <!-- header-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="7">
-
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_half_bottom_circle">
 
             <ImageView
                 android:id="@+id/top_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_half_bottom_circle" />
-
-            <ImageView
-                android:id="@+id/tapitImg"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignParentTop="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_centerHorizontal="true"
+                android:scaleType="center"
                 android:src="@drawable/ic_tap_it_stop_it" />
 
             <TextView
-                android:textStyle="bold"
+                android:id="@+id/tv_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/tapitImg"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_below="@id/top_img"
+                android:layout_marginTop="-20dp"
                 android:gravity="center"
-                android:paddingBottom="@dimen/default_padding"
-                android:paddingLeft="@dimen/default_padding"
-                android:paddingRight="@dimen/default_padding"
-                android:paddingTop="@dimen/default_padding"
+                android:padding="@dimen/spacing_large"
                 android:text="In Case of Emergency"
                 android:textColor="@color/colorLoginIncaseText"
-                android:textSize="@dimen/material_text_caption" />
-
+                android:textSize="@dimen/material_text_caption"
+                android:textStyle="bold" />
         </RelativeLayout>
 
-        <!--body-->
+        <EditText
+
+            android:id="@+id/user_name_input_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:layout_marginTop="@dimen/spacing_xlarge"
+            android:background="@drawable/edit_text_boarder_recg"
+            android:gravity="center"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/textSecondary"
+            android:textSize="@dimen/material_text_headline" />
+
+        <EditText
+            android:id="@+id/user_password_input_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/edit_text_boarder_recg"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/textSecondary"
+            android:textSize="@dimen/material_text_headline" />
+
+        <Button
+
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:layout_marginTop="@dimen/spacing_xlarge"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/inactiveText"
+            android:textSize="@dimen/material_text_headline"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="@dimen/spacing_xxlarge"
+            android:layout_height="@dimen/spacing_xxlarge"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@drawable/textview_border_center_or_text"
+            android:gravity="center"
+            android:text="OR"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/material_text_body1" />
+
+        <Button
+            android:id="@+id/btnLinkToSignup"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_right_arrow_white"
+            android:drawablePadding="-40dp"
+            android:drawableRight="@drawable/ic_right_arrow_white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="New User Sign in"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/material_text_headline"
+            android:textStyle="normal" />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4.5">
+            android:layout_height="100dp"
+            android:background="@drawable/ic_half_top_circle">
 
-            <LinearLayout
-                android:id="@+id/top_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:orientation="vertical">
-
-                <!-- username input layout-->
-                <EditText
-                    android:id="@+id/user_name_input_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_boarder_recg"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Username"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/textSecondary"
-                    android:textSize="@dimen/material_text_headline" />
-
-                <!-- Password layout-->
-                <EditText
-                    android:id="@+id/user_password_input_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_text_boarder_recg"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/default_padding"
-                    android:paddingTop="@dimen/default_padding"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/textSecondary"
-                    android:textSize="@dimen/material_text_headline" />
-
-                <Button
-
-                    android:id="@+id/btnLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_mlarge"
-                    android:background="@drawable/button_pressed"
-                    android:gravity="center"
-                    android:text="Login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/inactiveText"
-                    android:textSize="@dimen/material_text_headline"
-                    android:textStyle="normal" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnDown"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/spacing_large"
-                        android:background="@drawable/ic_down_arrow_white"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:layout_width="@dimen/spacing_xxlarge"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/spacing_xlarge"
-                        android:layout_marginTop="@dimen/spacing_xlarge"
-
-                        android:background="@drawable/textview_border_center_or_text"
-                        android:gravity="center"
-                        android:text="or"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/material_text_body1" />
-
-                    <Button
-                        android:id="@+id/btnLinkToSignup"
-                        style="@style/Base.Widget.AppCompat.Button.Borderless"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/btnDown"
-                        android:layout_centerHorizontal="true"
-                        android:drawableEnd="@drawable/ic_right_arrow_white"
-                        android:drawablePadding="-40dp"
-                        android:drawableRight="@drawable/ic_right_arrow_white"
-                        android:gravity="center"
-                        android:paddingBottom="@dimen/default_padding"
-                        android:paddingLeft="@dimen/default_padding"
-                        android:paddingRight="@dimen/default_padding"
-                        android:paddingTop="@dimen/default_padding"
-                        android:text="New User Sign in"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/material_text_headline"
-                        android:textStyle="normal" />
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <!--footer-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="8">
-
-            <ImageView
-                android:id="@+id/bottom_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_half_top_circle" />
 
             <TextView
                 android:id="@+id/registerLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
+                android:layout_above="@+id/registerBeTheOneLBL"
+                android:layout_alignParentTop="true"
                 android:gravity="center"
                 android:text="Register"
                 android:textAllCaps="true"
@@ -208,23 +145,24 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+
                 android:id="@+id/registerBeTheOneLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/registerLBL"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
-                android:paddingBottom="@dimen/default_padding"
-                android:paddingLeft="@dimen/default_padding"
-                android:paddingRight="@dimen/default_padding"
-                android:paddingTop="@dimen/default_padding"
                 android:textColor="@color/colorAccent"
-
                 android:textStyle="bold" />
-
 
         </RelativeLayout>
 
     </LinearLayout>
 
+</ScrollView>
 
-</RelativeLayout>
+
