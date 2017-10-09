@@ -24,10 +24,13 @@ import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
+import com.nepal.naxa.smartnaari.data.network.local.SessionManager;
 import com.nepal.naxa.smartnaari.homescreen.MainActivity;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +45,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
+import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 
 public class LoginActivity extends BaseActivity {
 
@@ -140,9 +144,6 @@ public class LoginActivity extends BaseActivity {
 
         NetworkApiInterface apiService = NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
 
-
-        Log.e(TAG, "Retrofit Json to send: " + jsonToSend.toString());
-
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
         call.enqueue(new Callback<UserDetail>() {
             @Override
@@ -155,31 +156,43 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
 
-                String status = response.body().getStatus();
-                String data = response.body().getData();
-                UserData userData = response.body().getUserData();
+                handleLoginResponse(response.body());
+            }
 
-                switch (status) {
-                    case "200":
-                        Constants.user_id = userData.getUserId();
-                        Constants.first_contact = userData.getCircleMobileNumber1();
-                        Constants.second_contact = userData.getCircleMobileNumber2();
-                        Constants.third_contact = userData.getCircleMobileNumber3();
-                        Constants.fourth_contact = userData.getCircleMobileNumber4();
-                        Constants.fifth_contact = userData.getCircleMobileNumber5();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
+            private void handleLoginResponse(UserDetail userDetail) {
+                switch (userDetail.getStatus()) {
+                    case REQUEST_OK:
 
+                        handleLoginSucess(userDetail);
                         break;
                     default:
-
-                        showErrorToast(data);
+                        showErrorToast(userDetail.getData());
                         break;
+                }
+            }
+
+            private void handleLoginSucess(UserDetail userDetail) {
+
+                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                sessionManager.saveUser(userDetail.getUserData());
+
+
+                if (sessionManager.doesUserHaveCircle()) {
+
+                    Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                } else {
+
+                    Intent intent = new Intent(LoginActivity.this, MyCircleActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 }
 
 
             }
-
 
             @Override
             public void onFailure(Call<UserDetail> call, Throwable t) {

@@ -86,13 +86,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         ViewModel item = items.get(position);
         holder.text.setText(item.getText());
-//        holder.image.setImageResource(item.getImage());
+        holder.image.setImageResource(item.getImage());
 
         holder.itemView.setTag(item);
 
 
     }
-
 
 
     @Override

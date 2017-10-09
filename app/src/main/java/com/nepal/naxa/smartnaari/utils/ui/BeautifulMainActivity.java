@@ -19,6 +19,7 @@ import android.widget.ViewSwitcher;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
@@ -34,7 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BeautifulMainActivity extends AppCompatActivity
+public class BeautifulMainActivity extends BaseActivity
         implements AppBarLayout.OnOffsetChangedListener {
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
@@ -59,6 +60,7 @@ public class BeautifulMainActivity extends AppCompatActivity
     RecyclerView recyclerView;
 
     private RecyclerViewAdapter adapter;
+    private long timeStampWhenBackWasPressed;
 
 
     @Override
@@ -158,6 +160,24 @@ public class BeautifulMainActivity extends AppCompatActivity
 
         handleAlphaOnTitle(percentage);
         handleToolbarTitleVisibility(percentage);
+    }
+
+    @Override
+    public void onBackPressed() {
+        doubleTapToExit();
+    }
+
+    private void doubleTapToExit() {
+        long timeRangeForDoubleTap = 3000;
+        long totalAcceptedDelay = timeStampWhenBackWasPressed + timeRangeForDoubleTap;
+        long currentTime = System.currentTimeMillis();
+        if (totalAcceptedDelay > currentTime) {
+            finish();
+            return;
+        }
+
+        showInfoToast(getString(R.string.app_exit_msg));
+        timeStampWhenBackWasPressed = System.currentTimeMillis();
     }
 
     private void handleToolbarTitleVisibility(float percentage) {

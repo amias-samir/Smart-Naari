@@ -100,6 +100,7 @@
     <string name="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
     <string name="dialog_action_hide">Hide</string>
     <string name="district_of_incident">form_ma_chup_district</string>
+    <string name="app_exit_msg">Tap Again to Exit!</string>
 
 
 </resources>
