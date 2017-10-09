@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.nepal.naxa.smartnaari.R;
 
 import butterknife.BindView;
@@ -28,12 +29,10 @@ public class IAmAmazingActivity extends AppCompatActivity {
     TextView tvIAmAmazingDetail;
     @BindView(R.id.ivIAmAmazingPersonOfTheMonth)
     ImageView ivIAmAmazingPersonOfTheMonth;
-    @BindView(R.id.tvIAmAmazingPersonOfTheMonthDetail)
-    TextView tvIAmAmazingPersonOfTheMonthDetail;
-    @BindView(R.id.tvIAmAmazingReadMore)
-    TextView tvIAmAmazingReadMore;
-    @BindView(R.id.ivIAmAmazingFlappingPheonix)
-    ImageView ivIAmAmazingFlappingPheonix;
+
+    ExpandableTextView expandableTextView;
+
+    String personOfTheMonthDetail = "Smart Naari presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +40,10 @@ public class IAmAmazingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_i_am_amazing);
         ButterKnife.bind(this);
         initToolbar();
+
+        expandableTextView = (ExpandableTextView) findViewById(R.id.expandable_textview);
+        expandableTextView.setText(personOfTheMonthDetail);
+
     }
 
     private void initToolbar() {

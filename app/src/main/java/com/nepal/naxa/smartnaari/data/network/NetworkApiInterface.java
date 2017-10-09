@@ -8,12 +8,16 @@ import retrofit2.http.POST;
 
 public interface NetworkApiInterface {
     @FormUrlEncoded
-    @POST("control/check_ime")
+    @POST(UrlClass.SIGNUP_URL)
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
+    @FormUrlEncoded
+    @POST("Smartapi/login")
+    Call<UserDetail> getUserData(@Field("data") String data);
 
-
-
+    @FormUrlEncoded
+    @POST("Smartapi/add_circle")
+    Call<MyCircleDetails> getCircleData(@Field("data") String data);
 
 
 }

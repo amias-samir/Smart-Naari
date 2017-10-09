@@ -1,17 +1,23 @@
 package com.nepal.naxa.smartnaari.data.network;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by susan on 9/9/2017.
+ * Created by Samir on 10/8/2017.
  */
 
-public class SignUpDetailsResponse {
+public class MyCircleDetails {
 
     @SerializedName("status")
-    String status;
+    @Expose
+    private String status;
+    @SerializedName("Msg")
+    @Expose
+    private String Msg;
     @SerializedName("data")
-    String data;
+    @Expose
+    private String data;
 
     public String getStatus() {
         return status;
@@ -21,6 +27,14 @@ public class SignUpDetailsResponse {
         this.status = status;
     }
 
+    public String getMsg() {
+        return Msg;
+    }
+
+    public void setMsg(String msg) {
+        Msg = msg;
+    }
+
     public String getData() {
         return data;
     }
@@ -28,4 +42,7 @@ public class SignUpDetailsResponse {
     public void setData(String data) {
         this.data = data;
     }
+
+
+
 }

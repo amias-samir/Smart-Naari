@@ -1,12 +1,14 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.SpannableStringBuilder;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,13 +18,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
+import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
+import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.homescreen.MainActivity;
+import com.nepal.naxa.smartnaari.login.LoginActivity;
+import com.nepal.naxa.smartnaari.uiutils.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class MyCircleActivity extends Activity {
 
@@ -32,16 +48,6 @@ public class MyCircleActivity extends Activity {
     int count = 0;
     static final int PICK_CONTACT = 01;
 
-    //    @BindView(R.id.my_circle_first_contact)
-//    EditText myCircleFirstContact;
-//    @BindView(R.id.my_circle_second_contact)
-//    EditText myCircleSecondContact;
-//    @BindView(R.id.my_circle_third_contact)
-//    EditText myCircleThirdContact;
-//    @BindView(R.id.my_circle_fourth_contact)
-//    EditText myCircleFourthContact;
-//    @BindView(R.id.my_circle_fifth_contact)
-//    EditText myCircleFifthContact;
     @BindView(R.id.my_circle_first_contact)
     EditText tvFirstContact;
     @BindView(R.id.my_circle_second_contact)
@@ -68,6 +74,11 @@ public class MyCircleActivity extends Activity {
     @BindView(R.id.bottom_relative_layout)
     LinearLayout bottomRelativeLayout;
 
+    String jsonToSend = null;
+    ProgressDialog mProgressDlg;
+    ProgressDialog mdialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +86,9 @@ public class MyCircleActivity extends Activity {
         ButterKnife.bind(this);
         setupUI();
         initializeContactsUI();
+
+        mProgressDlg = new ProgressDialog(this);
+        mdialog = new ProgressDialog(this);
     }
 
 
@@ -120,7 +134,16 @@ public class MyCircleActivity extends Activity {
         switch (view.getId()) {
 
             case R.id.btnSelectContactNo:
-                if (Constants.fifth_contact.equals("")) {
+
+                Constants.first_contact = tvFirstContact.getText().toString();
+                Constants.second_contact = tvSecondContact.getText().toString();
+                Constants.third_contact = tvThirdContact.getText().toString();
+                Constants.fourth_contact = tvFourthContact.getText().toString();
+                Constants.fifth_contact = tvFifthContact.getText().toString();
+
+
+                if (Constants.first_contact.equals("") || Constants.second_contact.equals("") ||Constants.third_contact.equals("") ||
+                        Constants.fourth_contact.equals("") || Constants.fifth_contact.equals("")) {
                     Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
                     startActivityForResult(intentContact, PICK_CONTACT);
                 } else {
@@ -131,8 +154,11 @@ public class MyCircleActivity extends Activity {
 
 
             case R.id.btnDone:
-                Intent intentMainActivity = new Intent(MyCircleActivity.this, MainActivity.class);
-                startActivity(intentMainActivity);
+                mdialog = DialogFactory.createProgressDialog(this,"Please Wait...\nUpdating Circle");
+                mdialog.show();
+
+                convertDataToJSON();
+                sendDataToServer();
                 break;
         }
     }
@@ -173,19 +199,8 @@ public class MyCircleActivity extends Activity {
 
 
     public void setContcts(String contact_no) {
-//        tvFirstContact.setText(Constants.first_contact);
-//        tvSecondContact.setText(Constants.second_contact);
-//        tvThirdContact.setText(Constants.third_contact);
-//        tvFourthContact.setText(Constants.fourth_contact);
-//        tvFifthContact.setText(Constants.fifth_contact);
 
         String first, second, third, fourth, fifth;
-
-//        first = tvFirstContact.getText().toString();
-//        second = tvSecondContact.getText().toString();
-//        third = tvThirdContact.getText().toString();
-//        fourth = tvFourthContact.getText().toString();
-//        fifth = tvFifthContact.getText().toString();
 
         first = Constants.first_contact;
         second = Constants.second_contact;
@@ -225,6 +240,7 @@ public class MyCircleActivity extends Activity {
 
 
     public void initializeContactsUI() {
+
         tvFirstContact.setText(Constants.first_contact);
         tvSecondContact.setText(Constants.second_contact);
 
@@ -242,5 +258,104 @@ public class MyCircleActivity extends Activity {
         tvFifthContact.setText(Constants.fifth_contact);
     }
 
+
+    public void convertDataToJSON(){
+
+        try {
+
+            JSONObject header = new JSONObject();
+
+            header.put("user_id", "8");
+            header.put("c1", tvFirstContact.getText().toString());
+            header.put("c2", tvSecondContact.getText().toString());
+            header.put("c3", tvThirdContact.getText().toString());
+            header.put("c4", tvFourthContact.getText().toString());
+            header.put("c5", tvFifthContact.getText().toString());
+            header.put("n1", "");
+            header.put("n2", "");
+            header.put("n3", "");
+            header.put("n4", "");
+            header.put("n5", "");
+
+
+            jsonToSend = header.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void sendDataToServer(){
+
+        NetworkApiInterface apiService =
+                NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
+
+
+        Log.e(TAG, "Retrofit Json to send: "+jsonToSend.toString());
+
+        Call<MyCircleDetails> call = apiService.getCircleData(jsonToSend);
+        call.enqueue(new Callback<MyCircleDetails>() {
+            @Override
+            public void onResponse(Call<MyCircleDetails> call, Response<MyCircleDetails> response) {
+
+//                int statusCode = response.code();
+
+                Log.e(TAG, "Retrofit onResponse: "+response.body().toString());
+//                String status = response.body().getStatus();
+
+
+
+
+                if (response != null) {
+                    String status = "";
+                    String data = "";
+
+                    try {
+
+                        status = response.body().getStatus();
+                        data = response.body().getData();
+
+                        if(status.equals("200")){
+                            mdialog.dismiss();
+                            Toast.makeText(MyCircleActivity.this, data, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MyCircleActivity.this, MainActivity.class);
+                            Constants.first_contact = tvFirstContact.getText().toString();
+                            Constants.second_contact = tvSecondContact.getText().toString();
+                            Constants.third_contact = tvThirdContact.getText().toString();
+                            Constants.fourth_contact = tvFourthContact.getText().toString();
+                            Constants.fifth_contact = tvFifthContact.getText().toString();
+                            startActivity(intent);
+                        }
+                        else if (status.equals("401")) {
+                            mdialog.dismiss();
+                            Toast.makeText(MyCircleActivity.this, data, Toast.LENGTH_SHORT).show();
+
+                        } else if (status.equals("400")) {
+                            mdialog.dismiss();
+                            Toast.makeText(MyCircleActivity.this, data, Toast.LENGTH_SHORT).show();
+
+                        }else {
+                            mdialog.dismiss();
+                            Toast.makeText(MyCircleActivity.this, "Unknown Error", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.getLocalizedMessage();
+                    }
+                }else {
+                    mdialog.dismiss();
+                    Toast.makeText(MyCircleActivity.this, "Unknown Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyCircleDetails> call, Throwable t) {
+                // Log error here since request failed
+                mdialog.dismiss();
+                Log.e("LoginActivity"+"Failure", t.toString());
+            }
+        });
+    }
 
 }

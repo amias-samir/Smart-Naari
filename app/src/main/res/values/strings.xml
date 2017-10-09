@@ -58,8 +58,8 @@
 
     <string name="understanding">Understanding</string>
     <string name="report_gender_based_violence">Report Gender Based Violence</string>
-    <string name="report_i_am_the_victim">I am the Victim</string>
-    <string name="report_other">Other</string>
+    <string name="report_i_am_the_victim">Myself</string>
+    <string name="report_other">Someone else</string>
 
     <string name="when_did_the_voilence_occur">When did the voilence occur</string>
     <string name="types_of_voilence">Types of Voilence</string>
@@ -70,6 +70,9 @@
     <string name="life_coaching_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="lets_have_the_talk">Lets Have the TALK</string>
+    <string name="headline_mycircle1">My Circle</string>
+    <string name="headline_mycircle2">for my Safety</string>
+    <string name="general_btn_form_submission">Submit</string>
 
 
     <string-array name="add_a_new_post_categories">
@@ -83,6 +86,20 @@
         <item>Neptune</item>
     </string-array>
 
+
+    <string name="dialog_action_ok">OK</string>
+    <string name="dialog_error_title">Unexpected Error Occured.</string>
+    <string name="dialog_error_title_sync_failed">Data Sync Failed (Code: %1$s)</string>
+
+    <string name="dialog_title_warning_logout">Proceed with caution.</string>
+    <string name="dialog_warning_logout">Logout will result in deletion of all your saved forms.Consider uploading them before proceeding.</string>
+    <string name="dialog_warning_logout_pos">Yes, Delete my forms and logout</string>
+    <string name="dialog_warning_logout_neg">No, I don\'t want to logout</string>
+
+    <string name="dialog_title_error_register">Error Registering.</string>
+    <string name="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
+    <string name="dialog_action_hide">Hide</string>
+    <string name="district_of_incident">form_ma_chup_district</string>
 
 
 </resources>
