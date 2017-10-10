@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".passion_of_life.BaseActivity">
+    tools:context=".passion_of_life.ComplexListBaseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -38,30 +38,31 @@
 
     <RelativeLayout
 
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <EditText
-            android:padding="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:textColorHint="@color/colorWhite"
-            android:layout_marginLeft="@dimen/spacing_xlarge"
-            android:layout_marginRight="@dimen/spacing_xlarge"
-            android:background="@drawable/edit_text_boarder_grey"
-            android:gravity="center"
             android:id="@+id/et_search_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_marginLeft="@dimen/spacing_xlarge"
+            android:layout_marginRight="@dimen/spacing_xlarge"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/edit_text_boarder_grey"
+            android:gravity="center"
             android:hint="Search"
-            />
+            android:padding="@dimen/spacing_medium"
+            android:textColorHint="@color/colorWhite" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_below="@id/et_search_food"
+        <include layout="@layout/recycler_view_empty_layout"/>
+
+        <com.nepal.naxa.smartnaari.utils.ui.recyclerview.RecyclerViewEmptySupport
             android:id="@+id/rcv_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/et_search_food"
 
             />
 

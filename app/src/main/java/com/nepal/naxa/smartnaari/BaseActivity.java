@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.nepal.naxa.smartnaari.uiutils.DialogFactory;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 

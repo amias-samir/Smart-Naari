@@ -1,7 +1,6 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,10 +21,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.homescreen.MainActivity;
-import com.nepal.naxa.smartnaari.login.LoginActivity;
-import com.nepal.naxa.smartnaari.uiutils.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
@@ -42,7 +37,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.ContentValues.TAG;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_400;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_401;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;

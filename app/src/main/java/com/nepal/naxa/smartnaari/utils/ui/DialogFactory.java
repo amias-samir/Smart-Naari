@@ -1,4 +1,4 @@
-package com.nepal.naxa.smartnaari.uiutils;
+package com.nepal.naxa.smartnaari.utils.ui;
 
 /**
  * Created by Nishon Tandukar on 16 Jun 2017 .
