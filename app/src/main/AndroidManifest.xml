@@ -125,6 +125,7 @@
         </activity>
 
         <activity
+            android:exported="true"
             android:name=".passion_of_life.ComplexListActivity"
             android:parentActivityName=".homescreen.MainActivity"
             android:screenOrientation="portrait"

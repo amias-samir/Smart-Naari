@@ -101,6 +101,8 @@
     <string name="dialog_action_hide">Hide</string>
     <string name="district_of_incident">form_ma_chup_district</string>
     <string name="app_exit_msg">Tap Again to Exit!</string>
+    <string name="general_error_msg">Some Error Occurred!</string>
+    <string name="network_error_timeout">Socket Time out. Please try again.</string>
 
 
 </resources>

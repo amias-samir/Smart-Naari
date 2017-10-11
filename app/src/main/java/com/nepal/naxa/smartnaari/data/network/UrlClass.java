@@ -7,6 +7,8 @@ package com.nepal.naxa.smartnaari.data.network;
 public class UrlClass {
 
     public static final String REQUEST_OK = "200";
+    public static final String REQUEST_401 = "401";
+    public static final String REQUEST_400 = "400";
 
     public static final String BASE_URL = "http://naxa.com.np/smartnaari/";
     public static final String SIGNUP_URL = BASE_URL + "Smartapi/register";

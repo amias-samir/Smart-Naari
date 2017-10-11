@@ -62,6 +62,9 @@ dependencies {
 
     compile 'com.github.GrenderG:Toasty:1.2.5'
 
+    //utils
+    compile 'com.mobsandgeeks:android-saripaar:2.0.0'
+
 }
 
 

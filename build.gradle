@@ -33,6 +33,11 @@ allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+
+        // https://oss.sonatype.org/content/repositories/snapshots/ addded for android-saripaar
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
         mavenCentral()
     }
 }
