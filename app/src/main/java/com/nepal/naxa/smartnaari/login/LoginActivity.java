@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.NetworkApiClient;
-import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;

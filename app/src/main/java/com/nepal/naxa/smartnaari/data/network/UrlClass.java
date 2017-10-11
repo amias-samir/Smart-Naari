@@ -10,7 +10,7 @@ public class UrlClass {
     public static final String REQUEST_401 = "401";
     public static final String REQUEST_400 = "400";
 
-    public static final String BASE_URL = "http://naxa.com.np/smartnaari/";
+    public static final String BASE_URL = "http://naxa.com.np/smartnaari/smartapi/";
     public static final String SIGNUP_URL = BASE_URL + "Smartapi/register";
     public static final String LOGIN_URL = BASE_URL + "Smartapi/login";
 

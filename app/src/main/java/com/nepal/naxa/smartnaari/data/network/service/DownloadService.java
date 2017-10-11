@@ -5,8 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.ResultReceiver;
-import android.text.TextUtils;
 import android.util.Log;
+
+import com.google.gson.Gson;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
+import com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils;
+import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
  * Created on 10/11/17
@@ -25,6 +37,7 @@ public class DownloadService extends IntentService {
     private static final String KEY_CODE = "download_resposne_code";
 
     private ResultReceiver receiver;
+    private OwlWrapper owls;
 
 
     public DownloadService() {
@@ -37,17 +50,15 @@ public class DownloadService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        Log.d(TAG, "Service Started!");
         receiver = intent.getParcelableExtra("receiver");
+        broadCastStart();
 
-        BroadCastStart();
-
-        Log.d(TAG, "Service Stopping!");
+        getOwls();
 
     }
 
 
-    private void BroadcastError(String url, String msg, String resposneCode) {
+    private void broadcastError(String url, String msg, String resposneCode) {
         Bundle message = new Bundle();
 
         message.putString(KEY_URL, url);
@@ -58,13 +69,41 @@ public class DownloadService extends IntentService {
 
     }
 
-    private void BroadCastStart() {
+    private void broadCastStart() {
         receiver.send(STATUS_RUNNING, Bundle.EMPTY);
     }
 
-    private void BroadCastFinish(String url, int currentAPIIndex, int totalNoOfAPI, String resposneCode) {
+    private void broadCastProgress(String url, int currentAPIIndex, int totalNoOfAPI, String resposneCode) {
         receiver.send(STATUS_RUNNING, Bundle.EMPTY);
     }
+
+    public OwlWrapper getOwls() {
+        NetworkApiInterface apiService = NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
+        Call<OwlWrapper> call = apiService.getOwls();
+        call.enqueue(new Callback<OwlWrapper>() {
+            @Override
+            public void onResponse(Call<OwlWrapper> call, Response<OwlWrapper> response) {
+
+
+
+                AppDataManager appDataManager = new AppDataManager(getApplicationContext());
+                appDataManager.saveOwls(response.body());
+
+                Log.d(TAG, appDataManager.getOwls().size() + " owls present ");
+
+
+            }
+
+            @Override
+            public void onFailure(Call<OwlWrapper> call, Throwable t) {
+
+                Log.d(TAG, " the fuck ");
+            }
+        });
+
+        return owls;
+    }
+
 
     public class DownloadException extends Exception {
 

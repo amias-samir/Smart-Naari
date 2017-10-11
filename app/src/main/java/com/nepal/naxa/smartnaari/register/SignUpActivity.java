@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.DistrictAndAgeGroupConstants;
@@ -40,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.nepal.naxa.smartnaari.data.network.NetworkApiClient.getNotifictionApiClient;
+import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getNotifictionApiClient;
 
 //public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
 //public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
