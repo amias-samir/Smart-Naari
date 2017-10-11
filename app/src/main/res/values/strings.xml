@@ -103,6 +103,7 @@
     <string name="app_exit_msg">Tap Again to Exit!</string>
     <string name="general_error_msg">Some Error Occurred!</string>
     <string name="network_error_timeout">Socket Time out. Please try again.</string>
+    <string name="network_disconnected">Device is offline!</string>
 
 
 </resources>

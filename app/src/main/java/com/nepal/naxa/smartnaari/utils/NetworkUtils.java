@@ -15,10 +15,14 @@ public final class NetworkUtils {
 
     }
 
-    public static boolean isNetworkConnected(Context context) {
+    private static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
+
+    public static boolean isNetworkDisconnected(Context context) {
+        return !isNetworkConnected(context);
     }
 }

@@ -62,12 +62,10 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isNetworkConnected() {
-        return NetworkUtils.isNetworkConnected(getApplicationContext());
-    }
+
 
     public boolean isNetworkDisconnected() {
-        return !isNetworkConnected();
+        return NetworkUtils.isNetworkDisconnected(getApplicationContext());
     }
 
 

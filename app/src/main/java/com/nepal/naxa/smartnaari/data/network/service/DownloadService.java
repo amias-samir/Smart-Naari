@@ -4,22 +4,25 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.os.ResultReceiver;
 import android.util.Log;
 
-import com.google.gson.Gson;
+import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
-import com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NullSupportCallback;
+import com.nepal.naxa.smartnaari.utils.NetworkUtils;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
+import me.jessyan.progressmanager.body.ProgressInfo;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
  * Created on 10/11/17
@@ -40,6 +43,10 @@ public class DownloadService extends IntentService {
     private ResultReceiver receiver;
     private OwlWrapper owls;
 
+    private ProgressInfo mLastDownloadingInfo;
+    private Handler mHandler;
+    private ToastUtils toastUtils;
+
 
     public DownloadService() {
         super(DownloadService.class.getName());
@@ -47,10 +54,16 @@ public class DownloadService extends IntentService {
 
     }
 
-
     @Override
     protected void onHandleIntent(Intent intent) {
 
+        toastUtils = new ToastUtils();
+        if (NetworkUtils.isNetworkDisconnected(getApplicationContext())) {
+            toastUtils.error(getApplicationContext(), getString(R.string.network_disconnected));
+            return;
+        }
+
+        mHandler = new Handler();
         receiver = intent.getParcelableExtra("receiver");
         broadCastStart();
 
@@ -79,12 +92,20 @@ public class DownloadService extends IntentService {
     }
 
     public OwlWrapper getOwls() {
-        NetworkApiInterface apiService = NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
+
 
         call.enqueue(new NullSupportCallback<>(new Callback<OwlWrapper>() {
             @Override
             public void onResponse(Call<OwlWrapper> call, Response<OwlWrapper> response) {
+
+                String resposneCode = response.body().getStatus();
+
+                if (isInvalidResponse(resposneCode)) {
+                    Log.e(TAG, "Invalid Response");
+                    return;
+                }
 
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
@@ -96,10 +117,14 @@ public class DownloadService extends IntentService {
             public void onFailure(Call<OwlWrapper> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
             }
+
         }));
 
-
         return owls;
+    }
+
+    private boolean isInvalidResponse(String responseCode) {
+        return !responseCode.equals(UrlClass.REQUEST_OK);
     }
 
 

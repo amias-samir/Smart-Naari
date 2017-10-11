@@ -27,7 +27,8 @@ public class NullSupportCallback<T> implements Callback<T> {
     public void onResponse(Call<T> call, Response<T> response) {
         if (response.body() == null) {
             callback.onFailure(call, new NullPointerException("Empty response"));
-        } else {
+
+        }else {
             callback.onResponse(call, response);
         }
     }

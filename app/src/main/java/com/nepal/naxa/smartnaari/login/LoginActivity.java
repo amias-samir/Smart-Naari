@@ -130,7 +130,7 @@ public class LoginActivity extends BaseActivity {
 
     public void sendDataToServer() {
 
-        NetworkApiInterface apiService = NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
         call.enqueue(new Callback<UserDetail>() {

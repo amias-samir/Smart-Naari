@@ -334,7 +334,7 @@ public class MyCircleActivity extends BaseActivity {
     public void sendDataToServer() {
 
         NetworkApiInterface apiService =
-                NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
+                NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<MyCircleDetails> call = apiService.getCircleData(jsonToSend);
         call.enqueue(new Callback<MyCircleDetails>() {

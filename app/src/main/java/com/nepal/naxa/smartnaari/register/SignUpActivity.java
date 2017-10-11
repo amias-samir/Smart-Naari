@@ -40,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getNotifictionApiClient;
+import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
 //public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
 //public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
@@ -459,7 +459,7 @@ public class SignUpActivity extends Activity {
 
     private void signUpRetrofitAPI(String jsonData) {
 
-        NetworkApiInterface apiService = getNotifictionApiClient().create(NetworkApiInterface.class);
+        NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<SignUpDetailsResponse> call = apiService.getSignupDetails(jsonData);
         call.enqueue(new Callback<SignUpDetailsResponse>() {
             @Override
