@@ -13,6 +13,7 @@ import com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NullSupportCallback;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,26 +81,23 @@ public class DownloadService extends IntentService {
     public OwlWrapper getOwls() {
         NetworkApiInterface apiService = NetworkApiClient.getNotifictionApiClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
-        call.enqueue(new Callback<OwlWrapper>() {
+
+        call.enqueue(new NullSupportCallback<>(new Callback<OwlWrapper>() {
             @Override
             public void onResponse(Call<OwlWrapper> call, Response<OwlWrapper> response) {
 
-
-
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
-
                 Log.d(TAG, appDataManager.getOwls().size() + " owls present ");
-
 
             }
 
             @Override
             public void onFailure(Call<OwlWrapper> call, Throwable t) {
-
-                Log.d(TAG, " the fuck ");
+                Log.e(TAG, t.getMessage());
             }
-        });
+        }));
+
 
         return owls;
     }
