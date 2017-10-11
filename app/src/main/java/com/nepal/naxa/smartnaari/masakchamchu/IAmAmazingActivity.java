@@ -43,7 +43,6 @@ public class IAmAmazingActivity extends AppCompatActivity {
 
         expandableTextView = (ExpandableTextView) findViewById(R.id.expandable_textview);
         expandableTextView.setText(personOfTheMonthDetail);
-
     }
 
     private void initToolbar() {
