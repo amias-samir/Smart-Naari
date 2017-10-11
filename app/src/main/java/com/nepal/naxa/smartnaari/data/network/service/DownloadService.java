@@ -11,10 +11,9 @@ import android.util.Log;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
-import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.data.network.retrofit.NullSupportCallback;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
@@ -94,22 +93,16 @@ public class DownloadService extends IntentService {
     public OwlWrapper getOwls() {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
-
-
-        call.enqueue(new NullSupportCallback<>(new Callback<OwlWrapper>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<OwlWrapper>() {
             @Override
             public void onResponse(Call<OwlWrapper> call, Response<OwlWrapper> response) {
-
-                String resposneCode = response.body().getStatus();
-
-                if (isInvalidResponse(resposneCode)) {
-                    Log.e(TAG, "Invalid Response");
-                    return;
-                }
 
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
                 Log.d(TAG, appDataManager.getOwls().size() + " owls present ");
+
+
+
 
             }
 
@@ -121,10 +114,6 @@ public class DownloadService extends IntentService {
         }));
 
         return owls;
-    }
-
-    private boolean isInvalidResponse(String responseCode) {
-        return !responseCode.equals(UrlClass.REQUEST_OK);
     }
 
 

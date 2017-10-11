@@ -16,4 +16,9 @@ public class UrlClass {
 
 
     public static  String SMART_NARI_BASE_URL ;
+
+
+    public static boolean isInvalidResponse(String responseCode) {
+        return !responseCode.equals(UrlClass.REQUEST_OK);
+    }
 }

@@ -26,7 +26,7 @@ public interface NetworkApiInterface {
     @POST("add_circle")
     Call<MyCircleDetails> getCircleData(@Field("data") String data);
 
-    @GET("get_owls")
+    @GET("get_owl")
     Call<OwlWrapper> getOwls();
 }
 
