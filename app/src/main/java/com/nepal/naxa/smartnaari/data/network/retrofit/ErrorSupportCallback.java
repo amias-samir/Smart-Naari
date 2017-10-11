@@ -46,6 +46,8 @@ public class ErrorSupportCallback<T> implements Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {
         Log.e(TAG, t.toString());
+
+
         callback.onFailure(call, t);
     }
 

@@ -1,12 +1,23 @@
 package com.nepal.naxa.smartnaari.data.network.retrofit;
 
 
+import android.util.Log;
+
 import com.github.simonpercic.oklog3.OkLogInterceptor;
 import com.nepal.naxa.smartnaari.data.network.UrlClass;
 
-import me.jessyan.progressmanager.ProgressManager;
-import okhttp3.OkHttpClient;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
+import me.jessyan.progressmanager.ProgressManager;
+import okhttp3.Dispatcher;
+import okhttp3.Interceptor;
+
+
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,13 +33,15 @@ public class NetworkApiClient {
 
         if (retrofit == null) {
             OkLogInterceptor okLogInterceptor = OkLogInterceptor.builder().build();
-
             OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
-            ProgressManager.getInstance().with(okHttpBuilder);
 
+            Dispatcher dispatcher = new Dispatcher();
+            dispatcher.setMaxRequests(3);
+
+            okHttpBuilder.dispatcher(dispatcher);
             okHttpBuilder.addInterceptor(okLogInterceptor);
-            OkHttpClient okHttpClient = okHttpBuilder.build();
 
+            OkHttpClient okHttpClient = okHttpBuilder.build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(UrlClass.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -38,7 +51,6 @@ public class NetworkApiClient {
         return retrofit;
 
     }
-
 
 
 }

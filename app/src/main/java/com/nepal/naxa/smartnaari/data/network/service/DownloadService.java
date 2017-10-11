@@ -17,6 +17,8 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
+import java.util.ArrayList;
+
 import me.jessyan.progressmanager.body.ProgressInfo;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,11 +47,14 @@ public class DownloadService extends IntentService {
     private ProgressInfo mLastDownloadingInfo;
     private Handler mHandler;
     private ToastUtils toastUtils;
+    private ArrayList<String> completedUrls;
+    private ArrayList<String> failedUrls;
 
 
     public DownloadService() {
         super(DownloadService.class.getName());
-
+        completedUrls = new ArrayList<>();
+        failedUrls = new ArrayList<>();
 
     }
 
@@ -97,11 +102,10 @@ public class DownloadService extends IntentService {
             @Override
             public void onResponse(Call<OwlWrapper> call, Response<OwlWrapper> response) {
 
+
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
                 Log.d(TAG, appDataManager.getOwls().size() + " owls present ");
-
-
 
 
             }
@@ -114,6 +118,15 @@ public class DownloadService extends IntentService {
         }));
 
         return owls;
+    }
+
+
+    private void markAPIAsCompleted(String url) {
+        completedUrls.add(url);
+    }
+
+    private int getTotalCompletedAPIs() {
+        return completedUrls.size();
     }
 
 
