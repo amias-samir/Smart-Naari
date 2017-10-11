@@ -17,12 +17,18 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".application.SmartNaari"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".data.network.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
 
         <!-- <activity -->
         <!-- android:name=".homescreen.MainActivity" -->
@@ -52,8 +58,8 @@
         </activity>
 
         <activity
-            android:exported="true"
             android:name=".utils.ui.BeautifulMainActivity"
+            android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
@@ -70,8 +76,8 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:exported="true"
             android:name=".login.LoginActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SignUpTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -125,8 +131,8 @@
         </activity>
 
         <activity
-            android:exported="true"
             android:name=".passion_of_life.ComplexListActivity"
+            android:exported="true"
             android:parentActivityName=".homescreen.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -162,8 +168,8 @@
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
         <activity
-            android:exported="true"
             android:name=".machupbasdina.MaChupBasdinaActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <meta-data

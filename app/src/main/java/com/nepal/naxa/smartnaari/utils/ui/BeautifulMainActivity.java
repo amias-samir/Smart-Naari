@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -21,6 +22,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -34,6 +37,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class BeautifulMainActivity extends BaseActivity
         implements AppBarLayout.OnOffsetChangedListener {
@@ -70,6 +77,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         bindActivity();
         ButterKnife.bind(this);
+        syncAllData();
 
         mAppBarLayout.addOnOffsetChangedListener(this);
 
@@ -258,6 +266,33 @@ public class BeautifulMainActivity extends BaseActivity
         file_maps.put("Second", R.drawable.food_2);
 
         return file_maps;
+    }
+
+    private void syncAllData() {
+
+
+        DownloadResultReceiver mReceiver = new DownloadResultReceiver(new Handler());
+        mReceiver.setReceiver(new DownloadResultReceiver.Receiver() {
+            @Override
+            public void onReceiveResult(int resultCode, Bundle resultData) {
+                switch (resultCode) {
+                    case STATUS_RUNNING:
+                        showInfoToast("Syncing Data");
+                        break;
+                    case STATUS_ERROR:
+                        break;
+                    case STATUS_FINISHED:
+                        break;
+                }
+            }
+        });
+
+        Log.d("DownloadService","Hello");
+
+        Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
+        toDownloadService.putExtra("receiver", mReceiver);
+
+        this.startService(toDownloadService);
     }
 
 

@@ -1,10 +1,13 @@
 package com.nepal.naxa.smartnaari;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -13,14 +16,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class BeautifulHomeScreenActivity extends AppCompatActivity
+import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
+
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
+
+public class BeautifulHomeScreenActivity extends BaseActivity
         implements AppBarLayout.OnOffsetChangedListener {
 
-    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
-    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
-    private static final int ALPHA_ANIMATIONS_DURATION              = 200;
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
+    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
+    private static final int ALPHA_ANIMATIONS_DURATION = 200;
 
-    private boolean mIsTheTitleVisible          = false;
+    private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
 
     private LinearLayout mTitleContainer;
@@ -34,7 +44,10 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beutiful_main);
 
+
+
         bindActivity();
+
 
         mAppBarLayout.addOnOffsetChangedListener(this);
 
@@ -42,16 +55,23 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
+
     private void bindActivity() {
-        mToolbar        = (Toolbar) findViewById(R.id.main_toolbar);
-        mTitle          = (TextView) findViewById(R.id.main_textview_title);
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mTitle = (TextView) findViewById(R.id.main_textview_title);
         mTitleContainer = (LinearLayout) findViewById(R.id.main_linearlayout_title);
-        mAppBarLayout   = (AppBarLayout) findViewById(R.id.main_appbar);
+        mAppBarLayout = (AppBarLayout) findViewById(R.id.main_appbar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-      //  getMenuInflater().inflate(R.menu.menu_main, menu);
+        //  getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -67,7 +87,7 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
     private void handleToolbarTitleVisibility(float percentage) {
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
 
-            if(!mIsTheTitleVisible) {
+            if (!mIsTheTitleVisible) {
                 startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
                 mIsTheTitleVisible = true;
             }
@@ -83,7 +103,7 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
 
     private void handleAlphaOnTitle(float percentage) {
         if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
-            if(mIsTheTitleContainerVisible) {
+            if (mIsTheTitleContainerVisible) {
                 startAlphaAnimation(mTitleContainer, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
                 mIsTheTitleContainerVisible = false;
             }
@@ -97,7 +117,7 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
         }
     }
 
-    public static void startAlphaAnimation (View v, long duration, int visibility) {
+    public static void startAlphaAnimation(View v, long duration, int visibility) {
         AlphaAnimation alphaAnimation = (visibility == View.VISIBLE)
                 ? new AlphaAnimation(0f, 1f)
                 : new AlphaAnimation(1f, 0f);
@@ -106,4 +126,6 @@ public class BeautifulHomeScreenActivity extends AppCompatActivity
         alphaAnimation.setFillAfter(true);
         v.startAnimation(alphaAnimation);
     }
+
+
 }

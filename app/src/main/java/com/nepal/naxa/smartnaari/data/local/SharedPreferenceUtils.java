@@ -1,11 +1,8 @@
-package com.nepal.naxa.smartnaari.data.network.local;
+package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
-
-import com.nepal.naxa.smartnaari.debug.Dump;
 
 
 /*public class SharedPreferenceUtils {

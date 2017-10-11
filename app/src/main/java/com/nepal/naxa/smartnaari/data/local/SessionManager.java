@@ -1,14 +1,12 @@
-package com.nepal.naxa.smartnaari.data.network.local;
+package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.nepal.naxa.smartnaari.data.network.UserData;
-import com.nepal.naxa.smartnaari.debug.Dump;
 
-import static com.nepal.naxa.smartnaari.data.network.local.SharedPreferenceUtils.KEY_USER_DATA;
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
  * Created on 10/9/17

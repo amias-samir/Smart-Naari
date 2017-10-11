@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -64,6 +65,8 @@ dependencies {
 
     //utils
     compile 'com.mobsandgeeks:android-saripaar:2.0.0'
+
+    compile 'org.greenrobot:greendao:3.2.2'
 
 }
 
