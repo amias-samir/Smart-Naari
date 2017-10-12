@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.application.SmartNaari;
+import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -73,6 +76,10 @@ public class LoginActivity extends BaseActivity {
         SpannableStringBuilder sb = SpanUtils.makeSectionOfTextBigger(rawString, bigSize, textToBigSize);
 
         tvRegisterBeTheOneLBL.setText(sb);
+
+
+
+
 
     }
 

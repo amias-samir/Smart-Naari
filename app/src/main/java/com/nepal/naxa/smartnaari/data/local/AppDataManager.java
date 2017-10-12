@@ -1,9 +1,13 @@
 package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nepal.naxa.smartnaari.application.SmartNaari;
+import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.DataItem;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.UserData;
@@ -22,19 +26,18 @@ public class AppDataManager {
 
     private SharedPreferenceUtils utils;
     private Gson gson;
+    private DaoSession daoSession;
 
     public AppDataManager(Context context) {
         utils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PREF_NETWORK_CACHE);
         gson = new Gson();
+        daoSession = ((SmartNaari) context.getApplicationContext()).getDaoSession();
     }
-
 
     public void saveOwls(OwlWrapper owlWrapper) {
 
-        Gson gson = new Gson();
         String json = gson.toJson(owlWrapper.getData());
         utils.setValue(KEY_OWL_LIST, json);
-
     }
 
     public List<DataItem> getOwls() {
@@ -47,5 +50,15 @@ public class AppDataManager {
 
         return owls;
     }
+
+    public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
+
+        daoSession.getYuwaQuestionDao().saveInTx(yuwaQuestion);
+    }
+
+    public List<YuwaQuestion> getAllYuwaQuestions() {
+        return daoSession.getYuwaQuestionDao().loadAll();
+    }
+
 
 }

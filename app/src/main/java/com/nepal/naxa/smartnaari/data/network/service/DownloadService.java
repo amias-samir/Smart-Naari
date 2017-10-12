@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
@@ -95,7 +96,7 @@ public class DownloadService extends IntentService {
         receiver.send(STATUS_RUNNING, Bundle.EMPTY);
     }
 
-    public OwlWrapper getOwls() {
+    public void getOwls() {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
         call.enqueue(new ErrorSupportCallback<>(new Callback<OwlWrapper>() {
@@ -105,8 +106,8 @@ public class DownloadService extends IntentService {
 
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
-                Log.d(TAG, appDataManager.getOwls().size() + " owls present ");
 
+                Log.d(TAG,response.body().getData().size() + " owls are present ");
 
             }
 
@@ -117,7 +118,26 @@ public class DownloadService extends IntentService {
 
         }));
 
-        return owls;
+    }
+
+    public void getYuwaPustaPosts() {
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
+        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts();
+        call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaResponse>() {
+            @Override
+            public void onResponse(Call<YuwaPustaResponse> call, Response<YuwaPustaResponse> response) {
+
+                AppDataManager appDataManager = new AppDataManager(getApplicationContext());
+                appDataManager.saveYuwaQuestions(response.body().getData());
+
+
+            }
+
+            @Override
+            public void onFailure(Call<YuwaPustaResponse> call, Throwable t) {
+
+            }
+        }));
     }
 
 

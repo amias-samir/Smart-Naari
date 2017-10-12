@@ -16,9 +16,7 @@ import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
-import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
-import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
+
 
 public class SplashScreenActivity extends BaseActivity {
 

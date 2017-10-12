@@ -22,6 +22,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
@@ -78,6 +79,8 @@ public class BeautifulMainActivity extends BaseActivity
         bindActivity();
         ButterKnife.bind(this);
         syncAllData();
+
+
 
         mAppBarLayout.addOnOffsetChangedListener(this);
 

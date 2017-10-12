@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.data.network.retrofit;
 
+import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
@@ -28,5 +29,8 @@ public interface NetworkApiInterface {
 
     @GET("get_owl")
     Call<OwlWrapper> getOwls();
+
+    @GET("get_yuwapusta")
+    Call<YuwaPustaResponse> getYuwaPustaPosts();
 }
 

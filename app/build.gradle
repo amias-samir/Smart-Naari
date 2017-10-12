@@ -25,6 +25,10 @@ android {
     }
 }
 
+greendao {
+    schemaVersion 1
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
@@ -70,8 +74,7 @@ dependencies {
 
     compile 'com.github.GrenderG:Toasty:1.2.5'
 
-    //utils
-    compile 'com.mobsandgeeks:android-saripaar:2.0.0'
+
 
     compile 'org.greenrobot:greendao:3.2.2'
 

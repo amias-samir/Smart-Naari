@@ -25,7 +25,6 @@ public class SessionManager {
 
     public void saveUser(UserData userData) {
 
-
         String json = gson.toJson(userData);
         utils.setValue(KEY_USER_DATA, json);
 
@@ -39,6 +38,11 @@ public class SessionManager {
         userData = gson.fromJson(json, UserData.class);
 
         return userData;
+    }
+
+    public String getUserId() {
+
+        return getUser().getUserId();
     }
 
     public boolean doesUserHaveCircle() {
