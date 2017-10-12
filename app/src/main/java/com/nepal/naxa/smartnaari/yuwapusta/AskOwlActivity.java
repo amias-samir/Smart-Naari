@@ -14,7 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
@@ -22,9 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAdapter.OnItemClickListener {
-
-
+public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.OnItemClickListener {
 
 
     @BindView(R.id.toolbar)
@@ -50,16 +51,17 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
         initQuestionsRecyclerView();
 
 
-        int color = ContextCompat.getColor(getApplicationContext(),R.color.colorAccent);
-        SpanUtils.setColor(tvHeader,"Yuwa Pusta","Yuwa",color);
+        int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
+        SpanUtils.setColor(tvHeader, "Yuwa Pusta", "Yuwa", color);
 
     }
 
 
     private void initQuestionsRecyclerView() {
-        List<YuwaQuery> yuwaQueries = YuwaQuery.getDemoQueries();
 
-        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQueries);
+        List<YuwaQuestion> yuwaQuestions = appDataManager.getAllYuwaQuestions();
+
+        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
         questionList.setAdapter(yuwaQuestionAdapter);
 
         questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -91,7 +93,7 @@ public class AskOwlActivity extends AppCompatActivity implements YuwaQuestionAda
     }
 
     @Override
-    public void onItemClick(View view, YuwaQuery yuwaQuery) {
+    public void onItemClick(View view, YuwaQuestion yuwaQuery) {
         Toast.makeText(this, "SOmething", Toast.LENGTH_SHORT).show();
     }
 }

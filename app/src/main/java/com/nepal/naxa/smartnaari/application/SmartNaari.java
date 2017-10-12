@@ -21,15 +21,7 @@ public class SmartNaari extends Application {
     public void onCreate() {
         super.onCreate();
 
-
         daoSession = new DaoMaster(new DbOpenHelper(this, "smart_naari.db").getWritableDb()).newSession();
-
-        if (daoSession.getYuwaQuestionDao().loadAll().size() == 0) {
-            daoSession.getYuwaQuestionDao().insert(new YuwaQuestion(1L,
-                    "1", "What's a good question? ", " I don't know", "2015/2/12","22"));
-        }
-
-
 
     }
 

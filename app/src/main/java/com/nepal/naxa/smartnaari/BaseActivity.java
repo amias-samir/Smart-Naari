@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
@@ -27,12 +28,15 @@ public class BaseActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private ToastUtils toastUtils;
     private Toasty progess;
+    protected AppDataManager appDataManager;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         toastUtils = new ToastUtils();
+
+        appDataManager = new AppDataManager(getApplicationContext());
     }
 
     public void showErrorToast(String message) {

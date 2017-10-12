@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 
 import java.util.List;
 
@@ -34,11 +35,11 @@ import butterknife.Optional;
 public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
 
-    private List<YuwaQuery> items;
+    private List<YuwaQuestion> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
 
-    public YuwaQuestionAdapter(List<YuwaQuery> items) {
+    public YuwaQuestionAdapter(List<YuwaQuestion> items) {
         this.items = items;
     }
 
@@ -70,7 +71,12 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        YuwaQuery item = items.get(position);
+        YuwaQuestion item = items.get(position);
+
+        if (holder instanceof ViewHolder) {
+            //        ((ViewHolder) holder).question.setText(item.getQuestion());
+            //      ((ViewHolder) holder).answer.setText(item.getAnswer());
+        }
     }
 
 
@@ -83,7 +89,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
 
-        if (items.get(position).isFooter())
+        if (false)
             return VIEW_TYPES.Footer;
         else
             return VIEW_TYPES.Normal;
@@ -92,7 +98,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onItemClick(v, (YuwaQuery) v.getTag());
+        onItemClickListener.onItemClick(v, (YuwaQuestion) v.getTag());
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
@@ -112,7 +118,6 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     protected class FooterHolder extends RecyclerView.ViewHolder {
 
-
         public FooterHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -127,7 +132,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, YuwaQuery yuwaQuery);
+        void onItemClick(View view, YuwaQuestion yuwaQuestion);
 
     }
 

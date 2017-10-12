@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
@@ -73,16 +74,6 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
     }
 
     private void initQuestionsRecyclerView() {
-        List<YuwaQuery> yuwaQueries = YuwaQuery.getDemoQueries2();
-
-        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQueries);
-        questionList.setAdapter(yuwaQuestionAdapter);
-
-        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        yuwaQuestionAdapter.setOnItemClickListener(this);
-
-        questionList.setNestedScrollingEnabled(false);
-
 
     }
     private void initToolbar() {
@@ -110,7 +101,7 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
     }
 
     @Override
-    public void onItemClick(View view, YuwaQuery yuwaQuery) {
+    public void onItemClick(View view, YuwaQuestion yuwaQuestion) {
 
     }
 

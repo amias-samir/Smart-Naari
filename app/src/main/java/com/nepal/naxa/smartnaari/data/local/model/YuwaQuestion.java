@@ -4,8 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * Created on 10/12/17
@@ -17,6 +19,11 @@ public class YuwaQuestion {
 
     @Id(autoincrement = true)
     private Long id;
+
+    @SerializedName("yuwa_tbl_id")
+    @Index(unique = true)
+    @Property(nameInDb = "id_string")
+    private String idString;
 
     @SerializedName("owl_id")
     @Property(nameInDb = "owl_id")
@@ -38,10 +45,12 @@ public class YuwaQuestion {
     @Property(nameInDb = "updated_at")
     private String update_at;
 
-    @Generated(hash = 605104922)
-    public YuwaQuestion(Long id, String owlId, String question, String answer,
-            String userId, String update_at) {
+
+    @Generated(hash = 463927906)
+    public YuwaQuestion(Long id, String idString, String owlId, String question,
+                        String answer, String userId, String update_at) {
         this.id = id;
+        this.idString = idString;
         this.owlId = owlId;
         this.question = question;
         this.answer = answer;
@@ -100,5 +109,14 @@ public class YuwaQuestion {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    public String getIdString() {
+        return this.idString;
+    }
+
+    public void setIdString(String idString) {
+        this.idString = idString;
+    }
+
 
 }

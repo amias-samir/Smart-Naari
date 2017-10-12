@@ -73,6 +73,7 @@ public class DownloadService extends IntentService {
         broadCastStart();
 
         getOwls();
+        getYuwaPustaPosts();
 
     }
 
@@ -107,7 +108,7 @@ public class DownloadService extends IntentService {
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
 
-                Log.d(TAG,response.body().getData().size() + " owls are present ");
+                Log.i(TAG,response.body().getData().size() + " owls are downloaded ");
 
             }
 
@@ -130,6 +131,10 @@ public class DownloadService extends IntentService {
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveYuwaQuestions(response.body().getData());
 
+                Log.i(TAG,response.body().getData().size() + " Yuwa Pusta posts downloaded ");
+
+                int i = appDataManager.getAllYuwaQuestions().size();
+                Log.i(TAG,i+" yuwa posts present in database");
 
             }
 

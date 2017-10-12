@@ -12,6 +12,7 @@ import com.nepal.naxa.smartnaari.data.network.DataItem;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 
+import java.util.Date;
 import java.util.List;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_OWL_LIST;
@@ -53,11 +54,15 @@ public class AppDataManager {
 
     public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
 
-        daoSession.getYuwaQuestionDao().saveInTx(yuwaQuestion);
+        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
     }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
         return daoSession.getYuwaQuestionDao().loadAll();
+    }
+
+    private void getLastSyncDateTime(Class<? extends Class> classname) {
+        daoSession.getDao(classname);
     }
 
 

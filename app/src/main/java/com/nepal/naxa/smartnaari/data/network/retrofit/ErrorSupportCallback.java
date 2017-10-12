@@ -29,15 +29,20 @@ public class ErrorSupportCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
+
+        String url = response.raw().request().url().toString();
+
         if (response.body() == null) {
 
             callback.onFailure(call, new NullPointerException("Empty response"));
 
         } else if (UrlClass.isInvalidResponse(getResponseCode(response.body()))) {
 
+
             callback.onFailure(call, new Exception("Server did not return 200 status"));
 
         } else {
+
 
             callback.onResponse(call, response);
         }
@@ -45,7 +50,8 @@ public class ErrorSupportCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        Log.e(TAG, t.toString());
+        Log.e(TAG,"Request Failed "+ t.toString());
+
         callback.onFailure(call, t);
     }
 
