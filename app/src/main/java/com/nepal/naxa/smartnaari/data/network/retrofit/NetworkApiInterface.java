@@ -6,6 +6,7 @@ import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
+import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -32,5 +33,9 @@ public interface NetworkApiInterface {
 
     @GET("get_yuwapusta")
     Call<YuwaPustaResponse> getYuwaPustaPosts();
+
+    @FormUrlEncoded
+    @POST("yuwa_pusta")
+    Call<YuwaPustaQueryResponse> getYuwaPusaQueryDetails(@Field("data") String data);
 }
 

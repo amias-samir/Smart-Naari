@@ -45,6 +45,7 @@ public class SessionManager {
         return getUser().getUserId();
     }
 
+
     public boolean doesUserHaveCircle() {
 
         UserData userData = getUser();
