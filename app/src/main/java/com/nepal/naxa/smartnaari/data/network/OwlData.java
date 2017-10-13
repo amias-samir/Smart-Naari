@@ -4,7 +4,7 @@ package com.nepal.naxa.smartnaari.data.network;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataItem{
+public class OwlData {
 
 	@SerializedName("owl_gender")
 	private String owlGender;

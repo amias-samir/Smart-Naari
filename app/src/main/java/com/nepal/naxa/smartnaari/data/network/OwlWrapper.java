@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName;
 public class OwlWrapper {
 
     @SerializedName("data")
-    private List<DataItem> data;
+    private List<OwlData> data;
 
     @SerializedName("status")
     private String status;
 
-    public void setData(List<DataItem> data) {
+    public void setData(List<OwlData> data) {
         this.data = data;
     }
 
-    public List<DataItem> getData() {
+    public List<OwlData> getData() {
         return data;
     }
 

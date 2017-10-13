@@ -60,7 +60,7 @@
 
         <Spinner
             android:layout_centerHorizontal="true"
-            android:id="@+id/spinner_user_birth_place_input_id"
+            android:id="@+id/spinner_owlList"
             style="@style/SmartNaariSpinnerTheme"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -69,18 +69,20 @@
             android:gravity="center" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/wrapper_text_input_layout"
+            android:id="@+id/wrapper_text_QuestionToOwl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner_user_birth_place_input_id"
+            android:layout_below="@+id/spinner_owlList"
             app:counterEnabled="true"
-            app:counterMaxLength="150">
+            app:counterMaxLength="150"
+            android:focusable="true">
 
             <EditText
                 android:hint="@string/general_form_hint_question"
                 style="@style/SmartNaariInputLayoutTheme"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp"
+                android:focusable="true"/>
 
 
         </android.support.design.widget.TextInputLayout>
@@ -90,7 +92,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/wrapper_text_input_layout"
+            android:layout_below="@+id/wrapper_text_QuestionToOwl"
             android:layout_gravity="center"
             android:drawableEnd="@drawable/ic_right_arrow"
             android:drawableRight="@drawable/ic_right_arrow"

@@ -1,22 +1,19 @@
 package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-import com.nepal.naxa.smartnaari.data.network.DataItem;
+import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
-import com.nepal.naxa.smartnaari.data.network.UserData;
 
 import java.util.Date;
 import java.util.List;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_OWL_LIST;
-import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
  * Created on 10/11/17
@@ -41,12 +38,12 @@ public class AppDataManager {
         utils.setValue(KEY_OWL_LIST, json);
     }
 
-    public List<DataItem> getOwls() {
+    public List<OwlData> getOwls() {
 
-        List<DataItem> owls;
+        List<OwlData> owls;
 
         String json = utils.getStringValue(KEY_OWL_LIST, null);
-        owls = gson.fromJson(json, new TypeToken<List<DataItem>>() {
+        owls = gson.fromJson(json, new TypeToken<List<OwlData>>() {
         }.getType());
 
         return owls;
