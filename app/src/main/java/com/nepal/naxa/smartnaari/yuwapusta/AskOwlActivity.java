@@ -21,9 +21,9 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
-<<<<<<< HEAD
+
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-=======
+
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -33,7 +33,7 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
->>>>>>> 7905ec19468500763a402ce336248de80c0185d3
+
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
@@ -52,15 +52,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-<<<<<<< HEAD
-public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.OnItemClickListener {
-=======
-import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
+
 public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.OnItemClickListener {
 
->>>>>>> 7905ec19468500763a402ce336248de80c0185d3
 
     String TAG = "AskOwlActivity";
 
