@@ -47,6 +47,10 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.onItemClickListener = onItemClickListener;
     }
 
+    public static void updateItems(){
+
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -89,7 +93,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
 
-        if (false)
+        if (items.get(position).getIsFooter())
             return VIEW_TYPES.Footer;
         else
             return VIEW_TYPES.Normal;

@@ -7,6 +7,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Unique;
 
 /**
@@ -45,6 +46,16 @@ public class YuwaQuestion {
     @Property(nameInDb = "updated_at")
     private String update_at;
 
+    @Transient
+    private Boolean isFooter;
+
+    public Boolean getIsFooter() {
+        return isFooter;
+    }
+
+    public void setIsFooter(Boolean isFooter) {
+        this.isFooter = isFooter;
+    }
 
     @Generated(hash = 463927906)
     public YuwaQuestion(Long id, String idString, String owlId, String question,
