@@ -47,18 +47,16 @@ public class ComplexListActivity extends ComplexListBaseActivity {
     protected void setUpAdapter() {
         GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1);
 
-         adapter = new ComplexListAdapter(this);
+        adapter = new ComplexListAdapter(this);
         adapter.setSpanCount(1);
 
         adapter.setExpandableMode(RecyclerAdapter.EXPANDABLE_MODE_MULTIPLE);
-
 
 
         recyclerView.addItemDecoration(adapter.getItemDecorationManager());
         recyclerView.setLayoutManager(glm);
         recyclerView.setAdapter(adapter);
         recyclerView.setEmptyView(findViewById(R.id.general_recycler_empty));
-
 
 
     }
@@ -84,7 +82,7 @@ public class ComplexListActivity extends ComplexListBaseActivity {
             public void run() {
                 adapter.addAllModelItem(dataListThree);
             }
-        }, TimeUnit.SECONDS.toMillis(10));
+        }, TimeUnit.SECONDS.toMillis(3));
 
 
     }

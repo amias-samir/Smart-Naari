@@ -93,7 +93,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
 
-        if (items.get(position).getIsFooter())
+        if (false)
             return VIEW_TYPES.Footer;
         else
             return VIEW_TYPES.Normal;

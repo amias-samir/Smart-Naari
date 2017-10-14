@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.nepal.naxa.smartnaari.R;
@@ -86,6 +87,11 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
                     * (1f - expandedPercentageFactor)) + (child.getHeight()/2);
 
             child.setX(mStartXPosition - distanceXToSubtract);
+
+            if (distanceYToSubtract > (mStartYPosition - mFinalYPosition) + (mCustomFinalHeight / 2))
+                distanceYToSubtract = (mStartYPosition - mFinalYPosition) + (mCustomFinalHeight / 2);
+
+
             child.setY(mStartYPosition - distanceYToSubtract);
 
             float heightToSubtract = ((mStartHeight - mCustomFinalHeight) * heightFactor);
@@ -94,6 +100,11 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
             lp.width = (int) (mStartHeight - heightToSubtract);
             lp.height = (int) (mStartHeight - heightToSubtract);
             child.setLayoutParams(lp);
+
+
+
+
+
         } else {
             float distanceYToSubtract = ((mStartYPosition - mFinalYPosition)
                     * (1f - expandedPercentageFactor)) + (mStartHeight/2);
@@ -105,9 +116,12 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
             lp.width = (int) (mStartHeight);
             lp.height = (int) (mStartHeight);
             child.setLayoutParams(lp);
+
         }
         return true;
     }
+
+
 
     private void maybeInitProperties(CircleImageView child, View dependency) {
         if (mStartYPosition == 0)

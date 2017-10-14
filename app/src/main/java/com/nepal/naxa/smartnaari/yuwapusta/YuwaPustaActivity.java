@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -28,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class YuwaPustaActivity extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
+public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -51,8 +52,8 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
         initQuestionsRecyclerView();
 
 
-        int color = ContextCompat.getColor(getApplicationContext(),R.color.colorAccent);
-        SpanUtils.setColor(header,"Yuwa Pusta","Yuwa",color);
+        int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
+        SpanUtils.setColor(header, "Yuwa Pusta", "Yuwa", color);
 
     }
 
@@ -74,8 +75,19 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
     }
 
     private void initQuestionsRecyclerView() {
+        List<YuwaQuestion> yuwaQuestions = appDataManager.getAllYuwaQuestions();
+
+        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
+        questionList.setAdapter(yuwaQuestionAdapter);
+
+        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        yuwaQuestionAdapter.setOnItemClickListener(this);
+
+        questionList.setNestedScrollingEnabled(false);
+
 
     }
+
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -107,9 +119,9 @@ public class YuwaPustaActivity extends AppCompatActivity implements RecyclerView
 
 
     @OnClick(R.id.btn_ask_a_owl)
-    public void toAskAOwnActivity(){
+    public void toAskAOwnActivity() {
 
-        Intent toAskOwlActivity = new Intent(this,AskOwlActivity.class);
+        Intent toAskOwlActivity = new Intent(this, AskOwlActivity.class);
         startActivity(toAskOwlActivity);
 
     }
