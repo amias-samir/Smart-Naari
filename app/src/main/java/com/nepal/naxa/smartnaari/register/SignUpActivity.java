@@ -172,7 +172,7 @@ public class SignUpActivity extends Activity {
             return false;
         }
 
-        
+
         password = etPassword.getText().toString().trim();
         if (password.equals("")) {
             Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
