@@ -17,7 +17,7 @@ import retrofit2.http.POST;
 
 public interface NetworkApiInterface {
     @FormUrlEncoded
-    @POST(UrlClass.SIGNUP_URL)
+    @POST("register")
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
     @FormUrlEncoded

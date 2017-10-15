@@ -8,7 +8,6 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Transient;
-import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * Created on 10/12/17
@@ -43,8 +42,8 @@ public class YuwaQuestion {
     @Property(nameInDb = "user_id")
     private String userId;
 
-    @Property(nameInDb = "updated_at")
-    private String update_at;
+    @Property(nameInDb = "last_sync_date_time")
+    private String last_sync_date_time;
 
     @Transient
     private Boolean isFooter;
@@ -57,16 +56,16 @@ public class YuwaQuestion {
         this.isFooter = isFooter;
     }
 
-    @Generated(hash = 463927906)
+    @Generated(hash = 1657222644)
     public YuwaQuestion(Long id, String idString, String owlId, String question,
-                        String answer, String userId, String update_at) {
+            String answer, String userId, String last_sync_date_time) {
         this.id = id;
         this.idString = idString;
         this.owlId = owlId;
         this.question = question;
         this.answer = answer;
         this.userId = userId;
-        this.update_at = update_at;
+        this.last_sync_date_time = last_sync_date_time;
     }
 
     @Generated(hash = 2033614305)
@@ -105,12 +104,12 @@ public class YuwaQuestion {
         this.answer = answer;
     }
 
-    public String getUpdate_at() {
-        return this.update_at;
+    public String getLast_sync_date_time() {
+        return this.last_sync_date_time;
     }
 
-    public void setUpdate_at(String update_at) {
-        this.update_at = update_at;
+    public void setLast_sync_date_time(String last_sync_date_time) {
+        this.last_sync_date_time = last_sync_date_time;
     }
 
     public String getUserId() {

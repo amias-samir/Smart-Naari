@@ -6,6 +6,7 @@ import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.DbOpenHelper;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.debug.AppLogger;
 
 
 /**
@@ -20,6 +21,7 @@ public class SmartNaari extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppLogger.init();
 
         daoSession = new DaoMaster(new DbOpenHelper(this, "smart_naari.db").getWritableDb()).newSession();
 

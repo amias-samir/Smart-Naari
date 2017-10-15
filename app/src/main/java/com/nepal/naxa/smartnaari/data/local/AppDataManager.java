@@ -7,9 +7,15 @@ import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestionDao;
 import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.debug.Dump;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,8 +64,46 @@ public class AppDataManager {
         return daoSession.getYuwaQuestionDao().loadAll();
     }
 
-    private void getLastSyncDateTime(Class<? extends Class> classname) {
-        daoSession.getDao(classname);
+    @SuppressWarnings("unchecked")
+    public String getLastSyncDateTime(Class classname) {
+
+        Object object;
+        QueryBuilder<String> dateAndTimes;
+        String dateTime = "";
+
+        dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
+        object = dateAndTimes.list().get(0);
+
+        try {
+            dateTime = parseResponseCode(object);
+        } catch (NullPointerException | IllegalAccessException e) {
+            e.printStackTrace();
+
+        }
+
+
+        return dateTime;
+
+    }
+
+
+    private String parseResponseCode(Object someObject) throws NullPointerException, IllegalAccessException {
+
+        String dateTime = "";
+
+        for (Field field : someObject.getClass().getDeclaredFields()) {
+
+            field.setAccessible(true);
+            Object value;
+
+            value = field.get(someObject);
+
+            if (field.getName().equalsIgnoreCase("last_sync_date_time") ) {
+                dateTime = value.toString();
+            }
+        }
+
+        return dateTime;
     }
 
 
