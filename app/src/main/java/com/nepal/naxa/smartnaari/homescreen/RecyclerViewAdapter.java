@@ -101,7 +101,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onItemClick(v, (ViewModel) v.getTag());
+
+
+        onItemClickListener.onItemClick(v,(ViewModel) v.getTag());
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {

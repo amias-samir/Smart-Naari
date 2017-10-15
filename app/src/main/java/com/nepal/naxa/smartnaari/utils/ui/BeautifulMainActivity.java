@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
@@ -28,7 +30,9 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
@@ -41,7 +45,9 @@ import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
+
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
@@ -98,6 +104,8 @@ public class BeautifulMainActivity extends BaseActivity
     private long timeStampWhenBackWasPressed;
 
 
+    ImageView image1,image2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +114,15 @@ public class BeautifulMainActivity extends BaseActivity
         bindActivity();
         ButterKnife.bind(this);
         syncAllData();
+
+
+
+
+        Glide.with(this)
+                .load(R.drawable.food_1).into(placeholder);
+        Glide.with(this)
+                .load(R.drawable.food_2).into(placeholder2);
+
 
         mAppBarLayout.addOnOffsetChangedListener(this);
         setupActionBar();
@@ -118,8 +135,7 @@ public class BeautifulMainActivity extends BaseActivity
         setRecyclerAdapter(recyclerView);
         initHorizontalRecyclerView();
         scrollToolBarImages();
-        Glide.with(this).load(getImage("food_1")).into(placeholder);
-        Glide.with(this).load(getImage("food_2")).into(placeholder2);
+
 
         boolean isFirstTimeLoad = new SessionManager(getApplicationContext()).isFirstTimeLoad();
         if (isFirstTimeLoad) {
@@ -167,7 +183,10 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     public void scrollToolBarImages() {
+
         final int scrollSpeed = 3000;
+
+
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
@@ -207,6 +226,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         List<ViewModel> items = ViewModel.getGridItems();
         recyclerView.setNestedScrollingEnabled(false);
+
         adapter = new RecyclerViewAdapter(items);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
@@ -362,6 +382,7 @@ public class BeautifulMainActivity extends BaseActivity
         });
 
 
+
         Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
         toDownloadService.putExtra("receiver", mReceiver);
 
@@ -378,28 +399,27 @@ public class BeautifulMainActivity extends BaseActivity
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
+
+
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
-
         Log.e("MainActivity", "onItemClick: " + viewModel.getText());
 
         if (viewModel.getText().equals("Report a case")) {
-            Intent maChupBasdinaIntent = new Intent(BeautifulMainActivity.this, MaChupBasdinaActivity.class);
+            Intent maChupBasdinaIntent = new Intent(this, MaChupBasdinaActivity.class);
             startActivity(maChupBasdinaIntent);
         } else if (viewModel.getText().equals("Time is of the essence")) {
-            startActivity(new Intent(BeautifulMainActivity.this, ServicesActivity.class));
+            startActivity(new Intent(this, ServicesActivity.class));
         } else if (viewModel.getText().equals("I am Amazing")) {
-            startActivity(new Intent(BeautifulMainActivity.this, IAmAmazingActivity.class));
+            startActivity(new Intent(this, IAmAmazingActivity.class));
         } else if (viewModel.getText().equals("Saksham Chu")) {
-            startActivity(new Intent(BeautifulMainActivity.this, MaSakchamChuMainActivity.class));
+            startActivity(new Intent(this, MaSakchamChuMainActivity.class));
         } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
-            startActivity(new Intent(BeautifulMainActivity.this, YuwaPustaActivity.class));
+            startActivity(new Intent(this, YuwaPustaActivity.class));
         } else if ((viewModel.getText().equals("Smart Parenting"))) {
 
-            startActivity(new Intent(BeautifulMainActivity.this, SmartParentActivity.class));
+            startActivity(new Intent(this, SmartParentActivity.class));
         }
 
-
     }
-
 }
