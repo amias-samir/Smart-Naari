@@ -172,79 +172,74 @@
 
                     </LinearLayout>
 
-                    <!--Age and sex layout-->
-                    <LinearLayout
+                    <!-- age input layout-->
+                    <EditText
+
+                        android:id="@+id/user_age_input_id"
+                        style="@style/SmartNaariSpinnerTheme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/edit_text_boarder_recg"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:hint="Age"
+                        android:inputType="date"
+                        android:onClick="getDOB_BtnClicked"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/textSecondary"
+                        android:textSize="@dimen/material_text_headline" />
+
+                    <!--se input layout-->
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/is_checked_radio_btn_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="2"
                         android:orientation="horizontal"
+                        android:padding="@dimen/spacing_medium"
                         android:weightSum="3">
 
-                        <!-- age input layout-->
-                        <EditText
-
-                            android:id="@+id/user_age_input_id"
-                            style="@style/SmartNaariSpinnerTheme"
-                            android:layout_width="0dp"
+                        <RadioButton
+                            android:id="@+id/radio_sex_male"
+                            style="@style/radionbutton"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:background="@drawable/edit_text_boarder_recg"
-                            android:ems="10"
-                            android:focusable="false"
-                            android:gravity="center"
-                            android:hint="Age"
-                            android:onClick="getDOB_BtnClicked"
-                            android:inputType="date"
-                            android:paddingBottom="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:paddingTop="10dp"
-                            android:textColor="@color/colorWhite"
-                            android:textColorHint="@color/textSecondary"
+                            android:onClick="onRadioButtonClicked"
+                            android:text=" M "
+                            android:textColor="@color/textSecondary"
                             android:textSize="@dimen/material_text_headline" />
 
-                        <!--se input layout-->
-                        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/is_checked_radio_btn_group"
-                            android:layout_width="0dp"
+                        <RadioButton
+                            android:id="@+id/radio_sex_female"
+                            style="@style/radionbutton"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/spacing_medium">
+                            android:layout_weight="1"
+                            android:onClick="onRadioButtonClicked"
+                            android:text=" F "
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/material_text_headline" />
 
-                            <RadioButton
-                                android:id="@+id/radio_sex_male"
-                                style="@style/radionbutton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" M "
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/material_text_caption" />
+                        <RadioButton
+                            android:id="@+id/radio_sex_other"
+                            style="@style/radionbutton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="onRadioButtonClicked"
+                            android:text=" Other"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="@dimen/material_text_headline" />
+                    </RadioGroup>
 
-                            <RadioButton
-                                android:id="@+id/radio_sex_female"
-                                style="@style/radionbutton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" F "
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/material_text_caption" />
-
-                            <RadioButton
-                                android:id="@+id/radio_sex_other"
-                                style="@style/radionbutton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" Other"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/material_text_caption" />
-                        </RadioGroup>
-
-
-                    </LinearLayout>
 
                     <!-- spinner birth place input layout-->
                     <FrameLayout

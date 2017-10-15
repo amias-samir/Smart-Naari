@@ -86,12 +86,12 @@ public class ViewModel {
         viewModel = new ViewModel("Report a case", R.drawable.grid_ma_chup_basdina);
         viewModels.add(viewModel);
 
-       // viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
-        viewModel = new ViewModel("", R.drawable.grid_services);
+        viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
+        // viewModel = new ViewModel("", R.drawable.grid_services);
         viewModels.add(viewModel);
 
-        // viewModel = new ViewModel("Saksham Chu", R.drawable.grid_ma_saksam_chu);
-        viewModel = new ViewModel("", R.drawable.grid_ma_saksam_chu);
+        viewModel = new ViewModel("Saksham Chu", R.drawable.grid_ma_saksam_chu);
+        //viewModel = new ViewModel("", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Yuwa Pusta", R.drawable.grid_yuwa_pusta);
@@ -100,8 +100,8 @@ public class ViewModel {
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
-        //viewModel = new ViewModel("I am Amazing", R.drawable.grid_i_am_amazing);
-        viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
+        viewModel = new ViewModel("I am Amazing", R.drawable.grid_i_am_amazing);
+        //viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
         viewModels.add(viewModel);
 
         return viewModels;

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
@@ -62,6 +63,10 @@ public class SessionManager {
     public boolean isUserSessionActive() {
         return getUser() != null;
 
+    }
+
+    public boolean isFirstTimeLoad() {
+        return utils.getBooleanValue(KEY_HAS_USER_LEARNED_APP, true);
     }
 
 

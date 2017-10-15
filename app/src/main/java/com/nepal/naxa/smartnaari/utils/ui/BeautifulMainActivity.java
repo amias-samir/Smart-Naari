@@ -28,6 +28,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
@@ -119,6 +120,11 @@ public class BeautifulMainActivity extends BaseActivity
         scrollToolBarImages();
         Glide.with(this).load(getImage("food_1")).into(placeholder);
         Glide.with(this).load(getImage("food_2")).into(placeholder2);
+
+        boolean isFirstTimeLoad = new SessionManager(getApplicationContext()).isFirstTimeLoad();
+        if (isFirstTimeLoad) {
+            //drawerLayout.openDrawer(GravityCompat.START);
+        }
 
 
     }
@@ -227,7 +233,7 @@ public class BeautifulMainActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar_red, menu);
 
         MenuItem tapItStopIt = menu.findItem(R.id.item_call);
         MenuItem notification = menu.findItem(R.id.item_notification);
