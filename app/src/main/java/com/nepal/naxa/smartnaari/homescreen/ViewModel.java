@@ -86,11 +86,11 @@ public class ViewModel {
         viewModel = new ViewModel("Report a case", R.drawable.grid_ma_chup_basdina);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
+        viewModel = new ViewModel("\t", R.drawable.grid_services);
         // viewModel = new ViewModel("", R.drawable.grid_services);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Saksham Chu", R.drawable.grid_ma_saksam_chu);
+        viewModel = new ViewModel("\t\t", R.drawable.grid_ma_saksam_chu);
         //viewModel = new ViewModel("", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
@@ -100,7 +100,7 @@ public class ViewModel {
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("I am Amazing", R.drawable.grid_i_am_amazing);
+        viewModel = new ViewModel("\t\t\t", R.drawable.grid_i_am_amazing);
         //viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
         viewModels.add(viewModel);
 
@@ -134,17 +134,19 @@ public class ViewModel {
 
 
         ViewModel viewModel;
-        viewModel = new ViewModel("Service One", R.color.black);
+        viewModel = new ViewModel("Home", R.color.black);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Service Two", R.color.whatdiff);
+        viewModel = new ViewModel("Friend", R.color.whatdiff);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Service Three", R.color.crimepunis);
+        viewModel = new ViewModel("Hospital", R.color.crimepunis);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Police Station", R.color.colorAccent);
+        viewModel = new ViewModel("Police Station", R.color.black);
         viewModels.add(viewModel);
+
+
 
         return viewModels;
 
