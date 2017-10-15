@@ -22,10 +22,8 @@ import butterknife.OnClick;
 
 public class MaSakchamChuMainActivity extends AppCompatActivity {
 
-    @BindView(R.id.rb_main_activitylifecoaching)
-    RadioButton rbMainActivitylifecoaching;
-    @BindView(R.id.rb_main_activity_angermanagement)
-    RadioButton rbMainActivityAngermanagement;
+
+
     @BindView(R.id.bt_main_activity_takeatest)
     Button btnTakeATest;
     @BindView(R.id.bt_main_activity_freeonlinecource)
@@ -61,7 +59,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
 
     @OnClick(R.id.bt_main_activity_takeatest)
     public void toTakeATest(){
-        startActivity(new Intent(this, LifeCoachingActivity.class));
+
     }
 
 }
