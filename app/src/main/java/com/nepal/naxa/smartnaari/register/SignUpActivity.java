@@ -163,228 +163,163 @@ public class SignUpActivity extends Activity {
         }
     }
 
-//    @Override
-//    public void onFocusChange(View v, boolean hasFocus) {
-//
-//        switch (v.getId()) {
-//            case R.id.user_name_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    userName = etUserName.getText().toString().trim();
-//                    if (userName.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_password_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    password = etPassword.getText().toString().trim();
-//                    if (password.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_confirm_password_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    confirmPassword = etConformPassword.getText().toString().trim();
-//                    if (confirmPassword.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
-//                    } else {
-//                        if (confirmPassword.equals(password)) {
-//
-//                        } else {
-//                            Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
-//                        }
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_firstname_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    firstName = etFirstName.getText().toString().trim();
-//                    if (firstName.equals("")) {
-//                        Toasty.error(getApplicationContext(), "First name field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_surname_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    surName = etSurName.getText().toString().trim();
-//                    if (surName.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_age_input_id:
-//                if (hasFocus) {
-//
-//                } else {
-//                    age = etAge.getText().toString().trim();
-//                    if (age.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.is_checked_radio_btn_group:
-//                if (hasFocus) {
-//
-//                } else {
-//                    int id = rgGender.getCheckedRadioButtonId();
-//
-//                    if (id != -1) {
-//                        switch (id) {
-//                            case R.id.radio_sex_male:
-//                                gender = "Male";
-//                                break;
-//                            case R.id.radio_sex_female:
-//                                gender = "Female";
-//                                break;
-//                            case R.id.radio_sex_other:
-//                                gender = "Others";
-//                                break;
-//
-//                        }
-//                    } else {
-//                        Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.spinner_user_birth_place_input_id:
-//
-//                if (hasFocus) {
-//
-//                } else {
-//                    birthPlace = spBirthPlace.getSelectedItem().toString();
-//                    Log.d("SUSAN", "birthPlace: " + birthPlace);
-//
-//                    if (birthPlace.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.spinner_user_current_place_input_id:
-//
-//                if (hasFocus) {
-//
-//                } else {
-//                    currentPlace = spCurrentPlace.getSelectedItem().toString();
-//                    Log.d("SUSAN", "currentPlace: " + currentPlace);
-//
-//                    if (currentPlace.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_email_input_id:
-//
-//                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-//
-//                if (hasFocus) {
-//
-//                } else {
-//                    email = etEmail.getText().toString().trim();
-//
-//                    if (!email.equals("")) {
-//
-//                        if (email.matches(emailPattern)) {
-//
-//                            Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
-//
-//                        } else {
-//
-//                            Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
-//                        }
-//
-//                    } else {
-//                        Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
-//
-//                    }
-//                }
-//                break;
-//
-//
-//            case R.id.user_contact_no_input_id:
-//
-//                if (hasFocus) {
-//
-//                } else {
-//                    mobileNumber = etContact.getText().toString().trim();
-//                    if (mobileNumber.equals("")) {
-//                        Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//            case R.id.cb_terms_and_condition:
-//                if (hasFocus) {
-//
-//                } else {
-//                    if (cbAgreement.isChecked()) {
-//                        mobileNumber = etContact.getText().toString().trim();
-//                    } else {
-//                        Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
-//                    }
-//                }
-//                break;
-//        }
-//    }
+
+    public boolean validateUserDetails() {
+
+        userName = etUserName.getText().toString().trim();
+        if (userName.equals("")) {
+            Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+        
+        password = etPassword.getText().toString().trim();
+        if (password.equals("")) {
+            Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        confirmPassword = etConformPassword.getText().toString().trim();
+        if (confirmPassword.equals("")) {
+            Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        } else {
+            if (confirmPassword.equals(password)) {
+            } else {
+                Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                return false;
+            }
+        }
+
+
+        firstName = etFirstName.getText().toString().trim();
+        if (firstName.equals("")) {
+            Toasty.error(getApplicationContext(), "Name field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        surName = etSurName.getText().toString().trim();
+        if (surName.equals("")) {
+            Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        age = etAge.getText().toString().trim();
+        if (age.equals("")) {
+            Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        int id = rgGender.getCheckedRadioButtonId();
+        if (id != -1) {
+            switch (id) {
+                case R.id.radio_sex_male:
+                    gender = "Male";
+                    break;
+                case R.id.radio_sex_female:
+                    gender = "Female";
+                    break;
+                case R.id.radio_sex_other:
+                    gender = "Others";
+                    break;
+            }
+        } else {
+            Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        birthPlace = spBirthPlace.getSelectedItem().toString();
+        if (birthPlace.equals("Birth District")) {
+            Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        currentPlace = spCurrentPlace.getSelectedItem().toString();
+        if (currentPlace.equals("Current District")) {
+            Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        mobileNumber = etContact.getText().toString().trim();
+        if (mobileNumber.equals("")) {
+            Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        if (cbAgreement.isChecked()) {
+            mobileNumber = etContact.getText().toString().trim();
+        } else {
+            Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        email = etEmail.getText().toString().trim();
+        if (!email.equals("")) {
+            if (email.matches(emailPattern)) {
+                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+            } else {
+                Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
+                return false;
+            }
+        } else {
+            Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
+            return false;
+        }
+
+
+        return true;
+    }
+
 
     @OnClick(R.id.btnSignUp)
     public void SignUpBtnClicked() {
 
-        mProgressDlg.setMessage("Please Wait...\nLogging In");
-        mProgressDlg.setIndeterminate(false);
-        mProgressDlg.setCancelable(false);
-        mProgressDlg.show();
+        if (validateUserDetails()) {
 
-        userName = etUserName.getText().toString().trim();
-        password = etPassword.getText().toString().trim();
-        confirmPassword = etConformPassword.getText().toString().trim();
-        firstName = etFirstName.getText().toString().trim();
-        surName = etSurName.getText().toString().trim();
-        age = etAge.getText().toString().trim();
-        birthPlace = spBirthPlace.getSelectedItem().toString();
-        currentPlace = spCurrentPlace.getSelectedItem().toString();
-        email = etEmail.getText().toString().trim();
-        mobileNumber = etContact.getText().toString().trim();
+            mProgressDlg.setMessage("Please Wait...\nSigning In");
+            mProgressDlg.setIndeterminate(false);
+            mProgressDlg.setCancelable(false);
+            mProgressDlg.show();
+
+            userName = etUserName.getText().toString().trim();
+            password = etPassword.getText().toString().trim();
+            confirmPassword = etConformPassword.getText().toString().trim();
+            firstName = etFirstName.getText().toString().trim();
+            surName = etSurName.getText().toString().trim();
+            age = etAge.getText().toString().trim();
+            birthPlace = spBirthPlace.getSelectedItem().toString();
+            currentPlace = spCurrentPlace.getSelectedItem().toString();
+            email = etEmail.getText().toString().trim();
+            mobileNumber = etContact.getText().toString().trim();
 
 
-        if (confirmPassword.equals("")) {
-            Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
-        } else {
-            if (confirmPassword.equals(password)) {
-                convertDataToJson();
-
+            if (confirmPassword.equals("")) {
+                Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
             } else {
-                mProgressDlg.dismiss();
-                Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                if (confirmPassword.equals(password)) {
+                    convertDataToJson();
+
+                } else {
+                    mProgressDlg.dismiss();
+                    Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                }
             }
+
+        } else {
+            return;
         }
+
+
     }
 
 
