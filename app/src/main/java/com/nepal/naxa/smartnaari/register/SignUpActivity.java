@@ -123,11 +123,11 @@ public class SignUpActivity extends Activity {
 
         mProgressDlg = new ProgressDialog(this);
 
-        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
+        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.birthDistrictListEnglish);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spBirthPlace.setAdapter(birthDistArray);
 
-        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.districtListEnglish);
+        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.currentDistrictListEnglish);
         currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCurrentPlace.setAdapter(currentDistArray);
     }
