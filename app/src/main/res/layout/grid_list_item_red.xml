@@ -32,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/spacing_medium"
             android:padding="@dimen/spacing_large"
             android:textAlignment="center"
             android:textColor="@android:color/white"

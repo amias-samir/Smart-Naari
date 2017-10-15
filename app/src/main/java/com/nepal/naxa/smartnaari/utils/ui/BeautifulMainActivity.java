@@ -104,7 +104,7 @@ public class BeautifulMainActivity extends BaseActivity
     private long timeStampWhenBackWasPressed;
 
 
-    ImageView image1,image2;
+    ImageView image1, image2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +114,6 @@ public class BeautifulMainActivity extends BaseActivity
         bindActivity();
         ButterKnife.bind(this);
         syncAllData();
-
-
 
 
         Glide.with(this)
@@ -382,7 +380,6 @@ public class BeautifulMainActivity extends BaseActivity
         });
 
 
-
         Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
         toDownloadService.putExtra("receiver", mReceiver);
 
@@ -400,7 +397,6 @@ public class BeautifulMainActivity extends BaseActivity
     }
 
 
-
     @Override
     public void onItemClick(View view, ViewModel viewModel) {
         Log.e("MainActivity", "onItemClick: " + viewModel.getText());
@@ -408,11 +404,11 @@ public class BeautifulMainActivity extends BaseActivity
         if (viewModel.getText().equals("Report a case")) {
             Intent maChupBasdinaIntent = new Intent(this, MaChupBasdinaActivity.class);
             startActivity(maChupBasdinaIntent);
-        } else if (viewModel.getText().equals("Time is of the essence")) {
+        } else if (viewModel.getText().equals("\t")) {
             startActivity(new Intent(this, ServicesActivity.class));
-        } else if (viewModel.getText().equals("I am Amazing")) {
+        } else if (viewModel.getText().equals("\t\t\t")) {
             startActivity(new Intent(this, IAmAmazingActivity.class));
-        } else if (viewModel.getText().equals("Saksham Chu")) {
+        } else if (viewModel.getText().equals("\t\t")) {
             startActivity(new Intent(this, MaSakchamChuMainActivity.class));
         } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
             startActivity(new Intent(this, YuwaPustaActivity.class));
