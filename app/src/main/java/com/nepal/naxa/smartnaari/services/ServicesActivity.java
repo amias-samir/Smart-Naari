@@ -54,19 +54,18 @@ public class ServicesActivity extends AppCompatActivity implements OnMapReadyCal
 
 
     private void initMapLegend() {
-        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getOwlsList());
+        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getServicesList());
         recyclerMapLegend.setAdapter(adapter);
         recyclerMapLegend.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
     }
 
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng location = new LatLng(27.7172, 85.3240);
         googleMap.addMarker(new MarkerOptions().position(location)
-                .title("Marker in Sydney"));
+                .title("Marker "));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
     }
 

@@ -114,7 +114,7 @@ public class DownloadService extends IntentService {
 
             @Override
             public void onFailure(Call<OwlWrapper> call, Throwable t) {
-                Log.e(TAG, t.getMessage());
+                Log.e(TAG, t.toString());
             }
 
         }));

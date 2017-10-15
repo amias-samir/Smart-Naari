@@ -87,18 +87,21 @@ public class ViewModel {
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Time is of the essence", R.drawable.grid_services);
+        // viewModel = new ViewModel("", R.drawable.grid_services);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Saksham Chu", R.drawable.grid_ma_saksam_chu);
+        //viewModel = new ViewModel("", R.drawable.grid_ma_saksam_chu);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Yuwa पुस्ता", R.drawable.grid_yuwa_pusta);
+        viewModel = new ViewModel("Yuwa Pusta", R.drawable.grid_yuwa_pusta);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("I am Amazing", R.drawable.grid_i_am_amazing);
+        //viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
         viewModels.add(viewModel);
 
         return viewModels;
@@ -110,7 +113,7 @@ public class ViewModel {
 
 
         ViewModel viewModel;
-        viewModel = new ViewModel("X's and Y's","http://lorempixel.com/500/500/animals/1/");
+        viewModel = new ViewModel("X's and Y's", "http://lorempixel.com/500/500/animals/1/");
         viewModels.add(viewModel);
 
         viewModel = new ViewModel("What's the Difference", "http://lorempixel.com/500/500/animals/1/");
@@ -126,7 +129,26 @@ public class ViewModel {
 
     }
 
+    public static ArrayList<ViewModel> getServicesList() {
+        ArrayList<ViewModel> viewModels = new ArrayList<>();
 
+
+        ViewModel viewModel;
+        viewModel = new ViewModel("Service One", R.color.black);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Service Two", R.color.whatdiff);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Service Three", R.color.crimepunis);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Police Station", R.color.colorAccent);
+        viewModels.add(viewModel);
+
+        return viewModels;
+
+    }
 
 
 }

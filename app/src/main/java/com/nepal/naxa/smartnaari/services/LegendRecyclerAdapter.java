@@ -57,13 +57,14 @@ public class LegendRecyclerAdapter extends RecyclerView.Adapter<LegendRecyclerAd
         ViewModel item = items.get(position);
         holder.markerTitle.setText(item.getText());
         context = holder.markerTitle.getContext();
-        setLegendColor(holder);
+        setLegendColor(holder, item);
 
     }
 
-    private void setLegendColor(LegendRecyclerAdapter.ViewHolder holder) {
+    private void setLegendColor(LegendRecyclerAdapter.ViewHolder holder, ViewModel viewModel) {
 
-        int color = ContextCompat.getColor(context, R.color.colorAccent);
+        int color = ContextCompat.getColor(context, viewModel.getImage());
+
 
         ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
         holder.markerTitle.getCompoundDrawables()[0].setColorFilter(colorFilter);
