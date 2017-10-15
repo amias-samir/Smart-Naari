@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -63,10 +64,12 @@ public class ServicesActivity extends AppCompatActivity implements OnMapReadyCal
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng location = new LatLng(27.7172, 85.3240);
+        LatLng location;
+
+        location = new LatLng(27.7172, 85.3240);
         googleMap.addMarker(new MarkerOptions().position(location)
                 .title("Marker "));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,12.0f));
     }
 
     @Override

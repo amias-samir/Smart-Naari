@@ -136,6 +136,7 @@ public class ViewModel {
 
 
         ViewModel viewModel;
+
         viewModel = new ViewModel("Home", R.color.black);
         viewModels.add(viewModel);
 
@@ -145,8 +146,11 @@ public class ViewModel {
         viewModel = new ViewModel("Hospital", R.color.crimepunis);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("Police Station", R.color.black);
+        viewModel = new ViewModel("Police Station", R.color.colorAccent);
         viewModels.add(viewModel);
+
+
+
 
 
 

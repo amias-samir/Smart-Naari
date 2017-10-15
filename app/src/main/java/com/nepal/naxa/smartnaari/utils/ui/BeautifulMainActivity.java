@@ -33,8 +33,10 @@ import com.nepal.naxa.smartnaari.R;
 
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
+import com.nepal.naxa.smartnaari.debug.AppLogger;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -374,6 +376,7 @@ public class BeautifulMainActivity extends BaseActivity
                     case STATUS_ERROR:
                         break;
                     case STATUS_FINISHED:
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
                 }
             }

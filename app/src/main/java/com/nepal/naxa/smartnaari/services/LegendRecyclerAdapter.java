@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.debug.Dump;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 
 import java.util.ArrayList;
@@ -58,17 +60,16 @@ public class LegendRecyclerAdapter extends RecyclerView.Adapter<LegendRecyclerAd
         holder.markerTitle.setText(item.getText());
         context = holder.markerTitle.getContext();
         setLegendColor(holder, item);
+        Dump.object("Color Color",item);
 
     }
 
     private void setLegendColor(LegendRecyclerAdapter.ViewHolder holder, ViewModel viewModel) {
 
         int color = ContextCompat.getColor(context, viewModel.getImage());
-
-
         ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
         holder.markerTitle.getCompoundDrawables()[0].setColorFilter(colorFilter);
-
+        Log.e("qwert",color+ " ");
     }
 
 

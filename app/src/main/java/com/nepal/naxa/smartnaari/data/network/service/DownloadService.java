@@ -97,6 +97,10 @@ public class DownloadService extends IntentService {
         receiver.send(STATUS_RUNNING, Bundle.EMPTY);
     }
 
+    private void broadCastFinish() {
+        receiver.send(STATUS_FINISHED, Bundle.EMPTY);
+    }
+
     public void getOwls() {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
@@ -108,7 +112,7 @@ public class DownloadService extends IntentService {
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveOwls(response.body());
 
-                Log.i(TAG,response.body().getData().size() + " owls are downloaded ");
+                Log.i(TAG, response.body().getData().size() + " owls are downloaded ");
 
             }
 
@@ -131,10 +135,12 @@ public class DownloadService extends IntentService {
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
                 appDataManager.saveYuwaQuestions(response.body().getData());
 
-                Log.i(TAG,response.body().getData().size() + " Yuwa Pusta posts downloaded ");
+                Log.i(TAG, response.body().getData().size() + " Yuwa Pusta posts downloaded ");
 
                 int i = appDataManager.getAllYuwaQuestions().size();
-                Log.i(TAG,i+" yuwa posts present in database");
+                Log.i(TAG, i + " yuwa posts present in database");
+
+                broadCastFinish();
 
             }
 
