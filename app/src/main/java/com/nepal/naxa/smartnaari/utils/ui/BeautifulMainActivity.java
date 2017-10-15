@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
@@ -14,15 +13,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.nepal.naxa.smartnaari.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
@@ -31,7 +31,13 @@ import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
 import com.nepal.naxa.smartnaari.homescreen.RecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +50,7 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class BeautifulMainActivity extends BaseActivity
-        implements AppBarLayout.OnOffsetChangedListener {
+        implements AppBarLayout.OnOffsetChangedListener, RecyclerViewAdapter.OnItemClickListener {
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
@@ -71,6 +77,8 @@ public class BeautifulMainActivity extends BaseActivity
     private long timeStampWhenBackWasPressed;
 
 
+    ImageView image1,image2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +88,13 @@ public class BeautifulMainActivity extends BaseActivity
         ButterKnife.bind(this);
         syncAllData();
 
+        image1=(ImageView) findViewById(R.id.main_imageview_placeholder);
+        image2=(ImageView) findViewById(R.id.main_imageview_placeholder2);
 
+        Glide.with(this)
+                .load(R.drawable.food_1).into(image1);
+        Glide.with(this)
+                .load(R.drawable.food_2).into(image2);
 
         mAppBarLayout.addOnOffsetChangedListener(this);
 
@@ -96,7 +110,7 @@ public class BeautifulMainActivity extends BaseActivity
     }
 
     public void scrollToolBarImages() {
-        final int speedScroll = 2000;
+        final int speedScroll = 3000;
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
@@ -135,7 +149,9 @@ public class BeautifulMainActivity extends BaseActivity
 
         List<ViewModel> items = ViewModel.getGridItems();
         recyclerView.setNestedScrollingEnabled(false);
+
         adapter = new RecyclerViewAdapter(items);
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -290,7 +306,7 @@ public class BeautifulMainActivity extends BaseActivity
             }
         });
 
-        Log.d("DownloadService","Hello");
+        Log.d("DownloadService", "Hello");
 
         Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
         toDownloadService.putExtra("receiver", mReceiver);
@@ -299,4 +315,25 @@ public class BeautifulMainActivity extends BaseActivity
     }
 
 
+    @Override
+    public void onItemClick(View view, ViewModel viewModel) {
+        Log.e("MainActivity", "onItemClick: " + viewModel.getText());
+
+        if (viewModel.getText().equals("Report a case")) {
+            Intent maChupBasdinaIntent = new Intent(this, MaChupBasdinaActivity.class);
+            startActivity(maChupBasdinaIntent);
+        } else if (viewModel.getText().equals("Time is of the essence")) {
+            startActivity(new Intent(this, ServicesActivity.class));
+        } else if (viewModel.getText().equals("I am Amazing")) {
+            startActivity(new Intent(this, IAmAmazingActivity.class));
+        } else if (viewModel.getText().equals("Saksham Chu")) {
+            startActivity(new Intent(this, MaSakchamChuMainActivity.class));
+        } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
+            startActivity(new Intent(this, YuwaPustaActivity.class));
+        } else if ((viewModel.getText().equals("Smart Parenting"))) {
+
+            startActivity(new Intent(this, SmartParentActivity.class));
+        }
+
+    }
 }

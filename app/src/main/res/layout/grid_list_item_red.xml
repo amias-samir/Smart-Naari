@@ -14,12 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_margin="@dimen/spacing_small"
+            android:layout_below="@id/text"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_marginRight="@dimen/spacing_medium"
             android:scaleType="fitCenter" />
 
         <TextView
@@ -28,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/spacing_medium"
             android:padding="@dimen/spacing_large"
             android:textAlignment="center"
             android:textColor="@android:color/white"
