@@ -62,7 +62,7 @@
     <string name="report_other">Someone else</string>
 
     <string name="when_did_the_voilence_occur">When did the voilence occur</string>
-    <string name="types_of_voilence">Types of Voilence</string>
+    <string name="types_of_voilence">Types Of Violence</string>
     <string name="core_gvb">Core GVB</string>
     <string name="perpetrator">Perpetrator</string>
     <string name="desc_GBV_ma_chup_basdina">Description (Further details of the Reported GBV)</string>
@@ -99,7 +99,7 @@
     <string name="dialog_title_error_register">Error Registering.</string>
     <string name="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
     <string name="dialog_action_hide">Hide</string>
-    <string name="district_of_incident">form_ma_chup_district</string>
+    <string name="district_of_incident">District Of Incident</string>
     <string name="app_exit_msg">Tap Again to Exit!</string>
     <string name="general_error_msg">Some Error Occurred!</string>
     <string name="network_error_timeout">Socket Time out. Please try again.</string>
