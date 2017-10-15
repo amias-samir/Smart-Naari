@@ -407,7 +407,7 @@
                         android:layout_alignParentRight="true"
                         android:background="@color/transparent"
                         android:drawableRight="@drawable/ic_right_arrow_white"
-                        android:text="Sign in"
+                        android:text="Sign up"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/material_text_headline" />

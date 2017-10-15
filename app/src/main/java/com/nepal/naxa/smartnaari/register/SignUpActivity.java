@@ -266,7 +266,7 @@ public class SignUpActivity extends Activity {
         email = etEmail.getText().toString().trim();
         if (!email.equals("")) {
             if (email.matches(emailPattern)) {
-                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+//                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
             } else {
                 Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
                 return false;
@@ -413,7 +413,7 @@ public class SignUpActivity extends Activity {
                         switch (status) {
                             case "200":
                                 mProgressDlg.dismiss();
-                                Toasty.success(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
+                                Toasty.success(getApplicationContext(), data+"\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
                                 startActivity(new Intent(getApplication(), LoginActivity.class));
                                 break;
                             case "201":
