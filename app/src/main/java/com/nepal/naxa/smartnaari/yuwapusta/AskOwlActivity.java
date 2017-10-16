@@ -1,6 +1,5 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
@@ -16,38 +15,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nepal.naxa.smartnaari.BaseActivity;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
-import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
-import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
-import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.login.LoginActivity;
-import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
-import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -141,7 +130,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
     @Override
     public void onItemClick(View view, YuwaQuestion yuwaQuery) {
-        Toast.makeText(this, "SOmething", Toast.LENGTH_SHORT).show();
+
     }
 
     @OnClick(R.id.btn_ask_a_owl)

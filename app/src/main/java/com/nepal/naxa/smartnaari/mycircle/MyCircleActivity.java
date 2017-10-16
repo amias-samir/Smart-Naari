@@ -16,14 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nepal.naxa.smartnaari.BaseActivity;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.homescreen.MainActivity;
 import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -357,7 +357,7 @@ public class MyCircleActivity extends BaseActivity {
                     case REQUEST_OK:
                         showInfoToast(body.getData());
 
-                        Intent intent = new Intent(MyCircleActivity.this, MainActivity.class);
+                        Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
                         Constants.first_contact = tvFirstContact.getText().toString();
                         Constants.second_contact = tvSecondContact.getText().toString();
                         Constants.third_contact = tvThirdContact.getText().toString();

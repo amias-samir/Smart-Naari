@@ -43,6 +43,7 @@ public class YuwaQuestion {
     private String userId;
 
     @Property(nameInDb = "last_sync_date_time")
+    @SerializedName("last_sync_date_time")
     private String last_sync_date_time;
 
     @Transient

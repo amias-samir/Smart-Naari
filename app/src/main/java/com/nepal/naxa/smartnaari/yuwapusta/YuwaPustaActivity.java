@@ -1,26 +1,21 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nepal.naxa.smartnaari.BaseActivity;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
-import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;

@@ -10,11 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.nepal.naxa.smartnaari.BaseActivity;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.application.SmartNaari;
-import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
-import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;

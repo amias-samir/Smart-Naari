@@ -27,8 +27,7 @@ import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.nepal.naxa.smartnaari.BaseActivity;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
@@ -37,11 +36,9 @@ import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
-import com.nepal.naxa.smartnaari.homescreen.ArrowSliderView;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
-import com.nepal.naxa.smartnaari.homescreen.MainActivity;
 import com.nepal.naxa.smartnaari.homescreen.RecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
@@ -55,7 +52,6 @@ import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -205,7 +201,7 @@ public class BeautifulMainActivity extends BaseActivity
         mTitle = (TextView) findViewById(R.id.main_textview_title);
         mTitleContainer = (LinearLayout) findViewById(R.id.main_linearlayout_title);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.main_appbar);
-        slider = (SliderLayout) findViewById(R.id.slider);
+
     }
 
 
@@ -413,7 +409,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(new Intent(this, IAmAmazingActivity.class));
         } else if (viewModel.getText().equals("\t\t")) {
             startActivity(new Intent(this, MaSakchamChuMainActivity.class));
-        } else if (viewModel.getText().equals("Yuwa पुस्ता")) {
+        } else if (viewModel.getText().equals("Yuwa Pusta")) {
             startActivity(new Intent(this, YuwaPustaActivity.class));
         } else if ((viewModel.getText().equals("Smart Parenting"))) {
 
