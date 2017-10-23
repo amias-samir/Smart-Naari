@@ -35,6 +35,7 @@ public class SharedPreferenceUtils {
     public static final String PREF_NETWORK_CACHE = "network_cache";
     public static final String KEY_USER_DATA = "user_data";
     public static final String KEY_OWL_LIST = "owl_list";
+    public static final String KEY_MY_CIRCLE = "circle_contact";
     public static final String KEY_HAS_USER_LEARNED_APP = "has_learned_app";
 
     private SharedPreferenceUtils(Context context, String name) {

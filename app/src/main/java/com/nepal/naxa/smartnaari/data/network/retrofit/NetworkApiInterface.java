@@ -31,8 +31,9 @@ public interface NetworkApiInterface {
     @GET("get_owl")
     Call<OwlWrapper> getOwls();
 
-    @GET("get_yuwapusta")
-    Call<YuwaPustaResponse> getYuwaPustaPosts();
+    @FormUrlEncoded
+    @POST("get_yuwapusta")
+    Call<YuwaPustaResponse> getYuwaPustaPosts(@Field("last_sync_date_time") String data);
 
     @FormUrlEncoded
     @POST("yuwa_pusta")

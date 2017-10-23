@@ -11,12 +11,16 @@ import android.util.Log;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -50,6 +54,8 @@ public class DownloadService extends IntentService {
     private ToastUtils toastUtils;
     private ArrayList<String> completedUrls;
     private ArrayList<String> failedUrls;
+
+    String jsonToSendLastSyncDate = "" ;
 
 
     public DownloadService() {
@@ -126,14 +132,30 @@ public class DownloadService extends IntentService {
     }
 
     public void getYuwaPustaPosts() {
+        AppDataManager appDataManager = new AppDataManager(this);
+        YuwaQuestion yuwaQuestion = new YuwaQuestion();
+
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
+
+            jsonToSendLastSyncDate = jsonObject.toString();
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
-        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts();
+//        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaResponse>() {
             @Override
             public void onResponse(Call<YuwaPustaResponse> call, Response<YuwaPustaResponse> response) {
 
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
-                appDataManager.saveYuwaQuestions(response.body().getData());
+//                appDataManager.saveYuwaQuestions(response.body().getData());
+                appDataManager.prepareToSaveYuwaQuestions(response.body().getData());
 
                 Log.i(TAG, response.body().getData().size() + " Yuwa Pusta posts downloaded ");
 

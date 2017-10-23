@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.data.local.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -42,6 +43,18 @@ public class YuwaQuestion {
     @Property(nameInDb = "user_id")
     private String userId;
 
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    @SerializedName("is_deleted")
+    @Expose
+    private Integer isDeleted;
+
     @Property(nameInDb = "last_sync_date_time")
     @SerializedName("last_sync_date_time")
     private String last_sync_date_time;
@@ -57,15 +70,17 @@ public class YuwaQuestion {
         this.isFooter = isFooter;
     }
 
-    @Generated(hash = 1657222644)
+    @Generated(hash = 1609754814)
     public YuwaQuestion(Long id, String idString, String owlId, String question,
-            String answer, String userId, String last_sync_date_time) {
+            String answer, String userId, Integer isDeleted,
+            String last_sync_date_time) {
         this.id = id;
         this.idString = idString;
         this.owlId = owlId;
         this.question = question;
         this.answer = answer;
         this.userId = userId;
+        this.isDeleted = isDeleted;
         this.last_sync_date_time = last_sync_date_time;
     }
 

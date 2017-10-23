@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -167,6 +168,20 @@ public class LoginActivity extends BaseActivity {
 
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.saveUser(userDetail.getUserData());
+
+                MyCircleData myCircleData = new MyCircleData();
+                myCircleData.setUserId(userDetail.getUserData().getUserId());
+                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
+                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
+                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
+                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
+                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
+                myCircleData.setContactName1("samir");
+                myCircleData.setContactName2("sam");
+                myCircleData.setContactName3("saaamirr");
+                myCircleData.setContactName4("");
+                myCircleData.setContactName5("Amias");
+                sessionManager.saveUserCircle(myCircleData);
 
 
                 if (sessionManager.doesUserHaveCircle()) {

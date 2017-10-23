@@ -4,9 +4,11 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 
 /**
@@ -23,6 +25,31 @@ public class SessionManager {
         utils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PREF_NETWORK_CACHE);
         gson = new Gson();
     }
+
+//    ========================Circle sharedpref  data operation===================================//
+
+    public void saveUserCircle(MyCircleData myCircleData) {
+
+        String json = gson.toJson(myCircleData);
+        utils.setValue(KEY_MY_CIRCLE, json);
+    }
+
+    public MyCircleData getMyCircleContact() {
+        MyCircleData myCircleData;
+
+        String json = utils.getStringValue(KEY_MY_CIRCLE, null);
+        myCircleData = gson.fromJson(json, MyCircleData.class);
+
+        return myCircleData;
+    }
+
+//    public void usresCircleContact(){
+//        MyCircleData myCircleData = getMyCircleContact();
+//
+//    }
+
+//======================================== end of circle data operation ==========================//
+
 
     public void saveUser(UserData userData) {
 

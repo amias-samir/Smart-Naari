@@ -104,8 +104,8 @@
                             android:gravity="center"
                             android:paddingLeft="@dimen/default_padding"
                             android:paddingRight="@dimen/default_padding"
-
-                            android:textSize="@dimen/material_text_subhead" />
+                            android:textSize="@dimen/material_text_subhead"
+                            android:visibility="gone"/>
 
 
                         <LinearLayout
@@ -125,6 +125,27 @@
                                 android:orientation="vertical">
 
 
+                                <!-- first contact name input layout-->
+                                <EditText
+                                    android:id="@+id/my_circle_first_contact_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/edit_text_boarder_recg"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:hint="First Contact Name"
+                                    android:inputType="number"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:textSize="@dimen/material_text_subhead" />
                                 <!-- first contact input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_first_contact"
@@ -133,7 +154,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -147,6 +168,27 @@
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
 
+                                <!-- second contact name input layout-->
+                                <EditText
+                                    android:id="@+id/my_circle_second_contact_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/edit_text_boarder_recg"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:hint="Second Contact Name"
+                                    android:inputType="number"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:textSize="@dimen/material_text_subhead" />
                                 <!-- second contact input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_second_contact"
@@ -155,7 +197,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -169,6 +211,28 @@
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
 
+                                <!-- Third contact name input layout-->
+                                <EditText
+                                    android:id="@+id/my_circle_third_contact_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/edit_text_boarder_recg"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:hint="Third Contact Name"
+                                    android:inputType="number"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:textSize="@dimen/material_text_subhead"
+                                    android:visibility="gone"/>
                                 <!-- Third contact input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_third_contact"
@@ -177,7 +241,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -192,6 +256,28 @@
                                     android:textSize="@dimen/material_text_subhead"
                                     android:visibility="gone" />
 
+                                <!-- fourth contact name input layout-->
+                                <EditText
+                                    android:id="@+id/my_circle_fourth_contact_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/edit_text_boarder_recg"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:hint="Fourth Contact Name"
+                                    android:inputType="number"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:textSize="@dimen/material_text_subhead"
+                                    android:visibility="gone"/>
                                 <!-- fourth contact input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_fourth_contact"
@@ -200,7 +286,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -215,6 +301,28 @@
                                     android:textSize="@dimen/material_text_subhead"
                                     android:visibility="gone" />
 
+                                <!-- fifth contact name input layout-->
+                                <EditText
+                                    android:id="@+id/my_circle_fifth_contact_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/edit_text_boarder_recg"
+                                    android:ems="10"
+                                    android:gravity="center"
+                                    android:hint="Fifth Contact Name"
+                                    android:inputType="number"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:textSize="@dimen/material_text_subhead"
+                                    android:visibility="gone"/>
                                 <!-- fifth contact input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_fifth_contact"
@@ -223,7 +331,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
