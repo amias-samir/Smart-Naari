@@ -3,19 +3,23 @@ package com.nepal.naxa.smartnaari.yuwapusta;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
@@ -26,6 +30,7 @@ import butterknife.OnClick;
 
 public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
 
+    private static final String TAG = "YuwaPustaActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.yuwa_pusta_iv_header)
@@ -37,6 +42,9 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
     @BindView(R.id.yuwa_pusta_act_rv_reviewslist)
     RecyclerView questionList;
 
+    SwipeRefreshLayout swiperefresh;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +52,38 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         ButterKnife.bind(this);
         initToolbar();
         initHorizontalRecyclerView();
+
         initQuestionsRecyclerView();
 
 
         int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         SpanUtils.setColor(header, "Yuwa Pusta", "Yuwa", color);
+
+        //Swipe Refresh Action
+        swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        // Setup refresh listener which triggers new data loading
+        swiperefresh.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(TAG, "onRefresh called from SwipeRefreshLayout");
+
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+//                        myUpdateOperation();
+                        downloadService.getYuwaPustaPosts();
+
+                        initQuestionsRecyclerView();
+
+                    }
+
+                }
+        );
+        // Configure the refreshing colors
+        swiperefresh.setColorSchemeResources(
+                android.R.color.holo_red_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light);
 
     }
 
@@ -79,6 +114,12 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         yuwaQuestionAdapter.setOnItemClickListener(this);
 
         questionList.setNestedScrollingEnabled(false);
+
+        if (swiperefresh!= null && swiperefresh.isRefreshing()){
+            swiperefresh.setRefreshing(false);
+        }
+
+
 
 
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
@@ -29,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
     private ToastUtils toastUtils;
     private Toasty progess;
     protected AppDataManager appDataManager;
+    protected DownloadService downloadService;
 
 
     @Override
@@ -37,6 +39,7 @@ public class BaseActivity extends AppCompatActivity {
         toastUtils = new ToastUtils();
 
         appDataManager = new AppDataManager(getApplicationContext());
+        downloadService = new DownloadService();
     }
 
     public void showErrorToast(String message) {

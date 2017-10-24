@@ -78,8 +78,8 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         YuwaQuestion item = items.get(position);
 
         if (holder instanceof ViewHolder) {
-            //        ((ViewHolder) holder).question.setText(item.getQuestion());
-            //      ((ViewHolder) holder).answer.setText(item.getAnswer());
+                    ((ViewHolder) holder).question.setText(item.getQuestion());
+                  ((ViewHolder) holder).answer.setText(item.getAnswer());
         }
     }
 

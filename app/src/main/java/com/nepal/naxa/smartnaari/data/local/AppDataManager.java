@@ -69,12 +69,12 @@ public class AppDataManager extends BaseActivity {
                         .buildDelete();
                 tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                 daoSession.clear();
-                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
+//                Log.d(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
             else {
                 daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
-                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
+//                Log.d(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
         }
@@ -83,10 +83,6 @@ public class AppDataManager extends BaseActivity {
 
     }
 
-//        public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
-//
-//        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
-//    }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
         return daoSession.getYuwaQuestionDao().loadAll();
@@ -99,20 +95,25 @@ public class AppDataManager extends BaseActivity {
         QueryBuilder<String> dateAndTimes;
         String dateTime = "";
 
-        dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
-        object = dateAndTimes.list().get(0);
+        long rowCount = daoSession.getDao(classname).count();
 
-        try {
-            dateTime = parseResponseCode(object);
-        } catch (NullPointerException | IllegalAccessException e) {
-            e.printStackTrace();
+        if (rowCount > 0) {
+            try {
+                dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
+                object = dateAndTimes.list().get(0);
 
+                dateTime = parseResponseCode(object);
+            } catch (NullPointerException | IllegalAccessException e) {
+                e.printStackTrace();
+
+            }
         }
 
 
-        return dateTime;
+            return dateTime;
 
-    }
+        }
+
 
 
     private String parseResponseCode(Object someObject) throws NullPointerException, IllegalAccessException {
