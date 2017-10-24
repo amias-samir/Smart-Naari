@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants"
     tools:context="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity"
     tools:showIn="@layout/activity_yuwa_pust">
+    <!--android:descendantFocusability="blocksDescendants"-->
+
 
 
     <ImageView
@@ -74,15 +75,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/spinner_owlList"
             app:counterEnabled="true"
-            app:counterMaxLength="150"
-            android:focusable="true">
+            app:counterMaxLength="150">
 
             <EditText
+                android:id="@+id/tvQuestionToOWL"
                 android:hint="@string/general_form_hint_question"
                 style="@style/SmartNaariInputLayoutTheme"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:focusable="true"/>
+                />
 
 
         </android.support.design.widget.TextInputLayout>

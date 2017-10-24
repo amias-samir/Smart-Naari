@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -30,6 +31,7 @@ import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_OWL
 
 public class AppDataManager extends BaseActivity {
 
+    private static final String TAG = "AppDataManager";
     private SharedPreferenceUtils utils;
     private Gson gson;
     private DaoSession daoSession;
@@ -62,23 +64,29 @@ public class AppDataManager extends BaseActivity {
         for(int i = 0 ; i< yuwaQuestion.size(); i++){
             if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
 
-//              daoSession.getYuwaQuestionDao().deleteByKeyInTx(yuwaQuestion.get(i).getId());
-//                String deleteQuery = daoSession.getYuwaQuestionDao().deleteInTx(yuwaQuestion.get(i).getIdString());
-//                daoSession.getYuwaQuestionDao().queryRaw(yuwaQuestion.get(i).getIdString(), "DELETE * FROM"+yuwaQuestion +"WHERE 'yuwa_tbl_id' = "+"'"+yuwaQuestion.get(i).getIdString()+"'");
-//                showInfoToast("!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString());
+                final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
+                        .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
+                        .buildDelete();
+                tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                daoSession.clear();
+                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
+            }
+            else {
+                daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
         }
-//        if (is_delete = 1)
-           daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
+
+
 
     }
 
-        public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
-
-        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
-    }
+//        public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
+//
+//        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
+//    }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
         return daoSession.getYuwaQuestionDao().loadAll();

@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
@@ -38,6 +41,8 @@ import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 
 public class LoginActivity extends BaseActivity {
 
+    private static String TAG = "LoginActivity";
+
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.btnLinkToSignup)
@@ -53,8 +58,10 @@ public class LoginActivity extends BaseActivity {
     TextView tvRegisterBeTheOneLBL;
 
 
+
     String jsonToSend = null;
     ProgressDialog mProgressDlg;
+    MyCircleData myCircleData ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +71,7 @@ public class LoginActivity extends BaseActivity {
         setupUI();
 
         mProgressDlg = new ProgressDialog(this);
+        myCircleData = new MyCircleData();
     }
 
     private void setupUI() {
@@ -156,6 +164,25 @@ public class LoginActivity extends BaseActivity {
                 switch (userDetail.getStatus()) {
                     case REQUEST_OK:
 
+                        Gson gson =new GsonBuilder().create();
+
+                        myCircleData.setUserId("8");
+                        myCircleData.setContactNumber1("984123456789");
+                        myCircleData.setContactNumber2("984123456789");
+                        myCircleData.setContactNumber3("984123456789");
+                        myCircleData.setContactNumber4("984123456789");
+                        myCircleData.setContactNumber5("984123456789");
+                        myCircleData.setContactName1("samir");
+                        myCircleData.setContactName2("sam");
+                        myCircleData.setContactName3("saaamirr");
+                        myCircleData.setContactName4("");
+                        myCircleData.setContactName5("Amias");
+
+                        String json = gson.toJson(myCircleData);
+                        Log.d(TAG, "handleLoginSucess: "+json);
+
+
+
                         handleLoginSucess(userDetail);
                         break;
                     default:
@@ -166,21 +193,19 @@ public class LoginActivity extends BaseActivity {
 
             private void handleLoginSucess(UserDetail userDetail) {
 
+
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.saveUser(userDetail.getUserData());
 
-                MyCircleData myCircleData = new MyCircleData();
-                myCircleData.setUserId(userDetail.getUserData().getUserId());
-                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
-                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
-                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
-                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
-                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
-                myCircleData.setContactName1("samir");
-                myCircleData.setContactName2("sam");
-                myCircleData.setContactName3("saaamirr");
-                myCircleData.setContactName4("");
-                myCircleData.setContactName5("Amias");
+
+//                myCircleData.setUserId(userDetail.getUserData().getUserId());
+//                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
+//                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
+//                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
+//                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
+//                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
+
+
                 sessionManager.saveUserCircle(myCircleData);
 
 

@@ -147,7 +147,7 @@ public class MyCircleActivity extends BaseActivity {
 
         } else if (count == 2) {
             tvThirdContact.setVisibility(View.VISIBLE);
-            tvThirdContact.setVisibility(View.VISIBLE);
+            tvThirdContactName.setVisibility(View.VISIBLE);
 
             tvFourthContact.setVisibility(View.VISIBLE);
             tvFourthContactName.setVisibility(View.VISIBLE);
@@ -197,8 +197,8 @@ public class MyCircleActivity extends BaseActivity {
 //                fifth_contact = tvFifthContact.getText().toString();
 
 
-                if (Constants.first_contact.equals("") || Constants.second_contact.equals("") || Constants.third_contact.equals("") ||
-                        Constants.fourth_contact.equals("") || Constants.fifth_contact.equals("")) {
+                if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
+                        fourth_contact.equals("") || fifth_contact.equals("")) {
                     Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
                     startActivityForResult(intentContact, PICK_CONTACT);
                 } else {
@@ -433,6 +433,19 @@ public class MyCircleActivity extends BaseActivity {
 
     public void convertDataToJSON() {
 
+        myCircleData.setContactNumber1(tvFirstContact.getText().toString());
+        myCircleData.setContactNumber2(tvSecondContact.getText().toString());
+        myCircleData.setContactNumber3(tvThirdContact.getText().toString());
+        myCircleData.setContactNumber4(tvFourthContact.getText().toString());
+        myCircleData.setContactNumber5(tvFifthContact.getText().toString());
+
+        myCircleData.setContactName1(tvFirstContactName.getText().toString());
+        myCircleData.setContactName2(tvSecondContactName.getText().toString());
+        myCircleData.setContactName3(tvThirdContactName.getText().toString());
+        myCircleData.setContactName4(tvFourthContactName.getText().toString());
+        myCircleData.setContactName5(tvFifthContactName.getText().toString());
+
+
         try {
 
 
@@ -486,17 +499,14 @@ public class MyCircleActivity extends BaseActivity {
                     case REQUEST_OK:
                         showInfoToast(body.getData());
 
+                        sessionManager.saveUserCircle(myCircleData);
+
                         Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
 //                        Constants.first_contact = tvFirstContact.getText().toString();
 //                        Constants.second_contact = tvSecondContact.getText().toString();
 //                        Constants.third_contact = tvThirdContact.getText().toString();
 //                        Constants.fourth_contact = tvFourthContact.getText().toString();
 //                        Constants.fifth_contact = tvFifthContact.getText().toString();
-
-
-                        MyCircleData myCircleData = new MyCircleData();
-                        sessionManager.saveUserCircle(myCircleData);
-
                         startActivity(intent);
 
                         break;

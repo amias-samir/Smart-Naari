@@ -133,11 +133,13 @@ public class DownloadService extends IntentService {
 
     public void getYuwaPustaPosts() {
         AppDataManager appDataManager = new AppDataManager(this);
-        YuwaQuestion yuwaQuestion = new YuwaQuestion();
+
+        String last_sync_date = appDataManager.getLastSyncDateTime(YuwaQuestion.class);
 
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
+//            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
+            jsonObject.put("last_sync_date_time",last_sync_date);
 
             jsonToSendLastSyncDate = jsonObject.toString();
 

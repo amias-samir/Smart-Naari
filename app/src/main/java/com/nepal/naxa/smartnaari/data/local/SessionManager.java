@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
@@ -18,6 +19,8 @@ import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USE
 
 public class SessionManager {
 
+    private String TAG = "SessionManager";
+
     private SharedPreferenceUtils utils;
     private Gson gson;
 
@@ -31,6 +34,7 @@ public class SessionManager {
     public void saveUserCircle(MyCircleData myCircleData) {
 
         String json = gson.toJson(myCircleData);
+        Log.d(TAG, "saveUserCircle: JSON:= "+json);
         utils.setValue(KEY_MY_CIRCLE, json);
     }
 
@@ -39,6 +43,8 @@ public class SessionManager {
 
         String json = utils.getStringValue(KEY_MY_CIRCLE, null);
         myCircleData = gson.fromJson(json, MyCircleData.class);
+
+        Log.d(TAG, "getMyCircleContact: JSON:= "+json);
 
         return myCircleData;
     }
@@ -54,6 +60,7 @@ public class SessionManager {
     public void saveUser(UserData userData) {
 
         String json = gson.toJson(userData);
+        Log.d(TAG, "saveUser: "+json);
         utils.setValue(KEY_USER_DATA, json);
 
     }

@@ -12,9 +12,11 @@ public class MyCircleData {
     @SerializedName("user_id")
     @Expose
     private static String userId;
+
     @SerializedName("c1")
     @Expose
     private static String contactName1;
+
     @SerializedName("n1")
     @Expose
     private static String contactNumber1;
@@ -29,6 +31,7 @@ public class MyCircleData {
     @SerializedName("c3")
     @Expose
     private static String contactName3;
+
     @SerializedName("n3")
     @Expose
     private static String contactNumber3;
@@ -36,6 +39,7 @@ public class MyCircleData {
     @SerializedName("c4")
     @Expose
     private static String contactName4;
+
     @SerializedName("n4")
     @Expose
     private static String contactNumber4;
@@ -43,6 +47,7 @@ public class MyCircleData {
     @SerializedName("c5")
     @Expose
     private static String contactName5;
+
     @SerializedName("n5")
     @Expose
     private static String contactNumber5;
