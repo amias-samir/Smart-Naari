@@ -39,6 +39,7 @@ public class AppDataManager extends BaseActivity {
     public AppDataManager(Context context) {
         utils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PREF_NETWORK_CACHE);
         gson = new Gson();
+
         daoSession = ((SmartNaari) context.getApplicationContext()).getDaoSession();
     }
 
@@ -60,9 +61,9 @@ public class AppDataManager extends BaseActivity {
     }
 
     public void prepareToSaveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
-     //loop
-        for(int i = 0 ; i< yuwaQuestion.size(); i++){
-            if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
+        //loop
+        for (int i = 0; i < yuwaQuestion.size(); i++) {
+            if (yuwaQuestion.get(i).getIsDeleted() == 1) {
 
                 final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
                         .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
@@ -71,14 +72,12 @@ public class AppDataManager extends BaseActivity {
                 daoSession.clear();
 //                Log.d(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-            }
-            else {
+            } else {
                 daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
 //                Log.d(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
         }
-
 
 
     }
@@ -110,10 +109,9 @@ public class AppDataManager extends BaseActivity {
         }
 
 
-            return dateTime;
+        return dateTime;
 
-        }
-
+    }
 
 
     private String parseResponseCode(Object someObject) throws NullPointerException, IllegalAccessException {
@@ -127,7 +125,7 @@ public class AppDataManager extends BaseActivity {
 
             value = field.get(someObject);
 
-            if (field.getName().equalsIgnoreCase("last_sync_date_time") ) {
+            if (field.getName().equalsIgnoreCase("last_sync_date_time")) {
                 dateTime = value.toString();
             }
         }

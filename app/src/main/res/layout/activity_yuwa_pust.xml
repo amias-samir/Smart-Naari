@@ -29,15 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<ListView-->
-        <!--android:id="@android:id/list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
-
 
     <android.support.v4.widget.NestedScrollView
         android:layout_below="@+id/app_bar_layout"
@@ -49,5 +40,7 @@
         <include layout="@layout/content_yuwa_pust" />
 
     </android.support.v4.widget.NestedScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

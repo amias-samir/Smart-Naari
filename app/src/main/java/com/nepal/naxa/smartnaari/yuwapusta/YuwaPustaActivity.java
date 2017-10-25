@@ -66,12 +66,22 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
+
+//                        DownloadService downloadService = new DownloadService();
+//                        downloadService.getYuwaPustaPosts();
                         Log.i(TAG, "onRefresh called from SwipeRefreshLayout");
 
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
 //                        myUpdateOperation();
-                        downloadService.getYuwaPustaPosts();
+//                        Intent intent = new Intent(this,DownloadService.class);
+//                        this.startService(intent);
+
+//                        Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
+//                        toDownloadService.putExtra("receiver", mReceiver);
+//
+//                        this.startService(toDownloadService);
+
 
                         initQuestionsRecyclerView();
 

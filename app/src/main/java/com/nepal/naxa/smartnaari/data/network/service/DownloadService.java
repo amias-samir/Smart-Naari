@@ -132,16 +132,16 @@ public class DownloadService extends IntentService {
     }
 
     public void getYuwaPustaPosts() {
-        AppDataManager appDataManager = new AppDataManager(this);
 
+        AppDataManager appDataManager = new AppDataManager(this);
         String last_sync_date = appDataManager.getLastSyncDateTime(YuwaQuestion.class);
 
         try {
             JSONObject jsonObject = new JSONObject();
 //            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
             jsonObject.put("last_sync_date_time",last_sync_date);
-
             jsonToSendLastSyncDate = jsonObject.toString();
+            Log.d(TAG, "getYuwaPustaPosts: last sync date: ----- \n JSON : " + jsonToSendLastSyncDate);
 
         }catch (JSONException e){
             e.printStackTrace();
@@ -150,7 +150,7 @@ public class DownloadService extends IntentService {
 
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 //        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(appDataManager.getLastSyncDateTime(YuwaQuestion.class));
-        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts("2017-10-12 05:38:36");
+        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(jsonToSendLastSyncDate);
         call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaResponse>() {
             @Override
             public void onResponse(Call<YuwaPustaResponse> call, Response<YuwaPustaResponse> response) {
