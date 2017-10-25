@@ -26,18 +26,23 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
 
 public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+
+
 
 
     private List<YuwaQuestion> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
+
+
 
     public YuwaQuestionAdapter(List<YuwaQuestion> items) {
         this.items = items;
@@ -47,7 +52,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.onItemClickListener = onItemClickListener;
     }
 
-    public static void updateItems(){
+    public static void updateItems() {
 
     }
 
@@ -78,8 +83,8 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         YuwaQuestion item = items.get(position);
 
         if (holder instanceof ViewHolder) {
-            //        ((ViewHolder) holder).question.setText(item.getQuestion());
-            //      ((ViewHolder) holder).answer.setText(item.getAnswer());
+            ((ViewHolder) holder).question.setText(item.getQuestion());
+            ((ViewHolder) holder).answer.setText(item.getAnswer());
         }
     }
 
@@ -112,6 +117,11 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         TextView question;
         @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
         TextView answer;
+
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+//        HtmlTextView question;
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+//        HtmlTextView answer;
 
         public ViewHolder(View itemView) {
             super(itemView);
