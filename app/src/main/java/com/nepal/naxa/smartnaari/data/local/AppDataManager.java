@@ -99,13 +99,13 @@ public class AppDataManager extends BaseActivity {
         QueryBuilder<String> dateAndTimes;
         String dateTime = "";
 
-        long rowCount = daoSession.getDao(classname).count();
+     long rowCount = daoSession.getDao(classname).count();
 
-        if (rowCount > 0) {
+        if(rowCount >0) {
+
             try {
                 dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
                 object = dateAndTimes.list().get(0);
-
                 dateTime = parseResponseCode(object);
             } catch (NullPointerException | IllegalAccessException e) {
                 e.printStackTrace();

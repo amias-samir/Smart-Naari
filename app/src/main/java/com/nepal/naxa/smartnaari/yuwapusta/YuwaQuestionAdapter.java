@@ -26,8 +26,6 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 
-import org.sufficientlysecure.htmltextview.HtmlTextView;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -83,8 +81,8 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         YuwaQuestion item = items.get(position);
 
         if (holder instanceof ViewHolder) {
-            ((ViewHolder) holder).question.setText(item.getQuestion());
-            ((ViewHolder) holder).answer.setText(item.getAnswer());
+                    ((ViewHolder) holder).question.setText(item.getQuestion());
+                  ((ViewHolder) holder).answer.setText(item.getAnswer());
         }
     }
 
