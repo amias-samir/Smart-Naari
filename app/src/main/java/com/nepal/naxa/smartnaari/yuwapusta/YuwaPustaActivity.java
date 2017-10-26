@@ -2,12 +2,16 @@ package com.nepal.naxa.smartnaari.yuwapusta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +20,9 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
+import com.nepal.naxa.smartnaari.debug.AppLogger;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
@@ -23,6 +30,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
 
@@ -37,6 +48,8 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
     @BindView(R.id.yuwa_pusta_act_rv_reviewslist)
     RecyclerView questionList;
 
+    private SwipeRefreshLayout swipeContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +62,26 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
 
         int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         SpanUtils.setColor(header, "Yuwa Pusta", "Yuwa", color);
+
+        //Swipe Refresh Action
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                syncAllData();
+
+
+
+
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(
+                android.R.color.holo_red_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light);
 
     }
 
@@ -79,6 +112,11 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         yuwaQuestionAdapter.setOnItemClickListener(this);
 
         questionList.setNestedScrollingEnabled(false);
+
+
+        if(swipeContainer != null && swipeContainer.isRefreshing() ){
+            swipeContainer.setRefreshing(false);
+        }
 
 
     }
@@ -115,9 +153,38 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
 
     @OnClick(R.id.btn_ask_a_owl)
     public void toAskAOwnActivity() {
-
         Intent toAskOwlActivity = new Intent(this, AskOwlActivity.class);
         startActivity(toAskOwlActivity);
+    }
 
+    private void syncAllData() {
+
+
+        DownloadResultReceiver mReceiver = new DownloadResultReceiver(new Handler());
+        mReceiver.setReceiver(new DownloadResultReceiver.Receiver() {
+            @Override
+            public void onReceiveResult(int resultCode, Bundle resultData) {
+                switch (resultCode) {
+                    case STATUS_RUNNING:
+                        swipeContainer.setRefreshing(true);
+                        showInfoToast("Syncing Data");
+                        break;
+                    case STATUS_ERROR:
+                        break;
+                    case STATUS_FINISHED:
+
+                        initQuestionsRecyclerView();
+
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        break;
+                }
+            }
+        });
+
+
+        Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
+        toDownloadService.putExtra("receiver", mReceiver);
+
+        this.startService(toDownloadService);
     }
 }
