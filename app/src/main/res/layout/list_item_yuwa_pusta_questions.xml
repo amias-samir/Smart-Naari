@@ -14,17 +14,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/spacing_large" />
 
-    <TextView
-        android:textColor="@color/colorGray"
-        android:id="@+id/list_item_yuwa_pusta_question_tv_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium"
-        android:text="@string/question"
-        android:textAlignment="center"
-        android:textSize="@dimen/material_text_subhead" />
-
-    <!--<org.sufficientlysecure.htmltextview.HtmlTextView-->
+    <!--<TextView-->
         <!--android:textColor="@color/colorGray"-->
         <!--android:id="@+id/list_item_yuwa_pusta_question_tv_question"-->
         <!--android:layout_width="match_parent"-->
@@ -32,22 +22,22 @@
         <!--android:layout_margin="@dimen/spacing_medium"-->
         <!--android:text="@string/question"-->
         <!--android:textAlignment="center"-->
-        <!--android:textSize="@dimen/material_text_subhead"-->
-        <!--android:textAppearance="@android:style/TextAppearance.Small" />-->
+        <!--android:textSize="@dimen/material_text_subhead" />-->
 
-
-
-    <TextView
+    <org.sufficientlysecure.htmltextview.HtmlTextView
         android:textColor="@color/colorGray"
-        android:id="@+id/list_item_yuwa_pusta_question_tv_answer"
+        android:id="@+id/list_item_yuwa_pusta_question_tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_medium"
-        android:text="@string/answer"
+        android:text="@string/question"
         android:textAlignment="center"
-        android:textSize="@dimen/material_text_subhead" />
+        android:textSize="@dimen/material_text_subhead"
+        android:textAppearance="@android:style/TextAppearance.Small" />
 
-    <!--<org.sufficientlysecure.htmltextview.HtmlTextView-->
+
+
+    <!--<TextView-->
         <!--android:textColor="@color/colorGray"-->
         <!--android:id="@+id/list_item_yuwa_pusta_question_tv_answer"-->
         <!--android:layout_width="match_parent"-->
@@ -55,8 +45,18 @@
         <!--android:layout_margin="@dimen/spacing_medium"-->
         <!--android:text="@string/answer"-->
         <!--android:textAlignment="center"-->
-        <!--android:textSize="@dimen/material_text_subhead"-->
-        <!--android:textAppearance="@android:style/TextAppearance.Small" />-->
+        <!--android:textSize="@dimen/material_text_subhead" />-->
+
+    <org.sufficientlysecure.htmltextview.HtmlTextView
+        android:textColor="@color/colorGray"
+        android:id="@+id/list_item_yuwa_pusta_question_tv_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:text="@string/answer"
+        android:textAlignment="center"
+        android:textSize="@dimen/material_text_subhead"
+        android:textAppearance="@android:style/TextAppearance.Small" />
 
 
 </LinearLayout>

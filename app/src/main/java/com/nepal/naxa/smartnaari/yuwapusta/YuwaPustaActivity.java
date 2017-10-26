@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.yuwapusta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -19,7 +20,9 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
+import com.nepal.naxa.smartnaari.debug.AppLogger;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
@@ -27,6 +30,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
+import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
 
@@ -74,13 +81,8 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
 //                        myUpdateOperation();
-//                        Intent intent = new Intent(this,DownloadService.class);
-//                        this.startService(intent);
 
-//                        Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
-//                        toDownloadService.putExtra("receiver", mReceiver);
-//
-//                        this.startService(toDownloadService);
+                        syncAllData();
 
 
                         initQuestionsRecyclerView();
@@ -170,5 +172,34 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         Intent toAskOwlActivity = new Intent(this, AskOwlActivity.class);
         startActivity(toAskOwlActivity);
 
+    }
+
+
+    private void syncAllData() {
+
+
+        DownloadResultReceiver mReceiver = new DownloadResultReceiver(new Handler());
+        mReceiver.setReceiver(new DownloadResultReceiver.Receiver() {
+            @Override
+            public void onReceiveResult(int resultCode, Bundle resultData) {
+                switch (resultCode) {
+                    case STATUS_RUNNING:
+                        showInfoToast("Syncing Data");
+                        break;
+                    case STATUS_ERROR:
+                        break;
+                    case STATUS_FINISHED:
+                        showInfoToast("Successfully updated ");
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        break;
+                }
+            }
+        });
+
+
+        Intent toDownloadService = new Intent(Intent.ACTION_SYNC, null, this, DownloadService.class);
+        toDownloadService.putExtra("receiver", mReceiver);
+
+        this.startService(toDownloadService);
     }
 }

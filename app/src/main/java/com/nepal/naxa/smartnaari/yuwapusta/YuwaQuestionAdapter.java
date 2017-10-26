@@ -26,6 +26,8 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -107,15 +109,25 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
+//
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+//        TextView question;
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+//        TextView answer;
 
-        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
-        TextView question;
-        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
-        TextView answer;
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+//        HtmlTextView question;
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+//        HtmlTextView answer;
+
+        protected HtmlTextView question , answer ;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+//            ButterKnife.bind(this, itemView);
+//            ButterKnife.bind(this, itemView);
+            question = (HtmlTextView)itemView.findViewById(R.id.list_item_yuwa_pusta_question_tv_question);
+            answer = (HtmlTextView) itemView.findViewById(R.id.list_item_yuwa_pusta_question_tv_answer);
 
         }
     }
