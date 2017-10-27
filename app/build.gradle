@@ -23,6 +23,7 @@ android {
             //setProperty("archivesBaseName", gitHash())
         }
     }
+    buildToolsVersion '26.0.2'
 }
 
 greendao {
