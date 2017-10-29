@@ -22,6 +22,7 @@ import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
+import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.utils.Constants;
@@ -177,6 +178,12 @@ public class MyCircleActivity extends BaseActivity {
 //                Constants.fourth_contact = tvFourthContact.getText().toString();
 //                Constants.fifth_contact = tvFifthContact.getText().toString();
 
+//                first_contact = tvFirstContact.getText().toString();
+//                second_contact = tvSecondContact.getText().toString();
+//                third_contact = tvThirdContact.getText().toString();
+//                fourth_contact = tvFourthContact.getText().toString();
+//                fifth_contact = tvFifthContact.getText().toString();
+
                 myCircleData.setContactNumber1(tvFirstContact.getText().toString());
                 myCircleData.setContactNumber2(tvSecondContact.getText().toString());
                 myCircleData.setContactNumber3(tvThirdContact.getText().toString());
@@ -189,12 +196,6 @@ public class MyCircleActivity extends BaseActivity {
                 fourth_contact = myCircleData.getContactNumber4();
                 fifth_contact = myCircleData.getContactNumber5();
 
-
-//                first_contact = tvFirstContact.getText().toString();
-//                second_contact = tvSecondContact.getText().toString();
-//                third_contact = tvThirdContact.getText().toString();
-//                fourth_contact = tvFourthContact.getText().toString();
-//                fifth_contact = tvFifthContact.getText().toString();
 
 
                 if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
@@ -216,8 +217,7 @@ public class MyCircleActivity extends BaseActivity {
 //                Constants.third_contact = tvThirdContact.getText().toString();
 //                Constants.fourth_contact = tvFourthContact.getText().toString();
 //                Constants.fifth_contact = tvFifthContact.getText().toString();
-//
-//
+
 //                first_contact = tvFirstContact.getText().toString();
 //                second_contact = tvSecondContact.getText().toString();
 //                third_contact = tvThirdContact.getText().toString();

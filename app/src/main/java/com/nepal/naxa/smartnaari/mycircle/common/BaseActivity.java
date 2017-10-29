@@ -1,7 +1,6 @@
-package com.nepal.naxa.smartnaari.common;
+package com.nepal.naxa.smartnaari.mycircle.common;
 
 import android.annotation.TargetApi;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -12,13 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.nepal.naxa.smartnaari.data.local.AppDataManager;
-import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
-import com.nepal.naxa.smartnaari.utils.NetworkUtils;
-import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
-
-import es.dmoral.toasty.Toasty;
-
 /**
  * Created on 10/9/17
  * by nishon.tan@gmail.com
@@ -26,51 +18,11 @@ import es.dmoral.toasty.Toasty;
 
 public class BaseActivity extends AppCompatActivity {
 
-    private ProgressDialog progressDialog;
-    private ToastUtils toastUtils;
-    private Toasty progess;
-    protected AppDataManager appDataManager;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toastUtils = new ToastUtils();
 
-        appDataManager = new AppDataManager(getApplicationContext());
-    }
-
-    public void showErrorToast(String message) {
-        if (message != null) {
-            toastUtils.error(this, message);
-        } else {
-            toastUtils.error(this, "Some Error Occurred!");
-        }
-    }
-
-    public void showInfoToast(String message) {
-        if (message != null) {
-            toastUtils.info(this, message);
-        }
-
-    }
-
-    public void showLoading(String msg) {
-
-        progressDialog = DialogFactory.createProgressDialog(this, msg);
-        progressDialog.show();
-    }
-
-    public void hideLoading() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
-        }
-    }
-
-
-
-    public boolean isNetworkDisconnected() {
-        return NetworkUtils.isNetworkDisconnected(getApplicationContext());
     }
 
 
@@ -97,14 +49,11 @@ public class BaseActivity extends AppCompatActivity {
                 checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-
-
     @TargetApi(Build.VERSION_CODES.M)
     public  boolean isSystemAlertPermissionGranted(Context context) {
         final boolean result = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(context);
         return result;
     }
-
 
 
 }

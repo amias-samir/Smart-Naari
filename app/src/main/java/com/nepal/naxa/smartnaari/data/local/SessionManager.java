@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.UserData;
+import com.nepal.naxa.smartnaari.debug.Dump;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
@@ -33,8 +34,14 @@ public class SessionManager {
 
     public void saveUserCircle(MyCircleData myCircleData) {
 
+
+        Log.d(TAG, "saveUserCircle: SAMIR Contct name:= "+myCircleData.getContactName2());
+        Dump.object(TAG, myCircleData);
+
+//todo
+// Data aairaako xa but GSON to JSON convert vairaa chhaina
         String json = gson.toJson(myCircleData);
-        Log.d(TAG, "saveUserCircle: JSON:= "+json);
+        Log.d(TAG, "saveUserCircle: SAMIR JSON:= "+json);
         utils.setValue(KEY_MY_CIRCLE, json);
     }
 

@@ -164,22 +164,22 @@ public class LoginActivity extends BaseActivity {
                 switch (userDetail.getStatus()) {
                     case REQUEST_OK:
 
-                        Gson gson =new GsonBuilder().create();
-
-                        myCircleData.setUserId("8");
-                        myCircleData.setContactNumber1("984123456789");
-                        myCircleData.setContactNumber2("984123456789");
-                        myCircleData.setContactNumber3("984123456789");
-                        myCircleData.setContactNumber4("984123456789");
-                        myCircleData.setContactNumber5("984123456789");
-                        myCircleData.setContactName1("samir");
-                        myCircleData.setContactName2("sam");
-                        myCircleData.setContactName3("saaamirr");
-                        myCircleData.setContactName4("");
-                        myCircleData.setContactName5("Amias");
-
-                        String json = gson.toJson(myCircleData);
-                        Log.d(TAG, "handleLoginSucess: "+json);
+//                        Gson gson =new GsonBuilder().create();
+//
+//                        myCircleData.setUserId("8");
+//                        myCircleData.setContactNumber1("984123456789");
+//                        myCircleData.setContactNumber2("984123456789");
+//                        myCircleData.setContactNumber3("984123456789");
+//                        myCircleData.setContactNumber4("984123456789");
+//                        myCircleData.setContactNumber5("984123456789");
+//                        myCircleData.setContactName1("samir");
+//                        myCircleData.setContactName2("sam");
+//                        myCircleData.setContactName3("saaamirr");
+//                        myCircleData.setContactName4("");
+//                        myCircleData.setContactName5("Amias");
+//
+//                        String json = gson.toJson(myCircleData);
+//                        Log.d(TAG, "handleLoginSucess: "+json);
 
 
 
@@ -198,14 +198,19 @@ public class LoginActivity extends BaseActivity {
                 sessionManager.saveUser(userDetail.getUserData());
 
 
-//                myCircleData.setUserId(userDetail.getUserData().getUserId());
-//                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
-//                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
-//                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
-//                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
-//                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
+                myCircleData.setUserId(userDetail.getUserData().getUserId());
+                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
+                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
+                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
+                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
+                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
+                myCircleData.setContactName1(userDetail.getUserData().getCircleName1());
+                myCircleData.setContactName2(userDetail.getUserData().getCircleName2());
+                myCircleData.setContactName3(userDetail.getUserData().getCircleName3());
+                myCircleData.setContactName4(userDetail.getUserData().getCircleName4());
+                myCircleData.setContactName5(userDetail.getUserData().getCircleName5());
 
-
+                Log.d(TAG, "handleLoginSucess: SAMIR" + myCircleData.getContactName2());
                 sessionManager.saveUserCircle(myCircleData);
 
 
