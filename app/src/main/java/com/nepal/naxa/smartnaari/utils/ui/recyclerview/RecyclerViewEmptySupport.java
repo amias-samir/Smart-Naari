@@ -5,11 +5,32 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.nepal.naxa.smartnaari.debug.AppLogger;
+
+import timber.log.Timber;
+
 public class RecyclerViewEmptySupport extends RecyclerView {
 
 
     private View emptyView;
     private AdapterDataObserver emptyObserver = new AdapterDataObserver() {
+
+
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            super.onItemRangeInserted(positionStart, itemCount);
+
+
+
+           // getAdapter().notifyItemRangeInserted(curSize, itemCount);
+            AppLogger.d(" %s old size, new size %s ",  positionStart, itemCount);
+
+
+
+        }
+
+
 
         @Override
         public void onChanged() {
@@ -49,6 +70,8 @@ public class RecyclerViewEmptySupport extends RecyclerView {
 
         emptyObserver.onChanged();
     }
+
+
 
     public void setEmptyView(View emptyView) {
         this.emptyView = emptyView;

@@ -87,4 +87,14 @@ public class DummyDataProvider {
         }
         return articles;
     }
+
+    public static List<Article> getNews() {
+
+        List<Article> articles = new ArrayList<>();
+
+        Article article = new Article(1231231, "Moon", "FAVORITE", articleDummyTimes[0], false, drawableList[random.nextInt(3)], colorList[0], "http://lorempixel.com/400/200/food/" + 6);
+        articles.add(article);
+
+        return articles;
+    }
 }
