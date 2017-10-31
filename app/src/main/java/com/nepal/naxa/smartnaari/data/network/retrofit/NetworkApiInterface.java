@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.data.network.retrofit;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -38,5 +39,9 @@ public interface NetworkApiInterface {
     @FormUrlEncoded
     @POST("yuwa_pusta")
     Call<YuwaPustaQueryResponse> getYuwaPusaQueryDetails(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("get_services")
+    Call<ServicesResponse> getServices(@Field("last_sync_date_time") String data);
 }
 

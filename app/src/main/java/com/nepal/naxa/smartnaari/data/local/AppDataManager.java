@@ -12,6 +12,8 @@ import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestionDao;
 import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.ServicesData;
+import com.nepal.naxa.smartnaari.data.network.ServicesDataDao;
 import com.nepal.naxa.smartnaari.debug.Dump;
 
 import org.greenrobot.greendao.query.DeleteQuery;
@@ -83,14 +85,48 @@ public class AppDataManager extends BaseActivity {
 
     }
 
+    public List<YuwaQuestion> getAllYuwaQuestions() {
+        return daoSession.getYuwaQuestionDao().loadAll();
+    }
+
+
+    public void prepareToSaveServices(List<ServicesData> servicesData) {
+        //loop
+        for(int i = 0 ; i< servicesData.size(); i++){
+            if(servicesData.get(i).getIsDeleted() == 1 ){
+
+                final DeleteQuery<ServicesData> tableDeleteQuery = daoSession.queryBuilder(ServicesData.class)
+                        .where(ServicesDataDao.Properties.IsDeleted.eq("1"))
+                        .buildDelete();
+                tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                daoSession.clear();
+                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+
+            }
+            else {
+                daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
+                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+
+            }
+        }
+
+
+
+    }
+
+    public List<ServicesData> getAllServicesdata() {
+        return daoSession.getServicesDataDao().loadAll();
+    }
+
+
+
+
 //        public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
 //
 //        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
 //    }
 
-    public List<YuwaQuestion> getAllYuwaQuestions() {
-        return daoSession.getYuwaQuestionDao().loadAll();
-    }
+
 
     @SuppressWarnings("unchecked")
     public String getLastSyncDateTime(Class classname) {
