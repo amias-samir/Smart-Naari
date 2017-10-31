@@ -500,8 +500,7 @@ public class MyCircleActivity extends BaseActivity {
                         showInfoToast(body.getData());
 
                         sessionManager.saveUserCircle(myCircleData);
-
-                        Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
+                        Intent intent = new Intent(MyCircleActivity.this, PermissionActivity.class);
 //                        Constants.first_contact = tvFirstContact.getText().toString();
 //                        Constants.second_contact = tvSecondContact.getText().toString();
 //                        Constants.third_contact = tvThirdContact.getText().toString();

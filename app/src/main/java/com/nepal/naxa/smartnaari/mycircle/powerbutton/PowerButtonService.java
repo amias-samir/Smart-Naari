@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
 
 
@@ -26,6 +27,9 @@ public class PowerButtonService extends Service {
 
     private static final int NOTIFICATION_ID = 1213124;
 
+    private Boolean status = false;
+    SessionManager sessionManager ;
+
     public PowerButtonService() {
 
     }
@@ -34,6 +38,12 @@ public class PowerButtonService extends Service {
     public void onCreate() {
         super.onCreate();
         showForegroundNotification("MyCircle is Active");
+
+        status = true;
+
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.setIntentServiceStatus(status);
+
 
         LinearLayout mLinear = new LinearLayout(getApplicationContext()) {
 
@@ -88,6 +98,18 @@ public class PowerButtonService extends Service {
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
         wm.addView(mView, params);
+    }
+
+   @Override
+    public void onDestroy(){
+        super.onDestroy();
+
+       status = false;
+
+       sessionManager = new SessionManager(getApplicationContext());
+       sessionManager.setIntentServiceStatus(status);
+
+
     }
 
     @Override

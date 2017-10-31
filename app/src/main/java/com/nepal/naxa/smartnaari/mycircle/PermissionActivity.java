@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
+import com.nepal.naxa.smartnaari.splashscreen.SplashScreenActivity;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
@@ -76,6 +78,12 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
             case 2:
                 view = createInstructionView();
                 break;
+
+//            case 3:
+//                Intent intent = new Intent(PermissionActivity.this, SplashScreenActivity.class);
+//                startActivity(intent);
+//                break;
+
             default:
                 view = createDummyView();
                 break;
@@ -118,6 +126,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     @Override
     public void onStepOpening(int stepNumber) {
         switch (stepNumber) {
+
             case 0:
                 verticalStepperForm.setActiveStepAsCompleted();
                 break;
@@ -128,16 +137,26 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
                 handleOverlayPermissionOpen();
                 break;
 
+//            case 3:
+//                Intent intent = new Intent(PermissionActivity.this, SplashScreenActivity.class);
+//                startActivity(intent);
+//                break;
+
         }
     }
 
     private void handleOverlayPermissionOpen() {
 
-        if (isSystemAlertPermissionGranted(getApplicationContext())) {
-            verticalStepperForm.setActiveStepAsCompleted();
-        } else {
+//        try {
+            if (isSystemAlertPermissionGranted(getApplicationContext())) {
+                verticalStepperForm.setActiveStepAsCompleted();
+            } else {
 
-        }
+            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+
 
     }
 
@@ -179,6 +198,11 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     @Override
     public void sendData() {
         startService(new Intent(this, PowerButtonService.class));
+
+        
+
+        Intent intent = new Intent(PermissionActivity.this, BeautifulMainActivity.class);
+        startActivity(intent);
 
 
     }

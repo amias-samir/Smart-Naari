@@ -21,6 +21,8 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
+import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
@@ -216,9 +218,17 @@ public class LoginActivity extends BaseActivity {
 
                 if (sessionManager.doesUserHaveCircle()) {
 
-                    Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if(sessionManager.doesHaveIntentBackgroundService()) {
+
+                        Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Intent intent = new Intent(LoginActivity.this, PermissionActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
 
                 } else {
 
