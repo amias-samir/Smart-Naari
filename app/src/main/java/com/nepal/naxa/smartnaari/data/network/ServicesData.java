@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Unique;
 
 @Entity (nameInDb = "services_data")
