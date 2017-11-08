@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.services;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
@@ -29,13 +32,20 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ServicesActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class ServicesActivity extends BaseActivity implements OnMapReadyCallback , GoogleMap.OnMarkerClickListener{
+
+    private static final String TAG = "ServicesActivity";
 
 
     @BindView(R.id.act_services_recycler_map_legend)
     RecyclerView recyclerMapLegend;
     AppDataManager appDataManager ;
+    
     List<ServicesData> servicesData ;
+    Marker amarker;
+
+    private GoogleMap map;
+    private List<Marker> markersPresentOnMap;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +53,8 @@ public class ServicesActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_services);
 
         appDataManager = new AppDataManager(getApplicationContext());
+        markersPresentOnMap = new ArrayList<>();
+
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -76,13 +88,17 @@ public class ServicesActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng location;
+//        this.map = googleMap ;
 
         location = new LatLng(27.7172, 85.3240);
         googleMap.addMarker(new MarkerOptions().position(location)
                 .title("Marker Default "));
 
         getServicesData();
+        removeMarkersIfPresent();
         addMarker(googleMap);
+//        List<ServicesData> servicesData = appDataManager.getAllServicesdata();
+//        placeMarkersOnMap(servicesData);
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,15.0f));
 
@@ -97,28 +113,93 @@ public class ServicesActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void getServicesData(){
        servicesData  = appDataManager.getAllServicesdata();
+        Log.d(TAG, "getServicesData: "+servicesData.size());
+
+
     }
 
-    public void addMarker (GoogleMap googleMap){
 
-        LatLng location;
-        Marker amarker;
+    public void addMarker (final GoogleMap googleMap){
+
+        googleMap.setOnMarkerClickListener(this);
+
+        this.map = googleMap ;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+
+                    LatLng location;
+
 
         for (int i = 0 ; i< servicesData.size() ; i++){
 
             Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
             Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
 
-//            location = new LatLng(lon, lat);
-            location = new LatLng(27.7182, 85.3250);
-//            googleMap.addMarker(new MarkerOptions().position(location)
-//                    .title(servicesData.get(i).getServiceName()));
+            Log.d(TAG, "run addMarker: " + "Lat"+lat + "  , Longt  "+lon);
 
-            amarker = googleMap.addMarker(new MarkerOptions().position(location).title(servicesData.get(i).getServiceName()));
-            amarker.setTag(new ServicesData());
+            location = new LatLng(lat, lon);
+
+                    amarker = map.addMarker(new MarkerOptions().position(location).title(servicesData.get(i).getServiceName()));
+            amarker.setTag(servicesData.get(i));
+            markersPresentOnMap.add(amarker);
 
         }
+        } catch (NumberFormatException e) {
+                    showErrorToast("Server sent bad data");
+                }
+
+
+            }
+        }).run();
+
 
     }
 
+    private void removeMarkersIfPresent() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Marker marker : markersPresentOnMap) {
+                    marker.remove();
+                }
+
+                markersPresentOnMap.clear();
+            }
+        }).run();
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        Log.e(TAG, "onMarkerClick: ");
+
+        ServicesData servicesData = (ServicesData) marker.getTag();
+        delayBeforeSheetOpen(servicesData);
+
+
+        return false;
+    }
+
+
+    private void delayBeforeSheetOpen(final ServicesData servicesData) {
+
+
+        Log.e(TAG, "delayBeforeSheetOpen: ");
+
+        int ANIMATE_DELAY = 250;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                PlaceDetailsBottomSheet placeDetailsBottomSheet = PlaceDetailsBottomSheet.getInstance(servicesData);
+                placeDetailsBottomSheet.show(getSupportFragmentManager(), "a");
+
+
+            }
+        }, ANIMATE_DELAY);
+    }
 }

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.gms.maps.model.Marker;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
@@ -24,7 +25,7 @@ import es.dmoral.toasty.Toasty;
  * by nishon.tan@gmail.com
  */
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private ToastUtils toastUtils;
@@ -104,7 +105,6 @@ public class BaseActivity extends AppCompatActivity {
         final boolean result = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(context);
         return result;
     }
-
 
 
 }
