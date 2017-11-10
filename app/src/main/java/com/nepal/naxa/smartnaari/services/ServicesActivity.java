@@ -94,6 +94,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         googleMap.addMarker(new MarkerOptions().position(location)
                 .title("Marker Default "));
 
+
         getServicesData();
         removeMarkersIfPresent();
         addMarker(googleMap);
@@ -177,9 +178,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     public boolean onMarkerClick(Marker marker) {
 
         Log.e(TAG, "onMarkerClick: ");
+        try {
+            ServicesData servicesData = (ServicesData) marker.getTag();
+            delayBeforeSheetOpen(servicesData);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
-        ServicesData servicesData = (ServicesData) marker.getTag();
-        delayBeforeSheetOpen(servicesData);
 
 
         return false;

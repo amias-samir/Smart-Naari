@@ -4,7 +4,7 @@ package com.nepal.naxa.smartnaari.utils;
  * Created by susan on 9/24/2017.
  */
 
-public class DistrictAndAgeGroupConstants {
+public class ConstantData {
 
     public final static String[] birthDistrictListEnglish = {"Birth District","Achham", "Arghakhanchi", "Baglung", "Baitadi", "Bajhang", "Bajura", "Banke", "Bara", "Bardiya", "Bhaktapur",
             "Bhojpur", "Chitwan", "Dadeldhura", "Dailekh", "Dang", "Darchula", "Dhading", "Dhankuta", "Dhanusa", "Dholkha",
@@ -24,5 +24,16 @@ public class DistrictAndAgeGroupConstants {
             "Saptari", "Sarlahi", "Sindhuli", "Sindhupalchok", "Siraha", "Solukhumbu", "Sunsari", "Surkhet", "Syangja", "Tanahu",
             "Taplejung", "Terhathum", "Udayapur"};
 
+    public final static String[] districtListEnglish = {"Choose District","Achham", "Arghakhanchi", "Baglung", "Baitadi", "Bajhang", "Bajura", "Banke", "Bara", "Bardiya", "Bhaktapur",
+            "Bhojpur", "Chitwan", "Dadeldhura", "Dailekh", "Dang", "Darchula", "Dhading", "Dhankuta", "Dhanusa", "Dholkha",
+            "Dolpa", "Doti", "Gorkha", "Gulmi", "Humla", "Ilam", "Jajarkot", "Jhapa", "Jumla", "Kailali", "Kalikot", "Kanchanpur",
+            "Kapilvastu", "Kaski", "Kathmandu", "Kavrepalanchok", "Khotang", "Lalitpur", "Lamjung", "Mahottari", "Makwanpur",
+            "Manang", "Morang", "Mugu", "Mustang", "Myagdi", "Nawalparasi", "Nuwakot", "Okhaldhunga", "Palpa", "Panchthar",
+            "Parbat", "Parsa", "Pyuthan", "Ramechhap", "Rasuwa", "Rautahat", "Rolpa", "Rukum", "Rupandehi", "Salyan", "Sankhuwasabha",
+            "Saptari", "Sarlahi", "Sindhuli", "Sindhupalchok", "Siraha", "Solukhumbu", "Sunsari", "Surkhet", "Syangja", "Tanahu",
+            "Taplejung", "Terhathum", "Udayapur"};
+
     public final static String [] AGE_GROUP = {"below 16", "16-18", "19-24", "25-30", "31-35", "36-40", "41-50", "51-60","above 60"};
+
+    public final static String[] voilenceOccurTime = {"1 week ago", "2 weeks ago", "3 weeks ago", "a month ago", "2 months ago", "3 months ago", "4 months ago", "5 months ago", "6 months ago", "1 year ago", "more than a year ago"};
 }

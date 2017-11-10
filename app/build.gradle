@@ -10,7 +10,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        vectorDrawables.useSupportLibrary = true
 
     }
@@ -85,20 +85,27 @@ dependencies {
     compile 'com.ernestoyaquello.stepperform:vertical-stepper-form:0.9.9'
     compile 'com.google.android.gms:play-services-location:11.0.4'
 
+    // Testing-only dependencies
+//    androidTestCompile 'com.android.support.test:runner:1.0.1'
+//    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+//    testCompile 'junit:junit:4.12'
+
+
+
 
 }
 
 
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '25.3.0'
-            }
-        }
-    }
-}
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion '25.3.1'
+//            }
+//        }
+//    }
+//}
 
 def gitHash() {
     try {

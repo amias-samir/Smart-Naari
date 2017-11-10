@@ -23,7 +23,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
-import com.nepal.naxa.smartnaari.utils.DistrictAndAgeGroupConstants;
+import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
@@ -123,11 +123,11 @@ public class SignUpActivity extends Activity {
 
         mProgressDlg = new ProgressDialog(this);
 
-        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.birthDistrictListEnglish);
+        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spBirthPlace.setAdapter(birthDistArray);
 
-        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.currentDistrictListEnglish);
+        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.currentDistrictListEnglish);
         currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCurrentPlace.setAdapter(currentDistArray);
     }
