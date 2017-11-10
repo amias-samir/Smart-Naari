@@ -16,13 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MaChupBasdinaActivity extends AppCompatActivity {
+public class MaChupBasdinaActivity extends BaseActivity {
 
 
     @BindView(R.id.toolbar)
@@ -118,6 +119,53 @@ public class MaChupBasdinaActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSignUp)
     public void onViewClicked() {
+
+        validateData();
+
     }
 
+    public void validateData() {
+
+//        if (spinnerNoConsent.getSelectedItem().toString().isEmpty() || spinnerNoConsent.getSelectedItem().toString().equals("")) {
+//
+//            showInfoToast("Please select No Consent option.");
+//            return;
+//        }
+
+        if (spinnerDistrictOfIncident.getSelectedItem().toString().isEmpty() || spinnerDistrictOfIncident.getSelectedItem().toString().equals("Choose District")){
+
+            showInfoToast("Please select District of incident.");
+            return;
+        }
+
+//        if(spinnerTypeOfViolence.getSelectedItem().toString().isEmpty()){
+//
+//            showInfoToast("Please select types of voilence.");
+//            return;
+//        }
+
+        if(spinnerVoilenceOccur.getSelectedItem().toString().isEmpty() || spinnerVoilenceOccur.getSelectedItem().toString().equals("Select time")){
+
+            showInfoToast("Please select voilence occured time.");
+            return;
+        }
+
+        if(tvPerpetrator.getText().toString().isEmpty() || tvPerpetrator.getText().toString().equals("")){
+
+            showInfoToast("Perpetrator field cannot be empty");
+            return;
+        }
+
+        if(tvDescGBVInputId.getText().toString().isEmpty() || tvDescGBVInputId.getText().toString().equals("")){
+
+            showInfoToast("Further details of the reported GBV cannot be empty");
+            return;
+        }
+
+        if(tvDescGBVInputId.getText().toString().length() >250){
+
+            showInfoToast("Further details of the reported GBV cannot be greter than 250 character");
+            return;
+        }
+    }
 }
