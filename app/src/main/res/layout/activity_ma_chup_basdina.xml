@@ -221,7 +221,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_district_of_incident"
@@ -253,7 +254,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_type_of_violence"
@@ -285,7 +287,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/txtLBLVoilenceOccur"
@@ -317,7 +320,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_perpetrator"
@@ -371,7 +375,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/txtLBLDescGBV"
@@ -441,7 +446,8 @@
                 android:layout_marginBottom="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="@dimen/spacing_large"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
 
                 <Button

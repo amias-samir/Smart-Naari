@@ -8,6 +8,7 @@ import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -43,5 +44,10 @@ public interface NetworkApiInterface {
     @FormUrlEncoded
     @POST("get_services")
     Call<ServicesResponse> getServices(@Field("last_sync_date_time") String data);
+
+
+    @FormUrlEncoded
+    @POST("ma_chup_basdina")
+    Call<MaChupBasdinaResponse> getMaChupBasdinaDetails(@Field("data") String data);
 }
 
