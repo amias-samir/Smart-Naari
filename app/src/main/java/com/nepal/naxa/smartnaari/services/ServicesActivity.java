@@ -42,6 +42,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     AppDataManager appDataManager ;
     
     List<ServicesData> servicesData ;
+    public static List<ServicesLegendListModel> resultCur = new ArrayList<>();
+    public static List<ServicesLegendListModel> filteredList = new ArrayList<>();
+    ServicesLegendListAdapter ca;
+
     Marker amarker;
 
     private GoogleMap map;
@@ -78,8 +82,35 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
 
     private void initMapLegend() {
-        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getServicesList());
-        recyclerMapLegend.setAdapter(adapter);
+
+        try {
+            resultCur.clear();
+
+            for(int i = 0 ; i< appDataManager.getAllUniqueServicesType().size(); i++){
+
+                ServicesLegendListModel newData = new ServicesLegendListModel();
+                newData.serviceTypeID = appDataManager.getAllUniqueServicesType().get(i);
+
+                resultCur.add(newData);
+
+            }
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        ca = new ServicesLegendListAdapter(this, resultCur);
+        recyclerMapLegend.setAdapter(ca);
+        appDataManager.getAllUniqueServicesType();
+
+        Log.d(TAG, "initMapLegend: "+appDataManager.getAllUniqueServicesType().get(1));
+
+
+
+
+//        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getServicesList());
+//        recyclerMapLegend.setAdapter(adapter);
         recyclerMapLegend.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
     }

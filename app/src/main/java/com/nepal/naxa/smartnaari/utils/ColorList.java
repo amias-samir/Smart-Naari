@@ -3,10 +3,10 @@ package com.nepal.naxa.smartnaari.utils;
 import android.graphics.Color;
 
 /**
- * Created by User on 11/20/2016.
+ * Created by Samir on 11/20/2016.
  */
 
-public class ChartColor {
+public class ColorList {
 
     public static final int[] COLORFUL_COLORS = {
             Color.rgb(243, 81, 79), Color.rgb(243, 81, 79), Color.rgb(243, 81, 79),

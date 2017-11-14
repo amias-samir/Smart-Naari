@@ -1,10 +1,12 @@
 package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
@@ -15,6 +17,7 @@ import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.ServicesDataDao;
 import com.nepal.naxa.smartnaari.debug.Dump;
+import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -118,6 +121,29 @@ public class AppDataManager extends BaseActivity {
         return daoSession.getServicesDataDao().loadAll();
     }
 
+
+    public ArrayList<String> getAllUniqueServicesType(){
+
+         String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.ServiceTypeId.columnName+" FROM "+ServicesDataDao.TABLENAME;
+
+
+
+            ArrayList<String> result = new ArrayList<>();
+            Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
+            try{
+                if (c.moveToFirst()) {
+                    do {
+
+                        result.add(c.getString(0));
+                        Log.d(TAG, "getAllServicesType: "+c.getString(0));
+                    } while (c.moveToNext());
+                }
+            } finally {
+                c.close();
+            }
+            return result;
+
+    }
 
 
 
