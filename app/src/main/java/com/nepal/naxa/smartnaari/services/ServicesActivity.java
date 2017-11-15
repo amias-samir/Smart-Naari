@@ -1,5 +1,8 @@
 package com.nepal.naxa.smartnaari.services;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -16,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -24,6 +28,7 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
+import com.nepal.naxa.smartnaari.utils.ColorList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +45,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     @BindView(R.id.act_services_recycler_map_legend)
     RecyclerView recyclerMapLegend;
     AppDataManager appDataManager ;
-    
+
     List<ServicesData> servicesData ;
     public static List<ServicesLegendListModel> resultCur = new ArrayList<>();
     public static List<ServicesLegendListModel> filteredList = new ArrayList<>();
@@ -116,24 +121,35 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
 
+    @SuppressLint("MissingPermission")
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng location;
-//        this.map = googleMap ;
+    public void onMapReady(final GoogleMap googleMap) {
 
-        location = new LatLng(27.7172, 85.3240);
-        googleMap.addMarker(new MarkerOptions().position(location)
-                .title("Marker Default "));
+        if(hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)){
+            googleMap.setMyLocationEnabled(true);
+
+        }else  {
+            requestPermissionsSafely(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
+
+        }
+
+
+        googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+
+            @Override
+            public void onMyLocationChange(Location arg0) {
+                // TODO Auto-generated method stub
+         LatLng location = new LatLng(arg0.getLatitude(), arg0.getLongitude());
+
+//                googleMap.addMarker(new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title("It's Me!"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,12.5f));
+            }
+        });
 
 
         getServicesData();
         removeMarkersIfPresent();
         addMarker(googleMap);
-//        List<ServicesData> servicesData = appDataManager.getAllServicesdata();
-//        placeMarkersOnMap(servicesData);
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,15.0f));
-
     }
 
     @Override
@@ -168,16 +184,29 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         for (int i = 0 ; i< servicesData.size() ; i++){
 
-            Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
-            Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
+            for(int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++){
 
-            Log.d(TAG, "run addMarker: " + "Lat"+lat + "  , Longt  "+lon);
+            if(servicesData.get(i).getServiceTypeId().equals(appDataManager.getAllUniqueServicesType().get(j))){
 
-            location = new LatLng(lat, lon);
+                Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
+                Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
 
-                    amarker = map.addMarker(new MarkerOptions().position(location).title(servicesData.get(i).getServiceName()));
-            amarker.setTag(servicesData.get(i));
-            markersPresentOnMap.add(amarker);
+                Log.d(TAG, "run addMarker: " + "Lat"+lat + "  , Longt  "+lon);
+
+                location = new LatLng(lat, lon);
+
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.get(i).getServiceName())
+                        .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
+                amarker.setTag(servicesData.get(i));
+                markersPresentOnMap.add(amarker);
+
+            }
+            }
+
+
+
+
 
         }
         } catch (NumberFormatException e) {
