@@ -37,6 +37,9 @@
     <color name="iron">#CCCCCC</color>
     <color name="black_alpha_40">#bf000000</color>
 
+    <color name="sectioned_recycler_head">#868585</color>
+    <color name="sectioned_recycler_child">#9f9f9f</color>
+
 
 
 

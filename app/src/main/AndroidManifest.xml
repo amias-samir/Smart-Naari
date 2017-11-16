@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -23,7 +22,6 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
-
         android:name=".application.SmartNaari"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +30,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <service
             android:name=".data.network.service.DownloadService"
             android:enabled="true"
@@ -43,16 +40,13 @@
         <service
             android:name=".mycircle.shake.ShakeService"
             android:enabled="true" />
-
         <service
             android:name=".mycircle.shake.LocationMessageService"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="tan.nishon.shake.shake.LocationMessageService" />
             </intent-filter>
-
         </service>
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
@@ -63,26 +57,26 @@
         <service android:name=".mycircle.location.LocationUpdateService" />
         <service android:name=".mycircle.location.GeoPointService" />
 
-        <activity android:name="mycircle.shake.ServiceActivity">
-
-        </activity>
+        <activity android:name="mycircle.shake.ServiceActivity" />
         <activity android:name=".mycircle.activitydetect.DetectActivity" />
         <activity
             android:name=".mycircle.setting.SettingsActivity"
             android:label="@string/title_activity_settings" />
-
         <activity
             android:name=".mycircle.PermissionActivity"
             android:label="@string/title_activity_permission"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
-        <!-- ======================end of shake service ================-->
+        <!-- ======================end of shake service ================ -->
+
 
         <!-- <activity -->
         <!-- android:name=".homescreen.MainActivity" -->
@@ -102,27 +96,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".homescreen.DetailActivity"
             android:parentActivityName=".utils.ui.BeautifulMainActivity"
             android:screenOrientation="portrait">
-
-
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
         <activity
             android:name=".utils.ui.BeautifulMainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
@@ -163,18 +148,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
         <activity
             android:name=".masakchamchu.AddANewPostActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
-
         </activity>
-
         <activity
             android:name=".passion_of_life.ComplexListActivity"
             android:exported="true"
@@ -206,7 +187,6 @@
         <activity
             android:name=".yuwapusta.AskOwlActivity"
             android:exported="true"
-
             android:parentActivityName=".yuwapusta.YuwaPustaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -225,8 +205,12 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
-
         </activity>
+
+        <activity android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

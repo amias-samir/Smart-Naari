@@ -84,6 +84,24 @@
         <item>Saturn</item>
         <item>Uranus</item>
         <item>Neptune</item>
+
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
     </string-array>
 
 
@@ -104,7 +122,6 @@
     <string name="general_error_msg">Some Error Occurred!</string>
     <string name="network_error_timeout">Socket Time out. Please try again.</string>
     <string name="network_disconnected">Device is offline!</string>
-
 
 
     <!--  shake service string  -->

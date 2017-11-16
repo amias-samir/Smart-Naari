@@ -49,4 +49,12 @@
     <dimen name="ma_chup_basdina_header_lower">180dp</dimen>
     <dimen name="cover_photo_height">150dp</dimen>
 
+
+
+    <!-- sectioned recycler vew card margin -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="card_side_margin">4dp</dimen>
+    <dimen name="card_zero_margin">0dp</dimen>
+
 </resources>
