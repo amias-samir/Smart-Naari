@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
@@ -65,7 +66,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @BindView(R.id.btnSignUp)
     Button btnSignUp;
 
-
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
 
@@ -88,6 +88,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ma_chup_basdina);
         ButterKnife.bind(this);
+
 
         //initialize toolbar
         initToolbar();
@@ -153,6 +154,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     @OnClick(R.id.btnSignUp)
     public void onViewClicked() {
+
+        showLoading("Sending ... \n Please Wait! ");
 
 //        validate user input data
         validateData();
@@ -263,6 +266,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
             @Override
             public void onResponse(Call<MaChupBasdinaResponse> call, Response<MaChupBasdinaResponse> response) {
                 Log.d(TAG, "onPostExecute: " + response.toString());
+
+                hideLoading();
+
+                if (response.body() == null) {
+                    showErrorToast("Failed to send \n unknown error occured");
+                    return;
+                }
 
                 if (response.body() != null) {
                     String status = "";

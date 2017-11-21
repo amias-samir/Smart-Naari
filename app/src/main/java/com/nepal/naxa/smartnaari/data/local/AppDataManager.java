@@ -74,12 +74,12 @@ public class AppDataManager extends BaseActivity {
                         .buildDelete();
                 tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                 daoSession.clear();
-                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
+//                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
             else {
                 daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
-                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
+//                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
             }
         }
@@ -103,12 +103,12 @@ public class AppDataManager extends BaseActivity {
                         .buildDelete();
                 tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                 daoSession.clear();
-                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+//                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
 
             }
             else {
                 daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
-                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+//                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
 
             }
         }

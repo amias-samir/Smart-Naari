@@ -57,4 +57,8 @@
     <dimen name="card_side_margin">4dp</dimen>
     <dimen name="card_zero_margin">0dp</dimen>
 
+    <!-- yuwa query list max hight -->
+    <dimen name="yuwa_query_list_max_height">150dp</dimen>
+
+
 </resources>

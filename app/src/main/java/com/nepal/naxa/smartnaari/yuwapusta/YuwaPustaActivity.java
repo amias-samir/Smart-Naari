@@ -12,11 +12,14 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nepal.naxa.smartnaari.YuwaPustaQueryDetailsActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
@@ -35,7 +38,7 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
-public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapter.OnItemClickListener, YuwaQuestionAdapter.OnItemClickListener {
+public class YuwaPustaActivity extends BaseActivity  {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -50,12 +53,17 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
 
     private SwipeRefreshLayout swipeContainer;
 
+    List<YuwaQuestion> yuwaQuestions ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yuwa_pust);
         ButterKnife.bind(this);
         initToolbar();
+
+        yuwaQuestions = appDataManager.getAllYuwaQuestions();
+
         initHorizontalRecyclerView();
         initQuestionsRecyclerView();
 
@@ -83,6 +91,60 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
                 android.R.color.holo_orange_light,
                 android.R.color.holo_green_light);
 
+
+
+
+        final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+
+
+        questionList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+//                    Drawer.closeDrawers();
+                    int position = recyclerView.getChildPosition(child);
+
+
+                    Intent intent = new Intent(YuwaPustaActivity.this, YuwaPustaQueryDetailsActivity.class);
+
+                    intent.putExtra("query", yuwaQuestions.get(position).getQuestion());
+                    intent.putExtra("answer", yuwaQuestions.get(position).getAnswer());
+
+
+//                    intent.putExtra("query", "sdhfgsdhfsdhfbshdfbhvdvbhdbvdhsdvnvdbvhdbdv???");
+//                    intent.putExtra("answer", "asbcscshc jms dsdvss dajdhaudha dbasdhd \nagagdagdfhgadfsfsf \tsdfhsfhsdfsdfhfshf\nsgfgsfsfs");
+
+                    startActivity(intent);
+
+
+                    return true;
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+
     }
 
     private void initHorizontalRecyclerView() {
@@ -91,7 +153,7 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
 
         yuwaPustaActRvOwlslist.setAdapter(horizontalRecyclerViewAdapter);
         yuwaPustaActRvOwlslist.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        horizontalRecyclerViewAdapter.setOnItemClickListener(this);
+//        horizontalRecyclerViewAdapter.setOnItemClickListener(this);
 
         // add pager behavior
         PagerSnapHelper snapHelper = new PagerSnapHelper();
@@ -100,16 +162,17 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         // pager indicator
         yuwaPustaActRvOwlslist.addItemDecoration(new RedLinePagerIndicatorDecoration());
         yuwaPustaActRvOwlslist.setNestedScrollingEnabled(false);
+
     }
 
     private void initQuestionsRecyclerView() {
-        List<YuwaQuestion> yuwaQuestions = appDataManager.getAllYuwaQuestions();
+
 
         YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
         questionList.setAdapter(yuwaQuestionAdapter);
 
         questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        yuwaQuestionAdapter.setOnItemClickListener(this);
+//        yuwaQuestionAdapter.setOnItemClickListener(this);
 
         questionList.setNestedScrollingEnabled(false);
 
@@ -140,15 +203,24 @@ public class YuwaPustaActivity extends BaseActivity implements RecyclerViewAdapt
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public void onItemClick(View view, Owl owl) {
-
-    }
-
-    @Override
-    public void onItemClick(View view, YuwaQuestion yuwaQuestion) {
-
-    }
+//    @Override
+//    public void onItemClick(View view, Owl owl) {
+//
+//    }
+//
+//    @Override
+//    public void onItemClick(View view, YuwaQuestion yuwaQuestion) {
+//
+//        Intent intent = new Intent(YuwaPustaActivity.this, YuwaPustaQueryDetailsActivity.class);
+////        intent.putExtra("query", yuwaQuestion.getQuestion());
+////        intent.putExtra("answer", yuwaQuestion.getAnswer());
+//
+//        intent.putExtra("query", "sdhfgsdhfsdhfbshdfbhvdvbhdbvdhsdvnvdbvhdbdv???");
+//        intent.putExtra("answer", "asbcscshc jms dsdvss dajdhaudha dbasdhd \nagagdagdfhgadfsfsf \tsdfhsfhsdfsdfhfshf\nsgfgsfsfs");
+//
+//        startActivity(intent);
+//
+//    }
 
 
     @OnClick(R.id.btn_ask_a_owl)

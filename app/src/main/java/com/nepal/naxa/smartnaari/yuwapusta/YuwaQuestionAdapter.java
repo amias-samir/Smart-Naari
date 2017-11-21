@@ -22,9 +22,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
@@ -85,6 +87,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (holder instanceof ViewHolder) {
                     ((ViewHolder) holder).question.setHtml(item.getQuestion());
                   ((ViewHolder) holder).answer.setHtml(item.getAnswer());
+
         }
     }
 
@@ -108,6 +111,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onClick(final View v) {
         onItemClickListener.onItemClick(v, (YuwaQuestion) v.getTag());
+        Toast.makeText(context, "clicked clicked", Toast.LENGTH_SHORT).show();
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {

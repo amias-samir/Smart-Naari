@@ -206,14 +206,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
-        <activity android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true">
-        </activity>
+        <activity
+            android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="2b2f7cc04d8fcabb1a720c50d2fd95a9a26e953d" />
+
+        <activity android:name=".YuwaPustaQueryDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
+        </activity>
     </application>
 
 </manifest>

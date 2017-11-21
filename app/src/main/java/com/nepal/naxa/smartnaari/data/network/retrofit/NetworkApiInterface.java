@@ -19,35 +19,35 @@ import retrofit2.http.POST;
 
 public interface NetworkApiInterface {
     @FormUrlEncoded
-    @POST("register")
+    @POST("smartapi/register")
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("smartapi/login")
     Call<UserDetail> getUserData(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("add_circle")
+    @POST("smartapi/add_circle")
     Call<MyCircleDetails> getCircleData(@Field("data") String data);
 
-    @GET("get_owl")
+    @GET("smartapi/get_owl")
     Call<OwlWrapper> getOwls();
 
     @FormUrlEncoded
-    @POST("get_yuwapusta")
+    @POST("smartapi/get_yuwapusta")
     Call<YuwaPustaResponse> getYuwaPustaPosts(@Field("last_sync_date_time") String data);
 
     @FormUrlEncoded
-    @POST("yuwa_pusta")
+    @POST("smartapi/yuwa_pusta")
     Call<YuwaPustaQueryResponse> getYuwaPusaQueryDetails(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("get_services")
+    @POST("smartapi/get_services")
     Call<ServicesResponse> getServices(@Field("last_sync_date_time") String data);
 
 
     @FormUrlEncoded
-    @POST("ma_chup_basdina")
+    @POST("email/email_send")
     Call<MaChupBasdinaResponse> getMaChupBasdinaDetails(@Field("data") String data);
 }
 
