@@ -38,6 +38,7 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
+
 public class YuwaPustaActivity extends BaseActivity  {
 
     @BindView(R.id.toolbar)
@@ -115,10 +116,16 @@ public class YuwaPustaActivity extends BaseActivity  {
                     int position = recyclerView.getChildPosition(child);
 
 
+
                     Intent intent = new Intent(YuwaPustaActivity.this, YuwaPustaQueryDetailsActivity.class);
 
-                    intent.putExtra("query", yuwaQuestions.get(position).getQuestion());
-                    intent.putExtra("answer", yuwaQuestions.get(position).getAnswer());
+//                    intent.putExtra("query", yuwaQuestions.get(position).getQuestion());
+//                    intent.putExtra("answer", yuwaQuestions.get(position).getAnswer());
+
+//                    Bundle bundle = new Bundle();
+//                    bundle.putParcelable("data", Parcels.wrap(data));
+
+                    intent.putExtra("yuwaQuestions", yuwaQuestions.get(position));
 
 
 //                    intent.putExtra("query", "sdhfgsdhfsdhfbshdfbhvdvbhdbvdhsdvnvdbvhdbdv???");

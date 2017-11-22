@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
@@ -36,9 +37,15 @@ public class YuwaPustaQueryDetailsActivity extends BaseActivity {
 //        String A = intent.getStringExtra("query");
 //        String B = intent.getStringExtra("answer");
 
-        tvQuestionDetails.setHtml(intent.getStringExtra("query"));
-        tvAnswerDetails.setHtml(intent.getStringExtra("answer"));
+        Bundle data = getIntent().getExtras();
+        YuwaQuestion yuwaQuestion = (YuwaQuestion) data.getParcelable("yuwaQuestions");
 
+
+//        tvQuestionDetails.setHtml(intent.getStringExtra("query"));
+//        tvAnswerDetails.setHtml(intent.getStringExtra("answer"));
+
+        tvQuestionDetails.setHtml(yuwaQuestion.getQuestion());
+        tvAnswerDetails.setHtml(yuwaQuestion.getAnswer());
     }
 
 

@@ -190,7 +190,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
             Integer spinnerPosition = (int) (long) spinnerChooseOwl.getSelectedItemId();
 
-            header.put("user_id", sessionManager.getUserId());
+            header.put("user_id_fk", sessionManager.getUserId());
             header.put("owl_id", owlIDArray.get(spinnerPosition));
             header.put("qstn", wrapperTextQuestionToOwl.getEditText().getText().toString());
             jsonToSend = header.toString();

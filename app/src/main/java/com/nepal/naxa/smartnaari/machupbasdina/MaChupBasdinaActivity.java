@@ -155,7 +155,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @OnClick(R.id.btnSignUp)
     public void onViewClicked() {
 
-        showLoading("Sending ... \n Please Wait! ");
+        showLoading("Sending ... \nPlease Wait! ");
 
 //        validate user input data
         validateData();
