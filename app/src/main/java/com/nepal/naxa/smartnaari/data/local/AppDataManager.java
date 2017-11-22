@@ -66,22 +66,34 @@ public class AppDataManager extends BaseActivity {
 
     public void prepareToSaveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
      //loop
-        for(int i = 0 ; i< yuwaQuestion.size(); i++){
-            if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
 
-                final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
-                        .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
-                        .buildDelete();
-                tableDeleteQuery.executeDeleteWithoutDetachingEntities();
-                daoSession.clear();
+        for(int i = 0 ; i< yuwaQuestion.size(); i++){
+            try {
+               if(daoSession.getYuwaQuestionDao().count() == 0 ){
+                   daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+               }
+               else {
+                   if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
+
+                       final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
+                               .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
+                               .buildDelete();
+                       tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                       daoSession.clear();
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-            }
-            else {
-                daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                   }
+                   else {
+                       daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
+                   }
+               }
             }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
 
 
@@ -96,24 +108,36 @@ public class AppDataManager extends BaseActivity {
     public void prepareToSaveServices(List<ServicesData> servicesData) {
         //loop
         for(int i = 0 ; i< servicesData.size(); i++){
-            if(servicesData.get(i).getIsDeleted() == 1 ){
 
-                final DeleteQuery<ServicesData> tableDeleteQuery = daoSession.queryBuilder(ServicesData.class)
-                        .where(ServicesDataDao.Properties.IsDeleted.eq("1"))
-                        .buildDelete();
-                tableDeleteQuery.executeDeleteWithoutDetachingEntities();
-                daoSession.clear();
+            try {
+                if(daoSession.getServicesDataDao().count() == 0 ){
+                    daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
+                }
+                else {
+
+                    if (servicesData.get(i).getIsDeleted() == 1) {
+
+                        final DeleteQuery<ServicesData> tableDeleteQuery = daoSession.queryBuilder(ServicesData.class)
+                                .where(ServicesDataDao.Properties.IsDeleted.eq("1"))
+                                .buildDelete();
+                        tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                        daoSession.clear();
 //                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
 
-            }
-            else {
-                daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
+                    } else {
+                        daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
 //                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
 
-            }
+                    }
+                }
+                }
+            catch (Exception e){
+                    e.printStackTrace();
+                }
         }
 
 
+        //
 
     }
 

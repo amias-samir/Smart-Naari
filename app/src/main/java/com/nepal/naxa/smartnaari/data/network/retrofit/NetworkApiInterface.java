@@ -35,7 +35,7 @@ public interface NetworkApiInterface {
 
     @FormUrlEncoded
     @POST("smartapi/get_yuwapusta")
-    Call<YuwaPustaResponse> getYuwaPustaPosts(@Field("last_sync_date_time") String data);
+    Call<YuwaPustaResponse> getYuwaPustaPosts(@Field("data") String data);
 
     @FormUrlEncoded
     @POST("smartapi/yuwa_pusta")

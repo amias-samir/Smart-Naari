@@ -153,7 +153,8 @@ public class DownloadService extends IntentService {
 
 
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
-        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+//        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(jsonToSendLastSyncDate);
 //        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaResponse>() {
             @Override
@@ -198,6 +199,7 @@ public class DownloadService extends IntentService {
 
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<ServicesResponse> call = apiService.getServices(appDataManager.getLastSyncDateTime(ServicesData.class));
+//        Call<ServicesResponse> call = apiService.getServices(jsonToSendLastSyncDate);
 //        Call<ServicesResponse> call = apiService.getServices("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<ServicesResponse>() {
             @Override
