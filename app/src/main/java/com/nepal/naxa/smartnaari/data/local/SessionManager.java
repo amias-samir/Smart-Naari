@@ -9,6 +9,9 @@ import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.debug.Dump;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_INTENT_SERVICE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
@@ -39,9 +42,34 @@ public class SessionManager {
         Log.d(TAG, "saveUserCircle: SAMIR Contct name:= "+myCircleData.getContactName2());
         Dump.object(TAG, myCircleData);
 
+        String json ="";
+//        String json = gson.toJson(myCircleData);
+
+        try {
+            JSONObject header = new JSONObject();
+
+            header.put("user_id", myCircleData.getUserId());
+            header.put("c1",myCircleData.getContactName1());
+            header.put("n1",myCircleData.getContactNumber1());
+            header.put("c2",myCircleData.getContactName2());
+            header.put("n2",myCircleData.getContactNumber2());
+            header.put("c3",myCircleData.getContactName3());
+            header.put("n3",myCircleData.getContactNumber3());
+            header.put("c4",myCircleData.getContactName4());
+            header.put("n4",myCircleData.getContactNumber4());
+            header.put("c5",myCircleData.getContactName5());
+            header.put("n5",myCircleData.getContactNumber5());
+
+            json = header.toString();
+
+        } catch (Exception e ){
+            e.printStackTrace();
+        }
+
 //todo
 // Data aairaako xa but GSON to JSON convert vairaa chhaina
-        String json = gson.toJson(myCircleData);
+
+
         Log.d(TAG, "saveUserCircle: SAMIR JSON:= "+json);
         utils.setValue(KEY_MY_CIRCLE, json);
     }
