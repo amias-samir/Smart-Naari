@@ -220,6 +220,8 @@ public class DownloadService extends IntentService {
             @Override
             public void onFailure(Call<ServicesResponse> call, Throwable t) {
 
+                t.getMessage();
+                Log.e(TAG, "onFailure: "+t.getMessage() );
             }
         }));
     }
