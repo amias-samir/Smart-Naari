@@ -123,7 +123,8 @@
             android:name=".mycircle.MyCircleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:exported="true"/>
         <activity
             android:name=".masakchamchu.IAmAmazingActivity"
             android:exported="true"

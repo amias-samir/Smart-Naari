@@ -43,7 +43,7 @@ public interface NetworkApiInterface {
 
     @FormUrlEncoded
     @POST("smartapi/get_services")
-    Call<ServicesResponse> getServices(@Field("last_sync_date_time") String data);
+    Call<ServicesResponse> getServices(@Field("data") String data);
 
 
     @FormUrlEncoded

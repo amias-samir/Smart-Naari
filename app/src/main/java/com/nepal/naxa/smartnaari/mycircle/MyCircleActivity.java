@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -260,24 +261,27 @@ public class MyCircleActivity extends BaseActivity {
 
         switch (reqCode) {
             case (PICK_CONTACT):
+
                 if (resultCode == Activity.RESULT_OK) {
                     Uri contactData = data.getData();
                     Cursor c = managedQuery(contactData, null, null, null, null);
                     if (c.moveToFirst()) {
                         String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
 
-                        String hasPhone =
-                                c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                        String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                        Log.d("MyCircleActivity", "onActivityResult: hasPhone : SAMIR : "+hasPhone);
 
                         if (hasPhone.equalsIgnoreCase("1")) {
                             Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
                                     ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
                             phones.moveToFirst();
                             String contact_number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-//                            contact_name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-//                            contact_image_path = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
+                            String contact_name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                            // contact_image_path = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
 
-                            setContcts(contact_number);
+                            Log.d("MyCircleActivity", "onActivityResult: SAMIR \n \n \t \t \t "+ contact_name + " : " + contact_number+" \n \n \n");
+
+                            setContcts(contact_name,contact_number);
                             initializeContactsUI();
                         }
                     }
@@ -288,7 +292,7 @@ public class MyCircleActivity extends BaseActivity {
     }
 
 
-    public void setContcts(String contact_no) {
+    public void setContcts(String contact_name, String contact_no) {
 
         String first, second, third, fourth, fifth;
 
@@ -299,29 +303,59 @@ public class MyCircleActivity extends BaseActivity {
         fourth = myCircleData.getContactNumber4();
         fifth = myCircleData.getContactNumber5();
 
+//        first = tvFirstContact.getText().toString();
+//        second = tvSecondContact.getText().toString();
+//        third = tvThirdContact.getText().toString();
+//        fourth = tvFourthContact.getText().toString();
+//        fifth = tvFifthContact.getText().toString();
+
+
+
         try {
             if (first.equals("")) {
-                Constants.first_contact = contact_no;
-                tvFirstContact.setText(Constants.first_contact);
+//                Constants.first_contact = contact_no;
+//                tvFirstContact.setText(contact_no);
+//                tvFirstContactName.setText(contact_name);
+                myCircleData.setContactName1(contact_name);
+                myCircleData.setContactNumber1(contact_no);
 
             } else if (second.equals("")) {
-                Constants.second_contact = contact_no;
-                tvSecondContact.setText(Constants.second_contact);
+//                Constants.second_contact = contact_no;
+//                tvSecondContactName.setText(contact_name);
+//                tvSecondContact.setText(contact_no);
+
+                myCircleData.setContactName2(contact_name);
+                myCircleData.setContactNumber2(contact_no);
 
             } else if (third.equals("")) {
                 count = count + 1;
-                Constants.third_contact = contact_no;
-                tvThirdContact.setText(Constants.third_contact);
+//                Constants.third_contact = contact_no;
+                tvThirdContactName.setVisibility(View.VISIBLE);
+                tvThirdContact.setVisibility(View.VISIBLE);
+//                tvThirdContactName.setText(contact_name);
+//                tvThirdContact.setText(contact_no);
+                myCircleData.setContactName3(contact_name);
+                myCircleData.setContactNumber3(contact_no);
 
             } else if (fourth.equals("")) {
                 count = count + 1;
-                Constants.fourth_contact = contact_no;
-                tvFourthContact.setText(Constants.fourth_contact);
+//                Constants.fourth_contact = contact_no;
+                tvFourthContactName.setVisibility(View.VISIBLE);
+                tvFourthContact.setVisibility(View.VISIBLE);
+//                tvFourthContactName.setText(contact_name);
+//                tvFourthContact.setText(contact_no);
+                myCircleData.setContactName4(contact_name);
+                myCircleData.setContactNumber4(contact_no);
 
             } else if (fifth.equals("")) {
                 count = count + 1;
-                Constants.fifth_contact = contact_no;
-                tvFifthContact.setText(Constants.fifth_contact);
+//                Constants.fifth_contact = contact_no;
+                tvFifthContactName.setVisibility(View.VISIBLE);
+                tvFifthContact.setVisibility(View.VISIBLE);
+//                tvFifthContactName.setText(contact_name);
+//                tvFifthContact.setText(contact_no);
+                myCircleData.setContactName5(contact_name);
+                myCircleData.setContactNumber5(contact_no);
 
             }
         } catch (Exception e) {
@@ -359,8 +393,8 @@ public class MyCircleActivity extends BaseActivity {
         if (!myCircleData.getContactNumber4().equals("")) {
             tvFourthContact.setVisibility(View.VISIBLE);
             tvFourthContactName.setVisibility(View.VISIBLE);
+            tvFourthContactName.setText(myCircleData.getContactName4());
             tvFourthContact.setText(myCircleData.getContactNumber4());
-            tvFourthContact.setText(myCircleData.getContactName4());
         }
         }catch (NullPointerException e){
             e.printStackTrace();
@@ -456,13 +490,15 @@ public class MyCircleActivity extends BaseActivity {
                         showInfoToast(body.getData());
 
                         sessionManager.saveUserCircle(myCircleData);
-                        Intent intent = new Intent(MyCircleActivity.this, PermissionActivity.class);
-//                        Constants.first_contact = tvFirstContact.getText().toString();
-//                        Constants.second_contact = tvSecondContact.getText().toString();
-//                        Constants.third_contact = tvThirdContact.getText().toString();
-//                        Constants.fourth_contact = tvFourthContact.getText().toString();
-//                        Constants.fifth_contact = tvFifthContact.getText().toString();
-                        startActivity(intent);
+
+                        if(sessionManager.doesHaveIntentBackgroundService()){
+                            Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Intent intent = new Intent(MyCircleActivity.this, PermissionActivity.class);
+                            startActivity(intent);
+                        }
+
 
                         break;
                     case REQUEST_401:
