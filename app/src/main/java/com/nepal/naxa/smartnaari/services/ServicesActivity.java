@@ -109,7 +109,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         recyclerMapLegend.setAdapter(ca);
         appDataManager.getAllUniqueServicesType();
 
-        Log.d(TAG, "initMapLegend: "+appDataManager.getAllUniqueServicesType().get(1));
+//        Log.d(TAG, "initMapLegend: "+appDataManager.getAllUniqueServicesType().get(1));
 
 
 
