@@ -332,7 +332,7 @@ public class MyCircleActivity extends BaseActivity {
 
     public void initializeContactsUI() {
 
-         myCircleData = sessionManager.getMyCircleContact();
+         MyCircleData myCircleData = sessionManager.getMyCircleContact();
 
 
         try {

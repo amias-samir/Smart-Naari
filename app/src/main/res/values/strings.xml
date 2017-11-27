@@ -200,6 +200,7 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_permission">PermissionActivity</string>
     <string name="location_provider_accuracy"><![CDATA[>Using %1$s. Accuracy is %2$s m]]></string>
+    <string name="disable_power_button_service">Disable</string>
 
     <!--end of shake service string -->
 

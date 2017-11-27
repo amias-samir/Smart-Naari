@@ -38,11 +38,9 @@ public class ErrorSupportCallback<T> implements Callback<T> {
 
         } else if (UrlClass.isInvalidResponse(getResponseCode(response.body()))) {
 
-
             callback.onFailure(call, new Exception("Server did not return 200 status"));
 
         } else {
-
 
             callback.onResponse(call, response);
         }

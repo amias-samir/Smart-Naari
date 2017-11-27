@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -148,18 +149,27 @@ public class LoginActivity extends BaseActivity {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
-        call.enqueue(new Callback<UserDetail>() {
+        call.enqueue((new ErrorSupportCallback<>(new Callback<UserDetail>() {
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
 
                 hideLoading();
+                handleLoginResponse(response.body());
 
-                if (response == null) {
-                    showErrorToast(null);
-                    return;
+            }
+
+            @Override
+            public void onFailure(Call<UserDetail> call, Throwable t) {
+                hideLoading();
+
+                String message = "Some Error Occured!";
+
+                if (t instanceof SocketTimeoutException) {
+                    message = "Socket Time out. Please try again.";
                 }
 
-                handleLoginResponse(response.body());
+                showErrorToast(message);
+
             }
 
             private void handleLoginResponse(UserDetail userDetail) {
@@ -241,19 +251,8 @@ public class LoginActivity extends BaseActivity {
 
             }
 
-            @Override
-            public void onFailure(Call<UserDetail> call, Throwable t) {
-                hideLoading();
+        })));
 
-                String message = "Some Error Occured!";
-
-                if (t instanceof SocketTimeoutException) {
-                    message = "Socket Time out. Please try again.";
-                }
-
-                showErrorToast(message);
-            }
-        });
     }
 
 

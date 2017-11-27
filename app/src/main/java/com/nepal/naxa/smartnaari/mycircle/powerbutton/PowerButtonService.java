@@ -1,7 +1,10 @@
 package com.nepal.naxa.smartnaari.mycircle.powerbutton;
 
 import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
@@ -13,10 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RemoteViews;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
+import com.nepal.naxa.smartnaari.notification.NotificationHelperActivity;
 
 
 /**
@@ -29,6 +34,9 @@ public class PowerButtonService extends Service {
 
     private Boolean status = false;
     SessionManager sessionManager ;
+    Context context ;
+    private NotificationManager mNotificationManager;
+
 
     public PowerButtonService() {
 
@@ -37,7 +45,12 @@ public class PowerButtonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        showForegroundNotification("MyCircle is Active");
+        showForegroundNotification("MyCircle Service is Active");
+
+//        show the notification
+//        new MyNotification(context);
+
+
 
         status = true;
 
@@ -123,9 +136,32 @@ public class PowerButtonService extends Service {
                 .setSmallIcon(R.mipmap.ic_launcher).setContentText(contentText)
                 .setWhen(System.currentTimeMillis())
                 .build();
+
+
         startForeground(NOTIFICATION_ID, notification);
+
+//        RemoteViews contentView=new RemoteViews(context.getPackageName(), R.layout.notification_layout);
+//
+//        //set the button listeners
+//        setListeners(contentView);
+//        notification.contentView = contentView;
+//        notification.flags |= Notification.FLAG_ONGOING_EVENT;
+//        mNotificationManager.notify(548853, notification);
+
 
     }
 
+    public void setListeners(RemoteViews view){
+        //TODO screencapture listener
+        //adb shell /system/bin/screencap -p storage/sdcard0/SimpleAndroidTest/test.png
+
+//        this.stopSelf();
+
+        //app listener
+        Intent app=new Intent(context, NotificationHelperActivity.class);
+        app.putExtra("DO", "disable");
+        PendingIntent pApp = PendingIntent.getActivity(context, 4, app, 0);
+        view.setOnClickPendingIntent(R.id.disable_service, pApp);
+    }
 
 }
