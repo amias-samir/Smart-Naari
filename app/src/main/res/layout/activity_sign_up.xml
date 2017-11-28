@@ -184,7 +184,7 @@
                         android:ems="10"
                         android:focusable="false"
                         android:gravity="center"
-                        android:hint="Age"
+                        android:hint="Date of Birth"
                         android:inputType="date"
                         android:onClick="getDOB_BtnClicked"
                         android:paddingBottom="10dp"
@@ -215,7 +215,7 @@
                             android:onClick="onRadioButtonClicked"
                             android:text=" M "
                             android:textColor="@color/textSecondary"
-                            android:textSize="@dimen/material_text_headline" />
+                            android:textSize="@dimen/material_text_title" />
 
                         <RadioButton
                             android:id="@+id/radio_sex_female"
@@ -226,7 +226,7 @@
                             android:onClick="onRadioButtonClicked"
                             android:text=" F "
                             android:textColor="@color/textSecondary"
-                            android:textSize="@dimen/material_text_headline" />
+                            android:textSize="@dimen/material_text_title" />
 
                         <RadioButton
                             android:id="@+id/radio_sex_other"
@@ -237,7 +237,7 @@
                             android:onClick="onRadioButtonClicked"
                             android:text=" Other"
                             android:textColor="@color/textSecondary"
-                            android:textSize="@dimen/material_text_headline" />
+                            android:textSize="@dimen/material_text_title" />
                     </RadioGroup>
 
 

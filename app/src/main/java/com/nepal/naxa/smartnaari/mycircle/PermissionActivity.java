@@ -38,6 +38,8 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("MyCircle Service Setup");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
 
 

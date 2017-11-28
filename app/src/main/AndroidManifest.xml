@@ -89,7 +89,8 @@
         <activity
             android:name=".mycircle.PermissionActivity"
             android:label="@string/title_activity_permission"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -136,7 +137,8 @@
             android:name=".register.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SignUpTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:exported="true"/>
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
@@ -233,7 +235,8 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

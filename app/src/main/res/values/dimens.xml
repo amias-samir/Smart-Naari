@@ -15,6 +15,10 @@
     <dimen name="button_height">30dp</dimen>
     <dimen name="line_size">100dp</dimen>
 
+    <!--ma chup bsdin GBV desc min height-->
+    <dimen name="textInputLayout_min_height">150dp</dimen>
+
+
 
     <dimen name="material_text_button">14sp</dimen>
     <dimen name="material_text_menu">14sp</dimen>

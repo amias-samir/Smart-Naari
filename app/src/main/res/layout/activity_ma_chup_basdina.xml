@@ -430,7 +430,10 @@
                         android:id="@+id/ma_chup_basdina_desc_GBV_input_id"
                         style="@style/SmartNaariInputLayoutTheme"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp" />
+                        android:minHeight="@dimen/textInputLayout_min_height"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left|start"
+                        android:scrollbars="vertical"/>
 
 
                 </android.support.design.widget.TextInputLayout>
