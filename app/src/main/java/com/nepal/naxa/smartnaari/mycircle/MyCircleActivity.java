@@ -320,7 +320,6 @@ public class MyCircleActivity extends BaseActivity {
             uriContact = data.getData();
 
             setContcts(retrieveContactName(),retrieveContactNumber());
-
         }
     }
 
