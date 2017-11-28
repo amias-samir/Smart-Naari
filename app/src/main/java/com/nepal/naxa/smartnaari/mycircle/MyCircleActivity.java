@@ -25,6 +25,8 @@ import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.UserData;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.utils.Constants;
@@ -532,7 +534,7 @@ public class MyCircleActivity extends BaseActivity {
                 NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<MyCircleDetails> call = apiService.getCircleData(jsonToSend);
-        call.enqueue(new Callback<MyCircleDetails>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<MyCircleDetails>() {
             @Override
             public void onResponse(Call<MyCircleDetails> call, Response<MyCircleDetails> response) {
 
@@ -584,7 +586,7 @@ public class MyCircleActivity extends BaseActivity {
 
                 showErrorToast(message);
             }
-        });
+        }));
     }
 
 
