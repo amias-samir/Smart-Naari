@@ -85,10 +85,13 @@ public class SessionManager {
         return myCircleData;
     }
 
-//    public void usresCircleContact(){
-//        MyCircleData myCircleData = getMyCircleContact();
-//
-//    }
+
+    public String usresCircleContact(){
+
+        String json = utils.getStringValue(KEY_MY_CIRCLE, null);
+        return json ;
+
+    }
 
 //======================================== end of circle data operation ==========================//
 

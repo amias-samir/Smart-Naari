@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -53,6 +54,14 @@ public class MyCircleActivity extends BaseActivity {
 
     int count = 0;
     static final int PICK_CONTACT = 01;
+
+
+    private static final String TAG = MyCircleActivity.class.getSimpleName();
+    private static final int REQUEST_CODE_PICK_CONTACTS = 1;
+    private Uri uriContact;
+    private String contactID; // contacts unique ID
+
+
 
     @BindView(R.id.my_circle_first_contact)
     EditText tvFirstContact;
@@ -113,6 +122,7 @@ public class MyCircleActivity extends BaseActivity {
 
         sessionManager = new SessionManager(this);
         myCircleData = new MyCircleData();
+        myCircleData = sessionManager.getMyCircleContact();
 
         setupUI();
         initializeContactsUI();
@@ -173,6 +183,9 @@ public class MyCircleActivity extends BaseActivity {
 
             case R.id.btnSelectContactNo:
 
+
+
+
                 myCircleData.setContactNumber1(tvFirstContact.getText().toString());
                 myCircleData.setContactNumber2(tvSecondContact.getText().toString());
                 myCircleData.setContactNumber3(tvThirdContact.getText().toString());
@@ -186,14 +199,21 @@ public class MyCircleActivity extends BaseActivity {
                 fifth_contact = myCircleData.getContactNumber5();
 
 
+                if(hasPermission(Manifest.permission.READ_CONTACTS)) {
 
-                if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
-                        fourth_contact.equals("") || fifth_contact.equals("")) {
-                    Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                    startActivityForResult(intentContact, PICK_CONTACT);
+                    if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
+                            fourth_contact.equals("") || fifth_contact.equals("")) {
+//                    Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+//                    startActivityForResult(intentContact, PICK_CONTACT);
+                        // using native contacts selection
+                        // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_CONTACTS);
+                    } else {
+                        showInfoToast("You can only add five phone number");
+
+                    }
                 } else {
-                    showInfoToast("You can only add five phone number");
-
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
                 }
 
                 break;
@@ -255,38 +275,57 @@ public class MyCircleActivity extends BaseActivity {
     }
 
 
+//    @Override
+//    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+//        super.onActivityResult(reqCode, resultCode, data);
+//
+//        switch (reqCode) {
+//            case (PICK_CONTACT):
+//
+//                if (resultCode == Activity.RESULT_OK) {
+//                    Uri contactData = data.getData();
+//                    Cursor c = managedQuery(contactData, null, null, null, null);
+//                    if (c.moveToFirst()) {
+//                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+//
+//                        String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+//                        Log.d("MyCircleActivity", "onActivityResult: hasPhone : SAMIR : "+hasPhone);
+//
+//                        if (hasPhone.equalsIgnoreCase("1")) {
+//                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
+//                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+//                            phones.moveToFirst();
+//                            String contact_number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+//                            String contact_name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+//                            // contact_image_path = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
+//
+//                            Log.d("MyCircleActivity", "onActivityResult: SAMIR \n \n \t \t \t "+ contact_name + " : " + contact_number+" \n \n \n");
+//
+//                            setContcts(contact_name,contact_number);
+//                            initializeContactsUI();
+//                        }
+//                    }
+//                }
+//                break;
+//
+//        }
+//    }
+
+
     @Override
-    public void onActivityResult(int reqCode, int resultCode, Intent data) {
-        super.onActivityResult(reqCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        switch (reqCode) {
-            case (PICK_CONTACT):
+        if (requestCode == REQUEST_CODE_PICK_CONTACTS && resultCode == RESULT_OK) {
+            Log.d(TAG, "Response: " + data.toString());
+            uriContact = data.getData();
 
-                if (resultCode == Activity.RESULT_OK) {
-                    Uri contactData = data.getData();
-                    Cursor c = managedQuery(contactData, null, null, null, null);
-                    if (c.moveToFirst()) {
-                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+//            retrieveContactName();
+//            retrieveContactNumber();
 
-                        String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-                        Log.d("MyCircleActivity", "onActivityResult: hasPhone : SAMIR : "+hasPhone);
-
-                        if (hasPhone.equalsIgnoreCase("1")) {
-                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
-                            phones.moveToFirst();
-                            String contact_number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                            String contact_name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-                            // contact_image_path = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
-
-                            Log.d("MyCircleActivity", "onActivityResult: SAMIR \n \n \t \t \t "+ contact_name + " : " + contact_number+" \n \n \n");
-
-                            setContcts(contact_name,contact_number);
-                            initializeContactsUI();
-                        }
-                    }
-                }
-                break;
+            setContcts(retrieveContactName(),retrieveContactNumber());
+//            initializeContactsUI();
+//            retrieveContactPhoto();
 
         }
     }
@@ -314,15 +353,15 @@ public class MyCircleActivity extends BaseActivity {
         try {
             if (first.equals("")) {
 //                Constants.first_contact = contact_no;
-//                tvFirstContact.setText(contact_no);
-//                tvFirstContactName.setText(contact_name);
+                tvFirstContact.setText(contact_no);
+                tvFirstContactName.setText(contact_name);
                 myCircleData.setContactName1(contact_name);
                 myCircleData.setContactNumber1(contact_no);
 
             } else if (second.equals("")) {
 //                Constants.second_contact = contact_no;
-//                tvSecondContactName.setText(contact_name);
-//                tvSecondContact.setText(contact_no);
+                tvSecondContactName.setText(contact_name);
+                tvSecondContact.setText(contact_no);
 
                 myCircleData.setContactName2(contact_name);
                 myCircleData.setContactNumber2(contact_no);
@@ -332,8 +371,8 @@ public class MyCircleActivity extends BaseActivity {
 //                Constants.third_contact = contact_no;
                 tvThirdContactName.setVisibility(View.VISIBLE);
                 tvThirdContact.setVisibility(View.VISIBLE);
-//                tvThirdContactName.setText(contact_name);
-//                tvThirdContact.setText(contact_no);
+                tvThirdContactName.setText(contact_name);
+                tvThirdContact.setText(contact_no);
                 myCircleData.setContactName3(contact_name);
                 myCircleData.setContactNumber3(contact_no);
 
@@ -342,8 +381,8 @@ public class MyCircleActivity extends BaseActivity {
 //                Constants.fourth_contact = contact_no;
                 tvFourthContactName.setVisibility(View.VISIBLE);
                 tvFourthContact.setVisibility(View.VISIBLE);
-//                tvFourthContactName.setText(contact_name);
-//                tvFourthContact.setText(contact_no);
+                tvFourthContactName.setText(contact_name);
+                tvFourthContact.setText(contact_no);
                 myCircleData.setContactName4(contact_name);
                 myCircleData.setContactNumber4(contact_no);
 
@@ -352,8 +391,8 @@ public class MyCircleActivity extends BaseActivity {
 //                Constants.fifth_contact = contact_no;
                 tvFifthContactName.setVisibility(View.VISIBLE);
                 tvFifthContact.setVisibility(View.VISIBLE);
-//                tvFifthContactName.setText(contact_name);
-//                tvFifthContact.setText(contact_no);
+                tvFifthContactName.setText(contact_name);
+                tvFifthContact.setText(contact_no);
                 myCircleData.setContactName5(contact_name);
                 myCircleData.setContactNumber5(contact_no);
 
@@ -366,7 +405,31 @@ public class MyCircleActivity extends BaseActivity {
 
     public void initializeContactsUI() {
 
-         myCircleData = sessionManager.getMyCircleContact();
+
+        try {
+            JSONObject jOBJ = new JSONObject(sessionManager.usresCircleContact());
+            myCircleData.setUserId(jOBJ.getString("user_id"));
+
+            myCircleData.setContactName2(jOBJ.getString("c1"));
+            myCircleData.setContactNumber2(jOBJ.getString("n1"));
+
+            myCircleData.setContactName3(jOBJ.getString("c2"));
+            myCircleData.setContactNumber3(jOBJ.getString("n2"));
+
+            myCircleData.setContactName4(jOBJ.getString("c3"));
+            myCircleData.setContactNumber4(jOBJ.getString("n3"));
+
+            myCircleData.setContactName5(jOBJ.getString("c4"));
+            myCircleData.setContactNumber5(jOBJ.getString("n4"));
+
+            myCircleData.setContactName1(jOBJ.getString("c5"));
+            myCircleData.setContactNumber1(jOBJ.getString("n5"));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+//         myCircleData = sessionManager.getMyCircleContact();
 
 
         try {
@@ -522,6 +585,69 @@ public class MyCircleActivity extends BaseActivity {
                 showErrorToast(message);
             }
         });
+    }
+
+
+    private String retrieveContactNumber() {
+
+        String contactNumber = null;
+
+        // getting contacts ID
+        Cursor cursorID = getContentResolver().query(uriContact,
+                new String[]{ContactsContract.Contacts._ID},
+                null, null, null);
+
+        if (cursorID.moveToFirst()) {
+
+            contactID = cursorID.getString(cursorID.getColumnIndex(ContactsContract.Contacts._ID));
+        }
+
+        cursorID.close();
+
+        Log.d(TAG, "Contact ID: " + contactID);
+
+        // Using the contact ID now we will get contact phone number
+        Cursor cursorPhone = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
+
+                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ? AND " +
+                        ContactsContract.CommonDataKinds.Phone.TYPE + " = " +
+                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
+
+                new String[]{contactID},
+                null);
+
+        if (cursorPhone.moveToFirst()) {
+            contactNumber = cursorPhone.getString(cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+        }
+
+        cursorPhone.close();
+
+        Log.d(TAG, "Contact Phone Number: " + contactNumber);
+
+        return contactNumber;
+    }
+
+    private String retrieveContactName() {
+
+        String contactName = null;
+
+        // querying contact data store
+        Cursor cursor = getContentResolver().query(uriContact, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+
+            // DISPLAY_NAME = The display name for the contact.
+            // HAS_PHONE_NUMBER =   An indicator of whether this contact has at least one phone number.
+
+            contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+        }
+
+        cursor.close();
+
+        Log.d(TAG, "Contact Name: " + contactName);
+
+        return contactName;
     }
 
 }

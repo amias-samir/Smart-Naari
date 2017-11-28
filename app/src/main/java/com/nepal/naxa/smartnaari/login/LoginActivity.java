@@ -16,6 +16,8 @@ import com.google.gson.GsonBuilder;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
+import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
@@ -148,7 +150,7 @@ public class LoginActivity extends BaseActivity {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
-        call.enqueue(new Callback<UserDetail>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<UserDetail>() {
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
 
@@ -165,25 +167,6 @@ public class LoginActivity extends BaseActivity {
             private void handleLoginResponse(UserDetail userDetail) {
                 switch (userDetail.getStatus()) {
                     case REQUEST_OK:
-
-//                        Gson gson =new GsonBuilder().create();
-//
-//                        myCircleData.setUserId("8");
-//                        myCircleData.setContactNumber1("984123456789");
-//                        myCircleData.setContactNumber2("984123456789");
-//                        myCircleData.setContactNumber3("984123456789");
-//                        myCircleData.setContactNumber4("984123456789");
-//                        myCircleData.setContactNumber5("984123456789");
-//                        myCircleData.setContactName1("samir");
-//                        myCircleData.setContactName2("sam");
-//                        myCircleData.setContactName3("saaamirr");
-//                        myCircleData.setContactName4("");
-//                        myCircleData.setContactName5("Amias");
-//
-//                        String json = gson.toJson(myCircleData);
-//                        Log.d(TAG, "handleLoginSucess: "+json);
-
-
 
                         handleLoginSucess(userDetail);
                         break;
@@ -253,7 +236,7 @@ public class LoginActivity extends BaseActivity {
 
                 showErrorToast(message);
             }
-        });
+        }));
     }
 
 
