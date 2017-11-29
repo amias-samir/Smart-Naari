@@ -27,6 +27,7 @@ import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 
@@ -172,6 +173,14 @@ public class BeautifulMainActivity extends BaseActivity
                     Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
                     startActivity(intent);
                 }
+
+                if (menuItem.getTitle().equals("About Smart Naari")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+                    startActivity(intent);
+                }
+
+
+
 
                 return true;
             }
