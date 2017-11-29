@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -39,8 +39,8 @@
 
         <!-- ======================= auto start services on system boot ==================== -->
         <receiver
-            android:enabled="true"
             android:name=".mycircle.powerbutton.BootUpReceiver"
+            android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -50,8 +50,7 @@
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:exported="true"></service>
 
         <!-- ======================= end of auto start services on system boot ==================== -->
 
@@ -88,9 +87,9 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".mycircle.PermissionActivity"
+            android:exported="true"
             android:label="@string/title_activity_permission"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
+            android:theme="@style/AppTheme.NoActionBar">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -122,6 +121,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".aboutboardmembers.AboutMembersActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity
             android:name=".homescreen.DetailActivity"
             android:parentActivityName=".utils.ui.BeautifulMainActivity"
             android:screenOrientation="portrait">
@@ -135,10 +141,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".register.SignUpActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SignUpTheme"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="true"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
@@ -147,10 +153,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".mycircle.MyCircleActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="true"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".masakchamchu.IAmAmazingActivity"
             android:exported="true"
@@ -235,8 +241,7 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
