@@ -111,6 +111,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         bindActivity();
         ButterKnife.bind(this);
+
         syncAllData();
 
 

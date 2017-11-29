@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.design.widget.TextInputLayout;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.Log;
@@ -66,15 +67,15 @@ public class MyCircleActivity extends BaseActivity {
 
 
     @BindView(R.id.my_circle_first_contact)
-    EditText tvFirstContact;
+    TextInputLayout tvFirstContact;
     @BindView(R.id.my_circle_second_contact)
-    EditText tvSecondContact;
+    TextInputLayout tvSecondContact;
     @BindView(R.id.my_circle_third_contact)
-    EditText tvThirdContact;
+    TextInputLayout tvThirdContact;
     @BindView(R.id.my_circle_fourth_contact)
-    EditText tvFourthContact;
+    TextInputLayout tvFourthContact;
     @BindView(R.id.my_circle_fifth_contact)
-    EditText tvFifthContact;
+    TextInputLayout tvFifthContact;
     @BindView(R.id.btnSelectContactNo)
     Button btnSelectContactNo;
     @BindView(R.id.btnDone)
@@ -185,11 +186,11 @@ public class MyCircleActivity extends BaseActivity {
 
             case R.id.btnSelectContactNo:
 
-                myCircleData.setContactNumber1(tvFirstContact.getText().toString());
-                myCircleData.setContactNumber2(tvSecondContact.getText().toString());
-                myCircleData.setContactNumber3(tvThirdContact.getText().toString());
-                myCircleData.setContactNumber4(tvFourthContact.getText().toString());
-                myCircleData.setContactNumber5(tvFifthContact.getText().toString());
+                myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString());
+                myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString());
+                myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString());
+                myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString());
+                myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString());
 
                 first_contact = myCircleData.getContactNumber1();
                 second_contact = myCircleData.getContactNumber2();
@@ -220,11 +221,11 @@ public class MyCircleActivity extends BaseActivity {
 
             case R.id.btnDone:
 
-                myCircleData.setContactNumber1(tvFirstContact.getText().toString());
-                myCircleData.setContactNumber2(tvSecondContact.getText().toString());
-                myCircleData.setContactNumber3(tvThirdContact.getText().toString());
-                myCircleData.setContactNumber4(tvFourthContact.getText().toString());
-                myCircleData.setContactNumber5(tvFifthContact.getText().toString());
+                myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString());
+                myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString());
+                myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString());
+                myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString());
+                myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString());
 
                 first_contact = myCircleData.getContactNumber1();
                 second_contact = myCircleData.getContactNumber2();
@@ -243,21 +244,25 @@ public class MyCircleActivity extends BaseActivity {
 
         if (TextUtils.isEmpty(first_contact)) {
             showErrorToast("Enter First Contact Number");
+            tvFirstContact.getEditText().requestFocus();
             return;
         }
 
-        if (first_contact.length() < 10) {
+        if (first_contact.length() != 10 ) {
             showErrorToast("Enter Valid Phone Number");
+            tvFirstContact.getEditText().requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(second_contact)) {
             showErrorToast("Enter Second Contact Number");
+            tvSecondContact.getEditText().requestFocus();
             return;
         }
 
-        if (second_contact.length() < 10) {
+        if (second_contact.length() != 10 ) {
             showErrorToast("Enter Valid Phone Number");
+            tvSecondContact.getEditText().requestFocus();
             return;
         }
 
@@ -265,6 +270,7 @@ public class MyCircleActivity extends BaseActivity {
             showErrorToast("Device is offline.");
             return;
         }
+
 
 
         showLoading("Adding Phone Numbers");
@@ -328,24 +334,24 @@ public class MyCircleActivity extends BaseActivity {
 
         String first = "", second = "", third = "", fourth = "", fifth = "";
 
-        first = tvFirstContact.getText().toString();
-        second = tvSecondContact.getText().toString();
-        third = tvThirdContact.getText().toString();
-        fourth = tvFourthContact.getText().toString();
-        fifth = tvFifthContact.getText().toString();
+        first = tvFirstContact.getEditText().getText().toString();
+        second = tvSecondContact.getEditText().getText().toString();
+        third = tvThirdContact.getEditText().getText().toString();
+        fourth = tvFourthContact.getEditText().getText().toString();
+        fifth = tvFifthContact.getEditText().getText().toString();
 
 
 
         try {
             if (first.equals("")) {
-                tvFirstContact.setText(contact_no);
+                tvFirstContact.getEditText().setText(contact_no);
                 tvFirstContactName.setText(contact_name);
                 myCircleData.setContactName1(contact_name);
                 myCircleData.setContactNumber1(contact_no);
 
             } else if (second.equals("")) {
                 tvSecondContactName.setText(contact_name);
-                tvSecondContact.setText(contact_no);
+                tvSecondContact.getEditText().setText(contact_no);
                 myCircleData.setContactName2(contact_name);
                 myCircleData.setContactNumber2(contact_no);
 
@@ -354,7 +360,7 @@ public class MyCircleActivity extends BaseActivity {
                 tvThirdContactName.setVisibility(View.VISIBLE);
                 tvThirdContact.setVisibility(View.VISIBLE);
                 tvThirdContactName.setText(contact_name);
-                tvThirdContact.setText(contact_no);
+                tvThirdContact.getEditText().setText(contact_no);
                 myCircleData.setContactName3(contact_name);
                 myCircleData.setContactNumber3(contact_no);
 
@@ -363,7 +369,7 @@ public class MyCircleActivity extends BaseActivity {
                 tvFourthContactName.setVisibility(View.VISIBLE);
                 tvFourthContact.setVisibility(View.VISIBLE);
                 tvFourthContactName.setText(contact_name);
-                tvFourthContact.setText(contact_no);
+                tvFourthContact.getEditText().setText(contact_no);
                 myCircleData.setContactName4(contact_name);
                 myCircleData.setContactNumber4(contact_no);
 
@@ -372,7 +378,7 @@ public class MyCircleActivity extends BaseActivity {
                 tvFifthContactName.setVisibility(View.VISIBLE);
                 tvFifthContact.setVisibility(View.VISIBLE);
                 tvFifthContactName.setText(contact_name);
-                tvFifthContact.setText(contact_no);
+                tvFifthContact.getEditText().setText(contact_no);
                 myCircleData.setContactName5(contact_name);
                 myCircleData.setContactNumber5(contact_no);
 
@@ -413,9 +419,9 @@ public class MyCircleActivity extends BaseActivity {
 
 
         try {
-            tvFirstContact.setText(myCircleData.getContactNumber1());
+            tvFirstContact.getEditText().setText(myCircleData.getContactNumber1());
             tvFirstContactName.setText(myCircleData.getContactName1());
-            tvSecondContact.setText(myCircleData.getContactNumber2());
+            tvSecondContact.getEditText().setText(myCircleData.getContactNumber2());
             tvSecondContactName.setText(myCircleData.getContactName2());
         }catch (NullPointerException e){
             e.printStackTrace();
@@ -425,7 +431,7 @@ public class MyCircleActivity extends BaseActivity {
         if (!myCircleData.getContactNumber3().equals("")) {
             tvThirdContact.setVisibility(View.VISIBLE);
             tvThirdContactName.setVisibility(View.VISIBLE);
-            tvThirdContact.setText(myCircleData.getContactNumber3());
+            tvThirdContact.getEditText().setText(myCircleData.getContactNumber3());
             tvThirdContactName.setText(myCircleData.getContactName3());
         }
         }catch (NullPointerException e){
@@ -437,7 +443,7 @@ public class MyCircleActivity extends BaseActivity {
             tvFourthContact.setVisibility(View.VISIBLE);
             tvFourthContactName.setVisibility(View.VISIBLE);
             tvFourthContactName.setText(myCircleData.getContactName4());
-            tvFourthContact.setText(myCircleData.getContactNumber4());
+            tvFourthContact.getEditText().setText(myCircleData.getContactNumber4());
         }
         }catch (NullPointerException e){
             e.printStackTrace();
@@ -447,7 +453,7 @@ public class MyCircleActivity extends BaseActivity {
         if (!myCircleData.getContactNumber5().equals("")) {
             tvFifthContact.setVisibility(View.VISIBLE);
             tvFifthContactName.setVisibility(View.VISIBLE);
-            tvFifthContact.setText(myCircleData.getContactNumber5());
+            tvFifthContact.getEditText().setText(myCircleData.getContactNumber5());
             tvFifthContactName.setText(myCircleData.getContactName5());
         }
         }catch (NullPointerException e){
@@ -464,11 +470,11 @@ public class MyCircleActivity extends BaseActivity {
 
         UserData userData = sessionManager.getUser();
 
-        myCircleData.setContactNumber1(tvFirstContact.getText().toString());
-        myCircleData.setContactNumber2(tvSecondContact.getText().toString());
-        myCircleData.setContactNumber3(tvThirdContact.getText().toString());
-        myCircleData.setContactNumber4(tvFourthContact.getText().toString());
-        myCircleData.setContactNumber5(tvFifthContact.getText().toString());
+        myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString());
+        myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString());
+        myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString());
+        myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString());
+        myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString());
 
         myCircleData.setContactName1(tvFirstContactName.getText().toString());
         myCircleData.setContactName2(tvSecondContactName.getText().toString());
@@ -486,11 +492,11 @@ public class MyCircleActivity extends BaseActivity {
             JSONObject header = new JSONObject();
 
             header.put("user_id", sessionManager.getUserId() );
-            header.put("c1", tvFirstContact.getText().toString());
-            header.put("c2", tvSecondContact.getText().toString());
-            header.put("c3", tvThirdContact.getText().toString());
-            header.put("c4", tvFourthContact.getText().toString());
-            header.put("c5", tvFifthContact.getText().toString());
+            header.put("c1", tvFirstContact.getEditText().getText().toString());
+            header.put("c2", tvSecondContact.getEditText().getText().toString());
+            header.put("c3", tvThirdContact.getEditText().getText().toString());
+            header.put("c4", tvFourthContact.getEditText().getText().toString());
+            header.put("c5", tvFifthContact.getEditText().getText().toString());
             header.put("n1", tvFirstContactName.getText().toString());
             header.put("n2", tvSecondContactName.getText().toString());
             header.put("n3", tvThirdContactName.getText().toString());
@@ -629,5 +635,8 @@ public class MyCircleActivity extends BaseActivity {
 
         return contactName;
     }
+
+
+
 
 }
