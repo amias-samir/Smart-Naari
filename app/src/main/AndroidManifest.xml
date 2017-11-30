@@ -252,6 +252,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
+
+        <activity android:name=".TestClassByShree"
+            android:exported="true"/>
     </application>
 
 </manifest>

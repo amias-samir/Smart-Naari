@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +20,12 @@ import java.util.List;
  * Created by Majestic on 11/29/2017.
  */
 
-public class AboutMembersActivity extends AppCompatActivity {
+public class AboutMembersActivity extends AppCompatActivity implements JSONAssetLoadListener {
 
     private RecyclerView recyclerView;
     private AboutMembersRecylerViewAdapter adapter;
-    List<MemberDetail> member = new ArrayList<>();
+    private List<MemberDetail> member = new ArrayList<>();
+    private JSONAssetLoadTask jsonAssetLoadTask;
 
     public AboutMembersActivity() {
     }
@@ -35,12 +38,16 @@ public class AboutMembersActivity extends AppCompatActivity {
         initToolbar();
 
         setAboutMembersRecyclerView();
+
+        jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this,this);
+        jsonAssetLoadTask.execute();
+
     }
 
     private void setAboutMembersRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.rvAboutBoardMembers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AboutMembersRecylerViewAdapter(this, getMemberFromBelow());
+        adapter = new AboutMembersRecylerViewAdapter(this);
         recyclerView.setAdapter(adapter);
 
     }
@@ -76,5 +83,21 @@ public class AboutMembersActivity extends AppCompatActivity {
                 "Naxal",
                 "To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. "));
         return member;
+    }
+
+    @Override
+    public void onFileLoadComplete(String s) {
+
+        Type listType = new TypeToken<List<MemberPojo>>() {
+        }.getType();
+        List<MemberPojo> members = new Gson().fromJson(s, listType);
+
+        adapter.setMembers(members);
+
+        Log.e("qqq", "This data is: " + s);
+    }
+
+    @Override
+    public void onFileLoadError(String errorMsg) {
     }
 }

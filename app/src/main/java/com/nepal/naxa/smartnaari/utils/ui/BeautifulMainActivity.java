@@ -268,6 +268,7 @@ public class BeautifulMainActivity extends BaseActivity
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);
