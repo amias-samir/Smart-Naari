@@ -146,15 +146,23 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/my_circle_first_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="10"
+                                    android:textColorHint="@color/textSecondary"
+                                    app:hintEnabled="false"
+                                    android:layout_marginTop="5dp">
                                 <!-- first contact input layout-->
                                 <EditText
-                                    android:id="@+id/my_circle_first_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -167,6 +175,8 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
+                                </android.support.design.widget.TextInputLayout>
+
 
                                 <!-- second contact name input layout-->
                                 <EditText
@@ -189,15 +199,23 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/my_circle_second_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="10"
+                                    android:textColorHint="@color/textSecondary"
+                                    app:hintEnabled="false"
+                                    android:layout_marginTop="5dp"
+                                    >
                                 <!-- second contact input layout-->
                                 <EditText
-                                    android:id="@+id/my_circle_second_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -210,6 +228,7 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead" />
+                                </android.support.design.widget.TextInputLayout>
 
                                 <!-- Third contact name input layout-->
                                 <EditText
@@ -233,15 +252,24 @@
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
                                     android:visibility="gone"/>
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/my_circle_third_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="10"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:visibility="gone"
+                                    app:hintEnabled="false"
+                                    android:layout_marginTop="5dp"
+                                    >
                                 <!-- Third contact input layout-->
                                 <EditText
-                                    android:id="@+id/my_circle_third_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -254,7 +282,8 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
-                                    android:visibility="gone" />
+                                     />
+                                </android.support.design.widget.TextInputLayout>
 
                                 <!-- fourth contact name input layout-->
                                 <EditText
@@ -278,15 +307,23 @@
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
                                     android:visibility="gone"/>
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/my_circle_fourth_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="10"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:visibility="gone"
+                                    app:hintEnabled="false"
+                                    android:layout_marginTop="5dp">
                                 <!-- fourth contact input layout-->
                                 <EditText
-                                    android:id="@+id/my_circle_fourth_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -299,7 +336,8 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
-                                    android:visibility="gone" />
+                                     />
+                                </android.support.design.widget.TextInputLayout>
 
                                 <!-- fifth contact name input layout-->
                                 <EditText
@@ -323,15 +361,23 @@
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
                                     android:visibility="gone"/>
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/my_circle_fifth_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:counterEnabled="true"
+                                    app:counterMaxLength="10"
+                                    android:textColorHint="@color/textSecondary"
+                                    android:visibility="gone"
+                                    app:hintEnabled="false"
+                                    android:layout_marginTop="5dp">
                                 <!-- fifth contact input layout-->
                                 <EditText
-                                    android:id="@+id/my_circle_fifth_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="5dp"
                                     android:background="@drawable/edit_text_boarder_recg"
                                     android:ems="10"
                                     android:gravity="center"
@@ -344,7 +390,8 @@
                                     android:textColor="@color/colorWhite"
                                     android:textColorHint="@color/textSecondary"
                                     android:textSize="@dimen/material_text_subhead"
-                                    android:visibility="gone" />
+                                     />
+                                </android.support.design.widget.TextInputLayout>
 
 
                                 <RelativeLayout

@@ -201,6 +201,8 @@ public class LoginActivity extends BaseActivity {
 
                 if (sessionManager.doesUserHaveCircle()) {
 
+                    Log.d(TAG, "handleLoginSucess: "+sessionManager.doesUserHaveCircle());
+
                     if(sessionManager.doesHaveIntentBackgroundService()) {
 
                         Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);

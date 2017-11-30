@@ -22,10 +22,8 @@
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-
-    <!-- start service on android system boot-->
+    <!-- start service on android system boot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
 
     <application
         android:name=".application.SmartNaari"
@@ -44,16 +42,17 @@
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
             android:exported="true"></service>
 
         <!-- ======================= end of auto start services on system boot ==================== -->
-
 
         <service
             android:name=".data.network.service.DownloadService"
@@ -73,7 +72,6 @@
                 <action android:name="tan.nishon.shake.shake.LocationMessageService" />
             </intent-filter>
         </service>
-
         <service
             android:name=".mycircle.activitydetect.ActivityRecognizedService"
             android:enabled="true" />
@@ -252,9 +250,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
-
-        <activity android:name=".TestClassByShree"
-            android:exported="true"/>
+        <activity android:name=".aboutsmartnaari.AboutSmartNaariActivity"
+            android:exported="true">
+        </activity>
+>
     </application>
 
 </manifest>
