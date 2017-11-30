@@ -119,6 +119,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".aboutboardmembers.AboutMembersActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity
             android:name=".homescreen.DetailActivity"
             android:parentActivityName=".utils.ui.BeautifulMainActivity"
             android:screenOrientation="portrait">
@@ -232,8 +239,7 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
