@@ -24,7 +24,6 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
     private RecyclerView recyclerView;
     private AboutMembersRecylerViewAdapter adapter;
-    private List<MemberDetail> member = new ArrayList<>();
     private JSONAssetLoadTask jsonAssetLoadTask;
 
     public AboutMembersActivity() {
@@ -69,21 +68,6 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
         return true;
     }
 
-    public List<MemberDetail> getMemberFromBelow() {
-        member.add(new MemberDetail(
-                "Ram",
-                "Member",
-                "Security Guard",
-                "Thamel Bar",
-                "To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. "));
-        member.add(new MemberDetail(
-                "Shyam",
-                "General",
-                "Manager",
-                "Naxal",
-                "To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. "));
-        return member;
-    }
 
     @Override
     public void onFileLoadComplete(String s) {
