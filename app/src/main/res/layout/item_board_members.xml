@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_mlarge">
+        android:paddingLeft="@dimen/spacing_mlarge"
+        android:paddingRight="@dimen/spacing_mlarge"
+        android:paddingTop="@dimen/spacing_mlarge">
 
         <ImageView
             android:id="@+id/iv_member_image"
@@ -22,57 +24,54 @@
 
         <TextView
             android:id="@+id/tv_member_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_member_image"
+            android:layout_below="@+id/iv_member_image"
             android:text="Person Name"
             android:textSize="@dimen/material_text_title"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_smart_naari_post"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_member_name"
+            android:layout_above="@+id/tv_external_post_office"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_toRightOf="@+id/tv_member_name"
+            android:paddingBottom="@dimen/spacing_xsmall"
             android:text="Smart Naari Post" />
 
         <TextView
-            android:id="@+id/tv_external_post"
+            android:id="@+id/tv_external_post_office"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_smart_naari_post"
-            android:text="External Post" />
+            android:layout_below="@id/tv_member_name"
+            android:text="External Post and office" />
 
-        <TextView
-            android:id="@+id/tv_external_office"
+        <at.blogc.android.views.ExpandableTextView
+            android:id="@+id/etv_member_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_external_post"
-            android:text="Location" />
+            android:layout_below="@id/tv_external_post_office"
+            android:ellipsize="end"
+            android:maxLines="0"
+            android:text="@string/lorem_ipsum"
+            app:animation_duration="750" />
 
-        <!--<com.ms.square.android.expandabletextview.ExpandableTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/expandable_textview"
-            android:layout_below="@id/tv_external_office"
-            expandableTextView:animDuration="200"
-            expandableTextView:maxCollapsedLines="4">-->
+        <Button
+            android:id="@+id/btn_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/spacing_xlarge"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/etv_member_description"
+            android:background="@android:color/transparent"
+            android:gravity="end"
+            android:paddingTop="@dimen/spacing_small"
+            android:text="More"
+            android:textColor="@color/colorGray" />
 
-            <TextView
-                android:id="@+id/expandable_text"
-                android:layout_below="@id/tv_external_office"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. " />
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/expand_collapse"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="right"-->
-                <!--android:background="@android:color/transparent"-->
-                <!--android:paddingTop="20dp" />-->
-        <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

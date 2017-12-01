@@ -250,7 +250,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
-
         <activity android:name=".aboutsmartnaari.AboutSmartNaariActivity"
             android:exported="true"
             >
@@ -258,6 +257,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+>
     </application>
 
 </manifest>

@@ -77,6 +77,7 @@ dependencies {
     compile 'com.github.jd-alexander:LikeButton:0.2.2'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
     compile 'com.ms-square:expandableTextView:0.1.4'
+    compile 'at.blogc:expandabletextview:1.0.5'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'com.github.simonpercic:oklog3:2.2.0'
 
