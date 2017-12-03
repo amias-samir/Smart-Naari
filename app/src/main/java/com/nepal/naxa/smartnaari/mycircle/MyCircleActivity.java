@@ -505,6 +505,7 @@ public class MyCircleActivity extends BaseActivity {
 
 
             jsonToSend = header.toString();
+            Log.d(TAG, "convertDataToJSON: SAMIR"+jsonToSend);
 
         } catch (JSONException e) {
             e.printStackTrace();

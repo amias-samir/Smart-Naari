@@ -124,11 +124,11 @@ public class SessionManager {
 
         UserData userData = getUser();
 
-        return TextUtils.isEmpty(userData.getCircleMobileNumber1()) ||
-                TextUtils.isEmpty(userData.getCircleMobileNumber2()) ||
-                TextUtils.isEmpty(userData.getCircleMobileNumber3()) ||
-                TextUtils.isEmpty(userData.getCircleMobileNumber4()) ||
-                TextUtils.isEmpty(userData.getCircleMobileNumber5());
+        return  !TextUtils.isEmpty(userData.getCircleMobileNumber1()) ||
+                !TextUtils.isEmpty(userData.getCircleMobileNumber2()) ||
+                !TextUtils.isEmpty(userData.getCircleMobileNumber3()) ||
+                !TextUtils.isEmpty(userData.getCircleMobileNumber4()) ||
+                !TextUtils.isEmpty(userData.getCircleMobileNumber5());
 
 
     }
