@@ -38,5 +38,5 @@ public class ConstantData {
     public final static String[] voilenceOccurTime = {"Select time", "Just now", "1 week ago", "2 weeks ago", "3 weeks ago", "a month ago", "2 months ago", "3 months ago", "4 months ago", "5 months ago", "6 months ago", "1 year ago", "more than a year ago"};
 
 
-    public final static String[] voilenceType = {"Select Voilence Type", "Type 1", "Type 2", "Type 3", "Type 4", "Type 5", "Type 5", "Type 6", "Type 7", "Type 8", "Type 9", "Type 10"};
+    public final static String[] voilenceType = {"Select Type", "Rape", "Sexual assault", "Physical assault", "Denial of resources and opportunities", "Psychological/Emotional abuse"};
 }
