@@ -387,7 +387,7 @@ public class BeautifulMainActivity extends BaseActivity
                     case STATUS_ERROR:
                         break;
                     case STATUS_FINISHED:
-                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
                 }
             }

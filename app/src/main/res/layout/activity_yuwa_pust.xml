@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity">
-
-
+    
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar_layout_header"/>
 
