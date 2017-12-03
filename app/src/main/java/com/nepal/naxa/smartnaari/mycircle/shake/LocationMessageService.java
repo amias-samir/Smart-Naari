@@ -272,7 +272,7 @@ public class LocationMessageService extends Service implements LocationListener 
 
         prepareContactList();
 
-        for (int i = 0 ; i<=contactNo.size() ; i++ ) {
+        for (int i = 0 ; i<contactNo.size() ; i++ ) {
 
             startSMSCountdown(contactNo.get(i), contactName.get(i));
 

@@ -251,7 +251,11 @@
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
         <activity android:name=".aboutsmartnaari.AboutSmartNaariActivity"
-            android:exported="true">
+            android:exported="true"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
 >
     </application>

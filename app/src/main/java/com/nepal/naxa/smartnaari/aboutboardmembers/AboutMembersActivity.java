@@ -67,6 +67,7 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
         return true;
     }
 
+
     @Override
     public void onFileLoadComplete(String s) {
 
