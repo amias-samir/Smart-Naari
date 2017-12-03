@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import java.util.List;
 
@@ -29,7 +32,6 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     private List<ViewModel> items;
     private HorizontalRecyclerViewAdapter.OnItemClickListener onItemClickListener;
-
 
     public HorizontalRecyclerViewAdapter(List<ViewModel> items) {
         this.items = items;
@@ -55,7 +57,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
 
         Context context = holder.itemView.getContext();
-        int color = ContextCompat.getColor(context,item.getImage());
+        int color = ContextCompat.getColor(context, item.getImage());
         holder.rootLayoutItemRecycler.setBackgroundColor(color);
 
     }
@@ -67,7 +69,16 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onHorizontalItemClick(v, (ViewModel) v.getTag());
+        try {
+            onItemClickListener.onHorizontalItemClick(v, (ViewModel) v.getTag());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("qqq", "Horizontal Recycler Error");
+
+            Toast.makeText(v.getContext(), "You Just Clicked", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
