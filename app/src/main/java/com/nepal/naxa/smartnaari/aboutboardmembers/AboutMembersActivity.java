@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +37,7 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         setAboutMembersRecyclerView();
 
-        jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this,this);
+        jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this, this);
         jsonAssetLoadTask.execute();
 
     }
