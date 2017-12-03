@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +23,6 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
     private RecyclerView recyclerView;
     private AboutMembersRecylerViewAdapter adapter;
-    private List<MemberDetail> member = new ArrayList<>();
     private JSONAssetLoadTask jsonAssetLoadTask;
 
     public AboutMembersActivity() {
@@ -39,7 +37,7 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         setAboutMembersRecyclerView();
 
-        jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this,this);
+        jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this, this);
         jsonAssetLoadTask.execute();
 
     }
@@ -67,22 +65,6 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
-    }
-
-    public List<MemberDetail> getMemberFromBelow() {
-        member.add(new MemberDetail(
-                "Ram",
-                "Member",
-                "Security Guard",
-                "Thamel Bar",
-                "To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. "));
-        member.add(new MemberDetail(
-                "Shyam",
-                "General",
-                "Manager",
-                "Naxal",
-                "To they four in love. Settling you has separate supplied bed. Concluded resembled suspected his resources curiosity joy. Led all cottage met enabled attempt through talking delight. Dare he feet my tell busy. Considered imprudence of he friendship boisterous. "));
-        return member;
     }
 
     @Override
