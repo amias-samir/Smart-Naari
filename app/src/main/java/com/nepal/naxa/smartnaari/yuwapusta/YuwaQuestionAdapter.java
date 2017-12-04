@@ -22,22 +22,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
+
+import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
 
 public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+
+
 
 
     private List<YuwaQuestion> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
+
+
 
     public YuwaQuestionAdapter(List<YuwaQuestion> items) {
         this.items = items;
@@ -47,7 +54,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.onItemClickListener = onItemClickListener;
     }
 
-    public static void updateItems(){
+    public static void updateItems() {
 
     }
 
@@ -78,8 +85,9 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         YuwaQuestion item = items.get(position);
 
         if (holder instanceof ViewHolder) {
-            //        ((ViewHolder) holder).question.setText(item.getQuestion());
-            //      ((ViewHolder) holder).answer.setText(item.getAnswer());
+                    ((ViewHolder) holder).question.setHtml(item.getQuestion());
+                  ((ViewHolder) holder).answer.setHtml(item.getAnswer());
+
         }
     }
 
@@ -103,15 +111,21 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onClick(final View v) {
         onItemClickListener.onItemClick(v, (YuwaQuestion) v.getTag());
+        Toast.makeText(context, "clicked clicked", Toast.LENGTH_SHORT).show();
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
 
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
+//        TextView question;
+//        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
+//        TextView answer;
+//
         @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
-        TextView question;
+        HtmlTextView question;
         @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
-        TextView answer;
+        HtmlTextView answer;
 
         public ViewHolder(View itemView) {
             super(itemView);

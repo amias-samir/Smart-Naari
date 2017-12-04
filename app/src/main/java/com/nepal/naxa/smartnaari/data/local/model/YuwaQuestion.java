@@ -1,5 +1,9 @@
 package com.nepal.naxa.smartnaari.data.local.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -15,7 +19,7 @@ import org.greenrobot.greendao.annotation.Transient;
  */
 
 @Entity(nameInDb = "yuwa_question")
-public class YuwaQuestion {
+public class YuwaQuestion implements Parcelable {
 
     @Id(autoincrement = true)
     private Long id;
@@ -42,12 +46,87 @@ public class YuwaQuestion {
     @Property(nameInDb = "user_id")
     private String userId;
 
+    @SerializedName("is_deleted")
+    @Expose
+    private Integer isDeleted;
+
     @Property(nameInDb = "last_sync_date_time")
     @SerializedName("last_sync_date_time")
     private String last_sync_date_time;
 
     @Transient
     private Boolean isFooter;
+
+    protected YuwaQuestion(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        idString = in.readString();
+        owlId = in.readString();
+        question = in.readString();
+        answer = in.readString();
+        userId = in.readString();
+        if (in.readByte() == 0) {
+            isDeleted = null;
+        } else {
+            isDeleted = in.readInt();
+        }
+        last_sync_date_time = in.readString();
+        byte tmpIsFooter = in.readByte();
+        isFooter = tmpIsFooter == 0 ? null : tmpIsFooter == 1;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(idString);
+        dest.writeString(owlId);
+        dest.writeString(question);
+        dest.writeString(answer);
+        dest.writeString(userId);
+        if (isDeleted == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(isDeleted);
+        }
+        dest.writeString(last_sync_date_time);
+        dest.writeByte((byte) (isFooter == null ? 0 : isFooter ? 1 : 2));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<YuwaQuestion> CREATOR = new Creator<YuwaQuestion>() {
+        @Override
+        public YuwaQuestion createFromParcel(Parcel in) {
+            return new YuwaQuestion(in);
+        }
+
+        @Override
+        public YuwaQuestion[] newArray(int size) {
+            return new YuwaQuestion[size];
+        }
+    };
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+
 
     public Boolean getIsFooter() {
         return isFooter;
@@ -57,15 +136,17 @@ public class YuwaQuestion {
         this.isFooter = isFooter;
     }
 
-    @Generated(hash = 1657222644)
+    @Generated(hash = 1609754814)
     public YuwaQuestion(Long id, String idString, String owlId, String question,
-            String answer, String userId, String last_sync_date_time) {
+            String answer, String userId, Integer isDeleted,
+            String last_sync_date_time) {
         this.id = id;
         this.idString = idString;
         this.owlId = owlId;
         this.question = question;
         this.answer = answer;
         this.userId = userId;
+        this.isDeleted = isDeleted;
         this.last_sync_date_time = last_sync_date_time;
     }
 

@@ -136,7 +136,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_margin="10dp"
+                android:visibility="gone"
                 />
+
+
+            <ImageView
+                android:id="@+id/ivTeensChart"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/teens_chart"/>
+
+
+
+
         </LinearLayout>
 
 

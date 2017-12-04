@@ -23,7 +23,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
-import com.nepal.naxa.smartnaari.utils.DistrictAndAgeGroupConstants;
+import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
@@ -123,11 +123,11 @@ public class SignUpActivity extends Activity {
 
         mProgressDlg = new ProgressDialog(this);
 
-        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.birthDistrictListEnglish);
+        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spBirthPlace.setAdapter(birthDistArray);
 
-        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DistrictAndAgeGroupConstants.currentDistrictListEnglish);
+        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.currentDistrictListEnglish);
         currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCurrentPlace.setAdapter(currentDistArray);
     }
@@ -169,6 +169,7 @@ public class SignUpActivity extends Activity {
         userName = etUserName.getText().toString().trim();
         if (userName.equals("")) {
             Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
+            etUserName.requestFocus();
             return false;
         }
 
@@ -176,6 +177,8 @@ public class SignUpActivity extends Activity {
         password = etPassword.getText().toString().trim();
         if (password.equals("")) {
             Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
+            etPassword.requestFocus();
+
             return false;
         }
 
@@ -183,11 +186,15 @@ public class SignUpActivity extends Activity {
         confirmPassword = etConformPassword.getText().toString().trim();
         if (confirmPassword.equals("")) {
             Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+            etConformPassword.requestFocus();
+
             return false;
         } else {
             if (confirmPassword.equals(password)) {
             } else {
                 Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                etConformPassword.requestFocus();
+
                 return false;
             }
         }
@@ -196,6 +203,7 @@ public class SignUpActivity extends Activity {
         firstName = etFirstName.getText().toString().trim();
         if (firstName.equals("")) {
             Toasty.error(getApplicationContext(), "Name field is empty", Toast.LENGTH_SHORT, true).show();
+            etFirstName.requestFocus();
             return false;
         }
 
@@ -203,6 +211,7 @@ public class SignUpActivity extends Activity {
         surName = etSurName.getText().toString().trim();
         if (surName.equals("")) {
             Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
+            etSurName.requestFocus();
             return false;
         }
 
@@ -210,6 +219,7 @@ public class SignUpActivity extends Activity {
         age = etAge.getText().toString().trim();
         if (age.equals("")) {
             Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
+            etAge.requestFocus();
             return false;
         }
 
@@ -229,6 +239,7 @@ public class SignUpActivity extends Activity {
             }
         } else {
             Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
+            rgGender.requestFocus();
             return false;
         }
 
@@ -236,6 +247,7 @@ public class SignUpActivity extends Activity {
         birthPlace = spBirthPlace.getSelectedItem().toString();
         if (birthPlace.equals("Birth District")) {
             Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
+            spBirthPlace.requestFocus();
             return false;
         }
 
@@ -243,6 +255,24 @@ public class SignUpActivity extends Activity {
         currentPlace = spCurrentPlace.getSelectedItem().toString();
         if (currentPlace.equals("Current District")) {
             Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
+            spCurrentPlace.requestFocus();
+            return false;
+        }
+
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        email = etEmail.getText().toString().trim();
+        if (!email.equals("")) {
+            if (email.matches(emailPattern)) {
+//                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+            } else {
+                Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
+                etEmail.requestFocus();
+                return false;
+            }
+        } else {
+            Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
+            etEmail.requestFocus();
             return false;
         }
 
@@ -250,6 +280,7 @@ public class SignUpActivity extends Activity {
         mobileNumber = etContact.getText().toString().trim();
         if (mobileNumber.equals("")) {
             Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+            etContact.requestFocus();
             return false;
         }
 
@@ -262,19 +293,7 @@ public class SignUpActivity extends Activity {
         }
 
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        email = etEmail.getText().toString().trim();
-        if (!email.equals("")) {
-            if (email.matches(emailPattern)) {
-//                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
-            } else {
-                Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
-                return false;
-            }
-        } else {
-            Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
-            return false;
-        }
+
 
 
         return true;

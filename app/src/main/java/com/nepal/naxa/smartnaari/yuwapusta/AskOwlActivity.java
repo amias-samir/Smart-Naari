@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
@@ -11,21 +12,22 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
-
-import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
@@ -63,11 +65,13 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     @BindView(R.id.wrapper_text_QuestionToOwl)
     TextInputLayout wrapperTextQuestionToOwl;
 
-    ArrayList<String> owlArray , owlIDArray;
+    ArrayList<String> owlArray, owlIDArray;
     ArrayAdapter owlListAdpt;
 
     String owlIdentity, txtQnToOwl;
     String jsonToSend = null;
+    @BindView(R.id.tvQuestionToOWL)
+    EditText tvQuestionToOWL;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,10 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         ButterKnife.bind(this);
 
         initToolbar();
+        tvQuestionToOWL.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(tvQuestionToOWL, InputMethodManager.SHOW_IMPLICIT);
+
         initQuestionsRecyclerView();
 
         addOwlNameAndIDToArray();
@@ -84,7 +92,6 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         owlListAdpt
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerChooseOwl.setAdapter(owlListAdpt);
-
 
 
         int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
@@ -111,11 +118,12 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        toolbar.setTitle("Ask an Owl");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
+//            actionBar.setTitle("Ask An Owl");
 //            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -138,18 +146,19 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
 
         String question = wrapperTextQuestionToOwl.getEditText().getText().toString();
-        question = "dssdcbx cbvxcvxcmvbc cmn nc c c  ??";
+//        question = "dssdcbx cbvxcvxcmvbc cmn nc c c  ??";
 
-        if(spinnerChooseOwl.getSelectedItemId() < 1 ){
+        if (spinnerChooseOwl.getSelectedItemId() < 1) {
             showInfoToast("Please select an Owl ");
             return;
 
         }
-        if(TextUtils.isEmpty(question)){
+        if (TextUtils.isEmpty(question)) {
             showInfoToast("Question field cannot be empty");
 
             return;
         }
+
         showLoading("Please Wait! \n Sending...");
 
         convertDataToJSON();
@@ -158,8 +167,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     }
 
 
-
-    public void addOwlNameAndIDToArray(){
+    public void addOwlNameAndIDToArray() {
         owlArray = new ArrayList<>();
         owlIDArray = new ArrayList<>();
 
@@ -168,7 +176,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         owlArray.add("Choose Owl");
         owlIDArray.add("owlID");
 
-        for (int i = 0 ; i< appDataManager.getOwls().size(); i++){
+        for (int i = 0; i < appDataManager.getOwls().size(); i++) {
             owlArray.add(appDataManager.getOwls().get(i).getOwlName());
             owlIDArray.add(appDataManager.getOwls().get(i).getOwlId());
         }
@@ -183,9 +191,9 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
             JSONObject header = new JSONObject();
 
-            Integer spinnerPosition = (int) (long)spinnerChooseOwl.getSelectedItemId();
+            Integer spinnerPosition = (int) (long) spinnerChooseOwl.getSelectedItemId();
 
-            header.put("user_id", sessionManager.getUserId());
+            header.put("user_id_fk", sessionManager.getUserId());
             header.put("owl_id", owlIDArray.get(spinnerPosition));
             header.put("qstn", wrapperTextQuestionToOwl.getEditText().getText().toString());
             jsonToSend = header.toString();
@@ -200,7 +208,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<YuwaPustaQueryResponse> call = apiService.getYuwaPusaQueryDetails(jsonToSend);
-        call.enqueue(new Callback<YuwaPustaQueryResponse>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaQueryResponse>() {
             @Override
             public void onResponse(Call<YuwaPustaQueryResponse> call, Response<YuwaPustaQueryResponse> response) {
                 Log.d(TAG, "onPostExecute: " + response.toString());
@@ -237,8 +245,8 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
             @Override
             public void onFailure(Call<YuwaPustaQueryResponse> call, Throwable t) {
-               hideLoading();
+                hideLoading();
             }
-        });
+        }));
     }
 }

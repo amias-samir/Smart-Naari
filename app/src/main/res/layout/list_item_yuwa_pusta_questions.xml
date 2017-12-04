@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:clickable="true"
-    android:background="?selectableItemBackground"
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:maxHeight="@dimen/yuwa_query_list_max_height"
     android:orientation="vertical">
 
+    <!--<FrameLayout-->
+        <!--android:clickable="true"-->
+        <!--android:background="?selectableItemBackground"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/yuwa_query_list_max_height"-->
+        <!--&gt;-->
+<!--</FrameLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <include
         layout="@layout/short_red_line"
         android:layout_width="100dp"
@@ -14,7 +26,8 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/spacing_large" />
 
-    <TextView
+
+    <org.sufficientlysecure.htmltextview.HtmlTextView
         android:textColor="@color/colorGray"
         android:id="@+id/list_item_yuwa_pusta_question_tv_question"
         android:layout_width="match_parent"
@@ -22,9 +35,11 @@
         android:layout_margin="@dimen/spacing_medium"
         android:text="@string/question"
         android:textAlignment="center"
-        android:textSize="@dimen/material_text_subhead" />
+        android:textSize="@dimen/material_text_subhead"
+        android:textAppearance="@android:style/TextAppearance.Small" />
 
-    <TextView
+
+    <org.sufficientlysecure.htmltextview.HtmlTextView
         android:textColor="@color/colorGray"
         android:id="@+id/list_item_yuwa_pusta_question_tv_answer"
         android:layout_width="match_parent"
@@ -32,6 +47,11 @@
         android:layout_margin="@dimen/spacing_medium"
         android:text="@string/answer"
         android:textAlignment="center"
-        android:textSize="@dimen/material_text_subhead" />
+        android:textSize="@dimen/material_text_subhead"
+        android:textAppearance="@android:style/TextAppearance.Small" />
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
+
+
+

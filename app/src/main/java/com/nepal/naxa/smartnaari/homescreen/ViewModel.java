@@ -17,6 +17,7 @@
 package com.nepal.naxa.smartnaari.homescreen;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 
 import java.util.ArrayList;
 
@@ -137,6 +138,8 @@ public class ViewModel {
 
         ViewModel viewModel;
 
+//        AppDataManager appDataManager = new AppDataManager(this);
+
         viewModel = new ViewModel("Home", R.color.black);
         viewModels.add(viewModel);
 
@@ -157,6 +160,9 @@ public class ViewModel {
         return viewModels;
 
     }
+
+
+
 
 
 }

@@ -11,12 +11,18 @@ import android.util.Log;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
+import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.ServicesData;
+import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -51,6 +57,8 @@ public class DownloadService extends IntentService {
     private ArrayList<String> completedUrls;
     private ArrayList<String> failedUrls;
 
+    String jsonToSendLastSyncDate = "" ;
+
 
     public DownloadService() {
         super(DownloadService.class.getName());
@@ -74,6 +82,7 @@ public class DownloadService extends IntentService {
 
         getOwls();
         getYuwaPustaPosts();
+        getServices();
 
     }
 
@@ -101,6 +110,7 @@ public class DownloadService extends IntentService {
         receiver.send(STATUS_FINISHED, Bundle.EMPTY);
     }
 
+
     public void getOwls() {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
         Call<OwlWrapper> call = apiService.getOwls();
@@ -126,14 +136,33 @@ public class DownloadService extends IntentService {
     }
 
     public void getYuwaPustaPosts() {
+        AppDataManager appDataManager = new AppDataManager(this);
+
+        String last_sync_date = appDataManager.getLastSyncDateTime(YuwaQuestion.class);
+
+        try {
+            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
+            jsonObject.put("last_sync_date_time",last_sync_date);
+
+            jsonToSendLastSyncDate = jsonObject.toString();
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
-        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts();
+//        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts(jsonToSendLastSyncDate);
+//        Call<YuwaPustaResponse> call = apiService.getYuwaPustaPosts("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaResponse>() {
             @Override
             public void onResponse(Call<YuwaPustaResponse> call, Response<YuwaPustaResponse> response) {
 
                 AppDataManager appDataManager = new AppDataManager(getApplicationContext());
-                appDataManager.saveYuwaQuestions(response.body().getData());
+//                appDataManager.saveYuwaQuestions(response.body().getData());
+                appDataManager.prepareToSaveYuwaQuestions(response.body().getData());
 
                 Log.i(TAG, response.body().getData().size() + " Yuwa Pusta posts downloaded ");
 
@@ -150,6 +179,54 @@ public class DownloadService extends IntentService {
             }
         }));
     }
+
+    public void getServices(){
+        AppDataManager appDataManager = new AppDataManager(this);
+
+        String last_sync_date = appDataManager.getLastSyncDateTime(ServicesData.class);
+
+        try {
+            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
+            jsonObject.put("last_sync_date_time",last_sync_date);
+
+            jsonToSendLastSyncDate = jsonObject.toString();
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
+//        Call<ServicesResponse> call = apiService.getServices(appDataManager.getLastSyncDateTime(ServicesData.class));
+        Call<ServicesResponse> call = apiService.getServices(jsonToSendLastSyncDate);
+//        Call<ServicesResponse> call = apiService.getServices("2017-10-12 05:38:36");
+        call.enqueue(new ErrorSupportCallback<>(new Callback<ServicesResponse>() {
+            @Override
+            public void onResponse(Call<ServicesResponse> call, Response<ServicesResponse> response) {
+
+                AppDataManager appDataManager = new AppDataManager(getApplicationContext());
+                appDataManager.prepareToSaveServices(response.body().getData());
+
+                Log.i(TAG, response.body().getData().size() + " services details downloaded ");
+
+                int i = appDataManager.getAllServicesdata().size();
+                Log.i(TAG, i + " services details present in database");
+
+                broadCastFinish();
+
+            }
+
+            @Override
+            public void onFailure(Call<ServicesResponse> call, Throwable t) {
+
+                t.getMessage();
+                Log.e(TAG, "onFailure: "+t.getMessage() );
+            }
+        }));
+    }
+
+
 
 
     private void markAPIAsCompleted(String url) {

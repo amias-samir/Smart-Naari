@@ -27,6 +27,8 @@ import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
+import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 
@@ -111,6 +113,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         bindActivity();
         ButterKnife.bind(this);
+
         syncAllData();
 
 
@@ -171,6 +174,17 @@ public class BeautifulMainActivity extends BaseActivity
                     Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
                     startActivity(intent);
                 }
+
+                if (menuItem.getTitle().equals("About Smart Naari")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+                    startActivity(intent);
+                }
+
+                if (menuItem.getTitle().equals("Meet The Board")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
+                    startActivity(intent);
+                }
+
 
                 return true;
             }
@@ -268,6 +282,7 @@ public class BeautifulMainActivity extends BaseActivity
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -372,7 +387,7 @@ public class BeautifulMainActivity extends BaseActivity
                     case STATUS_ERROR:
                         break;
                     case STATUS_FINISHED:
-                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
                 }
             }

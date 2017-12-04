@@ -3,10 +3,12 @@ package com.nepal.naxa.smartnaari.data.network.retrofit;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -17,25 +19,35 @@ import retrofit2.http.POST;
 
 public interface NetworkApiInterface {
     @FormUrlEncoded
-    @POST("register")
+    @POST("smartapi/register")
     Call<SignUpDetailsResponse> getSignupDetails(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("smartapi/login")
     Call<UserDetail> getUserData(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("add_circle")
+    @POST("smartapi/add_circle")
     Call<MyCircleDetails> getCircleData(@Field("data") String data);
 
-    @GET("get_owl")
+    @GET("smartapi/get_owl")
     Call<OwlWrapper> getOwls();
 
-    @GET("get_yuwapusta")
-    Call<YuwaPustaResponse> getYuwaPustaPosts();
+    @FormUrlEncoded
+    @POST("smartapi/get_yuwapusta")
+    Call<YuwaPustaResponse> getYuwaPustaPosts(@Field("data") String data);
 
     @FormUrlEncoded
-    @POST("yuwa_pusta")
+    @POST("smartapi/yuwa_pusta")
     Call<YuwaPustaQueryResponse> getYuwaPusaQueryDetails(@Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("smartapi/get_services")
+    Call<ServicesResponse> getServices(@Field("data") String data);
+
+
+    @FormUrlEncoded
+    @POST("email/email_send")
+    Call<MaChupBasdinaResponse> getMaChupBasdinaDetails(@Field("data") String data);
 }
 

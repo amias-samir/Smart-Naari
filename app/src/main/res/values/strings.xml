@@ -52,14 +52,14 @@
     <string name="answer">28 year old mother replies. \K bhaneko testo? Testo Bhannu hudaina! Chii!!\n Hey Bhagwan, how embarrassing!!</string>
     <string name="btn_ask_an_owl">Ask an Owl</string>
     <string name="select_an_owl">Select an Owl</string>
-    <string name="general_form_hint_question">Write your question here.</string>
+    <string name="general_form_hint_question">Write your question here</string>
     <string name="general_form_button_ask">Ask</string>
     <string name="title_activity_ask_owl">AskOwlActivity</string>
 
     <string name="understanding">Understanding</string>
     <string name="report_gender_based_violence">Report Gender Based Violence</string>
     <string name="report_i_am_the_victim">Myself</string>
-    <string name="report_other">Someone else</string>
+    <string name="report_other">Some one within the family</string>
 
     <string name="when_did_the_voilence_occur">When did the voilence occur</string>
     <string name="types_of_voilence">Types Of Violence</string>
@@ -76,6 +76,24 @@
 
 
     <string-array name="add_a_new_post_categories">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+
         <item>Mercury</item>
         <item>Venus</item>
         <item>Earth</item>
@@ -104,6 +122,260 @@
     <string name="general_error_msg">Some Error Occurred!</string>
     <string name="network_error_timeout">Socket Time out. Please try again.</string>
     <string name="network_disconnected">Device is offline!</string>
+
+
+    <!--  shake service string  -->
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_circle">My Circle</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_permission">PermissionActivity</string>
+    <string name="location_provider_accuracy"><![CDATA[>Using %1$s. Accuracy is %2$s m]]></string>
+
+    <!--end of shake service string -->
+
+    <string name="smart_naari_app_details">
+        <![CDATA[
+        <p>
+            <div allign="center">
+                <h>
+                <b>Smart Naari (Smart Woman)</b><br></br>
+                </h>
+            </div>
+</p>
+<p>
+    <div align="center">
+    <b>About Us</b>
+    </div>
+</p>
+<p><div>
+    <b>What is Smart Naari?</b>
+    </div>
+</p>
+<p>
+    <div>
+    Smart Naari is a supportive community helping anyone and everyone to free
+    themselves of gender based violence (GBV) in order to enjoy healthy and
+    safe sexuality and relationships.
+    </div>
+</p>
+<p>
+    <div>
+The app allows you to instantly report    <b>Report Abuse and Violence</b> whenever and wherever you
+    experience it. It offers access to services and the information you need to
+    stand your ground and protect your safety and well-being.
+    </div>
+</p>
+<p>
+    <div>
+    The community <b>nurtures a positive sense of self</b>,
+    self-image and high standards for the quality of our relationships. We
+    empower you to question abusive relationships and refuse to live in fear.
+    </div>
+</p>
+<p>
+    <div>
+    Smart Naari was created by a group of women and men determined to end the
+    silent suffering of thousands of Nepalese experiencing abuse in what should
+    be the safe haven of their own homes and intimate relationships. (See Meet
+    the Team).
+    </div>
+</p>
+<p>
+    <div>
+    <b>Our philosophy</b>
+    </div>
+</p>
+<p>
+    <div>
+    Absolute Zero Tolerance of violence.
+        </div>
+</p>
+<p>
+    <div>
+    How? By promoting empowerment, sexual health, sexuality education, good
+    sex, and even stress and anger management as part and parcel of preventing
+    GBV.
+    </div>
+</p>
+<p>
+    <div>
+    Smart Naari brings you the information, access to services and community
+    support to <b>Protect</b> yourself and others against infection,
+    unintended pregnancy, and other potentially negative, physical and
+    emotional effects of unsafe sex. Let’s be:
+    </div>
+</p>
+<p>
+    <div align="center">
+    <b>S</b>
+    afe
+        </div>
+</p>
+<p>
+<div align="center">
+    <b>M</b>
+    eticulous
+    </div>
+</p>
+<p>
+<div align="center">
+<b>A</b>
+    spirational
+    </div>
+</p>
+<p>
+<div align="center">
+    <b>R</b>
+    ighteous and
+    </div>
+</p>
+<p>
+<div align="center">
+    <b>T</b>
+    houghtful.
+    </div>
+</p>
+<p>
+    <div>
+    No WOMAN IS AN ISLAND and for that matter no man either.
+    </div>
+</p>
+<p>
+    <div>
+    <i>
+        “Nepali women are at highest risk of physical and sexual violence
+        within the home and marriage rather than from strangers”.
+    </i>
+    How often do we say "Stop!” to someone abusing us, or intervene in
+    another’s violent domestic dispute? Do we brush off what happens within our
+    own families whilst supporting anti-GBV campaign posts on Facebook? How
+often have we thought, “    <i>That would never happen to a woman like me...”</i>
+        </div>
+</p>
+<p>
+    <div>
+    Otherwise, Nepal is known as one of the most remarkable places to live in,
+    and we at Smart Naari intend to keep it that way.
+    </div>
+</p>
+<p>
+    <div>
+    <strong>Our Aims</strong>
+        </div>
+</p>
+<p>
+    <div>
+    <b>SEX MATTERS</b>
+    to your overall health
+    <b>
+        . We promote sexual relationships that are consensual and
+        non-exploitative.
+    </b>
+        </div>
+</p>
+<p>
+    <div>
+    We want to help make your voice count. No judgments! We promise. Help us to
+    help you. Talk to us about values, emotions, passions, desires and
+    relationships, stigmas and taboos!
+        </div>
+</p>
+<p>
+    <div>
+Talking about the "S" word isn’t easy, but we can help you normalise that<b>dialogue</b> until it becomes easier for you and your partner.    <strong>Sex</strong> is wonderful but <strong>it can sting</strong>! Learn
+about <b>safer sex </b>and still have lots of<b>fun</b>. We will help you discriminate between life enhancing    <b>GOOD SEX</b> behaviours as opposed to pornography, and to
+    understand the <b>pain-pleasure</b> dynamic.
+        </div>
+</p>
+<p>
+    <div>
+    We will empower you to say <b>NO </b>for the sake of love. There
+    is help at the tip of your finger with the Smart Naari app.
+        </div>
+</p>
+<p>
+    <div>
+    <b>WELCOME</b>
+    to the world of SMART NAARI, where you will become a part of creating an
+    ideal Nepali community you always hoped to live in. We believe in your
+extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life together, shall we?
+        </div>
+</p>
+]]>
+    </string>
+
+
+
 
 
 </resources>

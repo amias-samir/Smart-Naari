@@ -36,6 +36,7 @@ public class UserData {
     @SerializedName("personal_mobile_number")
     @Expose
     private String personalMobileNumber;
+
     @SerializedName("circle_mobile_number_1")
     @Expose
     private String circleMobileNumber1;
@@ -51,6 +52,24 @@ public class UserData {
     @SerializedName("circle_mobile_number_5")
     @Expose
     private String circleMobileNumber5;
+
+    @SerializedName("name1")
+    @Expose
+    private String circleName1;
+    @SerializedName("name2")
+    @Expose
+    private String circleName2;
+    @SerializedName("name3")
+    @Expose
+    private String circleName3;
+    @SerializedName("name4")
+    @Expose
+    private String circleName4;
+    @SerializedName("name5")
+    @Expose
+    private String circleName5;
+
+
 
     public String getUserId() {
         return userId;
@@ -172,4 +191,43 @@ public class UserData {
         this.circleMobileNumber5 = circleMobileNumber5;
     }
 
+    public String getCircleName1() {
+        return circleName1;
+    }
+
+    public void setCircleName1(String circleName1) {
+        this.circleName1 = circleName1;
+    }
+
+    public String getCircleName2() {
+        return circleName2;
+    }
+
+    public void setCircleName2(String circleName2) {
+        this.circleName2 = circleName2;
+    }
+
+    public String getCircleName3() {
+        return circleName3;
+    }
+
+    public void setCircleName3(String circleName3) {
+        this.circleName3 = circleName3;
+    }
+
+    public String getCircleName4() {
+        return circleName4;
+    }
+
+    public void setCircleName4(String circleName4) {
+        this.circleName4 = circleName4;
+    }
+
+    public String getCircleName5() {
+        return circleName5;
+    }
+
+    public void setCircleName5(String circleName5) {
+        this.circleName5 = circleName5;
+    }
 }

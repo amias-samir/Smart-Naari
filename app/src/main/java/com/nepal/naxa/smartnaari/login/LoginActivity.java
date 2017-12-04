@@ -5,18 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.network.MyCircleData;
+import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
+import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
@@ -37,6 +45,8 @@ import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 
 public class LoginActivity extends BaseActivity {
 
+    private static String TAG = "LoginActivity";
+
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.btnLinkToSignup)
@@ -52,8 +62,10 @@ public class LoginActivity extends BaseActivity {
     TextView tvRegisterBeTheOneLBL;
 
 
+
     String jsonToSend = null;
     ProgressDialog mProgressDlg;
+    MyCircleData myCircleData ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +75,7 @@ public class LoginActivity extends BaseActivity {
         setupUI();
 
         mProgressDlg = new ProgressDialog(this);
+        myCircleData = new MyCircleData();
     }
 
     private void setupUI() {
@@ -137,7 +150,7 @@ public class LoginActivity extends BaseActivity {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
-        call.enqueue(new Callback<UserDetail>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<UserDetail>() {
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
 
@@ -165,15 +178,42 @@ public class LoginActivity extends BaseActivity {
 
             private void handleLoginSucess(UserDetail userDetail) {
 
+
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.saveUser(userDetail.getUserData());
 
 
+                myCircleData.setUserId(userDetail.getUserData().getUserId());
+                myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
+                myCircleData.setContactNumber2(userDetail.getUserData().getCircleMobileNumber2());
+                myCircleData.setContactNumber3(userDetail.getUserData().getCircleMobileNumber3());
+                myCircleData.setContactNumber4(userDetail.getUserData().getCircleMobileNumber4());
+                myCircleData.setContactNumber5(userDetail.getUserData().getCircleMobileNumber5());
+                myCircleData.setContactName1(userDetail.getUserData().getCircleName1());
+                myCircleData.setContactName2(userDetail.getUserData().getCircleName2());
+                myCircleData.setContactName3(userDetail.getUserData().getCircleName3());
+                myCircleData.setContactName4(userDetail.getUserData().getCircleName4());
+                myCircleData.setContactName5(userDetail.getUserData().getCircleName5());
+
+                Log.d(TAG, "handleLoginSucess: SAMIR" + myCircleData.getContactName2());
+                sessionManager.saveUserCircle(myCircleData);
+
+
                 if (sessionManager.doesUserHaveCircle()) {
 
-                    Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    Log.d(TAG, "handleLoginSucess: "+sessionManager.doesUserHaveCircle());
+
+                    if(sessionManager.doesHaveIntentBackgroundService()) {
+
+                        Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Intent intent = new Intent(LoginActivity.this, PermissionActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
 
                 } else {
 
@@ -198,7 +238,7 @@ public class LoginActivity extends BaseActivity {
 
                 showErrorToast(message);
             }
-        });
+        }));
     }
 
 

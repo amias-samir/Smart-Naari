@@ -139,16 +139,14 @@
                         <FrameLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/damage_label"
                             android:layout_margin="@dimen/spacing_small"
                             android:layout_weight="1"
                             android:background="@drawable/edit_text_boarder_recg">
 
                             <Spinner
-                                android:id="@+id/spinner_user_birth_place_input_id"
+                                android:id="@+id/spinner_ma_chup_basdina_no_consent"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:layout_below="@+id/damage_label"
                                 android:layout_gravity="center_vertical"
                                 android:background="@drawable/spinner_boarder_recg_consent_noconsent"
                                 android:gravity="left"
@@ -194,7 +192,7 @@
                 android:paddingTop="10dp">
 
                 <RadioButton
-                    android:id="@+id/radio_machupbasdina_victim"
+                    android:id="@+id/radio_machupbasdina_victim_myself"
                     style="@style/radionbuttonMaChupBasdina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,7 +204,7 @@
                     android:textSize="@dimen/material_text_caption" />
 
                 <RadioButton
-                    android:id="@+id/radio_machupbasdina_other"
+                    android:id="@+id/radio_machupbasdina_victim_other"
                     style="@style/radionbuttonMaChupBasdina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -223,7 +221,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_district_of_incident"
@@ -236,10 +235,10 @@
                     android:paddingTop="@dimen/default_padding"
                     android:text="@string/district_of_incident"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_body1" />
+                    android:textSize="@dimen/material_text_subhead" />
 
                 <Spinner
-                    android:id="@+id/spinner_ma_chup_basdina_voilence_type"
+                    android:id="@+id/spinner_ma_chup_basdina_district_of_incident"
                     style="@style/SmartNaariSpinnerTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -255,7 +254,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_type_of_violence"
@@ -287,7 +287,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/txtLBLVoilenceOccur"
@@ -299,7 +300,7 @@
                     android:paddingRight="@dimen/spacing_large"
                     android:text="@string/when_did_the_voilence_occur"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_body1" />
+                    android:textSize="@dimen/material_text_subhead" />
 
                 <Spinner
                     android:id="@+id/spinner_ma_chup_basdina_voilence_occur"
@@ -319,7 +320,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/tv_perpetrator"
@@ -334,16 +336,34 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
 
-                <Spinner
-                    android:id="@+id/spinner_ma_chup_basdina_perpetrator"
-                    style="@style/SmartNaariSpinnerTheme"
+                <!--<Spinner-->
+                    <!--android:id="@+id/spinner_ma_chup_basdina_perpetrator"-->
+                    <!--style="@style/SmartNaariSpinnerTheme"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_toEndOf="@id/tv_perpetrator"-->
+                    <!--android:layout_toRightOf="@id/tv_perpetrator"-->
+                    <!--android:gravity="center" />-->
+
+                <EditText
+                    android:id="@+id/ma_chup_basdina_perpetrator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:layout_toEndOf="@id/tv_perpetrator"
                     android:layout_toRightOf="@id/tv_perpetrator"
-                    android:gravity="center" />
+                    android:gravity="left"
+                    android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                    android:ems="10"
+                    android:hint="@string/perpetrator"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/default_padding"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textSecondary"
+                    android:textSize="@dimen/material_text_subhead" />
 
             </RelativeLayout>
 
@@ -352,7 +372,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small">
+                android:padding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_medium">
 
                 <TextView
                     android:id="@+id/txtLBLDescGBV"
@@ -365,7 +386,7 @@
                     android:paddingTop="@dimen/default_padding"
                     android:text="@string/desc_GBV_ma_chup_basdina"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_small_caption" />
+                    android:textSize="@dimen/material_text_subhead" />
                 <!-- desc further details input layout-->
                 <!--<EditText-->
                 <!--android:id="@+id/ma_chup_basdina_desc_GBV_input_id"-->
@@ -406,7 +427,11 @@
                         android:id="@+id/ma_chup_basdina_desc_GBV_input_id"
                         style="@style/SmartNaariInputLayoutTheme"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp" />
+                        android:minHeight="@dimen/textInputLayout_min_height"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left|start"
+                        android:scrollbars="vertical"
+                        android:padding="@dimen/default_padding"/>
 
 
                 </android.support.design.widget.TextInputLayout>
@@ -422,7 +447,8 @@
                 android:layout_marginBottom="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="@dimen/spacing_large"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
 
                 <Button
