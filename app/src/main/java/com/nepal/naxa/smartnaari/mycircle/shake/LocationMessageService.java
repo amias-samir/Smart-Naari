@@ -16,8 +16,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -107,8 +109,11 @@ public class LocationMessageService extends Service implements LocationListener 
         requestLocationUpdates();
 
         showView();
+
         startCountDown(localTextView);
+
     }
+
 
     private void tryDisableKeyguard() {
         this.wakeLock = ((PowerManager) getApplicationContext().getSystemService(POWER_SERVICE)).newWakeLock(268435482, "TAG");
@@ -149,6 +154,7 @@ public class LocationMessageService extends Service implements LocationListener 
         this.windowManager = ((WindowManager) getSystemService(WINDOW_SERVICE));
         this.inflater = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE));
         this.mView = ((ViewGroup) this.inflater.inflate(R.layout.layout_notification_msg, null));
+
         this.params = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 2010, 4194600, -3);
         this.params.y = 50;
 
@@ -170,8 +176,6 @@ public class LocationMessageService extends Service implements LocationListener 
 
         this.locationCountDownTimer = new CountDownTimer(LOCATION_WAIT_TIMEOUT, 1000L) {
             public void onFinish() {
-
-
                 prepareToSMS();
             }
 
@@ -262,14 +266,33 @@ public class LocationMessageService extends Service implements LocationListener 
     }
 
     private void prepareToSMS() {
-        loadContacts();
+        try {
 
-        Timber.i("Sending sms to %s diffrent numbers ", contactNumber.size());
-        startSMSCountdown(names.get(0), contactNumber.get(0));
+            loadContacts();
+            Timber.i("Sending sms to %s diffrent numbers ", contactNumber.size());
+            startSMSCountdown(names.get(0), contactNumber.get(0));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            reportAndClose();
+        }
+
+
     }
 
 
-    private void startSMSCountdown(final String name, final String number) {
+    private void reportAndClose() {
+        localTextView.setText("Failed to send SMS");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onDestroy();
+            }
+        }, TimeUnit.SECONDS.toMillis(4));
+
+    }
+
+    private void startSMSCountdown(@NonNull final String name, @NonNull final String number) {
         SMSCountDownTimer = new CountDownTimer(TimeUnit.SECONDS.toMillis(5), TimeUnit.SECONDS.toMillis(1)) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -309,18 +332,14 @@ public class LocationMessageService extends Service implements LocationListener 
         }
     }
 
-
-    private void loadContacts() {
+    private void loadContacts() throws Exception {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         UserData userData = sessionManager.getUser();
-
         addNameAndNumber(userData.getCircleName1(), userData.getCircleMobileNumber1());
         addNameAndNumber(userData.getCircleName2(), userData.getCircleMobileNumber2());
         addNameAndNumber(userData.getCircleName3(), userData.getCircleMobileNumber3());
         addNameAndNumber(userData.getCircleName4(), userData.getCircleMobileNumber4());
         addNameAndNumber(userData.getCircleName5(), userData.getCircleMobileNumber5());
-
-
     }
 
     private void addNameAndNumber(String name, String number) {

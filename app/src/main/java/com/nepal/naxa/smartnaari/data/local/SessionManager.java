@@ -144,7 +144,7 @@ public class SessionManager {
     }
 
 //    ================================ check background servive status =========================//
-    public void setIntentServiceStatus (Boolean aBoolean){
+    public void isPowerButtonServiceRunning(Boolean aBoolean){
         utils.setValue(KEY_HAS_INTENT_SERVICE, aBoolean);
     }
 
