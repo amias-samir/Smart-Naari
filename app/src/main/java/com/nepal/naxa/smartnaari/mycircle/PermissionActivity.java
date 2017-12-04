@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
-import com.nepal.naxa.smartnaari.splashscreen.SplashScreenActivity;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
@@ -38,7 +37,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("MyCircle Service Setup");
+        toolbar.setTitle(R.string.toolbar_title_permission_activity);
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
 

@@ -69,7 +69,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="tan.nishon.shake.shake.LocationMessageService" />
+                <action android:name="com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService" />
             </intent-filter>
         </service>
         <service
