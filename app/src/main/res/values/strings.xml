@@ -52,7 +52,7 @@
     <string name="answer">28 year old mother replies. \K bhaneko testo? Testo Bhannu hudaina! Chii!!\n Hey Bhagwan, how embarrassing!!</string>
     <string name="btn_ask_an_owl">Ask an Owl</string>
     <string name="select_an_owl">Select an Owl</string>
-    <string name="general_form_hint_question">Write your question here.</string>
+    <string name="general_form_hint_question">Write your question here</string>
     <string name="general_form_button_ask">Ask</string>
     <string name="title_activity_ask_owl">AskOwlActivity</string>
 

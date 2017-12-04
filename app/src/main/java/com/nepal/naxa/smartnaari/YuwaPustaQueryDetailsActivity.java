@@ -51,8 +51,9 @@ public class YuwaPustaQueryDetailsActivity extends BaseActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setTitle("Yuwa Pusta");
+        setSupportActionBar(toolbar);
+
 
 
         final ActionBar actionBar = getSupportActionBar();

@@ -155,16 +155,18 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @OnClick(R.id.btnSignUp)
     public void onViewClicked() {
 
-        showLoading("Sending ... \nPlease Wait! ");
+
 
 //        validate user input data
-        validateData();
+        if(validateData()) {
 
+            showLoading("Sending ... \nPlease Wait! ");
 //        convert user data to JSON
-        convertDataToJson();
+            convertDataToJson();
 
 //        send converted JSON data to server
-        sendDataToServer();
+            sendDataToServer();
+        }
 
     }
 
@@ -183,7 +185,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
         spinnerVoilenceOccur.setAdapter(voilenceOccurTimeArray);
     }
 
-    public void validateData() {
+    public boolean validateData() {
 
 //        if (spinnerNoConsent.getSelectedItem().toString().isEmpty() || spinnerNoConsent.getSelectedItem().toString().equals("")) {
 //
@@ -194,38 +196,39 @@ public class MaChupBasdinaActivity extends BaseActivity {
         if (spinnerDistrictOfIncident.getSelectedItem().toString().isEmpty() || spinnerDistrictOfIncident.getSelectedItem().toString().equals("Choose District")) {
 
             showInfoToast("Please select District of incident.");
-            return;
+            return false;
         }
 
         if (spinnerTypeOfViolence.getSelectedItem().toString().isEmpty() || spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Voilence Type")) {
 
             showInfoToast("Please select voilence type.");
-            return;
+            return false;
         }
 
         if (spinnerVoilenceOccur.getSelectedItem().toString().isEmpty() || spinnerVoilenceOccur.getSelectedItem().toString().equals("Select time")) {
 
             showInfoToast("Please select voilence occured time.");
-            return;
+            return false;
         }
 
         if (tvPerpetrator.getText().toString().isEmpty() || tvPerpetrator.getText().toString().equals("")) {
 
             showInfoToast("Perpetrator field cannot be empty");
-            return;
+            return false;
         }
 
         if (tvDescGBVInputId.getText().toString().isEmpty() || tvDescGBVInputId.getText().toString().equals("")) {
 
             showInfoToast("Further details of the reported GBV cannot be empty");
-            return;
+            return false;
         }
 
         if (tvDescGBVInputId.getText().toString().length() > 250) {
 
             showInfoToast("Further details of the reported GBV cannot be greter than 250 character");
-            return;
+            return false;
         }
+        return true;
     }
 
     public void convertDataToJson() {

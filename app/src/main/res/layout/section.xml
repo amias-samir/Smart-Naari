@@ -10,7 +10,7 @@
     android:layout_marginTop="@dimen/card_side_margin"
     android:background="@android:drawable/list_selector_background"
     android:orientation="vertical"
-    app:cardBackgroundColor="@android:color/white"
+    app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="2dp"
     app:cardCornerRadius="0dp"
     app:cardPreventCornerOverlap="false">

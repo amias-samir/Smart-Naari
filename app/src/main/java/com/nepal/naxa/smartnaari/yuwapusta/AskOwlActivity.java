@@ -24,7 +24,9 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
@@ -116,11 +118,12 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        toolbar.setTitle("Ask an Owl");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
+//            actionBar.setTitle("Ask An Owl");
 //            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -205,7 +208,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<YuwaPustaQueryResponse> call = apiService.getYuwaPusaQueryDetails(jsonToSend);
-        call.enqueue(new Callback<YuwaPustaQueryResponse>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaQueryResponse>() {
             @Override
             public void onResponse(Call<YuwaPustaQueryResponse> call, Response<YuwaPustaQueryResponse> response) {
                 Log.d(TAG, "onPostExecute: " + response.toString());
@@ -244,6 +247,6 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
             public void onFailure(Call<YuwaPustaQueryResponse> call, Throwable t) {
                 hideLoading();
             }
-        });
+        }));
     }
 }
