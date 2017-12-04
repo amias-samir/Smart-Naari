@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.mycircle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -55,7 +56,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         String[] subtitles = {"Follow 4 steps to configure MyCircle",
                 "Smart Naari needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
                 "Allowing Smart Naari to draw over other apps, will let us to notify you when SMS are being sent"};
-        if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             subtitles[2] = "Notification has been granted";
         }
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
@@ -99,7 +100,8 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     }
 
     private View createInstructionView() {
-        if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             LayoutInflater inflater = LayoutInflater.from(getBaseContext());
 
             RelativeLayout instructionLayoutContent = (RelativeLayout) inflater.inflate(R.layout.permission_step_layout, null, false);
