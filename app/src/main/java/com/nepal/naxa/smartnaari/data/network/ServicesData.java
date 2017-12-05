@@ -1,16 +1,18 @@
 
 package com.nepal.naxa.smartnaari.data.network;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.maps.android.clustering.ClusterItem;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Unique;
 
 @Entity (nameInDb = "services_data")
-public class ServicesData {
-
+public class ServicesData implements ClusterItem{
 
     @SerializedName("service_id")
     @Unique
@@ -45,10 +47,13 @@ public class ServicesData {
     @Expose
     private String serviceLon;
 
-    @Generated(hash = 530653545)
-    public ServicesData(String serviceId, String servicePhoneNumber,
-            String serviceName, String serviceTypeId, String serviceDistrictName,
-            String serviceDistrictType, String lastSyncDateTime, Integer isDeleted,
+    private transient LatLng mPosition ;
+    private transient String mTitle;
+    private transient String mSnippet;
+
+    @Keep
+    public ServicesData(String serviceId, String servicePhoneNumber, String serviceName, String serviceTypeId,
+            String serviceDistrictName, String serviceDistrictType, String lastSyncDateTime, Integer isDeleted,
             String serviceLat, String serviceLon) {
         this.serviceId = serviceId;
         this.servicePhoneNumber = servicePhoneNumber;
@@ -60,6 +65,8 @@ public class ServicesData {
         this.isDeleted = isDeleted;
         this.serviceLat = serviceLat;
         this.serviceLon = serviceLon;
+
+        this.mPosition = new LatLng(Double.parseDouble(serviceLat), Double.parseDouble(serviceLon));
     }
 
     @Generated(hash = 1853525144)
@@ -146,4 +153,29 @@ public class ServicesData {
         this.serviceLon = serviceLon;
     }
 
+
+//    private transient LatLng mPosition ;
+//    private transient String mTitle;
+//    private transient String mSnippet;
+    @Override
+    public LatLng getPosition() {
+//         mPosition = new LatLng(Double.parseDouble(getServiceLat()),Double.parseDouble(getServiceLon())) ;
+        return mPosition;
+    }
+
+    @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Override
+    public String getSnippet() {
+        return null;
+    }
+
+//    public ServicesData(double lat, double lng) {
+//        mPosition = new LatLng(lat, lng);
+//         mTitle = null;
+//        mSnippet = null;
+//    }
 }

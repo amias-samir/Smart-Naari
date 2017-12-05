@@ -47,11 +47,16 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
         View rootView = inflater.inflate(R.layout.layout_custom_bottom_sheet, container, false);
         ButterKnife.bind(this, rootView);
 
-        title.setText(servicesData.getServiceName());
-        address.setText(servicesData.getServiceDistrictName());
-        desc.setText(servicesData.getServicePhoneNumber());
-//        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
+        try {
 
+
+            title.setText(servicesData.getServiceName());
+            address.setText(servicesData.getServiceDistrictName());
+            desc.setText(servicesData.getServicePhoneNumber());
+//        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         return rootView;
     }
 

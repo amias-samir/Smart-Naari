@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,12 +24,15 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.clustering.ClusterManager;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.utils.ColorList;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +41,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ServicesActivity extends BaseActivity implements OnMapReadyCallback , GoogleMap.OnMarkerClickListener{
+public class ServicesActivity extends BaseActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private static final String TAG = "ServicesActivity";
 
 
     @BindView(R.id.act_services_recycler_map_legend)
     RecyclerView recyclerMapLegend;
-    AppDataManager appDataManager ;
+    AppDataManager appDataManager;
 
-    List<ServicesData> servicesData ;
+    List<ServicesData> servicesData;
     public static List<ServicesLegendListModel> resultCur = new ArrayList<>();
     public static List<ServicesLegendListModel> filteredList = new ArrayList<>();
     ServicesLegendListAdapter ca;
@@ -56,6 +60,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     private GoogleMap map;
     private List<Marker> markersPresentOnMap;
 
+    //cluster testing
+    private ClusterManager<ServicesData> mClusterManager;
+//    ==============
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +71,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         appDataManager = new AppDataManager(getApplicationContext());
         markersPresentOnMap = new ArrayList<>();
-
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -91,7 +98,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         try {
             resultCur.clear();
 
-            for(int i = 0 ; i< appDataManager.getAllUniqueServicesType().size(); i++){
+            for (int i = 0; i < appDataManager.getAllUniqueServicesType().size(); i++) {
 
                 ServicesLegendListModel newData = new ServicesLegendListModel();
                 newData.serviceTypeID = appDataManager.getAllUniqueServicesType().get(i);
@@ -101,8 +108,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             }
 
 
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         ca = new ServicesLegendListAdapter(this, resultCur);
@@ -110,9 +116,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         appDataManager.getAllUniqueServicesType();
 
 //        Log.d(TAG, "initMapLegend: "+appDataManager.getAllUniqueServicesType().get(1));
-
-
-
 
 //        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getServicesList());
 //        recyclerMapLegend.setAdapter(adapter);
@@ -125,11 +128,11 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
-        if(hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)){
+        if (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
             googleMap.setMyLocationEnabled(true);
 
-        }else  {
-            requestPermissionsSafely(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
+        } else {
+            requestPermissionsSafely(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         }
 
@@ -139,17 +142,34 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             @Override
             public void onMyLocationChange(Location arg0) {
                 // TODO Auto-generated method stub
-         LatLng location = new LatLng(arg0.getLatitude(), arg0.getLongitude());
+                LatLng location = new LatLng(arg0.getLatitude(), arg0.getLongitude());
 
 //                googleMap.addMarker(new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title("It's Me!"));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,12.5f));
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10.5f));
             }
         });
 
 
         getServicesData();
         removeMarkersIfPresent();
-        addMarker(googleMap);
+//        addMarker(googleMap);
+
+//        cluster testing
+        if (map != null) {
+            return;
+        }
+        map = googleMap;
+        startDemo();
+        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
+//        addMarker();
+
+
+//        try {
+//            addMarker();
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+//        }
+//        ==========================
     }
 
     @Override
@@ -159,66 +179,91 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
 
-    public void getServicesData(){
-       servicesData  = appDataManager.getAllServicesdata();
-        Log.d(TAG, "getServicesData: "+servicesData.size());
+    public void getServicesData() {
+        servicesData = appDataManager.getAllServicesdata();
+        Log.d(TAG, "getServicesData: " + servicesData.size());
 
 
     }
 
 
-    public void addMarker (final GoogleMap googleMap){
+    public void addMarker() {
 
-        googleMap.setOnMarkerClickListener(this);
+        getMap().setOnMarkerClickListener(this);
 
-        this.map = googleMap ;
+        this.map = getMap();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 try {
-
                     LatLng location;
 
+                    mClusterManager.addItems(servicesData);
 
-        for (int i = 0 ; i< servicesData.size() ; i++){
 
-            for(int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++){
+                    for (int i = 0; i < servicesData.size(); i++) {
 
-            if(servicesData.get(i).getServiceTypeId().equals(appDataManager.getAllUniqueServicesType().get(j))){
+                        for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
 
-                Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
-                Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
+                            if (servicesData.get(i).getServiceTypeId().equals(appDataManager.getAllUniqueServicesType().get(j))) {
 
-                Log.d(TAG, "run addMarker: " + "Lat"+lat + "  , Longt  "+lon);
+                                Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
+                                Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
 
-                location = new LatLng(lat, lon);
+                                Log.d(TAG, "run addMarker: " + "Lat" + lat + "  , Longt  " + lon);
+
+                                location = new LatLng(lat, lon);
 
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.get(i).getServiceName())
                         .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
-                amarker.setTag(servicesData.get(i));
-                markersPresentOnMap.add(amarker);
+                                amarker.setTag(servicesData.get(i));
+                                markersPresentOnMap.add(amarker);
 
-            }
-            }
-
-
-
-
-
-        }
-        } catch (NumberFormatException e) {
+                            }
+                        }
+                    }
+                } catch (NumberFormatException e) {
                     showErrorToast("Server sent bad data");
                 }
-
 
             }
         }).run();
 
-
     }
+
+
+    //    marker clustering
+    public void addMarker(final GoogleMap googleMap) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                List<ServicesData> items = appDataManager.getAllServicesdata();
+
+                try {
+
+//                    for (int i = 0; i <servicesData.size() ; i++) {
+//                        LatLng position = item.getPosition();
+//                        double lat = Double.parseDouble(item.getServiceLat());
+//                        double lng = Double.parseDouble(item.getServiceLon());
+
+
+//                        double lat = position.latitude;
+//                        double lng = position.longitude;
+//                        ServicesData offsetItem = new ServicesData(lat, lng);
+                    mClusterManager.addItems(servicesData);
+//                    }
+                } catch (NumberFormatException e) {
+                    showErrorToast("Server sent bad data");
+                }
+            }
+        }).run();
+    }
+
+//=======================================
 
     private void removeMarkersIfPresent() {
         new Thread(new Runnable() {
@@ -241,10 +286,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         try {
             ServicesData servicesData = (ServicesData) marker.getTag();
             delayBeforeSheetOpen(servicesData);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
         return false;
@@ -267,4 +311,24 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             }
         }, ANIMATE_DELAY);
     }
+
+
+    //    cluster testing
+    protected GoogleMap getMap() {
+        return map;
+    }
+
+    protected void startDemo() {
+//        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
+
+        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
+        getMap().setOnCameraIdleListener(mClusterManager);
+
+        try {
+            addMarker();
+        } catch (Exception e) {
+            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+        }
+    }
+//    ==========================
 }
