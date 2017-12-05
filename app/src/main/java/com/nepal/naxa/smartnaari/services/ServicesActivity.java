@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -29,10 +26,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
-import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.utils.ColorList;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,17 +91,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         try {
             resultCur.clear();
-
             for (int i = 0; i < appDataManager.getAllUniqueServicesType().size(); i++) {
 
                 ServicesLegendListModel newData = new ServicesLegendListModel();
                 newData.serviceTypeID = appDataManager.getAllUniqueServicesType().get(i);
 
                 resultCur.add(newData);
-
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,10 +105,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         recyclerMapLegend.setAdapter(ca);
         appDataManager.getAllUniqueServicesType();
 
-//        Log.d(TAG, "initMapLegend: "+appDataManager.getAllUniqueServicesType().get(1));
-
-//        LegendRecyclerAdapter adapter = new LegendRecyclerAdapter(ViewModel.getServicesList());
-//        recyclerMapLegend.setAdapter(adapter);
         recyclerMapLegend.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
     }
@@ -133,7 +119,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         } else {
             requestPermissionsSafely(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
         }
 
 
@@ -152,23 +137,14 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         getServicesData();
         removeMarkersIfPresent();
-//        addMarker(googleMap);
 
 //        cluster testing
         if (map != null) {
             return;
         }
         map = googleMap;
-        startDemo();
+        startCluster();
         mClusterManager = new ClusterManager<ServicesData>(this, getMap());
-//        addMarker();
-
-
-//        try {
-//            addMarker();
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
-//        }
 //        ==========================
     }
 
@@ -182,8 +158,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     public void getServicesData() {
         servicesData = appDataManager.getAllServicesdata();
         Log.d(TAG, "getServicesData: " + servicesData.size());
-
-
     }
 
 
@@ -196,12 +170,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 try {
                     LatLng location;
-
                     mClusterManager.addItems(servicesData);
-
 
                     for (int i = 0; i < servicesData.size(); i++) {
 
@@ -221,49 +192,15 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                         .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
                                 amarker.setTag(servicesData.get(i));
                                 markersPresentOnMap.add(amarker);
-
                             }
                         }
                     }
                 } catch (NumberFormatException e) {
                     showErrorToast("Server sent bad data");
                 }
-
-            }
-        }).run();
-
-    }
-
-
-    //    marker clustering
-    public void addMarker(final GoogleMap googleMap) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                List<ServicesData> items = appDataManager.getAllServicesdata();
-
-                try {
-
-//                    for (int i = 0; i <servicesData.size() ; i++) {
-//                        LatLng position = item.getPosition();
-//                        double lat = Double.parseDouble(item.getServiceLat());
-//                        double lng = Double.parseDouble(item.getServiceLon());
-
-
-//                        double lat = position.latitude;
-//                        double lng = position.longitude;
-//                        ServicesData offsetItem = new ServicesData(lat, lng);
-                    mClusterManager.addItems(servicesData);
-//                    }
-                } catch (NumberFormatException e) {
-                    showErrorToast("Server sent bad data");
-                }
             }
         }).run();
     }
-
-//=======================================
 
     private void removeMarkersIfPresent() {
         new Thread(new Runnable() {
@@ -272,7 +209,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 for (Marker marker : markersPresentOnMap) {
                     marker.remove();
                 }
-
                 markersPresentOnMap.clear();
             }
         }).run();
@@ -289,15 +225,11 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         return false;
     }
 
 
     private void delayBeforeSheetOpen(final ServicesData servicesData) {
-
-
         Log.e(TAG, "delayBeforeSheetOpen: ");
 
         int ANIMATE_DELAY = 250;
@@ -306,7 +238,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 PlaceDetailsBottomSheet placeDetailsBottomSheet = PlaceDetailsBottomSheet.getInstance(servicesData);
                 placeDetailsBottomSheet.show(getSupportFragmentManager(), "a");
-
 
             }
         }, ANIMATE_DELAY);
@@ -318,7 +249,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         return map;
     }
 
-    protected void startDemo() {
+    protected void startCluster() {
 //        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
 
         mClusterManager = new ClusterManager<ServicesData>(this, getMap());

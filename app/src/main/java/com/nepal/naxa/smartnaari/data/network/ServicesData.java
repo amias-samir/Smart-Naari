@@ -154,12 +154,8 @@ public class ServicesData implements ClusterItem{
     }
 
 
-//    private transient LatLng mPosition ;
-//    private transient String mTitle;
-//    private transient String mSnippet;
     @Override
     public LatLng getPosition() {
-//         mPosition = new LatLng(Double.parseDouble(getServiceLat()),Double.parseDouble(getServiceLon())) ;
         return mPosition;
     }
 
@@ -173,9 +169,4 @@ public class ServicesData implements ClusterItem{
         return null;
     }
 
-//    public ServicesData(double lat, double lng) {
-//        mPosition = new LatLng(lat, lng);
-//         mTitle = null;
-//        mSnippet = null;
-//    }
 }
