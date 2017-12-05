@@ -47,10 +47,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".mycircle.powerbutton.NotificationReceiver"
+            android:enabled="true"
+            android:process=":remote" />
+
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"/>
 
         <!-- ======================= end of auto start services on system boot ==================== -->
 

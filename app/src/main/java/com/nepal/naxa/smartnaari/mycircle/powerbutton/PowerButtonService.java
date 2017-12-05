@@ -39,7 +39,7 @@ public class PowerButtonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        showForegroundNotification("Tap for more information", "MyCircle is Active");
+        showForegroundNotification("MyCircle is active", "Hold power button & shake phone to send SMS");
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.isPowerButtonServiceRunning(true);
 
@@ -112,14 +112,16 @@ public class PowerButtonService extends Service {
 
     private void showForegroundNotification(String title, String contentText) {
 
-        Intent intent = new Intent(getApplicationContext(), PermissionActivity.class);
-        PendingIntent toSettings = PendingIntent.getActivity(this, 0, intent, 0);
+        Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+        PendingIntent toNotificationReceiver = PendingIntent.getBroadcast(this, (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.mipmap.ic_launcher).setContentText(contentText)
+                .setSmallIcon(R.drawable.ic_logo_notification).setContentText(contentText)
                 .setContentTitle(title)
                 .setWhen(System.currentTimeMillis())
-                .setContentIntent(toSettings)
+                .setContentIntent(toNotificationReceiver)
+                .addAction(R.drawable.ic_close_black_24dp, "Deactivate", toNotificationReceiver)
                 .build();
         startForeground(NOTIFICATION_ID, notification);
 

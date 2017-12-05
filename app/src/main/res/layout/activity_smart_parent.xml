@@ -131,13 +131,7 @@
                 android:textSize="@dimen/material_text_subhead" />
 
 
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/chart"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_margin="10dp"
-                android:visibility="gone"
-                />
+
 
 
             <ImageView

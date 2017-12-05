@@ -3,7 +3,6 @@ package com.nepal.naxa.smartnaari.data.network.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.util.Log;
@@ -15,9 +14,9 @@ import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
@@ -26,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import me.jessyan.progressmanager.body.ProgressInfo;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +50,7 @@ public class DownloadService extends IntentService {
     private ResultReceiver receiver;
     private OwlWrapper owls;
 
-    private ProgressInfo mLastDownloadingInfo;
+
     private Handler mHandler;
     private ToastUtils toastUtils;
     private ArrayList<String> completedUrls;
