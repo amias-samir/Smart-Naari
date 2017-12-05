@@ -100,6 +100,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/beautiful_main_tv_eng_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -109,6 +110,7 @@
                             android:textSize="@dimen/material_text_title" />
 
                         <TextView
+                            android:id="@+id/beautiful_main_tv_nep_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"

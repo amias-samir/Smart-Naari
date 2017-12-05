@@ -3,11 +3,13 @@ package com.nepal.naxa.smartnaari.mycircle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,6 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
-import com.nepal.naxa.smartnaari.splashscreen.SplashScreenActivity;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
@@ -31,6 +32,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     private final String TAG = this.getClass().getSimpleName();
     private VerticalStepperFormLayout verticalStepperForm;
     final int CODE_REQUEST_PERMISSIONS = 7876778;
+    private TextView textView;
 
 
     @Override
@@ -38,7 +40,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("MyCircle Service Setup");
+        toolbar.setTitle(R.string.toolbar_title_permission_activity);
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
 
@@ -54,7 +56,9 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         String[] subtitles = {"Follow 4 steps to configure MyCircle",
                 "Smart Naari needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
                 "Allowing Smart Naari to draw over other apps, will let us to notify you when SMS are being sent"};
-
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            subtitles[2] = "Notification has been granted";
+        }
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
 
@@ -67,6 +71,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
                 .primaryColor(colorPrimary)
                 .primaryDarkColor(colorPrimaryDark)
                 .stepsSubtitles(subtitles)
+                .showVerticalLineWhenStepsAreCollapsed(true)
                 .displayBottomNavigation(false)
                 .init();
 
@@ -95,27 +100,36 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     }
 
     private View createInstructionView() {
-        LayoutInflater inflater = LayoutInflater.from(getBaseContext());
-        RelativeLayout instructionLayoutContent = (RelativeLayout) inflater.inflate(R.layout.permission_step_layout, null, false);
-        TextView title = (TextView) instructionLayoutContent.findViewById(R.id.tv_title_permission_step);
-        Button button = (Button) instructionLayoutContent.findViewById(R.id.btn_open_setup_permission_step);
-        String msg;
-        msg = "1.Choose " +
-                getString(R.string.app_name) +
-                " From The List." +
-                "\n\n" +
-                "2.Toggle \'Permit drawing over other app\' On";
-        title.setText(msg);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-                startActivity(myIntent);
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            LayoutInflater inflater = LayoutInflater.from(getBaseContext());
 
-        return instructionLayoutContent;
+            RelativeLayout instructionLayoutContent = (RelativeLayout) inflater.inflate(R.layout.permission_step_layout, null, false);
+            TextView title = (TextView) instructionLayoutContent.findViewById(R.id.tv_title_permission_step);
+
+            Button button = (Button) instructionLayoutContent.findViewById(R.id.btn_open_setup_permission_step);
+
+            String msg;
+            msg = "1.Choose " +
+                    getString(R.string.app_name) +
+                    " From The List." +
+                    "\n\n" +
+                    "2.Toggle \'Permit drawing over other app\' On";
+            title.setText(msg);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                    startActivity(myIntent);
+                }
+            });
+            return instructionLayoutContent;
+        } else {
+
+            return createDummyView();
+        }
+
 
     }
 
@@ -148,18 +162,15 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     }
 
     private void handleOverlayPermissionOpen() {
-
-//        try {
+        try {
             if (isSystemAlertPermissionGranted(getApplicationContext())) {
                 verticalStepperForm.setActiveStepAsCompleted();
             } else {
 
             }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void handlePermissionOpen() {
@@ -200,13 +211,8 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     @Override
     public void sendData() {
         startService(new Intent(this, PowerButtonService.class));
-
-        
-
         Intent intent = new Intent(PermissionActivity.this, BeautifulMainActivity.class);
         startActivity(intent);
-
-
     }
 
     @Override

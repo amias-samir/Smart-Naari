@@ -47,10 +47,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".mycircle.powerbutton.NotificationReceiver"
+            android:enabled="true"
+            android:process=":remote" />
+
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"/>
 
         <!-- ======================= end of auto start services on system boot ==================== -->
 
@@ -69,7 +74,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="tan.nishon.shake.shake.LocationMessageService" />
+                <action android:name="com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService" />
             </intent-filter>
         </service>
         <service

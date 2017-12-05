@@ -16,10 +16,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.telephony.SmsManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 
@@ -39,6 +40,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import timber.log.Timber;
 
 
 /**
@@ -64,8 +67,7 @@ public class LocationMessageService extends Service implements LocationListener 
 
 
     private String TAG = this.getClass().getSimpleName();
-    private int locationUpdateCounterCurValue = 60;
-    private String name = "Nishon Tandukar";
+
     private boolean gpsOn = false;
     private boolean networkOn = false;
     private double locationAccuracy = 100;
@@ -77,11 +79,11 @@ public class LocationMessageService extends Service implements LocationListener 
     private LayoutInflater inflater;
     private ViewGroup mView;
 
-    ArrayList<String> contactNo = new ArrayList<String>();
-    ArrayList<String> contactName = new ArrayList<String>();
 
     private String[] loadingMessages = new String[]{"Talking to GPS satellites", "Tracking Your Current location", "Message will be sent in five minute or less"};
-    private boolean alreadySentSMS = false;
+    private ArrayList<String> names;
+    private ArrayList<String> contactNumber;
+
 
     @Nullable
     @Override
@@ -98,6 +100,8 @@ public class LocationMessageService extends Service implements LocationListener 
         Log.d(TAG, "onCreate: ");
         startForeground(291, new Notification());
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        contactNumber = new ArrayList<>();
+        names = new ArrayList<>();
 
         tryDisableKeyguard();
 
@@ -105,8 +109,11 @@ public class LocationMessageService extends Service implements LocationListener 
         requestLocationUpdates();
 
         showView();
+
         startCountDown(localTextView);
+
     }
+
 
     private void tryDisableKeyguard() {
         this.wakeLock = ((PowerManager) getApplicationContext().getSystemService(POWER_SERVICE)).newWakeLock(268435482, "TAG");
@@ -147,6 +154,7 @@ public class LocationMessageService extends Service implements LocationListener 
         this.windowManager = ((WindowManager) getSystemService(WINDOW_SERVICE));
         this.inflater = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE));
         this.mView = ((ViewGroup) this.inflater.inflate(R.layout.layout_notification_msg, null));
+
         this.params = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 2010, 4194600, -3);
         this.params.y = 50;
 
@@ -177,6 +185,7 @@ public class LocationMessageService extends Service implements LocationListener 
                 if (location == null) return;
                 if (location.getAccuracy() <= locationAccuracy) {
 
+                    stopLocationCountDown();
                     prepareToSMS();
 
                 } else {
@@ -189,9 +198,6 @@ public class LocationMessageService extends Service implements LocationListener 
 
             private void showRandomProgressMsg(long millisUntilFinished) {
                 Random random = new Random();
-
-                Log.d(TAG, "showRandomProgressMsg: minute" + TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
-                Log.d(TAG, "showRandomProgressMsg: second" + TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished));
 
                 if (millisUntilFinished % 5 == 0) {
                     int index = random.nextInt(loadingMessages.length);
@@ -224,7 +230,7 @@ public class LocationMessageService extends Service implements LocationListener 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.locationUpdateCounterCurValue = 3;
+
         Log.d(TAG, "onDestroy: ");
 
         if ((this.wakeLock != null) && (this.wakeLock.isHeld())) {
@@ -260,37 +266,43 @@ public class LocationMessageService extends Service implements LocationListener 
     }
 
     private void prepareToSMS() {
+        try {
 
-        if (alreadySentSMS) {
-            return;
+            loadContacts();
+            Timber.i("Sending sms to %s diffrent numbers ", contactNumber.size());
+            startSMSCountdown(names.get(0), contactNumber.get(0));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            reportAndClose();
         }
 
-        stopLocationCountDown();
-        alreadySentSMS = true;
-
-        //todo loop smartSMSCountDown with different numbers
-
-        prepareContactList();
-
-        for (int i = 0 ; i<contactNo.size() ; i++ ) {
-
-            startSMSCountdown(contactNo.get(i), contactName.get(i));
-
-        }
 
     }
 
-    private void startSMSCountdown(final String mobileNoToSendSMS, final String contactNameToSendSMS) {
+
+    private void reportAndClose() {
+        localTextView.setText("Failed to send SMS");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onDestroy();
+            }
+        }, TimeUnit.SECONDS.toMillis(4));
+
+    }
+
+    private void startSMSCountdown(@NonNull final String name, @NonNull final String number) {
         SMSCountDownTimer = new CountDownTimer(TimeUnit.SECONDS.toMillis(5), TimeUnit.SECONDS.toMillis(1)) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                String msg = "Sending SMS to " + contactNameToSendSMS + " in " + TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+                String msg = "Sending SMS to " + name + " in " + TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
                 localTextView.setText(msg);
 
-                //todo find a better way to show sms sent message
+
                 if (millisUntilFinished < TimeUnit.SECONDS.toMillis(2)) {
-                    msg = "Sending SMS to " + contactNameToSendSMS;
+                    msg = "Sending SMS to " + name;
                     localTextView.setText(msg);
                 }
 
@@ -299,64 +311,50 @@ public class LocationMessageService extends Service implements LocationListener 
             @Override
             public void onFinish() {
                 String sms = generateMessage(location);
-                sendSMS(sms , mobileNoToSendSMS );
-
-                stopSMSCountDown();
-                LocationMessageService.this.stopSelf();
+                sendSMS(sms, number);
 
             }
         }.start();
     }
 
-    // TODO: 10/30/2017   SMS send
-    private void sendSMS(String message, String mobileNoToSendSMS) {
-//        ArrayList contactNo = new ArrayList();
+    private void sendSMS(String message, String number) {
 
-//        prepareContactList();
-
-//        for(int i = 1 ; i<= contactNo.size(); i++) {
-
-            Log.i(TAG, " Sending sms " + message);
+        Timber.i("SMS sent to %s", number);
 //         SmsManager.getDefault().sendTextMessage(mobileNoToSendSMS, null, LocationMessageService.this.msg, null, null);
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-//        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        removeContact();
+        if (contactNumber.size() <= 0) {
+            stopSMSCountDown();
+            LocationMessageService.this.stopSelf();
+        } else {
 
-        stopSMSCountDown();
+            startSMSCountdown(names.get(0), contactNumber.get(0));
+        }
+    }
+
+    private void loadContacts() throws Exception {
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        UserData userData = sessionManager.getUser();
+        addNameAndNumber(userData.getCircleName1(), userData.getCircleMobileNumber1());
+        addNameAndNumber(userData.getCircleName2(), userData.getCircleMobileNumber2());
+        addNameAndNumber(userData.getCircleName3(), userData.getCircleMobileNumber3());
+        addNameAndNumber(userData.getCircleName4(), userData.getCircleMobileNumber4());
+        addNameAndNumber(userData.getCircleName5(), userData.getCircleMobileNumber5());
+    }
+
+    private void addNameAndNumber(String name, String number) {
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(number)) {
+            return;
+        }
+
+        names.add(name);
+        contactNumber.add(number);
 
     }
 
-
-
-//    prepare contact
-    private void prepareContactList (){
-        SessionManager sessionManager = new SessionManager(getApplicationContext());
-        UserData userData = sessionManager.getUser();
-
-        String firstContactName = userData.getFirstName();
-        String firstContactNo = userData.getCircleMobileNumber1();
-        contactName.add(firstContactName);
-        contactNo.add(firstContactNo);
-
-
-        String secondContactName = userData.getFirstName();
-        String secondContactNo = userData.getCircleMobileNumber1();
-        contactName.add(secondContactName);
-        contactNo.add(secondContactNo);
-
-        String thirdContactName = userData.getFirstName();
-        String thirdContactNo = userData.getCircleMobileNumber1();
-        contactName.add(thirdContactName);
-        contactNo.add(thirdContactNo);
-
-        String fourthContactName = userData.getFirstName();
-        String fourthContactNo = userData.getCircleMobileNumber1();
-        contactName.add(fourthContactName);
-        contactNo.add(fourthContactNo);
-
-        String fifthContactName = userData.getFirstName();
-        String fifthContactNo = userData.getCircleMobileNumber1();
-        contactName.add(fifthContactName);
-        contactNo.add(fifthContactNo);
+    private void removeContact() {
+        names.remove(0);
+        contactNumber.remove(0);
     }
 
     private String generateMessage(Location location) {

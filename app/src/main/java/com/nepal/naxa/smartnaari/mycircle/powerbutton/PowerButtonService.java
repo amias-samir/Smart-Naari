@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.mycircle.powerbutton;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
 
 
@@ -27,8 +29,8 @@ public class PowerButtonService extends Service {
 
     private static final int NOTIFICATION_ID = 1213124;
 
-    private Boolean status = false;
-    SessionManager sessionManager ;
+
+    SessionManager sessionManager;
 
     public PowerButtonService() {
 
@@ -37,12 +39,9 @@ public class PowerButtonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        showForegroundNotification("MyCircle is Active");
-
-        status = true;
-
+        showForegroundNotification("MyCircle is active", "Hold power button & shake phone to send SMS");
         sessionManager = new SessionManager(getApplicationContext());
-        sessionManager.setIntentServiceStatus(status);
+        sessionManager.isPowerButtonServiceRunning(true);
 
 
         LinearLayout mLinear = new LinearLayout(getApplicationContext()) {
@@ -100,16 +99,10 @@ public class PowerButtonService extends Service {
         wm.addView(mView, params);
     }
 
-   @Override
-    public void onDestroy(){
+    @Override
+    public void onDestroy() {
         super.onDestroy();
-
-       status = false;
-
-       sessionManager = new SessionManager(getApplicationContext());
-       sessionManager.setIntentServiceStatus(status);
-
-
+        sessionManager.isPowerButtonServiceRunning(false);
     }
 
     @Override
@@ -117,11 +110,18 @@ public class PowerButtonService extends Service {
         return null;
     }
 
-    private void showForegroundNotification(String contentText) {
+    private void showForegroundNotification(String title, String contentText) {
+
+        Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+        PendingIntent toNotificationReceiver = PendingIntent.getBroadcast(this, (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.mipmap.ic_launcher).setContentText(contentText)
+                .setSmallIcon(R.drawable.ic_logo_notification).setContentText(contentText)
+                .setContentTitle(title)
                 .setWhen(System.currentTimeMillis())
+                .setContentIntent(toNotificationReceiver)
+                .addAction(R.drawable.ic_close_black_24dp, "Deactivate", toNotificationReceiver)
                 .build();
         startForeground(NOTIFICATION_ID, notification);
 

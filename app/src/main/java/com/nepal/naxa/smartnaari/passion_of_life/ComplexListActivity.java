@@ -18,9 +18,11 @@ package com.nepal.naxa.smartnaari.passion_of_life;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.widget.GridLayoutManager;
+import android.util.Log;
 
 import com.ahamed.multiviewadapter.RecyclerAdapter;
 import com.nepal.naxa.smartnaari.R;
@@ -72,7 +74,7 @@ public class ComplexListActivity extends ComplexListBaseActivity {
         List<Article> expandableNews = DummyDataProvider.getExpandableNews();
         dataListThree.addAll(expandableNews);
 
-        List<Article> favoriteNews = DummyDataProvider.getFavoriteNews();
+        final List<Article> favoriteNews = DummyDataProvider.getFavoriteNews();
         dataListThree.addAll(favoriteNews);
 
 
@@ -83,6 +85,25 @@ public class ComplexListActivity extends ComplexListBaseActivity {
                 adapter.addAllModelItem(dataListThree);
             }
         }, TimeUnit.SECONDS.toMillis(3));
+
+
+        new CountDownTimer(TimeUnit.MINUTES.toMillis(1), TimeUnit.SECONDS.toMillis(3)) {
+
+            public void onTick(long millisUntilFinished) {
+
+                Log.d("TickTock", millisUntilFinished + " ");
+
+
+                dataListThree.addAll(DummyDataProvider.getNews());
+
+                adapter.notifyItemRangeInserted(dataListThree.size() -1 , dataListThree.size());
+
+            }
+
+            public void onFinish() {
+                Log.d("TickTock", " Finish ");
+            }
+        }.start();
 
 
     }

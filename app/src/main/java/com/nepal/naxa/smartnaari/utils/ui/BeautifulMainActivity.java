@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,7 +53,13 @@ import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
+import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
+import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
+
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import java.util.List;
 
@@ -60,6 +67,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import timber.log.Timber;
 
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
@@ -86,6 +94,12 @@ public class BeautifulMainActivity extends BaseActivity
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    @BindView(R.id.beautiful_main_tv_eng_date)
+    TextView tvEngDate;
+
+    @BindView(R.id.beautiful_main_tv_nep_date)
+    TextView tvNepaliDate;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -115,7 +129,7 @@ public class BeautifulMainActivity extends BaseActivity
         ButterKnife.bind(this);
 
         syncAllData();
-
+        setDateTimeInUI();
 
         Glide.with(this)
                 .load(R.drawable.food_1).into(placeholder);
@@ -143,6 +157,20 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     }
+
+    private void setDateTimeInUI() {
+
+        try {
+            tvEngDate.setText(NepaliDate.getCurrentEngDate());
+            tvNepaliDate.setText(NepaliDate.getCurrentNepaliDate());
+        } catch (NepaliDateException e) {
+            e.printStackTrace();
+            //todo log error from frabric
+        }
+
+
+    }
+
 
     public int getImage(String imageName) {
 
@@ -387,7 +415,7 @@ public class BeautifulMainActivity extends BaseActivity
                     case STATUS_ERROR:
                         break;
                     case STATUS_FINISHED:
-                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        // AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
                 }
             }
