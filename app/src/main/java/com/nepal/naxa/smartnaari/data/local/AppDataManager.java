@@ -65,37 +65,33 @@ public class AppDataManager extends BaseActivity {
     }
 
     public void prepareToSaveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
-     //loop
+        //loop
 
-        for(int i = 0 ; i< yuwaQuestion.size(); i++){
+        for (int i = 0; i < yuwaQuestion.size(); i++) {
             try {
-               if(daoSession.getYuwaQuestionDao().count() == 0 ){
-                   daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
-               }
-               else {
-                   if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
+                if (daoSession.getYuwaQuestionDao().count() == 0) {
+                    daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                } else {
+                    if (yuwaQuestion.get(i).getIsDeleted() == 1) {
 
-                       final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
-                               .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
-                               .buildDelete();
-                       tableDeleteQuery.executeDeleteWithoutDetachingEntities();
-                       daoSession.clear();
+                        final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
+                                .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
+                                .buildDelete();
+                        tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                        daoSession.clear();
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-                   }
-                   else {
-                       daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                    } else {
+                        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-                   }
-               }
-            }
-            catch (Exception e){
+                    }
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-
 
 
     }
@@ -107,13 +103,12 @@ public class AppDataManager extends BaseActivity {
 
     public void prepareToSaveServices(List<ServicesData> servicesData) {
         //loop
-        for(int i = 0 ; i< servicesData.size(); i++){
+        for (int i = 0; i < servicesData.size(); i++) {
 
             try {
-                if(daoSession.getServicesDataDao().count() == 0 ){
+                if (daoSession.getServicesDataDao().count() == 0) {
                     daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
-                }
-                else {
+                } else {
 
                     if (servicesData.get(i).getIsDeleted() == 1) {
 
@@ -130,10 +125,9 @@ public class AppDataManager extends BaseActivity {
 
                     }
                 }
-                }
-            catch (Exception e){
-                    e.printStackTrace();
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -146,36 +140,33 @@ public class AppDataManager extends BaseActivity {
     }
 
 
-    public ArrayList<String> getAllUniqueServicesType(){
+    public ArrayList<String> getAllUniqueServicesType() {
 
-         String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.ServiceTypeId.columnName+" FROM "+ServicesDataDao.TABLENAME;
+        String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT " + ServicesDataDao.Properties.ServiceTypeId.columnName + " FROM " + ServicesDataDao.TABLENAME;
 
 
+        ArrayList<String> result = new ArrayList<>();
+        Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
+        try {
+            if (c.moveToFirst()) {
+                do {
 
-            ArrayList<String> result = new ArrayList<>();
-            Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
-            try{
-                if (c.moveToFirst()) {
-                    do {
-
-                        result.add(c.getString(0));
-                        Log.d(TAG, "getAllServicesType: "+c.getString(0));
-                    } while (c.moveToNext());
-                }
-            } finally {
-                c.close();
+                    result.add(c.getString(0));
+                    Log.d(TAG, "getAllServicesType: " + c.getString(0));
+                } while (c.moveToNext());
             }
-            return result;
+        } finally {
+            c.close();
+        }
+        return result;
 
     }
-
 
 
 //        public void saveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
 //
 //        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion);
 //    }
-
 
 
     @SuppressWarnings("unchecked")
@@ -185,15 +176,15 @@ public class AppDataManager extends BaseActivity {
         QueryBuilder<String> dateAndTimes;
         String dateTime = "";
 
-     long rowCount = daoSession.getDao(classname).count();
+        long rowCount = daoSession.getDao(classname).count();
 
-        if(rowCount >0) {
+        if (rowCount > 0) {
 
             try {
                 dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
                 object = dateAndTimes.list().get(0);
                 dateTime = parseResponseCode(object);
-            } catch (NullPointerException | IllegalAccessException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
 
             }
@@ -216,7 +207,7 @@ public class AppDataManager extends BaseActivity {
 
             value = field.get(someObject);
 
-            if (field.getName().equalsIgnoreCase("last_sync_date_time") ) {
+            if (field.getName().equalsIgnoreCase("last_sync_date_time")) {
                 dateTime = value.toString();
             }
         }
