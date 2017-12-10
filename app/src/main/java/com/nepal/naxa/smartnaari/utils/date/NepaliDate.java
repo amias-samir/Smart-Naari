@@ -25,15 +25,15 @@ import static java.lang.String.format;
 
 public class NepaliDate {
 
-
     private static final int OFFSET = 2;
     private static String[] nepaliMonths = new String[]{"बैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कार्तिक", "मंसिर", "पौष", "माघ", "फाल्गुन", "चैत"};
     private static String[] nepaliDays = new String[]{"आइतवार", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार", "शनिवार"};
 
     private static String formatNepaliDate(LocalDateTime localDateTime) throws NepaliDateException {
+
         LocalDateTime nepaliDateTime = getNepaliDateTime(localDateTime);
         int monthIndex = nepaliDateTime.getMonthOfYear() - 1;
-        int dayIndex = nepaliDateTime.getDayOfWeek();
+        int dayIndex = localDateTime.getDayOfWeek();
 
         //dirty-fix for bad dayofweek
         int dirtyIndex = (dayIndex - 1) + OFFSET;
@@ -44,19 +44,26 @@ public class NepaliDate {
         Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
         Timber.i(nepaliDateTime.getDayOfWeek() + "");
         return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dirtyIndex];
+
     }
 
     public static String getCurrentEngDate() {
+
         LocalDateTime localDateTime = new LocalDateTime();
         return formatEngDate(localDateTime);
+
     }
 
     public static String getCurrentNepaliDate() throws NepaliDateException {
+
         return formatNepaliDate(new LocalDateTime());
+
     }
 
     private static String formatEngDate(LocalDateTime localDateTime) {
+
         return localDateTime.toString(DateTimeFormat.longDate());
+
     }
 
 

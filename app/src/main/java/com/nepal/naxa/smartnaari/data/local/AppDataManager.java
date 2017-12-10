@@ -76,38 +76,34 @@ new Thread(new Runnable() {
     @Override
     public void run() {
 
-        for(int i = 0 ; i< yuwaQuestion.size(); i++){
+        for (int i = 0; i < yuwaQuestion.size(); i++) {
             try {
-               if(daoSession.getYuwaQuestionDao().count() == 0 ){
-                   daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
-               }
-               else {
-                   if(yuwaQuestion.get(i).getIsDeleted() == 1 ){
+                if (daoSession.getYuwaQuestionDao().count() == 0) {
+                    daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                } else {
+                    if (yuwaQuestion.get(i).getIsDeleted() == 1) {
 
-                       final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
-                               .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
-                               .buildDelete();
-                       tableDeleteQuery.executeDeleteWithoutDetachingEntities();
-                       daoSession.clear();
+                        final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
+                                .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
+                                .buildDelete();
+                        tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                        daoSession.clear();
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row deleted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-                   }
-                   else {
-                       daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
+                    } else {
+                        daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
 //                Log.e(TAG, "prepareToSaveYuwaQuestions: "+"!!!!!!! row inserted !!!!!!! \n table id :"+yuwaQuestion.get(i).getIdString() );
 
-                   }
-               }
-            }
-            catch (Exception e){
+                    }
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-
     }
 });
-    }
+ }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
         return daoSession.getYuwaQuestionDao().loadAll();
@@ -122,9 +118,9 @@ new Thread(new Runnable() {
             @Override
             public void run() {
         //loop
-        for(int i = 0 ; i< servicesData.size(); i++){
+        for (int i = 0; i < servicesData.size(); i++) {
             try {
-                if(daoSession.getServicesDataDao().count() == 0 ){
+                if (daoSession.getServicesDataDao().count() == 0) {
                     daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
                 }
                 else {
@@ -142,10 +138,9 @@ new Thread(new Runnable() {
 //                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
                     }
                 }
-                }
-            catch (Exception e){
-                    e.printStackTrace();
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
             }
         });
@@ -158,8 +153,6 @@ new Thread(new Runnable() {
     public ArrayList<String> getAllUniqueServicesType(){
 
         String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.ServiceTypeId.columnName+" FROM "+ServicesDataDao.TABLENAME;
-
-
 
         ArrayList<String> result = new ArrayList<>();
         Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
@@ -200,11 +193,11 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
                             .buildDelete();
                     tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                     daoSession.clear();
-                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
+                Log.e(TAG, "prepareToSaveHOtPotData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
 
                 } else {
                     daoSession.getHotPotOfPassionDataDao().insertOrReplaceInTx(hotPotOfPassionData.get(i));
-                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
+                Log.e(TAG, "prepareToSaveHotPotData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
                 }
             }
         }
@@ -212,7 +205,6 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
             e.printStackTrace();
         }
     }
-
             }
         });
 }
@@ -222,7 +214,6 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
     }
 //    ===================================================================================//
 
-
     @SuppressWarnings("unchecked")
     public String getLastSyncDateTime(Class classname) {
 
@@ -230,15 +221,15 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
         QueryBuilder<String> dateAndTimes;
         String dateTime = "";
 
-     long rowCount = daoSession.getDao(classname).count();
+        long rowCount = daoSession.getDao(classname).count();
 
-        if(rowCount >0) {
+        if (rowCount > 0) {
 
             try {
                 dateAndTimes = daoSession.getDao(classname).queryBuilder().orderRaw("last_sync_date_time").limit(1);
                 object = dateAndTimes.list().get(0);
                 dateTime = parseResponseCode(object);
-            } catch (NullPointerException | IllegalAccessException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
 
             }
@@ -261,7 +252,7 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
 
             value = field.get(someObject);
 
-            if (field.getName().equalsIgnoreCase("last_sync_date_time") ) {
+            if (field.getName().equalsIgnoreCase("last_sync_date_time")) {
                 dateTime = value.toString();
             }
         }
