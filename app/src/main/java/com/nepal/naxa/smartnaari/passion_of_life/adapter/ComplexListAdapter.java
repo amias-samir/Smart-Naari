@@ -54,6 +54,6 @@ public class ComplexListAdapter extends RecyclerAdapter {
   }
 
   public void addAllModelItem(List<Article> dataList) {
-    favoriteNewsList.addAll(dataList);
+    expandableNewsList.addAll(dataList);
   }
 }

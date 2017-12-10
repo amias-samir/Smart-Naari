@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.login;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;

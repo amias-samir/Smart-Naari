@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.common;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;

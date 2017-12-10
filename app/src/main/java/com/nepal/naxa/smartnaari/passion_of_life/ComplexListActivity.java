@@ -74,8 +74,8 @@ public class ComplexListActivity extends ComplexListBaseActivity {
         List<Article> expandableNews = DummyDataProvider.getExpandableNews();
         dataListThree.addAll(expandableNews);
 
-        final List<Article> favoriteNews = DummyDataProvider.getFavoriteNews();
-        dataListThree.addAll(favoriteNews);
+//        final List<Article> favoriteNews = DummyDataProvider.getFavoriteNews();
+//        dataListThree.addAll(favoriteNews);
 
 
         final Handler handler = new Handler();

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
@@ -28,7 +29,7 @@ import static java.lang.System.in;
 
 public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLegendListAdapter.ContactViewHolder> {
 
-    private static final String TAG = "ServicesLegendListAdapter";
+    private static final String TAG = "ServicesLegendAdapter";
     private List<ServicesLegendListModel> servicesTypeList;
     Context context;
 
@@ -50,8 +51,13 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
 
 //        int color = ContextCompat.getColor(context, viewModel.getImage());
         int color = ColorList.COLORFUL_COLORS[i];
-        ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
-        contactViewHolder.tvTypeID.getCompoundDrawables()[0].getCurrent().setColorFilter(colorFilter);
+//        contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+        contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+
+        
+
+//        ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
+//        contactViewHolder.tvTypeID.getCompoundDrawables()[0].getCurrent().setColorFilter(colorFilter);
 
         Log.d(TAG, "onBindViewHolder: "+i + "  ::: "+ ColorList.COLORFUL_COLORS[i] +"  ::: "+ color );
 
@@ -77,10 +83,12 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         protected TextView tvTypeID ;
+        protected ImageView ivMarkerLegend ;
 
         public ContactViewHolder(View v) {
             super(v);
             tvTypeID = (TextView) v.findViewById(R.id.list_item_tv_title);
+            ivMarkerLegend = (ImageView) v.findViewById(R.id.iv_services_legend_marker);
         }
     }
 

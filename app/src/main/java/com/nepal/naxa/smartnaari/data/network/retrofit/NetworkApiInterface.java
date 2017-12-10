@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.data.network.retrofit;
 
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
+import com.nepal.naxa.smartnaari.data.network.HotPotOfPassionDetails;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
@@ -49,5 +50,10 @@ public interface NetworkApiInterface {
     @FormUrlEncoded
     @POST("email/email_send")
     Call<MaChupBasdinaResponse> getMaChupBasdinaDetails(@Field("data") String data);
+
+
+    @FormUrlEncoded
+    @POST("Smartapi/get_content")
+    Call<HotPotOfPassionDetails> getHotPotOfPassion(@Field("data") String data);
 }
 

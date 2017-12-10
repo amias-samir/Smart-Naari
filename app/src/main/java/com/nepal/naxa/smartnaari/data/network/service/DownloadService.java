@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
 
@@ -11,6 +12,8 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.HotPotOfPassionData;
+import com.nepal.naxa.smartnaari.data.network.HotPotOfPassionDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
@@ -82,6 +85,7 @@ public class DownloadService extends IntentService {
         getOwls();
         getYuwaPustaPosts();
         getServices();
+        getHotPot();
 
     }
 
@@ -138,14 +142,11 @@ public class DownloadService extends IntentService {
         AppDataManager appDataManager = new AppDataManager(this);
 
         String last_sync_date = appDataManager.getLastSyncDateTime(YuwaQuestion.class);
-
         try {
             JSONObject jsonObject = new JSONObject();
-//            jsonObject.put("last_sync_date_time","2017-10-12 05:38:36");
             jsonObject.put("last_sync_date_time",last_sync_date);
 
             jsonToSendLastSyncDate = jsonObject.toString();
-
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -202,10 +203,17 @@ public class DownloadService extends IntentService {
 //        Call<ServicesResponse> call = apiService.getServices("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<ServicesResponse>() {
             @Override
-            public void onResponse(Call<ServicesResponse> call, Response<ServicesResponse> response) {
+            public void onResponse(Call<ServicesResponse> call, final Response<ServicesResponse> response) {
 
-                AppDataManager appDataManager = new AppDataManager(getApplicationContext());
-                appDataManager.prepareToSaveServices(response.body().getData());
+                final AppDataManager appDataManager = new AppDataManager(getApplicationContext());
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        appDataManager.prepareToSaveServices(response.body().getData());
+
+                    }
+                });
 
                 Log.i(TAG, response.body().getData().size() + " services details downloaded ");
 
@@ -218,6 +226,46 @@ public class DownloadService extends IntentService {
 
             @Override
             public void onFailure(Call<ServicesResponse> call, Throwable t) {
+
+                t.getMessage();
+                Log.e(TAG, "onFailure: "+t.getMessage() );
+            }
+        }));
+    }
+
+
+    public void getHotPot(){
+        AppDataManager appDataManager = new AppDataManager(this);
+
+        String last_sync_date = appDataManager.getLastSyncDateTime(HotPotOfPassionData.class);
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("last_sync_date_time",last_sync_date);
+
+            jsonToSendLastSyncDate = jsonObject.toString();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
+        Call<HotPotOfPassionDetails> call = apiService.getHotPotOfPassion(jsonToSendLastSyncDate);
+        call.enqueue(new ErrorSupportCallback<>(new Callback<HotPotOfPassionDetails>() {
+            @Override
+            public void onResponse(Call<HotPotOfPassionDetails> call, Response<HotPotOfPassionDetails> response) {
+                AppDataManager appDataManager = new AppDataManager(getApplicationContext());
+                appDataManager.prepareToSaveHotPotOfPassion(response.body().getData());
+
+                Log.i(TAG, response.body().getData().size() + " HotPotOfPassion details downloaded ");
+
+                int i = appDataManager.getAllServicesdata().size();
+                Log.i(TAG, i + " HotPotOfPassion details present in database");
+
+                broadCastFinish();
+
+            }
+            @Override
+            public void onFailure(Call<HotPotOfPassionDetails> call, Throwable t) {
 
                 t.getMessage();
                 Log.e(TAG, "onFailure: "+t.getMessage() );

@@ -2,6 +2,7 @@
 
     <style name="AppTheme" parent="BaseTheme" />
 
+
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@android:color/white</item> 
         <item name="colorPrimaryDark">@android:color/white</item> 
@@ -47,6 +48,10 @@
     <style name="SplashTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
+    </style>
+
+    <style name="SignUpTheme" parent="BaseTheme">
+        <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
 

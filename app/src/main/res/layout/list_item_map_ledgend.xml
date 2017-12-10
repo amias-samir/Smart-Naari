@@ -7,14 +7,20 @@
     android:paddingStart="@dimen/spacing_medium"
     android:paddingTop="@dimen/spacing_small">
 
+    <ImageView
+        android:id="@+id/iv_services_legend_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_marker"
+        />
+
     <TextView
         android:id="@+id/list_item_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_marker"
-        android:drawableStart="@drawable/ic_marker"
         android:gravity="center"
         android:text="Marker"
-        android:textSize="@dimen/material_text_small_caption" />
+        android:textSize="@dimen/material_text_small_caption"
+        android:paddingTop="@dimen/spacing_small"/>
 
 </LinearLayout>
