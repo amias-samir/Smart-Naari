@@ -38,6 +38,7 @@ import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
+import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -203,7 +204,7 @@ public class BeautifulMainActivity extends BaseActivity
                     startActivity(intent);
                 }
 
-                if (menuItem.getTitle().equals("About Smart Naari")) {
+                if (menuItem.getTitle().equals("About Smart नारि")) {
                     Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
                     startActivity(intent);
                 }
@@ -213,7 +214,10 @@ public class BeautifulMainActivity extends BaseActivity
                     startActivity(intent);
                 }
 
-
+                if (menuItem.getTitle().equals("Glossary Of Terms")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             }
         });

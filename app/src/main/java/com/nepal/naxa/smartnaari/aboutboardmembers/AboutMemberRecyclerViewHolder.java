@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.aboutboardmembers;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,17 +21,17 @@ public class AboutMemberRecyclerViewHolder extends RecyclerView.ViewHolder {
     private ImageView memberImage;
     private TextView memberName, memberSmartNaariPost, memberExternalPostOffice;
     private ExpandableTextView memberDescription;
-    private Button memberDescriptionToogle;
+    private ImageButton memberDescriptionToogle;
 
     public AboutMemberRecyclerViewHolder(View itemView) {
         super(itemView);
 
         memberImage = (ImageView) itemView.findViewById(R.id.iv_member_image);
         memberName = (TextView) itemView.findViewById(R.id.tv_member_name);
-        memberSmartNaariPost = (TextView) itemView.findViewById(R.id.tv_smart_naari_post);
+//        memberSmartNaariPost = (TextView) itemView.findViewById(R.id.tv_smart_naari_post);
         memberExternalPostOffice = (TextView) itemView.findViewById(R.id.tv_external_post_office);
         memberDescription = (ExpandableTextView) itemView.findViewById(R.id.etv_member_description);
-        memberDescriptionToogle = (Button) itemView.findViewById(R.id.btn_toggle);
+        memberDescriptionToogle = (ImageButton) itemView.findViewById(R.id.btn_toggle);
     }
 
     public ImageView getMemberImage() {
@@ -53,7 +54,7 @@ public class AboutMemberRecyclerViewHolder extends RecyclerView.ViewHolder {
         return memberDescription;
     }
 
-    public Button getMemberDescriptionToogle() {
+    public ImageButton getMemberDescriptionToogle() {
         return memberDescriptionToogle;
     }
 }

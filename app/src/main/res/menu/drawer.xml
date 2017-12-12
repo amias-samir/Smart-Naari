@@ -29,6 +29,17 @@
     </group>
 
     <group
+        android:id="@+id/group9"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_meet_the_board"
+            android:checked="true"
+            android:icon="@drawable/ic_meet_the_board"
+            android:title="@string/meet_the_board" />
+
+    </group>
+
+    <group
         android:id="@+id/group3"
         android:checkableBehavior="single">
         <item
@@ -84,29 +95,6 @@
 
     </group>
 
-
-    <group
-        android:id="@+id/group8"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_copyright"
-            android:checked="true"
-            android:icon="@drawable/ic_copy_right"
-            android:title="@string/copyright" />
-
-    </group>
-
-    <group
-        android:id="@+id/group9"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_meet_the_board"
-            android:checked="true"
-            android:icon="@drawable/ic_meet_the_board"
-            android:title="@string/meet_the_board" />
-
-    </group>
-
     <group
         android:id="@+id/group10"
         android:checkableBehavior="single">
@@ -119,6 +107,16 @@
 
     </group>
 
+    <group
+        android:id="@+id/group8"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_copyright"
+            android:checked="true"
+            android:icon="@drawable/ic_copy_right"
+            android:title="@string/copyright" />
+
+    </group>
 
     <group
         android:id="@+id/group11"

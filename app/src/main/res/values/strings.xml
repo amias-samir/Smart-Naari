@@ -11,12 +11,12 @@
     <string name="more">More</string>
     <string name="settings">Settings</string>
     <string name="my_circle">My Circle</string>
-    <string name="about_smart_naari">About Smart Naari</string>
+    <string name="about_smart_naari">About Smart नारि</string>
     <string name="meet_the_board">Meet The Board</string>
     <string name="sn_enthusiasts">Friends Of Smart नारी</string>
     <string name="celebrating_professionals">Celebrating Professionals</string>
     <string name="glossary_of_terms">Glossary Of Terms</string>
-    <string name="data_on_gender_based_violence">Data On Gender Based Violence</string>
+    <string name="data_on_gender_based_violence">Data On GBV</string>
     <string name="tutorials">Tutorials</string>
     <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
     <string name="copyright">Copyright</string>
@@ -34,8 +34,8 @@
     <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical peoerson who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
     <string name="take_a_test_here">Take a Test here</string>
     <string name="free_online_course">Free Online Course</string>
-    <string name="i_am_amazing_detail">Smart Naari presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
-    <string name="person_of_the_month_detail">Smart Naari presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string name="i_am_amazing_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string name="person_of_the_month_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
     <string name="person_of_the_month">Person of the Month</string>
     <string name="i_am_amazing_pheonix">image of phoenix flapping wings</string>
     <string name="i_am_amazing_click_to_look">click to Look for more Nepali Society</string>
@@ -207,30 +207,28 @@
 
     <string name="smart_naari_app_details">
         <![CDATA[
-        <p>
-            <div allign="center">
-                <h>
-                <b>Smart Naari (Smart Woman)</b><br></br>
-                </h>
+        <p align="center">
+            <div>
+                <h1>
+                <b>Smart नारि (Smart Woman)</b><br></br>
+                </h1>
             </div>
 </p>
-<p>
-    <div align="center">
-    <b>About Us</b>
-    </div>
-</p>
-<p><div>
-    <b>What is Smart Naari?</b>
-    </div>
-</p>
-<p>
+<p align = "center">
     <div>
-    Smart Naari is a supportive community helping anyone and everyone to free
+    <h2>
+    <b>About Us</b>
+    </h2>
+    </div>
+</p>
+<p style="text-align:justify">
+    <div>
+    Smart नारि is a supportive community helping anyone and everyone to free
     themselves of gender based violence (GBV) in order to enjoy healthy and
     safe sexuality and relationships.
     </div>
 </p>
-<p>
+<p align="justify>
     <div>
 The app allows you to instantly report    <b>Report Abuse and Violence</b> whenever and wherever you
     experience it. It offers access to services and the information you need to
@@ -246,7 +244,7 @@ The app allows you to instantly report    <b>Report Abuse and Violence</b> whene
 </p>
 <p>
     <div>
-    Smart Naari was created by a group of women and men determined to end the
+    Smart नारि was created by a group of women and men determined to end the
     silent suffering of thousands of Nepalese experiencing abuse in what should
     be the safe haven of their own homes and intimate relationships. (See Meet
     the Team).
@@ -271,7 +269,7 @@ The app allows you to instantly report    <b>Report Abuse and Violence</b> whene
 </p>
 <p>
     <div>
-    Smart Naari brings you the information, access to services and community
+    Smart नारि brings you the information, access to services and community
     support to <b>Protect</b> yourself and others against infection,
     unintended pregnancy, and other potentially negative, physical and
     emotional effects of unsafe sex. Let’s be:
@@ -327,12 +325,14 @@ often have we thought, “    <i>That would never happen to a woman like me...�
 <p>
     <div>
     Otherwise, Nepal is known as one of the most remarkable places to live in,
-    and we at Smart Naari intend to keep it that way.
+    and we at Smart नारि intend to keep it that way.
     </div>
 </p>
 <p>
     <div>
-    <strong>Our Aims</strong>
+    <h2>
+    <b>Our Aims</b>
+    </h2>
         </div>
 </p>
 <p>
@@ -362,13 +362,13 @@ about <b>safer sex </b>and still have lots of<b>fun</b>. We will help you discri
 <p>
     <div>
     We will empower you to say <b>NO </b>for the sake of love. There
-    is help at the tip of your finger with the Smart Naari app.
+    is help at the tip of your finger with the Smart नारि app.
         </div>
 </p>
 <p>
     <div>
     <b>WELCOME</b>
-    to the world of SMART NAARI, where you will become a part of creating an
+    to the world of SMART नारि, where you will become a part of creating an
     ideal Nepali community you always hoped to live in. We believe in your
 extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life together, shall we?
         </div>

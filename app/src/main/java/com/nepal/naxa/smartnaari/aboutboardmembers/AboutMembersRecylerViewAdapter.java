@@ -1,12 +1,14 @@
 package com.nepal.naxa.smartnaari.aboutboardmembers;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
 import com.nepal.naxa.smartnaari.R;
@@ -54,19 +56,19 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
         Glide.with(mContext)
                 .load(R.drawable.grid_i_am_amazing)
                 .into(holder.getMemberImage());
-        holder.getMemberName().setText(cPerson.getPersonName());
-        holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost());
+        holder.getMemberName().setText(cPerson.getPersonName() + ", " + cPerson.getSmartNaariPost());
+//        holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost());
         holder.getMemberExternalPostOffice().setText(cPerson.getExternalPost() + ", " + cPerson.getExternalOffice());
 
 
         final ExpandableTextView expandableTextView = holder.getMemberDescription();
-        final Button button = holder.getMemberDescriptionToogle();
+        final ImageButton button = holder.getMemberDescriptionToogle();
         setExpandableText(expandableTextView, button);
         expandableTextView.setText(cPerson.getPersonDescription());
 
     }
 
-    private void setExpandableText(final ExpandableTextView expandableTextView, final Button buttonToggle) {
+    private void setExpandableText(final ExpandableTextView expandableTextView, final ImageButton buttonToggle) {
 
 
         expandableTextView.setAnimationDuration(750L);
@@ -79,7 +81,8 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
         buttonToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                buttonToggle.setText(expandableTextView.isExpanded() ? "More" : "Less");
+//                buttonToggle.setText(expandableTextView.isExpanded() ? "More" : "Less");
+                buttonToggle.setBackgroundResource(expandableTextView.isExpanded() ? R.drawable.ic_keyboard_arrow_down_black_24dp : R.drawable.ic_keyboard_arrow_up_black_24dp);
                 expandableTextView.toggle();
             }
         });
@@ -89,10 +92,13 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
             public void onClick(final View v) {
                 if (expandableTextView.isExpanded()) {
                     expandableTextView.collapse();
-                    buttonToggle.setText("More");
+//                    buttonToggle.setText("More");
+                    buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
                 } else {
                     expandableTextView.expand();
-                    buttonToggle.setText("Less");
+//                    buttonToggle.setText("Less");
+                    buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+
                 }
             }
         });
