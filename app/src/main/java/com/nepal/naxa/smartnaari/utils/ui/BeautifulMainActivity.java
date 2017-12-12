@@ -30,6 +30,7 @@ import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
+import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 
@@ -218,6 +219,12 @@ public class BeautifulMainActivity extends BaseActivity
                     Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
                     startActivity(intent);
                 }
+
+                if (menuItem.getTitle().equals("Celebrating Professionals")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, CelebratingProfessionalActivity.class);
+                    startActivity(intent);
+                }
+
                 return true;
             }
         });

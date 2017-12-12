@@ -46,7 +46,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".mycircle.powerbutton.NotificationReceiver"
             android:enabled="true"
@@ -55,7 +54,7 @@
         <service
             android:name=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <!-- ======================= end of auto start services on system boot ==================== -->
 
@@ -245,7 +244,7 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -256,14 +255,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
-        <activity android:name=".aboutsmartnaari.AboutSmartNaariActivity"
-            android:exported="true"
-            >
+        <activity
+            android:name=".aboutsmartnaari.AboutSmartNaariActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
->
+        >
+        <activity android:name=".celebratingprofessional.CelebratingProfessionalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
     </application>
 
 </manifest>
