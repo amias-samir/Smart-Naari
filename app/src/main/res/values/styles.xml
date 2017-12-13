@@ -110,6 +110,10 @@
     </style>
 
 
+    <style name="BootstrapButtonTapItStopIt" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:background">@drawable/smart_naari_tap_it_stop_it_main_activity_popup</item>
+    </style>
+
 
     <style name="RiseUpDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor"> @color/black </item>
