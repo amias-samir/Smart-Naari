@@ -1,6 +1,9 @@
 package com.nepal.naxa.smartnaari.utils.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
@@ -68,6 +71,11 @@ public class BeautifulMainActivity extends BaseActivity
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
+
+//    Facebook Page URL
+    public static String FACEBOOK_URL = "https://www.facebook.com/naxa.np";
+    public static String FACEBOOK_PAGE_ID = "naxa.np";
+
 
     @BindView(R.id.toolbar_image_switcher)
     ViewSwitcher toolbarImageSwitcher;
@@ -321,15 +329,16 @@ public class BeautifulMainActivity extends BaseActivity
                 Intent textShareIntent = new Intent(Intent.ACTION_SEND);
                 textShareIntent.putExtra(Intent.EXTRA_TEXT, "url link ");
                 textShareIntent.setType("text/plain");
-                startActivity(textShareIntent);
+                startActivity(Intent.createChooser(textShareIntent , "Share Smart नारि App with your Friends"));
+                break;
+
+            case R.id.item_like_us_on_facebook :
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+                String facebookUrl = getFacebookPageURL(this);
+                facebookIntent.setData(Uri.parse(facebookUrl));
+                startActivity(facebookIntent);
 
                 return true;
-
-
-
-
-
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -490,6 +499,22 @@ public class BeautifulMainActivity extends BaseActivity
                 break;
             case R.id.btn_tap_it_stop_it:
                 break;
+        }
+    }
+
+
+    //method to get the right URL to use in the intent
+    public String getFacebookPageURL(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //newer versions of fb app
+                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+            } else { //older versions of fb app
+                return "fb://page/" + FACEBOOK_PAGE_ID;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return FACEBOOK_URL; //normal web url
         }
     }
 }
