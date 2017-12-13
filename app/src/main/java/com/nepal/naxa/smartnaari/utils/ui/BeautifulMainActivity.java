@@ -4,23 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
-
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,19 +26,15 @@ import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
+import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
-import com.nepal.naxa.smartnaari.R;
-
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
-
-import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
-import com.nepal.naxa.smartnaari.debug.AppLogger;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -49,9 +43,7 @@ import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
-
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
-
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
@@ -59,17 +51,12 @@ import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-import timber.log.Timber;
 
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
@@ -102,6 +89,14 @@ public class BeautifulMainActivity extends BaseActivity
 
     @BindView(R.id.beautiful_main_tv_nep_date)
     TextView tvNepaliDate;
+    @BindView(R.id.main_imageview_placeholder_tap_it_stop_it)
+    ImageView imageviewPlaceholderTapItStopIt;
+    @BindView(R.id.main_imageview_placeholder2_tap_it_stop_it)
+    ImageView imageviewPlaceholder2TapItStopIt;
+    @BindView(R.id.toolbar_image_switcher_tap_it_stop_it)
+    ViewSwitcher imageSwitcherTapItStopIt;
+    @BindView(R.id.btn_tap_it_stop_it)
+    Button btnTapItStopIt;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -320,7 +315,20 @@ public class BeautifulMainActivity extends BaseActivity
         switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
+                break;
+
+            case R.id.item_share:
+                Intent textShareIntent = new Intent(Intent.ACTION_SEND);
+                textShareIntent.putExtra(Intent.EXTRA_TEXT, "url link ");
+                textShareIntent.setType("text/plain");
+                startActivity(textShareIntent);
+
                 return true;
+
+
+
+
+
 
         }
 
@@ -470,5 +478,18 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(new Intent(this, SmartParentActivity.class));
         }
 
+    }
+
+
+    @OnClick({R.id.main_imageview_placeholder_tap_it_stop_it, R.id.main_imageview_placeholder2_tap_it_stop_it, R.id.btn_tap_it_stop_it})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.main_imageview_placeholder_tap_it_stop_it:
+                break;
+            case R.id.main_imageview_placeholder2_tap_it_stop_it:
+                break;
+            case R.id.btn_tap_it_stop_it:
+                break;
+        }
     }
 }
