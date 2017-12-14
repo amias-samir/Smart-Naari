@@ -148,6 +148,10 @@ public class SessionManager {
         utils.setValue(KEY_HAS_INTENT_SERVICE, aBoolean);
     }
 
+    public void clearPowerButtonServicePreferences(){
+        utils.setValue(KEY_HAS_INTENT_SERVICE, false);
+    }
+
     public boolean doesHaveIntentBackgroundService (){
         return utils.getBooleanValue(KEY_HAS_INTENT_SERVICE, false);
     }

@@ -49,6 +49,7 @@ import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
@@ -337,6 +338,11 @@ public class BeautifulMainActivity extends BaseActivity
                 String facebookUrl = getFacebookPageURL(this);
                 facebookIntent.setData(Uri.parse(facebookUrl));
                 startActivity(facebookIntent);
+                break;
+
+            case R.id.item_setting_change :
+                Intent settingsIntent = new Intent(BeautifulMainActivity.this, SettingsChangeActivity.class);
+                startActivity(settingsIntent);
 
                 return true;
         }

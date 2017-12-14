@@ -89,7 +89,6 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".mycircle.PermissionActivity"
-            android:exported="true"
             android:label="@string/title_activity_permission"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -263,10 +262,18 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         >
-        <activity android:name=".celebratingprofessional.CelebratingProfessionalActivity">
+        <activity android:name=".celebratingprofessional.CelebratingProfessionalActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
+        <activity android:name=".setingschange.SettingsChangeActivity"
+            android:exported="true">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
     </application>
 
