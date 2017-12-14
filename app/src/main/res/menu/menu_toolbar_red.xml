@@ -41,10 +41,10 @@
                 android:icon="@drawable/ic_menuitem_rate_smart_nari"
                 android:title="Rate Smart nari" />
 
-            <item
-                android:id="@+id/item_print"
-                android:icon="@drawable/ic_menuitem_print"
-                android:title="Print" />
+            <!--<item-->
+                <!--android:id="@+id/item_print"-->
+                <!--android:icon="@drawable/ic_menuitem_print"-->
+                <!--android:title="Print" />-->
 
             <item
                 android:id="@+id/item_report_bug"

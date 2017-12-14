@@ -40,6 +40,7 @@
 
     <color name="sectioned_recycler_head">#868585</color>
     <color name="sectioned_recycler_child">#9f9f9f</color>
+    <color name="cardview_elevation">#42000000</color>
 
 
 

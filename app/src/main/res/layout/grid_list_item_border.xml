@@ -8,14 +8,16 @@
     android:layout_height="wrap_content"
     android:clipToPadding="false"
     android:foreground="?selectableItemBackground"
-    app:cardBackgroundColor="@color/windowBackground">
+    android:background="@drawable/cardview_3d_elevation_effect">
+
 
     <com.nepal.naxa.smartnaari.homescreen.widgets.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/spacing_medium"
         android:background="@android:color/white"
-        android:elevation="@dimen/elevation_high">
+        android:elevation="@dimen/elevation_high"
+        app:cardBackgroundColor="@color/cardview_elevation" >
 
         <ImageView
 
@@ -24,14 +26,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/grid_ma_chup_basdina" />
+            android:src="@drawable/grid_ma_chup_basdina"
+            />
 
         <TextView
 
-            android:layout_alignParentBottom="true"
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:padding="@dimen/spacing_large"
             android:textAlignment="center"
             android:textColor="@android:color/black"

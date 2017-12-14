@@ -491,7 +491,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     @OnClick({R.id.main_imageview_placeholder_tap_it_stop_it, R.id.main_imageview_placeholder2_tap_it_stop_it, R.id.btn_tap_it_stop_it})
-    public void onViewClicked(View view) {
+    public void onViewClicked(View view){
         switch (view.getId()) {
             case R.id.main_imageview_placeholder_tap_it_stop_it:
                 break;
