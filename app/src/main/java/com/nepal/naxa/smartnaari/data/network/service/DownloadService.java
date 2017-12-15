@@ -207,13 +207,9 @@ public class DownloadService extends IntentService {
 
                 final AppDataManager appDataManager = new AppDataManager(getApplicationContext());
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+
                         appDataManager.prepareToSaveServices(response.body().getData());
 
-                    }
-                });
 
                 Log.i(TAG, response.body().getData().size() + " services details downloaded ");
 

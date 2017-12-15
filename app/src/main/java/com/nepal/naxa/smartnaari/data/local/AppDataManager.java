@@ -70,11 +70,11 @@ public class AppDataManager extends BaseActivity {
 //    ============================================================//
 
 //================================ yuwa pusta question answer =======================//
-    public void prepareToSaveYuwaQuestions(final List<YuwaQuestion> yuwaQuestion) {
+    public void prepareToSaveYuwaQuestions( List<YuwaQuestion> yuwaQuestion) {
      //loop
-new Thread(new Runnable() {
-    @Override
-    public void run() {
+//new Thread(new Runnable() {
+//    @Override
+//    public void run() {
 
         for (int i = 0; i < yuwaQuestion.size(); i++) {
             try {
@@ -101,8 +101,8 @@ new Thread(new Runnable() {
             }
 
         }
-    }
-});
+//    }
+//});
  }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
@@ -111,12 +111,12 @@ new Thread(new Runnable() {
 //=====================================================================================//
 
 //============================= services list ========================================//
-    public void prepareToSaveServices(final List<ServicesData> servicesData) {
+    public void prepareToSaveServices( List<ServicesData> servicesData) {
 //        if (Thread.currentThread() == Looper.getMainLooper().getThread())Log.d("Samir","Main");
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
         //loop
         for (int i = 0; i < servicesData.size(); i++) {
             try {
@@ -142,8 +142,8 @@ new Thread(new Runnable() {
                 e.printStackTrace();
             }
         }
-            }
-        });
+//            }
+//        });
     }
 
     public List<ServicesData> getAllServicesdata() {
@@ -176,9 +176,9 @@ new Thread(new Runnable() {
 //    ======================================= HotPotOfPassion ===========================//
 public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotOfPassionData) {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
     //loop
     for(int i = 0 ; i< hotPotOfPassionData.size(); i++){
         try {
@@ -205,8 +205,8 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
             e.printStackTrace();
         }
     }
-            }
-        });
+//            }
+//        });
 }
 
     public List<HotPotOfPassionData> getAllHotPotOfPassiondata() {

@@ -103,23 +103,26 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tvLBL_Consent"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Consent"
                             android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/material_text_headline"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/material_text_subhead"
+                            android:textStyle="bold"
+                            />
 
                         <TextView
+                            android:id="@+id/tvLBL_no_consent"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="No Consent"
                             android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/material_text_headline"
+                            android:textSize="@dimen/material_text_subhead"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -177,7 +180,8 @@
                 android:padding="@dimen/default_padding"
                 android:text="@string/report_gender_based_violence"
                 android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="@dimen/material_text_subhead"/>
 
 
             <!--victim radio button input layout-->
@@ -201,7 +205,7 @@
                     android:padding="@dimen/default_padding"
                     android:text="@string/report_i_am_the_victim"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_caption" />
+                    android:textSize="@dimen/material_text_subhead" />
 
                 <RadioButton
                     android:id="@+id/radio_machupbasdina_victim_other"
@@ -212,7 +216,7 @@
                     android:padding="@dimen/default_padding"
                     android:text="@string/report_other"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_caption" />
+                    android:textSize="@dimen/material_text_subhead" />
 
             </RadioGroup>
 
@@ -421,7 +425,7 @@
                     android:layout_toEndOf="@id/txtLBLDescGBV"
                     android:layout_toRightOf="@id/txtLBLDescGBV"
                     app:counterEnabled="true"
-                    app:counterMaxLength="250">
+                    app:counterMaxLength="500">
 
                     <EditText
                         android:id="@+id/ma_chup_basdina_desc_GBV_input_id"

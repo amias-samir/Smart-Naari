@@ -113,6 +113,9 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
         transitive = true;
     }
+
+//    Tap Target View
+    compile 'com.getkeepsafe.taptargetview:taptargetview:1.10.0'
 }
 
 //configurations.all {

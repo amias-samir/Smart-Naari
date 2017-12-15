@@ -1,12 +1,18 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
-import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +22,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
-import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
@@ -65,6 +74,12 @@ public class MaChupBasdinaActivity extends BaseActivity {
     EditText tvDescGBVInputId;
     @BindView(R.id.btnSignUp)
     Button btnSignUp;
+    @BindView(R.id.tvLBL_Consent)
+    TextView tvLBLConsent;
+    @BindView(R.id.tvLBL_no_consent)
+    TextView tvLBLNoConsent;
+    @BindView(R.id.txtLBLUnderstanding)
+    TextView txtLBLUnderstanding;
 
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
@@ -95,6 +110,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         //initialize spinner dat adapter
         initSpinnerData();
+
+//        initialize tooltagget view
+        toolTargetViewConsentNoconsent();
 
 
     }
@@ -128,7 +146,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
             case R.id.radio_machupbasdina_victim_other:
                 if (checked)
                     // reporting for some one within the family
-                    reporting_for = "Some one within the family";
+                    reporting_for = "Family Members";
 
                 break;
         }
@@ -156,9 +174,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
     public void onViewClicked() {
 
 
-
 //        validate user input data
-        if(validateData()) {
+        if (validateData()) {
 
             showLoading("Sending ... \nPlease Wait! ");
 //        convert user data to JSON
@@ -217,13 +234,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
             return false;
         }
 
-        if (tvDescGBVInputId.getText().toString().isEmpty() || tvDescGBVInputId.getText().toString().equals("")) {
+//        if (tvDescGBVInputId.getText().toString().isEmpty() || tvDescGBVInputId.getText().toString().equals("")) {
+//
+//            showInfoToast("Further details of the reported GBV cannot be empty");
+//            return false;
+//        }
 
-            showInfoToast("Further details of the reported GBV cannot be empty");
-            return false;
-        }
-
-        if (tvDescGBVInputId.getText().toString().length() > 250) {
+        if (tvDescGBVInputId.getText().toString().length() > 500) {
 
             showInfoToast("Further details of the reported GBV cannot be greter than 250 character");
             return false;
@@ -319,4 +336,116 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
 
+    public void toolTargetViewConsentNoconsent() {
+
+        // We load a drawable and create a location to show a tap target here
+        // We need the display to get the width and height at this point in time
+        final Display display = getWindowManager().getDefaultDisplay();
+        // Load our little droid guy
+//        final Drawable droid = ContextCompat.getDrawable(this, R.drawable.ic_android_black_24dp);
+        // Tell our droid buddy where we want him to appear
+        final Rect droidTarget = new Rect(0, 0, 0, 0);
+        // Using deprecated methods makes you look way cool
+        droidTarget.offset(display.getWidth() / 2, display.getHeight() / 2);
+
+        final SpannableString sassyDesc = new SpannableString("It allows you to go back");
+        sassyDesc.setSpan(new StyleSpan(Typeface.ITALIC), sassyDesc.length() - "somtimes".length(), sassyDesc.length(), 0);
+
+        // We have a sequence of targets, so lets build it!
+        final TapTargetSequence sequence = new TapTargetSequence(this)
+                .targets(
+                        // This tap target will target the back button, we just need to pass its containing toolbar
+                        TapTarget.forToolbarNavigationIcon(toolbar, "This is the back button", sassyDesc)
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.colorAccent)
+                                .targetCircleColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .textColor(android.R.color.black).id(1),
+                        // Likewise, this tap target will target the search button
+                        TapTarget.forView(tvLBLConsent, "Permission or agreement. It is a voluntary actby a person, willingly given to another person or persons.", "Consent or a consensual act, it is always positive, an enthusiastic affirmation that both people and/or more have mutually agreed to engage in the activity.")
+                                .cancelable(false)
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.colorAccent)
+                                .targetCircleColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .textColor(android.R.color.black)
+                                .tintTarget(false)
+                                .id(2),
+                        // You can also target the overflow button in your toolbar
+                        TapTarget.forView(tvLBLNoConsent, "Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
+                                .cancelable(false)
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.colorAccent)
+                                .targetCircleColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .textColor(android.R.color.black)
+                                .tintTarget(false)
+                                .id(3)
+
+                )
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+//                        ((TextView) findViewById(R.id.tvLBL_no_consent)).setText("Congratulations! You're educated now!");
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+                        Log.d("TapTargetView", "Clicked on " + lastTarget.id());
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        final AlertDialog dialog = new AlertDialog.Builder(MaChupBasdinaActivity.this)
+                                .setTitle("Uh oh")
+                                .setMessage("You canceled the sequence")
+                                .setPositiveButton("Oops", null).show();
+                        TapTargetView.showFor(dialog,
+                                TapTarget.forView(dialog.getButton(DialogInterface.BUTTON_POSITIVE), "Uh oh!", "You canceled the sequence at step " + lastTarget.id())
+                                        .cancelable(false)
+                                        .tintTarget(false), new TapTargetView.Listener() {
+                                    @Override
+                                    public void onTargetClick(TapTargetView view) {
+                                        super.onTargetClick(view);
+                                        dialog.dismiss();
+                                    }
+                                });
+                    }
+                });
+
+        // You don't always need a sequence, and for that there's a single time tap target
+        final SpannableString spannedDesc = new SpannableString("You need to understand first what is Consent and No Consent");
+        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "Consent and No Consent".length(), spannedDesc.length(), 0);
+//        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "No Consent".length(), spannedDesc.length(), 0);
+        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.txtLBLUnderstanding), "Ma Chup Basdina", spannedDesc)
+                .cancelable(false)
+                .drawShadow(true)
+                .dimColor(android.R.color.black)
+                .outerCircleColor(R.color.colorAccent)
+                .targetCircleColor(android.R.color.black)
+                .transparentTarget(true)
+                .textColor(android.R.color.black)
+                .titleTextDimen(R.dimen.material_text_title)
+                .tintTarget(false), new TapTargetView.Listener() {
+            @Override
+            public void onTargetClick(TapTargetView view) {
+                super.onTargetClick(view);
+                // .. which evidently starts the sequence we defined earlier
+                sequence.start();
+            }
+
+            @Override
+            public void onOuterCircleClick(TapTargetView view) {
+                super.onOuterCircleClick(view);
+                Toast.makeText(view.getContext(), "You clicked the outer circle!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
+                Log.d("TapTargetView", "You dismissed me :(");
+            }
+        });
+    }
 }
