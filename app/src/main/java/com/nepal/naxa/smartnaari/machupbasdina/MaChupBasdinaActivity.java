@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,7 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
+import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import org.json.JSONObject;
@@ -39,6 +42,8 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -187,6 +192,16 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     }
 
+    @OnItemSelected(R.id.spinner_ma_chup_basdina_no_consent)
+    public void onSpinnerNoConsentClicked() {
+
+        if(!spinnerNoConsent.getSelectedItem().toString().equals("Select Type")){
+            Intent glossaryIntent = new Intent(MaChupBasdinaActivity.this, WordsWithDetailsActivity.class);
+            startActivity(glossaryIntent);
+        }
+
+    }
+
 
     public void initSpinnerData() {
         ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListEnglish);
@@ -200,6 +215,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
         ArrayAdapter<String> voilenceOccurTimeArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.voilenceOccurTime);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVoilenceOccur.setAdapter(voilenceOccurTimeArray);
+
+        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.voilenceType);
+        voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNoConsent.setAdapter(voilenceType);
     }
 
     public boolean validateData() {
@@ -448,4 +467,5 @@ public class MaChupBasdinaActivity extends BaseActivity {
             }
         });
     }
+
 }
