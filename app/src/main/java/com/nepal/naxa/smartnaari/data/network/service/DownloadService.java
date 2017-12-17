@@ -210,6 +210,9 @@ public class DownloadService extends IntentService {
 
                         appDataManager.prepareToSaveServices(response.body().getData());
 
+//                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row size !!!!!!! \n row size :"+response.body().getData().size() );
+
+
 
                 Log.i(TAG, response.body().getData().size() + " services details downloaded ");
 

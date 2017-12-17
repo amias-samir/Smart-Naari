@@ -117,11 +117,16 @@ public class AppDataManager extends BaseActivity {
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
+        Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row size !!!!!!! \n row size :" +servicesData.size() );
+
         //loop
         for (int i = 0; i < servicesData.size(); i++) {
             try {
+                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row id !!!!!!! \n row id :" +i );
+
                 if (daoSession.getServicesDataDao().count() == 0) {
                     daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
+                    Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row empty !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
                 }
                 else {
                     if (servicesData.get(i).getIsDeleted() == 1) {
@@ -131,11 +136,11 @@ public class AppDataManager extends BaseActivity {
                                 .buildDelete();
                         tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                         daoSession.clear();
-//                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
 
                     } else {
                         daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
-//                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
                     }
                 }
             } catch (Exception e) {

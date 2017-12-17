@@ -222,21 +222,18 @@
 
 
             <!--  district of incident-->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_medium">
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_district_of_incident"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingTop="@dimen/default_padding"
+                   android:padding="@dimen/default_padding"
                     android:text="@string/district_of_incident"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
@@ -252,24 +249,21 @@
                     android:layout_toRightOf="@id/tv_district_of_incident"
                     android:gravity="center" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <!--type of violence-->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_medium">
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_type_of_violence"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingTop="@dimen/default_padding"
+                  android:padding="@dimen/default_padding"
                     android:text="@string/types_of_voilence"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
@@ -285,14 +279,16 @@
                     android:layout_toRightOf="@id/tv_type_of_violence"
                     android:gravity="center" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <!--when did the violence occur-->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_medium">
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:id="@+id/txtLBLVoilenceOccur"
@@ -300,8 +296,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:maxLines="2"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
+                    android:padding="@dimen/default_padding"
                     android:text="@string/when_did_the_voilence_occur"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
@@ -317,11 +312,12 @@
                     android:layout_toRightOf="@id/txtLBLVoilenceOccur"
                     android:gravity="center" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
             <!--perpetrator-->
-            <RelativeLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_small"
@@ -332,10 +328,7 @@
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingTop="@dimen/default_padding"
+                   android:padding="@dimen/default_padding"
                     android:text="@string/perpetrator"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
@@ -369,11 +362,12 @@
                     android:textColorHint="@color/textSecondary"
                     android:textSize="@dimen/material_text_subhead" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
             <!--description further details of GBV-->
-            <RelativeLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_small"
@@ -384,40 +378,10 @@
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:paddingBottom="@dimen/default_padding"
-                    android:paddingLeft="@dimen/default_padding"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingTop="@dimen/default_padding"
+                   android:padding="@dimen/default_padding"
                     android:text="@string/desc_GBV_ma_chup_basdina"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_subhead" />
-                <!-- desc further details input layout-->
-                <!--<EditText-->
-                <!--android:id="@+id/ma_chup_basdina_desc_GBV_input_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:ems="10"-->
-                <!--android:inputType="textMultiLine"-->
-                <!--android:maxLines="10"-->
-                <!--android:minLines="6"-->
-                <!--android:gravity="top|left"-->
-                <!--android:scrollbars="vertical"-->
-                <!--android:hint=""-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:paddingLeft="10dp"-->
-                <!--android:paddingRight="10dp"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textColorHint="@color/textSecondary"-->
-                <!--android:textSize="@dimen/material_text_caption"-->
-                <!--android:layout_toEndOf="@id/txtLBLDescGBV"-->
-                <!--android:layout_toRightOf="@id/txtLBLDescGBV"/>-->
-
                 <android.support.design.widget.TextInputLayout
 
                     android:layout_width="match_parent"
@@ -440,7 +404,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
             <RelativeLayout
