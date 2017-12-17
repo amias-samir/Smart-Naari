@@ -122,17 +122,17 @@ public class AppDataManager extends BaseActivity {
         //loop
         for (int i = 0; i < servicesData.size(); i++) {
             try {
-                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row id !!!!!!! \n row id :" +i );
+//                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row id !!!!!!! \n row id :" +i );
 
                 if (daoSession.getServicesDataDao().count() == 0) {
                     daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
                     Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row empty !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
                 }
                 else {
-                    if (servicesData.get(i).getIsDeleted() == 1) {
+                    if (servicesData.get(i).getIsDelete().equals("1")) {
 
                         final DeleteQuery<ServicesData> tableDeleteQuery = daoSession.queryBuilder(ServicesData.class)
-                                .where(ServicesDataDao.Properties.IsDeleted.eq("1"))
+                                .where(ServicesDataDao.Properties.IsDelete.eq("1"))
                                 .buildDelete();
                         tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                         daoSession.clear();
@@ -157,7 +157,7 @@ public class AppDataManager extends BaseActivity {
 
     public ArrayList<String> getAllUniqueServicesType(){
 
-        String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.ServiceTypeId.columnName+" FROM "+ServicesDataDao.TABLENAME;
+        String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.OfficeType.columnName+" FROM "+ServicesDataDao.TABLENAME;
 
         ArrayList<String> result = new ArrayList<>();
         Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
@@ -256,9 +256,14 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
             Object value;
 
             value = field.get(someObject);
+            Log.d(TAG, "getLastSyncDateTime: "+value.toString());
 
-            if (field.getName().equalsIgnoreCase("last_sync_date_time")) {
+//            Log.d(TAG, "parseResponseCode: "+field.getName());
+
+
+            if (field.getName().equalsIgnoreCase("lastSyncDateTime")) {
                 dateTime = value.toString();
+                Log.d(TAG, "getLastSyncDateTime: Inside Condition "+value.toString());
             }
         }
 

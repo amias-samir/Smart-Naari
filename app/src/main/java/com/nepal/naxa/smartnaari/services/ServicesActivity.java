@@ -178,7 +178,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
                         for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
 
-                            if (servicesData.get(i).getServiceTypeId().equals(appDataManager.getAllUniqueServicesType().get(j))) {
+                            if (servicesData.get(i).getOfficeType().equals(appDataManager.getAllUniqueServicesType().get(j))) {
 
                                 Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
                                 Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
@@ -188,7 +188,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                                 location = new LatLng(lat, lon);
 
                 amarker = map.addMarker(new MarkerOptions().position(location)
-                        .title(servicesData.get(i).getServiceName())
+                        .title(servicesData.get(i).getOfficeName())
                         .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
                                 amarker.setTag(servicesData.get(i));
                                 markersPresentOnMap.add(amarker);

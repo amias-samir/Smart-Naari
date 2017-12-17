@@ -50,9 +50,9 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
         try {
 
 
-            title.setText(servicesData.getServiceName());
-            address.setText(servicesData.getServiceDistrictName());
-            desc.setText(servicesData.getServicePhoneNumber());
+            title.setText(servicesData.getOfficeName());
+            address.setText(servicesData.getDistrict());
+            desc.setText(servicesData.getContactDutyPersonContactNumber());
 //        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
         }catch (NullPointerException e){
             e.printStackTrace();

@@ -200,6 +200,7 @@ public class DownloadService extends IntentService {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 //        Call<ServicesResponse> call = apiService.getServices(appDataManager.getLastSyncDateTime(ServicesData.class));
         Call<ServicesResponse> call = apiService.getServices(jsonToSendLastSyncDate);
+        Log.d(TAG, "getServices: Date"+ jsonToSendLastSyncDate);
 //        Call<ServicesResponse> call = apiService.getServices("2017-10-12 05:38:36");
         call.enqueue(new ErrorSupportCallback<>(new Callback<ServicesResponse>() {
             @Override
@@ -257,7 +258,7 @@ public class DownloadService extends IntentService {
 
                 Log.i(TAG, response.body().getData().size() + " HotPotOfPassion details downloaded ");
 
-                int i = appDataManager.getAllServicesdata().size();
+                int i = appDataManager.getAllHotPotOfPassiondata().size();
                 Log.i(TAG, i + " HotPotOfPassion details present in database");
 
                 broadCastFinish();
