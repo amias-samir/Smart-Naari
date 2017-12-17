@@ -31,7 +31,7 @@
 
 
     <string name="life_coaching">Life Coaching</string>
-    <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical peoerson who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
+    <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical person who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
     <string name="take_a_test_here">Take a Test here</string>
     <string name="free_online_course">Free Online Course</string>
     <string name="i_am_amazing_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
@@ -72,7 +72,7 @@
     <string name="lets_have_the_talk">Lets Have the TALK</string>
     <string name="headline_mycircle1">My Circle</string>
     <string name="headline_mycircle2">for my Safety</string>
-    <string name="general_btn_form_submission">Submit</string>
+    <string name="general_btn_form_submission">Ask an Owl</string>
 
 
     <string-array name="add_a_new_post_categories">
@@ -375,6 +375,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 ]]>
     </string>
     <string name="toolbar_title_permission_activity">Setup MyCircle</string>
+    <string name="anonymous_text">I want this message to be Anonymous</string>
 
 
 </resources>

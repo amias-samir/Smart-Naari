@@ -83,7 +83,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(tvQuestionToOWL, InputMethodManager.SHOW_IMPLICIT);
 
-        initQuestionsRecyclerView();
+//        initQuestionsRecyclerView();
 
         addOwlNameAndIDToArray();
         Log.e(TAG, "onCreate: owlArray SAMIR" + owlArray);
@@ -100,20 +100,20 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     }
 
 
-    private void initQuestionsRecyclerView() {
-
-        List<YuwaQuestion> yuwaQuestions = appDataManager.getAllYuwaQuestions();
-
-        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
-        questionList.setAdapter(yuwaQuestionAdapter);
-
-        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        yuwaQuestionAdapter.setOnItemClickListener(this);
-
-        questionList.setNestedScrollingEnabled(false);
-
-
-    }
+//    private void initQuestionsRecyclerView() {
+//
+//        List<YuwaQuestion> yuwaQuestions = appDataManager.getAllYuwaQuestions();
+//
+//        YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
+//        questionList.setAdapter(yuwaQuestionAdapter);
+//
+//        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        yuwaQuestionAdapter.setOnItemClickListener(this);
+//
+//        questionList.setNestedScrollingEnabled(false);
+//
+//
+//    }
 
 
     private void initToolbar() {

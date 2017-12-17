@@ -11,10 +11,11 @@ import com.google.maps.android.clustering.ClusterItem;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Keep;
+import org.greenrobot.greendao.annotation.Unique;
 
 @Entity(nameInDb = "services_data")
 public class ServicesData implements ClusterItem {
-
+    @Unique
     @SerializedName("service_id")
     @Expose
     private String serviceId;

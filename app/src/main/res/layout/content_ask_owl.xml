@@ -36,21 +36,21 @@
         android:orientation="vertical"
         android:padding="@dimen/spacing_large">
 
-        <TextView
-            android:id="@+id/tv_ask_a_owl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_medium"
-            android:text="@string/btn_ask_an_owl"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/material_text_subhead" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_ask_a_owl"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/spacing_medium"-->
+            <!--android:text="@string/btn_ask_an_owl"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textColor="@color/colorAccent"-->
+            <!--android:textSize="@dimen/material_text_subhead"-->
+            <!--/>-->
 
         <TextView
             android:id="@+id/tv_select_a_owl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_ask_a_owl"
             android:layout_marginBottom="@dimen/spacing_small"
             android:layout_marginTop="@dimen/spacing_medium"
             android:text="@string/select_an_owl"
@@ -69,10 +69,37 @@
             android:layout_gravity="center_vertical"
             android:gravity="center" />
 
+
+        <RelativeLayout
+            android:id="@+id/anonymousLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_owlList"
+            android:layout_marginTop="@dimen/spacing_medium"
+            >
+
+            <CheckBox
+                android:id="@+id/cbMakeAnonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_toEndOf="@+id/cbMakeAnonymous"
+                android:layout_toRightOf="@+id/cbMakeAnonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/anonymous_text"
+                android:textSize="@dimen/material_text_subhead"
+                android:textColor="@color/colorAccent"/>
+
+
+
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/textLBLAskOWL"
-            android:layout_below="@id/spinner_owlList"
             android:layout_width="match_parent"
+            android:layout_below="@id/anonymousLayout"
             android:layout_height="wrap_content"
             android:text="@string/general_form_hint_question"
             android:layout_marginTop="@dimen/spacing_small"
