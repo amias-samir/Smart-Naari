@@ -44,6 +44,7 @@ public class IAmAmazingActivity extends AppCompatActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("I Am Amazing");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
