@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,7 +24,6 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
@@ -34,7 +33,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,6 +70,8 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     String jsonToSend = null;
     @BindView(R.id.tvQuestionToOWL)
     EditText tvQuestionToOWL;
+    @BindView(R.id.cbMakeAnonymous)
+    CheckBox cbMakeAnonymous;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,11 +189,18 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
         try {
 
+            String makeAnonymous = "no";
+            if(cbMakeAnonymous.isChecked()){
+                makeAnonymous = "yes";
+            }
+
+
             JSONObject header = new JSONObject();
 
             Integer spinnerPosition = (int) (long) spinnerChooseOwl.getSelectedItemId();
 
             header.put("user_id_fk", sessionManager.getUserId());
+            header.put("anonymous", makeAnonymous);
             header.put("owl_id", owlIDArray.get(spinnerPosition));
             header.put("qstn", wrapperTextQuestionToOwl.getEditText().getText().toString());
             jsonToSend = header.toString();
