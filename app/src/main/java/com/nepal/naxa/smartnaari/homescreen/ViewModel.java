@@ -102,7 +102,7 @@ public class ViewModel {
         viewModel = new ViewModel("Smart Parenting", R.drawable.grid_smart_parenting);
         viewModels.add(viewModel);
 
-        viewModel = new ViewModel("\t\t\t", R.drawable.grid_i_am_amazing);
+        viewModel = new ViewModel("\t\t\t", R.drawable.i_am_amazing_green);
         //viewModel = new ViewModel("", R.drawable.grid_i_am_amazing);
 
         viewModels.add(viewModel);

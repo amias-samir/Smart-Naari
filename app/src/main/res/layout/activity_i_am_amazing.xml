@@ -39,7 +39,7 @@
                 android:layout_height="220dp"
                 android:background="@color/imageBackgroundGrey"
                 android:padding="@dimen/spacing_large"
-                android:src="@drawable/grid_i_am_amazing" />
+                android:src="@drawable/i_am_amazing_green" />
 
             <TextView
                 android:id="@+id/tvIAmAmazingDetail"
@@ -101,7 +101,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:background="@color/colorWhite"
-                android:src="@drawable/pheonix" />
+                android:src="@drawable/phoenix_gif" />
 
             <TextView
                 android:layout_width="match_parent"
