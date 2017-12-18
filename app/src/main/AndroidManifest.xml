@@ -262,18 +262,25 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         >
-        <activity android:name=".celebratingprofessional.CelebratingProfessionalActivity"
+        <activity
+            android:name=".celebratingprofessional.CelebratingProfessionalActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity
+            android:name=".setingschange.SettingsChangeActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
 
-        <activity android:name=".setingschange.SettingsChangeActivity"
-            android:exported="true">
+        <activity android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".utils.ui.BeautifulMainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
         </activity>
     </application>
 

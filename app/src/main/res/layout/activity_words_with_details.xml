@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +13,13 @@
         <!--android:layout_width="match_parent"-->
         <!--android:backgroundTint="@color/cardview_light_background"-->
         <!--android:layout_margin="@dimen/spacing_medium">-->
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbarLayoutHeader">
+
+    </include>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/toolbarLayoutHeader"
         android:id="@+id/recyclerList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,4 +28,4 @@
 
     <!--</android.support.v7.widget.CardView>-->
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

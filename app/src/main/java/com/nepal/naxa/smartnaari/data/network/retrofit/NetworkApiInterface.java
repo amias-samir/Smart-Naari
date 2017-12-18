@@ -48,7 +48,7 @@ public interface NetworkApiInterface {
 
 
     @FormUrlEncoded
-    @POST("email/email_send")
+    @POST("email/mail_send")
     Call<MaChupBasdinaResponse> getMaChupBasdinaDetails(@Field("data") String data);
 
 
