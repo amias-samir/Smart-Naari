@@ -243,7 +243,11 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

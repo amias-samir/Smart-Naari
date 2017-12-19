@@ -41,7 +41,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
         }
     }
 
-    public SimpleAdapter(Context context, String[] data) {
+    public SimpleAdapter(Context context, String [] data) {
         mContext = context;
         if (data != null)
             mData = new ArrayList<String>(Arrays.asList(data));

@@ -105,6 +105,8 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
         for (int i = 0; i < wordsWithDetailsList.size(); i++) {
 
             dataGlossaryList.add(wordsWithDetailsList.get(i).getTitle());
+//            mAdapter = new SimpleAdapter(this, wordsWithDetailsList.get(i));
+
         }
         String[] stringArray = dataGlossaryList.toArray(new String[0]);
 
