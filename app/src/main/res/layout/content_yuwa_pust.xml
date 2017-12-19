@@ -48,7 +48,11 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/yuwa_pusta_act_tv_header" />
 
+
         <include layout="@layout/short_red_line" />
+
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/yuwa_pusta_act_rv_owlslist"
@@ -56,13 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
             android:background="@android:color/white" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/yuwa_pusta_act_rv_reviewslist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -84,8 +81,17 @@
                 android:stateListAnimator="@null"
                 android:text="@string/btn_ask_an_owl"
                 android:textColor="@color/colorWhite"
-                 />
+                />
         </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/yuwa_pusta_act_rv_reviewslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+
 
     </LinearLayout>
 

@@ -115,28 +115,11 @@ public class YuwaPustaActivity extends BaseActivity  {
 //                    Drawer.closeDrawers();
                     int position = recyclerView.getChildPosition(child);
 
-
-
                     Intent intent = new Intent(YuwaPustaActivity.this, YuwaPustaQueryDetailsActivity.class);
-
-//                    intent.putExtra("query", yuwaQuestions.get(position).getQuestion());
-//                    intent.putExtra("answer", yuwaQuestions.get(position).getAnswer());
-
-//                    Bundle bundle = new Bundle();
-//                    bundle.putParcelable("data", Parcels.wrap(data));
-
                     intent.putExtra("yuwaQuestions", yuwaQuestions.get(position));
-
-
-//                    intent.putExtra("query", "sdhfgsdhfsdhfbshdfbhvdvbhdbvdhsdvnvdbvhdbdv???");
-//                    intent.putExtra("answer", "asbcscshc jms dsdvss dajdhaudha dbasdhd \nagagdagdfhgadfsfsf \tsdfhsfhsdfsdfhfshf\nsgfgsfsfs");
-
                     startActivity(intent);
-
-
                     return true;
                 }
-
                 return false;
             }
 

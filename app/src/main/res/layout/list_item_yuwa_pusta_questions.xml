@@ -36,6 +36,7 @@
         android:text="@string/question"
         android:textAlignment="center"
         android:textSize="@dimen/material_text_subhead"
+        android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Small" />
 
 
