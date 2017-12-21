@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.lifecoachingtest.LifeCoachingTestActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +62,8 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
     @OnClick(R.id.bt_main_activity_takeatest)
     public void toTakeATest(){
 
+        Intent lifeCoachingIntent = new Intent(MaSakchamChuMainActivity.this, LifeCoachingTestActivity.class);
+        startActivity(lifeCoachingIntent);
     }
 
 }

@@ -7,6 +7,7 @@
     <dimen name="spacing_mlarge">24dp</dimen>
     <dimen name="spacing_xlarge">32dp</dimen>
     <dimen name="spacing_xxlarge">36dp</dimen>
+    <dimen name="spacing_xxxlarge">40dp</dimen>
 
     <dimen name="elevation_low">9dp</dimen>
     <dimen name="elevation_high">12dp</dimen>

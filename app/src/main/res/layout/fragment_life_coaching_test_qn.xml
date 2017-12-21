@@ -1,0 +1,66 @@
+<!--question no.3-->
+<LinearLayout android:id="@+id/relativeLayout_3"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorWhite"
+
+    >
+
+    <TextView
+        android:id="@+id/spinner_fragment_question_lbl"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+        android:textColor="@color/black"
+        android:textSize="@dimen/material_text_headline"
+        android:text="Life Coaching Test Question"/>
+
+
+
+    <!--victim radio button input layout-->
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="@dimen/spacing_xxlarge">
+
+        <RadioButton
+            android:id="@+id/radio_yes_life_coaching_test"
+            style="@style/radionbuttonMaChupBasdina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/default_padding"
+            android:text="Yes"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/material_text_subhead"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"/>
+
+        <RadioButton
+            android:id="@+id/radio_no_life_coaching_test"
+            style="@style/radionbuttonMaChupBasdina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/default_padding"
+            android:text="No"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/material_text_subhead"
+            android:layout_marginRight="@dimen/spacing_xxlarge"/>
+        <!--android:onClick="onRadioButtonClicked"-->
+
+
+    </RadioGroup>
+
+
+</LinearLayout>
+
+
+

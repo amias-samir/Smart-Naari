@@ -243,7 +243,7 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true" >
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
@@ -280,11 +280,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
         <activity android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
+        </activity>
+        <activity android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
     </application>
 
