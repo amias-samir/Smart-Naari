@@ -14,6 +14,8 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Unique;
 
+import static java.lang.StrictMath.abs;
+
 @Entity(nameInDb = "services_data")
 public class ServicesData implements ClusterItem {
     @Index(unique = true)
@@ -269,6 +271,7 @@ public class ServicesData implements ClusterItem {
 //    avoid null or empty servive (Lat, Lon)
     public LatLng position (String serviceLat, String serviceLon){
 
+
         LatLng position = null ;
         Double Lat ;
         Double Lon ;
@@ -276,7 +279,7 @@ public class ServicesData implements ClusterItem {
         if(TextUtils.isEmpty(serviceLat)){
             Lat = 0.0 ;
         }else {
-            Lat = Double.parseDouble(serviceLat) ;
+            Lat = abs (Double.parseDouble(serviceLat)) ;
 
         }
 
@@ -284,7 +287,7 @@ public class ServicesData implements ClusterItem {
             Lon = 0.0 ;
         }
         else {
-             Lon = Double.parseDouble(serviceLon) ;
+             Lon = abs( Double.parseDouble(serviceLon)) ;
         }
 
 

@@ -105,6 +105,8 @@ public class PowerButtonService extends Service {
         sessionManager.isPowerButtonServiceRunning(false);
     }
 
+
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;

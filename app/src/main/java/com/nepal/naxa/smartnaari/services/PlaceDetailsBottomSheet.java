@@ -6,28 +6,29 @@ import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
     ServicesData servicesData;
-
-    @BindView(R.id.title)
-    TextView title;
-    @BindView(R.id.address)
-    TextView address;
-    @BindView(R.id.desc)
-    TextView desc;
-    @BindView(R.id.backdrop)
-    ImageView backdrop;
+    @BindView(R.id.office_name)
+    TextView tvOfficeName;
+    @BindView(R.id.office_address)
+    TextView tvOfficeAddress;
+    @BindView(R.id.office_type)
+    TextView tvOfficeType;
+    @BindView(R.id.office_contact_duty_person)
+    TextView tvOfficeContactDutyPerson;
+    @BindView(R.id.office_landline)
+    TextView tvOfficeLandline;
+    Unbinder unbinder;
 
 
     public static PlaceDetailsBottomSheet getInstance(ServicesData servicesData) {
@@ -45,18 +46,21 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.layout_custom_bottom_sheet, container, false);
-        ButterKnife.bind(this, rootView);
+
 
         try {
 
 
-            title.setText(servicesData.getOfficeName());
-            address.setText(servicesData.getDistrict());
-            desc.setText(servicesData.getContactDutyPersonContactNumber());
+            tvOfficeName.setText("Office Name : "+servicesData.getOfficeName());
+            tvOfficeType.setText("Office Type : "+servicesData.getOfficeType());
+            tvOfficeAddress.setText("Office Address : "+servicesData.getDistrict());
+            tvOfficeContactDutyPerson.setText("Contact Duty Person's no. : "+servicesData.getContactDutyPersonContactNumber());
+            tvOfficeLandline.setText("Office Landline no : "+servicesData.getOfficeLandline());
 //        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -64,6 +68,7 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        unbinder.unbind();
 
 
     }

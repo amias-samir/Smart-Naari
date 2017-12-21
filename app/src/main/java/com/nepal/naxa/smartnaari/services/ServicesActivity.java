@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static java.lang.StrictMath.abs;
 
 
 public class ServicesActivity extends BaseActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -77,7 +80,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle("Services");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
@@ -174,16 +177,30 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                     LatLng location;
                     mClusterManager.addItems(servicesData);
 
+                    Log.e(TAG, "runAddMarkerSAMIR: " + "services table row count -->"+ servicesData.size());
+                    Double lat, lon ;
+
                     for (int i = 0; i < servicesData.size(); i++) {
+                        Log.e(TAG, "runAddMarkerSAMIR: " + "services whole loop count -->"+ i);
+
 
                         for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
+                            Log.e(TAG, "runAddMarkerSAMIR: " + "services type loop count -->"+ j);
 
-                            if (servicesData.get(i).getOfficeType().equals(appDataManager.getAllUniqueServicesType().get(j))) {
 
-                                Double lat = Double.parseDouble(servicesData.get(i).getServiceLat());
-                                Double lon = Double.parseDouble(servicesData.get(i).getServiceLon());
+                            if (appDataManager.getAllUniqueServicesType().get(j).equals(servicesData.get(i).getOfficeType())) {
 
-                                Log.d(TAG, "run addMarker: " + "Lat" + lat + "  , Longt  " + lon);
+                                if(TextUtils.isEmpty(servicesData.get(i).getServiceLat()) ||TextUtils.isEmpty(servicesData.get(i).getServiceLon()) ) {
+                                lat = 0.0 ;
+                                lon = 0.0 ;
+                                }else {
+                                     lat = abs(Double.parseDouble(servicesData.get(i).getServiceLat()));
+                                    lon = abs(Double.parseDouble(servicesData.get(i).getServiceLon()));
+                                }
+
+                                Log.e(TAG, "runAddMarkerSAMIR: " + "services data size count -->"+ servicesData.size());
+
+//                                Log.e(TAG, "runAddMarkerSAMIR: " + "Lat" + lat + "  , Longt  " + lon +" -->"+ servicesData.get(i).getOfficeName());
 
                                 location = new LatLng(lat, lon);
 
@@ -195,7 +212,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                             }
                         }
                     }
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
                     showErrorToast("Server sent bad data");
                 }
             }

@@ -172,6 +172,7 @@ public class AppDataManager extends BaseActivity {
         } finally {
             c.close();
         }
+//        Log.e(TAG, "runAddMarkerSAMIR: "+ "result size "+result.size() );
         return result;
 
     }

@@ -34,12 +34,14 @@
             <item
                 android:id="@+id/item_follow_us_on_instagram"
                 android:icon="@drawable/ic_menuitem_follow_us_on_instagram"
-                android:title="Follow us on Instagram" />
+                android:title="Follow us on Instagram"
+                android:visible="false"/>
 
             <item
                 android:id="@+id/item_rate_smart_nari"
                 android:icon="@drawable/ic_menuitem_rate_smart_nari"
-                android:title="Rate Smart nari" />
+                android:title="Rate Smart nari"
+                android:visible="false"/>
 
             <!--<item-->
                 <!--android:id="@+id/item_print"-->
@@ -49,7 +51,8 @@
             <item
                 android:id="@+id/item_report_bug"
                 android:icon="@drawable/ic_menuitem_report_bug"
-                android:title="Report Bug" />
+                android:title="Report Bug"
+                android:visible="false"/>
 
             <item
                 android:id="@+id/item_setting_change"

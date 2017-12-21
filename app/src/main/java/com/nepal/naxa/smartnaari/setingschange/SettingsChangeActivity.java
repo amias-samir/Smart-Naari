@@ -10,7 +10,12 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
+import com.nepal.naxa.smartnaari.mycircle.activitydetect.ActivityRecognizedService;
+import com.nepal.naxa.smartnaari.mycircle.location.GeoPointService;
+import com.nepal.naxa.smartnaari.mycircle.location.LocationUpdateService;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
+import com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService;
+import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,6 +78,7 @@ public class SettingsChangeActivity extends BaseActivity {
 
     public void startMyCircleService (){
         sessionManager.clearPowerButtonServicePreferences();
+        sessionManager.isPowerButtonServiceRunning(true);
         Intent intent = new Intent(SettingsChangeActivity.this, PermissionActivity.class);
         startActivity(intent);
 //        btnEnableDisableMycircle.setText("Disable MyCircle");
@@ -83,7 +89,18 @@ public class SettingsChangeActivity extends BaseActivity {
     public void stopMyCircleService (){
         sessionManager.clearPowerButtonServicePreferences();
 //        PowerButtonService powerButtonService = new PowerButtonService();
-//        powerButtonService.onDestroy();
+//        powerButtonService.stopSelf();
+
+        stopService(new Intent(getApplicationContext(), ActivityRecognizedService.class));
+        stopService(new Intent(getApplicationContext(), PowerButtonService.class));
+        stopService(new Intent(getApplicationContext(), ShakeService.class));
+        stopService(new Intent(getApplicationContext(), GeoPointService.class));
+        stopService(new Intent(getApplicationContext(), LocationUpdateService.class));
+        stopService(new Intent(getApplicationContext(), LocationMessageService.class));
+
+//        Intent service = new Intent(this, PowerButtonService.class);
+//        this.stopService(service);
+
         btnEnableDisableMycircle.setText("Enable MyCircle");
 
     }
