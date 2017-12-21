@@ -285,13 +285,37 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
         </activity>
-        <activity android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
+        <activity
+            android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
+        <activity
+            android:name=".masakchamchu.FreeOnlineCourseActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".masakchamchu.MaSakchamChuMainActivity" />
+        </activity>
+
+        <activity
+            android:name=".masakchamchu.BookAnAppointmentActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".masakchamchu.MaSakchamChuMainActivity" />
+        </activity>
+
+        <activity android:name=".XandYDetailsActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

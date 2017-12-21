@@ -7,11 +7,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.lifecoachingtest.LifeCoachingTestActivity;
 
 import butterknife.BindView;
@@ -23,7 +22,6 @@ import butterknife.OnClick;
  */
 
 public class MaSakchamChuMainActivity extends AppCompatActivity {
-
 
 
     @BindView(R.id.bt_main_activity_takeatest)
@@ -43,11 +41,11 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Ma Sakshyam Chhu");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-            actionBar.setTitle("");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -60,10 +58,22 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
 
 
     @OnClick(R.id.bt_main_activity_takeatest)
-    public void toTakeATest(){
-
+    public void toTakeATest() {
         Intent lifeCoachingIntent = new Intent(MaSakchamChuMainActivity.this, LifeCoachingTestActivity.class);
         startActivity(lifeCoachingIntent);
     }
 
+    @OnClick({R.id.bt_main_activity_freeonlinecource, R.id.bt_main_activity_bookanappointment})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.bt_main_activity_freeonlinecource:
+                Intent freeOnlineIntent = new Intent(MaSakchamChuMainActivity.this, FreeOnlineCourseActivity.class);
+                startActivity(freeOnlineIntent);
+                break;
+            case R.id.bt_main_activity_bookanappointment:
+                Intent bookAppointmentIntent = new Intent(MaSakchamChuMainActivity.this, BookAnAppointmentActivity.class);
+                startActivity(bookAppointmentIntent);
+                break;
+        }
+    }
 }

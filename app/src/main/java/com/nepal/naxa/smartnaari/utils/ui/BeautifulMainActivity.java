@@ -30,6 +30,7 @@ import android.widget.ViewSwitcher;
 import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.XandYDetailsActivity;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
@@ -67,13 +68,13 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class BeautifulMainActivity extends BaseActivity
-        implements AppBarLayout.OnOffsetChangedListener, RecyclerViewAdapter.OnItemClickListener {
+        implements AppBarLayout.OnOffsetChangedListener, RecyclerViewAdapter.OnItemClickListener, HorizontalRecyclerViewAdapter.OnItemClickListener {
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
 
-//    Facebook Page URL
+    //    Facebook Page URL
     public static String FACEBOOK_URL = "https://www.facebook.com/naxa.np";
     public static String FACEBOOK_PAGE_ID = "naxa.np";
 
@@ -301,6 +302,8 @@ public class BeautifulMainActivity extends BaseActivity
         // pager indicator
         horizontalRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
         horizontalRecyclerView.setNestedScrollingEnabled(false);
+
+        horizontalRecyclerViewAdapter.setOnItemClickListener(this);
     }
 
 
@@ -330,17 +333,17 @@ public class BeautifulMainActivity extends BaseActivity
                 Intent textShareIntent = new Intent(Intent.ACTION_SEND);
                 textShareIntent.putExtra(Intent.EXTRA_TEXT, "url link ");
                 textShareIntent.setType("text/plain");
-                startActivity(Intent.createChooser(textShareIntent , "Share Smart नारि App with your Friends"));
+                startActivity(Intent.createChooser(textShareIntent, "Share Smart नारि App with your Friends"));
                 break;
 
-            case R.id.item_like_us_on_facebook :
+            case R.id.item_like_us_on_facebook:
                 Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
                 String facebookUrl = getFacebookPageURL(this);
                 facebookIntent.setData(Uri.parse(facebookUrl));
                 startActivity(facebookIntent);
                 break;
 
-            case R.id.item_setting_change :
+            case R.id.item_setting_change:
                 Intent settingsIntent = new Intent(BeautifulMainActivity.this, SettingsChangeActivity.class);
                 startActivity(settingsIntent);
 
@@ -497,7 +500,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     @OnClick({R.id.main_imageview_placeholder_tap_it_stop_it, R.id.main_imageview_placeholder2_tap_it_stop_it, R.id.btn_tap_it_stop_it})
-    public void onViewClicked(View view){
+    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_imageview_placeholder_tap_it_stop_it:
                 break;
@@ -522,5 +525,27 @@ public class BeautifulMainActivity extends BaseActivity
         } catch (PackageManager.NameNotFoundException e) {
             return FACEBOOK_URL; //normal web url
         }
+    }
+
+    @Override
+    public void onHorizontalItemClick(View view, ViewModel viewModel) {
+
+        String title = viewModel.getText();
+
+        Intent intent = new Intent(BeautifulMainActivity.this, XandYDetailsActivity.class);
+        intent.putExtra("title", title);
+        startActivity(intent);
+
+//        if (title.equals("X's and Y's")) {
+//
+//        } else if (title.equals("What's the Difference")) {
+//
+//        } else if (title.equals("Crime and Punishment")) {
+//
+//        } else if (title.equals("Myth Busters")) {
+//
+//        }
+
+//        showInfoToast(viewModel.getText());
     }
 }

@@ -52,7 +52,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_red_background"
             android:textColor="@color/colorWhite"
-            android:text="फारम सेभ गर्नुहोस"
+            android:text="Save Result"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:visibility="gone"/>

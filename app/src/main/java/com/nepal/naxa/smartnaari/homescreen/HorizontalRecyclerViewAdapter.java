@@ -69,14 +69,9 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public void onClick(final View v) {
-        try {
             onItemClickListener.onHorizontalItemClick(v, (ViewModel) v.getTag());
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("qqq", "Horizontal Recycler Error");
 
-            Toast.makeText(v.getContext(), "You Just Clicked", Toast.LENGTH_SHORT).show();
-        }
+
 
 
     }
