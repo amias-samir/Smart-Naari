@@ -68,7 +68,9 @@
                 android:layout_width="@dimen/big_icon_size"
                 android:layout_height="@dimen/big_icon_size"
                 android:layout_gravity="center"
-                android:background="@drawable/image_view_person_of_the_month" />
+                android:background="@drawable/image_view_person_of_the_month"
+                android:src="@drawable/person_of_the_month1"
+                android:scaleType="fitCenter"/>
 
             <at.blogc.android.views.ExpandableTextView
                 android:id="@+id/etv_person_of_the_month_description"
