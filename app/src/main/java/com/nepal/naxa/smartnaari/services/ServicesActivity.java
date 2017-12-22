@@ -177,15 +177,15 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                     LatLng location;
                     mClusterManager.addItems(servicesData);
 
-                    Log.e(TAG, "runAddMarkerSAMIR: " + "services table row count -->"+ servicesData.size());
+//                    Log.e(TAG, "runAddMarkerSAMIR: " + "services table row count -->"+ servicesData.size());
                     Double lat, lon ;
 
                     for (int i = 0; i < servicesData.size(); i++) {
-                        Log.e(TAG, "runAddMarkerSAMIR: " + "services whole loop count -->"+ i);
+//                        Log.e(TAG, "runAddMarkerSAMIR: " + "services whole loop count -->"+ i);
 
 
                         for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
-                            Log.e(TAG, "runAddMarkerSAMIR: " + "services type loop count -->"+ j);
+//                            Log.e(TAG, "runAddMarkerSAMIR: " + "services type loop count -->"+ j);
 
 
                             if (appDataManager.getAllUniqueServicesType().get(j).equals(servicesData.get(i).getOfficeType())) {
@@ -198,7 +198,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                                     lon = abs(Double.parseDouble(servicesData.get(i).getServiceLon()));
                                 }
 
-                                Log.e(TAG, "runAddMarkerSAMIR: " + "services data size count -->"+ servicesData.size());
+//                                Log.e(TAG, "runAddMarkerSAMIR: " + "services data size count -->"+ servicesData.size());
 
 //                                Log.e(TAG, "runAddMarkerSAMIR: " + "Lat" + lat + "  , Longt  " + lon +" -->"+ servicesData.get(i).getOfficeName());
 
@@ -254,6 +254,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                Log.e(TAG, "runDelayedBeforeSheet: SAMIR"+servicesData.getOfficeName() );
                 PlaceDetailsBottomSheet placeDetailsBottomSheet = PlaceDetailsBottomSheet.getInstance(servicesData);
                 placeDetailsBottomSheet.show(getSupportFragmentManager(), "a");
 
