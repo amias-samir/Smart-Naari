@@ -35,15 +35,11 @@ public class NepaliDate {
         int monthIndex = nepaliDateTime.getMonthOfYear() - 1;
         int dayIndex = localDateTime.getDayOfWeek();
 
-        //dirty-fix for bad dayofweek
-        int dirtyIndex = (dayIndex - 1) + OFFSET;
-        if (dirtyIndex > 6) {
-            dirtyIndex = dirtyIndex - 6;
-        }
+
 
         Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
         Timber.i(nepaliDateTime.getDayOfWeek() + "");
-        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dirtyIndex];
+        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dayIndex];
 
     }
 
