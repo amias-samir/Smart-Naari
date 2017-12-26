@@ -158,4 +158,9 @@ public class SessionManager {
 
 //    ================================ end of checking background servive status====================== //
 
+
+    public void logoutUser (){
+        utils.clear();
+    }
+
 }

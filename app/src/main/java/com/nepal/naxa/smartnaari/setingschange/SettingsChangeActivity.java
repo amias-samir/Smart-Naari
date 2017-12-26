@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.mycircle.activitydetect.ActivityRecognizedService;
@@ -16,6 +17,7 @@ import com.nepal.naxa.smartnaari.mycircle.location.LocationUpdateService;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
+import com.nepal.naxa.smartnaari.splashscreen.SplashScreenActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +27,10 @@ public class SettingsChangeActivity extends BaseActivity {
 
     @BindView(R.id.settings_enable_disable_mycircle)
     Button btnEnableDisableMycircle;
-    SessionManager sessionManager ;
+    SessionManager sessionManager;
+    AppDataManager appDataManager ;
+    @BindView(R.id.settings_user_logout)
+    Button btnUserLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class SettingsChangeActivity extends BaseActivity {
         initToolbar();
 
         sessionManager = new SessionManager(this);
+        appDataManager = new AppDataManager(this);
 
         setMyCircleServiceToggleBtnText();
 
@@ -58,25 +64,25 @@ public class SettingsChangeActivity extends BaseActivity {
     @OnClick(R.id.settings_enable_disable_mycircle)
     public void onViewClicked() {
 
-        if(sessionManager.doesHaveIntentBackgroundService()){
+        if (sessionManager.doesHaveIntentBackgroundService()) {
             stopMyCircleService();
-        }else {
+        } else {
             startMyCircleService();
         }
     }
 
 
-    public void setMyCircleServiceToggleBtnText (){
-        if(sessionManager.doesHaveIntentBackgroundService()){
+    public void setMyCircleServiceToggleBtnText() {
+        if (sessionManager.doesHaveIntentBackgroundService()) {
             btnEnableDisableMycircle.setText("Disable MyCircle");
 
-        }else {
+        } else {
             btnEnableDisableMycircle.setText("Enable MyCircle");
         }
     }
 
 
-    public void startMyCircleService (){
+    public void startMyCircleService() {
         sessionManager.clearPowerButtonServicePreferences();
         sessionManager.isPowerButtonServiceRunning(true);
         Intent intent = new Intent(SettingsChangeActivity.this, PermissionActivity.class);
@@ -86,7 +92,7 @@ public class SettingsChangeActivity extends BaseActivity {
     }
 
 
-    public void stopMyCircleService (){
+    public void stopMyCircleService() {
         sessionManager.clearPowerButtonServicePreferences();
 //        PowerButtonService powerButtonService = new PowerButtonService();
 //        powerButtonService.stopSelf();
@@ -106,5 +112,20 @@ public class SettingsChangeActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.settings_user_logout)
+    public void onViewUserLogout() {
 
+        showLoading("Logging Out ...");
+
+        sessionManager.logoutUser();
+        appDataManager.clearAllDAOSessiondata();
+
+//        hideLoading();
+
+        showInfoToast("You have successfully logged out");
+
+        Intent intent = new Intent(SettingsChangeActivity.this, SplashScreenActivity.class);
+        startActivity(intent);
+
+    }
 }

@@ -16,19 +16,32 @@
         android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="@dimen/activity_horizontal_margin">
 
     <Button
         android:id="@+id/settings_enable_disable_mycircle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_get_contact_my_circle"
+        android:gravity="center"
         android:text="Enable/Disable MyCircle"
         android:textColor="@color/colorWhite"
-        android:padding="@dimen/default_padding"/>
+        android:padding="@dimen/default_padding"
+        android:layout_marginBottom="@dimen/spacing_medium"/>
+
+        <Button
+            android:id="@+id/settings_user_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_get_contact_my_circle"
+            android:text="Logout"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:padding="@dimen/default_padding"/>
 
     </LinearLayout>
     </ScrollView>

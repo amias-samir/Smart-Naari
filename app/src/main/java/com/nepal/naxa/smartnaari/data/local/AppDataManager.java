@@ -271,5 +271,10 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
         return dateTime;
     }
 
+    public void clearAllDAOSessiondata(){
+        daoSession.getServicesDataDao().deleteAll();
+        daoSession.getYuwaQuestionDao().deleteAll();
+        daoSession.getHotPotOfPassionDataDao().deleteAll();
+    }
 
 }
