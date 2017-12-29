@@ -2,31 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nepal.naxa.smartnaari">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.NETWORK" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:head="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:head="android.permission.RECORD_AUDIO" />
+    <uses-permission android:head="android.permission.STORAGE" />
+    <uses-permission android:head="android.permission.INTERNET" />
+    <uses-permission android:head="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:head="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:head="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:head="android.permission.SEND_SMS" />
+    <uses-permission android:head="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:head="android.permission.NETWORK" />
+    <uses-permission android:head="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:head="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:head="android.permission.READ_CONTACTS" />
+    <uses-permission android:head="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:head="android.permission.VIBRATE" />
+    <uses-permission android:head="android.permission.WAKE_LOCK" />
+    <uses-permission android:head="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:head="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:head="android.permission.WRITE_SETTINGS" />
 
     <!-- start service on android system boot -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:head="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
-        android:name=".application.SmartNaari"
+        android:head=".application.SmartNaari"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -37,66 +37,66 @@
 
         <!-- ======================= auto start services on system boot ==================== -->
         <receiver
-            android:name=".mycircle.powerbutton.BootUpReceiver"
+            android:head=".mycircle.powerbutton.BootUpReceiver"
             android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:head="android.intent.action.BOOT_COMPLETED" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:head="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".mycircle.powerbutton.NotificationReceiver"
+            android:head=".mycircle.powerbutton.NotificationReceiver"
             android:enabled="true"
             android:process=":remote" />
 
         <service
-            android:name=".mycircle.powerbutton.PowerButtonService"
+            android:head=".mycircle.powerbutton.PowerButtonService"
             android:enabled="true"
             android:exported="true" />
 
         <!-- ======================= end of auto start services on system boot ==================== -->
 
         <service
-            android:name=".data.network.service.DownloadService"
+            android:head=".data.network.service.DownloadService"
             android:enabled="true"
             android:exported="false" />
 
         <!-- ======================  shake service ==================== -->
 
         <service
-            android:name=".mycircle.shake.ShakeService"
+            android:head=".mycircle.shake.ShakeService"
             android:enabled="true" />
         <service
-            android:name=".mycircle.shake.LocationMessageService"
+            android:head=".mycircle.shake.LocationMessageService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService" />
+                <action android:head="com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService" />
             </intent-filter>
         </service>
         <service
-            android:name=".mycircle.activitydetect.ActivityRecognizedService"
+            android:head=".mycircle.activitydetect.ActivityRecognizedService"
             android:enabled="true" />
-        <service android:name=".mycircle.location.LocationUpdateService" />
-        <service android:name=".mycircle.location.GeoPointService" />
+        <service android:head=".mycircle.location.LocationUpdateService" />
+        <service android:head=".mycircle.location.GeoPointService" />
 
-        <activity android:name="mycircle.shake.ServiceActivity" />
-        <activity android:name=".mycircle.activitydetect.DetectActivity" />
+        <activity android:head="mycircle.shake.ServiceActivity" />
+        <activity android:head=".mycircle.activitydetect.DetectActivity" />
         <activity
-            android:name=".mycircle.setting.SettingsActivity"
+            android:head=".mycircle.setting.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".mycircle.PermissionActivity"
+            android:head=".mycircle.PermissionActivity"
             android:label="@string/title_activity_permission"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <action andrheadname="android.intent.action.MAIN" /> -->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- <category andrheadname="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
 
@@ -104,94 +104,94 @@
 
 
         <!-- <activity -->
-        <!-- android:name=".homescreen.MainActivity" -->
+        <!-- andrheadname=".homescreen.MainActivity" -->
         <!-- android:exported="true" -->
         <!-- android:label="@string/app_name" -->
         <!-- android:screenOrientation="portrait" /> -->
 
         <activity
-            android:name=".splashscreen.SplashScreenActivity"
+            android:head=".splashscreen.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:head="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:head="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".aboutboardmembers.AboutMembersActivity"
+            android:head=".aboutboardmembers.AboutMembersActivity"
             android:exported="true">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".homescreen.DetailActivity"
+            android:head=".homescreen.DetailActivity"
             android:parentActivityName=".utils.ui.BeautifulMainActivity"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".utils.ui.BeautifulMainActivity"
+            android:head=".utils.ui.BeautifulMainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".register.SignUpActivity"
+            android:head=".register.SignUpActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SignUpTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".login.LoginActivity"
+            android:head=".login.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SignUpTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".mycircle.MyCircleActivity"
+            android:head=".mycircle.MyCircleActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/MyCircleTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".masakchamchu.IAmAmazingActivity"
+            android:head=".masakchamchu.IAmAmazingActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".services.ServicesActivity"
+            android:head=".services.ServicesActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".masakchamchu.MaSakchamChuMainActivity"
+            android:head=".masakchamchu.MaSakchamChuMainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".masakchamchu.AddANewPostActivity"
+            android:head=".masakchamchu.AddANewPostActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".passion_of_life.ComplexListActivity"
+            android:head=".passion_of_life.ComplexListActivity"
             android:exported="true"
             android:parentActivityName=".utils.ui.BeautifulMainActivity"
             android:screenOrientation="portrait"
@@ -207,114 +207,122 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
+            android:head="com.google.android.geo.API_KEY"
             android:value="AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU" />
 
         <activity
-            android:name=".yuwapusta.YuwaPustaActivity"
+            android:head=".yuwapusta.YuwaPustaActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".yuwapusta.AskOwlActivity"
+            android:head=".yuwapusta.AskOwlActivity"
             android:exported="true"
             android:parentActivityName=".yuwapusta.YuwaPustaActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
         <activity
-            android:name=".machupbasdina.MaChupBasdinaActivity"
+            android:head=".machupbasdina.MaChupBasdinaActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        <activity android:name=".smartparent.SmartParentActivity">
+        <activity android:head=".smartparent.SmartParentActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
+            android:head=".data_glossary.muth_busters.WordsWithDetailsActivity"
             android:exported="true">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
 
         <meta-data
-            android:name="io.fabric.ApiKey"
+            android:head="io.fabric.ApiKey"
             android:value="2b2f7cc04d8fcabb1a720c50d2fd95a9a26e953d" />
 
-        <activity android:name=".YuwaPustaQueryDetailsActivity">
+        <activity android:head=".YuwaPustaQueryDetailsActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
         </activity>
         <activity
-            android:name=".aboutsmartnaari.AboutSmartNaariActivity"
+            android:head=".aboutsmartnaari.AboutSmartNaariActivity"
             android:exported="true">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         >
         <activity
-            android:name=".celebratingprofessional.CelebratingProfessionalActivity"
+            android:head=".celebratingprofessional.CelebratingProfessionalActivity"
             android:exported="true">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".setingschange.SettingsChangeActivity"
+            android:head=".setingschange.SettingsChangeActivity"
             android:exported="true">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        <activity android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
+        <activity android:head=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
         </activity>
         <activity
-            android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
+            android:head=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
         <activity
-            android:name=".masakchamchu.FreeOnlineCourseActivity"
+            android:head=".masakchamchu.FreeOnlineCourseActivity"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
 
         <activity
-            android:name=".masakchamchu.BookAnAppointmentActivity"
+            android:head=".masakchamchu.BookAnAppointmentActivity"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
 
-        <activity android:name=".XandYDetailsActivity"
+        <activity android:head=".XandYDetailsActivity"
             android:screenOrientation="portrait">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:head="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+
+
+        <!--<activity android:head=".passion_of_life.complexhotpotrecyclerview.HotPotComplexRecyclerViewActivity"-->
+            <!--android:screenOrientation="portrait">-->
+            <!--<meta-data-->
+                <!--android:head="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+        <!--</activity>-->
 
     </application>
 

@@ -125,7 +125,7 @@
                                 android:orientation="vertical">
 
 
-                                <!-- first contact name input layout-->
+                                <!-- first contheadname input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_first_contact_name"
                                     android:layout_width="match_parent"
@@ -178,7 +178,7 @@
                                 </android.support.design.widget.TextInputLayout>
 
 
-                                <!-- second contact name input layout-->
+                                <!-- second contheadname input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_second_contact_name"
                                     android:layout_width="match_parent"
@@ -230,7 +230,7 @@
                                     android:textSize="@dimen/material_text_subhead" />
                                 </android.support.design.widget.TextInputLayout>
 
-                                <!-- Third contact name input layout-->
+                                <!-- Third contheadname input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_third_contact_name"
                                     android:layout_width="match_parent"
@@ -285,7 +285,7 @@
                                      />
                                 </android.support.design.widget.TextInputLayout>
 
-                                <!-- fourth contact name input layout-->
+                                <!-- fourth contheadname input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_fourth_contact_name"
                                     android:layout_width="match_parent"
@@ -339,7 +339,7 @@
                                      />
                                 </android.support.design.widget.TextInputLayout>
 
-                                <!-- fifth contact name input layout-->
+                                <!-- fifth contheadname input layout-->
                                 <EditText
                                     android:id="@+id/my_circle_fifth_contact_name"
                                     android:layout_width="match_parent"

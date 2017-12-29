@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#BDBDBD</color>
-    <color name="colorAccent">#F3514F</color>
+    <color head="colorPrimary">#FFFFFF</color>
+    <color head="colorPrimaryDark">#BDBDBD</color>
+    <color head="colorAccent">#F3514F</color>
 
-    <color name="windowBackground">#EEEEEE</color>
+    <color head="windowBackground">#EEEEEE</color>
 
-    <color name="colorSignupBackground">#F3514F</color>
-    <color name="colorRedLight">#FE9A9A</color>
-    <color name="colorGray">#909090</color>
+    <color head="colorSignupBackground">#F3514F</color>
+    <color head="colorRedLight">#FE9A9A</color>
+    <color head="colorGray">#909090</color>
 
-    <color name="colorMyCircleBackground">#F3514F</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color head="colorMyCircleBackground">#F3514F</color>
+    <color head="colorWhite">#FFFFFF</color>
 
-    <color name="textSecondary">#e9c1c1</color>
-    <color name="textSubtitle">#868585</color>
-    <color name="textPrimary">#454545</color>
-    <color name="black">#000000</color>
-    <color name="transparent">#00ffffff</color>
-    <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
-    <color name="colorLoginIncaseText">#454545</color>
-    <color name="colorMaChupBasdinaHeaderLower">#FE9A9A</color>
-    <color name="colorMaChupBasdinaHeaderUpper">#F9F9F9</color>
-    <color name="colorMaChupBasdinRadioBtn">#C9C9C9</color>
+    <color head="textSecondary">#e9c1c1</color>
+    <color head="textSubtitle">#868585</color>
+    <color head="textPrimary">#454545</color>
+    <color head="black">#000000</color>
+    <color head="transparent">#00ffffff</color>
+    <color head="colorPrimaryDarkTransparent">#c7c7c7</color>
+    <color head="colorLoginIncaseText">#454545</color>
+    <color head="colorMaChupBasdinaHeaderLower">#FE9A9A</color>
+    <color head="colorMaChupBasdinaHeaderUpper">#F9F9F9</color>
+    <color head="colorMaChupBasdinRadioBtn">#C9C9C9</color>
 
-    <color name="imageBackgroundGrey">#f3f3f3</color>
+    <color head="imageBackgroundGrey">#f3f3f3</color>
     <!--Colors from design-->
-    <color name="xandy">#64fc0202</color>
-    <color name="whatdiff">#6439a64a</color>
-    <color name="crimepunis">#64fabf12</color>
-    <color name="mythbus">#64fef503</color>
-    <color name="consndnoncons">#64fc0202</color>
+    <color head="xandy">#64fc0202</color>
+    <color head="whatdiff">#6439a64a</color>
+    <color head="crimepunis">#64fabf12</color>
+    <color head="mythbus">#64fef503</color>
+    <color head="consndnoncons">#64fc0202</color>
 
-    <color name="empower">#008F45</color>
-    <color name="inactiveText">#E3E3E3</color>
+    <color head="empower">#008F45</color>
+    <color head="inactiveText">#E3E3E3</color>
 
-    <color name="iron">#CCCCCC</color>
-    <color name="black_alpha_40">#bf000000</color>
+    <color head="iron">#CCCCCC</color>
+    <color head="black_alpha_40">#bf000000</color>
 
-    <color name="sectioned_recycler_head">#868585</color>
-    <color name="sectioned_recycler_child">#9f9f9f</color>
-    <color name="cardview_elevation">#42000000</color>
+    <color head="sectioned_recycler_head">#868585</color>
+    <color head="sectioned_recycler_child">#9f9f9f</color>
+    <color head="cardview_elevation">#42000000</color>
 
 
 

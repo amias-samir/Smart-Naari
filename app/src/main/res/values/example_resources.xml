@@ -2,20 +2,20 @@
 <resources>
 
     <!-- colors -->
-    <color name="primary">#785447</color>
-    <color name="primaryDark">#5B3F36</color>
+    <color head="primary">#785447</color>
+    <color head="primaryDark">#5B3F36</color>
 
     <!-- dimensions -->
-    <dimen name="image_width">120dp</dimen>
-    <dimen name="image_final_width">32dp</dimen>
-    <dimen name="spacing_normal">16dp</dimen>
+    <dimen head="image_width">120dp</dimen>
+    <dimen head="image_final_width">32dp</dimen>
+    <dimen head="spacing_normal">16dp</dimen>
 
 
 
-    <string name="quila_name">Quila</string>
-    <string name="quila_tagline">I love bones and slippers</string>
-    <string name="quila_name2">Quila!</string>
-    <string name="lorem">
+    <string head="quila_name">Quila</string>
+    <string head="quila_tagline">I love bones and slippers</string>
+    <string head="quila_name2">Quila!</string>
+    <string head="lorem">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula sem a malesuada rhoncus. Pellentesque ut dolor a dui porttitor porta lacinia non libero. Nunc volutpat arcu quis quam convallis molestie. Etiam ac tristique sem, id commodo justo. Phasellus congue tincidunt lectus, at dignissim ligula maximus eu. Quisque interdum nunc eget tellus bibendum suscipit. Phasellus feugiat ultricies posuere. Nullam porta accumsan velit, ut rutrum massa fermentum eu. Nunc ac bibendum nunc. Mauris eu ultricies ipsum. Ut id dolor dui. Pellentesque dictum dui vel tempus maximus. Vivamus non nisi quis libero scelerisque pretium. Ut eu tristique justo. Sed pellentesque placerat quam, ut ultricies turpis feugiat a. Aliquam a volutpat risus.
 
 Praesent at lectus semper, suscipit elit in, facilisis massa. Phasellus sed vestibulum ante, a euismod sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin tincidunt orci augue, a porta odio lacinia eu. Nunc in congue risus. Maecenas commodo nibh ac enim fermentum, eu sagittis massa blandit. Vestibulum elementum massa nec dapibus mollis. Etiam porta, est sit amet aliquet porta, odio elit finibus risus, id rutrum purus mi non ipsum. Nulla viverra nec enim sed venenatis.

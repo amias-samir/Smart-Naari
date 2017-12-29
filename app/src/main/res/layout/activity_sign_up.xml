@@ -130,7 +130,7 @@
                         android:orientation="horizontal"
                         android:paddingTop="10dp">
 
-                        <!-- first name input layout-->
+                        <!-- fiheadname input layout-->
                         <EditText
                             android:id="@+id/user_firstname_input_id"
                             android:layout_width="0dp"
@@ -150,7 +150,7 @@
                             android:textColorHint="@color/textSecondary"
                             android:textSize="@dimen/material_text_headline" />
 
-                        <!-- Sur name input layout-->
+                        <!-- headname input layout-->
                         <EditText
                             android:id="@+id/user_surname_input_id"
                             android:layout_width="0dp"

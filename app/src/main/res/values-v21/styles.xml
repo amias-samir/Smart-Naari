@@ -3,22 +3,22 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="BaseTheme">
-        <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:colorControlHighlight">@color/colorAccent</item> 
-        <item name="android:windowSharedElementsUseOverlay">false</item>
-        <item name="android:statusBarColor">@color/colorAccent</item>
+    <style head="AppTheme" parent="BaseTheme">
+        <item head="android:windowTranslucentStatus">false</item>
+        <item head="android:colorControlHighlight">@color/colorAccent</item> 
+        <item head="android:windowSharedElementsUseOverlay">false</item>
+        <item head="android:statusBarColor">@color/colorAccent</item>
 
 
         <!-- specify enter and exit transitions -->
         <!-- options are: explode, slide, fade -->
-        <item name="android:windowEnterTransition">@transition/explode_no_flicker</item>
-        <item name="android:windowExitTransition">@transition/explode_no_flicker</item>
+        <item head="android:windowEnterTransition">@transition/explode_no_flicker</item>
+        <item head="android:windowExitTransition">@transition/explode_no_flicker</item>
 
         <!-- specify shared element transitions -->
-        <item name="android:windowSharedElementEnterTransition">
+        <item head="android:windowSharedElementEnterTransition">
             @transition/explode_no_flicker</item>
-        <item name="android:windowSharedElementExitTransition">
+        <item head="android:windowSharedElementExitTransition">
             @transition/explode_no_flicker</item>
 
 
@@ -28,11 +28,11 @@
     </style>
 
 
-    <style name="SignUpTheme" parent="BaseTheme">
-        <item name="colorControlHighlight">@color/colorAccent</item>
-        <item name="android:colorControlActivated">@color/colorWhite</item>
-        <item name="android:colorControlNormal">@color/colorWhite</item>
-        <item name="android:statusBarColor">@color/colorAccent</item>
+    <style head="SignUpTheme" parent="BaseTheme">
+        <item head="colorControlHighlight">@color/colorAccent</item>
+        <item head="android:colorControlActivated">@color/colorWhite</item>
+        <item head="android:colorControlNormal">@color/colorWhite</item>
+        <item head="android:statusBarColor">@color/colorAccent</item>
     </style>
 
 </resources>

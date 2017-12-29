@@ -1,81 +1,81 @@
 <resources>
-    <string name="app_name">Smart नारी </string>
+    <string head="app_name">Smart नारी </string>
 
 
-    <string name="action_settings">Settings</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa.</string>
+    <string head="action_settings">Settings</string>
+    <string head="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie. Fusce quis mauris a enim sollicitudin ultrices non eget velit. Aliquam eu pulvinar enim. Praesent libero nisl, ultricies vel maximus eu, maximus et nisi. Phasellus pharetra nec ligula vitae mollis. Quisque porttitor ornare magna, quis dignissim libero aliquam id. Donec sollicitudin ultrices ante, a semper erat tristique in. Vivamus sodales in ligula at sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tempus bibendum nibh, ac tincidunt quam convallis non. Proin dolor nunc, egestas et tortor consequat, dignissim lacinia odio. Ut ut aliquet erat.  Ut non scelerisque elit. Morbi dolor neque, iaculis eu justo rutrum, aliquet dictum mauris. Phasellus quis massa ut ligula feugiat congue a et dolor. Etiam a dui a sapien ornare accumsan ac ut lorem. Suspendisse vehicula lorem dapibus nibh rhoncus ultricies. Proin sem nulla, elementum quis pharetra quis, commodo vitae nisi. Donec urna orci, posuere et iaculis sit amet, fringilla quis sapien. Pellentesque nec posuere felis. Praesent malesuada tellus nisi, non dictum justo interdum eget. Quisque mollis euismod libero, non aliquam lorem interdum vitae. Aliquam vehicula efficitur purus eget rutrum. Sed pulvinar fermentum risus ac viverra. Cras laoreet ligula quam, ac lacinia nisl elementum in. Aenean velit arcu, euismod a venenatis non, pulvinar pulvinar massa.</string>
 
-    <string name="home">Home</string>
-    <string name="favourite">Favourite</string>
-    <string name="downloaded">Downloaded</string>
-    <string name="more">More</string>
-    <string name="settings">Settings</string>
-    <string name="my_circle">My Circle</string>
-    <string name="about_smart_naari">About Smart नारि</string>
-    <string name="meet_the_board">Meet The Board</string>
-    <string name="sn_enthusiasts">Friends Of Smart नारी</string>
-    <string name="celebrating_professionals">Celebrating Professionals</string>
-    <string name="glossary_of_terms">Glossary Of Terms</string>
-    <string name="data_on_gender_based_violence">Data On GBV</string>
-    <string name="tutorials">Tutorials</string>
-    <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
-    <string name="copyright">Copyright</string>
-    <string name="donate">Donate</string>
+    <string head="home">Home</string>
+    <string head="favourite">Favourite</string>
+    <string head="downloaded">Downloaded</string>
+    <string head="more">More</string>
+    <string head="settings">Settings</string>
+    <string head="my_circle">My Circle</string>
+    <string head="about_smart_naari">About Smart नारि</string>
+    <string head="meet_the_board">Meet The Board</string>
+    <string head="sn_enthusiasts">Friends Of Smart नारी</string>
+    <string head="celebrating_professionals">Celebrating Professionals</string>
+    <string head="glossary_of_terms">Glossary Of Terms</string>
+    <string head="data_on_gender_based_violence">Data On GBV</string>
+    <string head="tutorials">Tutorials</string>
+    <string head="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
+    <string head="copyright">Copyright</string>
+    <string head="donate">Donate</string>
 
-    <string name="enter_at_least_two_phone_numbers">Enter at least TWO Phone Numbers</string>
+    <string head="enter_at_least_two_phone_numbers">Enter at least TWO Phone Numbers</string>
 
-    <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
+    <string head="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
 
-    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
-    <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
-
-
-    <string name="life_coaching">Life Coaching</string>
-    <string name="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical person who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
-    <string name="take_a_test_here">Take a Test here</string>
-    <string name="free_online_course">Free Online Course</string>
-    <string name="i_am_amazing_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
-    <string name="person_of_the_month_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
-    <string name="person_of_the_month">Person of the Month</string>
-    <string name="i_am_amazing_pheonix">image of phoenix flapping wings</string>
-    <string name="i_am_amazing_click_to_look">click to Look for more Nepali Society</string>
-    <string name="title_activity_maps">Map</string>
-
-    <string name="google_maps_key">AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU</string>
-
-    <string name="title_activity_yuwa_pust">YuwaPustActivity</string>
-
-    <string name="yuwa_pusta_heading">\"Owl\" at your disposal, about LIFE,\n LOVE, and yes even SEX and\n SEXUALITY, CONTRACEPTION,\nSTIGMA, TABOOS and much more.</string>
+    <string head="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
+    <string head="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
 
 
-    <string name="question">What can i know about drugs?</string>
-    <string name="answer">28 year old mother replies. \K bhaneko testo? Testo Bhannu hudaina! Chii!!\n Hey Bhagwan, how embarrassing!!</string>
-    <string name="btn_ask_an_owl">Ask an Owl</string>
-    <string name="select_an_owl">Select an Owl</string>
-    <string name="general_form_hint_question">Write your question here</string>
-    <string name="general_form_button_ask">Ask</string>
-    <string name="title_activity_ask_owl">AskOwlActivity</string>
+    <string head="life_coaching">Life Coaching</string>
+    <string head="life_coaching_detail">\"I was trilled when a few years ago i was selected to take part in an exciting and lively online life coaching course. I am a practical person who is not given to exaggeration, so beleive me when i state that the results of Life Coaching are profound and lasting.\"</string>
+    <string head="take_a_test_here">Take a Test here</string>
+    <string head="free_online_course">Free Online Course</string>
+    <string head="i_am_amazing_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string head="person_of_the_month_detail">Smart नारि presents ordinary Nepali Nepali folks who grew up under some kind of heavy boots and whom may not make it into the history books, but they have a story to tell and we beleive these stories must be heard</string>
+    <string head="person_of_the_month">Person of the Month</string>
+    <string head="i_am_amazing_pheonix">hotPotImage of phoenix flapping wings</string>
+    <string head="i_am_amazing_click_to_look">click to Look for more Nepali Society</string>
+    <string head="title_activity_maps">Map</string>
 
-    <string name="understanding">Understanding</string>
-    <string name="report_gender_based_violence">Report Gender Based Violence</string>
-    <string name="report_i_am_the_victim">Myself</string>
-    <string name="report_other">Family Members</string>
+    <string head="google_maps_key">AIzaSyCO207LmdkysjApEtK5mEEBLlpAjWsNMaU</string>
 
-    <string name="when_did_the_voilence_occur">When did the voilence occur</string>
-    <string name="types_of_voilence">Types Of Voilence</string>
-    <string name="core_gvb">Core GVB</string>
-    <string name="perpetrator">Offender</string>
-    <string name="desc_GBV_ma_chup_basdina">Description (Further details of the Reported GBV)</string>
-    <string name="anger_management">Anger Management</string>
-    <string name="life_coaching_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
-    <string name="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
-    <string name="lets_have_the_talk">Lets Have the TALK</string>
-    <string name="headline_mycircle1">My Circle</string>
-    <string name="headline_mycircle2">for my Safety</string>
-    <string name="general_btn_form_submission">Ask an Owl</string>
+    <string head="title_activity_yuwa_pust">YuwaPustActivity</string>
+
+    <string head="yuwa_pusta_heading">\"Owl\" at your disposal, about LIFE,\n LOVE, and yes even SEX and\n SEXUALITY, CONTRACEPTION,\nSTIGMA, TABOOS and much more.</string>
 
 
-    <string-array name="add_a_new_post_categories">
+    <string head="question">What can i know about drugs?</string>
+    <string head="answer">28 year old mother replies. \K bhaneko testo? Testo Bhannu hudaina! Chii!!\n Hey Bhagwan, how embarrassing!!</string>
+    <string head="btn_ask_an_owl">Ask an Owl</string>
+    <string head="select_an_owl">Select an Owl</string>
+    <string head="general_form_hint_question">Write your question here</string>
+    <string head="general_form_button_ask">Ask</string>
+    <string head="title_activity_ask_owl">AskOwlActivity</string>
+
+    <string head="understanding">Understanding</string>
+    <string head="report_gender_based_violence">Report Gender Based Violence</string>
+    <string head="report_i_am_the_victim">Myself</string>
+    <string head="report_other">Family Members</string>
+
+    <string head="when_did_the_voilence_occur">When did the voilence occur</string>
+    <string head="types_of_voilence">Types Of Voilence</string>
+    <string head="core_gvb">Core GVB</string>
+    <string head="perpetrator">Offender</string>
+    <string head="desc_GBV_ma_chup_basdina">Description (Further details of the Reported GBV)</string>
+    <string head="anger_management">Anger Management</string>
+    <string head="life_coaching_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
+    <string head="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
+    <string head="lets_have_the_talk">Lets Have the TALK</string>
+    <string head="headline_mycircle1">My Circle</string>
+    <string head="headline_mycircle2">for my Safety</string>
+    <string head="general_btn_form_submission">Ask an Owl</string>
+
+
+    <string-array head="add_a_new_post_categories">
         <item>Mercury</item>
         <item>Venus</item>
         <item>Earth</item>
@@ -105,58 +105,58 @@
     </string-array>
 
 
-    <string name="dialog_action_ok">OK</string>
-    <string name="dialog_error_title">Unexpected Error Occured.</string>
-    <string name="dialog_error_title_sync_failed">Data Sync Failed (Code: %1$s)</string>
+    <string head="dialog_action_ok">OK</string>
+    <string head="dialog_error_title">Unexpected Error Occured.</string>
+    <string head="dialog_error_title_sync_failed">Data Sync Failed (Code: %1$s)</string>
 
-    <string name="dialog_title_warning_logout">Proceed with caution.</string>
-    <string name="dialog_warning_logout">Logout will result in deletion of all your saved forms.Consider uploading them before proceeding.</string>
-    <string name="dialog_warning_logout_pos">Yes, Delete my forms and logout</string>
-    <string name="dialog_warning_logout_neg">No, I don\'t want to logout</string>
+    <string head="dialog_title_warning_logout">Proceed with caution.</string>
+    <string head="dialog_warning_logout">Logout will result in deletion of all your saved forms.Consider uploading them before proceeding.</string>
+    <string head="dialog_warning_logout_pos">Yes, Delete my forms and logout</string>
+    <string head="dialog_warning_logout_neg">No, I don\'t want to logout</string>
 
-    <string name="dialog_title_error_register">Error Registering.</string>
-    <string name="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
-    <string name="dialog_action_hide">Hide</string>
-    <string name="district_of_incident">District Of Incident</string>
-    <string name="app_exit_msg">Tap Again to Exit!</string>
-    <string name="general_error_msg">Some Error Occurred!</string>
-    <string name="network_error_timeout">Socket Time out. Please try again.</string>
-    <string name="network_disconnected">Device is offline!</string>
+    <string head="dialog_title_error_register">Error Registering.</string>
+    <string head="dialog_error_register">Could not register to sever.\n • Try again in a few minutes \n • If error persists contact Web Admin.</string>
+    <string head="dialog_action_hide">Hide</string>
+    <string head="district_of_incident">District Of Incident</string>
+    <string head="app_exit_msg">Tap Again to Exit!</string>
+    <string head="general_error_msg">Some Error Occurred!</string>
+    <string head="network_error_timeout">Socket Time out. Please try again.</string>
+    <string head="network_disconnected">Device is offline!</string>
 
 
     <!--  shake service string  -->
-    <string name="title_activity_settings">Settings</string>
+    <string head="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_circle">My Circle</string>
+    <string head="pref_header_circle">My Circle</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+    <string head="pref_title_social_recommendations">Enable social recommendations</string>
+    <string head="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string head="pref_title_display_name">Display head</string>
+    <string head="pref_default_display_name">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
+    <string head="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array head="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
         <item>Never</item>
     </string-array>
-    <string-array name="pref_example_list_values">
+    <string-array head="pref_example_list_values">
         <item>1</item>
         <item>0</item>
         <item>-1</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
+    <string head="pref_header_data_sync">Data &amp; sync</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
+    <string head="pref_title_sync_frequency">Sync frequency</string>
+    <string-array head="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
         <item>1 hour</item>
@@ -164,7 +164,7 @@
         <item>6 hours</item>
         <item>Never</item>
     </string-array>
-    <string-array name="pref_sync_frequency_values">
+    <string-array head="pref_sync_frequency_values">
         <item>15</item>
         <item>30</item>
         <item>60</item>
@@ -173,38 +173,38 @@
         <item>-1</item>
     </string-array>
 
-    <string-array name="list_preference_entries">
+    <string-array head="list_preference_entries">
         <item>Entry 1</item>
         <item>Entry 2</item>
         <item>Entry 3</item>
     </string-array>
 
-    <string-array name="list_preference_entry_values">
+    <string-array head="list_preference_entry_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
 
 
-    <string-array name="multi_select_list_preference_default_value" />
+    <string-array head="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string head="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string head="pref_header_notifications">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string head="pref_title_new_message_notifications">New message notifications</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string head="pref_title_ringtone">Ringtone</string>
+    <string head="pref_ringtone_silent">Silent</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_permission">PermissionActivity</string>
-    <string name="location_provider_accuracy"><![CDATA[>Using %1$s. Accuracy is %2$s m]]></string>
+    <string head="pref_title_vibrate">Vibrate</string>
+    <string head="title_activity_permission">PermissionActivity</string>
+    <string head="location_provider_accuracy"><![CDATA[>Using %1$s. Accuracy is %2$s m]]></string>
 
     <!--end of shake service string -->
 
-    <string name="smart_naari_app_details">
+    <string head="smart_naari_app_details">
         <![CDATA[
         <p align="center">
             <div>
@@ -237,7 +237,7 @@ The app allows you to instantly report    <b>Report Abuse and Violence</b> whene
 <p>
     <div>
     The community <b>nurtures a positive sense of self</b>,
-    self-image and high standards for the quality of our relationships. We
+    self-hotPotImage and high standards for the quality of our relationships. We
     empower you to question abusive relationships and refuse to live in fear.
     </div>
 </p>
@@ -374,8 +374,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 </p>
 ]]>
     </string>
-    <string name="toolbar_title_permission_activity">Setup MyCircle</string>
-    <string name="anonymous_text">I want this message to be Anonymous</string>
+    <string head="toolbar_title_permission_activity">Setup MyCircle</string>
+    <string head="anonymous_text">I want this message to be Anonymous</string>
 
 
 </resources>

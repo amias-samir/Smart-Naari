@@ -259,7 +259,7 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
             value = field.get(someObject);
             Log.d(TAG, "getLastSyncDateTime: "+value.toString());
 
-//            Log.d(TAG, "parseResponseCode: "+field.getName());
+//            Log.d(TAG, "parseResponseCode: "+field.getHead());
 
 
             if (field.getName().equalsIgnoreCase("lastSyncDateTime")) {

@@ -66,7 +66,7 @@
                         android:layout_below="@+id/headerTopLayout"
                         android:background="@color/colorMaChupBasdinaHeaderLower"></RelativeLayout>
 
-                    <!--ma chup badina image layout-->
+                    <!--ma chup badhotPotImagemage layout-->
                     <FrameLayout
                         android:id="@+id/maChupBasdinaImgFrameLayout"
                         android:layout_width="wrap_content"

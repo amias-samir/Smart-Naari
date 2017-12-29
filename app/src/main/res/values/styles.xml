@@ -1,137 +1,137 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="BaseTheme" />
+    <style head="AppTheme" parent="BaseTheme" />
 
 
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@android:color/white</item> 
-        <item name="colorPrimaryDark">@android:color/white</item> 
-        <item name="colorControlHighlight">@color/colorAccent</item> 
-        <item name="colorAccent">@color/colorPrimaryDark</item>
-        <item name="selectableItemBackground">@drawable/selectable_item_background</item>
-        <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
-        <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="android:textColor">@color/black</item>
+    <style head="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item head="colorPrimary">@android:color/white</item> 
+        <item head="colorPrimaryDark">@android:color/white</item> 
+        <item head="colorControlHighlight">@color/colorAccent</item> 
+        <item head="colorAccent">@color/colorPrimaryDark</item>
+        <item head="selectableItemBackground">@drawable/selectable_item_background</item>
+        <item head="android:selectableItemBackground">@drawable/selectable_item_background</item>
+        <item head="android:windowBackground">@color/windowBackground</item>
+        <item head="android:textColor">@color/black</item>
 
 
     </style>
 
 
-    <style name="NavigationView">
-        <item name="android:listDivider">@color/colorAccent</item>
+    <style head="NavigationView">
+        <item head="android:listDivider">@color/colorAccent</item>
     </style>
 
 
     <!-- custom style -->
-    <style name="radionbutton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/rb_drawable</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:backgroundDimEnabled">true</item>
+    <style head="radionbutton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item head="android:button">@drawable/rb_drawable</item>
+        <item head="android:windowIsTranslucent">true</item>
+        <item head="android:windowBackground">@android:color/transparent</item>
+        <item head="android:windowContentOverlay">@null</item>
+        <item head="android:windowNoTitle">true</item>
+        <item head="android:windowIsFloating">false</item>
+        <item head="android:backgroundDimEnabled">true</item>
     </style>
 
     <!-- custom style ma cgup basdina radio button -->
-    <style name="radionbuttonMaChupBasdina" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/rb_drawable_ma_chup_basdina</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:backgroundDimEnabled">true</item>
+    <style head="radionbuttonMaChupBasdina" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item head="android:button">@drawable/rb_drawable_ma_chup_basdina</item>
+        <item head="android:windowIsTranslucent">true</item>
+        <item head="android:windowBackground">@android:color/transparent</item>
+        <item head="android:windowContentOverlay">@null</item>
+        <item head="android:windowNoTitle">true</item>
+        <item head="android:windowIsFloating">false</item>
+        <item head="android:backgroundDimEnabled">true</item>
     </style>
 
     <!-- style file for splash screen -->
-    <style name="SplashTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
+    <style head="SplashTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item head="android:windowBackground">@drawable/splash_background</item>
+        <item head="colorPrimaryDark">@color/colorPrimaryDark</item> 
     </style>
 
-    <style name="SignUpTheme" parent="BaseTheme">
-        <item name="colorControlHighlight">@color/colorAccent</item>
+    <style head="SignUpTheme" parent="BaseTheme">
+        <item head="colorControlHighlight">@color/colorAccent</item>
     </style>
 
 
     <!-- style file for My circle -->
-    <style name="MyCircleTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item> 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
-        <item name="colorControlHighlight">@color/colorAccent</item> 
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorSecondary">@color/textSecondary</item>
-        <item name="android:windowBackground">@color/colorMyCircleBackground</item>
-        <item name="selectableItemBackground">@drawable/selectable_item_background</item>
-        <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
+    <style head="MyCircleTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item head="colorPrimary">@color/colorPrimary</item> 
+        <item head="colorPrimaryDark">@color/colorPrimaryDark</item> 
+        <item head="colorControlHighlight">@color/colorAccent</item> 
+        <item head="colorAccent">@color/colorAccent</item>
+        <item head="android:textColor">@color/colorWhite</item>
+        <item head="android:textColorSecondary">@color/textSecondary</item>
+        <item head="android:windowBackground">@color/colorMyCircleBackground</item>
+        <item head="selectableItemBackground">@drawable/selectable_item_background</item>
+        <item head="android:selectableItemBackground">@drawable/selectable_item_background</item>
 
 
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
+    <style head="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
+    <style head="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
 
 
-    <style name="SmartNaariSpinnerTheme" parent="android:Widget.Spinner">
-        <item name="android:background">@drawable/smart_naari_spinner_bg</item>
+    <style head="SmartNaariSpinnerTheme" parent="android:Widget.Spinner">
+        <item head="android:background">@drawable/smart_naari_spinner_bg</item>
     </style>
 
-    <style name="SmartNaariInputLayoutTheme" parent="@android:style/TextAppearance">
-        <item name="android:background">@drawable/smart_naari_edit_text_bg</item>
+    <style head="SmartNaariInputLayoutTheme" parent="@android:style/TextAppearance">
+        <item head="android:background">@drawable/smart_naari_edit_text_bg</item>
 
-        <!--<item name="android:focusableInTouchMode"> true </item>-->
-        <!--<item name="android:focusable"> true </item>-->
+        <!--<iheadname="android:focusableInTouchMode"> true </item>-->
+        <!--<iheadname="android:focusable"> true </item>-->
 
     </style>
 
 
-    <!--<style name="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">-->
-        <!--<item name="android:layout_width">match_parent</item>-->
-        <!--<item name="android:textAllCaps">true</item>-->
-        <!--&lt;!&ndash;<item name="android:background">@drawable/list_section_divider</item>&ndash;&gt;-->
-        <!--<item name="android:layout_height">wrap_content</item>-->
-        <!--<item name="android:textStyle">bold</item>-->
-        <!--<item name="android:textColor">@color/colorAccent</item>-->
-        <!--<item name="android:textSize">14sp</item>-->
-        <!--<item name="android:gravity">center_vertical</item>-->
+    <!--<stheadname="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">-->
+        <!--<iheadname="android:layout_width">match_parent</item>-->
+        <!--<iheadname="android:textAllCaps">true</item>-->
+        <!--&lt;!&ndash;<iheadname="android:background">@drawable/list_section_divider</item>&ndash;&gt;-->
+        <!--<iheadname="android:layout_height">wrap_content</item>-->
+        <!--<iheadname="android:textStyle">bold</item>-->
+        <!--<iheadname="android:textColor">@color/colorAccent</item>-->
+        <!--<iheadname="android:textSize">14sp</item>-->
+        <!--<iheadname="android:gravity">center_vertical</item>-->
 
     <!--</style>-->
 
-    <style name="CustomOverflowBack" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
-        <item name="android:popupBackground">@color/colorAccent</item>
+    <style head="CustomOverflowBack" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item head="android:popupBackground">@color/colorAccent</item>
     </style>
 
-    <style name="BootstrapButton" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:background">@drawable/smart_naari_edit_text_bg_transparent</item>
-    </style>
-
-
-    <style name="BootstrapButtonTapItStopIt" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:background">@drawable/smart_naari_tap_it_stop_it_main_activity_popup</item>
-
+    <style head="BootstrapButton" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item head="android:background">@drawable/smart_naari_edit_text_bg_transparent</item>
     </style>
 
 
-    <style name="RiseUpDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor"> @color/black </item>
-        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+    <style head="BootstrapButtonTapItStopIt" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item head="android:background">@drawable/smart_naari_tap_it_stop_it_main_activity_popup</item>
 
     </style>
 
 
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
-        <item name="android:windowExitAnimation">@anim/dialog_slide_bottom</item>
+    <style head="RiseUpDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item head="android:textColor"> @color/black </item>
+        <item head="android:windowAnimationStyle">@style/DialogAnimation</item>
+
+    </style>
+
+
+    <style head="DialogAnimation">
+        <item head="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item head="android:windowExitAnimation">@anim/dialog_slide_bottom</item>
     </style>
 
     <!--  for shake service -->
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style head="AppTheme.NoActionBar">
+        <item head="windowActionBar">false</item>
+        <item head="windowNoTitle">true</item>
     </style>
     <!-- end of shake service style-->
 
