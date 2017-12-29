@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,8 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     private void configureViewHolder1(ViewHolder1 vh1, int position) {
         HotPotBlogRecipe hotPotBlogRecipe = (HotPotBlogRecipe) items.get(position);
         if (hotPotBlogRecipe != null) {
+            Log.d("HeterogeneousRecycler", "configureViewHolder1: "+hotPotBlogRecipe.getHead()+ ", "+
+            hotPotBlogRecipe.body +" , "+ hotPotBlogRecipe.getAuthor() + ", "+hotPotBlogRecipe.photo);
             Glide.with(vh1.itemView.getContext())
                     .load(hotPotBlogRecipe.photo)
 //                .override(250, 200)
@@ -99,9 +102,13 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         HotPotImage hotPotImage = (HotPotImage) items.get(position);
 //        vh2.getImageView().setImageResource(R.mipmap.ic_launcher);
 
-        Glide.with(vh2.itemView.getContext())
-                .load(hotPotImage.imagePath)
+        Log.d("HeterogeneousRecycler", "configureViewHolder2: "+hotPotImage.getAuthor() + ", "+hotPotImage.imagePath);
+
+        if(hotPotImage != null) {
+            Glide.with(vh2.itemView.getContext())
+                    .load(hotPotImage.getImagePath())
 //                .override(250, 200)
-                .into(vh2.getImageView());
+                    .into(vh2.getImageView());
+        }
     }
 }

@@ -6,11 +6,12 @@ import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
 @Entity (nameInDb = "hot_pot_of_passion_data")
 public class HotPotOfPassionData {
-
+    @Index(unique = true)
     @SerializedName("cnt_id")
     @Expose
     private String cntId;

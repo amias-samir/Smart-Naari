@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
@@ -55,6 +56,7 @@ public class HotPotComplexRecyclerViewActivity extends BaseActivity {
         List<HotPotOfPassionData> hotPotOfPassionData = appDataManager.getAllHotPotOfPassiondata() ;
 
         int dataSize = hotPotOfPassionData.size();
+        Log.d("HeterogeneousRecycler", " getSampleArrayList: Activity "+dataSize);
         for (int i = 0 ; i < dataSize ; i++){
 
             if(hotPotOfPassionData.get(i).getType().equals("photo")){
