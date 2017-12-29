@@ -300,7 +300,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
-
         <activity
             android:name=".masakchamchu.BookAnAppointmentActivity"
             android:screenOrientation="portrait">
@@ -308,14 +307,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".masakchamchu.MaSakchamChuMainActivity" />
         </activity>
-
-        <activity android:name=".XandYDetailsActivity"
+        <activity
+            android:name=".XandYDetailsActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
+        <activity android:name=".passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -49,6 +49,7 @@ import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
+import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
@@ -467,7 +468,8 @@ public class BeautifulMainActivity extends BaseActivity
 
     @OnClick(R.id.btn_open_hotpot)
     public void toHotPotOfPassion() {
-        startActivity(new Intent(this, ComplexListActivity.class));
+//        startActivity(new Intent(this, ComplexListActivity.class));
+        startActivity(new Intent(this, HotPotComplexRecyclerViewActivity.class));
     }
 
     @OnClick(R.id.iv_logo)
