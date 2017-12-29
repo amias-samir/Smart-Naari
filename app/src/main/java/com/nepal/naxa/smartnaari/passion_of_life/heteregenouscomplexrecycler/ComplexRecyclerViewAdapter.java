@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.nepal.naxa.smartnaari.R;
@@ -56,6 +58,8 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
             case USER:
                 View v1 = inflater.inflate(R.layout.layout_hotpot_viewholder1, viewGroup, false);
                 viewHolder = new ViewHolder1(v1);
+
+
                 break;
             case IMAGE:
                 View v2 = inflater.inflate(R.layout.layout_hotpot_viewholder2, viewGroup, false);
@@ -82,7 +86,7 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-    private void configureViewHolder1(ViewHolder1 vh1, int position) {
+    private void configureViewHolder1(final ViewHolder1 vh1, int position) {
         HotPotBlogRecipe hotPotBlogRecipe = (HotPotBlogRecipe) items.get(position);
         if (hotPotBlogRecipe != null) {
             Log.d("HeterogeneousRecycler", "configureViewHolder1: "+hotPotBlogRecipe.getHead()+ ", "+
@@ -95,6 +99,19 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
             vh1.getAuthor().setText(hotPotBlogRecipe.author);
             vh1.getExpandableTitle().setText(hotPotBlogRecipe.head);
             vh1.getBody().setText(hotPotBlogRecipe.body);
+
+            vh1.getExpandCollapseBtn().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        vh1.getExpandedContentlayout().setVisibility(View.VISIBLE);
+                    }else {
+                        vh1.getExpandedContentlayout().setVisibility(View.GONE);
+
+                    }
+                }
+            });
+
         }
     }
 
@@ -111,4 +128,5 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
                     .into(vh2.getImageView());
         }
     }
+
 }

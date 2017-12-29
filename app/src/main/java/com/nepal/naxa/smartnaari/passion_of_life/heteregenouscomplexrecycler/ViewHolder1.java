@@ -3,7 +3,9 @@ package com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.nepal.naxa.smartnaari.R;
 
@@ -21,6 +23,8 @@ public class ViewHolder1 extends RecyclerView.ViewHolder {
     private ImageView image;
     private TextView author;
     private TextView expandableTitle ;
+    private ToggleButton expandCollapseBtn ;
+    private LinearLayout expandedContentlayout;
 
     public ViewHolder1(View v) {
         super(v);
@@ -29,6 +33,8 @@ public class ViewHolder1 extends RecyclerView.ViewHolder {
         expandableTitle = (TextView) v.findViewById(R.id.iv_expand_title);
         body = (HtmlTextView) v.findViewById(R.id.tv_content);
         image = (ImageView) v.findViewById(R.id.iv_cover);
+        expandCollapseBtn = (ToggleButton)v.findViewById(R.id.iv_expand_collapse_indicator);
+        expandedContentlayout = (LinearLayout) v.findViewById(R.id.linear_content);
     }
 
     public TextView getHead() {
@@ -72,6 +78,24 @@ public class ViewHolder1 extends RecyclerView.ViewHolder {
     public void setExpandableTitle(TextView expandableTitle) {
         this.expandableTitle = expandableTitle;
     }
+
+
+    public ToggleButton getExpandCollapseBtn() {
+        return expandCollapseBtn;
+    }
+
+    public void setExpandCollapseBtn(ToggleButton expandCollapseBtn) {
+        this.expandCollapseBtn = expandCollapseBtn;
+    }
+
+    public LinearLayout getExpandedContentlayout() {
+        return expandedContentlayout;
+    }
+
+    public void setExpandedContentlayout(LinearLayout expandedContentlayout) {
+        this.expandedContentlayout = expandedContentlayout;
+    }
+
 
 
 }

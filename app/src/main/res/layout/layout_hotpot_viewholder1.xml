@@ -93,14 +93,27 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_expandable_indicator"
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_expandable_indicator"-->
+            <!--android:layout_width="28dp"-->
+            <!--android:layout_height="31dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:foregroundGravity="center_vertical"-->
+            <!--android:src="@drawable/ic_circle_down_white" />-->
+
+        <ToggleButton
+            android:id="@+id/iv_expand_collapse_indicator"
             android:layout_width="28dp"
             android:layout_height="31dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:foregroundGravity="center_vertical"
-            android:src="@drawable/ic_circle_down_white" />
+            android:text=""
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/ic_circle_down_white" />
+
     </RelativeLayout>
 
     <LinearLayout
