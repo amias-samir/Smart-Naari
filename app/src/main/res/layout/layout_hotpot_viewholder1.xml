@@ -194,7 +194,8 @@
             android:layout_marginRight="35dp"
             android:layout_marginStart="35dp"
             android:text="Share On"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -203,7 +204,8 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_weight="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_facebook_btn"
@@ -228,7 +230,8 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_weight="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/iv_expand_title3"
@@ -257,7 +260,8 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_weight="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="wrap_content"

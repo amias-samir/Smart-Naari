@@ -19,8 +19,9 @@ import org.sufficientlysecure.htmltextview.HtmlTextView;
 public class ViewHolder1 extends RecyclerView.ViewHolder {
 
     private TextView head;
+    private TextView expandImageTitle;
     private HtmlTextView body;
-    private ImageView image;
+    private ImageView image, expandImage;
     private TextView author;
     private TextView expandableTitle ;
     private ToggleButton expandCollapseBtn ;
@@ -29,10 +30,12 @@ public class ViewHolder1 extends RecyclerView.ViewHolder {
     public ViewHolder1(View v) {
         super(v);
         head = (TextView) v.findViewById(R.id.tv_title_black);
+        expandImageTitle = (TextView) v.findViewById(R.id.expand_photo_title);
         author = (TextView) v.findViewById(R.id.tv_title_white);
         expandableTitle = (TextView) v.findViewById(R.id.iv_expand_title);
         body = (HtmlTextView) v.findViewById(R.id.tv_content);
         image = (ImageView) v.findViewById(R.id.iv_cover);
+        expandImage = (ImageView) v.findViewById(R.id.expand_image_view);
         expandCollapseBtn = (ToggleButton)v.findViewById(R.id.iv_expand_collapse_indicator);
         expandedContentlayout = (LinearLayout) v.findViewById(R.id.linear_content);
     }
@@ -96,6 +99,22 @@ public class ViewHolder1 extends RecyclerView.ViewHolder {
         this.expandedContentlayout = expandedContentlayout;
     }
 
+
+    public TextView getExpandImageTitle() {
+        return expandImageTitle;
+    }
+
+    public void setExpandImageTitle(TextView expandImageTitle) {
+        this.expandImageTitle = expandImageTitle;
+    }
+
+    public ImageView getExpandImage() {
+        return expandImage;
+    }
+
+    public void setExpandImage(ImageView expandImage) {
+        this.expandImage = expandImage;
+    }
 
 
 }

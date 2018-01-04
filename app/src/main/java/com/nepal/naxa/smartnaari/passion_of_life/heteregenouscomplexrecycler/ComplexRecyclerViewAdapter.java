@@ -91,14 +91,22 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         if (hotPotBlogRecipe != null) {
             Log.d("HeterogeneousRecycler", "configureViewHolder1: "+hotPotBlogRecipe.getHead()+ ", "+
             hotPotBlogRecipe.body +" , "+ hotPotBlogRecipe.getAuthor() + ", "+hotPotBlogRecipe.photo);
+
+//            list image
             Glide.with(vh1.itemView.getContext())
                     .load(hotPotBlogRecipe.photo)
 //                .override(250, 200)
                     .into(vh1.getImage());
+//            expand image
+            Glide.with(vh1.itemView.getContext())
+                    .load(hotPotBlogRecipe.photo)
+                    .into(vh1.getExpandImage());
+
             vh1.getHead().setText(hotPotBlogRecipe.head);
             vh1.getAuthor().setText(hotPotBlogRecipe.author);
             vh1.getExpandableTitle().setText(hotPotBlogRecipe.head);
-            vh1.getBody().setText(hotPotBlogRecipe.body);
+            vh1.getExpandImageTitle().setText(hotPotBlogRecipe.head);
+            vh1.getBody().setHtml(hotPotBlogRecipe.body);
 
             vh1.getExpandCollapseBtn().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
