@@ -3,50 +3,66 @@ package com.nepal.naxa.smartnaari.data.network;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.greenrobot.greendao.annotation.Index;
+
 
 public class OwlData {
 
-	@SerializedName("owl_gender")
-	private String owlGender;
+    @Index(unique = true)
+    @SerializedName("owl_id")
+    private String owlId;
 
-	@SerializedName("owl_introduction_text")
-	private String owlIntroductionText;
+    @SerializedName("owl_gender")
+    private String owlGender;
 
-	@SerializedName("owl_name")
-	private String owlName;
+    @SerializedName("owl_introduction_text")
+    private String owlIntroductionText;
 
-	@SerializedName("owl_id")
-	private String owlId;
+    @SerializedName("owl_name")
+    private String owlName;
 
-	public void setOwlGender(String owlGender){
-		this.owlGender = owlGender;
-	}
+    @SerializedName("photo")
+    private String owlPhotoPath;
 
-	public String getOwlGender(){
-		return owlGender;
-	}
+    public void setOwlGender(String owlGender) {
+        this.owlGender = owlGender;
+    }
 
-	public void setOwlIntroductionText(String owlIntroductionText){
-		this.owlIntroductionText = owlIntroductionText;
-	}
+    public String getOwlGender() {
+        return owlGender;
+    }
 
-	public String getOwlIntroductionText(){
-		return owlIntroductionText;
-	}
+    public void setOwlIntroductionText(String owlIntroductionText) {
+        this.owlIntroductionText = owlIntroductionText;
+    }
 
-	public void setOwlName(String owlName){
-		this.owlName = owlName;
-	}
+    public String getOwlIntroductionText() {
+        return owlIntroductionText;
+    }
 
-	public String getOwlName(){
-		return owlName;
-	}
+    public void setOwlName(String owlName) {
+        this.owlName = owlName;
+    }
 
-	public void setOwlId(String owlId){
-		this.owlId = owlId;
-	}
+    public String getOwlName() {
+        return owlName;
+    }
 
-	public String getOwlId(){
-		return owlId;
-	}
+    public void setOwlId(String owlId) {
+        this.owlId = owlId;
+    }
+
+    public String getOwlId() {
+        return owlId;
+    }
+
+
+    public String getOwlPhotoPath() {
+        return owlPhotoPath;
+    }
+
+    public void setOwlPhotoPath(String owlPhotoPath) {
+        this.owlPhotoPath = owlPhotoPath;
+    }
+
 }

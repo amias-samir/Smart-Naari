@@ -18,6 +18,7 @@
     <color name="textPrimary">#454545</color>
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
+    <color name="halfWhiteTransparent">#8bffffff</color>
     <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
     <color name="colorLoginIncaseText">#454545</color>
     <color name="colorMaChupBasdinaHeaderLower">#FE9A9A</color>

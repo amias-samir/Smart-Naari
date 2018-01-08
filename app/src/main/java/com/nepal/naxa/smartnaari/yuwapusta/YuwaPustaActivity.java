@@ -23,6 +23,7 @@ import com.nepal.naxa.smartnaari.YuwaPustaQueryDetailsActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
@@ -138,12 +139,18 @@ public class YuwaPustaActivity extends BaseActivity  {
     }
 
     private void initHorizontalRecyclerView() {
-        List<Owl> owlslist = Owl.getOwlsList();
+        List<OwlData> owlslist = appDataManager.getOwls();
         RecyclerViewAdapter horizontalRecyclerViewAdapter = new RecyclerViewAdapter(owlslist);
 
         yuwaPustaActRvOwlslist.setAdapter(horizontalRecyclerViewAdapter);
         yuwaPustaActRvOwlslist.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        horizontalRecyclerViewAdapter.setOnItemClickListener(this);
+        horizontalRecyclerViewAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, OwlData owl) {
+
+            }
+        });
+
 
         // add pager behavior
         PagerSnapHelper snapHelper = new PagerSnapHelper();

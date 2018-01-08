@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
 
 import java.util.List;
@@ -38,11 +39,11 @@ import butterknife.ButterKnife;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
 
 
-    private List<Owl> items;
+    private List<OwlData> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
 
-    public RecyclerViewAdapter(List<Owl> items) {
+    public RecyclerViewAdapter(List<OwlData> items) {
         this.items = items;
     }
 
@@ -63,23 +64,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Owl item = items.get(position);
+        OwlData item = items.get(position);
 
 
-        Random rand = new Random();
+//        Random rand = new Random();
 
-        int randomNumber = rand.nextInt(50) + 1;
-        String photoUrl = "http://lorempixel.com/500/500/people/"+randomNumber;
+//        int randomNumber = rand.nextInt(50) + 1;
+//        String photoUrl = "http://lorempixel.com/500/500/people/"+randomNumber;
+        String photoUrl = item.getOwlPhotoPath();
 
 
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv1);
+        Glide.with(context)
+                .load(photoUrl).
+                apply(RequestOptions.
+                        circleCropTransform()).
+                into(holder.listItemYuwaPustaIv1);
         holder.itemView.setTag(item);
 
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv2);
-        holder.itemView.setTag(item);
-
-        Glide.with(context).load(photoUrl).apply(RequestOptions.circleCropTransform()).into(holder.listItemYuwaPustaIv3);
-        holder.itemView.setTag(item);
+//        Glide.with(context).
+//                load(photoUrl).
+//                apply(RequestOptions.
+//                        circleCropTransform()).
+//                into(holder.listItemYuwaPustaIv2);
+//        holder.itemView.setTag(item);
+//
+//        Glide.with(context).
+//                load(photoUrl).
+//                apply(RequestOptions.
+//                        circleCropTransform()).
+//                into(holder.listItemYuwaPustaIv3);
+//        holder.itemView.setTag(item);
 
 //        }
 
@@ -94,7 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onClick(final View v) {
-        onItemClickListener.onItemClick(v, (Owl) v.getTag());
+        onItemClickListener.onItemClick(v, (OwlData) v.getTag());
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
@@ -102,10 +116,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @BindView(R.id.list_item_yuwa_pusta_iv1)
         ImageView listItemYuwaPustaIv1;
-        @BindView(R.id.list_item_yuwa_pusta_iv2)
-        ImageView listItemYuwaPustaIv2;
-        @BindView(R.id.list_item_yuwa_pusta_iv3)
-        ImageView listItemYuwaPustaIv3;
+//        @BindView(R.id.list_item_yuwa_pusta_iv2)
+//        ImageView listItemYuwaPustaIv2;
+//        @BindView(R.id.list_item_yuwa_pusta_iv3)
+//        ImageView listItemYuwaPustaIv3;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -116,7 +130,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, Owl owl);
+        void onItemClick(View view, OwlData owl);
 
     }
 }

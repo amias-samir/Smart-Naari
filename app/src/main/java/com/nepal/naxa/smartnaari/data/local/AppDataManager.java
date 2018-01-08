@@ -50,7 +50,7 @@ public class AppDataManager extends BaseActivity {
         daoSession = ((SmartNaari) context.getApplicationContext()).getDaoSession();
     }
 
-//    ==================== owl lis ==============================//
+    //    ==================== owl lis ==============================//
     public void saveOwls(OwlWrapper owlWrapper) {
 
         String json = gson.toJson(owlWrapper.getData());
@@ -69,9 +69,9 @@ public class AppDataManager extends BaseActivity {
     }
 //    ============================================================//
 
-//================================ yuwa pusta question answer =======================//
-    public void prepareToSaveYuwaQuestions( List<YuwaQuestion> yuwaQuestion) {
-     //loop
+    //================================ yuwa pusta question answer =======================//
+    public void prepareToSaveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
+        //loop
 //new Thread(new Runnable() {
 //    @Override
 //    public void run() {
@@ -103,21 +103,21 @@ public class AppDataManager extends BaseActivity {
         }
 //    }
 //});
- }
+    }
 
     public List<YuwaQuestion> getAllYuwaQuestions() {
         return daoSession.getYuwaQuestionDao().loadAll();
     }
 //=====================================================================================//
 
-//============================= services list ========================================//
-    public void prepareToSaveServices( List<ServicesData> servicesData) {
+    //============================= services list ========================================//
+    public void prepareToSaveServices(List<ServicesData> servicesData) {
 //        if (Thread.currentThread() == Looper.getMainLooper().getThread())Log.d("Samir","Main");
 
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
-        Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row size !!!!!!! \n row size :" +servicesData.size() );
+        Log.e(TAG, "prepareToServicesData: " + "!!!!!!! row size !!!!!!! \n row size :" + servicesData.size());
 
         //loop
         for (int i = 0; i < servicesData.size(); i++) {
@@ -126,9 +126,8 @@ public class AppDataManager extends BaseActivity {
 
                 if (daoSession.getServicesDataDao().count() == 0) {
                     daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
-                    Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row empty !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
-                }
-                else {
+                    Log.e(TAG, "prepareToServicesData: " + "!!!!!!! row empty !!!!!!! \n table id :" + servicesData.get(i).getServiceId());
+                } else {
                     if (servicesData.get(i).getIsDelete().equals("1")) {
 
                         final DeleteQuery<ServicesData> tableDeleteQuery = daoSession.queryBuilder(ServicesData.class)
@@ -136,11 +135,11 @@ public class AppDataManager extends BaseActivity {
                                 .buildDelete();
                         tableDeleteQuery.executeDeleteWithoutDetachingEntities();
                         daoSession.clear();
-                Log.e(TAG, "prepareToSaveServicesData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+                        Log.e(TAG, "prepareToSaveServicesData: " + "!!!!!!! row deleted !!!!!!! \n table id :" + servicesData.get(i).getServiceId());
 
                     } else {
                         daoSession.getServicesDataDao().insertOrReplaceInTx(servicesData.get(i));
-                Log.e(TAG, "prepareToServicesData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+servicesData.get(i).getServiceId() );
+                        Log.e(TAG, "prepareToServicesData: " + "!!!!!!! row inserted !!!!!!! \n table id :" + servicesData.get(i).getServiceId());
                     }
                 }
             } catch (Exception e) {
@@ -155,18 +154,22 @@ public class AppDataManager extends BaseActivity {
         return daoSession.getServicesDataDao().loadAll();
     }
 
-    public ArrayList<String> getAllUniqueServicesType(){
+    public ArrayList<String> getAllUniqueServicesType() {
 
-        String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT "+ServicesDataDao.Properties.OfficeType.columnName+" FROM "+ServicesDataDao.TABLENAME;
+        String SQL_DISTINCT_SERVICES_TYPE = "SELECT DISTINCT TRIM ( LOWER (" + ServicesDataDao.Properties.OfficeType.columnName +" ) ) " + " FROM " + ServicesDataDao.TABLENAME;
 
         ArrayList<String> result = new ArrayList<>();
+        String uniqueServiceType ;
         Cursor c = daoSession.getDatabase().rawQuery(SQL_DISTINCT_SERVICES_TYPE, null);
-        try{
+        try {
             if (c.moveToFirst()) {
                 do {
 
-                    result.add(c.getString(0));
-                    Log.d(TAG, "getAllServicesType: "+c.getString(0));
+                    uniqueServiceType = c.getString(0);
+                    if (!uniqueServiceType.isEmpty()) {
+                        result.add(uniqueServiceType.trim());
+                        Log.d(TAG, "getAllServicesType: " + uniqueServiceType);
+                    }
                 } while (c.moveToNext());
             }
         } finally {
@@ -179,41 +182,39 @@ public class AppDataManager extends BaseActivity {
 //====================================================================================//
 
 
-//    ======================================= HotPotOfPassion ===========================//
-public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotOfPassionData) {
+    //    ======================================= HotPotOfPassion ===========================//
+    public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotOfPassionData) {
 
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
-    //loop
-    for(int i = 0 ; i< hotPotOfPassionData.size(); i++){
-        try {
-            if(daoSession.getHotPotOfPassionDataDao().count() == 0 ){
-                daoSession.getHotPotOfPassionDataDao().insertOrReplaceInTx(hotPotOfPassionData.get(i));
-            }
-            else {
-                if (hotPotOfPassionData.get(i).getIsDelete() .equals("1")) {
-
-                    final DeleteQuery<HotPotOfPassionData> tableDeleteQuery = daoSession.queryBuilder(HotPotOfPassionData.class)
-                            .where(HotPotOfPassionDataDao.Properties.IsDelete.eq("1"))
-                            .buildDelete();
-                    tableDeleteQuery.executeDeleteWithoutDetachingEntities();
-                    daoSession.clear();
-                Log.e(TAG, "prepareToSaveHOtPotData: "+"!!!!!!! row deleted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
-
-                } else {
+        //loop
+        for (int i = 0; i < hotPotOfPassionData.size(); i++) {
+            try {
+                if (daoSession.getHotPotOfPassionDataDao().count() == 0) {
                     daoSession.getHotPotOfPassionDataDao().insertOrReplaceInTx(hotPotOfPassionData.get(i));
-                Log.e(TAG, "prepareToSaveHotPotData: "+"!!!!!!! row inserted !!!!!!! \n table id :"+hotPotOfPassionData.get(i).getCntId() );
+                } else {
+                    if (hotPotOfPassionData.get(i).getIsDelete().equals("1")) {
+
+                        final DeleteQuery<HotPotOfPassionData> tableDeleteQuery = daoSession.queryBuilder(HotPotOfPassionData.class)
+                                .where(HotPotOfPassionDataDao.Properties.IsDelete.eq("1"))
+                                .buildDelete();
+                        tableDeleteQuery.executeDeleteWithoutDetachingEntities();
+                        daoSession.clear();
+                        Log.e(TAG, "prepareToSaveHOtPotData: " + "!!!!!!! row deleted !!!!!!! \n table id :" + hotPotOfPassionData.get(i).getCntId());
+
+                    } else {
+                        daoSession.getHotPotOfPassionDataDao().insertOrReplaceInTx(hotPotOfPassionData.get(i));
+                        Log.e(TAG, "prepareToSaveHotPotData: " + "!!!!!!! row inserted !!!!!!! \n table id :" + hotPotOfPassionData.get(i).getCntId());
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 //            }
 //        });
-}
+    }
 
     public List<HotPotOfPassionData> getAllHotPotOfPassiondata() {
         return daoSession.getHotPotOfPassionDataDao().loadAll();
@@ -257,21 +258,21 @@ public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotO
             Object value;
 
             value = field.get(someObject);
-            Log.d(TAG, "getLastSyncDateTime: "+value.toString());
+            Log.d(TAG, "getLastSyncDateTime: " + value.toString());
 
 //            Log.d(TAG, "parseResponseCode: "+field.getName());
 
 
             if (field.getName().equalsIgnoreCase("lastSyncDateTime")) {
                 dateTime = value.toString();
-                Log.d(TAG, "getLastSyncDateTime: Inside Condition "+value.toString());
+                Log.d(TAG, "getLastSyncDateTime: Inside Condition " + value.toString());
             }
         }
 
         return dateTime;
     }
 
-    public void clearAllDAOSessiondata(){
+    public void clearAllDAOSessiondata() {
         daoSession.getServicesDataDao().deleteAll();
         daoSession.getYuwaQuestionDao().deleteAll();
         daoSession.getHotPotOfPassionDataDao().deleteAll();

@@ -39,7 +39,7 @@ public class NepaliDate {
 
         Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
         Timber.i(nepaliDateTime.getDayOfWeek() + "");
-        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dayIndex];
+        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[0];
 
     }
 

@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.services;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -57,6 +59,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     private GoogleMap map;
     private List<Marker> markersPresentOnMap;
 
+    BitmapDescriptor markerPolice, markerOCMC, markerKTMNGO, markerNGO, markerGOV, markerMoWCsW ;
+    Bitmap markerPolice1 ;
+
     //cluster testing
     private ClusterManager<ServicesData> mClusterManager;
 //    ==============
@@ -68,6 +73,16 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         appDataManager = new AppDataManager(getApplicationContext());
         markersPresentOnMap = new ArrayList<>();
+
+        markerPolice = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_police);
+        markerOCMC = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ocmc);
+        markerKTMNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ktm_ngo);
+        markerNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
+        markerGOV = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_government);
+        markerMoWCsW = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_mowcsw);
+
+
+//        markerPolice1 = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_mowcsw);
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -175,40 +190,79 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 try {
                     LatLng location;
-                    mClusterManager.addItems(servicesData);
+//                    mClusterManager.addItems(servicesData);
 
 //                    Log.e(TAG, "runAddMarkerSAMIR: " + "services table row count -->"+ servicesData.size());
                     Double lat, lon ;
+                    String serviceOfficeType ;
 
                     for (int i = 0; i < servicesData.size(); i++) {
 //                        Log.e(TAG, "runAddMarkerSAMIR: " + "services whole loop count -->"+ i);
+                        serviceOfficeType = servicesData.get(i).getOfficeType();
+                        if (TextUtils.isEmpty(servicesData.get(i).getServiceLat()) || TextUtils.isEmpty(servicesData.get(i).getServiceLon())) {
+                            lat = 0.0;
+                            lon = 0.0;
+                        } else {
+                            lat = abs(Double.parseDouble(servicesData.get(i).getServiceLat()));
+                            lon = abs(Double.parseDouble(servicesData.get(i).getServiceLon()));
+                        }
 
+                        location = new LatLng(lat, lon);
 
-                        for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
+                        if (serviceOfficeType.trim().equals("police")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerPolice));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else if (serviceOfficeType.trim().equals("MoWCsW")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerMoWCsW));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else if (serviceOfficeType.trim().equals("GOV")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerGOV));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else if (serviceOfficeType.trim().equals("KTM NGO")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerKTMNGO));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else if (serviceOfficeType.trim().equals("NGO")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerNGO));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else if (serviceOfficeType.trim().equals("OCMC")) {
+                            amarker = map.addMarker(new MarkerOptions().position(location)
+                                    .title(servicesData.get(i).getOfficeName())
+                                    .icon(markerOCMC));
+                            amarker.setTag(servicesData.get(i));
+                            markersPresentOnMap.add(amarker);
+
+                        } else {
+                            for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
 //                            Log.e(TAG, "runAddMarkerSAMIR: " + "services type loop count -->"+ j);
+                                if (appDataManager.getAllUniqueServicesType().get(j).equals(servicesData.get(i).getOfficeType())) {
 
-
-                            if (appDataManager.getAllUniqueServicesType().get(j).equals(servicesData.get(i).getOfficeType())) {
-
-                                if(TextUtils.isEmpty(servicesData.get(i).getServiceLat()) ||TextUtils.isEmpty(servicesData.get(i).getServiceLon()) ) {
-                                lat = 0.0 ;
-                                lon = 0.0 ;
-                                }else {
-                                     lat = abs(Double.parseDouble(servicesData.get(i).getServiceLat()));
-                                    lon = abs(Double.parseDouble(servicesData.get(i).getServiceLon()));
+                                    amarker = map.addMarker(new MarkerOptions().position(location)
+                                            .title(servicesData.get(i).getOfficeName())
+                                            .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
+                                    amarker.setTag(servicesData.get(i));
+                                    markersPresentOnMap.add(amarker);
                                 }
 
-//                                Log.e(TAG, "runAddMarkerSAMIR: " + "services data size count -->"+ servicesData.size());
-
-//                                Log.e(TAG, "runAddMarkerSAMIR: " + "Lat" + lat + "  , Longt  " + lon +" -->"+ servicesData.get(i).getOfficeName());
-
-                                location = new LatLng(lat, lon);
-
-                amarker = map.addMarker(new MarkerOptions().position(location)
-                        .title(servicesData.get(i).getOfficeName())
-                        .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
-                                amarker.setTag(servicesData.get(i));
-                                markersPresentOnMap.add(amarker);
                             }
                         }
                     }
