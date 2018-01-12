@@ -45,7 +45,7 @@ public class AddANewPostActivity extends AppCompatActivity implements AdapterVie
         ButterKnife.bind(this);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.add_a_new_post_categories, android.R.layout.simple_spinner_item);
+                R.array.list_preference_entries, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spinnerAddANewPostCatagories.setAdapter(adapter);

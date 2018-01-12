@@ -482,7 +482,7 @@
                                     android:paddingLeft="@dimen/default_padding"
                                     android:paddingRight="@dimen/default_padding"
                                     android:paddingTop="@dimen/default_padding"
-                                    android:text="@string/general_btn_form_submission"
+                                    android:text="@string/update_circle"
                                     android:textAllCaps="false"
                                     android:textColor="@color/colorWhite"
                                     />

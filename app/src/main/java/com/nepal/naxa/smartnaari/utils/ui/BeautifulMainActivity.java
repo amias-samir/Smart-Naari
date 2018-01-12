@@ -35,10 +35,13 @@ import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
+import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
+import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -53,6 +56,7 @@ import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.Hot
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
+import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -228,6 +232,26 @@ public class BeautifulMainActivity extends BaseActivity
 
                 if (menuItem.getTitle().equals("Celebrating Professionals")) {
                     Intent intent = new Intent(BeautifulMainActivity.this, CelebratingProfessionalActivity.class);
+                    startActivity(intent);
+                }
+
+                if (menuItem.getTitle().equals("Data On GBV")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
+                    startActivity(intent);
+                }
+
+                if (menuItem.getTitle().equals("Donate")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, DonateActivity.class);
+                    startActivity(intent);
+                }
+
+                if (menuItem.getTitle().equals("Tutorials")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, TutorialsActivity.class);
+                    startActivity(intent);
+                }
+
+                if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
+                    Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
                     startActivity(intent);
                 }
 

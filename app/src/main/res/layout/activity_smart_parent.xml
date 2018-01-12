@@ -139,7 +139,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/teens_chart"/>
+                android:src="@drawable/teens_chart"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/activity_horizontal_margin">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btn2To12Years"
+                        android:layout_width="wrap_content"
+                        android:layout_height="65dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@drawable/button_red_background"
+                        android:text="2-12 year's \n Old"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btnEarlyTeens"
+                        android:layout_width="wrap_content"
+                        android:layout_height="95dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@drawable/button_red_background"
+                        android:text="Early Teen's"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btnMidTeens"
+                        android:layout_width="wrap_content"
+                        android:layout_height="125dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@drawable/button_red_background"
+                        android:text="Mid Teen's"
+                        android:textColor="@color/colorWhite"
+                        android:textAllCaps="false"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
 
 
 

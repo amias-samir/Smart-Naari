@@ -319,6 +319,48 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+        <activity
+            android:name=".dataongbv.DataOnGBVActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity
+            android:name=".donate.DonateActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity android:name=".tutorials.TutorialsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity android:name=".copyrightandprivacypolicy.PrivacyPolicyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
+        <activity android:name=".smartparent.TwoToTwelveYearsActivity">
+        <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".smartparent.SmartParentActivity" />
+    </activity>
+
+        <activity android:name=".smartparent.MidTeensActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".smartparent.SmartParentActivity" />
+        </activity>
+
+        <activity android:name=".smartparent.EarlyTeensActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".smartparent.SmartParentActivity" />
+        </activity>
     </application>
 
 </manifest>
