@@ -1,6 +1,8 @@
 package com.nepal.naxa.smartnaari.data_glossary.muth_busters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
 
     private final Context mContext;
     private List<String> mData;
+    List<WordsWithDetailsModel> wordsWithDetailsList;
 
     public void add(String s,int position) {
         position = position == -1 ? getItemCount()  : position;
@@ -59,7 +62,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext,"Position ="+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext,"Position ="+position,Toast.LENGTH_SHORT).show();
+//                view.getContext().startActivity(new Intent(view.getContext(),asabani_cat.class));
+                Intent intent = new Intent(view.getContext(), DataGlossaryWordDetailsActivity.class);
+                intent.putExtra("wordsWithDetails", WordsWithDetailsActivity.wordsWithDetailsList.get(position));
+                view.getContext().startActivity(intent);
             }
         });
     }

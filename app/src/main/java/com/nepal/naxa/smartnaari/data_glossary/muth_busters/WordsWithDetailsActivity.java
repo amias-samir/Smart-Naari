@@ -33,7 +33,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
     SimpleAdapter mAdapter;
 
     private JSONAssetLoadTask jsonAssetLoadTask;
-    List<WordsWithDetailsModel> wordsWithDetailsList;
+    public static List<WordsWithDetailsModel> wordsWithDetailsList;
 
 
     @Override
@@ -80,7 +80,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
 
         setSectionedRecycleView();
 
-        setRecyclerClickListner();
+//        setRecyclerClickListner();
 
 
     }
@@ -152,43 +152,44 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
     }
 
 
-    public void setRecyclerClickListner (){
-        final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return true;
-            }
-
-        });
-
-
-        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
-//                    Drawer.closeDrawers();
-                    int position = recyclerView.getChildPosition(child);
-
-                    Intent intent = new Intent(WordsWithDetailsActivity.this, DataGlossaryWordDetailsActivity.class);
-                    intent.putExtra("wordsWithDetails", wordsWithDetailsList.get(position));
-                    startActivity(intent);
-                    return true;
-                }
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-    }
+//    public void setRecyclerClickListner (){
+//        final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+//
+//            @Override
+//            public boolean onSingleTapUp(MotionEvent e) {
+//                return true;
+//            }
+//
+//        });
+//
+//
+//        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//            @Override
+//            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+//                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+//
+//
+//                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+////                    Drawer.closeDrawers();
+//                    int position = recyclerView.getChildPosition(child);
+//
+//                    Intent intent = new Intent(WordsWithDetailsActivity.this, DataGlossaryWordDetailsActivity.class);
+//                    intent.putExtra("wordsWithDetails", wordsWithDetailsList.get(position));
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                return false;
+//            }
+//
+//            @Override
+//            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+//
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//
+//            }
+//        });
+//    }
 }
