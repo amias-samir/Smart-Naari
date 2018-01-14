@@ -74,7 +74,7 @@ public class DownloadService extends IntentService {
 
         toastUtils = new ToastUtils();
         if (NetworkUtils.isNetworkDisconnected(getApplicationContext())) {
-            toastUtils.error(getApplicationContext(), getString(R.string.network_disconnected));
+//            toastUtils.error(getApplicationContext(), getString(R.string.network_disconnected));
             return;
         }
 

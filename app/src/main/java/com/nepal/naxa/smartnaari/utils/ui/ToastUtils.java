@@ -13,7 +13,7 @@ import es.dmoral.toasty.Toasty;
 public class ToastUtils {
 
     public void error(Context context, String msg) {
-        Toasty.error(context, msg).show();
+        Toasty.error(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     public void info(Context context, String msg) {
