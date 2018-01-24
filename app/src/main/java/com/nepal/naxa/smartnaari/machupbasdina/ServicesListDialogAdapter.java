@@ -23,15 +23,11 @@ public class ServicesListDialogAdapter extends RecyclerView.Adapter<ServicesList
         this.itemList = cList;
     }
 
-    @Override
-    public int getItemCount() {
-        return itemList.size();
-    }
 
     @Override
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
         ServicesData ci = itemList.get(i);
-        contactViewHolder.servicesName.setText(ci.getOfficeName());
+        contactViewHolder.servicesName.setText(i+1+". "+ci.getOfficeName());
 
     }
 
@@ -44,6 +40,7 @@ public class ServicesListDialogAdapter extends RecyclerView.Adapter<ServicesList
         return new ContactViewHolder(itemView);
     }
 
+
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         protected TextView servicesName;
 
@@ -51,6 +48,11 @@ public class ServicesListDialogAdapter extends RecyclerView.Adapter<ServicesList
             super(v);
             servicesName = (TextView) v.findViewById(R.id.tv_services_name_near_incident);
         }
+    }
+
+    @Override
+    public int getItemCount() {
+        return itemList.size();
     }
 
 }

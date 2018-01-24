@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
@@ -491,6 +492,12 @@ public class MaChupBasdinaActivity extends BaseActivity {
         List<ServicesData> servicesnearincident = appDataManager.getAllServicesdataNearIncident(spinnerDistrictOfIncident.getSelectedItem().toString().toLowerCase().trim());
         Log.d(TAG, "showServicesListDialog: "+servicesnearincident.size());
 
+        for( int i = 0 ; i< servicesnearincident.size() ; i++){
+            Log.d(TAG, "showServicesListDialog: "+servicesnearincident.get(i).getOfficeName());
+
+        }
+
+
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
@@ -514,6 +521,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //        set recycler adapter
         servicesListDialogAdapter = new ServicesListDialogAdapter(servicesnearincident);
         rvServicesNearIncident.setAdapter(servicesListDialogAdapter);
+        rvServicesNearIncident.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
         showDialog.setTitle("Successfully Reported");
