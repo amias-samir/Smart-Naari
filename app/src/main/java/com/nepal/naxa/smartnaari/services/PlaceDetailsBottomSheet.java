@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.services;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,6 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
@@ -64,13 +62,16 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
 
         try {
             Log.e(TAG, "setObject: "+ servicesData.getOfficeName());
-
+String district = servicesData.getDistrict();
+            String officeDistrict = district.substring(0, 1).toUpperCase() + district.substring(1);
 
             tvOfficeName.setText("Office Name : "+servicesData.getOfficeName());
             tvOfficeType.setText("Office Type : "+servicesData.getOfficeType());
-            tvOfficeAddress.setText("Office Address : "+servicesData.getDistrict());
+            tvOfficeAddress.setText("Office Address : "+ officeDistrict);
             tvOfficeContactDutyPerson.setText("Contact Duty Person's no. : "+servicesData.getContactDutyPersonContactNumber());
+            Linkify.addLinks(tvOfficeContactDutyPerson, Linkify.PHONE_NUMBERS);
             tvOfficeLandline.setText("Office Landline no : "+servicesData.getOfficeLandline());
+            Linkify.addLinks(tvOfficeLandline, Linkify.PHONE_NUMBERS);
 //        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
         } catch (NullPointerException e) {
             e.printStackTrace();

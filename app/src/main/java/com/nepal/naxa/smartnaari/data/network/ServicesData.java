@@ -130,7 +130,7 @@ public class ServicesData implements ClusterItem {
     }
 
     public String getDistrict() {
-        return district;
+        return district.toLowerCase();
     }
 
     public void setDistrict(String district) {

@@ -179,6 +179,27 @@ public class AppDataManager extends BaseActivity {
         return result;
 
     }
+
+//    public List<ServicesData> getAllServicesdataNearIncident(String incidentDistrict) {
+//
+//        QueryBuilder<ServicesData> child = daoSession.queryBuilder(ServicesData.class);
+//        if(child.where(ServicesDataDao.Properties.District.eq(incidentDistrict)).count()==0){
+//            addChildToDB();
+//        }
+//    }
+
+    public List<ServicesData> getAllServicesdataNearIncident(String incidentDistrict) {
+
+//        String SQL_DISTINCT_SERVICES_TYPE = "SELECT * " + ServicesDataDao.Properties.OfficeType.equals(incidentDistrict)  + " FROM " + ServicesDataDao.TABLENAME;
+//        ArrayList<ServicesData> result = new ArrayList<>();
+
+        List<ServicesData> joes = daoSession.getServicesDataDao().queryBuilder()
+                .where(ServicesDataDao.Properties.District.eq(incidentDistrict)).list();
+
+        return joes;
+
+    }
+
 //====================================================================================//
 
 

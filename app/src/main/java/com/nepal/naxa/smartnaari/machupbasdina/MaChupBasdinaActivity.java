@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -8,10 +9,12 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -19,8 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,12 +37,17 @@ import com.getkeepsafe.taptargetview.TapTargetView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.services.ServicesLegendListAdapter;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -102,6 +112,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
     private String KEY_GBV_DESC = "desc_GBV";
 
     private String jsonToSend = "";
+
+
+    ServicesListDialogAdapter servicesListDialogAdapter ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -326,11 +340,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
                             case "200":
                                 showInfoToast(data);
                                 hideLoading();
+                                showServicesListDialog(data);
 
                                 break;
                             case "201":
                                 showInfoToast(data);
                                 hideLoading();
+
 
                                 break;
                             case "406":
@@ -375,12 +391,12 @@ public class MaChupBasdinaActivity extends BaseActivity {
         final TapTargetSequence sequence = new TapTargetSequence(this)
                 .targets(
                         // This tap target will target the back button, we just need to pass its containing toolbar
-                        TapTarget.forToolbarNavigationIcon(toolbar, "This is the back button", sassyDesc)
-                                .dimColor(android.R.color.black)
-                                .outerCircleColor(R.color.colorAccent)
-                                .targetCircleColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .textColor(android.R.color.black).id(1),
+//                        TapTarget.forToolbarNavigationIcon(toolbar, "This is the back button", sassyDesc)
+//                                .dimColor(android.R.color.black)
+//                                .outerCircleColor(R.color.colorAccent)
+//                                .targetCircleColor(android.R.color.black)
+//                                .transparentTarget(true)
+//                                .textColor(android.R.color.black).id(1),
                         // Likewise, this tap target will target the search button
                         TapTarget.forView(tvLBLConsent, "Permission or agreement. It is a voluntary actby a person, willingly given to another person or persons.", "Consent or a consensual act, it is always positive, an enthusiastic affirmation that both people and/or more have mutually agreed to engage in the activity.")
                                 .cancelable(false)
@@ -390,7 +406,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
                                 .transparentTarget(true)
                                 .textColor(android.R.color.black)
                                 .tintTarget(false)
-                                .id(2),
+                                .id(1),
                         // You can also target the overflow button in your toolbar
                         TapTarget.forView(tvLBLNoConsent, "Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
                                 .cancelable(false)
@@ -400,7 +416,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
                                 .transparentTarget(true)
                                 .textColor(android.R.color.black)
                                 .tintTarget(false)
-                                .id(3)
+                                .id(2)
 
                 )
                 .listener(new TapTargetSequence.Listener() {
@@ -465,6 +481,53 @@ public class MaChupBasdinaActivity extends BaseActivity {
             @Override
             public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
                 Log.d("TapTargetView", "You dismissed me :(");
+            }
+        });
+    }
+
+
+    public void showServicesListDialog ( String response){
+
+        List<ServicesData> servicesnearincident = appDataManager.getAllServicesdataNearIncident(spinnerDistrictOfIncident.getSelectedItem().toString().toLowerCase().trim());
+        Log.d(TAG, "showServicesListDialog: "+servicesnearincident.size());
+
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        final Dialog showDialog = new Dialog(this);
+        showDialog.setContentView(R.layout.services_list_near_incident_dialog_layout);
+
+//         initialize
+        RecyclerView rvServicesNearIncident ;
+        TextView tvReportResponse ;
+        Button btnLinkToServices = (Button) showDialog.findViewById(R.id.btn_see_all_services);
+        rvServicesNearIncident = (RecyclerView) showDialog.findViewById(R.id.rv_services_near_incident);
+        tvReportResponse = (TextView) showDialog.findViewById(R.id.tv_report_response);
+
+
+
+
+//        set text to textview
+        tvReportResponse.setText(response);
+
+//        set recycler adapter
+        servicesListDialogAdapter = new ServicesListDialogAdapter(servicesnearincident);
+        rvServicesNearIncident.setAdapter(servicesListDialogAdapter);
+
+
+        showDialog.setTitle("Successfully Reported");
+        showDialog.getActionBar();
+        showDialog.show();
+        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        btnLinkToServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
+                Intent intent = new Intent(MaChupBasdinaActivity.this, ServicesActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_report_response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_large"
+        android:text="Report Response"
+        android:textColor="@color/textSubtitle"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_services_near_incident"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_see_all_services"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/spacing_large"
+            android:background="@drawable/button_get_contact_my_circle"
+            android:gravity="center"
+            android:padding="@dimen/default_padding"
+            android:stateListAnimator="@null"
+            android:text="@string/see_all_services"
+            android:textColor="@color/colorWhite"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
