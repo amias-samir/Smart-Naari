@@ -49,7 +49,7 @@
             android:onClick="prevFragment"
             android:background="@drawable/button_red_background"
             android:textColor="@color/textSecondary"
-            android:text="Previous Qn."
+            android:text="Previous"
             android:layout_marginRight="@dimen/spacing_large"
             android:layout_marginLeft="@dimen/spacing_medium"
             android:textAllCaps="false"/>
@@ -63,7 +63,7 @@
             android:onClick="nextFragment"
             android:background="@drawable/button_red_background"
             android:textColor="@color/textSecondary"
-            android:text="Next Qn."
+            android:text="Next"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_medium"
             android:textAllCaps="false"/>

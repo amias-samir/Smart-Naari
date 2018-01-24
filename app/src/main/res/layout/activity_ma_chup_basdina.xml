@@ -426,7 +426,7 @@
                     android:layout_alignParentRight="true"
                     android:background="@color/transparent"
                     android:drawableRight="@drawable/ic_right_arrow"
-                    android:text="@string/general_btn_form_submission"
+                    android:text="@string/report"
                     android:textAllCaps="false"
                     android:textColor="@color/textSecondary"
                     android:textSize="18dp" />

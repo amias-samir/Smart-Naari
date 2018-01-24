@@ -111,7 +111,8 @@
                 android:background="@drawable/button_red_border"
                 android:text="Free Online Course "
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:visibility="gone"/>
 
 
             <Button
@@ -123,7 +124,8 @@
                 android:background="@drawable/button_red_background"
                 android:text="Book an Appointment"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

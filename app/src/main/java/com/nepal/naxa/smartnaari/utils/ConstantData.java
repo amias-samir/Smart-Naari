@@ -38,7 +38,7 @@ public class ConstantData {
     public final static String[] voilenceOccurTime = {"Select time", "Just now", "1 week ago", "2 weeks ago", "3 weeks ago", "a month ago", "2 months ago", "3 months ago", "4 months ago", "5 months ago", "6 months ago", "1 year ago", "more than a year ago"};
 
 
-    public final static String[] voilenceType = {"Select Type", "Rape", "Sexual assault", "Physical assault", "Denial of resources and opportunities", "Psychological/Emotional abuse"};
+    public final static String[] voilenceType = {"Select Type", "Rape", "Sexual assault", "Sexual Harrsment ",  "Physical assault", "Denial of resources and opportunities", "Psychological/Emotional abuse"};
 
 
     public static String[] LifeCoachingTestQuestion = {"1. Do you settle for less?", "2. Do you hide yourself from other people, especially from successful people?",
