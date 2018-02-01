@@ -210,7 +210,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @OnItemSelected(R.id.spinner_ma_chup_basdina_no_consent)
     public void onSpinnerNoConsentClicked() {
 
-        if(!spinnerNoConsent.getSelectedItem().toString().equals("Select Type")){
+        if(!spinnerNoConsent.getSelectedItem().toString().equals("  ")){
             Intent glossaryIntent = new Intent(MaChupBasdinaActivity.this, WordsWithDetailsActivity.class);
             startActivity(glossaryIntent);
         }
@@ -231,9 +231,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVoilenceOccur.setAdapter(voilenceOccurTimeArray);
 
-        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.voilenceType);
+        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.noConsentType);
         voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNoConsent.setAdapter(voilenceType);
+        spinnerNoConsent.setAdapter(noConsent);
     }
 
     public boolean validateData() {

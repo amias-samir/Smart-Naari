@@ -39,6 +39,7 @@ public class ConstantData {
 
 
     public final static String[] voilenceType = {"Select Type", "Rape", "Sexual assault", "Sexual Harrsment ",  "Physical assault", "Denial of resources and opportunities", "Psychological/Emotional abuse"};
+    public final static String[] noConsentType = {"  ", "Rape", "Sexual assault", "Sexual Harrsment ",  "Physical assault", "Denial of resources and opportunities", "Psychological/Emotional abuse"};
 
 
     public static String[] LifeCoachingTestQuestion = {"1. Do you settle for less?", "2. Do you hide yourself from other people, especially from successful people?",
