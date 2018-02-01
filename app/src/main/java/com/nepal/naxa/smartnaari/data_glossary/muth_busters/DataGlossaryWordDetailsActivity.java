@@ -41,8 +41,8 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 //        tvQuestionDetails.setHtml(intent.getStringExtra("query"));
 //        tvAnswerDetails.setHtml(intent.getStringExtra("answer"));
 
-        tvWordTitle.setText(wordsWithDetailsModel.getTitle());
-        tvWordDesc.setText(wordsWithDetailsModel.getDesc());
+        tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
+        tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
     }
 
 

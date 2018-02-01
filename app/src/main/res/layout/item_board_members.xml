@@ -17,7 +17,6 @@
         android:id="@+id/iv_member_image"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:src="@drawable/food_1"
         android:scaleType="centerCrop"/>
 
     <RelativeLayout
