@@ -63,7 +63,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_data_glossary, menu);
         return true;
     }
 
