@@ -70,7 +70,7 @@ public class HotPotComplexRecyclerViewActivity extends BaseActivity {
                         hotPotOfPassionData.get(i).getPhoto(), hotPotOfPassionData.get(i).getUploadedBy()));
 
             }
-            if(hotPotOfPassionData.get(i).getType().equals("recipe")){
+            if(hotPotOfPassionData.get(i).getType().equals("food")){
 
                 items.add(new HotPotBlogRecipe(hotPotOfPassionData.get(i).getHead(), hotPotOfPassionData.get(i).getBody(),
                         hotPotOfPassionData.get(i).getPhoto(), hotPotOfPassionData.get(i).getUploadedBy()));
