@@ -76,12 +76,15 @@ public class AppDataManager extends BaseActivity {
 //    @Override
 //    public void run() {
 
+        Log.d(TAG, "prepareToSaveYuwaQuestions: "+yuwaQuestion.size());
+
         for (int i = 0; i < yuwaQuestion.size(); i++) {
             try {
                 if (daoSession.getYuwaQuestionDao().count() == 0) {
                     daoSession.getYuwaQuestionDao().insertOrReplaceInTx(yuwaQuestion.get(i));
                 } else {
-                    if (yuwaQuestion.get(i).getIsDeleted() == 1) {
+                    Log.d(TAG, "prepareToSaveYuwaQuestions: "+yuwaQuestion.get(i).getIsDeleted());
+                    if (yuwaQuestion.get(i).getIsDeleted().equals("1")) {
 
                         final DeleteQuery<YuwaQuestion> tableDeleteQuery = daoSession.queryBuilder(YuwaQuestion.class)
                                 .where(YuwaQuestionDao.Properties.IsDeleted.eq("1"))
@@ -279,14 +282,14 @@ public class AppDataManager extends BaseActivity {
             Object value;
 
             value = field.get(someObject);
-            Log.d(TAG, "getLastSyncDateTime: " + value.toString());
+            Log.d(TAG, "getLastSyncDateTime:  Date" + value.toString());
 
 //            Log.d(TAG, "parseResponseCode: "+field.getName());
 
 
             if (field.getName().equalsIgnoreCase("lastSyncDateTime")) {
                 dateTime = value.toString();
-                Log.d(TAG, "getLastSyncDateTime: Inside Condition " + value.toString());
+                Log.d(TAG, "getLastSyncDateTime: Inside Condition Date" + value.toString());
             }
         }
 

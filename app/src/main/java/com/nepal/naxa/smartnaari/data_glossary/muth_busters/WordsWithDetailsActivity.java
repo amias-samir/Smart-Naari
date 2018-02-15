@@ -183,6 +183,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
                 SimpleSectionedRecyclerViewAdapter(this, R.layout.section, R.id.section_text, mAdapter);
         mSectionedAdapter.setSections(sections.toArray(dummy));
 
+
         //Apply this adapter to the RecyclerView
         mRecyclerView.setAdapter(mSectionedAdapter);
     }

@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Transient;
@@ -46,9 +47,9 @@ public class YuwaQuestion implements Parcelable {
     @Property(nameInDb = "user_id")
     private String userId;
 
-    @SerializedName("is_deleted")
+    @SerializedName("is_delete")
     @Expose
-    private Integer isDeleted;
+    private String isDeleted;
 
     @Property(nameInDb = "last_sync_date_time")
     @SerializedName("last_sync_date_time")
@@ -71,7 +72,7 @@ public class YuwaQuestion implements Parcelable {
         if (in.readByte() == 0) {
             isDeleted = null;
         } else {
-            isDeleted = in.readInt();
+            isDeleted = in.readString();
         }
         last_sync_date_time = in.readString();
         byte tmpIsFooter = in.readByte();
@@ -91,12 +92,13 @@ public class YuwaQuestion implements Parcelable {
         dest.writeString(question);
         dest.writeString(answer);
         dest.writeString(userId);
-        if (isDeleted == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(isDeleted);
-        }
+        dest.writeString(isDeleted);
+//        if (isDeleted == null) {
+//            dest.writeByte((byte) 0);
+//        } else {
+//            dest.writeByte((byte) 1);
+//            dest.writeInt(isDeleted);
+//        }
         dest.writeString(last_sync_date_time);
         dest.writeByte((byte) (isFooter == null ? 0 : isFooter ? 1 : 2));
     }
@@ -118,14 +120,13 @@ public class YuwaQuestion implements Parcelable {
         }
     };
 
-    public Integer getIsDeleted() {
+    public String getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
+    public void setIsDeleted(String isDeleted) {
         this.isDeleted = isDeleted;
     }
-
 
 
     public Boolean getIsFooter() {
@@ -136,10 +137,11 @@ public class YuwaQuestion implements Parcelable {
         this.isFooter = isFooter;
     }
 
-    @Generated(hash = 1609754814)
+    //    @Generated(hash = 1609754814)
+    @Keep
     public YuwaQuestion(Long id, String idString, String owlId, String question,
-            String answer, String userId, Integer isDeleted,
-            String last_sync_date_time) {
+                        String answer, String userId, String isDeleted,
+                        String last_sync_date_time) {
         this.id = id;
         this.idString = idString;
         this.owlId = owlId;
@@ -150,7 +152,8 @@ public class YuwaQuestion implements Parcelable {
         this.last_sync_date_time = last_sync_date_time;
     }
 
-    @Generated(hash = 2033614305)
+    //    @Generated(hash = 2033614305)
+    @Keep
     public YuwaQuestion() {
     }
 

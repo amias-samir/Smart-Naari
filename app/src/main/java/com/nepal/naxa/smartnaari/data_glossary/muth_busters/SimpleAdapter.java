@@ -120,6 +120,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
 //        holder.title.setText(mData.get(position).getTitle().trim());
         if(isFiltered){
+
             holder.title.setText(wordListFiltered.get(position).getTitle());
             holder.title.setOnClickListener(new View.OnClickListener() {
                 @Override

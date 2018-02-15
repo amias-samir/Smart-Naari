@@ -42,6 +42,7 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 
 public class YuwaPustaActivity extends BaseActivity  {
 
+    private static final String TAG ="YuwaPustaActivity" ;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.yuwa_pusta_iv_header)
@@ -164,6 +165,8 @@ public class YuwaPustaActivity extends BaseActivity  {
 
     private void initQuestionsRecyclerView() {
 
+
+        Log.d(TAG, "initQuestionsRecyclerView: " +yuwaQuestions.size());
 
         YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
         questionList.setAdapter(yuwaQuestionAdapter);

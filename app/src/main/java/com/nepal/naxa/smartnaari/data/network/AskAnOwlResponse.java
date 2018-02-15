@@ -4,7 +4,7 @@ package com.nepal.naxa.smartnaari.data.network;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class YuwaPustaQueryResponse {
+public class AskAnOwlResponse {
 
     @SerializedName("status")
     @Expose

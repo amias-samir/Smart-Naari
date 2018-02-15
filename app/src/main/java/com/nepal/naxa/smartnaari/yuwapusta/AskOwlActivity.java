@@ -24,7 +24,7 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.AskAnOwlResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
@@ -214,10 +214,10 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     public void sendDataToServer() {
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
-        Call<YuwaPustaQueryResponse> call = apiService.getYuwaPusaQueryDetails(jsonToSend);
-        call.enqueue(new ErrorSupportCallback<>(new Callback<YuwaPustaQueryResponse>() {
+        Call<AskAnOwlResponse> call = apiService.getAskAnOwlResponseDetails(jsonToSend);
+        call.enqueue(new ErrorSupportCallback<>(new Callback<AskAnOwlResponse>() {
             @Override
-            public void onResponse(Call<YuwaPustaQueryResponse> call, Response<YuwaPustaQueryResponse> response) {
+            public void onResponse(Call<AskAnOwlResponse> call, Response<AskAnOwlResponse> response) {
                 Log.d(TAG, "onPostExecute: " + response.toString());
 
                 if (response.body() != null) {
@@ -251,7 +251,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
             }
 
             @Override
-            public void onFailure(Call<YuwaPustaQueryResponse> call, Throwable t) {
+            public void onFailure(Call<AskAnOwlResponse> call, Throwable t) {
                 hideLoading();
             }
         }));

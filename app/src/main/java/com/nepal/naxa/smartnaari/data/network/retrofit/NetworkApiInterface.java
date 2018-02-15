@@ -6,9 +6,8 @@ import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
-import com.nepal.naxa.smartnaari.data.network.UrlClass;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
-import com.nepal.naxa.smartnaari.data.network.YuwaPustaQueryResponse;
+import com.nepal.naxa.smartnaari.data.network.AskAnOwlResponse;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 
 import retrofit2.Call;
@@ -40,7 +39,7 @@ public interface NetworkApiInterface {
 
     @FormUrlEncoded
     @POST("smartapi/yuwa_pusta")
-    Call<YuwaPustaQueryResponse> getYuwaPusaQueryDetails(@Field("data") String data);
+    Call<AskAnOwlResponse> getAskAnOwlResponseDetails(@Field("data") String data);
 
     @FormUrlEncoded
     @POST("smartapi/get_services")
