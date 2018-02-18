@@ -28,7 +28,7 @@
 
 
                 <TextView
-                    android:id="@+id/txtLBLmyCircleSafety"
+                    android:id="@+id/txtLBLmyCircleHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -39,7 +39,7 @@
                     android:textSize="@dimen/material_text_body1" />
 
                 <TextView
-                    android:layout_below="@+id/txtLBLmyCircleSafety"
+                    android:layout_below="@+id/txtLBLmyCircleHead"
                     android:id="@+id/txtLBLcreate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     android:textSize="@dimen/material_text_title" />
 
                 <TextView
-                    android:id="@+id/txtLBLmycircle"
+                    android:id="@+id/txtLBLmyCircleSafety"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtLBLcreate"
