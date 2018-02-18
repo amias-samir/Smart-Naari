@@ -206,7 +206,8 @@
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:paddingTop="@dimen/default_padding"
-                    android:paddingBottom="@dimen/default_padding"                    android:text="@string/report_i_am_the_victim"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:text="@string/report_i_am_the_victim"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_body2"
                     android:layout_weight="1"/>
@@ -217,7 +218,8 @@
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
                     android:paddingTop="@dimen/default_padding"
-                    android:paddingBottom="@dimen/default_padding"                    android:text="@string/report_family_members"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:text="@string/report_family_members"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/material_text_body2"
                     android:layout_weight="1"/>

@@ -35,7 +35,7 @@ public class AboutSmartNaariActivity extends BaseActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("About Smart Naari");
+        toolbar.setTitle("About Smart नारी");
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();

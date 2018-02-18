@@ -1,15 +1,17 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.TextInputLayout;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,16 +23,13 @@ import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
-import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.UserData;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
@@ -61,9 +60,10 @@ public class MyCircleActivity extends BaseActivity {
 
     private static final String TAG = MyCircleActivity.class.getSimpleName();
     private static final int REQUEST_CODE_PICK_CONTACTS = 1;
+    @BindView(R.id.txtLBLmyCircleSafety)
+    TextView tvMyCircleSafety;
     private Uri uriContact;
     private String contactID; // contacts unique ID
-
 
 
     @BindView(R.id.my_circle_first_contact)
@@ -113,8 +113,8 @@ public class MyCircleActivity extends BaseActivity {
     EditText tvFifthContactName;
 
 
-    SessionManager sessionManager ;
-    MyCircleData myCircleData ;
+    SessionManager sessionManager;
+    MyCircleData myCircleData;
 
 
     @Override
@@ -126,6 +126,14 @@ public class MyCircleActivity extends BaseActivity {
         sessionManager = new SessionManager(this);
         myCircleData = new MyCircleData();
         myCircleData = sessionManager.getMyCircleContact();
+
+        final SpannableStringBuilder sb = new SpannableStringBuilder("For my Saftey");
+
+        final StyleSpan bss1 = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
+        final StyleSpan bss2 = new StyleSpan(android.graphics.Typeface.BOLD); //Span to make text italic
+        sb.setSpan(bss1, 0, 3, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 4 characters Bold
+        sb.setSpan(bss2, 7, sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last  word Bold
+        tvMyCircleSafety.setText(sb);
 
         setupUI();
         initializeContactsUI();
@@ -147,12 +155,35 @@ public class MyCircleActivity extends BaseActivity {
 
     @OnClick(R.id.btnNewMobileNo)
     public void onViewClicked() {
+//        if (count == 0) {
+//            tvFirstContact.setVisibility(View.VISIBLE);
+//            tvFirstContactName.setVisibility(View.VISIBLE);
+//            count = count + 1;
+//        } else if (count == 1) {
+//            tvFirstContact.setVisibility(View.VISIBLE);
+//            tvFirstContactName.setVisibility(View.VISIBLE);
+//
+//            tvSecondContact.setVisibility(View.VISIBLE);
+//            tvSecondContactName.setVisibility(View.VISIBLE);
+//            count = count + 1;
+//        } else
+            if (count == 0) {
+//            tvFirstContact.setVisibility(View.VISIBLE);
+//            tvFirstContactName.setVisibility(View.VISIBLE);
+//
+//            tvSecondContact.setVisibility(View.VISIBLE);
+//            tvSecondContactName.setVisibility(View.VISIBLE);
 
-        if (count == 0) {
             tvThirdContact.setVisibility(View.VISIBLE);
             tvThirdContactName.setVisibility(View.VISIBLE);
             count = count + 1;
         } else if (count == 1) {
+//            tvFirstContact.setVisibility(View.VISIBLE);
+//            tvFirstContactName.setVisibility(View.VISIBLE);
+//
+//            tvSecondContact.setVisibility(View.VISIBLE);
+//            tvSecondContactName.setVisibility(View.VISIBLE);
+
             tvThirdContactName.setVisibility(View.VISIBLE);
             tvThirdContact.setVisibility(View.VISIBLE);
 
@@ -161,6 +192,12 @@ public class MyCircleActivity extends BaseActivity {
             count = count + 1;
 
         } else if (count == 2) {
+//            tvFirstContact.setVisibility(View.VISIBLE);
+//            tvFirstContactName.setVisibility(View.VISIBLE);
+//
+//            tvSecondContact.setVisibility(View.VISIBLE);
+//            tvSecondContactName.setVisibility(View.VISIBLE);
+
             tvThirdContact.setVisibility(View.VISIBLE);
             tvThirdContactName.setVisibility(View.VISIBLE);
 
@@ -199,7 +236,7 @@ public class MyCircleActivity extends BaseActivity {
                 fifth_contact = myCircleData.getContactNumber5();
 
 
-                if(hasPermission(Manifest.permission.READ_CONTACTS)) {
+                if (hasPermission(Manifest.permission.READ_CONTACTS)) {
 
                     if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
                             fourth_contact.equals("") || fifth_contact.equals("")) {
@@ -242,27 +279,86 @@ public class MyCircleActivity extends BaseActivity {
 
     private void prepareToUpload() {
 
-        if (TextUtils.isEmpty(first_contact)) {
-            showErrorToast("Enter First Contact Number");
-            tvFirstContact.getEditText().requestFocus();
-            return;
+        int countTotalContactNumber = 0;
+
+        if (first_contact.length() > 0) {
+            if (first_contact.length() == 10) {
+                if (TextUtils.isEmpty(tvFirstContactName.getText().toString())) {
+                    showErrorToast("Enter First Contact Name");
+                    tvFirstContactName.requestFocus();
+                    return;
+                }
+                countTotalContactNumber++;
+            } else {
+                showErrorToast("Enter Valid Phone Number");
+                tvFirstContact.getEditText().requestFocus();
+                return;
+            }
         }
 
-        if (first_contact.length() != 10 ) {
-            showErrorToast("Enter Valid Phone Number");
-            tvFirstContact.getEditText().requestFocus();
-            return;
+        if (second_contact.length() > 0) {
+            if (second_contact.length() == 10) {
+                if (TextUtils.isEmpty(tvSecondContactName.getText().toString())) {
+                    showErrorToast("Enter Second Contact Name");
+                    tvSecondContactName.requestFocus();
+                    return;
+                }
+                countTotalContactNumber++;
+            } else {
+                showErrorToast("Enter Valid Phone Number");
+                tvSecondContact.getEditText().requestFocus();
+                return;
+            }
         }
 
-        if (TextUtils.isEmpty(second_contact)) {
-            showErrorToast("Enter Second Contact Number");
-            tvSecondContact.getEditText().requestFocus();
-            return;
+        if (third_contact.length() > 0) {
+            if (third_contact.length() == 10) {
+                if (TextUtils.isEmpty(tvThirdContactName.getText().toString())) {
+                    showErrorToast("Enter Third Contact Name");
+                    tvThirdContactName.requestFocus();
+                    return;
+                }
+                countTotalContactNumber++;
+            } else {
+                showErrorToast("Enter Valid Phone Number");
+                tvThirdContact.getEditText().requestFocus();
+                return;
+            }
         }
 
-        if (second_contact.length() != 10 ) {
-            showErrorToast("Enter Valid Phone Number");
-            tvSecondContact.getEditText().requestFocus();
+        if (fourth_contact.length() > 0) {
+            if (fourth_contact.length() == 10) {
+                if (TextUtils.isEmpty(tvFourthContactName.getText().toString())) {
+                    showErrorToast("Enter Fourth Contact Name");
+                    tvFirstContactName.requestFocus();
+                    return;
+                }
+                countTotalContactNumber++;
+            } else {
+                showErrorToast("Enter Valid Phone Number");
+                tvFourthContact.getEditText().requestFocus();
+                return;
+            }
+        }
+
+        if (fifth_contact.length() > 0) {
+            if (fifth_contact.length() == 10) {
+                if (TextUtils.isEmpty(tvFifthContactName.getText().toString())) {
+                    showErrorToast("Enter Fifth Contact Name");
+                    tvFifthContactName.requestFocus();
+                    return;
+                }
+                countTotalContactNumber++;
+            } else {
+                showErrorToast("Enter Valid Phone Number");
+                tvFifthContact.getEditText().requestFocus();
+                return;
+            }
+        }
+
+
+        if (countTotalContactNumber < 3) {
+            showErrorToast("At least three contact number is required");
             return;
         }
 
@@ -272,49 +368,11 @@ public class MyCircleActivity extends BaseActivity {
         }
 
 
-
         showLoading("Adding Phone Numbers");
 
         convertDataToJSON();
         sendDataToServer();
     }
-
-
-//    @Override
-//    public void onActivityResult(int reqCode, int resultCode, Intent data) {
-//        super.onActivityResult(reqCode, resultCode, data);
-//
-//        switch (reqCode) {
-//            case (PICK_CONTACT):
-//
-//                if (resultCode == Activity.RESULT_OK) {
-//                    Uri contactData = data.getData();
-//                    Cursor c = managedQuery(contactData, null, null, null, null);
-//                    if (c.moveToFirst()) {
-//                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
-//
-//                        String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-//                        Log.d("MyCircleActivity", "onActivityResult: hasPhone : SAMIR : "+hasPhone);
-//
-//                        if (hasPhone.equalsIgnoreCase("1")) {
-//                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-//                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
-//                            phones.moveToFirst();
-//                            String contact_number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-//                            String contact_name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-//                            // contact_image_path = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
-//
-//                            Log.d("MyCircleActivity", "onActivityResult: SAMIR \n \n \t \t \t "+ contact_name + " : " + contact_number+" \n \n \n");
-//
-//                            setContcts(contact_name,contact_number);
-////                            initializeContactsUI();
-//                        }
-//                    }
-//                }
-//                break;
-//
-//        }
-//    }
 
 
     @Override
@@ -325,7 +383,7 @@ public class MyCircleActivity extends BaseActivity {
             Log.d(TAG, "Response: " + data.toString());
             uriContact = data.getData();
 
-            setContcts(retrieveContactName(),retrieveContactNumber());
+            setContcts(retrieveContactName(), retrieveContactNumber());
         }
     }
 
@@ -339,7 +397,6 @@ public class MyCircleActivity extends BaseActivity {
         third = tvThirdContact.getEditText().getText().toString();
         fourth = tvFourthContact.getEditText().getText().toString();
         fifth = tvFifthContact.getEditText().getText().toString();
-
 
 
         try {
@@ -396,22 +453,22 @@ public class MyCircleActivity extends BaseActivity {
             JSONObject jOBJ = new JSONObject(sessionManager.usresCircleContact());
             myCircleData.setUserId(jOBJ.getString("user_id"));
 
-            myCircleData.setContactName2(jOBJ.getString("c1"));
-            myCircleData.setContactNumber2(jOBJ.getString("n1"));
+            myCircleData.setContactName1(jOBJ.getString("c1"));
+            myCircleData.setContactNumber1(jOBJ.getString("n1"));
 
-            myCircleData.setContactName3(jOBJ.getString("c2"));
-            myCircleData.setContactNumber3(jOBJ.getString("n2"));
+            myCircleData.setContactName2(jOBJ.getString("c2"));
+            myCircleData.setContactNumber2(jOBJ.getString("n2"));
 
-            myCircleData.setContactName4(jOBJ.getString("c3"));
-            myCircleData.setContactNumber4(jOBJ.getString("n3"));
+            myCircleData.setContactName3(jOBJ.getString("c3"));
+            myCircleData.setContactNumber3(jOBJ.getString("n3"));
 
-            myCircleData.setContactName5(jOBJ.getString("c4"));
-            myCircleData.setContactNumber5(jOBJ.getString("n4"));
+            myCircleData.setContactName4(jOBJ.getString("c4"));
+            myCircleData.setContactNumber4(jOBJ.getString("n4"));
 
-            myCircleData.setContactName1(jOBJ.getString("c5"));
-            myCircleData.setContactNumber1(jOBJ.getString("n5"));
+            myCircleData.setContactName5(jOBJ.getString("c5"));
+            myCircleData.setContactNumber5(jOBJ.getString("n5"));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -423,44 +480,42 @@ public class MyCircleActivity extends BaseActivity {
             tvFirstContactName.setText(myCircleData.getContactName1());
             tvSecondContact.getEditText().setText(myCircleData.getContactNumber2());
             tvSecondContactName.setText(myCircleData.getContactName2());
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
         try {
-        if (!myCircleData.getContactNumber3().equals("")) {
-            tvThirdContact.setVisibility(View.VISIBLE);
-            tvThirdContactName.setVisibility(View.VISIBLE);
-            tvThirdContact.getEditText().setText(myCircleData.getContactNumber3());
-            tvThirdContactName.setText(myCircleData.getContactName3());
-        }
-        }catch (NullPointerException e){
+            if (!myCircleData.getContactNumber3().equals("")) {
+                tvThirdContact.setVisibility(View.VISIBLE);
+                tvThirdContactName.setVisibility(View.VISIBLE);
+                tvThirdContact.getEditText().setText(myCircleData.getContactNumber3());
+                tvThirdContactName.setText(myCircleData.getContactName3());
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
         try {
-        if (!myCircleData.getContactNumber4().equals("")) {
-            tvFourthContact.setVisibility(View.VISIBLE);
-            tvFourthContactName.setVisibility(View.VISIBLE);
-            tvFourthContactName.setText(myCircleData.getContactName4());
-            tvFourthContact.getEditText().setText(myCircleData.getContactNumber4());
-        }
-        }catch (NullPointerException e){
+            if (!myCircleData.getContactNumber4().equals("")) {
+                tvFourthContact.setVisibility(View.VISIBLE);
+                tvFourthContactName.setVisibility(View.VISIBLE);
+                tvFourthContactName.setText(myCircleData.getContactName4());
+                tvFourthContact.getEditText().setText(myCircleData.getContactNumber4());
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
         try {
-        if (!myCircleData.getContactNumber5().equals("")) {
-            tvFifthContact.setVisibility(View.VISIBLE);
-            tvFifthContactName.setVisibility(View.VISIBLE);
-            tvFifthContact.getEditText().setText(myCircleData.getContactNumber5());
-            tvFifthContactName.setText(myCircleData.getContactName5());
-        }
-        }catch (NullPointerException e){
+            if (!myCircleData.getContactNumber5().equals("")) {
+                tvFifthContact.setVisibility(View.VISIBLE);
+                tvFifthContactName.setVisibility(View.VISIBLE);
+                tvFifthContact.getEditText().setText(myCircleData.getContactNumber5());
+                tvFifthContactName.setText(myCircleData.getContactName5());
+            }
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-
-
 
 
     }
@@ -488,10 +543,9 @@ public class MyCircleActivity extends BaseActivity {
         try {
 
 
-
             JSONObject header = new JSONObject();
 
-            header.put("user_id", sessionManager.getUserId() );
+            header.put("user_id", sessionManager.getUserId());
             header.put("c1", tvFirstContact.getEditText().getText().toString());
             header.put("c2", tvSecondContact.getEditText().getText().toString());
             header.put("c3", tvThirdContact.getEditText().getText().toString());
@@ -505,7 +559,7 @@ public class MyCircleActivity extends BaseActivity {
 
 
             jsonToSend = header.toString();
-            Log.d(TAG, "convertDataToJSON: SAMIR"+jsonToSend);
+            Log.d(TAG, "convertDataToJSON: SAMIR" + jsonToSend);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -541,10 +595,10 @@ public class MyCircleActivity extends BaseActivity {
 
                         sessionManager.saveUserCircle(myCircleData);
 
-                        if(sessionManager.doesHaveIntentBackgroundService()){
+                        if (sessionManager.doesHaveIntentBackgroundService()) {
                             Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
                             startActivity(intent);
-                        }else {
+                        } else {
                             Intent intent = new Intent(MyCircleActivity.this, PermissionActivity.class);
                             startActivity(intent);
                         }
@@ -636,8 +690,6 @@ public class MyCircleActivity extends BaseActivity {
 
         return contactName;
     }
-
-
 
 
 }
