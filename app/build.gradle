@@ -101,6 +101,8 @@ dependencies {
     compile 'com.ernestoyaquello.stepperform:vertical-stepper-form:0.9.9'
     compile 'com.google.android.gms:play-services-location:11.0.4'
 
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+
     // Testing-only dependencies
 //    androidTestCompile 'com.android.support.test:runner:1.0.1'
 //    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'

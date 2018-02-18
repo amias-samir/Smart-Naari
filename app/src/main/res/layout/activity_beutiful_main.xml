@@ -42,11 +42,12 @@
                         android:outAnimation="@anim/fade_out">
 
                         <ImageView
+
                             android:id="@+id/main_imageview_placeholder_tap_it_stop_it"
                             android:layout_width="match_parent"
                             android:layout_height="300dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/ic_tap_it_stop_it"
+                            android:src="@color/colorAccent"
                             android:tint="#11000000"
                             app:layout_collapseMode="parallax"
                             app:layout_collapseParallaxMultiplier="0.9" />

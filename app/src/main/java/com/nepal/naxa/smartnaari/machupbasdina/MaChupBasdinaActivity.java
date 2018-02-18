@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -13,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.DisplayMetrics;
@@ -33,24 +35,40 @@ import android.widget.Toast;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.getkeepsafe.taptargetview.TapTargetView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
+import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
-import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
+import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
+import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsModel;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import io.reactivex.Maybe;
+import io.reactivex.MaybeSource;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.observers.DisposableObserver;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -217,10 +235,94 @@ public class MaChupBasdinaActivity extends BaseActivity {
     public void onSpinnerNoConsentClicked() {
 
         if (!spinnerNoConsent.getSelectedItem().toString().equals("  ")) {
-            Intent glossaryIntent = new Intent(MaChupBasdinaActivity.this, WordsWithDetailsActivity.class);
-            startActivity(glossaryIntent);
+            final String selectedItem = spinnerNoConsent.getSelectedItem().toString();
+            final ProgressDialog dialog = DialogFactory.createProgressDialog(MaChupBasdinaActivity.this,
+                    "Loading definition of " + selectedItem);
+            dialog.setCancelable(false);
+
+            new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
+                @Override
+                public void onFileLoadComplete(String jsonString) {
+
+                    searchAndOpenDetail(jsonString, selectedItem)
+                            .doOnSubscribe(new Consumer<Disposable>() {
+                                @Override
+                                public void accept(Disposable disposable) throws Exception {
+                                    dialog.show();
+                                }
+                            })
+                            .subscribe(new DisposableObserver<WordsWithDetailsModel>() {
+                                @Override
+                                public void onNext(WordsWithDetailsModel wordsWithDetailsModel) {
+                                    dialog.dismiss();
+
+                                    if(!TextUtils.isEmpty(wordsWithDetailsModel.getError())){
+
+                                        //todo ask what to do
+                                        return;
+                                    }
+
+                                    Intent intent = new Intent(MaChupBasdinaActivity.this, DataGlossaryWordDetailsActivity.class);
+                                    intent.putExtra("wordsWithDetails", wordsWithDetailsModel);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    //not implemented
+                                    dialog.dismiss();
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+                                    //not implemented
+
+                                }
+                            });
+                }
+
+                @Override
+                public void onFileLoadError(String errorMsg) {
+
+                }
+
+
+            }, MaChupBasdinaActivity.this).execute();
+
+
         }
 
+    }
+
+
+    private Observable<WordsWithDetailsModel> searchAndOpenDetail(final String jsonString, final String searchString) {
+
+        return io.reactivex.Observable.just(jsonString)
+                .flatMap(new Function<String, ObservableSource<List<WordsWithDetailsModel>>>() {
+                    @Override
+                    public ObservableSource<List<WordsWithDetailsModel>> apply(String s) throws Exception {
+                        Type listType = new TypeToken<List<WordsWithDetailsModel>>() {
+                        }.getType();
+                        List<WordsWithDetailsModel> list = new Gson().fromJson(jsonString, listType);
+                        return Observable.just(list);
+
+                    }
+                })
+                .flatMapIterable(new Function<List<WordsWithDetailsModel>, Iterable<WordsWithDetailsModel>>() {
+                    @Override
+                    public Iterable<WordsWithDetailsModel> apply(List<WordsWithDetailsModel> wordsWithDetailsModels) throws Exception {
+                        return wordsWithDetailsModels;
+                    }
+                })
+                .filter(new Predicate<WordsWithDetailsModel>() {
+                    @Override
+                    public boolean test(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
+                        return wordsWithDetailsModel.getTitle().equalsIgnoreCase(searchString.trim());
+
+                    }
+                })
+                .defaultIfEmpty(new WordsWithDetailsModel("error"));
     }
 
 

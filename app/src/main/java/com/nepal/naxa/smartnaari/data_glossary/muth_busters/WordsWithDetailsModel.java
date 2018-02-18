@@ -9,14 +9,23 @@ import android.os.Parcelable;
 
 public class WordsWithDetailsModel implements Parcelable {
 
-    private String category ;
-    private String title ;
-    private String desc ;
+    private String category;
+    private String title;
+    private String desc;
+    private String error;
 
-    protected WordsWithDetailsModel(Parcel in) {
+    public WordsWithDetailsModel(Parcel in) {
         category = in.readString();
         title = in.readString();
         desc = in.readString();
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public WordsWithDetailsModel(String error){
+        this.error = error;
     }
 
     @Override
