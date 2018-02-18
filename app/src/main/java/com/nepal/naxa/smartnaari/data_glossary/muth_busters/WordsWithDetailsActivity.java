@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,12 +38,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
     final private String TAG = "WordsWithDetails";
 
     RecyclerView mRecyclerView;
-//    for filtered list test
-    RecyclerView recyclerViewFiltered;
-
     SimpleAdapter mAdapter;
-//    for filtered list test
-    SimpleAdapter mAdapterFiltered;
 
     private SearchView searchView;
 
@@ -198,19 +194,24 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
         }
     }
 
-    private void wordFilterRecyclerInitialize (){
 
-        // white background notification bar
-        recyclerViewFiltered = (RecyclerView) findViewById(R.id.recyclerList);
-        wordsWithDetailsList = new ArrayList<>();
-        mAdapter = new SimpleAdapter(this, wordsWithDetailsList);
-
-        whiteNotificationBar(recyclerViewFiltered);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerViewFiltered.setLayoutManager(mLayoutManager);
-        recyclerViewFiltered.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewFiltered.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
-        recyclerViewFiltered.setAdapter(mAdapterFiltered);
+    private void hideSectionHeader (){
+        CardView sectionHeader = (CardView)findViewById(R.id.cardView_section_header);
+        sectionHeader.setVisibility(CardView.GONE);
     }
+    private void showSectionHeader (){
+        CardView sectionHeader = (CardView)findViewById(R.id.cardView_section_header);
+        sectionHeader.setVisibility(CardView.VISIBLE);
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//        // close search view on back button pressed
+//        if (!searchView.isIconified()) {
+//            searchView.setIconified(true);
+//            showSectionHeader();
+//            return;
+//        }
+//        super.onBackPressed();
+//    }
 }

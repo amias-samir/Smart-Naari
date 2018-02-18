@@ -12,11 +12,11 @@
     <string name="settings">Settings</string>
     <string name="my_circle">My Circle</string>
     <string name="about_smart_naari">About Smart नारी</string>
-    <string name="meet_the_board">Meet The Board</string>
+    <string name="meet_the_board">Meet The Team</string>
     <string name="sn_enthusiasts">Friends Of Smart नारी</string>
     <string name="celebrating_professionals">Celebrating Professionals</string>
     <string name="glossary_of_terms">Glossary Of Terms</string>
-    <string name="data_on_gender_based_violence">Data On GBV</string>
+    <string name="data_on_gender_based_violence">Data on Gender and GBV</string>
     <string name="tutorials">Tutorials</string>
     <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
     <string name="copyright">Copyright</string>
@@ -59,7 +59,8 @@
     <string name="understanding">Understanding</string>
     <string name="report_gender_based_violence">Report Gender Based Violence</string>
     <string name="report_i_am_the_victim">Myself</string>
-    <string name="report_other">Family Members</string>
+    <string name="report_family_members">Family Members</string>
+    <string name="report_other">Others</string>
 
     <string name="when_did_the_voilence_occur">When did the voilence occur</string>
     <string name="types_of_voilence">Types Of Voilence</string>
@@ -71,7 +72,7 @@
     <string name="anger_management_ma_sakcham_chu_detail">Description (Further details of the Reported GBV)</string>
     <string name="lets_have_the_talk">Lets Have the TALK</string>
     <string name="headline_mycircle1">My Circle</string>
-    <string name="headline_mycircle2">for my Safety</string>
+    <string name="headline_mycircle2">For my Safety</string>
     <string name="general_btn_form_submission">Ask an Owl</string>
 
 
@@ -179,16 +180,9 @@
         <p align="center">
             <div>
                 <h1>
-                <b>Smart नारी (Smart Woman)</b><br></br>
+                <b>Smart नारी</b><br></br>
                 </h1>
             </div>
-</p>
-<p align = "center">
-    <div>
-    <h2>
-    <b>About Us</b>
-    </h2>
-    </div>
 </p>
 <p style="text-align:justify">
     <div>

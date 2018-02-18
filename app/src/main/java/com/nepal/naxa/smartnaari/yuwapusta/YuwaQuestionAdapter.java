@@ -130,7 +130,6 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
     }
 

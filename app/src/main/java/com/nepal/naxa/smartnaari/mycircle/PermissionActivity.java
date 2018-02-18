@@ -52,10 +52,10 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 //            startActivity(myIntent);
 //        }
 
-        String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "Show SMS Notification"};
+        String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
         String[] subtitles = {"Follow 4 steps to configure MyCircle",
                 "Smart Naari needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
-                "Allowing Smart Naari to draw over other apps, will let us to notify you when SMS are being sent"};
+                "allow smart नारी to overlay over other apps and notify your 'My Circle'"};
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             subtitles[2] = "Notification has been granted";
         }

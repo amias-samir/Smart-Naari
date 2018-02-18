@@ -194,7 +194,10 @@
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp">
-
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
                 <RadioButton
                     android:id="@+id/radio_machupbasdina_victim_myself"
                     style="@style/radionbuttonMaChupBasdina"
@@ -202,10 +205,22 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
-                    android:padding="@dimen/default_padding"
-                    android:text="@string/report_i_am_the_victim"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"                    android:text="@string/report_i_am_the_victim"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_subhead" />
+                    android:textSize="@dimen/material_text_body2"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_machupbasdina_victim_family_members"
+                    style="@style/radionbuttonMaChupBasdina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"                    android:text="@string/report_family_members"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_body2"
+                    android:layout_weight="1"/>
 
                 <RadioButton
                     android:id="@+id/radio_machupbasdina_victim_other"
@@ -213,11 +228,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
-                    android:padding="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
                     android:text="@string/report_other"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/material_text_subhead" />
-
+                    android:textSize="@dimen/material_text_body2"
+                    android:layout_weight="1"/>
+<!--</LinearLayout>-->
             </RadioGroup>
 
 

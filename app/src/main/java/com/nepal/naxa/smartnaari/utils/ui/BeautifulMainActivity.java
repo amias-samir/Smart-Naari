@@ -220,7 +220,7 @@ public class BeautifulMainActivity extends BaseActivity
                     startActivity(intent);
                 }
 
-                if (menuItem.getTitle().equals("Meet The Board")) {
+                if (menuItem.getTitle().equals("Meet The Team")) {
                     Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
                     startActivity(intent);
                 }
@@ -235,7 +235,7 @@ public class BeautifulMainActivity extends BaseActivity
                     startActivity(intent);
                 }
 
-                if (menuItem.getTitle().equals("Data On GBV")) {
+                if (menuItem.getTitle().equals("Data on Gender and GBV")) {
                     Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
                     startActivity(intent);
                 }

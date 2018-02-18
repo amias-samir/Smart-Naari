@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.data_glossary.muth_busters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,29 +23,29 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
 
     private final Context mContext;
 
-    private boolean isFiltered = false ;
+    private boolean isFiltered = false;
 
     private List<WordsWithDetailsModel> mData;
-//    List<WordsWithDetailsModel> wordsWithDetailsList;
+    //    List<WordsWithDetailsModel> wordsWithDetailsList;
     private List<WordsWithDetailsModel> wordListFiltered;
 
-    public void add(List<WordsWithDetailsModel> s,int position) {
-        position = position == -1 ? getItemCount()  : position;
-        if(isFiltered) {
+    public void add(List<WordsWithDetailsModel> s, int position) {
+        position = position == -1 ? getItemCount() : position;
+        if (isFiltered) {
             wordListFiltered.add(position, s.get(position));
             notifyItemInserted(position);
-        }else {
+        } else {
             mData.add(position, s.get(position));
             notifyItemInserted(position);
         }
     }
 
-    public void remove(int position){
-        if (position < getItemCount()  ) {
-            if(isFiltered) {
+    public void remove(int position) {
+        if (position < getItemCount()) {
+            if (isFiltered) {
                 wordListFiltered.remove(position);
                 notifyItemRemoved(position);
-            }else {
+            } else {
                 mData.remove(position);
                 notifyItemRemoved(position);
             }
@@ -71,7 +72,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
 //                        if (row.getTitle().toLowerCase().contains(charString.toLowerCase()) || row.getPhone().contains(charSequence)) {
-                            if (row.getTitle().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getTitle().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }
@@ -119,7 +120,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
 //        holder.title.setText(mData.get(position).getTitle().trim());
-        if(isFiltered){
+        if (isFiltered) {
 
             holder.title.setText(wordListFiltered.get(position).getTitle());
             holder.title.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +134,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
                     view.getContext().startActivity(intent);
                 }
             });
-        }else {
+        } else {
             holder.title.setText(mData.get(position).getTitle());
             holder.title.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -151,12 +152,13 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
 
     @Override
     public int getItemCount() {
-        if(isFiltered){
+        if (isFiltered) {
             return wordListFiltered.size();
 
-        }else {
+        } else {
             return mData.size();
 
         }
     }
+
 }

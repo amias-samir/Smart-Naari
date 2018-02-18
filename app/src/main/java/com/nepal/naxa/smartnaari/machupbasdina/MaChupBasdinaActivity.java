@@ -21,9 +21,7 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,7 +41,6 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
-import com.nepal.naxa.smartnaari.services.ServicesLegendListAdapter;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import org.json.JSONObject;
@@ -53,7 +50,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -74,6 +70,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
     Spinner spinnerNoConsent;
     @BindView(R.id.radio_machupbasdina_victim_myself)
     RadioButton radioVictimMyself;
+    @BindView(R.id.radio_machupbasdina_victim_family_members)
+    RadioButton radioFamilyMembers;
     @BindView(R.id.radio_machupbasdina_victim_other)
     RadioButton radioVictimOther;
     @BindView(R.id.tv_district_of_incident)
@@ -97,6 +95,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @BindView(R.id.txtLBLUnderstanding)
     TextView txtLBLUnderstanding;
 
+
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
 
@@ -115,7 +114,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     private String jsonToSend = "";
 
 
-    ServicesListDialogAdapter servicesListDialogAdapter ;
+    ServicesListDialogAdapter servicesListDialogAdapter;
 
 
     @Override
@@ -163,10 +162,17 @@ public class MaChupBasdinaActivity extends BaseActivity {
                     reporting_for = "Myself";
 
                 break;
-            case R.id.radio_machupbasdina_victim_other:
+            case R.id.radio_machupbasdina_victim_family_members:
                 if (checked)
                     // reporting for some one within the family
                     reporting_for = "Family Members";
+
+                break;
+
+            case R.id.radio_machupbasdina_victim_other:
+                if (checked)
+                    // reporting for some one within the family
+                    reporting_for = "Others";
 
                 break;
         }
@@ -210,7 +216,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @OnItemSelected(R.id.spinner_ma_chup_basdina_no_consent)
     public void onSpinnerNoConsentClicked() {
 
-        if(!spinnerNoConsent.getSelectedItem().toString().equals("  ")){
+        if (!spinnerNoConsent.getSelectedItem().toString().equals("  ")) {
             Intent glossaryIntent = new Intent(MaChupBasdinaActivity.this, WordsWithDetailsActivity.class);
             startActivity(glossaryIntent);
         }
@@ -487,13 +493,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
 
-    public void showServicesListDialog ( String response){
+    public void showServicesListDialog(String response) {
 
         List<ServicesData> servicesnearincident = appDataManager.getAllServicesdataNearIncident(spinnerDistrictOfIncident.getSelectedItem().toString().toLowerCase().trim());
-        Log.d(TAG, "showServicesListDialog: "+servicesnearincident.size());
+        Log.d(TAG, "showServicesListDialog: " + servicesnearincident.size());
 
-        for( int i = 0 ; i< servicesnearincident.size() ; i++){
-            Log.d(TAG, "showServicesListDialog: "+servicesnearincident.get(i).getOfficeName());
+        for (int i = 0; i < servicesnearincident.size(); i++) {
+            Log.d(TAG, "showServicesListDialog: " + servicesnearincident.get(i).getOfficeName());
 
         }
 
@@ -506,13 +512,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
         showDialog.setContentView(R.layout.services_list_near_incident_dialog_layout);
 
 //         initialize
-        RecyclerView rvServicesNearIncident ;
-        TextView tvReportResponse ;
+        RecyclerView rvServicesNearIncident;
+        TextView tvReportResponse;
         Button btnLinkToServices = (Button) showDialog.findViewById(R.id.btn_see_all_services);
         rvServicesNearIncident = (RecyclerView) showDialog.findViewById(R.id.rv_services_near_incident);
         tvReportResponse = (TextView) showDialog.findViewById(R.id.tv_report_response);
-
-
 
 
 //        set text to textview
