@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:padding="16dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <TextView
-        android:textSize="12sp"
+
         android:id="@+id/tv_title_permission_step"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:textSize="@dimen/material_text_subhead" />
 
     <Button
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/tv_title_permission_step"
         android:id="@+id/btn_open_setup_permission_step"
-        android:text="Start"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/tv_title_permission_step"
+        android:drawableEnd="@drawable/ic_next"
+        android:drawableRight="@drawable/ic_next"
+        android:text="Start" />
 
 </RelativeLayout>
