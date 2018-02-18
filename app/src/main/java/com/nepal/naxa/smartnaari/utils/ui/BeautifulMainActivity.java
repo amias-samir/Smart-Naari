@@ -143,10 +143,7 @@ public class BeautifulMainActivity extends BaseActivity
         syncAllData();
         setDateTimeInUI();
 
-        Glide.with(this)
-                .load(R.drawable.food_1).into(placeholder);
-        Glide.with(this)
-                .load(R.drawable.food_2).into(placeholder2);
+
 
 
         mAppBarLayout.addOnOffsetChangedListener(this);

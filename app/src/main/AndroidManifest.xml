@@ -88,6 +88,7 @@
             android:name=".mycircle.setting.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
+            android:exported="true"
             android:name=".mycircle.PermissionActivity"
             android:label="@string/title_activity_permission"
             android:theme="@style/AppTheme.NoActionBar">
