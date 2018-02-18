@@ -110,6 +110,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     implementation 'org.ramanugen.gifex:gifex:1.0.1'
     implementation 'uk.co.jakelee:vidsta:1.0.0'
+    implementation 'nl.dionsegijn:konfetti:1.1.0'
 
 
     // Testing-only dependencies

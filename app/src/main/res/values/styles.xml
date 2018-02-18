@@ -89,6 +89,16 @@
     </style>
 
 
+    <style name="AppTheme.Popup">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+
+
     <!--<style name="ListSeparatorTextView" parent="@android:style/Widget.TextView.ListSeparator">-->
         <!--<item name="android:layout_width">match_parent</item>-->
         <!--<item name="android:textAllCaps">true</item>-->

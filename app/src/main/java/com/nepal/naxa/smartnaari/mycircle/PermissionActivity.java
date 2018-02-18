@@ -43,7 +43,9 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         setContentView(R.layout.activity_permission);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.toolbar_title_permission_activity);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        toolbar.setSubtitle("Help needed? Watch Video");
+        toolbar.setSubtitleTextColor(getResources().getColor(R.color.black_alpha_40));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorGray));
         setSupportActionBar(toolbar);
 
         VidstaPlayer player = (VidstaPlayer) findViewById(R.id.videoView);
@@ -52,6 +54,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         player.setFullScreen(false);
         player.setButtonTintColor(R.color.colorAccent);
         player.setAutoPlay(false);
+
 
 
         String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};

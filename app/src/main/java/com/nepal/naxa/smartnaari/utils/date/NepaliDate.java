@@ -10,6 +10,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeComparator;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -36,7 +37,6 @@ public class NepaliDate {
         int dayIndex = localDateTime.getDayOfWeek();
 
 
-
         Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
         Timber.i(nepaliDateTime.getDayOfWeek() + "");
         return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[0];
@@ -48,6 +48,12 @@ public class NepaliDate {
         LocalDateTime localDateTime = new LocalDateTime();
         return formatEngDate(localDateTime);
 
+    }
+
+
+    public static LocalDateTime getEnglishLocalDateTime() {
+        LocalDateTime localDateTime = new LocalDateTime();
+        return localDateTime;
     }
 
     public static String getCurrentNepaliDate() throws NepaliDateException {
