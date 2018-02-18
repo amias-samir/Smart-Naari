@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +44,7 @@ import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONObject;
 
@@ -58,6 +61,8 @@ import retrofit2.Response;
 import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
 public class MaChupBasdinaActivity extends BaseActivity {
+
+    Context context = this;
 
 
     private static final String TAG = "MaChupBasdinaActivity";
@@ -187,11 +192,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) { w
-//            case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
-//        }
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -542,6 +547,22 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        DialogFactory.createActionDialog(context, "Warning!!!", "Are you sure want to exit ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MaChupBasdinaActivity.super.onBackPressed();
+
+                    }
+                }).setNegativeButton("No", null)
+                .show();
+
     }
 
 }
