@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.mycircle.powerbutton;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
@@ -19,6 +20,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 
 /**
@@ -106,7 +108,6 @@ public class PowerButtonService extends Service {
     }
 
 
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -117,15 +118,19 @@ public class PowerButtonService extends Service {
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
         PendingIntent toNotificationReceiver = PendingIntent.getBroadcast(this, (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.ic_logo_notification).setContentText(contentText)
+                .setSmallIcon(R.drawable.ic_logo_notification)
+                .setContentText(contentText)
                 .setContentTitle(title)
+                .setOngoing(true)
                 .setWhen(System.currentTimeMillis())
-                .setContentIntent(toNotificationReceiver)
+                .setAutoCancel(false)
                 .addAction(R.drawable.ic_close_black_24dp, "Deactivate", toNotificationReceiver)
                 .build();
+
+        notification.flags = Notification.FLAG_ONGOING_EVENT;
         startForeground(NOTIFICATION_ID, notification);
+
 
     }
 

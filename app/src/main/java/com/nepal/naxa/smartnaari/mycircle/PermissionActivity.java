@@ -54,8 +54,8 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
         String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
         String[] subtitles = {"Follow 4 steps to configure MyCircle",
-                "Smart Naari needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
-                "allow smart नारी to overlay over other apps and notify your 'My Circle'"};
+                "Smart नारी needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
+                "Allow smart नारी to overlay over other apps and notify your 'My Circle'"};
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             subtitles[2] = "Notification has been granted";
         }
@@ -101,7 +101,9 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
     private View createInstructionView() {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isSystemAlertPermissionGranted(this)) {
             LayoutInflater inflater = LayoutInflater.from(getBaseContext());
 
             RelativeLayout instructionLayoutContent = (RelativeLayout) inflater.inflate(R.layout.permission_step_layout, null, false);
@@ -109,12 +111,15 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
             Button button = (Button) instructionLayoutContent.findViewById(R.id.btn_open_setup_permission_step);
 
+
             String msg;
-            msg = "1.Choose " +
+            msg = "Read the following steps and tap 'START' when ready\n\n" +
+                    "Tap 'Start' Button \n\n" +
+                    "2.Choose " +
                     getString(R.string.app_name) +
                     " From The List." +
                     "\n\n" +
-                    "2.Toggle \'Permit drawing over other app\' On";
+                    "3.Toggle \'Permit drawing over other app\' On";
             title.setText(msg);
 
             button.setOnClickListener(new View.OnClickListener() {
@@ -198,7 +203,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
 
                     verticalStepperForm.setStepAsCompleted(1);
-                    verticalStepperForm.setStepSubtitle(1, "Permission Granted");
+                    verticalStepperForm.setStepSubtitle(1, "Press Continue");
 
                 } else {
                     verticalStepperForm.setActiveStepAsUncompleted("Permission Denied");
@@ -220,12 +225,12 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         super.onResume();
         if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
             verticalStepperForm.setStepAsCompleted(1);
-            verticalStepperForm.setStepSubtitle(1, "Permission Granted");
+            verticalStepperForm.setStepSubtitle(1, "Press Continue");
         }
 
         if (isSystemAlertPermissionGranted(getApplicationContext())) {
             verticalStepperForm.setStepAsCompleted(2);
-            verticalStepperForm.setStepSubtitle(1, "Permission Granted");
+            verticalStepperForm.setStepSubtitle(2, "Press Continue");
         }
     }
 

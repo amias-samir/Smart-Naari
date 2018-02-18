@@ -20,6 +20,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
     TextView tvWordTitle;
     @BindView(R.id.tv_word_desc)
     TextView tvWordDesc;
+    private WordsWithDetailsModel wordsWithDetailsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +28,10 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_data_glossary_word_details);
         ButterKnife.bind(this);
 
-        initToolbar();
-
-        Intent intent = getIntent();
-
-//        String A = intent.getStringExtra("query");
-//        String B = intent.getStringExtra("answer");
-
         Bundle data = getIntent().getExtras();
-        WordsWithDetailsModel wordsWithDetailsModel = (WordsWithDetailsModel) data.getParcelable("wordsWithDetails");
+        wordsWithDetailsModel = (WordsWithDetailsModel) data.getParcelable("wordsWithDetails");
 
-
-//        tvQuestionDetails.setHtml(intent.getStringExtra("query"));
-//        tvAnswerDetails.setHtml(intent.getStringExtra("answer"));
+        initToolbar();
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
         tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
@@ -48,16 +40,14 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Yuwa Pusta");
+        toolbar.setTitle(wordsWithDetailsModel != null ? wordsWithDetailsModel.getTitle() : "Failed to load");
         setSupportActionBar(toolbar);
-
 
 
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
-
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_close);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

@@ -67,7 +67,7 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
 
         if (actionBar != null) {
 
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(false);
         }
     }
 
