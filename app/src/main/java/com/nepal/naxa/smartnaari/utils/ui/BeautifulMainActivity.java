@@ -21,18 +21,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.XandYDetailsActivity;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
+import com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
@@ -51,7 +53,6 @@ import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
-import com.nepal.naxa.smartnaari.passion_of_life.ComplexListActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
@@ -62,6 +63,7 @@ import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -131,6 +133,9 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     ImageView image1, image2;
+    private boolean stopShakeAnimate;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,11 +147,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         syncAllData();
         setDateTimeInUI();
-
-        Glide.with(this)
-                .load(R.drawable.food_1).into(placeholder);
-        Glide.with(this)
-                .load(R.drawable.food_2).into(placeholder2);
+        animateIfSpecialDay();
 
 
         mAppBarLayout.addOnOffsetChangedListener(this);
@@ -166,7 +167,44 @@ public class BeautifulMainActivity extends BaseActivity
         if (isFirstTimeLoad) {
             //drawerLayout.openDrawer(GravityCompat.START);
         }
+    }
 
+    private void stopShakeAnimation() {
+        stopShakeAnimate = true;
+    }
+
+
+    private void animateIfSpecialDay() {
+        final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
+
+        animShake.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(final Animation animation) {
+                if (stopShakeAnimate) {
+                    return;
+                }
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ivLogo.startAnimation(animShake);
+                    }
+                }, TimeUnit.SECONDS.toMillis(2));
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        ivLogo.startAnimation(animShake);
 
     }
 
@@ -351,7 +389,7 @@ public class BeautifulMainActivity extends BaseActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
+               // drawerLayout.openDrawer(GravityCompat.START);
                 break;
 
             case R.id.item_share:
@@ -401,6 +439,7 @@ public class BeautifulMainActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
+
         doubleTapToExit();
     }
 
@@ -498,8 +537,14 @@ public class BeautifulMainActivity extends BaseActivity
 
     @OnClick(R.id.iv_logo)
     public void onHomeClicked() {
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
+        if(stopShakeAnimate){
+            drawerLayout.openDrawer(GravityCompat.START);
+        }else {
+            stopShakeAnimation();
+            EventShowcaseActivity.start(BeautifulMainActivity.this);
+        }
+
+     }
 
 
     @Override

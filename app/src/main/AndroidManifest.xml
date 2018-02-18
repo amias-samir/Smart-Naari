@@ -89,6 +89,7 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".mycircle.PermissionActivity"
+            android:exported="true"
             android:label="@string/title_activity_permission"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -345,12 +346,12 @@
         </activity>
 
         <activity android:name=".smartparent.TwoToTwelveYearsActivity">
-        <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".smartparent.SmartParentActivity" />
-    </activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".smartparent.SmartParentActivity" />
+        </activity>
 
-        <activity android:name=".smartparent.MidTeensActivity" >
+        <activity android:name=".smartparent.MidTeensActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".smartparent.SmartParentActivity" />
@@ -361,6 +362,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".smartparent.SmartParentActivity" />
         </activity>
+
+        <activity
+            android:name="com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Popup" />
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
@@ -25,6 +26,7 @@ import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
+import uk.co.jakelee.vidsta.VidstaPlayer;
 
 
 public class PermissionActivity extends BaseActivity implements VerticalStepperForm {
@@ -41,16 +43,19 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         setContentView(R.layout.activity_permission);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.toolbar_title_permission_activity);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+        toolbar.setSubtitle("Help needed? Watch Video");
+        toolbar.setSubtitleTextColor(getResources().getColor(R.color.black_alpha_40));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorGray));
         setSupportActionBar(toolbar);
 
+        VidstaPlayer player = (VidstaPlayer) findViewById(R.id.videoView);
+        player.setVideoSource("http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4");
+        player.setAutoLoop(false);
+        player.setFullScreen(false);
+        player.setButtonTintColor(R.color.colorAccent);
+        player.setAutoPlay(false);
 
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-//            boolean canWriteSystemSetting = Settings.System.canWrite(getApplicationContext());
-//            Log.i(TAG, "Can Write Setting " + canWriteSystemSetting);
-//            Intent myIntent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
-//            startActivity(myIntent);
-//        }
+
 
         String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
         String[] subtitles = {"Follow 4 steps to configure MyCircle",
@@ -64,6 +69,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
         // Finding the view
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.vertical_stepper_form);
+
 
 
         // Setting up and initializing the form
