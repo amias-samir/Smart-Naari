@@ -60,8 +60,19 @@ public class MyCircleActivity extends BaseActivity {
 
     private static final String TAG = MyCircleActivity.class.getSimpleName();
     private static final int REQUEST_CODE_PICK_CONTACTS = 1;
+
     @BindView(R.id.txtLBLmyCircleSafety)
     TextView tvMyCircleSafety;
+    @BindView(R.id.first_contact_delete)
+    ImageButton btnFirstContactDelete;
+    @BindView(R.id.second_contact_delete)
+    ImageButton btnSecondContactDelete;
+    @BindView(R.id.third_contact_delete)
+    ImageButton btnThirdContactDelete;
+    @BindView(R.id.fourth_contact_delete)
+    ImageButton btnFourthContactDelete;
+    @BindView(R.id.fifth_contact_delete)
+    ImageButton btnFifthContactDelete;
     private Uri uriContact;
     private String contactID; // contacts unique ID
 
@@ -83,8 +94,8 @@ public class MyCircleActivity extends BaseActivity {
 
     @BindView(R.id.txtLBLenterContacts)
     TextView tvEnterTwoNumber;
-    @BindView(R.id.top_linear_layout)
-    LinearLayout topLinearLayout;
+    //    @BindView(R.id.top_linear_layout)
+//    LinearLayout topLinearLayout;
     @BindView(R.id.body_relative_layout)
     LinearLayout bodyRelativeLayout;
     @BindView(R.id.layoutSelectContactNo)
@@ -129,8 +140,8 @@ public class MyCircleActivity extends BaseActivity {
 
         final SpannableStringBuilder sb = new SpannableStringBuilder("For my Saftey");
 
-        final StyleSpan bss1 = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
-        final StyleSpan bss2 = new StyleSpan(android.graphics.Typeface.BOLD); //Span to make text italic
+        final StyleSpan bss1 = new StyleSpan(Typeface.BOLD); // Span to make text bold
+        final StyleSpan bss2 = new StyleSpan(Typeface.BOLD); //Span to make text italic
         sb.setSpan(bss1, 0, 3, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 4 characters Bold
         sb.setSpan(bss2, 7, sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last  word Bold
         tvMyCircleSafety.setText(sb);
@@ -155,28 +166,18 @@ public class MyCircleActivity extends BaseActivity {
 
     @OnClick(R.id.btnNewMobileNo)
     public void onViewClicked() {
-//        if (count == 0) {
-//            tvFirstContact.setVisibility(View.VISIBLE);
-//            tvFirstContactName.setVisibility(View.VISIBLE);
-//            count = count + 1;
-//        } else if (count == 1) {
-//            tvFirstContact.setVisibility(View.VISIBLE);
-//            tvFirstContactName.setVisibility(View.VISIBLE);
-//
-//            tvSecondContact.setVisibility(View.VISIBLE);
-//            tvSecondContactName.setVisibility(View.VISIBLE);
-//            count = count + 1;
-//        } else
-            if (count == 0) {
-//            tvFirstContact.setVisibility(View.VISIBLE);
-//            tvFirstContactName.setVisibility(View.VISIBLE);
-//
-//            tvSecondContact.setVisibility(View.VISIBLE);
-//            tvSecondContactName.setVisibility(View.VISIBLE);
 
-            tvThirdContact.setVisibility(View.VISIBLE);
-            tvThirdContactName.setVisibility(View.VISIBLE);
+        if (count == 2 || visibilityStatusCount() == 5) {
+            Toast.makeText(this, "You can add only five numbers", Toast.LENGTH_SHORT).show();
+        }
+
+        if (count == 0) {
+
+            tvFourthContact.setVisibility(View.VISIBLE);
+            tvFourthContactName.setVisibility(View.VISIBLE);
+            btnFourthContactDelete.setVisibility(View.VISIBLE);
             count = count + 1;
+
         } else if (count == 1) {
 //            tvFirstContact.setVisibility(View.VISIBLE);
 //            tvFirstContactName.setVisibility(View.VISIBLE);
@@ -184,36 +185,40 @@ public class MyCircleActivity extends BaseActivity {
 //            tvSecondContact.setVisibility(View.VISIBLE);
 //            tvSecondContactName.setVisibility(View.VISIBLE);
 
-            tvThirdContactName.setVisibility(View.VISIBLE);
-            tvThirdContact.setVisibility(View.VISIBLE);
+//            tvThirdContact.setVisibility(View.VISIBLE);
+//            tvThirdContactName.setVisibility(View.VISIBLE);
 
             tvFourthContact.setVisibility(View.VISIBLE);
             tvFourthContactName.setVisibility(View.VISIBLE);
-            count = count + 1;
-
-        } else if (count == 2) {
-//            tvFirstContact.setVisibility(View.VISIBLE);
-//            tvFirstContactName.setVisibility(View.VISIBLE);
-//
-//            tvSecondContact.setVisibility(View.VISIBLE);
-//            tvSecondContactName.setVisibility(View.VISIBLE);
-
-            tvThirdContact.setVisibility(View.VISIBLE);
-            tvThirdContactName.setVisibility(View.VISIBLE);
-
-            tvFourthContact.setVisibility(View.VISIBLE);
-            tvFourthContactName.setVisibility(View.VISIBLE);
+            btnFourthContactDelete.setVisibility(View.VISIBLE);
 
             tvFifthContact.setVisibility(View.VISIBLE);
             tvFifthContactName.setVisibility(View.VISIBLE);
+            btnFifthContactDelete.setVisibility(View.VISIBLE);
 
             count = count + 1;
-        } else if (count > 2) {
-
-            Toast.makeText(this, "You can add only five numbers", Toast.LENGTH_SHORT).show();
         }
+    }
 
-
+    private int visibilityStatusCount() {
+        int countStatus = 0;
+        if (tvFirstContactName.getVisibility() == View.VISIBLE) {
+            countStatus++;
+        }
+        if (tvSecondContactName.getVisibility() == View.VISIBLE) {
+            countStatus++;
+        }
+        if (tvThirdContactName.getVisibility() == View.VISIBLE) {
+            countStatus++;
+        }
+        if (tvFourthContactName.getVisibility() == View.VISIBLE) {
+            countStatus++;
+        }
+        if (tvFifthContactName.getVisibility() == View.VISIBLE) {
+            countStatus++;
+        }
+        Log.d(TAG, "visibilityStatusCount: " + countStatus);
+        return countStatus;
     }
 
 
@@ -499,6 +504,7 @@ public class MyCircleActivity extends BaseActivity {
             if (!myCircleData.getContactNumber4().equals("")) {
                 tvFourthContact.setVisibility(View.VISIBLE);
                 tvFourthContactName.setVisibility(View.VISIBLE);
+                btnFourthContactDelete.setVisibility(View.VISIBLE);
                 tvFourthContactName.setText(myCircleData.getContactName4());
                 tvFourthContact.getEditText().setText(myCircleData.getContactNumber4());
             }
@@ -510,6 +516,7 @@ public class MyCircleActivity extends BaseActivity {
             if (!myCircleData.getContactNumber5().equals("")) {
                 tvFifthContact.setVisibility(View.VISIBLE);
                 tvFifthContactName.setVisibility(View.VISIBLE);
+                btnFifthContactDelete.setVisibility(View.VISIBLE);
                 tvFifthContact.getEditText().setText(myCircleData.getContactNumber5());
                 tvFifthContactName.setText(myCircleData.getContactName5());
             }
@@ -692,4 +699,33 @@ public class MyCircleActivity extends BaseActivity {
     }
 
 
+    @OnClick({R.id.first_contact_delete, R.id.second_contact_delete, R.id.third_contact_delete, R.id.fourth_contact_delete, R.id.fifth_contact_delete})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.first_contact_delete:
+                tvFirstContactName.setText("");
+                tvFirstContact.getEditText().setText("");
+                break;
+
+            case R.id.second_contact_delete:
+                tvSecondContactName.setText("");
+                tvSecondContact.getEditText().setText("");
+                break;
+
+            case R.id.third_contact_delete:
+                tvThirdContactName.setText("");
+                tvThirdContact.getEditText().setText("");
+                break;
+
+            case R.id.fourth_contact_delete:
+                tvFourthContactName.setText("");
+                tvFourthContact.getEditText().setText("");
+                break;
+
+            case R.id.fifth_contact_delete:
+                tvFifthContactName.setText("");
+                tvFifthContact.getEditText().setText("");
+                break;
+        }
+    }
 }
