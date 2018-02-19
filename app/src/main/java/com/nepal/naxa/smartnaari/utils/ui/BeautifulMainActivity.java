@@ -156,6 +156,13 @@ public class BeautifulMainActivity extends BaseActivity
         setupDrawerLayout();
 
 
+
+        Glide.with(this)
+                .load(R.drawable.food_1).into(placeholder);
+        Glide.with(this)
+                .load(R.drawable.food_2).into(placeholder2);
+
+
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
 
         initGridRecyclerView();
@@ -248,58 +255,69 @@ public class BeautifulMainActivity extends BaseActivity
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(final MenuItem menuItem) {
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        handleNavigation(menuItem);
+                    }
+                },250);
 
-                if (menuItem.getTitle().equals("My Circle")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
-                    startActivity(intent);
-                }
 
-                if (menuItem.getTitle().equals("About Smart नारी")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
-                    startActivity(intent);
-                }
 
-                if (menuItem.getTitle().equals("Meet The Team")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Glossary Of Terms")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Celebrating Professionals")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, CelebratingProfessionalActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Data on Gender and GBV")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Donate")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, DonateActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Tutorials")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, TutorialsActivity.class);
-                    startActivity(intent);
-                }
-
-                if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
-                    Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
-                    startActivity(intent);
-                }
 
                 return true;
             }
         });
+    }
+
+    private void handleNavigation(MenuItem menuItem) {
+        if (menuItem.getTitle().equals("My Circle")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("About Smart नारी")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Meet The Team")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Glossary Of Terms")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Celebrating Professionals")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, CelebratingProfessionalActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Data on Gender and GBV")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Donate")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, DonateActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Tutorials")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, TutorialsActivity.class);
+            startActivity(intent);
+        }
+
+        if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
+            Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -430,6 +448,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         boolean showToolbarIcons = shouldShowToolbarItems(percentage);
         if (showToolbarIcons) {
+            stopShakeAnimation();
             ivLogo.setVisibility(View.VISIBLE);
         } else {
             ivLogo.setVisibility(View.VISIBLE);
