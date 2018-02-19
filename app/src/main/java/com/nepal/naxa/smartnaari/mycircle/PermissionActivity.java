@@ -3,13 +3,13 @@ package com.nepal.naxa.smartnaari.mycircle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.afollestad.easyvideoplayer.EasyVideoCallback;
+import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
@@ -26,7 +27,6 @@ import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
-import uk.co.jakelee.vidsta.VidstaPlayer;
 
 
 public class PermissionActivity extends BaseActivity implements VerticalStepperForm {
@@ -35,7 +35,14 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     private VerticalStepperFormLayout verticalStepperForm;
     final int CODE_REQUEST_PERMISSIONS = 7876778;
     private TextView textView;
+    private EasyVideoPlayer player;
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        player.pause();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +55,60 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorGray));
         setSupportActionBar(toolbar);
 
-        VidstaPlayer player = (VidstaPlayer) findViewById(R.id.videoView);
-        player.setVideoSource("http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4");
-        player.setAutoLoop(false);
-        player.setFullScreen(false);
-        player.setButtonTintColor(R.color.colorAccent);
-        player.setAutoPlay(false);
+        // Grabs a reference to the player view
+        player = (EasyVideoPlayer) findViewById(R.id.player);
 
+        // Sets the callback to this Activity, since it inherits EasyVideoCallback
+        player.setCallback(new EasyVideoCallback() {
+            @Override
+            public void onStarted(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPaused(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPreparing(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPrepared(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onBuffering(int percent) {
+
+            }
+
+            @Override
+            public void onError(EasyVideoPlayer player, Exception e) {
+
+            }
+
+            @Override
+            public void onCompletion(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onRetry(EasyVideoPlayer player, Uri source) {
+
+            }
+
+            @Override
+            public void onSubmit(EasyVideoPlayer player, Uri source) {
+
+            }
+        });
+
+        // Sets the source to the HTTP URL held in the TEST_URL variable.
+        // To play files, you can use Uri.fromFile(new File("..."))
+        player.setSource(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
 
 
         String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
@@ -69,7 +123,6 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
         // Finding the view
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.vertical_stepper_form);
-
 
 
         // Setting up and initializing the form
@@ -106,7 +159,6 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     }
 
     private View createInstructionView() {
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isSystemAlertPermissionGranted(this)) {

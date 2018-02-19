@@ -8,8 +8,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/cardview_default_radius"
-        android:layout_margin="@dimen/spacing_large">
+        android:layout_margin="@dimen/spacing_large"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,25 +18,25 @@
             tools:context="mycircle.PermissionActivity">
 
             <TextView
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_large"
                 android:text="Tutorial Video"
                 android:textSize="@dimen/material_text_subhead"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
-                android:visibility="gone"
-                android:layout_marginBottom="@dimen/spacing_large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginRight="@dimen/spacing_large"
-                android:text="Watch this short video and learn to use 'My Circle" />
+                android:text="Watch this short video and learn to use 'My Circle"
+                android:visibility="gone" />
 
-            <uk.co.jakelee.vidsta.VidstaPlayer
-                android:id="@+id/videoView"
+            <com.afollestad.easyvideoplayer.EasyVideoPlayer xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/player"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
 
