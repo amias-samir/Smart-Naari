@@ -29,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.XandYDetailsActivity;
@@ -167,6 +168,9 @@ public class BeautifulMainActivity extends BaseActivity
         if (isFirstTimeLoad) {
             //drawerLayout.openDrawer(GravityCompat.START);
         }
+
+
+
     }
 
     private void stopShakeAnimation() {
