@@ -1,11 +1,8 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
 import android.app.Dialog;
-
 import android.app.ProgressDialog;
-
 import android.content.Context;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -14,14 +11,12 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -65,8 +60,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
-import io.reactivex.Maybe;
-import io.reactivex.MaybeSource;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.disposables.Disposable;
@@ -159,6 +152,20 @@ public class MaChupBasdinaActivity extends BaseActivity {
         toolTargetViewConsentNoconsent();
 
 
+        tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
+        tvDescGBVInputId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    tvDescGBVInputId.setHint("");
+                    Log.d(TAG, "onFocusChange: "+"Focus");
+                }
+                else {
+                    tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
+                    Log.d(TAG, "onFocusChange: "+"Release");
+
+                }
+            }
+        });
     }
 
 
@@ -247,91 +254,12 @@ public class MaChupBasdinaActivity extends BaseActivity {
                     "Loading definition of " + selectedItem);
             dialog.setCancelable(false);
 
-            new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
-                @Override
-                public void onFileLoadComplete(String jsonString) {
-
-                    searchAndOpenDetail(jsonString, selectedItem)
-                            .doOnSubscribe(new Consumer<Disposable>() {
-                                @Override
-                                public void accept(Disposable disposable) throws Exception {
-                                    dialog.show();
-                                }
-                            })
-                            .subscribe(new DisposableObserver<WordsWithDetailsModel>() {
-                                @Override
-                                public void onNext(WordsWithDetailsModel wordsWithDetailsModel) {
-                                    dialog.dismiss();
-
-                                    if(!TextUtils.isEmpty(wordsWithDetailsModel.getError())){
-
-                                        //todo ask what to do
-                                        return;
-                                    }
-
-                                    Intent intent = new Intent(MaChupBasdinaActivity.this, DataGlossaryWordDetailsActivity.class);
-                                    intent.putExtra("wordsWithDetails", wordsWithDetailsModel);
-                                    startActivity(intent);
-                                }
-
-                                @Override
-                                public void onError(Throwable e) {
-                                    //not implemented
-                                    dialog.dismiss();
-                                    e.printStackTrace();
-                                }
-
-                                @Override
-                                public void onComplete() {
-                                    //not implemented
-
-                                }
-                            });
-                }
-
-                @Override
-                public void onFileLoadError(String errorMsg) {
-
-                }
-
-
-            }, MaChupBasdinaActivity.this).execute();
+            searchAndLoadGlossary(selectedItem);
 
 
         }
 
     }
-
-
-    private Observable<WordsWithDetailsModel> searchAndOpenDetail(final String jsonString, final String searchString) {
-
-        return io.reactivex.Observable.just(jsonString)
-                .flatMap(new Function<String, ObservableSource<List<WordsWithDetailsModel>>>() {
-                    @Override
-                    public ObservableSource<List<WordsWithDetailsModel>> apply(String s) throws Exception {
-                        Type listType = new TypeToken<List<WordsWithDetailsModel>>() {
-                        }.getType();
-                        List<WordsWithDetailsModel> list = new Gson().fromJson(jsonString, listType);
-                        return Observable.just(list);
-
-                    }
-                })
-                .flatMapIterable(new Function<List<WordsWithDetailsModel>, Iterable<WordsWithDetailsModel>>() {
-                    @Override
-                    public Iterable<WordsWithDetailsModel> apply(List<WordsWithDetailsModel> wordsWithDetailsModels) throws Exception {
-                        return wordsWithDetailsModels;
-                    }
-                })
-                .filter(new Predicate<WordsWithDetailsModel>() {
-                    @Override
-                    public boolean test(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
-                        return wordsWithDetailsModel.getTitle().equalsIgnoreCase(searchString.trim());
-
-                    }
-                })
-                .defaultIfEmpty(new WordsWithDetailsModel("error"));
-    }
-
 
     public void initSpinnerData() {
         ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListEnglish);
@@ -568,10 +496,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 });
 
         // You don't always need a sequence, and for that there's a single time tap target
-        final SpannableString spannedDesc = new SpannableString("You need to understand first what is Consent and No Consent");
-        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "Consent and No Consent".length(), spannedDesc.length(), 0);
+//        final SpannableString spannedDesc = new SpannableString("");
+//        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "Consent and No Consent".length(), spannedDesc.length(), 0);
 //        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "No Consent".length(), spannedDesc.length(), 0);
-        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.txtLBLUnderstanding), "Ma Chup Basdina", spannedDesc)
+        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.txtLBLUnderstanding), "")
                 .cancelable(false)
                 .drawShadow(true)
                 .dimColor(android.R.color.black)
@@ -668,5 +596,93 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .show();
 
     }
+
+    @OnClick(R.id.tv_perpetrator)
+    public void onperpetratorViewClicked() {
+            searchAndLoadGlossary("Perpetrator");
+    }
+
+    private void searchAndLoadGlossary(final String filter) {
+        new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
+            @Override
+            public void onFileLoadComplete(String jsonString) {
+
+                searchAndOpenDetail(jsonString, filter)
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(Disposable disposable) throws Exception {
+//                                dialog.show();
+                            }
+                        })
+                        .subscribe(new DisposableObserver<WordsWithDetailsModel>() {
+                            @Override
+                            public void onNext(WordsWithDetailsModel wordsWithDetailsModel) {
+//                                dialog.dismiss();
+
+                                if (!TextUtils.isEmpty(wordsWithDetailsModel.getError())) {
+
+                                    //todo ask what to do
+                                    return;
+                                }
+
+                                Intent intent = new Intent(MaChupBasdinaActivity.this, DataGlossaryWordDetailsActivity.class);
+                                intent.putExtra("wordsWithDetails", wordsWithDetailsModel);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                //not implemented
+//                                dialog.dismiss();
+                                e.printStackTrace();
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                //not implemented
+
+                            }
+                        });
+            }
+
+            @Override
+            public void onFileLoadError(String errorMsg) {
+
+            }
+
+
+        }, MaChupBasdinaActivity.this).execute();
+
+    }
+
+    private Observable<WordsWithDetailsModel> searchAndOpenDetail(final String jsonString, final String searchString) {
+
+        return Observable.just(jsonString)
+                .flatMap(new Function<String, ObservableSource<List<WordsWithDetailsModel>>>() {
+                    @Override
+                    public ObservableSource<List<WordsWithDetailsModel>> apply(String s) throws Exception {
+                        Type listType = new TypeToken<List<WordsWithDetailsModel>>() {
+                        }.getType();
+                        List<WordsWithDetailsModel> list = new Gson().fromJson(jsonString, listType);
+                        return Observable.just(list);
+
+                    }
+                })
+                .flatMapIterable(new Function<List<WordsWithDetailsModel>, Iterable<WordsWithDetailsModel>>() {
+                    @Override
+                    public Iterable<WordsWithDetailsModel> apply(List<WordsWithDetailsModel> wordsWithDetailsModels) throws Exception {
+                        return wordsWithDetailsModels;
+                    }
+                })
+                .filter(new Predicate<WordsWithDetailsModel>() {
+                    @Override
+                    public boolean test(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
+                        return wordsWithDetailsModel.getTitle().equalsIgnoreCase(searchString.trim());
+
+                    }
+                })
+                .defaultIfEmpty(new WordsWithDetailsModel("error"));
+    }
+
 
 }

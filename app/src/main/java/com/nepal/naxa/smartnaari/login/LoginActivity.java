@@ -1,6 +1,5 @@
 package com.nepal.naxa.smartnaari.login;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,23 +9,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
-import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
-import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
-import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
@@ -63,10 +60,11 @@ public class LoginActivity extends BaseActivity {
     TextView tvRegisterBeTheOneLBL;
 
 
-
     String jsonToSend = null;
     ProgressDialog mProgressDlg;
-    MyCircleData myCircleData ;
+    MyCircleData myCircleData;
+    @BindView(R.id.top_img)
+    ImageView topImgTapItStopIt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +85,6 @@ public class LoginActivity extends BaseActivity {
         SpannableStringBuilder sb = SpanUtils.makeSectionOfTextBigger(rawString, bigSize, textToBigSize);
 
         tvRegisterBeTheOneLBL.setText(sb);
-
-
-
 
 
     }
@@ -202,15 +197,14 @@ public class LoginActivity extends BaseActivity {
 
                 if (sessionManager.doesUserHaveCircle()) {
 
-                    Log.d(TAG, "handleLoginSucess: "+sessionManager.doesUserHaveCircle());
+                    Log.d(TAG, "handleLoginSucess: " + sessionManager.doesUserHaveCircle());
 
-                    if(sessionManager.doesHaveIntentBackgroundService()) {
+                    if (sessionManager.doesHaveIntentBackgroundService()) {
 
                         Intent intent = new Intent(LoginActivity.this, BeautifulMainActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-                    else {
+                    } else {
                         Intent intent = new Intent(LoginActivity.this, PermissionActivity.class);
                         startActivity(intent);
                         finish();
@@ -243,4 +237,9 @@ public class LoginActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.top_img)
+    public void onViewClicked() {
+        Intent intent = new Intent(LoginActivity.this, TapItStopItActivity.class);
+        startActivity(intent);
+    }
 }

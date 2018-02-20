@@ -56,7 +56,7 @@
     <string name="general_form_button_ask">Ask</string>
     <string name="title_activity_ask_owl">AskOwlActivity</string>
 
-    <string name="understanding">Understanding</string>
+    <string name="understanding">Understand</string>
     <string name="report_gender_based_violence">Report Violence, Abuse and Harm</string>
     <string name="report_i_am_the_victim">Myself</string>
     <string name="report_family_members">Family Members</string>
@@ -393,6 +393,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="see_all_services">See All Services</string>
     <string name="report">Report</string>
     <string name="action_search">Search</string>
+    <string name="ma_chup_basdina_other_info_hint">Other information \n related to the \n reported \'type\'</string>
+    <string name="offender">Offender</string>
 
 </resources>
 

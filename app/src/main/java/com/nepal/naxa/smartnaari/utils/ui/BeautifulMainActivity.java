@@ -58,6 +58,7 @@ import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.Hot
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
@@ -414,6 +415,11 @@ public class BeautifulMainActivity extends BaseActivity
                // drawerLayout.openDrawer(GravityCompat.START);
                 break;
 
+            case R.id.item_call:
+                Intent intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.item_share:
                 Intent textShareIntent = new Intent(Intent.ACTION_SEND);
                 textShareIntent.putExtra(Intent.EXTRA_TEXT, "url link ");
@@ -597,10 +603,13 @@ public class BeautifulMainActivity extends BaseActivity
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_imageview_placeholder_tap_it_stop_it:
+
                 break;
             case R.id.main_imageview_placeholder2_tap_it_stop_it:
                 break;
             case R.id.btn_tap_it_stop_it:
+                Intent intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
                 break;
         }
     }
