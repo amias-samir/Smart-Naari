@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.getkeepsafe.taptargetview.TapTargetView;
+import com.github.florent37.tutoshowcase.TutoShowcase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
@@ -149,7 +150,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
         initSpinnerData();
 
 //        initialize tooltagget view
-        toolTargetViewConsentNoconsent();
+//        toolTargetViewConsentNoconsent();
+
+        //initialize tutoshowcase, similar to tooltagget view
+        initTutoShow();
+
+
+
 
 
         tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
@@ -164,6 +171,46 @@ public class MaChupBasdinaActivity extends BaseActivity {
                     Log.d(TAG, "onFocusChange: "+"Release");
 
                 }
+            }
+        });
+    }
+
+    private void initTutoShow() {
+        final TutoShowcase view = TutoShowcase.from(this)
+                .setListener(new TutoShowcase.Listener() {
+                    @Override
+                    public void onDismissed() {
+
+
+                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setContentView(R.layout.tuto_showcase)
+                .setFitsSystemWindows(true)
+                .on(R.id.con)
+                .addCircle()
+                .withBorder()
+                .onClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(TutoShowcaseMainActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
+                    }
+                })
+
+
+                .show();
+
+
+        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.dismiss();
             }
         });
     }
@@ -416,6 +463,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
 
+    //Tap target view ko detail haru # purano
     public void toolTargetViewConsentNoconsent() {
 
         // We load a drawable and create a location to show a tap target here
