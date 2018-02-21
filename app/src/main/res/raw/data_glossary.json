@@ -49,6 +49,16 @@
    "title": "Consent",
    "desc": "The verbal presence of a YES; and not the quiet absence of a NO. It means permission and agreement is personally and willingly given by an individual to another person.                                                       \nConsent can be withdrawn anytime by the person giving it in the first place and the other must respect it every time. \nConsent or a consensual act, is always positive, it is an enthusiastic affirmation that two people have mutually agreed to engage in any activity, sexual or otherwise. To say YES today is consent and to say NO tomorrow is no consent and it’s OK to change one’s mind in any given situation. Also see, legal age of consent and legal age of majority."
  },
+  {
+    "category": "C",
+    "title": "Cyber Harassment and Bullying",
+    "desc": "Term used to describe the use of the Internet to harass, threaten, or maliciously embarrass. It can involve behaviours such as: sending or encouraging others to send unsolicited and/or threatening e-mail, sending viruses by e-mail (electronic sabotage), spreading rumours, making defamatory comments about the victim-survivor online, sending negative messages, impersonating the victim-survivor online by sending an inflammatory, controversial or enticing message which causes others to respond negatively to the victim-survivor, harassing the victim during a live chat, leaving abusive messages online, including social media sites, sending pornography or other graphic material that is knowingly offensive and creating online content that depicts the victim-survivor in negative ways."
+  },
+  {
+    "category": "C",
+    "title": "Cyber Stalking",
+    "desc": "Often starts with online contact by a person known or unknown to the person being targeted, includes “sweet talking” and nice repeated requests for a meeting. If refused, the person can easily turn to cyber harassment and bullying and even escalate that to rape, physical assault and sexual assault."
+  },
  {
    "category": "D",
    "title": "Denial of Resources, Opportunities or Services",
@@ -194,6 +204,11 @@
    "title": "Incest",
    "desc": "Is the sexual activity between close family members such as father and daughter, mother and son or brother and sister. Each society, its cultures and laws decide what incest is and what is legally permitted. Within the sphere of  gender based violence and violence against women, incest is classified as non-consensual sexual relations between close blood family members, a form of sexual deviation and hence categorized as abuse of power, inherently violent and harmful. "
  },
+  {
+    "category": "I",
+    "title": "Internet/Cyber Violence",
+    "desc": "Growing deviant online behaviour and criminal practice that constitutes psychological/emotional abuse against the well-being of another individual or group. What distinguishes this form of violence, also termed cyber harassment and bullying from traditional off-line forms of violence is that significant portion of the harm takes place online and there is no consent. In case of cyber stalking, often offline violence can happen. What is more troubling, is the ease with which a single perpetrator can anonymously gather information about another person and then make contact with large numbers of people on the internet causing it to have devastating effects on the victim-survivor."
+  },
  {
    "category": "I",
    "title": "Intersex",
@@ -400,14 +415,9 @@
    "desc": "Refers to an attitude founded on the belief that girls are inadequate and of lesser value than boys to parents and society. As a major form of gender discrimination, it can give way to an array of harmful traditional practices targeting girls and women. For instance, neglect of the girl child in terms of withholding access to health, education, economic opportunity and in some cases even food and other basic necessities. In an alternative form, son preference has also manifested itself through the practice of sex selective abortion. In gender research, son preference is said to be rooted in discriminatory religious and cultural norms but most critically in unequal laws between men and women in terms of inheritance and civil rights."
  },
  {
-   "category": "V",
+   "category": "S",
    "title": "Suicide",
    "desc": "It is the act or an instance of taking one's own life voluntarily and intentionally. Worldwide, domestic abuse and violence is a factor in one-quarter of female suicide attempts and can be linked to battered woman syndrome, a serious mental health condition which can manifests itself in self-harm resulting in death. Female victim-survivor of domestic abuse and violence have eight times the risk for suicide compared with the general population. Fifty percent of battered women who attempt suicide undertake subsequent attempts. If a pregnant woman is a victim-survivor of domestic abuse and other forms of violence, the risk of suicide increases. In some cases, recorded suicide cases may also be disguised murders"
- },
- {
-   "category": "S",
-   "title": "Victim-Survivor",
-   "desc": "Often refers to a girl or a woman who has experienced any form of abuse, violence and harm. International law defines “victim-survivor” as “any natural person who is subject to abuse, violence and harm.” Both words are increasingly used together. This is done to underline the fact, that some people in society are largely victimised for no fault of theirs, for example being born a girl who grows into a woman. The phrase means, their terrible experience does not make them “passive” victims, rather they are “actively” trying to survive, to stop the violence and to seek protection and support for themselves and others."
  },
  {
    "category": "T",
@@ -429,6 +439,11 @@
    "title": "Trans",
    "desc": "Is a blanket term that can be used in many different ways. Some people use it to indicate that their current gender identity and gender expression is not the same as the gender they were assigned at birth. . It is also used for some of the following words such as Transgender, Transsexual, Transitioning, Transman, and Transwoman. Transgender individuals may or may not choose to transition through use of medical intervention. Being transgender is independent of sexual orientation for transgender people may identify as heterosexual, homosexual, bisexual, pansexual and asexual or they may consider conventional sexual orientation labels inadequate or inapplicable.   "
  },
+  {
+    "category": "V",
+    "title": "Victim-Survivor",
+    "desc": "Often refers to a girl or a woman who has experienced any form of abuse, violence and harm. International law defines “victim-survivor” as “any natural person who is subject to abuse, violence and harm.” Both words are increasingly used together. This is done to underline the fact, that some people in society are largely victimised for no fault of theirs, for example being born a girl who grows into a woman. The phrase means, their terrible experience does not make them “passive” victims, rather they are “actively” trying to survive, to stop the violence and to seek protection and support for themselves and others."
+  },
  {
    "category": "V",
    "title": "Violence against Children - Physical, Emotional and Sexual Abuse",
