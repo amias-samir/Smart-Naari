@@ -11,9 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -67,6 +70,8 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setTitle("Tap It Stop It");
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
@@ -74,6 +79,8 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
 
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+
     }
 
 
@@ -142,46 +149,6 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
     public void onFileLoadError(String errorMsg) {
     }
 
-    public void recyclerItemClickListner (){
-
-        final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return true;
-            }
-
-        });
-
-        recyclerViewTapItStopIt.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-
-
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
-//                    Drawer.closeDrawers();
-                    int position = recyclerView.getChildPosition(child);
-
-                    Log.e("", "onInterceptTouchEvent: "+position );
-
-                    return true;
-                }
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-    }
-
 
     public void showEmergencyContactListDialog(String type) {
         tapItStopItfilteredList.clear();
@@ -190,9 +157,6 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
 
         for (int i = 0; i < tapItStopItConactList.size(); i++) {
             if(type.equals(tapItStopItConactList.get(i).getType())) {
-//                Log.d(TAG, "showServicesListDialog: " + tapItStopItConactList.get(i).getName());
-//                Log.d(TAG, "showServicesListDialog: " + tapItStopItConactList.get(i).getType());
-//                Log.d(TAG, "showServicesListDialog: " + tapItStopItConactList.get(i).getContact());
 
                 tapItStopItfilteredList.add(tapItStopItConactList.get(i));
                 Log.d(TAG, "showEmergencyContactDialog: " + tapItStopItConactList.get(i).getName());
@@ -214,8 +178,6 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
         Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
         rvContactDialogList = (RecyclerView) showDialog.findViewById(R.id.rv_contact_list);
 
-//        tvHeader.setText(type+" Contact List");
-
 //        set recycler adapter
         tapItStopItDialogListAdapter = new TapItStopItDialogListAdapter(tapItStopItfilteredList);
         rvContactDialogList.setAdapter(tapItStopItDialogListAdapter);
@@ -235,5 +197,6 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
             }
         });
     }
+
 
 }

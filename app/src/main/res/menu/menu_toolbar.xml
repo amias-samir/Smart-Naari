@@ -18,18 +18,21 @@
     <item
         android:icon="@drawable/ic_menuitem_option"
         android:title="Menu"
-        app:showAsAction="always">
+        app:showAsAction="always"
+        android:visible="false">
         <menu>
 
             <item
                 android:id="@+id/item_share"
                 android:icon="@drawable/ic_menuitem_share"
-                android:title="Share" />
+                android:title="Share"
+                android:visible="false"/>
 
             <item
                 android:id="@+id/item_like_us_on_facebook"
                 android:icon="@drawable/ic_menuitem_like_us_on_facebook"
-                android:title="Like us on Facebook" />
+                android:title="Like us on Facebook"
+                android:visible="false"/>
 
             <item
                 android:id="@+id/item_follow_us_on_instagram"
