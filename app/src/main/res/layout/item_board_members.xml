@@ -5,19 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    expandableTextView:cardUseCompatPadding="true"
-    app:ignore="NamespaceTypo">
+    app:ignore="NamespaceTypo"
+    expandableTextView:cardUseCompatPadding="true">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageView
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_member_image"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"/>
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/food_1"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,47 +35,53 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/spacing_large"
             android:paddingRight="@dimen/spacing_large"
-            android:paddingTop="@dimen/spacing_large"
-            >
+            android:paddingTop="@dimen/spacing_large">
 
             <TextView
                 android:id="@+id/tv_member_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Person Name, Smart Post"
-                android:textSize="@dimen/material_text_title"
-                />
+                android:text="Person Name"
+                android:textSize="@dimen/material_text_title" />
 
             <TextView
-                android:id="@+id/tv_external_post_office"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_smart_naari_post"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_member_name"
-                android:text="External Post and office"
-                android:textColor="@color/textSubtitle"/>
+                android:text="Smart Post" />
 
-            <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/etv_member_description"
+            <TextView
+                android:id="@+id/tv_member_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_external_post_office"
-                android:layout_marginTop="@dimen/spacing_mlarge"
+                android:layout_below="@id/tv_smart_naari_post"
+                android:text="Member Description"
+                android:textColor="@color/textSubtitle" />
+
+            <at.blogc.android.views.ExpandableTextView
+                android:id="@+id/etv_external_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_member_description"
+                android:layout_marginTop="@dimen/spacing_small"
                 android:ellipsize="end"
                 android:maxLines="0"
-                android:textColor="@color/textSubtitle"
                 android:text="@string/lorem_ipsum"
+                android:textColor="@color/textSubtitle"
                 app:animation_duration="750" />
 
             <ImageButton
                 android:id="@+id/btn_toggle"
                 android:layout_width="@dimen/spacing_mlarge"
                 android:layout_height="@dimen/spacing_mlarge"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/etv_member_description"
-                android:gravity="end"
-                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                />
+                android:layout_below="@id/etv_external_post"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:layout_marginLeft="@dimen/spacing_medium"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:background="@drawable/ic_keyboard_arrow_down_black_24dp" />
 
         </RelativeLayout>
 
