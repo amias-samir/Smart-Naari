@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,9 @@ import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -354,8 +359,22 @@ public class SignUpActivity extends Activity {
                 cal.get(Calendar.DAY_OF_MONTH));
         datePicker.setCancelable(false);
         datePicker.setTitle("Select the date");
+openYearView(datePicker);
         datePicker.show();
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void openYearView(DatePickerDialog datePicker) {
+        try {
+            Field mDelegateField = datePicker.getClass().getDeclaredField("mDelegate");
+            mDelegateField.setAccessible(true);
+            Object delegate = mDelegateField.get(datePicker);
+            Method setCurrentViewMethod = delegate.getClass().getDeclaredMethod("setCurrentView", int.class);
+            setCurrentViewMethod.setAccessible(true);
+            setCurrentViewMethod.invoke(delegate, 1);
+        } catch (NoSuchFieldException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+        }
     }
 
 

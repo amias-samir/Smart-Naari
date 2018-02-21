@@ -55,7 +55,7 @@ public class AboutSmartNaariActivity extends BaseActivity {
 
     public void stringToHTMLParser (){
         // get our html content
-        String htmlAsString = getString(R.string.smart_naari_app_details);      // used by WebView
+        String htmlAsString = getString(R.string.smart_naari_about_app_details);      // used by WebView
         Spanned htmlAsSpanned = Html.fromHtml(htmlAsString); // used by TextView
 
         // set the html content on a TextView
