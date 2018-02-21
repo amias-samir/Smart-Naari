@@ -81,7 +81,6 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
         buttonToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-//                buttonToggle.setText(expandableTextView.isExpanded() ? "More" : "Less");
                 buttonToggle.setBackgroundResource(expandableTextView.isExpanded() ? R.drawable.ic_keyboard_arrow_down_black_24dp : R.drawable.ic_keyboard_arrow_up_black_24dp);
                 expandableTextView.toggle();
             }
@@ -92,11 +91,10 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
             public void onClick(final View v) {
                 if (expandableTextView.isExpanded()) {
                     expandableTextView.collapse();
-//                    buttonToggle.setText("More");
+
                     buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
                 } else {
                     expandableTextView.expand();
-//                    buttonToggle.setText("Less");
                     buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
 
                 }
