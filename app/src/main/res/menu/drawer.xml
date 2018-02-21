@@ -127,4 +127,14 @@
             android:icon="@drawable/ic_tutorials"
             android:title="@string/tutorials" />
     </group>
+
+    <group
+        android:id="@+id/group12"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_disclaimer"
+            android:checked="true"
+            android:icon="@drawable/ic_disclaimer"
+            android:title="@string/disclaimer" />
+    </group>
 </menu>

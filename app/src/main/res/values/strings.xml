@@ -412,7 +412,10 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <p><strong> WELCOME </strong> to the world of SMART नारी. We believe in your extraordinary potential! Lets cherish and celebrate this <strong> amazing </strong> <strong> life </strong> together, shall we?</p>
     <p>Try to solve the new Formula Cube! It works exactly like a Rubik's Cube but it is only $2, from China. Learn to solve it with the tutorial on rubiksplace.com or use the <a href="https://www.grubiks.com/solvers/rubiks-cube-3x3x3/"> solver to calculate </a> the solution in a few steps. (Please subscribe for a membership to stop adding promotional messages to the documents)</p>
 ]]>
-    </string> ?>
+    </string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="disclaimer_details">Definition is based on our research and understanding of the words for the purpose of this app. We have kept it as scientific, factual and brief as possible. If you wish for more, just google.</string>
+    ?>
 </resources>
 
 
