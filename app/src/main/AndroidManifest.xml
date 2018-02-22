@@ -344,29 +344,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
         <activity android:name=".smartparent.TwoToTwelveYearsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".smartparent.SmartParentActivity" />
         </activity>
-
         <activity android:name=".smartparent.MidTeensActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".smartparent.SmartParentActivity" />
         </activity>
-
         <activity android:name=".smartparent.EarlyTeensActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".smartparent.SmartParentActivity" />
         </activity>
-
         <activity
-            android:name="com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity"
+            android:name=".calendraevent.EventShowcaseActivity"
             android:exported="true"
             android:theme="@style/AppTheme.Popup" />
+        <activity android:name=".tapitstopit.TapItStopItActivity"></activity>
     </application>
 
 </manifest>

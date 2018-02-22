@@ -17,7 +17,6 @@
 package com.nepal.naxa.smartnaari.homescreen;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 
 import java.util.ArrayList;
 
@@ -153,15 +152,39 @@ public class ViewModel {
         viewModels.add(viewModel);
 
 
-
-
-
-
         return viewModels;
 
     }
 
 
+    public static ArrayList<ViewModel> getTapItStopItGridItem() {
+        ArrayList<ViewModel> viewModels = new ArrayList<>();
+
+
+        ViewModel viewModel;
+
+        viewModel = new ViewModel("Police", R.drawable.grid_tapitstopit_police_logo);
+        viewModels.add(viewModel);
+
+
+        viewModel = new ViewModel("Ambulance", R.drawable.grid_tapitstopit_ambulance);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Hospitals", R.drawable.grid_tapitstopit_hospital_icon);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Hotline", R.drawable.grid_tapitstopit_hotline);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Fire Brigade", R.drawable.grid_tapitstopit_fire_brigade);
+        viewModels.add(viewModel);
+
+        viewModel = new ViewModel("Blood Bank", R.drawable.grid_tapitstopit_blood_bank);
+        viewModels.add(viewModel);
+
+        return viewModels;
+
+    }
 
 
 

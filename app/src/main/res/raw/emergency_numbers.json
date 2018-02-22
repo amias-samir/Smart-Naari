@@ -1,0 +1,162 @@
+[
+	{
+		"Type": "Police ",
+		"Name": "Police Control",
+		"Number": "100"
+	},
+	{
+		"Type": "Police",
+		"Name": "Police Emergency",
+		"Number": "4228435"
+	},
+	{
+		"Type": "Police",
+		"Name": "Metropolitan Police Range (Kathmandu)",
+		"Number": "4261945/4261790"
+	},
+	{
+		"Type": "Police",
+		"Name": "Metropolitan Police Range (Lalitpur)",
+		"Number": "5521207"
+	},
+	{
+		"Type": "Police",
+		"Name": "Metropolitan Police Range (Bhaktapur)",
+		"Number": "6614821"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Nepal Ambulance Service",
+		"Number": "102"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Paropakar Ambulance Service",
+		"Number": "4260859"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Lalitpur Red Cross Ambulance Service",
+		"Number": "5545666"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Bishal Bazar Ambulance Service",
+		"Number": "4244121"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Red Cross Ambulance Service",
+		"Number": "4228094"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Medical National Hospital Ambulance",
+		"Number": "4467067"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Agarwal Sewa Centre",
+		"Number": "4424875"
+	},
+	{
+		"Type": "Ambulance",
+		"Name": "Aasara Drug Rehabilitation Centre",
+		"Number": "4384881"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Bir Hospital",
+		"Number": "4223807/4221988"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Nepal Police Hospital",
+		"Number": "4412430/4412530"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "TU Teaching Hospital ",
+		"Number": "4412404/4412505"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Maternity Hospital",
+		"Number": "4253276"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Teku Hospital",
+		"Number": "4253396"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Patan Hospital",
+		"Number": "5522278/5522266"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Bhaktapur Hospital",
+		"Number": "6610676"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Mental Hospital",
+		"Number": "5521333"
+	},
+	{
+		"Type": "Hospitals",
+		"Name": "Kanti Children Hospital",
+		"Number": "4414798/44274"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Government Hotline",
+		"Number": "1234"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Confidential Child Protection Helpline",
+		"Number": "Nepal"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Mental Health Helpline Nepal",
+		"Number": "1660-0133666"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Rescue and Report Missing Person",
+		"Number": "1113"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Trans-cultural Psycho-Social Organization Nepal Crisis Hotline ",
+		"Number": "1660-0102005"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Maiti Nepal",
+		"Number": "1660-0199999"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "TU Teaching Hospital: Suicide Hotline",
+		"Number": "9840021600"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Blue Diamond Society",
+		"Number": "1660-0120140"
+	},
+	{
+		"Type": "Fire_Brigade",
+		"Name": "Fire Brigade",
+		"Number": "101"
+	},
+	{
+		"Type": "Blood_Bank",
+		"Name": "Blood Bank",
+		"Number": "4225344"
+	}
+]

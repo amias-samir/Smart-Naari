@@ -374,7 +374,7 @@
                     android:gravity="left"
                     android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
                     android:ems="10"
-                    android:hint="@string/perpetrator"
+                    android:hint="@string/offender"
                     android:inputType="textPersonName"
                     android:padding="@dimen/default_padding"
                     android:textColor="@color/textPrimary"
@@ -418,7 +418,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="top|left|start"
                         android:scrollbars="vertical"
-                        android:padding="@dimen/default_padding"/>
+                        android:padding="@dimen/default_padding"
+                        android:inputType="text|textMultiLine"
+                        />
 
 
                 </android.support.design.widget.TextInputLayout>

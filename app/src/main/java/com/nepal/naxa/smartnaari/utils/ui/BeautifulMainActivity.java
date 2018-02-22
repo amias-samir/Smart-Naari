@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.utils.ui;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +60,7 @@ import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.Hot
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
@@ -318,6 +321,9 @@ public class BeautifulMainActivity extends BaseActivity
             Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
             startActivity(intent);
         }
+        if (menuItem.getTitle().equals("Disclaimer")) {
+           showDisclaimerDialog("Disclaimer");
+        }
     }
 
 
@@ -412,6 +418,11 @@ public class BeautifulMainActivity extends BaseActivity
         switch (item.getItemId()) {
             case android.R.id.home:
                // drawerLayout.openDrawer(GravityCompat.START);
+                break;
+
+            case R.id.item_call:
+                Intent intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.item_share:
@@ -597,10 +608,13 @@ public class BeautifulMainActivity extends BaseActivity
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_imageview_placeholder_tap_it_stop_it:
+
                 break;
             case R.id.main_imageview_placeholder2_tap_it_stop_it:
                 break;
             case R.id.btn_tap_it_stop_it:
+                Intent intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -641,5 +655,35 @@ public class BeautifulMainActivity extends BaseActivity
 //        }
 
 //        showInfoToast(viewModel.getText());
+    }
+
+
+    public void showDisclaimerDialog(String title) {
+
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        final Dialog showDialog = new Dialog(this);
+        showDialog.setContentView(R.layout.drawer_disclaimer_dialog_lyout);
+
+//         initialize
+        TextView tvDisclaimerDetails = (TextView) showDialog.findViewById(R.id.disclaimer_dialog_text);
+        Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
+
+        tvDisclaimerDetails.setText(R.string.disclaimer_details);
+
+        showDialog.setTitle(title);
+        showDialog.getActionBar();
+        showDialog.show();
+        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
+            }
+        });
     }
 }

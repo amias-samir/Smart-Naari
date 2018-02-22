@@ -1,16 +1,16 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
-import android.support.v7.widget.RecyclerView;
-import android.text.util.Linkify;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+        import android.support.v7.widget.RecyclerView;
+        import android.text.util.Linkify;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.TextView;
 
-import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.ServicesData;
+        import com.nepal.naxa.smartnaari.R;
+        import com.nepal.naxa.smartnaari.data.network.ServicesData;
 
-import java.util.List;
+        import java.util.List;
 
 /**
  * Created by samir on 1/16/2018.

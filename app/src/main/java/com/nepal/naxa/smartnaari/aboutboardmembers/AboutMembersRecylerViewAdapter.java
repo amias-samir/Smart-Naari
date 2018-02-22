@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.aboutboardmembers;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.nepal.naxa.smartnaari.R;
 
 import java.util.ArrayList;
@@ -54,17 +56,17 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
     public void onBindViewHolder(AboutMemberRecyclerViewHolder holder, int position) {
         MemberPojo cPerson = members.get(position);
         Glide.with(mContext)
-                .load(R.drawable.grid_i_am_amazing)
+                .load(R.drawable.food_1)
                 .into(holder.getMemberImage());
-        holder.getMemberName().setText(cPerson.getPersonName() + ", " + cPerson.getSmartNaariPost());
-//        holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost());
-        holder.getMemberExternalPostOffice().setText(cPerson.getExternalPost() + ", " + cPerson.getExternalOffice());
+        holder.getMemberName().setText(cPerson.getPersonName());
 
+        holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost() + "");
+        holder.getMemberDescription().setText(cPerson.getPersonDescription());
 
-        final ExpandableTextView expandableTextView = holder.getMemberDescription();
+        final ExpandableTextView expandableTextView = holder.getMemberExternalPostOffice();
         final ImageButton button = holder.getMemberDescriptionToogle();
         setExpandableText(expandableTextView, button);
-        expandableTextView.setText(cPerson.getPersonDescription());
+        expandableTextView.setText(cPerson.getExternalPost() + "\n" + cPerson.getExternalOffice());
 
     }
 
@@ -81,7 +83,6 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
         buttonToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-//                buttonToggle.setText(expandableTextView.isExpanded() ? "More" : "Less");
                 buttonToggle.setBackgroundResource(expandableTextView.isExpanded() ? R.drawable.ic_keyboard_arrow_down_black_24dp : R.drawable.ic_keyboard_arrow_up_black_24dp);
                 expandableTextView.toggle();
             }
@@ -92,11 +93,10 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
             public void onClick(final View v) {
                 if (expandableTextView.isExpanded()) {
                     expandableTextView.collapse();
-//                    buttonToggle.setText("More");
+
                     buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
                 } else {
                     expandableTextView.expand();
-//                    buttonToggle.setText("Less");
                     buttonToggle.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
 
                 }

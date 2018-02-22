@@ -19,8 +19,8 @@ import at.blogc.android.views.ExpandableTextView;
 public class AboutMemberRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView memberImage;
-    private TextView memberName, memberSmartNaariPost, memberExternalPostOffice;
-    private ExpandableTextView memberDescription;
+    private TextView memberName, memberSmartNaariPost,memberDescription;
+    private ExpandableTextView memberExternalPostOffice;
     private ImageButton memberDescriptionToogle;
 
     public AboutMemberRecyclerViewHolder(View itemView) {
@@ -28,9 +28,9 @@ public class AboutMemberRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         memberImage = (ImageView) itemView.findViewById(R.id.iv_member_image);
         memberName = (TextView) itemView.findViewById(R.id.tv_member_name);
-//        memberSmartNaariPost = (TextView) itemView.findViewById(R.id.tv_smart_naari_post);
-        memberExternalPostOffice = (TextView) itemView.findViewById(R.id.tv_external_post_office);
-        memberDescription = (ExpandableTextView) itemView.findViewById(R.id.etv_member_description);
+        memberSmartNaariPost = (TextView) itemView.findViewById(R.id.tv_smart_naari_post);
+        memberExternalPostOffice = (ExpandableTextView) itemView.findViewById(R.id.etv_external_post);
+        memberDescription = (TextView) itemView.findViewById(R.id.tv_member_description);
         memberDescriptionToogle = (ImageButton) itemView.findViewById(R.id.btn_toggle);
     }
 
@@ -46,12 +46,12 @@ public class AboutMemberRecyclerViewHolder extends RecyclerView.ViewHolder {
         return memberSmartNaariPost;
     }
 
-    public TextView getMemberExternalPostOffice() {
-        return memberExternalPostOffice;
+    public TextView getMemberDescription() {
+        return memberDescription;
     }
 
-    public ExpandableTextView getMemberDescription() {
-        return memberDescription;
+    public ExpandableTextView getMemberExternalPostOffice() {
+        return memberExternalPostOffice;
     }
 
     public ImageButton getMemberDescriptionToogle() {
