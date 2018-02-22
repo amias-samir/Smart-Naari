@@ -448,7 +448,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         boolean showToolbarIcons = shouldShowToolbarItems(percentage);
         if (showToolbarIcons) {
-            stopShakeAnimation();
+
             ivLogo.setVisibility(View.VISIBLE);
         } else {
             ivLogo.setVisibility(View.VISIBLE);
