@@ -171,6 +171,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
         });
     }
 
+
     private void initTutoShow() {
         final TutoShowcase view = TutoShowcase.from(this)
                 .setListener(new TutoShowcase.Listener() {
@@ -241,6 +242,44 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     }
 
+//    private void initTutoShow() {
+//        final TutoShowcase view = TutoShowcase.from(this)
+//                .setListener(new TutoShowcase.Listener() {
+//                    @Override
+//                    public void onDismissed() {
+//
+//
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .setContentView(R.layout.tuto_showcase)
+//                .setFitsSystemWindows(true)
+//                .on(R.id.con)
+//                .addCircle()
+//                .withBorder()
+//                .onClick(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//
+//
+//                .show();
+//
+//
+//        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                view.dismiss();
+//            }
+//        });
 
 
 
@@ -528,7 +567,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
                                 .tintTarget(false)
                                 .id(1),
                         // You can also target the overflow button in your toolbar
-                        TapTarget.forView(tvLBLNoConsent, "Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
+                        TapTarget.forView(tvLBLNoConsent, "" +
+                                "", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
                                 .cancelable(false)
                                 .dimColor(android.R.color.black)
                                 .outerCircleColor(R.color.colorAccent)
