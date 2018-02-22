@@ -199,4 +199,35 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
     }
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+
+        MenuItem tapItStopIt = menu.findItem(R.id.item_call);
+        MenuItem notification = menu.findItem(R.id.item_notification);
+
+
+        tapItStopIt.setVisible(false);
+        notification.setVisible(false);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
