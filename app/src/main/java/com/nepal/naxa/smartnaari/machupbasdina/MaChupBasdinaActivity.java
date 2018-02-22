@@ -153,7 +153,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //        toolTargetViewConsentNoconsent();
 
         //initialize tutoshowcase, similar to tooltagget view
-        initTutoShow();
+//        initTutoShow();
 
 
 
@@ -175,45 +175,45 @@ public class MaChupBasdinaActivity extends BaseActivity {
         });
     }
 
-    private void initTutoShow() {
-        final TutoShowcase view = TutoShowcase.from(this)
-                .setListener(new TutoShowcase.Listener() {
-                    @Override
-                    public void onDismissed() {
-
-
-                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setContentView(R.layout.tuto_showcase)
-                .setFitsSystemWindows(true)
-                .on(R.id.con)
-                .addCircle()
-                .withBorder()
-                .onClick(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(TutoShowcaseMainActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
-                    }
-                })
-
-
-                .show();
-
-
-        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.dismiss();
-            }
-        });
-    }
+//    private void initTutoShow() {
+//        final TutoShowcase view = TutoShowcase.from(this)
+//                .setListener(new TutoShowcase.Listener() {
+//                    @Override
+//                    public void onDismissed() {
+//
+//
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .setContentView(R.layout.tuto_showcase)
+//                .setFitsSystemWindows(true)
+//                .on(R.id.con)
+//                .addCircle()
+//                .withBorder()
+//                .onClick(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MaChupBasdinaActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//
+//
+//                .show();
+//
+//
+//        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                view.dismiss();
+//            }
+//        });
+//    }
 
 
     private void initToolbar() {
