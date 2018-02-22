@@ -22,6 +22,9 @@ public class MemberPojo {
     @SerializedName("external_office")
     @Expose
     private String externalOffice;
+    @SerializedName("photo")
+    @Expose
+    private String photo;
 
     public String getPersonName() {
         return personName;
@@ -61,6 +64,15 @@ public class MemberPojo {
 
     public void setExternalOffice(String externalOffice) {
         this.externalOffice = externalOffice;
+    }
+
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
 }

@@ -55,11 +55,17 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
     @Override
     public void onBindViewHolder(AboutMemberRecyclerViewHolder holder, int position) {
         MemberPojo cPerson = members.get(position);
+
+        if (cPerson.getPhoto().equals("")){
         Glide.with(mContext)
                 .load(R.drawable.food_1)
                 .into(holder.getMemberImage());
+        }else {
+            Glide.with(mContext)
+                    .load(cPerson.getPhoto())
+                    .into(holder.getMemberImage());
+        }
         holder.getMemberName().setText(cPerson.getPersonName());
-
         holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost() + "");
         holder.getMemberDescription().setText(cPerson.getPersonDescription());
 

@@ -108,7 +108,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
         // Sets the source to the HTTP URL held in the TEST_URL variable.
         // To play files, you can use Uri.fromFile(new File("..."))
-        player.setSource(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
+        player.setSource(Uri.parse("http://naxa.com.np/smartnaari/android/smart_naari.mp4"));
 
 
         String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
