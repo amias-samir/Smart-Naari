@@ -156,19 +156,15 @@ public class MaChupBasdinaActivity extends BaseActivity {
         initTutoShow();
 
 
-
-
-
         tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
         tvDescGBVInputId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     tvDescGBVInputId.setHint("");
-                    Log.d(TAG, "onFocusChange: "+"Focus");
-                }
-                else {
+                    Log.d(TAG, "onFocusChange: " + "Focus");
+                } else {
                     tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
-                    Log.d(TAG, "onFocusChange: "+"Release");
+                    Log.d(TAG, "onFocusChange: " + "Release");
 
                 }
             }
@@ -180,16 +176,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .setListener(new TutoShowcase.Listener() {
                     @Override
                     public void onDismissed() {
-
-
-                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
+                        initTutoShow2();
                     }
                 })
-                .setContentView(R.layout.tuto_showcase)
+                .setContentView(R.layout.tuto_showcase_consent)
                 .setFitsSystemWindows(true)
-                .on(R.id.con)
-                .addCircle()
-                .withBorder()
+                .on(R.id.tvLBL_Consent)
+                .addRoundRect()
                 .onClick(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -199,11 +192,43 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(TutoShowcaseMainActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
+                        searchAndLoadGlossary("Consent");
                     }
                 })
+                .show();
 
 
+        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initTutoShow2();
+            }
+        });
+    }
+
+    private void initTutoShow2(){
+        final TutoShowcase view = TutoShowcase.from(this)
+                .setListener(new TutoShowcase.Listener() {
+                    @Override
+                    public void onDismissed() {
+                    }
+                })
+                .setContentView(R.layout.tuto_showcase_no_concent)
+                .setFitsSystemWindows(true)
+                .on(R.id.tvLBL_no_consent)
+                .addRoundRect()
+                .onClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        searchAndLoadGlossary("No Consent");
+                    }
+                })
                 .show();
 
 
@@ -213,7 +238,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 view.dismiss();
             }
         });
+
     }
+
+
 
 
     private void initToolbar() {
@@ -647,7 +675,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     @OnClick(R.id.tv_perpetrator)
     public void onperpetratorViewClicked() {
-            searchAndLoadGlossary("Perpetrator");
+        searchAndLoadGlossary("Perpetrator");
     }
 
     private void searchAndLoadGlossary(final String filter) {
