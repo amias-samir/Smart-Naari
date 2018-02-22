@@ -35,7 +35,7 @@ public class ConstantData {
 
     public final static String [] AGE_GROUP = {"below 16", "16-18", "19-24", "25-30", "31-35", "36-40", "41-50", "51-60","above 60"};
 
-    public final static String[] voilenceOccurTime = {"Select time", "Just now", "1 week ago", "2 weeks ago", "3 weeks ago", "a month ago", "2 months ago", "3 months ago", "4 months ago", "5 months ago", "6 months ago", "1 year ago", "more than a year ago"};
+    public final static String[] voilenceOccurTime = {"Select time", "Today", "Yesterday", "Day Before Yesterday", "1 week ago", "2 weeks ago", "3 weeks ago", "a month ago", "2 months ago", "3 months ago", "4 months ago", "5 months ago", "6 months ago", "1 year ago", "more than a year ago"};
 
 
     public final static String[] voilenceType = {"Select Type", "Rape", "Sexual assault", "Sexual Harassment ",  "Physical assault", "Denial of Resources, Opportunities or Services", "Psychological/Emotional Abuse"};

@@ -173,7 +173,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
 
     private void initTutoShow() {
-        final TutoShowcase view = TutoShowcase.from(this)
+        final TutoShowcase view1 = TutoShowcase.from(this)
                 .setListener(new TutoShowcase.Listener() {
                     @Override
                     public void onDismissed() {
@@ -200,8 +200,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
 
         findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                view1.dismiss();
                 initTutoShow2();
             }
         });

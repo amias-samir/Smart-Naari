@@ -26,7 +26,7 @@
 
     <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
 
-    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence</string>
+    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Abuse, Violence and Harm </string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
 
 
@@ -393,7 +393,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="see_all_services">See All Services</string>
     <string name="report">Report</string>
     <string name="action_search">Search</string>
-    <string name="ma_chup_basdina_other_info_hint">Other information \n related to the \n reported \'type\'</string>
+    <string name="ma_chup_basdina_other_info_hint">related to the reported \'Type\' above</string>
     <string name="offender">Offender</string>
 
     <string name="smart_naari_about_app_details">
@@ -410,11 +410,14 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <p><strong> Sex matters </strong> to your overall health <strong> . </strong> We promote sexual relationships that are consensual and non-exploitative.</p>
     <p>We want to help make your voice count. No judgments! Promise. Talk to us about values, emotions, passions, desires and pleasures, making contraception fun, even your disgraces and anathemas, no holes barred! We will help you discriminate between life enhancing GOOD SEX behaviours and those, which hurt real bad.</p>
     <p><strong> WELCOME </strong> to the world of SMART नारी. We believe in your extraordinary potential! Lets cherish and celebrate this <strong> amazing </strong> <strong> life </strong> together, shall we?</p>
-    <p>Try to solve the new Formula Cube! It works exactly like a Rubik's Cube but it is only $2, from China. Learn to solve it with the tutorial on rubiksplace.com or use the <a href="https://www.grubiks.com/solvers/rubiks-cube-3x3x3/"> solver to calculate </a> the solution in a few steps. (Please subscribe for a membership to stop adding promotional messages to the documents)</p>
 ]]>
     </string>
     <string name="disclaimer">Disclaimer</string>
-    <string name="disclaimer_details">Definition is based on our research and understanding of the words for the purpose of this app. We have kept it as scientific, factual and brief as possible. If you wish for more, just google.</string>
+    <string name="disclaimer_details">Definition in the Glossary is based on our research and understanding of the words for the purpose of this app. We have kept it as scientific, factual and brief as possible. If you wish for more, just google.</string>
+    <string name="showcase_no_consent_details">Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.</string>
+    <string name="showcase_no_consent">No Consent</string>
+    <string name="learn_more">learn More</string>
+    <string name="got_it">Got It !!</string>
     ?>
 </resources>
 

@@ -82,7 +82,7 @@ public class ViewModel {
 
         ViewModel viewModel;
 
-        viewModel = new ViewModel("Report a case", R.drawable.grid_ma_chup_basdina);
+        viewModel = new ViewModel("Report", R.drawable.grid_ma_chup_basdina);
         viewModels.add(viewModel);
 
 

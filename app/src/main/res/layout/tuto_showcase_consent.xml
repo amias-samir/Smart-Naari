@@ -58,7 +58,6 @@
         android:layout_gravity="center"
         android:drawablePadding="10dp"
         android:text="Got It !!"
-
         android:textColor="@android:color/white" />
 
 

@@ -585,7 +585,7 @@ public class BeautifulMainActivity extends BaseActivity
     public void onItemClick(View view, ViewModel viewModel) {
         Log.e("MainActivity", "onItemClick: " + viewModel.getText());
 
-        if (viewModel.getText().equals("Report a case")) {
+        if (viewModel.getText().equals("Report")) {
             Intent maChupBasdinaIntent = new Intent(this, MaChupBasdinaActivity.class);
             startActivity(maChupBasdinaIntent);
         } else if (viewModel.getText().equals("\t")) {

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="200dp"
-        android:text=" No Consent"
+        android:text="@string/showcase_no_consent"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:layout_below="@id/tv_title"
         android:id="@+id/tv_description"
-        android:text="Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome."
+        android:text="@string/showcase_no_consent_details"
         android:textColor="@android:color/white"
         android:textSize="15sp" />
 
@@ -45,7 +45,7 @@
         android:drawablePadding="10dp"
         android:layout_marginTop="@dimen/spacing_medium"
         android:drawableRight="@android:drawable/ic_dialog_info"
-        android:text="learn More" />
+        android:text="@string/learn_more" />
 
     <Button
         android:id="@+id/btn_close"
@@ -57,7 +57,7 @@
         android:layout_marginTop="@dimen/spacing_medium"
         android:layout_gravity="center"
         android:drawablePadding="10dp"
-        android:text="Got It !!"
+        android:text="@string/got_it"
 
         android:textColor="@android:color/white" />
 
