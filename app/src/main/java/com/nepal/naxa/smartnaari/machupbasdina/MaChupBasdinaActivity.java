@@ -153,10 +153,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //        toolTargetViewConsentNoconsent();
 
         //initialize tutoshowcase, similar to tooltagget view
-//        initTutoShow();
-
-
-
+        initTutoShow();
 
 
         tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
@@ -164,15 +161,85 @@ public class MaChupBasdinaActivity extends BaseActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     tvDescGBVInputId.setHint("");
-                    Log.d(TAG, "onFocusChange: "+"Focus");
-                }
-                else {
+                    Log.d(TAG, "onFocusChange: " + "Focus");
+                } else {
                     tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
-                    Log.d(TAG, "onFocusChange: "+"Release");
+                    Log.d(TAG, "onFocusChange: " + "Release");
 
                 }
             }
         });
+    }
+
+
+    private void initTutoShow() {
+        final TutoShowcase view = TutoShowcase.from(this)
+                .setListener(new TutoShowcase.Listener() {
+                    @Override
+                    public void onDismissed() {
+                        initTutoShow2();
+                    }
+                })
+                .setContentView(R.layout.tuto_showcase_consent)
+                .setFitsSystemWindows(true)
+                .on(R.id.tvLBL_Consent)
+                .addRoundRect()
+                .onClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        searchAndLoadGlossary("Consent");
+                    }
+                })
+                .show();
+
+
+        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initTutoShow2();
+            }
+        });
+    }
+
+    private void initTutoShow2(){
+        final TutoShowcase view = TutoShowcase.from(this)
+                .setListener(new TutoShowcase.Listener() {
+                    @Override
+                    public void onDismissed() {
+                    }
+                })
+                .setContentView(R.layout.tuto_showcase_no_concent)
+                .setFitsSystemWindows(true)
+                .on(R.id.tvLBL_no_consent)
+                .addRoundRect()
+                .onClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        searchAndLoadGlossary("No Consent");
+                    }
+                })
+                .show();
+
+
+        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.dismiss();
+            }
+        });
+
     }
 
 //    private void initTutoShow() {
@@ -213,7 +280,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //                view.dismiss();
 //            }
 //        });
-//    }
+
 
 
     private void initToolbar() {
@@ -500,7 +567,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
                                 .tintTarget(false)
                                 .id(1),
                         // You can also target the overflow button in your toolbar
-                        TapTarget.forView(tvLBLNoConsent, "Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
+                        TapTarget.forView(tvLBLNoConsent, "" +
+                                "", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
                                 .cancelable(false)
                                 .dimColor(android.R.color.black)
                                 .outerCircleColor(R.color.colorAccent)
@@ -647,7 +715,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     @OnClick(R.id.tv_perpetrator)
     public void onperpetratorViewClicked() {
-            searchAndLoadGlossary("Perpetrator");
+        searchAndLoadGlossary("Perpetrator");
     }
 
     private void searchAndLoadGlossary(final String filter) {
