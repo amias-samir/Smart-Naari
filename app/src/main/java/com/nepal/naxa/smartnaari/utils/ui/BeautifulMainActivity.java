@@ -665,10 +665,10 @@ public class BeautifulMainActivity extends BaseActivity
         int height = metrics.heightPixels;
 
         final Dialog showDialog = new Dialog(this);
-        showDialog.setContentView(R.layout.drawer_disclaimer_dialog_lyout);
+        showDialog.setContentView(R.layout.action_dialog_custom_layout);
 
 //         initialize
-        TextView tvDisclaimerDetails = (TextView) showDialog.findViewById(R.id.disclaimer_dialog_text);
+        TextView tvDisclaimerDetails = (TextView) showDialog.findViewById(R.id.dialog_text_details);
         Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
 
         tvDisclaimerDetails.setText(R.string.disclaimer_details);
