@@ -32,6 +32,14 @@ public class TapItStopItDialogListAdapter extends RecyclerView.Adapter<TapItStop
         contactViewHolder.tvNumbers.setText(ci.getContact().trim());
         Linkify.addLinks(contactViewHolder.tvNumbers, Linkify.PHONE_NUMBERS);
 
+//        contactViewHolder.tvNumbers.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+//        contactViewHolder.tvNumbers.setText(ci.getContact().trim());
+//        contactViewHolder.tvNumbers.setText("012345678");
+//        Linkify.addLinks(contactViewHolder.tvNumbers, Linkify.PHONE_NUMBERS);
+
+
+
+
 
 
     }
