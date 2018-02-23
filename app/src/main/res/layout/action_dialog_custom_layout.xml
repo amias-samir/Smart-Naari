@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dialog_text_details"
+            android:padding="@dimen/default_padding"
+            android:text="Dialog Text Details"
+            android:layout_margin="@dimen/spacing_large"
+             />
+
+
+
+
+        <LinearLayout
+            android:layout_below="@id/dialog_text_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_below="@id/dialog_text_details"
+                android:id="@+id/btn_close_dialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:stateListAnimator="@null"
+                android:textColor="@color/colorAccent"
+                android:text="dismiss"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large"
+                />
+
+            <Button
+                android:layout_below="@id/dialog_text_details"
+                android:id="@+id/btn_agree_dialog"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:stateListAnimator="@null"
+                android:textColor="@color/colorAccent"
+                android:text="Agree"
+                android:visibility="gone"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_large"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +24,8 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +59,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -115,6 +119,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     TextView txtLBLUnderstanding;
 
 
+
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
 
@@ -150,10 +155,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
         initSpinnerData();
 
 //        initialize tooltagget view
-//        toolTargetViewConsentNoconsent();
+        toolTargetViewConsentNoconsent();
+        RunAnimation();
 
         //initialize tutoshowcase, similar to tooltagget view
-        initTutoShow();
+//        initTutoShow();
 
 
         tvDescGBVInputId.setHint(R.string.ma_chup_basdina_other_info_hint);
@@ -209,7 +215,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
         });
     }
 
-    private void initTutoShow2(){
+    private void initTutoShow2() {
         final TutoShowcase view = TutoShowcase.from(this)
                 .setListener(new TutoShowcase.Listener() {
                     @Override
@@ -282,7 +288,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //                view.dismiss();
 //            }
 //        });
-
 
 
     private void initToolbar() {
@@ -370,7 +375,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
                     "Loading definition of " + selectedItem);
             dialog.setCancelable(false);
 
-            searchAndLoadGlossary(selectedItem);
+
+            showLearnMoreActionDialog(selectedItem);
+//            searchAndLoadGlossary(selectedItem);
 
 
         }
@@ -539,7 +546,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
         // We need the display to get the width and height at this point in time
         final Display display = getWindowManager().getDefaultDisplay();
         // Load our little droid guy
-//        final Drawable droid = ContextCompat.getDrawable(this, R.drawable.ic_android_black_24dp);
         // Tell our droid buddy where we want him to appear
         final Rect droidTarget = new Rect(0, 0, 0, 0);
         // Using deprecated methods makes you look way cool
@@ -551,35 +557,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
         // We have a sequence of targets, so lets build it!
         final TapTargetSequence sequence = new TapTargetSequence(this)
                 .targets(
-                        // This tap target will target the back button, we just need to pass its containing toolbar
-//                        TapTarget.forToolbarNavigationIcon(toolbar, "This is the back button", sassyDesc)
-//                                .dimColor(android.R.color.black)
-//                                .outerCircleColor(R.color.colorAccent)
-//                                .targetCircleColor(android.R.color.black)
-//                                .transparentTarget(true)
-//                                .textColor(android.R.color.black).id(1),
-                        // Likewise, this tap target will target the search button
-                        TapTarget.forView(tvLBLConsent, "Permission or agreement. It is a voluntary actby a person, willingly given to another person or persons.", "Consent or a consensual act, it is always positive, an enthusiastic affirmation that both people and/or more have mutually agreed to engage in the activity.")
-                                .cancelable(false)
-                                .dimColor(android.R.color.black)
-                                .outerCircleColor(R.color.colorAccent)
-                                .targetCircleColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .textColor(android.R.color.black)
-                                .tintTarget(false)
-                                .id(1),
-                        // You can also target the overflow button in your toolbar
-                        TapTarget.forView(tvLBLNoConsent, "" +
-                                "", "All acts and forms of Gender Based Violence involve no consent and each one of them is termed a non-consensual act (rape,sexual assault, physical assault, denial of resources andopportunities, psychological/emotional abuse).")
-                                .cancelable(false)
-                                .dimColor(android.R.color.black)
-                                .outerCircleColor(R.color.colorAccent)
-                                .targetCircleColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .textColor(android.R.color.black)
-                                .tintTarget(false)
-                                .id(2)
-
                 )
                 .listener(new TapTargetSequence.Listener() {
                     // This listener will tell us when interesting(tm) events happen in regards
@@ -614,15 +591,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 });
 
         // You don't always need a sequence, and for that there's a single time tap target
-//        final SpannableString spannedDesc = new SpannableString("");
-//        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "Consent and No Consent".length(), spannedDesc.length(), 0);
-//        spannedDesc.setSpan(new UnderlineSpan(), spannedDesc.length() - "No Consent".length(), spannedDesc.length(), 0);
         TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.txtLBLUnderstanding), "")
                 .cancelable(false)
                 .drawShadow(true)
                 .dimColor(android.R.color.black)
                 .outerCircleColor(R.color.colorAccent)
                 .targetCircleColor(android.R.color.black)
+                .targetRadius(display.getWidth()/4)
                 .transparentTarget(true)
                 .textColor(android.R.color.black)
                 .titleTextDimen(R.dimen.material_text_title)
@@ -643,6 +618,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
             @Override
             public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
                 Log.d("TapTargetView", "You dismissed me :(");
+                RunAnimation();
             }
         });
     }
@@ -715,9 +691,65 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.tv_perpetrator)
-    public void onperpetratorViewClicked() {
-        searchAndLoadGlossary("Perpetrator");
+
+    @OnClick({R.id.tvLBL_Consent, R.id.tvLBL_no_consent, R.id.tv_perpetrator})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tvLBL_Consent:
+                showLearnMoreActionDialog("Consent");
+                break;
+
+            case R.id.tvLBL_no_consent:
+                showLearnMoreActionDialog("No Consent");
+                break;
+
+            case R.id.tv_perpetrator:
+                showLearnMoreActionDialog("Perpetrator");
+                break;
+        }
+    }
+
+
+    public void showLearnMoreActionDialog(final String title) {
+
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        final Dialog showDialog = new Dialog(this);
+        showDialog.setContentView(R.layout.action_dialog_custom_layout);
+
+//         initialize
+        TextView tvTextDetails = (TextView) showDialog.findViewById(R.id.dialog_text_details);
+        Button btnAgree = (Button) showDialog.findViewById(R.id.btn_agree_dialog);
+        btnAgree.setText("VIEW");
+        btnAgree.setVisibility(View.VISIBLE);
+        Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
+
+        tvTextDetails.setText(getString(R.string.learn_more_about) + " "+ title);
+
+        showDialog.setTitle(title);
+        showDialog.getActionBar();
+        showDialog.show();
+        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        btnAgree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
+                searchAndLoadGlossary(title);
+
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
+            }
+        });
     }
 
     private void searchAndLoadGlossary(final String filter) {
@@ -802,5 +834,15 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .defaultIfEmpty(new WordsWithDetailsModel("error"));
     }
 
+    private void RunAnimation()
+    {
+        Animation a = AnimationUtils.loadAnimation(this, R.anim.shake);
+        a.reset();
+        tvLBLConsent.clearAnimation();
+        tvLBLConsent.startAnimation(a);
+
+        tvLBLNoConsent.clearAnimation();
+        tvLBLNoConsent.startAnimation(a);
+    }
 
 }
