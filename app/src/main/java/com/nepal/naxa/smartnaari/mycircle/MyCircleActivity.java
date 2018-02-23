@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -12,6 +13,7 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -703,29 +705,87 @@ public class MyCircleActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.first_contact_delete:
-                tvFirstContactName.setText("");
-                tvFirstContact.getEditText().setText("");
+                showContactDeleteActionDialog("First Contact Name and Number", 1);
                 break;
 
             case R.id.second_contact_delete:
-                tvSecondContactName.setText("");
-                tvSecondContact.getEditText().setText("");
+                showContactDeleteActionDialog("Second Contact Name and Number", 2);
                 break;
 
             case R.id.third_contact_delete:
-                tvThirdContactName.setText("");
-                tvThirdContact.getEditText().setText("");
+                showContactDeleteActionDialog("Third Contact Name and Number", 3);
                 break;
 
             case R.id.fourth_contact_delete:
-                tvFourthContactName.setText("");
-                tvFourthContact.getEditText().setText("");
+                showContactDeleteActionDialog("Fourth Contact Name and Number", 4);
                 break;
 
             case R.id.fifth_contact_delete:
-                tvFifthContactName.setText("");
-                tvFifthContact.getEditText().setText("");
+                showContactDeleteActionDialog("Fifth Contact Name and Number", 5);
                 break;
         }
+    }
+
+    public void showContactDeleteActionDialog(final String title, final int contactPos) {
+
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        final Dialog showDialog = new Dialog(this);
+        showDialog.setContentView(R.layout.action_dialog_custom_layout);
+
+//         initialize
+        TextView tvTextDetails = (TextView) showDialog.findViewById(R.id.dialog_text_details);
+        Button btnAgree = (Button) showDialog.findViewById(R.id.btn_agree_dialog);
+        btnAgree.setText("DELETE");
+        btnAgree.setVisibility(View.VISIBLE);
+        Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
+        btnClose.setText("CANCEL");
+
+        tvTextDetails.setText(getString((R.string.want_to_delete)) + " "+ title+" ?");
+
+        showDialog.setTitle("Warning !!!");
+        showDialog.getActionBar();
+        showDialog.show();
+        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        btnAgree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                if(contactPos == 1){
+                    tvFirstContactName.setText("");
+                    tvFirstContact.getEditText().setText("");
+                }
+                if(contactPos == 2){
+                    tvSecondContactName.setText("");
+                    tvSecondContact.getEditText().setText("");
+                }
+                if(contactPos == 3){
+                    tvThirdContactName.setText("");
+                    tvThirdContact.getEditText().setText("");
+                }
+                if(contactPos == 4){
+                    tvFourthContactName.setText("");
+                    tvFourthContact.getEditText().setText("");
+                }
+                if(contactPos == 5){
+                    tvFifthContactName.setText("");
+                    tvFifthContact.getEditText().setText("");
+                }
+                showDialog.dismiss();
+
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
+            }
+        });
     }
 }
