@@ -22,20 +22,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
+import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,8 +74,8 @@ public class SignUpActivity extends Activity {
     @BindView(R.id.user_surname_input_id)
     EditText etSurName;
 
-    @BindView(R.id.user_age_input_id)
-    EditText etAge;
+//    @BindView(R.id.user_age_input_id)
+//    EditText etAge;
 
     @BindView(R.id.is_checked_radio_btn_group)
     RadioGroup rgGender;
@@ -116,6 +118,12 @@ public class SignUpActivity extends Activity {
     String currentPlace = "";
     String email = "";
     String mobileNumber = "";
+    @BindView(R.id.spinner_birth_year)
+    Spinner spinnerBirthYear;
+    @BindView(R.id.spinner_birth_month)
+    Spinner spinnerBirthMonth;
+    @BindView(R.id.spinner_birth_day)
+    Spinner spinnerBirthDay;
 
 
     //todo write style for api < 21 for checkbox
@@ -127,6 +135,30 @@ public class SignUpActivity extends Activity {
         setupUI();
 
         mProgressDlg = new ProgressDialog(this);
+
+        setUpSpinners();
+
+    }
+
+    private void setUpSpinners() {
+        ArrayList<String> years = new ArrayList<String>();
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = (thisYear-16); i >= (thisYear-106); i--) {
+            years.add(Integer.toString(i));
+        }
+        ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
+        spinnerBirthYear.setAdapter(yearAdapter);
+
+        ArrayAdapter<String> monthAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.months);
+        spinnerBirthMonth.setAdapter(monthAdapter);
+
+        ArrayList<String> days = new ArrayList<String>();
+        for (int i = 1; i <= 31; i++) {
+            days.add(Integer.toString(i));
+        }
+        ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, days);
+        spinnerBirthDay.setAdapter(dayAdapter);
+
 
         ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -221,12 +253,12 @@ public class SignUpActivity extends Activity {
         }
 
 
-        age = etAge.getText().toString().trim();
-        if (age.equals("")) {
-            Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
-            etAge.requestFocus();
-            return false;
-        }
+//        age = etAge.getText().toString().trim();
+//        if (age.equals("")) {
+//            Toasty.error(getApplicationContext(), "Age field is empty", Toast.LENGTH_SHORT, true).show();
+//            etAge.requestFocus();
+//            return false;
+//        }
 
 
         int id = rgGender.getCheckedRadioButtonId();
@@ -298,9 +330,6 @@ public class SignUpActivity extends Activity {
         }
 
 
-
-
-
         return true;
     }
 
@@ -320,7 +349,13 @@ public class SignUpActivity extends Activity {
             confirmPassword = etConformPassword.getText().toString().trim();
             firstName = etFirstName.getText().toString().trim();
             surName = etSurName.getText().toString().trim();
-            age = etAge.getText().toString().trim();
+//            age = etAge.getText().toString().trim();
+            age=spinnerBirthYear.getSelectedItem().toString()
+                    +"/"
+                    +(spinnerBirthMonth.getSelectedItemPosition()+1)
+                    +"/"
+                    +spinnerBirthDay.getSelectedItem().toString();
+            Log.i("Shree",age);
             birthPlace = spBirthPlace.getSelectedItem().toString();
             currentPlace = spCurrentPlace.getSelectedItem().toString();
             email = etEmail.getText().toString().trim();
@@ -347,22 +382,21 @@ public class SignUpActivity extends Activity {
     }
 
 
-    @OnClick(R.id.user_age_input_id)
-    public void getDOB_BtnClicked() {
-        Calendar cal = Calendar.getInstance(TimeZone.getDefault()); // Get current date
-
-// Create the DatePickerDialog instance
-        DatePickerDialog datePicker = new DatePickerDialog(this,
-                R.style.AppTheme, datePickerListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH));
-        datePicker.setCancelable(false);
-        datePicker.setTitle("Select the date");
-openYearView(datePicker);
-        datePicker.show();
-
-    }
+//    @OnClick(R.id.user_age_input_id)
+//    public void getDOB_BtnClicked() {
+//        Calendar cal = Calendar.getInstance(TimeZone.getDefault()); // Get current date
+//
+//// Create the DatePickerDialog instance
+//        DatePickerDialog datePicker = new DatePickerDialog(this,
+//                R.style.AppTheme, datePickerListener,
+//                cal.get(Calendar.YEAR),
+//                cal.get(Calendar.MONTH),
+//                cal.get(Calendar.DAY_OF_MONTH));
+//        datePicker.setCancelable(false);
+//        datePicker.setTitle("Select the date");
+//openYearView(datePicker);
+//        datePicker.show();
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void openYearView(DatePickerDialog datePicker) {
@@ -387,7 +421,7 @@ openYearView(datePicker);
             String year1 = String.valueOf(selectedYear);
             String month1 = String.valueOf(selectedMonth + 1);
             String day1 = String.valueOf(selectedDay);
-            etAge.setText(day1 + "/" + month1 + "/" + year1);
+//                etAge.setText(day1 + "/" + month1 + "/" + year1);
 
         }
     };
@@ -451,7 +485,7 @@ openYearView(datePicker);
                         switch (status) {
                             case "200":
                                 mProgressDlg.dismiss();
-                                Toasty.success(getApplicationContext(), data+"\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
+                                Toasty.success(getApplicationContext(), data + "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
                                 startActivity(new Intent(getApplication(), LoginActivity.class));
                                 break;
                             case "201":
