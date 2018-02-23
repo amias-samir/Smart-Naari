@@ -38,6 +38,7 @@
     <color name="inactiveText">#E3E3E3</color>
 
     <color name="iron">#CCCCCC</color>
+    <color name="blue">#3157be</color>
     <color name="black_alpha_40">#bf000000</color>
 
     <color name="sectioned_recycler_head">#868585</color>
