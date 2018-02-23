@@ -744,6 +744,7 @@ public class MyCircleActivity extends BaseActivity {
         btnClose.setText("CANCEL");
 
         tvTextDetails.setText(getString((R.string.want_to_delete)) + " "+ title+" ?");
+//        tvTextDetails.setText("Are you sure want to delete" + " "+ title+" ?");
 
         showDialog.setTitle("Warning !!!");
         showDialog.getActionBar();

@@ -19,6 +19,7 @@
             android:padding="@dimen/default_padding"
             android:text="Dialog Text Details"
             android:layout_margin="@dimen/spacing_large"
+            android:textColor="@color/textPrimary"
              />
 
 
