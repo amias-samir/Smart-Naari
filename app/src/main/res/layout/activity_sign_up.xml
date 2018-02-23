@@ -203,7 +203,6 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:hint="Date of Birth"
-                        android:paddingBottom="10dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingTop="10dp"
@@ -216,13 +215,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="6">
+                        >
 
                         <FrameLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="2"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_weight="3"
                             android:background="@drawable/edit_text_boarder_recg">
 
                             <Spinner
@@ -234,7 +233,6 @@
                                 android:background="@drawable/edit_text_boarder_recg"
                                 android:gravity="left"
                                 android:paddingBottom="7dp"
-                                android:paddingLeft="10dp"
                                 android:paddingRight="10dp"
                                 android:paddingTop="7dp" />
 
@@ -251,8 +249,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/spacing_small"
                             android:layout_marginRight="@dimen/spacing_small"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="2"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_weight="2.7"
                             android:background="@drawable/edit_text_boarder_recg">
 
                             <Spinner
@@ -264,7 +262,6 @@
                                 android:background="@drawable/edit_text_boarder_recg"
                                 android:gravity="left"
                                 android:paddingBottom="7dp"
-                                android:paddingLeft="10dp"
                                 android:paddingRight="10dp"
                                 android:paddingTop="7dp" />
 
@@ -279,8 +276,8 @@
                         <FrameLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="2"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_weight="2.3"
                             android:background="@drawable/edit_text_boarder_recg">
 
                             <Spinner
@@ -292,7 +289,6 @@
                                 android:background="@drawable/edit_text_boarder_recg"
                                 android:gravity="left"
                                 android:paddingBottom="7dp"
-                                android:paddingLeft="10dp"
                                 android:paddingRight="10dp"
                                 android:paddingTop="7dp" />
 
