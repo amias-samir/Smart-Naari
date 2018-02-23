@@ -157,7 +157,7 @@
             android:name=".mycircle.MyCircleActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/SignUpTheme"
+            android:theme="@style/MyCircleTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".masakchamchu.IAmAmazingActivity"
