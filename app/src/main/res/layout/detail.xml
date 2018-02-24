@@ -6,10 +6,10 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="180dp"
+    android:layout_marginBottom="50dp"
     android:layout_marginEnd="50dp"
     android:layout_marginStart="50dp"
-    android:layout_marginTop="180dp">
+    android:layout_marginTop="50dp">
 
     <ImageView
         android:id="@+id/backgroundImage"
@@ -55,6 +55,8 @@
         app:layout_constraintRight_toRightOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:layout_editor_absoluteY="88dp" />
+
+
 
 
     <View

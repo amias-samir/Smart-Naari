@@ -7,28 +7,48 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.AnticipateOvershootInterpolator;
+import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import nl.dionsegijn.konfetti.KonfettiView;
@@ -40,10 +60,12 @@ public final class EventShowcaseActivity extends AppCompatActivity {
 
     private TextView tvNepaliDate;
     private TextView tvEnglishDate;
+    private Button btnPlayVideo;
     private TextView tvSummary;
     private ImageView ivPhoto;
     private AnimationDrawable animationDrawable;
     private KonfettiView konfettiView;
+    private ImageSwitcher simpleImageSwitcher;
 
 
     public static void start(Context context) {
@@ -76,6 +98,25 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 setConfetti();
             }
         }, TimeUnit.SECONDS.toMillis(1));
+
+
+        simpleImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(getApplicationContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setLayoutParams(
+                        new ImageSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
+
+        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in); // load an animation
+        simpleImageSwitcher.setInAnimation(in); // set in Animation for ImageSwitcher
+        Animation out = AnimationUtils.loadAnimation(this, android.R.anim.fade_out); // load an animation
+        simpleImageSwitcher.setOutAnimation(out); // set out Animation for ImageSwitcher
+
+
     }
 
     private void bindUI() {
@@ -84,7 +125,8 @@ public final class EventShowcaseActivity extends AppCompatActivity {
         tvSummary = (TextView) findViewById(R.id.description);
         ivPhoto = (ImageView) findViewById(R.id.backgroundImage);
         konfettiView = (KonfettiView) findViewById(R.id.viewKonfetti);
-
+        btnPlayVideo = (Button) findViewById(R.id.btn_play_video);
+        simpleImageSwitcher = (ImageSwitcher) findViewById(R.id.simpleImageSwitcher); // get reference of ImageSwitcher
     }
 
     private void setConfetti() {
@@ -142,7 +184,6 @@ public final class EventShowcaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //hideComponents();
-
         EventShowcaseActivity.super.onBackPressed();
 
     }
@@ -152,6 +193,100 @@ public final class EventShowcaseActivity extends AppCompatActivity {
         super.onResume();
         if (animationDrawable != null && !animationDrawable.isRunning()) {
             animationDrawable.start();
+        }
+
+        celebrate(3);
+
+    }
+
+
+    private void celebrate(int i) {
+        switch (i) {
+            case 1:
+                btnPlayVideo.setVisibility(View.VISIBLE);
+                tvSummary.setText(getString(R.string.default_calendra_event_msg,
+                        "International Day of Happiness", getString(R.string.app_name)));
+                Glide.with(getApplicationContext())
+                        .load("https://img.youtube.com/vi/4oB89nvdrdA/default.jpg")
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(ivPhoto);
+                btnPlayVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + "4oB89nvdrdA"));
+                        startActivity(intent);
+                    }
+                });
+                break;
+            case 2:
+                btnPlayVideo.setVisibility(View.VISIBLE);
+                tvSummary.setText(getString(R.string.default_calendra_event_msg,
+                        "International Day for the Elimination of Racial Discrimination", getString(R.string.app_name)));
+                Glide.with(getApplicationContext())
+                        .load("https://img.youtube.com/vi/PNBhV338zzk/default.jpg")
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(ivPhoto);
+                btnPlayVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + "PNBhV338zzk"));
+                        startActivity(intent);
+                    }
+                });
+                break;
+            case 3:
+                tvSummary.setText(getString(R.string.default_calendra_event_msg,
+                        "Ram Nouomi", getString(R.string.app_name)));
+
+                ArrayList<String> urls = new ArrayList<>();
+                urls.add("http://www.maadurgawallpaper.com/wp-content/uploads/2014/07/ram-darbar-wallpaper.jpg");
+                urls.add("http://cdn.findmessages.com/images/2016/02/164-marriage-ceremony-of-god-ram-and-goddess-sita-1020x765.jpg");
+                urls.add("https://nilayashokshah.files.wordpress.com/2016/04/23.jpg");
+                PhotoSwitcher photoSwitcher = new PhotoSwitcher(urls);
+                Timer timer = new Timer();
+                timer.schedule(photoSwitcher, 0, 5000);
+
+                break;
+        }
+    }
+
+    class PhotoSwitcher extends TimerTask {
+        ArrayList<String> urls;
+
+        public PhotoSwitcher(ArrayList<String> urls) {
+            this.urls = urls;
+        }
+
+
+        public void run() {
+
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String randomUrl = urls.get(new Random().nextInt(urls.size()));
+
+                    Glide.with(getApplicationContext())
+                            .load(randomUrl)
+
+                            .listener(new RequestListener<Drawable>() {
+                                @Override
+                                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                    simpleImageSwitcher.setImageDrawable(resource);
+                                    return true;
+                                }
+                            })
+                            .into((ImageView) simpleImageSwitcher.getCurrentView());
+
+
+                }
+            });
+
         }
     }
 
@@ -192,6 +327,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
         animationDrawable = (AnimationDrawable) ivPhoto.getDrawable();
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(2000);
+
     }
 
     //https://stackoverflow.com/a/14749916/4179914

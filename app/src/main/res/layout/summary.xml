@@ -4,6 +4,7 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,24 +19,51 @@
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="180dp">
-
+        android:layout_marginTop="50dp"
+        android:background="?selectableItemBackground">
 
 
         <ImageView
-            android:src="@drawable/gradient_list"
             android:id="@+id/backgroundImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/drawable_amber_gradient"
             android:scaleType="centerCrop"
+            android:src="@drawable/gradient_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageSwitcher
+            android:id="@+id/simpleImageSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--<ImageView-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:foreground="@drawable/gradient"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@drawable/gradient_list"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:src="@drawable/ic_play_circle_filled"-->
+        <!--android:tint="@color/colorWhite"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 
         <TextView
@@ -67,6 +95,21 @@
             app:layout_constraintRight_toLeftOf="@+id/backgroundImage"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <Button
+            android:id="@+id/btn_play_video"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/evp_action_play"
+            android:text="Play Video"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <View
             android:id="@+id/fadeView"
             android:layout_width="wrap_content"
@@ -74,8 +117,8 @@
             android:foreground="@drawable/gradient"
             app:layout_constraintBottom_toTopOf="@+id/description" />
 
+
         <TextView
-            android:textAlignment="center"
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,6 +127,7 @@
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:text="@string/default_calendra_event_msg"
+            android:textAlignment="center"
             android:textColor="#FFFF"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
