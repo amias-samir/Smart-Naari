@@ -7,22 +7,22 @@
 	{
 		"Type": "Police",
 		"Name": "Police Emergency",
-		"Number": "4228435"
+		"Number": "014228435"
 	},
 	{
 		"Type": "Police",
 		"Name": "Metropolitan Police Range (Kathmandu)",
-		"Number": "4261945/4261790"
+		"Number": "014261945 / 014261790"
 	},
 	{
 		"Type": "Police",
 		"Name": "Metropolitan Police Range (Lalitpur)",
-		"Number": "5521207"
+		"Number": "015521207"
 	},
 	{
 		"Type": "Police",
 		"Name": "Metropolitan Police Range (Bhaktapur)",
-		"Number": "6614821"
+		"Number": "016614821"
 	},
 	{
 		"Type": "Ambulance",
@@ -32,82 +32,82 @@
 	{
 		"Type": "Ambulance",
 		"Name": "Paropakar Ambulance Service",
-		"Number": "4260859"
+		"Number": "014260859"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Lalitpur Red Cross Ambulance Service",
-		"Number": "5545666"
+		"Number": "015545666"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Bishal Bazar Ambulance Service",
-		"Number": "4244121"
+		"Number": "014244121"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Red Cross Ambulance Service",
-		"Number": "4228094"
+		"Number": "014228094"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Medical National Hospital Ambulance",
-		"Number": "4467067"
+		"Number": "014467067"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Agarwal Sewa Centre",
-		"Number": "4424875"
+		"Number": "014424875"
 	},
 	{
 		"Type": "Ambulance",
 		"Name": "Aasara Drug Rehabilitation Centre",
-		"Number": "4384881"
+		"Number": "014384881"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Bir Hospital",
-		"Number": "4223807/4221988"
+		"Number": "014223807 / 014221988"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Nepal Police Hospital",
-		"Number": "4412430/4412530"
+		"Number": "014412430 / 014412530"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "TU Teaching Hospital ",
-		"Number": "4412404/4412505"
+		"Number": "014412404 / 014412505"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Maternity Hospital",
-		"Number": "4253276"
+		"Number": "014253276"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Teku Hospital",
-		"Number": "4253396"
+		"Number": "014253396"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Patan Hospital",
-		"Number": "5522278/5522266"
+		"Number": "015522278 / 015522266"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Bhaktapur Hospital",
-		"Number": "6610676"
+		"Number": "016610676"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Mental Hospital",
-		"Number": "5521333"
+		"Number": "015521333"
 	},
 	{
 		"Type": "Hospitals",
 		"Name": "Kanti Children Hospital",
-		"Number": "4414798/44274"
+		"Number": "014414798 / 014427452"
 	},
 	{
 		"Type": "Hotline",
@@ -116,8 +116,8 @@
 	},
 	{
 		"Type": "Hotline",
-		"Name": "Confidential Child Protection Helpline",
-		"Number": "Nepal"
+		"Name": "Confidential Child Protection Helpline, Nepal",
+		"Number": "1098"
 	},
 	{
 		"Type": "Hotline",
@@ -141,6 +141,26 @@
 	},
 	{
 		"Type": "Hotline",
+		"Name": "Saathi",
+		"Number": "015537103 / 015537104"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Forum for Law and Development",
+		"Number": "014240627"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "WOREC Nepal",
+		"Number": "015006373"
+	},
+	{
+		"Type": "Hotline",
+		"Name": "Women for Human Rights",
+		"Number": "014413868"
+	},
+	{
+		"Type": "Hotline",
 		"Name": "TU Teaching Hospital: Suicide Hotline",
 		"Number": "9840021600"
 	},
@@ -157,6 +177,6 @@
 	{
 		"Type": "Blood_Bank",
 		"Name": "Blood Bank",
-		"Number": "4225344"
+		"Number": "014225344"
 	}
 ]

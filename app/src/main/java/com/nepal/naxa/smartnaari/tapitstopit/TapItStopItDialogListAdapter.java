@@ -1,5 +1,8 @@
 package com.nepal.naxa.smartnaari.tapitstopit;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import java.util.List;
 
 public class TapItStopItDialogListAdapter extends RecyclerView.Adapter<TapItStopItDialogListAdapter.ContactViewHolder> {
 
+
     private List<TapItStopItPOJO> itemList;
 
     public TapItStopItDialogListAdapter(List<TapItStopItPOJO> cList) {
@@ -31,6 +35,15 @@ public class TapItStopItDialogListAdapter extends RecyclerView.Adapter<TapItStop
 
         contactViewHolder.tvNumbers.setText(ci.getContact().trim());
         Linkify.addLinks(contactViewHolder.tvNumbers, Linkify.PHONE_NUMBERS);
+        contactViewHolder.tvNumbers.setTextColor(Color.parseColor("#3157be"));
+
+//        contactViewHolder.tvNumbers.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+//        contactViewHolder.tvNumbers.setText(ci.getContact().trim());
+//        contactViewHolder.tvNumbers.setText("012345678");
+//        Linkify.addLinks(contactViewHolder.tvNumbers, Linkify.PHONE_NUMBERS);
+
+
+
 
 
 

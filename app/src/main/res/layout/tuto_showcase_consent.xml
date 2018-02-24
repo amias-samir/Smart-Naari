@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="#000000">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="200dp"
+        android:text="Consent"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:layout_below="@id/tv_title"
+        android:id="@+id/tv_description"
+        android:text="Permission or agreement. It is a voluntary actby a person, willingly given to another person or persons."
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_learn_more"
+        android:layout_below="@id/tv_description"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableEnd="@android:drawable/ic_dialog_info"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:drawableRight="@android:drawable/ic_dialog_info"
+        android:text="learn More" />
+
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_below="@id/btn_learn_more"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_gravity="center"
+        android:drawablePadding="10dp"
+        android:text="Got It !!"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>

@@ -19,9 +19,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="mobile numbers"
-            android:layout_marginRight="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
+            android:text="Contact Name"
+            android:padding="@dimen/spacing_small"
             android:gravity="left"
             />
 
@@ -31,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="numbers"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small"
-            android:gravity="center"/>
+            android:padding="@dimen/spacing_small"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_phone_forwarded"/>
     </LinearLayout>
 
 </LinearLayout>
