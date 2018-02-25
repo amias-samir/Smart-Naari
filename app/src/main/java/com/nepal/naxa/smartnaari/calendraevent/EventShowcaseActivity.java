@@ -95,9 +95,17 @@ public final class EventShowcaseActivity extends AppCompatActivity {
             @Override
             public void run() {
                 showComponents();
-                setConfetti();
+
             }
         }, TimeUnit.SECONDS.toMillis(1));
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setConfetti();
+            }
+        }, TimeUnit.SECONDS.toMillis(3));
 
 
         simpleImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
@@ -118,6 +126,8 @@ public final class EventShowcaseActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private void bindUI() {
         tvNepaliDate = (TextView) findViewById(R.id.title);
@@ -140,7 +150,9 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 .setTimeToLive(TimeUnit.DAYS.toMillis(1))
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
-                .stream(40, TimeUnit.SECONDS.toMillis(2));
+                .stream(40, TimeUnit.SECONDS.toMillis(4));
+
+
     }
 
     private void burstConfetti() {
@@ -161,6 +173,8 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 // .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
                 .setPosition(dx, dx, dy, dy).burst(100);
         //.stream(40, TimeUnit.MINUTES.toMillis(3));
+
+
     }
 
     private void resizeWindow() {
@@ -195,7 +209,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
             animationDrawable.start();
         }
 
-        celebrate(3);
+        celebrate(1);
 
     }
 
@@ -207,7 +221,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 tvSummary.setText(getString(R.string.default_calendra_event_msg,
                         "International Day of Happiness", getString(R.string.app_name)));
                 Glide.with(getApplicationContext())
-                        .load("https://img.youtube.com/vi/4oB89nvdrdA/default.jpg")
+                        .load("https://img.youtube.com/vi/4oB89nvdrdA/hqdefault.jpg")
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivPhoto);
                 btnPlayVideo.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +237,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 tvSummary.setText(getString(R.string.default_calendra_event_msg,
                         "International Day for the Elimination of Racial Discrimination", getString(R.string.app_name)));
                 Glide.with(getApplicationContext())
-                        .load("https://img.youtube.com/vi/PNBhV338zzk/default.jpg")
+                        .load("https://img.youtube.com/vi/PNBhV338zzk/hqdefault.jpg")
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivPhoto);
                 btnPlayVideo.setOnClickListener(new View.OnClickListener() {
