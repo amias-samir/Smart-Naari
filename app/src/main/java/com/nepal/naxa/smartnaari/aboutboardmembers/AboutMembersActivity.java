@@ -76,6 +76,7 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
         List<MemberPojo> members = new Gson().fromJson(s, listType);
 
         adapter.setMembers(members);
+        adapter.notifyDataSetChanged();
 
         Log.e("qqq", "This data is: " + s);
     }

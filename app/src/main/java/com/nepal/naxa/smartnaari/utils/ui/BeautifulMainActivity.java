@@ -151,7 +151,6 @@ public class BeautifulMainActivity extends BaseActivity
 
         syncAllData();
         setDateTimeInUI();
-        animateIfSpecialDay();
 
 
         mAppBarLayout.addOnOffsetChangedListener(this);
@@ -187,6 +186,19 @@ public class BeautifulMainActivity extends BaseActivity
         stopShakeAnimate = true;
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                animateIfSpecialDay();
+            }
+        },TimeUnit.SECONDS.toMillis(3));
+
+
+    }
 
     private void animateIfSpecialDay() {
         final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
@@ -545,7 +557,7 @@ public class BeautifulMainActivity extends BaseActivity
             public void onReceiveResult(int resultCode, Bundle resultData) {
                 switch (resultCode) {
                     case STATUS_RUNNING:
-                        showInfoToast("Syncing Data");
+                        //showInfoToast("Syncing Data");
                         break;
                     case STATUS_ERROR:
                         break;
@@ -574,7 +586,7 @@ public class BeautifulMainActivity extends BaseActivity
         if(stopShakeAnimate){
             drawerLayout.openDrawer(GravityCompat.START);
         }else {
-            stopShakeAnimation();
+           // stopShakeAnimation();
             EventShowcaseActivity.start(BeautifulMainActivity.this);
         }
 

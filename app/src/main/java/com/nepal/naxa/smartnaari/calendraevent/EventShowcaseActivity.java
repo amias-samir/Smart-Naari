@@ -22,6 +22,7 @@ import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -42,10 +43,15 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,26 +66,37 @@ public final class EventShowcaseActivity extends AppCompatActivity {
 
     private TextView tvNepaliDate;
     private TextView tvEnglishDate;
-    private Button btnPlayVideo;
+    private TextView tvSpecialText;
+    private Button btnPlayVideo, btnLearnMore;
     private TextView tvSummary;
     private ImageView ivPhoto;
     private AnimationDrawable animationDrawable;
     private KonfettiView konfettiView;
     private ImageSwitcher simpleImageSwitcher;
+    private int random = 0;
 
 
     public static void start(Context context) {
         Intent intent = new Intent(context, EventShowcaseActivity.class);
         context.startActivity(intent);
+
     }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.summary);
         bindUI();
+
+        Random rn = new Random();
+        List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5);
+        random = list.get(rn.nextInt(list.size()));
+
+
         //resizeWindow();
         //setupFirework();
         setupGradientAnimation();
+        setupImageSwicher();
+
 
         try {
             tvNepaliDate.setText(NepaliDate.getCurrentNepaliDate());
@@ -108,6 +125,15 @@ public final class EventShowcaseActivity extends AppCompatActivity {
         }, TimeUnit.SECONDS.toMillis(3));
 
 
+        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void setupImageSwicher() {
         simpleImageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
@@ -119,14 +145,13 @@ public final class EventShowcaseActivity extends AppCompatActivity {
             }
         });
 
-        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in); // load an animation
-        simpleImageSwitcher.setInAnimation(in); // set in Animation for ImageSwitcher
-        Animation out = AnimationUtils.loadAnimation(this, android.R.anim.fade_out); // load an animation
-        simpleImageSwitcher.setOutAnimation(out); // set out Animation for ImageSwitcher
+        Animation in = AnimationUtils.loadAnimation(this, R.anim.dialog_slide_up);
+        simpleImageSwitcher.setInAnimation(in);
+        Animation out = AnimationUtils.loadAnimation(this, R.anim.dialog_slide_bottom);
+        simpleImageSwitcher.setOutAnimation(out);
 
 
     }
-
 
 
     private void bindUI() {
@@ -136,7 +161,9 @@ public final class EventShowcaseActivity extends AppCompatActivity {
         ivPhoto = (ImageView) findViewById(R.id.backgroundImage);
         konfettiView = (KonfettiView) findViewById(R.id.viewKonfetti);
         btnPlayVideo = (Button) findViewById(R.id.btn_play_video);
-        simpleImageSwitcher = (ImageSwitcher) findViewById(R.id.simpleImageSwitcher); // get reference of ImageSwitcher
+        btnLearnMore = (Button) findViewById(R.id.btn_learn_more);
+        tvSpecialText = (TextView) findViewById(R.id.tv_special_text);
+        simpleImageSwitcher = (ImageSwitcher) findViewById(R.id.simpleImageSwitcher);
     }
 
     private void setConfetti() {
@@ -209,15 +236,46 @@ public final class EventShowcaseActivity extends AppCompatActivity {
             animationDrawable.start();
         }
 
-        celebrate(1);
+        celebrate(random);
 
     }
 
 
     private void celebrate(int i) {
+        ArrayList<String> urls = new ArrayList<>();
+        PhotoSwitcher photoSwitcher;
+        final Timer timer;
+        String msg;
+
+        animationDrawable.stop();
         switch (i) {
+
+            case 0:
+                tvSummary.setText("Namaste from everyone at Smart नारी, a supportive community");
+                btnPlayVideo.setVisibility(View.GONE);
+                btnLearnMore.setVisibility(View.VISIBLE);
+                tvSpecialText.setVisibility(View.GONE);
+                urls.add("http://naxa.com.np/smartnaari/android/arun.jpg");
+                urls.add("http://naxa.com.np/smartnaari/android/awantika.jpg");
+                urls.add("http://naxa.com.np/smartnaari/android/poonam.jpg");
+                urls.add("http://naxa.com.np/smartnaari/android/uttam.jpg");
+                photoSwitcher = new PhotoSwitcher(urls);
+                timer = new Timer();
+                timer.schedule(photoSwitcher, 0, 5000);
+
+                btnLearnMore.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(EventShowcaseActivity.this, AboutSmartNaariActivity.class));
+                    }
+                });
+
+                break;
+
             case 1:
                 btnPlayVideo.setVisibility(View.VISIBLE);
+                btnLearnMore.setVisibility(View.GONE);
+                tvSpecialText.setVisibility(View.GONE);
                 tvSummary.setText(getString(R.string.default_calendra_event_msg,
                         "International Day of Happiness", getString(R.string.app_name)));
                 Glide.with(getApplicationContext())
@@ -234,6 +292,8 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 break;
             case 2:
                 btnPlayVideo.setVisibility(View.VISIBLE);
+                btnLearnMore.setVisibility(View.GONE);
+                tvSpecialText.setVisibility(View.GONE);
                 tvSummary.setText(getString(R.string.default_calendra_event_msg,
                         "International Day for the Elimination of Racial Discrimination", getString(R.string.app_name)));
                 Glide.with(getApplicationContext())
@@ -249,23 +309,64 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 });
                 break;
             case 3:
+                btnPlayVideo.setVisibility(View.GONE);
+                btnLearnMore.setVisibility(View.GONE);
+                tvSpecialText.setVisibility(View.GONE);
                 tvSummary.setText(getString(R.string.default_calendra_event_msg,
                         "Ram Nouomi", getString(R.string.app_name)));
 
-                ArrayList<String> urls = new ArrayList<>();
                 urls.add("http://www.maadurgawallpaper.com/wp-content/uploads/2014/07/ram-darbar-wallpaper.jpg");
                 urls.add("http://cdn.findmessages.com/images/2016/02/164-marriage-ceremony-of-god-ram-and-goddess-sita-1020x765.jpg");
                 urls.add("https://nilayashokshah.files.wordpress.com/2016/04/23.jpg");
-                PhotoSwitcher photoSwitcher = new PhotoSwitcher(urls);
-                Timer timer = new Timer();
+                photoSwitcher = new PhotoSwitcher(urls);
+                timer = new Timer();
                 timer.schedule(photoSwitcher, 0, 5000);
 
                 break;
+            case 4:
+
+                btnPlayVideo.setVisibility(View.GONE);
+                btnLearnMore.setVisibility(View.GONE);
+                tvSpecialText.setVisibility(View.VISIBLE);
+                Glide.with(getApplicationContext())
+                        .load("http://www.culturalindia.net/iliimages/Lord-Mahavira-ili-91-img-3.jpg")
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(ivPhoto);
+
+                msg = ""
+                        + getString(R.string.default_calendra_event_msg,
+                        "Mahavir Jayanti", getString(R.string.app_name));
+                tvSummary.setText(msg);
+                tvSpecialText.setText("Non-violence and kindness to living beings is kindness to oneself. - Mahavira");
+                break;
+
+            case 5:
+                btnPlayVideo.setVisibility(View.GONE);
+                btnLearnMore.setVisibility(View.GONE);
+                tvSpecialText.setVisibility(View.VISIBLE);
+                msg = getString(R.string.default_msg_sad, "International Day for the Right to the Truth concerning Gross Human Rights Violations and for the Dignity of Victims ");
+                tvSummary.setText(msg);
+                tvSpecialText.setText("NEVER FORGET");
+                urls.add("http://www.nepal24hours.com/wp-content/uploads/2016/12/tibetan.jpg");
+                urls.add("http://www.ntd.tv/inspiring/assets/uploads/2016/12/thumb3religiouspersecutions.jpg");
+
+                photoSwitcher = new PhotoSwitcher(urls);
+                timer = new Timer();
+                timer.schedule(photoSwitcher, 0, 5000);
+
+                break;
+
         }
     }
 
     class PhotoSwitcher extends TimerTask {
         ArrayList<String> urls;
+
+        private String getUniqueRandomURL() {
+
+            Random rand = new Random();
+            return urls.get(rand.nextInt(urls.size()));
+        }
 
         public PhotoSwitcher(ArrayList<String> urls) {
             this.urls = urls;
@@ -280,6 +381,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 public void run() {
                     String randomUrl = urls.get(new Random().nextInt(urls.size()));
 
+
                     Glide.with(getApplicationContext())
                             .load(randomUrl)
 
@@ -291,6 +393,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
 
                                 @Override
                                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+
                                     simpleImageSwitcher.setImageDrawable(resource);
                                     return true;
                                 }
