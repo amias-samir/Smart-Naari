@@ -26,7 +26,7 @@
 
     <string name="title_activity_ma_sakcham_chu_coach">MaSakchamChuCoachActivity</string>
 
-    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Abuse, Violence and Harm </string>
+    <string name="be_the_one_to_say_no_to_gender_based_violence">Be the one to say NO to Gender Based Violence </string>
     <string name="string_terms_and_condition">I agree that all the information about me is correct and willingly given. I do not support false reporting and I am fully responsible for any report that I make on Gender Based Violence.</string>
 
 
@@ -422,6 +422,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="about_board_top_text">The Smart नारी Team includes people from a variety of ages and backgrounds; single people, partners, husbands, wives, mothers, fathers and the all-important mother-in-law, all of whom share their experiences like our friends and enthusiasts, YOU, for a fuller understanding of the issues and pressures facing everyone today....</string>
     <string name="want_to_delete">Are you sure want to delete</string>
     <string name="default_msg_sad">Today is %s</string>
+    <string name="close">CLOSE</string>
     ?>
 </resources>
 

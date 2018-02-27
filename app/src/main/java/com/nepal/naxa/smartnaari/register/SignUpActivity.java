@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -137,6 +140,17 @@ public class SignUpActivity extends Activity {
         mProgressDlg = new ProgressDialog(this);
 
         setUpSpinners();
+
+
+//change all letter to lower case
+        etUserName.setFilters(new InputFilter[] {
+                new InputFilter.AllCaps() {
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                        return String.valueOf(source).toLowerCase();
+                    }
+                }
+        });
 
     }
 
@@ -317,6 +331,11 @@ public class SignUpActivity extends Activity {
         mobileNumber = etContact.getText().toString().trim();
         if (mobileNumber.equals("")) {
             Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+            etContact.requestFocus();
+            return false;
+        }
+        if (mobileNumber.length() < 10) {
+            Toasty.error(getApplicationContext(), "Invalid mobile number", Toast.LENGTH_SHORT, true).show();
             etContact.requestFocus();
             return false;
         }

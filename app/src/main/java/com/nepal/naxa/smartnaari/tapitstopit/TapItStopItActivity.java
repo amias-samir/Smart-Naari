@@ -176,6 +176,7 @@ public class TapItStopItActivity extends BaseActivity implements TapItStopItRecy
         RecyclerView rvContactDialogList;
 //        TextView tvHeader = (TextView) showDialog.findViewById(R.id.emergency_dialog_title);
         Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
+        btnClose.setText(getString(R.string.close));
         rvContactDialogList = (RecyclerView) showDialog.findViewById(R.id.rv_contact_list);
 
 //        set recycler adapter

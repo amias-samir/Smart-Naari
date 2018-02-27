@@ -151,6 +151,9 @@ public class MyCircleActivity extends BaseActivity {
         setupUI();
         initializeContactsUI();
 
+        showHideNewContactAddPlusIcon();
+
+
 
     }
 
@@ -164,6 +167,15 @@ public class MyCircleActivity extends BaseActivity {
 
         tvEnterTwoNumber.setText(sb);
 
+    }
+
+    private void showHideNewContactAddPlusIcon (){
+
+        if(visibilityStatusCount() == 5){
+            btnNewMobileNo.setVisibility(View.GONE);
+        }else {
+            btnNewMobileNo.setVisibility(View.VISIBLE);
+        }
     }
 
     @OnClick(R.id.btnNewMobileNo)

@@ -3,7 +3,9 @@ package com.nepal.naxa.smartnaari.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +77,16 @@ public class LoginActivity extends BaseActivity {
 
         mProgressDlg = new ProgressDialog(this);
         myCircleData = new MyCircleData();
+
+//        change all username text to lower case only
+        tvUserName.setFilters(new InputFilter[] {
+                new InputFilter.AllCaps() {
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                        return String.valueOf(source).toLowerCase();
+                    }
+                }
+        });
     }
 
     private void setupUI() {
