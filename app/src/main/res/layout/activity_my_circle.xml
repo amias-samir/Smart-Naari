@@ -166,7 +166,6 @@
                                                 android:layout_marginTop="5dp"
                                                 android:textColorHint="@color/textSecondary"
                                                 app:counterEnabled="true"
-                                                app:counterMaxLength="10"
                                                 app:hintEnabled="false">
                                                 <!-- first contact input layout-->
                                                 <EditText
@@ -179,7 +178,7 @@
                                                     android:ems="10"
                                                     android:gravity="center"
                                                     android:hint="Mobile Number"
-                                                    android:inputType="number"
+                                                    android:inputType="phone"
                                                     android:paddingBottom="10dp"
                                                     android:paddingLeft="10dp"
                                                     android:paddingRight="10dp"
@@ -191,16 +190,28 @@
 
                                         </LinearLayout>
 
-                                        <ImageButton
-                                            android:id="@+id/first_contact_delete"
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginLeft="@dimen/default_padding"
-                                            android:background="@color/transparent"
-                                            android:padding="@dimen/default_padding"
-                                            android:src="@drawable/ic_delete_forever" />
+                                            android:orientation="vertical"
+                                            android:layout_alignParentRight="true">
+                                            <ImageButton
+                                                android:id="@+id/select_first_contact_from_list"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                               android:padding="@dimen/default_padding"
+                                                android:background="@color/transparent"
+                                                android:src="@drawable/ic_contact_24_dp" />
+
+                                            <ImageButton
+                                                android:id="@+id/first_contact_delete"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/transparent"
+                                                android:padding="@dimen/default_padding"
+                                                android:src="@drawable/ic_delete_forever" />
+                                        </LinearLayout>
+
 
                                     </RelativeLayout>
 
@@ -245,7 +256,6 @@
                                                 android:layout_marginTop="5dp"
                                                 android:textColorHint="@color/textSecondary"
                                                 app:counterEnabled="true"
-                                                app:counterMaxLength="10"
                                                 app:hintEnabled="false">
                                                 <!-- second contact input layout-->
                                                 <EditText
@@ -258,7 +268,7 @@
                                                     android:ems="10"
                                                     android:gravity="center"
                                                     android:hint="Mobile Number"
-                                                    android:inputType="number"
+                                                    android:inputType="phone"
                                                     android:paddingBottom="10dp"
                                                     android:paddingLeft="10dp"
                                                     android:paddingRight="10dp"
@@ -270,16 +280,27 @@
 
                                         </LinearLayout>
 
-                                        <ImageButton
-                                            android:id="@+id/second_contact_delete"
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginLeft="@dimen/default_padding"
-                                            android:background="@color/transparent"
-                                            android:padding="@dimen/default_padding"
-                                            android:src="@drawable/ic_delete_forever" />
+                                            android:orientation="vertical"
+                                            android:layout_alignParentRight="true">
+                                            <ImageButton
+                                                android:id="@+id/select_second_contact_from_list"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="@dimen/default_padding"
+                                                android:background="@color/transparent"
+                                                android:src="@drawable/ic_contact_24_dp" />
+
+                                            <ImageButton
+                                                android:id="@+id/second_contact_delete"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/transparent"
+                                                android:padding="@dimen/default_padding"
+                                                android:src="@drawable/ic_delete_forever" />
+                                        </LinearLayout>
 
                                     </RelativeLayout>
 
@@ -326,7 +347,6 @@
                                                 android:textColorHint="@color/textSecondary"
                                                 android:visibility="visible"
                                                 app:counterEnabled="true"
-                                                app:counterMaxLength="10"
                                                 app:hintEnabled="false">
                                                 <!-- Third contact input layout-->
                                                 <EditText
@@ -339,7 +359,7 @@
                                                     android:ems="10"
                                                     android:gravity="center"
                                                     android:hint="Mobile Number"
-                                                    android:inputType="number"
+                                                    android:inputType="phone"
                                                     android:paddingBottom="10dp"
                                                     android:paddingLeft="10dp"
                                                     android:paddingRight="10dp"
@@ -351,16 +371,27 @@
 
                                         </LinearLayout>
 
-                                        <ImageButton
-                                            android:id="@+id/third_contact_delete"
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginLeft="@dimen/default_padding"
-                                            android:background="@color/transparent"
-                                            android:padding="@dimen/default_padding"
-                                            android:src="@drawable/ic_delete_forever" />
+                                            android:orientation="vertical"
+                                            android:layout_alignParentRight="true">
+                                            <ImageButton
+                                                android:id="@+id/select_third_contact_from_list"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="@dimen/default_padding"
+                                                android:background="@color/transparent"
+                                                android:src="@drawable/ic_contact_24_dp" />
+
+                                            <ImageButton
+                                                android:id="@+id/third_contact_delete"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/transparent"
+                                                android:padding="@dimen/default_padding"
+                                                android:src="@drawable/ic_delete_forever" />
+                                        </LinearLayout>
 
                                     </RelativeLayout>
 
@@ -407,7 +438,6 @@
                                                 android:textColorHint="@color/textSecondary"
                                                 android:visibility="gone"
                                                 app:counterEnabled="true"
-                                                app:counterMaxLength="10"
                                                 app:hintEnabled="false">
                                                 <!-- fourth contact input layout-->
                                                 <EditText
@@ -420,7 +450,7 @@
                                                     android:ems="10"
                                                     android:gravity="center"
                                                     android:hint="Mobile Number"
-                                                    android:inputType="number"
+                                                    android:inputType="phone"
                                                     android:paddingBottom="10dp"
                                                     android:paddingLeft="10dp"
                                                     android:paddingRight="10dp"
@@ -489,7 +519,6 @@
                                                 android:textColorHint="@color/textSecondary"
                                                 android:visibility="gone"
                                                 app:counterEnabled="true"
-                                                app:counterMaxLength="10"
                                                 app:hintEnabled="false">
                                                 <!-- fifth contact input layout-->
                                                 <EditText
@@ -502,7 +531,7 @@
                                                     android:ems="10"
                                                     android:gravity="center"
                                                     android:hint="Mobile Number"
-                                                    android:inputType="number"
+                                                    android:inputType="phone"
                                                     android:paddingBottom="10dp"
                                                     android:paddingLeft="10dp"
                                                     android:paddingRight="10dp"

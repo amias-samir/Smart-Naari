@@ -301,7 +301,7 @@ public class MyCircleActivity extends BaseActivity {
         int countTotalContactNumber = 0;
 
         if (first_contact.length() > 0) {
-            if (first_contact.length() == 10) {
+            if (first_contact.length() >= 10 && first_contact.length()<=15) {
                 if (TextUtils.isEmpty(tvFirstContactName.getText().toString())) {
                     showErrorToast("Enter First Contact Name");
                     tvFirstContactName.requestFocus();
@@ -316,7 +316,7 @@ public class MyCircleActivity extends BaseActivity {
         }
 
         if (second_contact.length() > 0) {
-            if (second_contact.length() == 10) {
+            if (second_contact.length() >= 10 && second_contact.length()<=15) {
                 if (TextUtils.isEmpty(tvSecondContactName.getText().toString())) {
                     showErrorToast("Enter Second Contact Name");
                     tvSecondContactName.requestFocus();
@@ -331,7 +331,7 @@ public class MyCircleActivity extends BaseActivity {
         }
 
         if (third_contact.length() > 0) {
-            if (third_contact.length() == 10) {
+            if (third_contact.length() >= 10 && third_contact.length()<=15) {
                 if (TextUtils.isEmpty(tvThirdContactName.getText().toString())) {
                     showErrorToast("Enter Third Contact Name");
                     tvThirdContactName.requestFocus();
@@ -346,7 +346,7 @@ public class MyCircleActivity extends BaseActivity {
         }
 
         if (fourth_contact.length() > 0) {
-            if (fourth_contact.length() == 10) {
+            if (fourth_contact.length() >= 10 && fourth_contact.length()<=15) {
                 if (TextUtils.isEmpty(tvFourthContactName.getText().toString())) {
                     showErrorToast("Enter Fourth Contact Name");
                     tvFirstContactName.requestFocus();
@@ -361,7 +361,7 @@ public class MyCircleActivity extends BaseActivity {
         }
 
         if (fifth_contact.length() > 0) {
-            if (fifth_contact.length() == 10) {
+            if (fifth_contact.length() >= 10 && fifth_contact.length()<=15) {
                 if (TextUtils.isEmpty(tvFifthContactName.getText().toString())) {
                     showErrorToast("Enter Fifth Contact Name");
                     tvFifthContactName.requestFocus();
