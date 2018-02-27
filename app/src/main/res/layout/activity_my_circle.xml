@@ -462,17 +462,29 @@
 
                                         </LinearLayout>
 
-                                        <ImageButton
-                                            android:id="@+id/fourth_contact_delete"
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginLeft="@dimen/default_padding"
-                                            android:background="@color/transparent"
-                                            android:padding="@dimen/default_padding"
-                                            android:src="@drawable/ic_delete_forever"
-                                            android:visibility="gone"/>
+                                            android:orientation="vertical"
+                                            android:layout_alignParentRight="true">
+                                            <ImageButton
+                                                android:id="@+id/select_fourth_contact_from_list"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="@dimen/default_padding"
+                                                android:background="@color/transparent"
+                                                android:src="@drawable/ic_contact_24_dp"
+                                                android:visibility="gone"/>
+
+                                            <ImageButton
+                                                android:id="@+id/fourth_contact_delete"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                               android:background="@color/transparent"
+                                                android:padding="@dimen/default_padding"
+                                                android:src="@drawable/ic_delete_forever"
+                                                android:visibility="gone"/>
+                                        </LinearLayout>
 
                                     </RelativeLayout>
 
@@ -543,17 +555,29 @@
 
                                         </LinearLayout>
 
-                                        <ImageButton
-                                            android:id="@+id/fifth_contact_delete"
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginLeft="@dimen/default_padding"
-                                            android:background="@color/transparent"
-                                            android:padding="@dimen/default_padding"
-                                            android:src="@drawable/ic_delete_forever"
-                                            android:visibility="gone"/>
+                                            android:orientation="vertical"
+                                            android:layout_alignParentRight="true">
+                                            <ImageButton
+                                                android:id="@+id/select_fifth_contact_from_list"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="@dimen/default_padding"
+                                                android:background="@color/transparent"
+                                                android:src="@drawable/ic_contact_24_dp"
+                                                android:visibility="gone"/>
+
+                                            <ImageButton
+                                                android:id="@+id/fifth_contact_delete"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/transparent"
+                                                android:padding="@dimen/default_padding"
+                                                android:src="@drawable/ic_delete_forever"
+                                                android:visibility="gone"/>
+                                        </LinearLayout>
 
                                     </RelativeLayout>
 
@@ -587,7 +611,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_above="@id/body_relative_layout"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="gone">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
