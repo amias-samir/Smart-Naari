@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.services;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +31,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ColorList;
 
 import java.util.ArrayList;
@@ -170,6 +173,18 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_call:
+                Intent intent = new Intent(ServicesActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.aboutboardmembers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -9,9 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -45,6 +51,7 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
     private void setAboutMembersRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.rvAboutBoardMembers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setNestedScrollingEnabled(false);
         adapter = new AboutMembersRecylerViewAdapter(this);
         recyclerView.setAdapter(adapter);
 
@@ -65,6 +72,18 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_call:
+                Intent intent = new Intent(AboutMembersActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

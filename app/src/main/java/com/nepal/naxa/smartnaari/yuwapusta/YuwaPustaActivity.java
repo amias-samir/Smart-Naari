@@ -14,12 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.YuwaPustaQueryDetailsActivity;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
@@ -27,6 +29,7 @@ import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import java.util.List;
@@ -202,6 +205,19 @@ public class YuwaPustaActivity extends BaseActivity  {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_call:
+                Intent intent = new Intent(YuwaPustaActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 //    @Override

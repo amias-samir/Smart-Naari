@@ -1,15 +1,19 @@
 package com.nepal.naxa.smartnaari.copyrightandprivacypolicy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
@@ -52,6 +56,19 @@ public class PrivacyPolicyActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_call:
+                Intent intent = new Intent(PrivacyPolicyActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

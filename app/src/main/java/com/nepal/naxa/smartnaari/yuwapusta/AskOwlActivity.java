@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.yuwapusta;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -20,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
@@ -27,6 +30,7 @@ import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data.network.AskAnOwlResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
@@ -134,6 +138,18 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_call:
+                Intent intent = new Intent(AskOwlActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -52,6 +52,7 @@ import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsModel;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
@@ -343,6 +344,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.item_call:
+                Intent intent = new Intent(MaChupBasdinaActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
                 return true;
         }
 
