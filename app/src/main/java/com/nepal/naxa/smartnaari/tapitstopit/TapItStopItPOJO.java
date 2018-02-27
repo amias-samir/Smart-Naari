@@ -16,8 +16,8 @@ public class TapItStopItPOJO {
     @SerializedName("Number")
     String contact;
 
-//    @SerializedName("Number2")
-//    String contact2;
+    @SerializedName("Number2")
+    String contact2;
 
     public String getType() {
         return type;
@@ -44,13 +44,13 @@ public class TapItStopItPOJO {
     }
 
 
-//    public String getContact2() {
-//        return contact2;
-//    }
-//
-//    public void setContact2(String contact2) {
-//        this.contact2 = contact2;
-//    }
+    public String getContact2() {
+        return contact2;
+    }
+
+    public void setContact2(String contact2) {
+        this.contact2 = contact2;
+    }
 
 
 }
