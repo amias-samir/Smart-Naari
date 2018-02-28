@@ -300,7 +300,7 @@ public class BeautifulMainActivity extends BaseActivity
     }
 
     private void handleNavigation(MenuItem menuItem) {
-        
+
         if (menuItem.getTitle().equals("My Circle")) {
             Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
             startActivity(intent);
@@ -716,12 +716,10 @@ public class BeautifulMainActivity extends BaseActivity
         int id = v.getId();
         switch (id){
             case R.id.btn_nav_user_message:
-                Intent intent = new Intent(Intent.ACTION_SEND);
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL, "info@smartnaari.org");
+                intent.setData(Uri.parse("mailto:info@smartnaari.org"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, "My Feedback To Smart नारी");
-//                intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
-
                 startActivity(Intent.createChooser(intent, "Send Email"));
 
                 break;
