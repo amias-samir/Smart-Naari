@@ -3,11 +3,13 @@ package com.nepal.naxa.smartnaari.mycircle;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -61,7 +63,7 @@ public class MyCircleActivity extends BaseActivity {
 
 
     private static final String TAG = MyCircleActivity.class.getSimpleName();
-    private static final int REQUEST_CODE_PICK_CONTACTS = 1;
+    private static int REQUEST_CODE_PICK_CONTACTS = 00;
     private static final int REQUEST_CODE_PICK_FIRST_CONTACTS = 10;
     private static final int REQUEST_CODE_PICK_SECOND_CONTACTS = 20;
     private static final int REQUEST_CODE_PICK_THIRD_CONTACTS = 30;
@@ -859,8 +861,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                         // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIRST_CONTACTS);
+                        REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS ;
                 } else {
-                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS ;
                 }
                 break;
 
@@ -868,8 +872,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_SECOND_CONTACTS);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS ;
                 } else {
-                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS ;
                 }
                 break;
 
@@ -877,8 +883,11 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_THIRD_CONTACTS);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS ;
                 } else {
-                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS ;
+
                 }
                 break;
 
@@ -886,8 +895,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FOURTH_CONTACTS);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS ;
                 } else {
-                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS ;
                 }
                 break;
 
@@ -895,10 +906,55 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIFTH_CONTACTS);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS ;
                 } else {
-                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
+                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS ;
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PICK_CONTACT: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIRST_CONTACTS){
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIRST_CONTACTS);
+                    }
+                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_SECOND_CONTACTS){
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_SECOND_CONTACTS);
+                    }
+                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_THIRD_CONTACTS){
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_THIRD_CONTACTS);
+                    }
+                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FOURTH_CONTACTS){
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FOURTH_CONTACTS);
+                    }
+                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIFTH_CONTACTS){
+                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIFTH_CONTACTS);
+                    }
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    showErrorToast("    oops !! \n permission denied");
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
+
     }
 }
