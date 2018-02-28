@@ -2,14 +2,17 @@ package com.nepal.naxa.smartnaari.dataongbv;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -36,8 +39,12 @@ public class DataOnGBVActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_data_on_gbv);
+        getWindow().setFeatureInt( Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
         ButterKnife.bind(this);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         initToolbar();
         loadWebURL();
@@ -60,20 +67,17 @@ public class DataOnGBVActivity extends BaseActivity {
 
 //    @SuppressLint("JavascriptInterface")
     public void loadWebURL (){
-
-
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-//        CookieManager.getInstance().setAcceptCookie(true);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            // If Android 6.0+ i must add support for Third Party Cookies
-//            CookieManager.getInstance().setAcceptThirdPartyCookies(sourceWebView, true);
-//        }
+        CookieManager.getInstance().setAcceptCookie(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // If Android 6.0+ i must add support for Third Party Cookies
+            CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
+        }
         webView.getSettings().setPluginState(WebSettings.PluginState.ON);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-        //mWebView.getSettings().setPluginsEnabled(true);
+//        webView.getSettings().setPluginsEnabled(true);
         webView.getSettings().setSupportMultipleWindows(false);
         webView.getSettings().setSupportZoom(true);
         webView.setVerticalScrollBarEnabled(true);
@@ -84,21 +88,29 @@ public class DataOnGBVActivity extends BaseActivity {
         webView.getSettings().setUserAgentString("Android WebView");
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.addJavascriptInterface(this, "Android");// add this only if required. Vulnerable to mitm attacks.
+        webView.addJavascriptInterface(this, "Android");// add this only if required. Vulnerable to mitm attacks.
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setLoadWithOverviewMode(true);
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClient());// use as above to handle ssl errors
+        webView.setWebChromeClient(new WebChromeClient(){
+            public void onProgressChanged(WebView view, int progress)
+            {
+                //Make the bar disappear after URL is loaded, and changes string to Loading...
+                setTitle("Loading...");
+                setProgress(progress * 100); //Make the bar disappear after URL is loaded
 
+                // Return the app name after finish loading
+                if(progress == 100)
+                    setTitle(R.string.app_name);
+            }
+        });
 
+        webView.setWebViewClient(new myWebClient());// use as above to handle ssl errors
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(postUrl);
         webView.setHorizontalScrollBarEnabled(false);
 
-        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -118,6 +130,44 @@ public class DataOnGBVActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public class myWebClient extends WebViewClient
+    {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            // TODO Auto-generated method stub
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            // TODO Auto-generated method stub
+            progressBar.setVisibility(View.VISIBLE);
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageFinished(view, url);
+
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    // To handle "Back" key press event for WebView to go back to previous screen.
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 
