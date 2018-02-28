@@ -26,6 +26,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -79,7 +80,7 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 public class BeautifulMainActivity extends BaseActivity
-        implements AppBarLayout.OnOffsetChangedListener, RecyclerViewAdapter.OnItemClickListener, HorizontalRecyclerViewAdapter.OnItemClickListener {
+        implements AppBarLayout.OnOffsetChangedListener, RecyclerViewAdapter.OnItemClickListener, HorizontalRecyclerViewAdapter.OnItemClickListener, View.OnClickListener {
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
@@ -118,6 +119,9 @@ public class BeautifulMainActivity extends BaseActivity
     ViewSwitcher imageSwitcherTapItStopIt;
     @BindView(R.id.btn_tap_it_stop_it)
     Button btnTapItStopIt;
+
+
+    ImageButton btnNavMessage, btnNavUserProfileUpdate;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -268,6 +272,13 @@ public class BeautifulMainActivity extends BaseActivity
     private void setupDrawerLayout() {
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View headerview = navigationView.getHeaderView(0);
+//        navigationView.setOnClickListener(this);
+        btnNavMessage = (ImageButton)headerview.findViewById(R.id.btn_nav_user_message);
+        btnNavUserProfileUpdate = (ImageButton)headerview.findViewById(R.id.btn_nav_user_profile_update);
+        btnNavMessage.setOnClickListener(this);
+        btnNavUserProfileUpdate.setOnClickListener(this);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(final MenuItem menuItem) {
@@ -289,6 +300,7 @@ public class BeautifulMainActivity extends BaseActivity
     }
 
     private void handleNavigation(MenuItem menuItem) {
+        
         if (menuItem.getTitle().equals("My Circle")) {
             Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
             startActivity(intent);
@@ -697,5 +709,28 @@ public class BeautifulMainActivity extends BaseActivity
                 showDialog.dismiss();
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.btn_nav_user_message:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, "info@smartnaari.org");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "My Feedback To Smart नारी");
+//                intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+
+                startActivity(Intent.createChooser(intent, "Send Email"));
+
+                break;
+
+            case R.id.btn_nav_user_profile_update:
+
+                break;
+
+                default:
+        }
     }
 }

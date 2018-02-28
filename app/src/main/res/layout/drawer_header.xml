@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:background="@drawable/ic_profile_background"
-    android:orientation="vertical"
     android:padding="@dimen/spacing_large"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
     <ImageButton
+        android:id="@+id/btn_nav_user_message"
         android:layout_width="@dimen/medium_icon_size"
         android:layout_height="@dimen/medium_icon_size"
         android:layout_alignParentLeft="true"
@@ -22,6 +23,7 @@
 
 
     <ImageButton
+        android:id="@+id/btn_nav_user_profile_update"
         android:layout_width="@dimen/medium_icon_size"
         android:layout_height="@dimen/medium_icon_size"
         android:layout_alignParentEnd="true"
@@ -32,19 +34,35 @@
         android:src="@drawable/ic_setting_button" />
 
 
-    <ImageView
-        android:id="@+id/avatar"
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_nav_user_avatar"-->
+        <!--android:layout_width="@dimen/large_icon_size"-->
+        <!--android:layout_height="@dimen/large_icon_size"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_margin="@dimen/spacing_large"-->
+        <!--android:elevation="4dp"-->
+        <!--tools:src="@drawable/logo" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_nav_user_avatar"
         android:layout_width="@dimen/large_icon_size"
         android:layout_height="@dimen/large_icon_size"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/spacing_large"
         android:elevation="4dp"
-        tools:src="@drawable/logo" />
+        tools:src="@drawable/default_avatar"
+        tools:finalHeight="@dimen/image_final_width"
+        tools:finalYPosition="1dp"
+        tools:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+        tools:startHeight="2dp"
+        tools:startToolbarPosition="2dp"
+        tools:startXPosition="2dp" />
 
     <TextView
+        android:id="@+id/tv_nav_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/avatar"
+        android:layout_below="@id/iv_nav_user_avatar"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginStart="@dimen/spacing_large"
