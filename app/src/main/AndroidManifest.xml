@@ -267,7 +267,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        >
+
         <activity
             android:name=".celebratingprofessional.CelebratingProfessionalActivity"
             android:exported="true">
