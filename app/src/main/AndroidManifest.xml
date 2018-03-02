@@ -322,11 +322,11 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".dataongbv.DataOnGBVActivity"
+            android:name=".dataongbv.DefaultWebpageLoadActivity"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".utils.ui.BeautifulMainActivity" />
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".dataongbv.DataOnGBVActivity" />-->
         </activity>
         <activity
             android:name=".donate.DonateActivity"
@@ -365,13 +365,21 @@
             android:exported="true"
             android:theme="@style/AppTheme.Popup" />
         <activity android:name=".tapitstopit.TapItStopItActivity" />
-
-        <activity android:name=".userprofileupdate.UserProfileUpdateActivity"
+        <activity
+            android:name=".userprofileupdate.UserProfileUpdateActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+        <activity
+            android:name=".dataongbv.DataOnGBVActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"></activity>
     </application>
 
 </manifest>

@@ -1,44 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity"
-    android:orientation="vertical">
-
+    tools:context="com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity">
 
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar_layout_header"/>
 
-    <ProgressBar
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/progressBar" />
-    <!--<LinearLayout-->
-        <!--android:layout_below="@+id/toolbar_layout_header"-->
+    <!--<ScrollView-->
+        <!--android:layout_below="@id/toolbar_layout_header"-->
         <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="vertical">-->
+        <!--android:layout_height="match_parent">-->
 
-        <!--<ProgressBar-->
-            <!--android:id="@+id/progressBar"-->
-            <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
-            <!--android:progressBackgroundTint="@color/blue"-->
-            <!--android:secondaryProgressTint="@color/blue"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:indeterminate="true"-->
-            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-            <!--/>-->
-
-        <WebView
-            android:id="@+id/webView"
+        <LinearLayout
+            android:layout_below="@id/toolbar_layout_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    <!--</LinearLayout>-->
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--datanepal logo-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="@dimen/default_padding"
+                android:layout_margin="@dimen/activity_horizontal_margin">
+
+                <ImageView
+                    android:id="@+id/iv_data_nepal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/datanepal_logo"
+                    android:scaleType="fitXY"/>
+
+            </android.support.v7.widget.CardView>
+
+            <!--nepal monitor logo-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="@dimen/default_padding"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_nepal_monitor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/nepal_monitor_logo"
+                    android:scaleType="fitXY"/>
+
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            </RelativeLayout>
 
 
-</LinearLayout>
+        </LinearLayout>
+
+    <!--</ScrollView>-->
+
+</RelativeLayout>

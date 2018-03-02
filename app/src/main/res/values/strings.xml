@@ -393,7 +393,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="see_all_services">See All Services</string>
     <string name="report">Report</string>
     <string name="action_search">Search</string>
-    <string name="ma_chup_basdina_other_info_hint">related to the reported \'Type\' above</string>
+    <string name="ma_chup_basdina_other_info_hint">Related to the reported \'Type\' above</string>
     <string name="offender">Offender</string>
 
     <string name="smart_naari_about_app_details">
@@ -422,7 +422,17 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="want_to_delete">Are you sure want to delete</string>
     <string name="default_msg_sad">Today is %s</string>
     <string name="close">CLOSE</string>
+
+
+    <string-array name="checker_for_spannable_text">
+        <item>foetus</item>
+        <item>medications</item>
+        <item>illegal</item>
+        <item>pregnancy</item>
+    </string-array>
+
     <string name="data">Data</string>
+
     ?>
 </resources>
 

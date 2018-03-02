@@ -58,7 +58,7 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
 
         if (cPerson.getPhoto().equals("")){
         Glide.with(mContext)
-                .load(R.drawable.food_1)
+                .load(R.drawable.nav_user_avatar_default)
                 .into(holder.getMemberImage());
         }else {
             Glide.with(mContext)

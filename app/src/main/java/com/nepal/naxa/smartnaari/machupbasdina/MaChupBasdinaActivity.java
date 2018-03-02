@@ -1,14 +1,12 @@
 package com.nepal.naxa.smartnaari.machupbasdina;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -60,7 +58,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -118,7 +115,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
     TextView tvLBLNoConsent;
     @BindView(R.id.txtLBLUnderstanding)
     TextView txtLBLUnderstanding;
-
+    @BindView(R.id.tv_type_of_violence)
+    TextView tvTypeOfViolence;
 
 
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
@@ -371,19 +369,34 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     }
 
-    @OnItemSelected(R.id.spinner_ma_chup_basdina_no_consent)
+
+    @OnClick(R.id.tv_type_of_violence)
+    public void onVoilenceTypeLBLViewClicked() {
+
+        if (!spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type")) {
+            final String selectedItem = spinnerTypeOfViolence.getSelectedItem().toString();
+//            final ProgressDialog dialog = DialogFactory.createProgressDialog(MaChupBasdinaActivity.this,
+//                    "Loading definition of " + selectedItem);
+//            dialog.setCancelable(false);
+
+
+            searchAndLoadGlossary(selectedItem);
+
+
+        }
+    }
+
+    @OnItemSelected(R.id.spinner_type_of_violence)
     public void onSpinnerNoConsentClicked() {
 
-        if (!spinnerNoConsent.getSelectedItem().toString().equals("  ")) {
-            final String selectedItem = spinnerNoConsent.getSelectedItem().toString();
-            final ProgressDialog dialog = DialogFactory.createProgressDialog(MaChupBasdinaActivity.this,
-                    "Loading definition of " + selectedItem);
-            dialog.setCancelable(false);
+        if (!spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type")) {
 
+            tvTypeOfViolence.setTextColor(getResources().getColor(R.color.blue));
 
-            showLearnMoreActionDialog(selectedItem);
-//            searchAndLoadGlossary(selectedItem);
-
+            Animation a = AnimationUtils.loadAnimation(this, R.anim.shake);
+            a.reset();
+            tvTypeOfViolence.clearAnimation();
+            tvTypeOfViolence.startAnimation(a);
 
         }
 
@@ -402,9 +415,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
         birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVoilenceOccur.setAdapter(voilenceOccurTimeArray);
 
-        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.noConsentType);
-        voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNoConsent.setAdapter(noConsent);
+//        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.noConsentType);
+//        voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerNoConsent.setAdapter(noConsent);
     }
 
     public boolean validateData() {
@@ -602,7 +615,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .dimColor(android.R.color.black)
                 .outerCircleColor(R.color.colorAccent)
                 .targetCircleColor(android.R.color.black)
-                .targetRadius(display.getWidth()/4)
+                .targetRadius(display.getWidth() / 4)
                 .transparentTarget(true)
                 .textColor(android.R.color.black)
                 .titleTextDimen(R.dimen.material_text_title)
@@ -701,61 +714,19 @@ public class MaChupBasdinaActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvLBL_Consent:
-                showLearnMoreActionDialog("Consent");
+                searchAndLoadGlossary("Consent");
                 break;
 
             case R.id.tvLBL_no_consent:
-                showLearnMoreActionDialog("No Consent");
+                searchAndLoadGlossary("No Consent");
                 break;
 
             case R.id.tv_perpetrator:
-                showLearnMoreActionDialog("Perpetrator");
+                searchAndLoadGlossary("Perpetrator");
                 break;
         }
     }
 
-
-    public void showLearnMoreActionDialog(final String title) {
-
-        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
-
-        final Dialog showDialog = new Dialog(this);
-        showDialog.setContentView(R.layout.action_dialog_custom_layout);
-
-//         initialize
-        TextView tvTextDetails = (TextView) showDialog.findViewById(R.id.dialog_text_details);
-        Button btnAgree = (Button) showDialog.findViewById(R.id.btn_agree_dialog);
-        btnAgree.setText("VIEW");
-        btnAgree.setVisibility(View.VISIBLE);
-        Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
-
-        tvTextDetails.setText(getString(R.string.learn_more_about) + " "+ title);
-
-        showDialog.setTitle(title);
-        showDialog.getActionBar();
-        showDialog.show();
-        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        btnAgree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                showDialog.dismiss();
-                searchAndLoadGlossary(title);
-
-            }
-        });
-
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                showDialog.dismiss();
-            }
-        });
-    }
 
     private void searchAndLoadGlossary(final String filter) {
         new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
@@ -839,8 +810,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .defaultIfEmpty(new WordsWithDetailsModel("error"));
     }
 
-    private void RunAnimation()
-    {
+    private void RunAnimation() {
         Animation a = AnimationUtils.loadAnimation(this, R.anim.shake);
         a.reset();
         tvLBLConsent.clearAnimation();
@@ -849,5 +819,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
         tvLBLNoConsent.clearAnimation();
         tvLBLNoConsent.startAnimation(a);
     }
+
 
 }
