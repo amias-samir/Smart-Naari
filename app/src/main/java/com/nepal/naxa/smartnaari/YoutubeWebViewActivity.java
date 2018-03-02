@@ -27,10 +27,12 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
     String URL = "https://www.youtube.com/embed/47yJ2XCRLZs";
 
 
-//    public class startYoutubeWebViewActivity(Context context, String URL) {
-//        startActivity(new Intent(context, YoutubeWebViewActivity.class));
-//        getIntent().putExtra("url", URL);
-//    }
+    public static void start(Context context, String URL) {
+        Intent i = new Intent(context, YoutubeWebViewActivity.class);
+        i.putExtra("url", URL);
+
+        context.startActivity(i);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
