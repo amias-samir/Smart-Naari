@@ -63,6 +63,7 @@ import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
+import com.nepal.naxa.smartnaari.userprofileupdate.UserProfileUpdateActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -724,11 +725,11 @@ public class BeautifulMainActivity extends BaseActivity
                 intent.setData(Uri.parse("mailto:info@smartnaari.org"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, "My Feedback To Smart नारी");
                 startActivity(Intent.createChooser(intent, "Send Email"));
-
                 break;
 
             case R.id.btn_nav_user_profile_update:
-
+                Intent userProfileIntent = new Intent(BeautifulMainActivity.this, UserProfileUpdateActivity.class);
+                startActivity(userProfileIntent);
                 break;
 
                 default:

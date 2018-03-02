@@ -364,7 +364,14 @@
             android:name=".calendraevent.EventShowcaseActivity"
             android:exported="true"
             android:theme="@style/AppTheme.Popup" />
-        <activity android:name=".tapitstopit.TapItStopItActivity"></activity>
+        <activity android:name=".tapitstopit.TapItStopItActivity" />
+
+        <activity android:name=".userprofileupdate.UserProfileUpdateActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
     </application>
 
 </manifest>
