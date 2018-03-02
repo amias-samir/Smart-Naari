@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,7 +28,7 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
     String URL = "https://www.youtube.com/embed/47yJ2XCRLZs";
 
 
-    public static void startYouttube(Context context, String URL) {
+    public static void startYouttube(Context context,@NonNull String URL) {
         Intent i = new Intent(context, YoutubeWebViewActivity.class);
         i.putExtra("url", URL);
         context.startActivity(i);

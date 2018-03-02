@@ -36,6 +36,7 @@ import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.XandYDetailsActivity;
+import com.nepal.naxa.smartnaari.YoutubeWebViewActivity;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity;
