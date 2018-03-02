@@ -27,10 +27,9 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
     String URL = "https://www.youtube.com/embed/47yJ2XCRLZs";
 
 
-    public static void start(Context context, String URL) {
+    public static void startYouttube(Context context, String URL) {
         Intent i = new Intent(context, YoutubeWebViewActivity.class);
         i.putExtra("url", URL);
-
         context.startActivity(i);
     }
 
@@ -40,7 +39,9 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_youtube_web_view);
         ButterKnife.bind(this);
 
-        URL = getIntent().getStringExtra("url");
+        if(getIntent().getStringExtra("url")!=null){
+            URL = getIntent().getStringExtra("url");
+        }
 
         setUpWebView();
 
@@ -59,6 +60,10 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.image_btn_close:
+                finish();
+        }
 
     }
 }

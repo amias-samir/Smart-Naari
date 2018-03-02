@@ -49,7 +49,6 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActi
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.dataongbv.DefaultWebpageLoadActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
-import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -308,9 +307,9 @@ public class BeautifulMainActivity extends BaseActivity
         }
 
         if (menuItem.getTitle().equals("About Smart नारी")) {
-            //Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
-//            startActivity(intent);
-                    }
+            Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+            startActivity(intent);
+        }
 
         if (menuItem.getTitle().equals("Meet The Team")) {
             Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
@@ -319,10 +318,6 @@ public class BeautifulMainActivity extends BaseActivity
 
         if (menuItem.getTitle().equals("Glossary")) {
             Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
-            startActivity(intent);
-
-        } if (menuItem.getTitle().equals("Friends Of Smart नारी")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
             startActivity(intent);
         }
 
