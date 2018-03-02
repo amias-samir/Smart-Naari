@@ -42,14 +42,17 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
 
-        setSpannableTextDescription();
+        try{
+            setSpannableTextDescription();
+        }catch (Exception e) {
+            e.printStackTrace();
+            tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
+        }
 
-
-        //tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
     }
     
 
-    private void setSpannableTextDescription() {
+    private void setSpannableTextDescription() throws Exception {
         String toBeSpannedText = wordsWithDetailsModel.getDesc().trim();
 
         SpannableString spannableString = new SpannableString(toBeSpannedText);
