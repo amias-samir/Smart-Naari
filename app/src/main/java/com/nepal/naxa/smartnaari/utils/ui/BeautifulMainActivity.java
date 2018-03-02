@@ -470,7 +470,14 @@ public class BeautifulMainActivity extends BaseActivity
             case R.id.item_setting_change:
                 Intent settingsIntent = new Intent(BeautifulMainActivity.this, SettingsChangeActivity.class);
                 startActivity(settingsIntent);
+                break;
 
+            case R.id.item_report_bug:
+                Intent reportBugMailIntent = new Intent(Intent.ACTION_SENDTO);
+                reportBugMailIntent.setType("text/plain");
+                reportBugMailIntent.setData(Uri.parse("mailto:mail.naxa@gmail.com"));
+                reportBugMailIntent.putExtra(Intent.EXTRA_SUBJECT, "Smart नारी issue");
+                startActivity(Intent.createChooser(reportBugMailIntent, "Report Bug"));
                 return true;
         }
 
