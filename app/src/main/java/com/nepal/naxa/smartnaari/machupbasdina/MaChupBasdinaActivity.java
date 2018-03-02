@@ -757,6 +757,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
         });
     }
 
+
+
+
     private void searchAndLoadGlossary(final String filter) {
         new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
             @Override
