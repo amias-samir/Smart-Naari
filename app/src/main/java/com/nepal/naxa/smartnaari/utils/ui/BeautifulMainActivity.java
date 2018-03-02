@@ -124,7 +124,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     ImageButton btnNavMessage, btnNavUserProfileUpdate;
-    CircleImageView ivNavUserAvatar ;
+    CircleImageView ivNavUserAvatar;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -147,7 +147,6 @@ public class BeautifulMainActivity extends BaseActivity
     private boolean stopShakeAnimate;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,7 +162,6 @@ public class BeautifulMainActivity extends BaseActivity
         mAppBarLayout.addOnOffsetChangedListener(this);
         setupActionBar();
         setupDrawerLayout();
-
 
 
         Glide.with(this)
@@ -186,7 +184,6 @@ public class BeautifulMainActivity extends BaseActivity
         }
 
 
-
     }
 
     private void stopShakeAnimation() {
@@ -202,7 +199,7 @@ public class BeautifulMainActivity extends BaseActivity
             public void run() {
                 animateIfSpecialDay();
             }
-        },TimeUnit.SECONDS.toMillis(3));
+        }, TimeUnit.SECONDS.toMillis(3));
 
 
     }
@@ -277,9 +274,9 @@ public class BeautifulMainActivity extends BaseActivity
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View headerview = navigationView.getHeaderView(0);
 //        navigationView.setOnClickListener(this);
-        btnNavMessage = (ImageButton)headerview.findViewById(R.id.btn_nav_user_message);
-        btnNavUserProfileUpdate = (ImageButton)headerview.findViewById(R.id.btn_nav_user_profile_update);
-        ivNavUserAvatar = (CircleImageView)headerview.findViewById(R.id.iv_nav_user_avatar);
+        btnNavMessage = (ImageButton) headerview.findViewById(R.id.btn_nav_user_message);
+        btnNavUserProfileUpdate = (ImageButton) headerview.findViewById(R.id.btn_nav_user_profile_update);
+        ivNavUserAvatar = (CircleImageView) headerview.findViewById(R.id.iv_nav_user_avatar);
         ivNavUserAvatar.setImageResource(R.drawable.nav_user_avatar_default);
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);
@@ -294,9 +291,7 @@ public class BeautifulMainActivity extends BaseActivity
                     public void run() {
                         handleNavigation(menuItem);
                     }
-                },250);
-
-
+                }, 250);
 
 
                 return true;
@@ -312,9 +307,9 @@ public class BeautifulMainActivity extends BaseActivity
         }
 
         if (menuItem.getTitle().equals("About Smart नारी")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
-            startActivity(intent);
-        }
+            //Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+//            startActivity(intent);
+                    }
 
         if (menuItem.getTitle().equals("Meet The Team")) {
             Intent intent = new Intent(BeautifulMainActivity.this, AboutMembersActivity.class);
@@ -351,7 +346,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
         if (menuItem.getTitle().equals("Disclaimer")) {
-           showDisclaimerDialog("Disclaimer");
+            showDisclaimerDialog("Disclaimer");
         }
     }
 
@@ -446,7 +441,7 @@ public class BeautifulMainActivity extends BaseActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               // drawerLayout.openDrawer(GravityCompat.START);
+                // drawerLayout.openDrawer(GravityCompat.START);
                 break;
 
             case R.id.item_call:
@@ -607,14 +602,14 @@ public class BeautifulMainActivity extends BaseActivity
 
     @OnClick(R.id.iv_logo)
     public void onHomeClicked() {
-        if(stopShakeAnimate){
+        if (stopShakeAnimate) {
             drawerLayout.openDrawer(GravityCompat.START);
-        }else {
-           // stopShakeAnimation();
+        } else {
+            // stopShakeAnimation();
             EventShowcaseActivity.start(BeautifulMainActivity.this);
         }
 
-     }
+    }
 
 
     @Override
@@ -726,7 +721,7 @@ public class BeautifulMainActivity extends BaseActivity
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.btn_nav_user_message:
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setType("text/plain");
@@ -740,7 +735,7 @@ public class BeautifulMainActivity extends BaseActivity
                 startActivity(userProfileIntent);
                 break;
 
-                default:
+            default:
         }
     }
 }
