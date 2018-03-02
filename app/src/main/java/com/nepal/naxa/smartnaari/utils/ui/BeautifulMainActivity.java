@@ -47,6 +47,7 @@ import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
+import com.nepal.naxa.smartnaari.dataongbv.DefaultWebpageLoadActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
