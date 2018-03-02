@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbar_layout_header"/>
+
+    <!--<ScrollView-->
+    <!--android:layout_below="@id/toolbar_layout_header"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <LinearLayout
+        android:layout_below="@id/toolbar_layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--datanepal logo-->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/default_padding"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/iv_naxa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/naxa_logo"
+                android:scaleType="fitXY"/>
+
+        </android.support.v7.widget.CardView>
+
+        <!--nepal monitor logo-->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/default_padding"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            >
+
+            <ImageView
+                android:id="@+id/iv_ark_ventures"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ark_ventures_logo"
+                android:scaleType="fitXY"/>
+
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!--</ScrollView>-->
+
+</RelativeLayout>

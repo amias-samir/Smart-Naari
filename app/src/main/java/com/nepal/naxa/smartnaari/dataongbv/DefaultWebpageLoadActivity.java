@@ -129,6 +129,10 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
             case R.id.item_call:
                 Intent intent = new Intent(DefaultWebpageLoadActivity.this, TapItStopItActivity.class);
                 startActivity(intent);
@@ -176,5 +180,10 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
 }
