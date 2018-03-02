@@ -393,6 +393,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
             tvTypeOfViolence.setTextColor(getResources().getColor(R.color.blue));
 
+            Animation a = AnimationUtils.loadAnimation(this, R.anim.shake);
+            a.reset();
+            tvTypeOfViolence.clearAnimation();
+            tvTypeOfViolence.startAnimation(a);
+
         }
 
     }
