@@ -122,6 +122,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     ImageButton btnNavMessage, btnNavUserProfileUpdate;
+    CircleImageView ivNavUserAvatar ;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -276,6 +277,8 @@ public class BeautifulMainActivity extends BaseActivity
 //        navigationView.setOnClickListener(this);
         btnNavMessage = (ImageButton)headerview.findViewById(R.id.btn_nav_user_message);
         btnNavUserProfileUpdate = (ImageButton)headerview.findViewById(R.id.btn_nav_user_profile_update);
+        ivNavUserAvatar = (CircleImageView)headerview.findViewById(R.id.iv_nav_user_avatar);
+        ivNavUserAvatar.setImageResource(R.drawable.nav_user_avatar_default);
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);
 
