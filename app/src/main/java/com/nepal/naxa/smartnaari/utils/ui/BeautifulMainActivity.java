@@ -320,7 +320,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
 
-        if (menuItem.getTitle().equals("Glossary Of Terms")) {
+        if (menuItem.getTitle().equals("Glossary")) {
             Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
             startActivity(intent);
         }
@@ -330,7 +330,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
 
-        if (menuItem.getTitle().equals("Data on Gender and GBV")) {
+        if (menuItem.getTitle().equals("Data")) {
             Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
             startActivity(intent);
         }

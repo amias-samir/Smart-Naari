@@ -40,7 +40,8 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(wordsWithDetailsModel != null ? wordsWithDetailsModel.getTitle() : "Failed to load");
+//        toolbar.setTitle(wordsWithDetailsModel != null ? wordsWithDetailsModel.getTitle() : "Failed to load");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
 

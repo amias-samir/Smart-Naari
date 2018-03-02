@@ -15,7 +15,7 @@
     <string name="meet_the_board">Meet The Team</string>
     <string name="sn_enthusiasts">Friends Of Smart नारी</string>
     <string name="celebrating_professionals">Celebrating Professionals</string>
-    <string name="glossary_of_terms">Glossary Of Terms</string>
+    <string name="glossary_of_terms">Glossary</string>
     <string name="data_on_gender_based_violence">Data on Gender and GBV</string>
     <string name="tutorials">Tutorials</string>
     <string name="privacy_policy_and_data_protection">Privacy Policy and Data Protection</string>
@@ -422,6 +422,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="want_to_delete">Are you sure want to delete</string>
     <string name="default_msg_sad">Today is %s</string>
     <string name="close">CLOSE</string>
+    <string name="data">Data</string>
     ?>
 </resources>
 
