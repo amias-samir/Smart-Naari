@@ -126,6 +126,7 @@ public class SettingsChangeActivity extends BaseActivity {
 
         Intent intent = new Intent(SettingsChangeActivity.this, SplashScreenActivity.class);
         startActivity(intent);
+        finish();
 
     }
 }

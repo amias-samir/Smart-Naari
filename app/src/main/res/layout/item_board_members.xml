@@ -23,7 +23,7 @@
                 android:layout_width="@dimen/image_width"
                 android:layout_height="@dimen/image_width"
                 android:layout_gravity="center_horizontal|top"
-                android:src="@drawable/food_1"
+                android:src="@drawable/nav_user_avatar_default"
                 app:finalHeight="@dimen/image_final_width"
                 app:finalYPosition="1dp"
                 app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"

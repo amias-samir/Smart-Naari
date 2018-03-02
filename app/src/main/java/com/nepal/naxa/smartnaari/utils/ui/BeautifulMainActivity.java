@@ -47,6 +47,7 @@ import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActivity;
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
+import com.nepal.naxa.smartnaari.dataongbv.DefaultWebpageLoadActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -63,6 +64,7 @@ import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
 import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
+import com.nepal.naxa.smartnaari.userprofileupdate.UserProfileUpdateActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -319,7 +321,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
 
-        if (menuItem.getTitle().equals("Glossary Of Terms")) {
+        if (menuItem.getTitle().equals("Glossary")) {
             Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
             startActivity(intent);
         }
@@ -329,7 +331,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
 
-        if (menuItem.getTitle().equals("Data on Gender and GBV")) {
+        if (menuItem.getTitle().equals("Data")) {
             Intent intent = new Intent(BeautifulMainActivity.this, DataOnGBVActivity.class);
             startActivity(intent);
         }
@@ -469,7 +471,14 @@ public class BeautifulMainActivity extends BaseActivity
             case R.id.item_setting_change:
                 Intent settingsIntent = new Intent(BeautifulMainActivity.this, SettingsChangeActivity.class);
                 startActivity(settingsIntent);
+                break;
 
+            case R.id.item_report_bug:
+                Intent reportBugMailIntent = new Intent(Intent.ACTION_SENDTO);
+                reportBugMailIntent.setType("text/plain");
+                reportBugMailIntent.setData(Uri.parse("mailto:mail.naxa@gmail.com"));
+                reportBugMailIntent.putExtra(Intent.EXTRA_SUBJECT, "Smart नारी issue");
+                startActivity(Intent.createChooser(reportBugMailIntent, "Report Bug"));
                 return true;
         }
 
@@ -724,11 +733,11 @@ public class BeautifulMainActivity extends BaseActivity
                 intent.setData(Uri.parse("mailto:info@smartnaari.org"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, "My Feedback To Smart नारी");
                 startActivity(Intent.createChooser(intent, "Send Email"));
-
                 break;
 
             case R.id.btn_nav_user_profile_update:
-
+                Intent userProfileIntent = new Intent(BeautifulMainActivity.this, UserProfileUpdateActivity.class);
+                startActivity(userProfileIntent);
                 break;
 
                 default:

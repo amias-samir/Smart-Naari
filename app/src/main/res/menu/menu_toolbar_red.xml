@@ -50,8 +50,7 @@
             <item
                 android:id="@+id/item_report_bug"
                 android:icon="@drawable/ic_menuitem_report_bug"
-                android:title="Report Bug"
-                android:visible="false"/>
+                android:title="Report Bug" />
 
             <item
                 android:id="@+id/item_setting_change"

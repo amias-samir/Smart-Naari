@@ -46,7 +46,7 @@
             android:id="@+id/drawer_data_gender"
             android:checked="true"
             android:icon="@drawable/ic_data_on_gender_based_voilence"
-            android:title="@string/data_on_gender_based_violence" />
+            android:title="@string/data" />
 
     </group>
 

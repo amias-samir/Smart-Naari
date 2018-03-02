@@ -276,6 +276,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         startService(new Intent(this, PowerButtonService.class));
         Intent intent = new Intent(PermissionActivity.this, BeautifulMainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
