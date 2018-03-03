@@ -32,7 +32,7 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
     TextView tvOfficeLandline;
 //    Unbinder unbinder;
 
-
+TextView tvofficeEmail, tvOfficeCheifLandline, tvOfficeCheifMobileNo ;
 
 
     public static PlaceDetailsBottomSheet getInstance(ServicesData servicesData) {
@@ -56,6 +56,9 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
         tvOfficeName = (TextView)rootView. findViewById(R.id.office_name);
         tvOfficeAddress = (TextView)rootView. findViewById(R.id.office_address);
         tvOfficeType = (TextView)rootView. findViewById(R.id.office_type);
+        tvofficeEmail = (TextView)rootView.findViewById(R.id.office_email);
+        tvOfficeCheifLandline = (TextView)rootView.findViewById(R.id.office_cheif_landline);
+        tvOfficeCheifMobileNo = (TextView)rootView.findViewById(R.id.office_cheif_mobile);
         tvOfficeContactDutyPerson = (TextView)rootView. findViewById(R.id.office_contact_duty_person);
         tvOfficeLandline = (TextView)rootView. findViewById(R.id.office_landline);
 
@@ -65,12 +68,23 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
 String district = servicesData.getDistrict();
             String officeDistrict = district.substring(0, 1).toUpperCase() + district.substring(1);
 
-            tvOfficeName.setText("Office Name : "+servicesData.getOfficeName());
-            tvOfficeType.setText("Office Type : "+servicesData.getOfficeType());
-            tvOfficeAddress.setText("Office Address : "+ officeDistrict);
-            tvOfficeContactDutyPerson.setText("Contact Duty Person's no. : "+servicesData.getContactDutyPersonContactNumber());
+            tvOfficeName.setText("Office Name : "+servicesData.getOfficeName().trim());
+            tvOfficeType.setText("Office Type : "+servicesData.getOfficeType().trim());
+            tvOfficeAddress.setText("Office Address : "+ officeDistrict.trim());
+
+            tvofficeEmail.setText("Email: "+servicesData.getOfficeEmail().trim());
+            Linkify.addLinks(tvofficeEmail, Linkify.EMAIL_ADDRESSES);
+
+            tvOfficeCheifLandline.setText("Office Cheif's Landline. : "+servicesData.getOfficeCheifLandline().trim());
+            Linkify.addLinks(tvOfficeCheifLandline, Linkify.PHONE_NUMBERS);
+
+            tvOfficeLandline.setText("Office Cheif's Mobile no. : "+servicesData.getOfficeCheifMobileNumber().trim());
+            Linkify.addLinks(tvOfficeCheifMobileNo, Linkify.PHONE_NUMBERS);
+
+            tvOfficeContactDutyPerson.setText("Contact Duty Person's no. : "+servicesData.getContactDutyPersonContactNumber().trim());
             Linkify.addLinks(tvOfficeContactDutyPerson, Linkify.PHONE_NUMBERS);
-            tvOfficeLandline.setText("Office Landline no : "+servicesData.getOfficeLandline());
+
+            tvOfficeLandline.setText("Office Landline no : "+servicesData.getOfficeLandline().trim());
             Linkify.addLinks(tvOfficeLandline, Linkify.PHONE_NUMBERS);
 //        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
         } catch (NullPointerException e) {

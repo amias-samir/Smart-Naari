@@ -7,15 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <ImageView
-        android:id="@+id/backdrop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@color/iron" />
+    <!--<ImageView-->
+        <!--android:id="@+id/backdrop"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@color/iron" />-->
 
     <ImageView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -44,9 +43,9 @@
             android:id="@+id/office_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/material_text_display1"
-            android:text="test"
+            android:textColor="@color/bottomsheet_text_color"
+            android:textSize="@dimen/material_text_title"
+            android:text="Office Name"
 
             />
 
@@ -55,9 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/office_name"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/material_text_caption"
-            android:text="test"/>
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textColor="@color/bottomsheet_text_color"
+            android:textSize="@dimen/material_text_body1"
+            android:text="Office Address"/>
 
         <TextView
             android:id="@+id/office_type"
@@ -65,32 +65,67 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/office_address"
             android:layout_marginTop="@dimen/spacing_xxsmall"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/bottomsheet_text_color"
             android:textSize="@dimen/material_text_body1"
-            android:text="test"
+            android:text="Office Type"
             />
 
         <TextView
-            android:id="@+id/office_contact_duty_person"
+            android:id="@+id/office_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/office_type"
             android:layout_marginTop="@dimen/spacing_xxsmall"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/bottomsheet_text_color"
             android:textSize="@dimen/material_text_body1"
-            android:text="test"
+            android:text="Office Email"
+            />
+
+        <TextView
+            android:id="@+id/office_cheif_landline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/office_email"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textColor="@color/bottomsheet_text_color"
+            android:textSize="@dimen/material_text_body1"
+            android:text="Office Cheif Landline"
+            />
+
+        <TextView
+            android:id="@+id/office_cheif_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/office_cheif_landline"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textColor="@color/bottomsheet_text_color"
+            android:textSize="@dimen/material_text_body1"
+            android:text="Office Cheif Landline"
             />
 
         <TextView
             android:id="@+id/office_landline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/office_contact_duty_person"
+            android:layout_below="@+id/office_cheif_mobile"
             android:layout_marginTop="@dimen/spacing_xxsmall"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/bottomsheet_text_color"
             android:textSize="@dimen/material_text_body1"
-            android:text="test"
+            android:text="Office Landline"
             />
+
+        <TextView
+            android:id="@+id/office_contact_duty_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/office_landline"
+            android:layout_marginTop="@dimen/spacing_xxsmall"
+            android:textColor="@color/bottomsheet_text_color"
+            android:textSize="@dimen/material_text_body1"
+            android:text="Contact Duty Person no."
+            />
+
+
 
     </RelativeLayout>
 
