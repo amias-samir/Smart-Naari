@@ -286,7 +286,7 @@ public class BeautifulMainActivity extends BaseActivity
             @Override
             public boolean onNavigationItemSelected(final MenuItem menuItem) {
                 menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
+//                drawerLayout.closeDrawers();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -308,8 +308,8 @@ public class BeautifulMainActivity extends BaseActivity
         }
 
         if (menuItem.getTitle().equals("About Smart नारी")) {
-            //Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+            startActivity(intent);
                     }
 
         if (menuItem.getTitle().equals("Meet The Team")) {
