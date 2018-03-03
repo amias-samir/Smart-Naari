@@ -123,6 +123,12 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         initToolbar();
         initDistrictSpinner();
         initMapLegend();
+
+//        if from MaChupBasdina Activity
+        if(ConstantData.isFromMaChupBasdina){
+            Intent intent = getIntent();
+            selectedDistrict = intent.getStringExtra(ConstantData.KEY_DISTRICT);
+        }
     }
 
     private void initToolbar() {
@@ -135,6 +141,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
 
     private void initDistrictSpinner(){
         ArrayAdapter<String> distArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListServices);
@@ -162,9 +169,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
             }
 
-//            setDistrictMapCamera();
-
-
         }
 
 
@@ -190,6 +194,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 .newCameraPosition(cameraPositon), null);
 
         map.getUiSettings().setZoomControlsEnabled(true);
+        map.getUiSettings().setScrollGesturesEnabled(true);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -290,7 +295,19 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         map = googleMap;
         setDistrictGeoJSON();
 
+    if(ConstantData.isFromMaChupBasdina){
+        removeMarkersIfPresent();
+        setDistrictGeoJSON();
+        new FilterFromGeoJson().execute();
+        try {
+            addMarker(selectedDistrict);
+        } catch (Exception e) {
+            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+        }
+    }else {
         startCluster();
+
+    }
 //        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
 //        ==========================
     }
@@ -585,6 +602,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 //
 //            }
             setDistrictMapCamera();
+            ConstantData.isFromMaChupBasdina = false ;
         }
     }
 
