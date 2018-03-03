@@ -530,7 +530,7 @@ public class BeautifulMainActivity extends BaseActivity
 
             if (!mIsTheTitleVisible) {
                 startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
-                startAlphaAnimation(btnNavDrawer,ALPHA_ANIMATIONS_DURATION,View.INVISIBLEgi);
+                startAlphaAnimation(btnNavDrawer,ALPHA_ANIMATIONS_DURATION,View.INVISIBLE);
 
 
                 mIsTheTitleVisible = true;
