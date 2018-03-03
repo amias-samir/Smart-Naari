@@ -43,6 +43,7 @@ import com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
+import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.SmartNariCopyrightActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
@@ -344,6 +345,10 @@ public class BeautifulMainActivity extends BaseActivity
 
         if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
             Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getTitle().equals("Copyright")){
+            Intent intent = new Intent(BeautifulMainActivity.this, SmartNariCopyrightActivity.class);
             startActivity(intent);
         }
         if (menuItem.getTitle().equals("Disclaimer")) {

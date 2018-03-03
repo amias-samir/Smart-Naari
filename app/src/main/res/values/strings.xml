@@ -387,6 +387,27 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 ]]>
 
     </string>
+    <string name="smart_naari_copyright">
+        <![CDATA[
+<p><strong>Smart नारी Registration No: </strong>166760/073/074</p>
+<p><strong>Date of Registration: </strong>7 April, 2017</p>
+<p><strong>Smart नारी Pan No: </strong>605967919 </p>
+<p> </p>
+<p>Users are free to download and use this mobile app for informational, educational and research purposes only. Use of the original material for any other purpose constitutes infringement of the copyright and intellectual property rights owned by Smart नारी. </p>
+<p> </p>
+<p>Smart नारी, reserves all rights related to the following:    </p>
+<p> </p>
+<p>App Name: Smart Naari, Smart Nari and Smart नारी </p>
+<p>App Logo: Design and Colours</p>
+<p>App Slogan: Tap it Stop it</p>
+<p>App Design: Name, slogan, tab features, original blogs and games, quizzes.</p>
+<p>App Words: Title of original tab features, blogs and all original content  </p>
+<p>App Photos: Original as marked </p>
+<p>App Mapping: Original GIS </p>
+<p><br /><strong>Date of copyright: </strong>March 2018 onwards</p>
+]]>
+    </string>
+
     <string name="see_all_services">See All Services</string>
     <string name="report">Report</string>
     <string name="action_search">Search</string>
@@ -409,7 +430,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 ]]>
     </string>
     <string name="disclaimer">Disclaimer</string>
-    <string name="disclaimer_details">Definition in the Glossary is based on our research and understanding of the words for the purpose of this app. We have kept it as scientific, factual and brief as possible. If you wish for more, just google.</string>
+    <string name="disclaimer_details">The App is intended for informational, educational and research purposes only. The reporting of abuse, violence and harm is the full responsibility of the App user. Smart Naari only provides information on relevant services and does not take responsibility for access and follow up. Smart Naari will not participate in any criminal investigation or punishment.\n\nThe App focuses on approaches to prevention of gender based violence and violence against women. It is not intended, for use in diagnosis, cure, mitigation, treatment, or prevention of disease. Social workers and   health care providers should exercise their own independent judgment should the user of the App be in touch.\n\nIn several features definition is based on our research and understanding of the words for the purpose of this App. We have kept it as scientific, factual and brief as possible. If you wish for more, just google. \n\nService information has been taken from relevant websites or provided by relevant organisation as acknowledged.
+</string>
     <string name="showcase_no_consent_details">Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.</string>
     <string name="showcase_no_consent">No Consent</string>
     <string name="learn_more">learn More</string>
