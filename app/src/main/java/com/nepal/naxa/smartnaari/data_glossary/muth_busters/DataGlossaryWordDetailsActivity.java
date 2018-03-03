@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,38 +95,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
     }
 
 
-    private void setSpannableTextDescription() throws Exception {
-        final String toBeSpannedText = wordsWithDetailsModel.getDesc().trim();
 
-        final SpannableString spannableString = new SpannableString(toBeSpannedText);
-        JSONLoadImpl.cacheGlossaryObj()
-                .subscribe(new DisposableObserver<List<WordsWithDetailsModel>>() {
-                    @Override
-                    public void onNext(List<WordsWithDetailsModel> wordsWithDetailsModels) {
-
-                        for (WordsWithDetailsModel wordsWithDetailsModel : wordsWithDetailsModels) {
-                            String higlitedWord = wordsWithDetailsModel.getTitle().toLowerCase();
-
-                            int start = toBeSpannedText.indexOf(higlitedWord);
-                            int end = start + higlitedWord.length();
-                            spannableString.setSpan(new OnSpannedTextClicked(higlitedWord), start, end, 0);
-                            tvWordDesc.setText(spannableString);
-                            tvWordDesc.setMovementMethod(new LinkMovementMethod());
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
 
 
     private void initToolbar() {
@@ -134,27 +104,14 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close);
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
     }
 
-    private class OnSpannedTextClicked extends ClickableSpan {
 
-        String selectedString;
-
-        public OnSpannedTextClicked(String s) {
-            selectedString = s;
-        }
-
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(view.getContext(), "You selected: " + selectedString, Toast.LENGTH_SHORT).show();
-            //startActivity(new Intent(view.getContext(),WordsWithDetailsActivity.class));
-        }
-    }
 }
