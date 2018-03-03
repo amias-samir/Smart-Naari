@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -17,9 +19,19 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
+import com.nepal.naxa.smartnaari.utils.TextViewUtils;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
 
 public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
@@ -41,30 +53,78 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         initToolbar();
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
+        tvWordDesc.setText(wordsWithDetailsModel.getDesc());
 
-        setSpannableTextDescription();
+        JSONLoadImpl
+                .cacheGlossaryObj()
+                .flatMapIterable(new Function<List<WordsWithDetailsModel>, Iterable<WordsWithDetailsModel>>() {
+                    @Override
+                    public Iterable<WordsWithDetailsModel> apply(List<WordsWithDetailsModel> wordsWithDetailsModels) throws Exception {
+                        return wordsWithDetailsModels;
+                    }
+                })
+                .flatMap(new Function<WordsWithDetailsModel, Observable<String>>() {
+                    @Override
+                    public Observable<String> apply(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
+                        return Observable.just(wordsWithDetailsModel.getTitle());
+                    }
+                })
+                .toList()
+                .subscribe(new DisposableSingleObserver<List<String>>() {
+                    @Override
+                    public void onSuccess(List<String> strings) {
+                        //TextViewUtils.highlightWordToBlue(strings, tvWordDesc);
 
+                        TextViewUtils.linkWordsToGlossary(strings,tvWordDesc);
+                    }
 
-        //tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+//        try {
+//            setSpannableTextDescription();
+//        } catch (Exception e) {
+//            showErrorToast("Error");
+//            e.printStackTrace();
+//            //    tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
+//        }
+
     }
-    
-
-    private void setSpannableTextDescription() {
-        String toBeSpannedText = wordsWithDetailsModel.getDesc().trim();
-
-        SpannableString spannableString = new SpannableString(toBeSpannedText);
 
 
-        String[] tester = getResources().getStringArray(R.array.checker_for_spannable_text);
-        for (int i = 0; i < tester.length; i++) {
-            int start = toBeSpannedText.indexOf(tester[i]);
-            int end = start + tester[i].length();
-            spannableString.setSpan(new OnSpannedTextClicked(tester[i]), start, end, 0);
+    private void setSpannableTextDescription() throws Exception {
+        final String toBeSpannedText = wordsWithDetailsModel.getDesc().trim();
 
-            tvWordDesc.setText(spannableString);
+        final SpannableString spannableString = new SpannableString(toBeSpannedText);
+        JSONLoadImpl.cacheGlossaryObj()
+                .subscribe(new DisposableObserver<List<WordsWithDetailsModel>>() {
+                    @Override
+                    public void onNext(List<WordsWithDetailsModel> wordsWithDetailsModels) {
 
-        }
-        tvWordDesc.setMovementMethod(new LinkMovementMethod());
+                        for (WordsWithDetailsModel wordsWithDetailsModel : wordsWithDetailsModels) {
+                            String higlitedWord = wordsWithDetailsModel.getTitle().toLowerCase();
+
+                            int start = toBeSpannedText.indexOf(higlitedWord);
+                            int end = start + higlitedWord.length();
+                            spannableString.setSpan(new OnSpannedTextClicked(higlitedWord), start, end, 0);
+                            tvWordDesc.setText(spannableString);
+                            tvWordDesc.setMovementMethod(new LinkMovementMethod());
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 

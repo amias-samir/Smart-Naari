@@ -1,54 +1,54 @@
 [
- {
-   "category": "A",
-   "title": "Abortion",
-   "desc": "A surgical procedure to terminate an established pregnancy by emptying the uterus or womb of the foetus with special instruments within a clinical setting. This is surgical abortion and is the alternative to medical abortion, the latter of which is brought about by taking medications that will end a pregnancy. Both types of abortion must be done by a certified health professional, anything else is highly unsafe for the woman and illegal.\nAbortion can be legal or illegal based on the laws of each country.  Abortion, can also be termed voluntary as there is an element of choice by the woman. Sometimes, there is a natural ending of a pregnancy before the foetus is able to survive on its own and is called spontaneous abortion."
- },
- {
-   "category": "A",
-   "title": "Abuse,Violence and Harm",
-   "desc": "Human abuse can take many forms - verbal, physical, economic, mental and sexual. There is no consent to abuse. Abuse, means to speak to someone insultingly and offensively, use someone or something badly and wrongly, treat another cruelly or violently.  Violence should be understood as an escalation of different types of abuse which mostly involves physical force with the intention to hurt, damage (harm) or kill. Abuse, violence and harm, do not mean the same thing but in everyday language it is used interchangeably, as they are closely related to each other in action and result."
- },
- {
-   "category": "A",
-   "title": "Asexuality",
-   "desc": "Little or no interest in sex and/or sexual attraction to others. An asexual person may pursue romantic interests without any sexual behaviour involved, sometimes label themselves as ACE. This is very different to celibacy or chastity which is a matter of choice."
- },
- {
-   "category": "B",
-   "title": "Battered Woman Syndrome",
-   "desc": "Also known as battered wife syndrome or BWS is a mental disorder that develops in victim-survivor of domestic abuse as a result of serious, long-term violence. BWS is dangerous primarily because it can lead to \"learned helplessness\" – or psychological paralysis – where the victim-survivor becomes so depressed, defeated, and passive that she believes she is incapable of leaving the abusive situation. Though it may seem like an irrational fear, it feels absolutely real to the victim-survivor. Feeling fearful and weak, and sometimes even still holding onto the hope that her abuser will stop hurting her, the victim-survivor remains with her abuser, continuing the cycle of domestic violence and strengthening her existing BWS. Battered woman syndrome is recognized by many states as a legitimate mental disorder as is battered child syndrome."
- },
- {
-   "category": "B",
-   "title": "Bisexuality",
-   "desc": "Attraction to members of either sex, i.e. same sex and those of different sex, at the same time or different times."
- },
- {
-   "category": "C",
-   "title": "Child",
-   "desc": "A young human being, often described as a minor, below the age of puberty or below the legal age of majority of 18 years or as defined by the country in which the child resides in."
- },
- {
-   "category": "C",
-   "title": "Child Sexual Abuse",
-   "desc": "Is defined by the age of the victim-survivor. Rape and sexual assault of a minor or a child under the age of 16 years (legal age of consent) by any person over this age or by an adult."
- },
- {
-   "category": "C",
-   "title": "Chromosomes",
-   "desc": "A thread like strand of DNA in the cell nucleus that carries genes in a linear order. Humans have 22 pairs of these chromosomes plus two sex chromosomes – XX in females and XY in males to make a total of 46 (in occasional cases there can be more or less than this number). \nIn the XY sex-determination system, the female-provided ovum or egg contributes an X chromosome and the male-provided sperm contributes either an X chromosome or a Y chromosome, resulting in female (XX) or male (XY) offspring, respectively. Sometimes, there are natural exceptions to this rule and such persons are recognised as intersex."
- },
- {
-   "category": "C",
-   "title": "Cisgender",
-   "desc": "Denotes or relates to a person whose sense of personal feelings of gender identity corresponds fully with their given sex at birth identity i.e. male or female. Cisgender is the most common of gender and is opposite of transgender and represents the majority subculture in the gender classification."
- },
- {
-   "category": "C",
-   "title": "Consent",
-   "desc": "The verbal presence of a YES; and not the quiet absence of a NO. It means permission and agreement is personally and willingly given by an individual to another person.                                                       \nConsent can be withdrawn anytime by the person giving it in the first place and the other must respect it every time. \nConsent or a consensual act, is always positive, it is an enthusiastic affirmation that two people have mutually agreed to engage in any activity, sexual or otherwise. To say YES today is consent and to say NO tomorrow is no consent and it’s OK to change one’s mind in any given situation. Also see, legal age of consent and legal age of majority."
- },
+  {
+    "category": "A",
+    "title": "Abortion",
+    "desc": "A surgical procedure to terminate an established pregnancy by emptying the uterus or womb of the foetus with special instruments within a clinical setting. This is surgical abortion and is the alternative to medical abortion, the latter of which is brought about by taking medications that will end a pregnancy. Both types of abortion must be done by a certified health professional, anything else is highly unsafe for the woman and illegal.\n\n Abortion can be legal or illegal based on the laws of each country.  Abortion, can also be termed voluntary as there is an element of choice by the woman. Sometimes, there is a natural ending of a pregnancy before the foetus is able to survive on its own and is called spontaneous abortion."
+  },
+  {
+    "category": "A",
+    "title": "Abuse,Violence and Harm",
+    "desc": "Human abuse can take many forms - verbal, physical, economic, mental and sexual. There is no consent to abuse. Abuse, means to speak to someone insultingly and offensively, use someone or something badly and wrongly, treat another cruelly or violently.  Violence should be understood as an escalation of different types of abuse which mostly involves physical force with the intention to hurt, damage (harm) or kill. Abuse, violence and harm, do not mean the same thing but in everyday language it is used interchangeably, as they are closely related to each other in action and result."
+  },
+  {
+    "category": "A",
+    "title": "Asexuality",
+    "desc": "Little or no interest in sex and/or sexual attraction to others. An asexual person may pursue romantic interests without any sexual behaviour involved, sometimes label themselves as ACE. This is very different to celibacy or chastity which is a matter of choice."
+  },
+  {
+    "category": "B",
+    "title": "Battered Woman Syndrome",
+    "desc": "Also known as battered wife syndrome or BWS is a mental disorder that develops in victim-survivor of domestic abuse as a result of serious, long-term violence. BWS is dangerous primarily because it can lead to \"learned helplessness\" – or psychological paralysis – where the victim-survivor becomes so depressed, defeated, and passive that she believes she is incapable of leaving the abusive situation. Though it may seem like an irrational fear, it feels absolutely real to the victim-survivor. Feeling fearful and weak, and sometimes even still holding onto the hope that her abuser will stop hurting her, the victim-survivor remains with her abuser, continuing the cycle of domestic violence and strengthening her existing BWS. Battered woman syndrome is recognized by many states as a legitimate mental disorder as is battered child syndrome."
+  },
+  {
+    "category": "B",
+    "title": "Bisexuality",
+    "desc": "Attraction to members of either sex, i.e. same sex and those of different sex, at the same time or different times."
+  },
+  {
+    "category": "C",
+    "title": "Child",
+    "desc": "A young human being, often described as a minor, below the age of puberty or below the legal age of majority of 18 years or as defined by the country in which the child resides in."
+  },
+  {
+    "category": "C",
+    "title": "Child Sexual Abuse",
+    "desc": "Is defined by the age of the victim-survivor. Rape and sexual assault of a minor or a child under the age of 16 years (legal age of consent) by any person over this age or by an adult."
+  },
+  {
+    "category": "C",
+    "title": "Chromosomes",
+    "desc": "A thread like strand of DNA in the cell nucleus that carries genes in a linear order. Humans have 22 pairs of these chromosomes plus two sex chromosomes – XX in females and XY in males to make a total of 46 (in occasional cases there can be more or less than this number). \n\nIn the XY sex-determination system, the female-provided ovum or egg contributes an X chromosome and the male-provided sperm contributes either an X chromosome or a Y chromosome, resulting in female (XX) or male (XY) offspring, respectively. Sometimes, there are natural exceptions to this rule and such persons are recognised as intersex."
+  },
+  {
+    "category": "C",
+    "title": "Cisgender",
+    "desc": "Denotes or relates to a person whose sense of personal feelings of gender identity corresponds fully with their given sex at birth identity i.e. male or female. Cisgender is the most common of gender and is opposite of transgender and represents the majority subculture in the gender classification."
+  },
+  {
+    "category": "C",
+    "title": "Consent",
+    "desc": "The verbal presence of a YES; and not the quiet absence of a NO. It means permission and agreement is personally and willingly given by an individual to another person.                                                       \n\nConsent can be withdrawn anytime by the person giving it in the first place and the other must respect it every time. \n\nConsent or a consensual act, is always positive, it is an enthusiastic affirmation that two people have mutually agreed to engage in any activity, sexual or otherwise. To say YES today is consent and to say NO tomorrow is no consent and it’s OK to change one’s mind in any given situation. Also see, legal age of consent and legal age of majority."
+  },
   {
     "category": "C",
     "title": "Cyber Harassment and Bullying",
@@ -59,419 +59,419 @@
     "title": "Cyber Stalking",
     "desc": "Often starts with online contact by a person known or unknown to the person being targeted, includes “sweet talking” and nice repeated requests for a meeting. If refused, the person can easily turn to cyber harassment and bullying and even escalate that to rape, physical assault and sexual assault."
   },
- {
-   "category": "D",
-   "title": "Denial of Resources, Opportunities or Services",
-   "desc": "Denial of rightful access to economic resources, assets or livelihood opportunities, education, health or other social services is a type of abuse. Examples include, a widow prevented from receiving an inheritance, earnings forcibly taken by a husband or intimate partner or a family member, a woman prevented from using contraceptives, a girl prevented from attending school, a disabled person denied help or forcibly kept hidden or denied inheritance etc. This is not the same as general poverty of a family or household."
- },
- {
-   "category": "D",
-   "title": "DNA",
-   "desc": "Means deoxyribonucleic acid, a mouthful as all scientific terms tend to be. So let’s call it \"the molecule of life,\" for all organisms have their genetic material codified as DNA.  It is that double helix (an object shaped like a spiral) that a person’s genes are made of. DNA is what makes each of us unique, it distinguishes an individual from everybody else, and yet it is the chemical basis of heredity. DNA accounts for why a person resembles their parents or grandparents or an aunt and uncle. For example, DNA may give you, your Dad’s funny nose you really didn’t want and your mom’s piercing dark eyes that makes the girls (or boys) swoon. Since each person’s DNA is unique, \"DNA typing\" is a valuable tool in connecting suspects to crime scenes. In speaking, one can also use the word less scientifically, as in “It’s just not in my DNA to sit through hours and hours of meetings every day and call it work, I need a life!”."
- },
- {
-   "category": "D",
-   "title": "Domestic Abuse and Violence",
-   "desc": "Rape, sexual assault, physical assault, denial of resources and psychological / emotional abuse etc. within the family or domestic unit.  The perpetrator can share or has shared the same residence with the victim-survivor.\nThe two main forms of domestic abuse are: Intimate partner violence: Includes behaviour by current or former spouses or intimate partners that causes physical, sexual or psychological/mental abuse and harm, including violent acts of physical assault, sexual assault coercion, marital rape and psychological abuse and controlling behaviours. Inter-generational violence: Or family violence, typically occurs between parents, guardians and children that causes physical, sexual or psychological harm and abuse, including acts of physical aggression, sexual coercion, and psychological abuse and extreme controlling behaviours. If under age this form of violence is categorised as child physical, sexual or psychological abuse."
- },
- {
-   "category": "E",
-   "title": "Early or Child Marriage",
-   "desc": "Is defined by the age of the victim-survivor at the time of the incident of forced marriage. It can also be a union between two people in which one or both parties are younger than stipulated legal age of marriage in the country of citizenry or residence."
- },
- {
-   "category": "E",
-   "title": "Elder Abuse",
-   "desc": "Is defined as a single or repeated intentional act, or failure to act, by a caregiver or another person in a relationship involving an expectation of trust that causes or creates a risk of harm to an older adult person over 60 years. Elder abuse can take various forms such as financial, physical, psychological, mental and sexual. It is the result of neglect by family first and foremost and then by the state."
- },
- {
-   "category": "E",
-   "title": "Empowerment",
-   "desc": "Means to give power and authority to a person or more positively to give strength and confidence to someone who needs it. In tackling violence against women and gender based violence, it is the process of helping girls and women, boys and men, and anyone who feels abused, violated or harmed or excluded or at a loss, to be more in control of their lives and be able to take positive decisions about their future. For e.g. battered women are not “sick”, rather they are in a “sick situation” and responses need to demonstrate an understanding, and take into account, their differing needs as an individual and as important part of a social unit for support, therapy and healing."
- },
- {
-   "category": "F",
-   "title": "Female Foeticide",
-   "desc": "Is the illegal practice of aborting a foetus when a person finds out that the foetus is female after undergoing a sex determination test known as prenatal diagnostic tests."
- },
- {
-   "category": "F",
-   "title": "Female Infanticide",
-   "desc": "Is the twin of female foeticide and entails the deliberate killing of female babies. It is also described as gender-selective killing or \"gendercide\"."
- },
- {
-   "category": "F",
-   "title": "Foetus",
-   "desc": "An unborn offspring of a mammal, unable to take oxygen by itself, in particular and unborn human more than eight weeks after conception."
- },
- {
-   "category": "F",
-   "title": "Forced Isolation",
-   "desc": "A form of psychological/emotional abuse.  The perpetrator often tries to control victim-survivors’ time, activities and contact with others. They gain control over them through a combination of isolating and disinformation tactics, such as distorting what is real through lying, providing contradictory information, or withholding information   Isolating tactics may become more overtly abusive over time. Through incremental isolation, some perpetrators increase their psychological control to the point where they determine reality for the victim-survivor."
- },
- {
-   "category": "F",
-   "title": "Forced Abortion",
-   "desc": "When a perpetrator causes abortion by force, threat or coercion, or by taking advantage of a woman's incapability to give her consent, or where she gives her consent under duress."
- },
- {
-   "category": "F",
-   "title": "Forced Marriage",
-   "desc": "Marriage of a person against her or his will (no consent) at any age is abuse. The marriage is forced, if at least one of the two in the union has not given his/her full and free consent. As prescribed by tradition and culture, even if parents and guardians of both sides are in agreement and marriages are arranged, consent of the person being married still applies in every case. "
- },
- {
-   "category": "F",
-   "title": "Forced Pregnancy",
-   "desc": " It is the practice of forcing a woman to become pregnant, often as part of a forced marriage. When a forced pregnancy leads to reproduction, it is a form of reproductive coercion which in traditional cultures can be overt but very often it is subtle, borne mostly by young married women."
- },
- {
-   "category": "F",
-   "title": "Forced sterilization",
-   "desc": "It is the process of permanently ending someone's ability to reproduce without his or her consent."
- },
- {
-   "category": "G",
-   "title": "Gay",
-   "desc": "term used to describe someone who identifies as male and is attracted to others who identify as male."
- },
- {
-   "category": "G",
-   "title": "Gender",
-   "desc": "The term developed in a two way combination of social identity. Firstly, the state of being a member of one sex or the other - male or female.  Binary sex categorisation is assigned at birth based solely on the outward look of the ‘normal’ genitalia (penis and vagina). Secondly, along the way the same biological male and female babies and children acquire prescribed social states of masculine and feminine traits with due reference to religious or cultural differences and people end up being accepted as a boy and girl, man or a woman by themselves, family, community and society at large with all the expectations of character attributes and behaviour therein.However, socially applied binary gender classifications (or cisgender) on what is a naturally diverse human condition of sex categorisation was bound to be challenged. The human rights agenda that underpins most development has now expanded the meaning of the word gender to be based on the individual's known natural anatomy, personal awareness and feelings, chosen identity and expression (intersex and transgender). "
- },
- {
-   "category": "G",
-   "title": "Gender Based Violence",
-   "desc": "Or GBV is the term used to capture abuse, violence and harm that generally occurs as a result of the customary or socially set standard role expectations of the majority associated with each sex (born male or female), along with the unequal power relationships between the two of being a man or a woman. It also includes abuse, violence and harm against other gender identities like intersex or Trans and people with different sexual orientation.  GBV is analysed within the context of a specific society and its level of development. These days many countries, including Nepal have ruled GBV as an act of the human rights violation. There is no consent in this form of violence. Almost all harmful traditional practices are considered to be GBV, hence criminal, subject to legal punishment if reported.  \nGBV always inflicts physical, mental or sexual harm or suffering to the person or persons bearing the brunt of the violent act, as do threats of such acts, coercion and other deprivations of liberty. The most common and pervasive form of GBV in the world is one that is directed against a female-girl-woman because she is a female-girl-woman and affects her highly and disproportionately. For this reason GBV and violence against women is often used interchangeably but they are not one and the same thing."
- },
- {
-   "category": "G",
-   "title": "Gender biased Sex Selection",
-   "desc": "Sex-selection in favour of boys may take place before a pregnancy is established, during pregnancy through prenatal sex detection and selective abortion, or following birth through infanticide or child neglect. Pre-natal sex selection refers to the practice of using medical techniques to choose the sex of offspring that is to be born. This term “sex selection” encompasses a number of practices including selecting embryos for transfer and implantation following in vitro fertilization, separating sperm, and selectively terminating a pregnancy."
- },
- {
-   "category": "G",
-   "title": "Gender Discrimination",
-   "desc": "A situation in which someone is treated less well because of their being male or female or displaying a gender identity and gender expression different from the binary one. The most common gender discrimination is usually when a girl or woman is treated less well or is less favoured than a boy or man in personal and public life."
- },
- {
-   "category": "G",
-   "title": "Gender Identity",
-   "desc": "Is each person’s internal and individual experience of gender. It is an individual’s personal   sense of being a woman, a man, both, neither, or any one along the gender spectrum. A person’s gender identity may be the same as or different from their birth-assigned sex. It is the ‘lived’ identity that a person feels and expresses publicly (gender expression) in their daily life. A person’s gender identity is different from and not always related to their sexual orientation."
- },
- {
-   "category": "G",
-   "title": "Gender Expression",
-   "desc": "Is how a person publicly expresses or presents their gender every day at home, at work, while shopping or accessing other services, in their housing environment or in the broader community. This can include behaviour and outward appearance such as dress, hair, make-up, body language and voice. A person’s chosen name and chosen pronoun are also common ways of expressing gender. Others may or may not perceive a person’s gender through the chosen attributes."
- },
- {
-   "category": "G",
-   "title": "Gene",
-   "desc": "Microscopic, yet powerful, a gene is segment of DNA, the molecule that stores the code for building every cell of every living being and a unit of hereditary, passed on over generations. Gene, was shortened from \"pan-gene\" which means \"all-generation\". In sexual reproduction, the parents' genes which contains DNA mixes together to make the child. Although people would like to think that genes code for discrete traits, like friendliness or mathematical genius, that's not the case. Genes control the colour of a person’s eyes and the shape of his or her toes, not the personality or behaviour. There are thousands, millions of DNA in genes and genes are in 22 pairs of human chromosomes plus two sex chromosomes (X and Y). When \"mapping\" all genes on all human chromosomes was first seriously conceived, it was called the Human Genome Project - a combination of gene and chromosome and now completed."
- },
- {
-   "category": "G",
-   "title": "Genital Mutilation",
-   "desc": "Any type of cutting or removal of all or some of the genital organs, especially excision of the clitoris. Female genital mutilation (or cutting), comprises all procedures that involve partial or total removal of the external female genitalia, or other injury to the female genital organs for cultural and non-medical reasons. Prevention of genital mutilation is being expanded to protect the rights of babies who are born as intersex and those of such children."
- },
- {
-   "category": "H",
-   "title": "Harmful Traditional Practices",
-   "desc": "All practices done deliberately on the body or the psyche (mental health) of others for non-medical purpose, but rather for socio-cultural, traditional and conventional motives and which have harmful consequences on the safety, security, health and the rights especially of girls or women. Examples of harmful practices that come under the remit of GBV or VAW include early or child marriage, son preference that manifest in illegal acts such as ex selective abortion, menstruation rites, forced marriage, virginity testing, widowhood rites, elder abuse, sex trafficking, forced pregnancy or reproductive coercion,  female genital mutilation, ‘honour’ killings, female foeticide, female infanticide etc. Any forced and harmful acts are considered forms of abuse and violence, now all illegal."
- },
- {
-   "category": "H",
-   "title": "Heterosexuality",
-   "desc": "Attraction to members of the opposite sex, female to male and vice versa."
- },
- {
-   "category": "H",
-   "title": "Homosexuality",
-   "desc": " Attraction to members of the same sex, of label themselves ‘gay’ if male to male; female to female are referred to as Lesbian"
- },
- {
-   "category": "H",
-   "title": "Honour Killings",
-   "desc": "A harmful traditional practice in which women and girls suspected of defiling their family's honour by their ‘misconduct’ can be killed by their brother, father, uncle or another male relative who thus restores the said honour in the community. Honour killings are executed in instances of rape, infidelity, flirting or any other instance perceived as disgracing the family's honour, and the woman is then killed. The allegation of misconduct alone is considered enough to defile a man's or family's honour, and is therefore enough to justify the killing of the woman. The men who commit the murder typically go unpunished or receive reduced sentences in many developing countries.  "
- },
- {
-   "category": "H",
-   "title": "Human Trafficking",
-   "desc": "Is defined as the illegal action of recruitment, transport, transfer, harbouring or receipt of a person by such means as threat or use of force or other forms of coercion, abduction, fraud or deception and is always for purpose of exploitation sexual or otherwise"
- },
- {
-   "category": "I",
-   "title": "Incest",
-   "desc": "Is the sexual activity between close family members such as father and daughter, mother and son or brother and sister. Each society, its cultures and laws decide what incest is and what is legally permitted. Within the sphere of  gender based violence and violence against women, incest is classified as non-consensual sexual relations between close blood family members, a form of sexual deviation and hence categorized as abuse of power, inherently violent and harmful. "
- },
+  {
+    "category": "D",
+    "title": "Denial of Resources, Opportunities or Services",
+    "desc": "Denial of rightful access to economic resources, assets or livelihood opportunities, education, health or other social services is a type of abuse. Examples include, a widow prevented from receiving an inheritance, earnings forcibly taken by a husband or intimate partner or a family member, a woman prevented from using contraceptives, a girl prevented from attending school, a disabled person denied help or forcibly kept hidden or denied inheritance etc. This is not the same as general poverty of a family or household."
+  },
+  {
+    "category": "D",
+    "title": "DNA",
+    "desc": "Means deoxyribonucleic acid, a mouthful as all scientific terms tend to be. So let’s call it \"the molecule of life,\" for all organisms have their genetic material codified as DNA.  It is that double helix (an object shaped like a spiral) that a person’s genes are made of. DNA is what makes each of us unique, it distinguishes an individual from everybody else, and yet it is the chemical basis of heredity. DNA accounts for why a person resembles their parents or grandparents or an aunt and uncle. For example, DNA may give you, your Dad’s funny nose you really didn’t want and your mom’s piercing dark eyes that makes the girls (or boys) swoon. Since each person’s DNA is unique, \"DNA typing\" is a valuable tool in connecting suspects to crime scenes. In speaking, one can also use the word less scientifically, as in “It’s just not in my DNA to sit through hours and hours of meetings every day and call it work, I need a life!”."
+  },
+  {
+    "category": "D",
+    "title": "Domestic Abuse and Violence",
+    "desc": "Rape, sexual assault, physical assault, denial of resources and psychological / emotional abuse etc. within the family or domestic unit.  The perpetrator can share or has shared the same residence with the victim-survivor.\n\nThe two main forms of domestic abuse are: Intimate partner violence: Includes behaviour by current or former spouses or intimate partners that causes physical, sexual or psychological/mental abuse and harm, including violent acts of physical assault, sexual assault coercion, marital rape and psychological abuse and controlling behaviours. Inter-generational violence: Or family violence, typically occurs between parents, guardians and children that causes physical, sexual or psychological harm and abuse, including acts of physical aggression, sexual coercion, and psychological abuse and extreme controlling behaviours. If under age this form of violence is categorised as child physical, sexual or psychological abuse."
+  },
+  {
+    "category": "E",
+    "title": "Early or Child Marriage",
+    "desc": "Is defined by the age of the victim-survivor at the time of the incident of forced marriage. It can also be a union between two people in which one or both parties are younger than stipulated legal age of marriage in the country of citizenry or residence."
+  },
+  {
+    "category": "E",
+    "title": "Elder Abuse",
+    "desc": "Is defined as a single or repeated intentional act, or failure to act, by a caregiver or another person in a relationship involving an expectation of trust that causes or creates a risk of harm to an older adult person over 60 years. Elder abuse can take various forms such as financial, physical, psychological, mental and sexual. It is the result of neglect by family first and foremost and then by the state."
+  },
+  {
+    "category": "E",
+    "title": "Empowerment",
+    "desc": "Means to give power and authority to a person or more positively to give strength and confidence to someone who needs it. In tackling violence against women and gender based violence, it is the process of helping girls and women, boys and men, and anyone who feels abused, violated or harmed or excluded or at a loss, to be more in control of their lives and be able to take positive decisions about their future. For e.g. battered women are not “sick”, rather they are in a “sick situation” and responses need to demonstrate an understanding, and take into account, their differing needs as an individual and as important part of a social unit for support, therapy and healing."
+  },
+  {
+    "category": "F",
+    "title": "Female Foeticide",
+    "desc": "Is the illegal practice of aborting a foetus when a person finds out that the foetus is female after undergoing a sex determination test known as prenatal diagnostic tests."
+  },
+  {
+    "category": "F",
+    "title": "Female Infanticide",
+    "desc": "Is the twin of female foeticide and entails the deliberate killing of female babies. It is also described as gender-selective killing or \"gendercide\"."
+  },
+  {
+    "category": "F",
+    "title": "Foetus",
+    "desc": "An unborn offspring of a mammal, unable to take oxygen by itself, in particular and unborn human more than eight weeks after conception."
+  },
+  {
+    "category": "F",
+    "title": "Forced Isolation",
+    "desc": "A form of psychological/emotional abuse.  The perpetrator often tries to control victim-survivors’ time, activities and contact with others. They gain control over them through a combination of isolating and disinformation tactics, such as distorting what is real through lying, providing contradictory information, or withholding information   Isolating tactics may become more overtly abusive over time. Through incremental isolation, some perpetrators increase their psychological control to the point where they determine reality for the victim-survivor."
+  },
+  {
+    "category": "F",
+    "title": "Forced Abortion",
+    "desc": "When a perpetrator causes abortion by force, threat or coercion, or by taking advantage of a woman's incapability to give her consent, or where she gives her consent under duress."
+  },
+  {
+    "category": "F",
+    "title": "Forced Marriage",
+    "desc": "Marriage of a person against her or his will (no consent) at any age is abuse. The marriage is forced, if at least one of the two in the union has not given his/her full and free consent. As prescribed by tradition and culture, even if parents and guardians of both sides are in agreement and marriages are arranged, consent of the person being married still applies in every case. "
+  },
+  {
+    "category": "F",
+    "title": "Forced Pregnancy",
+    "desc": " It is the practice of forcing a woman to become pregnant, often as part of a forced marriage. When a forced pregnancy leads to reproduction, it is a form of reproductive coercion which in traditional cultures can be overt but very often it is subtle, borne mostly by young married women."
+  },
+  {
+    "category": "F",
+    "title": "Forced sterilization",
+    "desc": "It is the process of permanently ending someone's ability to reproduce without his or her consent."
+  },
+  {
+    "category": "G",
+    "title": "Gay",
+    "desc": "term used to describe someone who identifies as male and is attracted to others who identify as male."
+  },
+  {
+    "category": "G",
+    "title": "Gender",
+    "desc": "The term developed in a two way combination of social identity. Firstly, the state of being a member of one sex or the other - male or female.  Binary sex categorisation is assigned at birth based solely on the outward look of the ‘normal’ genitalia (penis and vagina). Secondly, along the way the same biological male and female babies and children acquire prescribed social states of masculine and feminine traits with due reference to religious or cultural differences and people end up being accepted as a boy and girl, man or a woman by themselves, family, community and society at large with all the expectations of character attributes and behaviour therein.However, socially applied binary gender classifications (or cisgender) on what is a naturally diverse human condition of sex categorisation was bound to be challenged. The human rights agenda that underpins most development has now expanded the meaning of the word gender to be based on the individual's known natural anatomy, personal awareness and feelings, chosen identity and expression (intersex and transgender). "
+  },
+  {
+    "category": "G",
+    "title": "Gender Based Violence",
+    "desc": "Or GBV is the term used to capture abuse, violence and harm that generally occurs as a result of the customary or socially set standard role expectations of the majority associated with each sex (born male or female), along with the unequal power relationships between the two of being a man or a woman. It also includes abuse, violence and harm against other gender identities like intersex or Trans and people with different sexual orientation.  GBV is analysed within the context of a specific society and its level of development. These days many countries, including Nepal have ruled GBV as an act of the human rights violation. There is no consent in this form of violence. Almost all harmful traditional practices are considered to be GBV, hence criminal, subject to legal punishment if reported.  \n\nGBV always inflicts physical, mental or sexual harm or suffering to the person or persons bearing the brunt of the violent act, as do threats of such acts, coercion and other deprivations of liberty. The most common and pervasive form of GBV in the world is one that is directed against a female-girl-woman because she is a female-girl-woman and affects her highly and disproportionately. For this reason GBV and violence against women is often used interchangeably but they are not one and the same thing."
+  },
+  {
+    "category": "G",
+    "title": "Gender biased Sex Selection",
+    "desc": "Sex-selection in favour of boys may take place before a pregnancy is established, during pregnancy through prenatal sex detection and selective abortion, or following birth through infanticide or child neglect. Pre-natal sex selection refers to the practice of using medical techniques to choose the sex of offspring that is to be born. This term “sex selection” encompasses a number of practices including selecting embryos for transfer and implantation following in vitro fertilization, separating sperm, and selectively terminating a pregnancy."
+  },
+  {
+    "category": "G",
+    "title": "Gender Discrimination",
+    "desc": "A situation in which someone is treated less well because of their being male or female or displaying a gender identity and gender expression different from the binary one. The most common gender discrimination is usually when a girl or woman is treated less well or is less favoured than a boy or man in personal and public life."
+  },
+  {
+    "category": "G",
+    "title": "Gender Identity",
+    "desc": "Is each person’s internal and individual experience of gender. It is an individual’s personal   sense of being a woman, a man, both, neither, or any one along the gender spectrum. A person’s gender identity may be the same as or different from their birth-assigned sex. It is the ‘lived’ identity that a person feels and expresses publicly (gender expression) in their daily life. A person’s gender identity is different from and not always related to their sexual orientation."
+  },
+  {
+    "category": "G",
+    "title": "Gender Expression",
+    "desc": "Is how a person publicly expresses or presents their gender every day at home, at work, while shopping or accessing other services, in their housing environment or in the broader community. This can include behaviour and outward appearance such as dress, hair, make-up, body language and voice. A person’s chosen name and chosen pronoun are also common ways of expressing gender. Others may or may not perceive a person’s gender through the chosen attributes."
+  },
+  {
+    "category": "G",
+    "title": "Gene",
+    "desc": "Microscopic, yet powerful, a gene is segment of DNA, the molecule that stores the code for building every cell of every living being and a unit of hereditary, passed on over generations. Gene, was shortened from \"pan-gene\" which means \"all-generation\". In sexual reproduction, the parents' genes which contains DNA mixes together to make the child. Although people would like to think that genes code for discrete traits, like friendliness or mathematical genius, that's not the case. Genes control the colour of a person’s eyes and the shape of his or her toes, not the personality or behaviour. There are thousands, millions of DNA in genes and genes are in 22 pairs of human chromosomes plus two sex chromosomes (X and Y). When \"mapping\" all genes on all human chromosomes was first seriously conceived, it was called the Human Genome Project - a combination of gene and chromosome and now completed."
+  },
+  {
+    "category": "G",
+    "title": "Genital Mutilation",
+    "desc": "Any type of cutting or removal of all or some of the genital organs, especially excision of the clitoris. Female genital mutilation (or cutting), comprises all procedures that involve partial or total removal of the external female genitalia, or other injury to the female genital organs for cultural and non-medical reasons. Prevention of genital mutilation is being expanded to protect the rights of babies who are born as intersex and those of such children."
+  },
+  {
+    "category": "H",
+    "title": "Harmful Traditional Practices",
+    "desc": "All practices done deliberately on the body or the psyche (mental health) of others for non-medical purpose, but rather for socio-cultural, traditional and conventional motives and which have harmful consequences on the safety, security, health and the rights especially of girls or women. Examples of harmful practices that come under the remit of GBV or VAW include early or child marriage, son preference that manifest in illegal acts such as ex selective abortion, menstruation rites, forced marriage, virginity testing, widowhood rites, elder abuse, sex trafficking, forced pregnancy or reproductive coercion,  female genital mutilation, ‘honour’ killings, female foeticide, female infanticide etc. Any forced and harmful acts are considered forms of abuse and violence, now all illegal."
+  },
+  {
+    "category": "H",
+    "title": "Heterosexuality",
+    "desc": "Attraction to members of the opposite sex, female to male and vice versa."
+  },
+  {
+    "category": "H",
+    "title": "Homosexuality",
+    "desc": " Attraction to members of the same sex, of label themselves ‘gay’ if male to male; female to female are referred to as Lesbian"
+  },
+  {
+    "category": "H",
+    "title": "Honour Killings",
+    "desc": "A harmful traditional practice in which women and girls suspected of defiling their family's honour by their ‘misconduct’ can be killed by their brother, father, uncle or another male relative who thus restores the said honour in the community. Honour killings are executed in instances of rape, infidelity, flirting or any other instance perceived as disgracing the family's honour, and the woman is then killed. The allegation of misconduct alone is considered enough to defile a man's or family's honour, and is therefore enough to justify the killing of the woman. The men who commit the murder typically go unpunished or receive reduced sentences in many developing countries.  "
+  },
+  {
+    "category": "H",
+    "title": "Human Trafficking",
+    "desc": "Is defined as the illegal action of recruitment, transport, transfer, harbouring or receipt of a person by such means as threat or use of force or other forms of coercion, abduction, fraud or deception and is always for purpose of exploitation sexual or otherwise"
+  },
+  {
+    "category": "I",
+    "title": "Incest",
+    "desc": "Is the sexual activity between close family members such as father and daughter, mother and son or brother and sister. Each society, its cultures and laws decide what incest is and what is legally permitted. Within the sphere of  gender based violence and violence against women, incest is classified as non-consensual sexual relations between close blood family members, a form of sexual deviation and hence categorized as abuse of power, inherently violent and harmful. "
+  },
   {
     "category": "I",
     "title": "Internet/Cyber Violence",
     "desc": "Growing deviant online behaviour and criminal practice that constitutes psychological/emotional abuse against the well-being of another individual or group. What distinguishes this form of violence, also termed cyber harassment and bullying from traditional off-line forms of violence is that significant portion of the harm takes place online and there is no consent. In case of cyber stalking, often offline violence can happen. What is more troubling, is the ease with which a single perpetrator can anonymously gather information about another person and then make contact with large numbers of people on the internet causing it to have devastating effects on the victim-survivor."
   },
- {
-   "category": "I",
-   "title": "Intersex",
-   "desc": "A general term used for a variety of natural conditions in which a person is born with a reproductive or sexual anatomy that does not seem to fit the typical binary definitions of birth sex as female (with vagina) or male (with penis). There are several intersex variations based on chromosome and external and internal genital diversity, as such, it is an umbrella term rather than a single category. Contrary to myth, an inter-sexual person does not have two sets of genitals; rather they often have ambiguous genital structures which are not readily identifiable as clitoris/penis or labia/scrotum. Even this is not necessarily true. Intersex people have sometimes gone for long periods of their lives without knowing that they were intersex, for they outwardly look no different to any male/man or female/woman. They may instead internally have gonads of mixed ovarian tissue, testicular and ovarian. They may have unusual chromosomes, for example a mosaic of XX and XY cells in their body. "
- },
- {
-   "category": "I",
-   "title": "Intervention",
-   "desc": "Any action undertaken with the aim of eliminating negative actions and results and instead promoting positive action, outcome and impact. Interventions can be preventive or reactive and can have different formats, such as laws, policies, large-scale programmes, or single projects. In the context of health system responses to GBV and VAW, interventions are understood as any actions set by health care professionals vis-à-vis a victim-survivor, aimed at identifying abuse, violence and harm, providing first-line support and other medical care as well as referring the victim-survivor to other support services."
- },
- {
-   "category": "L",
-   "title": "Lesbian",
-   "desc": "Term used to describe someone who identifies as female and attracted to others who identify as female. "
- },
- {
-   "category": "L",
-   "title": "LGBTI-QQ",
-   "desc": "Is an acronym for Lesbian, Gay, Bisexual, Trans, Intersex, Queer and Questioning"
- },
- {
-   "category": "L",
-   "title": "Legal Age of Consent",
-   "desc": "It is the age at which a person is considered by the state to legally and competently consent to sexual acts, and is thus the minimum age of a person with whom another person is legally permitted to engage in sexual activity. In Nepal, this age is completion of 16 years for both sexes"
- },
- {
-   "category": "L",
-   "title": "Legal Age of Marriage",
-   "desc": "Marriageable age (or marriage age) is the minimum age at which a person is allowed by law to marry, become husband and wife either as a right or subject to parental or other forms of consent. In Nepal, this age is completion of 20 years for both sexes and all marriages must be registered to be legal.    "
- },
- {
-   "category": "L",
-   "title": "Legal Age of Majority",
-   "desc": "Age at which a person, formerly a minor is recognised by law to be an adult, capable of managing his or her own affairs and responsible for any legal obligations created by his or her actions. In Nepal, this age is completion of 18 years."
- },
- {
-   "category": "M",
-   "title": "Marriage",
-   "desc": "Formal and legal union of a man and a woman by which they become husband and wife or each other’s spouse. This union has been increasingly extended to heterosexual and people of other gender in some countries. Different types of marriages are:\n Monogamy:-  Union of one man and one woman. This form of marriage allows a man to marry only one woman at a given time. The practice is well accepted worldwide because of its advantages. In Nepal, monogamy is the only accepted legal form of marriage today.\n Polygamy  :-   One person marries two or more persons of the opposite sex at the same time. This is commonly known as multiple marriages. Within polygamy, bigamy means to marry with another woman by a husband without knowledge or consent of his current wife and to marry with another man without the knowledge or consent of current husband, both of which are illegal and action can be taken if reported. \n Polyandry:  A rare cultural practice in which a woman takes on two or more husbands at the same time. It is a form of polygamy with consent of the woman and the men involved."
- },
- {
-   "category": "M",
-   "title": "Matriarchy",
-   "desc": "A system of society in few parts of the world in which the eldest woman or women, usually a mother is the head of family and descent is reckoned through the female line. The use of the term has grown incrementally after 1900 especially as the demand by women for human rights, voting rights, emancipation and participation has come to the forefront of societal change. However, most world societies are patriarchy."
- },
- {
-   "category": "M",
-   "title": "Menstruation Rites",
-   "desc": "The ceremonial acknowledgement of the crucial transitions in the lives of individuals, families, and communities, have been practiced since the beginning of civilization, and the blood rites, those relating to fertility, menarche, menstruation, pregnancy, birth, miscarriage, and menopause, are among them in many ancient cultures. The issue is, whether blood rites have evolved into celebration of women in her own right or are they used every time to stigmatise, discriminate and oppress women, putting her in harms’ way?  Normalisation of blood rights as critical to a girl/woman’s right to life is an important measure of women’s status in a country."
- },
- {
-   "category": "M",
-   "title": "Misogyny",
-   "desc": "Typically an unconscious hatred that men form early in life, often as a result of trauma involving a female figure they were close to and trusted. It could be a mother, sister, female relative, teacher, colleague, wife or girlfriend. A misogynist dislikes, despises, or is strongly prejudiced against women and often unable to rationalise or control this feeling.  Such feelings when they are acted out may give rise to abuse, violence and harm especially in relationships with a woman. Often called a woman – hater, anti- feminist, male chauvinist, male supremacist, chauvinist, sexist male, male chauvinist pig or MCP."
- },
- {
-   "category": "M",
-   "title": "Myth",
-   "desc": "Is a widely held but false belief or idea with or without a determinable basis of fact or a natural explanation. Often myths are concerned with deities or demigods and explains some human practice, rite, or phenomenon of nature. For the source culture a myth by definition is \"true\", in that it embodies beliefs, concepts and ways of questioning to make sense of the world. A myth is also a well-known story which was made up in the past to explain natural events or to justify religious beliefs or social customs and is not based in scientific fact."
- },
- {
-   "category": "N",
-   "title": "No Consent",
-   "desc": "No means NO, always. No permission or No agreement is given by the person concerned either verbally or non-verbally. All acts of abuse, violence and harm involve no consent and hence unwelcome. \n When an act or agreement is against a person or persons will, i.e. unwelcome;\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else.\nThere is no consent:\n When an act or agreement is against a person or persons will, i.e. unwelcome;\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else.\nThere is no consent:\n When an act or agreement is against a person or persons will, i.e. unwelcome;\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else."
- },
- {
-   "category": "O",
-   "title": "Other",
-   "desc": "There are core forms of abuse and violence like rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse rape. Domestic abuse and violence could involve one or all of these no consent acts. There are many more action of abuse, violence and harm and are categorised in this app as ‘other’. These are: battered woman syndrome, elder abuse, female foeticide, genital mutilation, female infanticide, forced abortion, forced isolation, forced pregnancy, forced sterilisation, gender biased sex selection, “Honour” killings, human trafficking, incest, prenatal sex selection to name a few."
- },
- {
-   "category": "P",
-   "title": "Pansexuality",
-   "desc": "This is someone who experiences both romantic and sexual attraction for all genders and gender expressions. They often do not see people being defined as either male or female, accepting individuals based on their personality, emotional, and/or spiritual characteristics. This is not the same as bisexuality."
- },
- {
-   "category": "P",
-   "title": "Patriarchy",
-   "desc": "a system of society in which the father or eldest male is head of the family and descent is reckoned through the male line. Often this manifests itself in social, economic and political norms organised on patriarchal lines in which men hold the power and women are largely excluded from it. The use of the term has grown over a hundred fold after women’s empowerment has become an inherent part of social discourse and development change as well as the wider recognition of more diverse gender identity and gender expression.   "
- },
- {
-   "category": "P",
-   "title": "Perpetrator",
-   "desc": "An individual person, group, or institution that directly inflicts, supports and/or condones abuse, violence and harm against another person or a group of persons, especially against girls and women. A milder synonym is offender"
- },
- {
-   "category": "P",
-   "title": "Physical Assault",
-   "desc": "Act of physical violence through use of physical force that is not sexual in nature and is non-consensual. It results in discomfort, bodily injury, pain, or impairment. The severity of injury ranges from minimal tissue damage, broken bones to permanent injury and death. Acts of physical violence include: hitting, slapping, shoving, pushing, punching, beating, scratching, choking, biting, grabbing, shaking, spitting, burning, twisting of a body part, forcing the ingestion of an unwanted substance; restraining a person to prevent her or him from seeking medical treatment or other help; and using household objects to hit or stab a person, using weapons like knives or guns or acid attacks."
- },
- {
-   "category": "P",
-   "title": "Post-traumatic Stress Disorder",
-   "desc": "PTSD may develop after a person is exposed to one or more traumatic events, such as rape, sexual assault, serious injury, or the threat of death. The diagnosis may be given when a group of symptoms, such as disturbing recurring flashbacks, avoidance or numbing of memories of the event, and hyper arousal continue for more than a month after the traumatic event. "
- },
- {
-   "category": "P",
-   "title": "Pregnancy",
-   "desc": "Also known as gestation, is the time during which one or more offspring develops inside a woman. The period from conception, foetal development to birth. After the egg is fertilized by a sperm and then implanted in the lining of the uterus, it develops into the placenta and embryo, and later into a fetus. Pregnancy usually lasts 40 weeks, beginning from the first day of the woman's last menstrual period, and is divided into three trimesters, each lasting three months A multiple pregnancy involves more than one offspring, such as with twins. Pregnancy can only occur by sexual intercourse or these days through assisted reproductive technology. "
- },
- {
-   "category": "P",
-   "title": "Prenatal Sex Selection",
-   "desc": "Prenatal sex selection is the attempt to control the sex of the offspring to achieve a desired sex. Under the mantle of GBV or VAW, prenatal sex selection usually refers to the favouring of male children over female children."
- },
- {
-   "category": "P",
-   "title": "Prostitution",
-   "desc": "The practice or occupation of engaging in some form of sexual activity with someone for payment of sexual service include sexual intercourse. Prostitution is consensual between two or more adults but can also be forced. If recognised as a profession, it can be regulated and protected by the state and provided various services as an identified tax payer. In such a case prostitution is deemed to be sex work and in consent.  On the other hand forced prostitution and sex trafficking is always illegal and criminal."
- },
- {
-   "category": "P",
-   "title": "Psychological/Emotional Abuse",
-   "desc": "An action or set of words and actions that directly impair a person’s psychological integrity for it involves the infliction of mental or emotional pain or injury. Examples include: threats of physical or sexual violence, intimidation, humiliation, forced isolation, stalking, verbal harassment, unwanted attention, remarks, gestures or written words of a sexual and/or menacing nature, destruction of cherished people and things, trolling etc. Such abuse could involve use of children by a spouse or intimate partner to control or hurt the other person (e.g. through attacking a child, forcing children to watch attacks against their mother, threatening to take children away or kidnapping the child). These acts constitute both, violence against children as well as violence against the adult in many cases women."
- },
- {
-   "category": "Q",
-   "title": "Queer",
-   "desc": "Originally a term used in a derogatory sense, some LGBTI youth have embraced this word and given it a rebirth. It can be described as a broad umbrella term for anyone who may identify as being either gender, sexually and/or bodily diverse or gender queer."
- },
- {
-   "category": "Q",
-   "title": "Questioning",
-   "desc": "Someone who is in the process of exploring their own sexuality, sexual orientation and/or gender. It may involve experimentation and looking into one’s own family, cultural and religious history in the process."
- },
- {
-   "category": "R",
-   "title": "Rape",
-   "desc": "Rape: any non-consensual penetration (however slight) of the vagina, anus or mouth with a penis or other body part. Also includes penetration of the vagina or anus with any object. Rape also includes:\nStatutory rape - sexual intercourse with a minor (child sexual abuse); \nSystematic rape - rapes committed by soldiers, other combatants or civilians during armed conflict or war, or during military occupation. Also covers the situation where people mostly girls and women are trafficked and forced into prostitution or sexual slavery.  \nMarital rape - any unwanted sexual acts by a spouse or ex-spouse or partner or ex-partner; and "
- },
- {
-   "category": "S",
-   "title": "Service",
-   "desc": "The action of helping or doing work for someone. A service is something that the public needs. The public system supplies a public need such as health care, social care, social protection, transport, communications, or utilities such as electricity and water"
- },
- {
-   "category": "S",
-   "title": "Sex",
-   "desc": "There are several meanings to the S word. 1) Either of the two main categories (male or female) into which humans and most living things such as animal and plants are divided on the basis of their reproductive functions. 2) The fact of being male or female, all the gender attributes by which males and females are distinguished as masculine and feminine, man and woman.  3) The group of all members of either sex male or female or more – intersex, trans. 4) sexual intercourse"
- },
- {
-   "category": "S",
-   "title": "Sexual Assault",
-   "desc": "any form of non-consensual, unwanted sexual contact that does not result in or include penetration. Examples include: attempted rape, as well as unwanted kissing, fondling, or touching of genitalia and buttocks. Genital mutilation or cutting is sexual assault."
- },
- {
-   "category": "S",
-   "title": "Sexual Deviance",
-   "desc": "What is defined as sexually deviant, is culturally and historically specific. This concept refers to behaviours that involve individuals seeking erotic gratification through means that are considered odd, different, or atypical or unacceptable to either most individuals or influential persons in one's community. This kind of person is usually very forceful and demanding during anything sexual but can usually get away with it due to their looks or nature or power. Explicit exhibitionism or masochism or paedophilia are three examples of escalating deviancy. Such a condition when it causes distress or impaired functioning in the individual or actual or potential abuse, violence or harm to others; a paraphilic disorder is recognised and the person needs serious help or could be considered criminal."
- },
- {
-   "category": "S",
-   "title": "Sexual Exploitation",
-   "desc": "Is defined by the power relationship between victim-survivor and perpetrator, as well as the circumstances surrounding the incident – not the actual act of violence (i.e. rape or sexual assault). It very often involves money, goods, benefits and/or services being exchanged in the context of an exploitative incident like transactional sex. It is different from sex work and can be part of forced prostitution. For example, sexual abuse of children and youth through the exchange of sex or sexual acts for drugs, food, shelter, protection, other basics of life, and/or money. Sexual exploitation also includes involving children and youth in creating pornography and sexually explicit websites."
- },
- {
-   "category": "S",
-   "title": "Sexual Harassment",
-   "desc": "Any form of unwanted verbal, non-verbal or physical conduct of a sexual nature, with the purpose or effect of violating the dignity of a person, in particular when creating an intimidating, hostile, degrading, humiliating or offensive environment. At the work place, sexual harassment often takes two forms: when the harasser makes a job benefit - such as a pay rise, a promotion, or even continued employment - conditional on the person acceding to demands to engage in some form of sexual act; or when the harasser’s conduct creates a hostile and intimidating working environment for the victim-survivor. "
- },
- {
-   "category": "S",
-   "title": "Sexual Intercourse",
-   "desc": "sexual contact between individuals involving penetration. This can be heterosexual intercourse involving penetration of the vagina by an erect penis or coitus. Or it can be anal or oral intercourse that does not involve penetration of the vagina by the penis. Intercourse typically culminates in orgasm and the ejaculation of semen."
- },
- {
-   "category": "S",
-   "title": "Sexuality",
-   "desc": "a) The capacity for sexual feelings \"she began to understand the power of her sexuality\" to describe her sensuality, sexiness, seductiveness and desirability; b) a person's sexual orientation or preference, \"people with proscribed sexualities;\" and c) sexual activity as in “sexuality within holy matrimony was only justified as a necessary part of reproduction,” which means procreation, sexual intercourse and sexual relations."
- },
- {
-   "category": "S",
-   "title": "Sexual Orientation",
-   "desc": "Is a term used to describe an individual’s patterns of emotional, romantic, and sexual attraction—and their sense of personal and social identity based on those attractions. A person's sexual orientation is not a black or white matter; sexual orientation exists along a continuum, with exclusive attraction to the opposite sex on one end of the continuum and exclusive attraction to the same sex on the other. Three most commonly discussed categories of sexual orientation are heterosexuality, homosexuality and bisexuality, though are by no means the only categories in the world of sexual identification labels and could include asexuality and pansexuality."
- },
- {
-   "category": "S",
-   "title": "Sexual Slavery",
-   "desc": "Is slavery for the purpose of sexual exploitation. Sexual slavery may involve single-owner sexual slavery; ritual slavery, sometimes associated with certain religious practices; slavery for primarily non-sexual purposes but where non-consensual sexual activity occurs; or forced prostitution. It includes sexual violence (rape and sexual assault) perpetrated over a period of time. The incident could also be perpetrated while the victim-survivor was: a) being forcibly transported (trafficked); b) being forced to join an armed group (forced conscription); c) held against her/his will, abducted or kidnapped."
- },
- {
-   "category": "S",
-   "title": "Sex Work",
-   "desc": "The provision of sexual services for money or goods. Sex workers can be from any gender - women, men, intersex and transgendered people who receive money or goods in exchange for sexual services, and who consciously define those activities as income generating even if they do not consider sex work as their occupation. Prostitution and sex work are connected but the difference between them matters. They are both legally regulated to varying degrees in most countries. Think of sex work as the legal, often tax paying, legal and protected branch of prostitution may or may not include sexual intercourse as part of the service. This includes legal adult entertainment (Cam work, porn star, exotic dance and phone sex), escort agencies, brothels and massage parlours."
- },
- {
-   "category": "S",
-   "title": "Sexual Violence",
-   "desc": "Any unwelcome sexual act, attempt to obtain a sexual act, unwanted sexual comments or advances, or acts to traffic, or otherwise directed against a person’s sexuality, using force and/or coercion, by any person, regardless of their relationship to the victim-survivor, in any setting, including, but not limited to, home and work."
- },
- {
-   "category": "S",
-   "title": "Sex Trafficking",
-   "desc": "Is an aspect of human trafficking. It is the illegal business of recruiting, harbouring, transporting, obtaining, or providing a person and especially a minor for the purpose of sex. It is a form of modern-day sex slavery in which individuals perform commercial sex through the use of force, fraud, or coercion. Minors under the age of 18 engaging in commercial sex are considered to be victim-survivor of human trafficking, regardless of the use of force, fraud, or coercion."
- },
- {
-   "category": "S",
-   "title": "Socio-Economic Status",
-   "desc": "Is the social standing or class of an individual or group. It is often measured as a combination of education, income and occupation."
- },
- {
-   "category": "S",
-   "title": "Son Preference",
-   "desc": "Refers to an attitude founded on the belief that girls are inadequate and of lesser value than boys to parents and society. As a major form of gender discrimination, it can give way to an array of harmful traditional practices targeting girls and women. For instance, neglect of the girl child in terms of withholding access to health, education, economic opportunity and in some cases even food and other basic necessities. In an alternative form, son preference has also manifested itself through the practice of sex selective abortion. In gender research, son preference is said to be rooted in discriminatory religious and cultural norms but most critically in unequal laws between men and women in terms of inheritance and civil rights."
- },
- {
-   "category": "S",
-   "title": "Suicide",
-   "desc": "It is the act or an instance of taking one's own life voluntarily and intentionally. Worldwide, domestic abuse and violence is a factor in one-quarter of female suicide attempts and can be linked to battered woman syndrome, a serious mental health condition which can manifests itself in self-harm resulting in death. Female victim-survivor of domestic abuse and violence have eight times the risk for suicide compared with the general population. Fifty percent of battered women who attempt suicide undertake subsequent attempts. If a pregnant woman is a victim-survivor of domestic abuse and other forms of violence, the risk of suicide increases. In some cases, recorded suicide cases may also be disguised murders"
- },
- {
-   "category": "T",
-   "title": "Threats of violence and harm",
-   "desc": "A perpetrator’s threats of violence or harm may be directed against the victim-survivor or others important to them or there may be suicide threats. Sometimes the threat includes killing the victim-survivor or others and then the perpetrator committing suicide. The threats may be made directly with words (e.g., “I’m going to kill you,” “No one is going to have you,” “Your mother is going to pay,” “I cannot live without you”) or with actions (e.g., stalking, displaying weapons, hostage taking, suicide attempts)."
- },
- {
-   "category": "T",
-   "title": "Trafficking in women",
-   "desc": "(UN publications use the term \"trafficking in person\" but due to the main focus of the app the term \"trafficking in women is used). The recruitment, transportation, transfer, harbouring or receipt of a woman, by means of the threat or use of force or other forms of coercion, of abduction, of fraud, of deception, of the abuse of power or of a position of vulnerability or of the giving or receiving of payments or benefits to achieve the consent of a person having control over a woman, for the purpose of exploitation. Exploitation includes, at a minimum, the exploitation of the prostitution of others or other forms of sexual exploitation, forced labour or services, slavery or practices similar to slavery, servitude or the removal of organs. The recruitment, transportation, transfer, harbouring or receipt of a child for the purpose of exploitation shall be considered “trafficking in persons” even if this does not involve any of the coercive means listed above."
- },
- {
-   "category": "T",
-   "title": "Transactional Sex",
-   "desc": "It is a form of sexual exploitation. Sexual relationships where the giving of gifts or services is an important factor for having sex. The term became important in the prevention of HIV, in cultures where young girls or virgins were married to old men. In exchange the girl’s family received gifts and cash."
- },
- {
-   "category": "T",
-   "title": "Trans",
-   "desc": "Is a blanket term that can be used in many different ways. Some people use it to indicate that their current gender identity and gender expression is not the same as the gender they were assigned at birth. . It is also used for some of the following words such as Transgender, Transsexual, Transitioning, Transman, and Transwoman. Transgender individuals may or may not choose to transition through use of medical intervention. Being transgender is independent of sexual orientation for transgender people may identify as heterosexual, homosexual, bisexual, pansexual and asexual or they may consider conventional sexual orientation labels inadequate or inapplicable.   "
- },
+  {
+    "category": "I",
+    "title": "Intersex",
+    "desc": "A general term used for a variety of natural conditions in which a person is born with a reproductive or sexual anatomy that does not seem to fit the typical binary definitions of birth sex as female (with vagina) or male (with penis). There are several intersex variations based on chromosome and external and internal genital diversity, as such, it is an umbrella term rather than a single category. Contrary to myth, an inter-sexual person does not have two sets of genitals; rather they often have ambiguous genital structures which are not readily identifiable as clitoris/penis or labia/scrotum. Even this is not necessarily true. Intersex people have sometimes gone for long periods of their lives without knowing that they were intersex, for they outwardly look no different to any male/man or female/woman. They may instead internally have gonads of mixed ovarian tissue, testicular and ovarian. They may have unusual chromosomes, for example a mosaic of XX and XY cells in their body. "
+  },
+  {
+    "category": "I",
+    "title": "Intervention",
+    "desc": "Any action undertaken with the aim of eliminating negative actions and results and instead promoting positive action, outcome and impact. Interventions can be preventive or reactive and can have different formats, such as laws, policies, large-scale programmes, or single projects. In the context of health system responses to GBV and VAW, interventions are understood as any actions set by health care professionals vis-à-vis a victim-survivor, aimed at identifying abuse, violence and harm, providing first-line support and other medical care as well as referring the victim-survivor to other support services."
+  },
+  {
+    "category": "L",
+    "title": "Lesbian",
+    "desc": "Term used to describe someone who identifies as female and attracted to others who identify as female. "
+  },
+  {
+    "category": "L",
+    "title": "LGBTI-QQ",
+    "desc": "Is an acronym for Lesbian, Gay, Bisexual, Trans, Intersex, Queer and Questioning"
+  },
+  {
+    "category": "L",
+    "title": "Legal Age of Consent",
+    "desc": "It is the age at which a person is considered by the state to legally and competently consent to sexual acts, and is thus the minimum age of a person with whom another person is legally permitted to engage in sexual activity. In Nepal, this age is completion of 16 years for both sexes"
+  },
+  {
+    "category": "L",
+    "title": "Legal Age of Marriage",
+    "desc": "Marriageable age (or marriage age) is the minimum age at which a person is allowed by law to marry, become husband and wife either as a right or subject to parental or other forms of consent. In Nepal, this age is completion of 20 years for both sexes and all marriages must be registered to be legal.    "
+  },
+  {
+    "category": "L",
+    "title": "Legal Age of Majority",
+    "desc": "Age at which a person, formerly a minor is recognised by law to be an adult, capable of managing his or her own affairs and responsible for any legal obligations created by his or her actions. In Nepal, this age is completion of 18 years."
+  },
+  {
+    "category": "M",
+    "title": "Marriage",
+    "desc": "Formal and legal union of a man and a woman by which they become husband and wife or each other’s spouse. This union has been increasingly extended to heterosexual and people of other gender in some countries. Different types of marriages are:\n\n Monogamy:-  Union of one man and one woman. This form of marriage allows a man to marry only one woman at a given time. The practice is well accepted worldwide because of its advantages. In Nepal, monogamy is the only accepted legal form of marriage today.\n\n Polygamy  :-   One person marries two or more persons of the opposite sex at the same time. This is commonly known as multiple marriages. Within polygamy, bigamy means to marry with another woman by a husband without knowledge or consent of his current wife and to marry with another man without the knowledge or consent of current husband, both of which are illegal and action can be taken if reported. \n\n Polyandry:  A rare cultural practice in which a woman takes on two or more husbands at the same time. It is a form of polygamy with consent of the woman and the men involved."
+  },
+  {
+    "category": "M",
+    "title": "Matriarchy",
+    "desc": "A system of society in few parts of the world in which the eldest woman or women, usually a mother is the head of family and descent is reckoned through the female line. The use of the term has grown incrementally after 1900 especially as the demand by women for human rights, voting rights, emancipation and participation has come to the forefront of societal change. However, most world societies are patriarchy."
+  },
+  {
+    "category": "M",
+    "title": "Menstruation Rites",
+    "desc": "The ceremonial acknowledgement of the crucial transitions in the lives of individuals, families, and communities, have been practiced since the beginning of civilization, and the blood rites, those relating to fertility, menarche, menstruation, pregnancy, birth, miscarriage, and menopause, are among them in many ancient cultures. The issue is, whether blood rites have evolved into celebration of women in her own right or are they used every time to stigmatise, discriminate and oppress women, putting her in harms’ way?  Normalisation of blood rights as critical to a girl/woman’s right to life is an important measure of women’s status in a country."
+  },
+  {
+    "category": "M",
+    "title": "Misogyny",
+    "desc": "Typically an unconscious hatred that men form early in life, often as a result of trauma involving a female figure they were close to and trusted. It could be a mother, sister, female relative, teacher, colleague, wife or girlfriend. A misogynist dislikes, despises, or is strongly prejudiced against women and often unable to rationalise or control this feeling.  Such feelings when they are acted out may give rise to abuse, violence and harm especially in relationships with a woman. Often called a woman – hater, anti- feminist, male chauvinist, male supremacist, chauvinist, sexist male, male chauvinist pig or MCP."
+  },
+  {
+    "category": "M",
+    "title": "Myth",
+    "desc": "Is a widely held but false belief or idea with or without a determinable basis of fact or a natural explanation. Often myths are concerned with deities or demigods and explains some human practice, rite, or phenomenon of nature. For the source culture a myth by definition is \"true\", in that it embodies beliefs, concepts and ways of questioning to make sense of the world. A myth is also a well-known story which was made up in the past to explain natural events or to justify religious beliefs or social customs and is not based in scientific fact."
+  },
+  {
+    "category": "N",
+    "title": "No Consent",
+    "desc": "No means NO, always. No permission or No agreement is given by the person concerned either verbally or non-verbally. All acts of abuse, violence and harm involve no consent and hence unwelcome. \n\n When an act or agreement is against a person or persons will, i.e. unwelcome;\n\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n\n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n\n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\n\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else.\n\nThere is no consent:\n\n When an act or agreement is against a person or persons will, i.e. unwelcome;\n\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n\n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n\n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\n\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else.\n\nThere is no consent:\n\n When an act or agreement is against a person or persons will, i.e. unwelcome;\n\n When an act is done by person or persons both known or unknown, by the use of fear, threats, force or other forms of coercion of the victim-survivor-survivor, guardian or custodian; \n\n When an act represents abduction, fraud, manipulation, deception or misrepresentation such as enticement, inducement, misinformation, forgery, tricks, coercion, hostage, allurement, influence, abuse of power and by any means of inducement; \n\n When acts lead to death, disability, injury, or physical and mental harm. This includes the use of threats to withhold a benefit to which the person being threatened is entitled to by custom or law;\n\n When the person or persons is incapable of giving consent because of his/her youth or because of his/her temporary or permanent mental or physical incapacity.\n\nEach act of rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse to name a few is termed a non-consensual act and is criminal whether it happens at home, work or anywhere else."
+  },
+  {
+    "category": "O",
+    "title": "Other",
+    "desc": "There are core forms of abuse and violence like rape, sexual assault, physical assault, forced marriage, denial of resources and opportunities, psychological/emotional abuse rape. Domestic abuse and violence could involve one or all of these no consent acts. There are many more action of abuse, violence and harm and are categorised in this app as ‘other’. These are: battered woman syndrome, elder abuse, female foeticide, genital mutilation, female infanticide, forced abortion, forced isolation, forced pregnancy, forced sterilisation, gender biased sex selection, “Honour” killings, human trafficking, incest, prenatal sex selection to name a few."
+  },
+  {
+    "category": "P",
+    "title": "Pansexuality",
+    "desc": "This is someone who experiences both romantic and sexual attraction for all genders and gender expressions. They often do not see people being defined as either male or female, accepting individuals based on their personality, emotional, and/or spiritual characteristics. This is not the same as bisexuality."
+  },
+  {
+    "category": "P",
+    "title": "Patriarchy",
+    "desc": "a system of society in which the father or eldest male is head of the family and descent is reckoned through the male line. Often this manifests itself in social, economic and political norms organised on patriarchal lines in which men hold the power and women are largely excluded from it. The use of the term has grown over a hundred fold after women’s empowerment has become an inherent part of social discourse and development change as well as the wider recognition of more diverse gender identity and gender expression.   "
+  },
+  {
+    "category": "P",
+    "title": "Perpetrator",
+    "desc": "An individual person, group, or institution that directly inflicts, supports and/or condones abuse, violence and harm against another person or a group of persons, especially against girls and women. A milder synonym is offender"
+  },
+  {
+    "category": "P",
+    "title": "Physical Assault",
+    "desc": "Act of physical violence through use of physical force that is not sexual in nature and is non-consensual. It results in discomfort, bodily injury, pain, or impairment. The severity of injury ranges from minimal tissue damage, broken bones to permanent injury and death. Acts of physical violence include: hitting, slapping, shoving, pushing, punching, beating, scratching, choking, biting, grabbing, shaking, spitting, burning, twisting of a body part, forcing the ingestion of an unwanted substance; restraining a person to prevent her or him from seeking medical treatment or other help; and using household objects to hit or stab a person, using weapons like knives or guns or acid attacks."
+  },
+  {
+    "category": "P",
+    "title": "Post-traumatic Stress Disorder",
+    "desc": "PTSD may develop after a person is exposed to one or more traumatic events, such as rape, sexual assault, serious injury, or the threat of death. The diagnosis may be given when a group of symptoms, such as disturbing recurring flashbacks, avoidance or numbing of memories of the event, and hyper arousal continue for more than a month after the traumatic event. "
+  },
+  {
+    "category": "P",
+    "title": "Pregnancy",
+    "desc": "Also known as gestation, is the time during which one or more offspring develops inside a woman. The period from conception, foetal development to birth. After the egg is fertilized by a sperm and then implanted in the lining of the uterus, it develops into the placenta and embryo, and later into a fetus. Pregnancy usually lasts 40 weeks, beginning from the first day of the woman's last menstrual period, and is divided into three trimesters, each lasting three months A multiple pregnancy involves more than one offspring, such as with twins. Pregnancy can only occur by sexual intercourse or these days through assisted reproductive technology. "
+  },
+  {
+    "category": "P",
+    "title": "Prenatal Sex Selection",
+    "desc": "Prenatal sex selection is the attempt to control the sex of the offspring to achieve a desired sex. Under the mantle of GBV or VAW, prenatal sex selection usually refers to the favouring of male children over female children."
+  },
+  {
+    "category": "P",
+    "title": "Prostitution",
+    "desc": "The practice or occupation of engaging in some form of sexual activity with someone for payment of sexual service include sexual intercourse. Prostitution is consensual between two or more adults but can also be forced. If recognised as a profession, it can be regulated and protected by the state and provided various services as an identified tax payer. In such a case prostitution is deemed to be sex work and in consent.  On the other hand forced prostitution and sex trafficking is always illegal and criminal."
+  },
+  {
+    "category": "P",
+    "title": "Psychological/Emotional Abuse",
+    "desc": "An action or set of words and actions that directly impair a person’s psychological integrity for it involves the infliction of mental or emotional pain or injury. Examples include: threats of physical or sexual violence, intimidation, humiliation, forced isolation, stalking, verbal harassment, unwanted attention, remarks, gestures or written words of a sexual and/or menacing nature, destruction of cherished people and things, trolling etc. Such abuse could involve use of children by a spouse or intimate partner to control or hurt the other person (e.g. through attacking a child, forcing children to watch attacks against their mother, threatening to take children away or kidnapping the child). These acts constitute both, violence against children as well as violence against the adult in many cases women."
+  },
+  {
+    "category": "Q",
+    "title": "Queer",
+    "desc": "Originally a term used in a derogatory sense, some LGBTI youth have embraced this word and given it a rebirth. It can be described as a broad umbrella term for anyone who may identify as being either gender, sexually and/or bodily diverse or gender queer."
+  },
+  {
+    "category": "Q",
+    "title": "Questioning",
+    "desc": "Someone who is in the process of exploring their own sexuality, sexual orientation and/or gender. It may involve experimentation and looking into one’s own family, cultural and religious history in the process."
+  },
+  {
+    "category": "R",
+    "title": "Rape",
+    "desc": "Rape: any non-consensual penetration (however slight) of the vagina, anus or mouth with a penis or other body part. Also includes penetration of the vagina or anus with any object. Rape also includes:\n\nStatutory rape - sexual intercourse with a minor (child sexual abuse); \n\nSystematic rape - rapes committed by soldiers, other combatants or civilians during armed conflict or war, or during military occupation. Also covers the situation where people mostly girls and women are trafficked and forced into prostitution or sexual slavery.  \n\nMarital rape - any unwanted sexual acts by a spouse or ex-spouse or partner or ex-partner; and "
+  },
+  {
+    "category": "S",
+    "title": "Service",
+    "desc": "The action of helping or doing work for someone. A service is something that the public needs. The public system supplies a public need such as health care, social care, social protection, transport, communications, or utilities such as electricity and water"
+  },
+  {
+    "category": "S",
+    "title": "Sex",
+    "desc": "There are several meanings to the S word. 1) Either of the two main categories (male or female) into which humans and most living things such as animal and plants are divided on the basis of their reproductive functions. 2) The fact of being male or female, all the gender attributes by which males and females are distinguished as masculine and feminine, man and woman.  3) The group of all members of either sex male or female or more – intersex, trans. 4) sexual intercourse"
+  },
+  {
+    "category": "S",
+    "title": "Sexual Assault",
+    "desc": "any form of non-consensual, unwanted sexual contact that does not result in or include penetration. Examples include: attempted rape, as well as unwanted kissing, fondling, or touching of genitalia and buttocks. Genital mutilation or cutting is sexual assault."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Deviance",
+    "desc": "What is defined as sexually deviant, is culturally and historically specific. This concept refers to behaviours that involve individuals seeking erotic gratification through means that are considered odd, different, or atypical or unacceptable to either most individuals or influential persons in one's community. This kind of person is usually very forceful and demanding during anything sexual but can usually get away with it due to their looks or nature or power. Explicit exhibitionism or masochism or paedophilia are three examples of escalating deviancy. Such a condition when it causes distress or impaired functioning in the individual or actual or potential abuse, violence or harm to others; a paraphilic disorder is recognised and the person needs serious help or could be considered criminal."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Exploitation",
+    "desc": "Is defined by the power relationship between victim-survivor and perpetrator, as well as the circumstances surrounding the incident – not the actual act of violence (i.e. rape or sexual assault). It very often involves money, goods, benefits and/or services being exchanged in the context of an exploitative incident like transactional sex. It is different from sex work and can be part of forced prostitution. For example, sexual abuse of children and youth through the exchange of sex or sexual acts for drugs, food, shelter, protection, other basics of life, and/or money. Sexual exploitation also includes involving children and youth in creating pornography and sexually explicit websites."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Harassment",
+    "desc": "Any form of unwanted verbal, non-verbal or physical conduct of a sexual nature, with the purpose or effect of violating the dignity of a person, in particular when creating an intimidating, hostile, degrading, humiliating or offensive environment. At the work place, sexual harassment often takes two forms: when the harasser makes a job benefit - such as a pay rise, a promotion, or even continued employment - conditional on the person acceding to demands to engage in some form of sexual act; or when the harasser’s conduct creates a hostile and intimidating working environment for the victim-survivor. "
+  },
+  {
+    "category": "S",
+    "title": "Sexual Intercourse",
+    "desc": "sexual contact between individuals involving penetration. This can be heterosexual intercourse involving penetration of the vagina by an erect penis or coitus. Or it can be anal or oral intercourse that does not involve penetration of the vagina by the penis. Intercourse typically culminates in orgasm and the ejaculation of semen."
+  },
+  {
+    "category": "S",
+    "title": "Sexuality",
+    "desc": "a) The capacity for sexual feelings \"she began to understand the power of her sexuality\" to describe her sensuality, sexiness, seductiveness and desirability; b) a person's sexual orientation or preference, \"people with proscribed sexualities;\" and c) sexual activity as in “sexuality within holy matrimony was only justified as a necessary part of reproduction,” which means procreation, sexual intercourse and sexual relations."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Orientation",
+    "desc": "Is a term used to describe an individual’s patterns of emotional, romantic, and sexual attraction—and their sense of personal and social identity based on those attractions. A person's sexual orientation is not a black or white matter; sexual orientation exists along a continuum, with exclusive attraction to the opposite sex on one end of the continuum and exclusive attraction to the same sex on the other. Three most commonly discussed categories of sexual orientation are heterosexuality, homosexuality and bisexuality, though are by no means the only categories in the world of sexual identification labels and could include asexuality and pansexuality."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Slavery",
+    "desc": "Is slavery for the purpose of sexual exploitation. Sexual slavery may involve single-owner sexual slavery; ritual slavery, sometimes associated with certain religious practices; slavery for primarily non-sexual purposes but where non-consensual sexual activity occurs; or forced prostitution. It includes sexual violence (rape and sexual assault) perpetrated over a period of time. The incident could also be perpetrated while the victim-survivor was: a) being forcibly transported (trafficked); b) being forced to join an armed group (forced conscription); c) held against her/his will, abducted or kidnapped."
+  },
+  {
+    "category": "S",
+    "title": "Sex Work",
+    "desc": "The provision of sexual services for money or goods. Sex workers can be from any gender - women, men, intersex and transgendered people who receive money or goods in exchange for sexual services, and who consciously define those activities as income generating even if they do not consider sex work as their occupation. Prostitution and sex work are connected but the difference between them matters. They are both legally regulated to varying degrees in most countries. Think of sex work as the legal, often tax paying, legal and protected branch of prostitution may or may not include sexual intercourse as part of the service. This includes legal adult entertainment (Cam work, porn star, exotic dance and phone sex), escort agencies, brothels and massage parlours."
+  },
+  {
+    "category": "S",
+    "title": "Sexual Violence",
+    "desc": "Any unwelcome sexual act, attempt to obtain a sexual act, unwanted sexual comments or advances, or acts to traffic, or otherwise directed against a person’s sexuality, using force and/or coercion, by any person, regardless of their relationship to the victim-survivor, in any setting, including, but not limited to, home and work."
+  },
+  {
+    "category": "S",
+    "title": "Sex Trafficking",
+    "desc": "Is an aspect of human trafficking. It is the illegal business of recruiting, harbouring, transporting, obtaining, or providing a person and especially a minor for the purpose of sex. It is a form of modern-day sex slavery in which individuals perform commercial sex through the use of force, fraud, or coercion. Minors under the age of 18 engaging in commercial sex are considered to be victim-survivor of human trafficking, regardless of the use of force, fraud, or coercion."
+  },
+  {
+    "category": "S",
+    "title": "Socio-Economic Status",
+    "desc": "Is the social standing or class of an individual or group. It is often measured as a combination of education, income and occupation."
+  },
+  {
+    "category": "S",
+    "title": "Son Preference",
+    "desc": "Refers to an attitude founded on the belief that girls are inadequate and of lesser value than boys to parents and society. As a major form of gender discrimination, it can give way to an array of harmful traditional practices targeting girls and women. For instance, neglect of the girl child in terms of withholding access to health, education, economic opportunity and in some cases even food and other basic necessities. In an alternative form, son preference has also manifested itself through the practice of sex selective abortion. In gender research, son preference is said to be rooted in discriminatory religious and cultural norms but most critically in unequal laws between men and women in terms of inheritance and civil rights."
+  },
+  {
+    "category": "S",
+    "title": "Suicide",
+    "desc": "It is the act or an instance of taking one's own life voluntarily and intentionally. Worldwide, domestic abuse and violence is a factor in one-quarter of female suicide attempts and can be linked to battered woman syndrome, a serious mental health condition which can manifests itself in self-harm resulting in death. Female victim-survivor of domestic abuse and violence have eight times the risk for suicide compared with the general population. Fifty percent of battered women who attempt suicide undertake subsequent attempts. If a pregnant woman is a victim-survivor of domestic abuse and other forms of violence, the risk of suicide increases. In some cases, recorded suicide cases may also be disguised murders"
+  },
+  {
+    "category": "T",
+    "title": "Threats of violence and harm",
+    "desc": "A perpetrator’s threats of violence or harm may be directed against the victim-survivor or others important to them or there may be suicide threats. Sometimes the threat includes killing the victim-survivor or others and then the perpetrator committing suicide. The threats may be made directly with words (e.g., “I’m going to kill you,” “No one is going to have you,” “Your mother is going to pay,” “I cannot live without you”) or with actions (e.g., stalking, displaying weapons, hostage taking, suicide attempts)."
+  },
+  {
+    "category": "T",
+    "title": "Trafficking in women",
+    "desc": "(UN publications use the term \"trafficking in person\" but due to the main focus of the app the term \"trafficking in women is used). The recruitment, transportation, transfer, harbouring or receipt of a woman, by means of the threat or use of force or other forms of coercion, of abduction, of fraud, of deception, of the abuse of power or of a position of vulnerability or of the giving or receiving of payments or benefits to achieve the consent of a person having control over a woman, for the purpose of exploitation. Exploitation includes, at a minimum, the exploitation of the prostitution of others or other forms of sexual exploitation, forced labour or services, slavery or practices similar to slavery, servitude or the removal of organs. The recruitment, transportation, transfer, harbouring or receipt of a child for the purpose of exploitation shall be considered “trafficking in persons” even if this does not involve any of the coercive means listed above."
+  },
+  {
+    "category": "T",
+    "title": "Transactional Sex",
+    "desc": "It is a form of sexual exploitation. Sexual relationships where the giving of gifts or services is an important factor for having sex. The term became important in the prevention of HIV, in cultures where young girls or virgins were married to old men. In exchange the girl’s family received gifts and cash."
+  },
+  {
+    "category": "T",
+    "title": "Trans",
+    "desc": "Is a blanket term that can be used in many different ways. Some people use it to indicate that their current gender identity and gender expression is not the same as the gender they were assigned at birth. . It is also used for some of the following words such as Transgender, Transsexual, Transitioning, Transman, and Transwoman. Transgender individuals may or may not choose to transition through use of medical intervention. Being transgender is independent of sexual orientation for transgender people may identify as heterosexual, homosexual, bisexual, pansexual and asexual or they may consider conventional sexual orientation labels inadequate or inapplicable.   "
+  },
   {
     "category": "V",
     "title": "Victim-Survivor",
     "desc": "Often refers to a girl or a woman who has experienced any form of abuse, violence and harm. International law defines “victim-survivor” as “any natural person who is subject to abuse, violence and harm.” Both words are increasingly used together. This is done to underline the fact, that some people in society are largely victimised for no fault of theirs, for example being born a girl who grows into a woman. The phrase means, their terrible experience does not make them “passive” victims, rather they are “actively” trying to survive, to stop the violence and to seek protection and support for themselves and others."
   },
- {
-   "category": "V",
-   "title": "Violence against Children - Physical, Emotional and Sexual Abuse",
-   "desc": "This violence against a minor of any gender can be done by family members, relatives, friends and neighbours or by different institutions including educational and religious ones. Such abuse and violence are criminal acts and illegal and must be reported. In the case of a child.\n1. Physical abuse: Includes bruises, bite, burn, punctures, laceration, hair pulling, hematoma, internal organ damage, subdural hematoma etc.\n2. Emotional abuse: insult, terrorizing, spurning, isolating etc. neglect: nutritional, education, medical, clothing etc.\n3. Sexual abuse: Includes touching and non-touching activity. Some examples of touching activity include:\n• Touching a child's genitals or private parts for sexual stimulation;\n• Making a child touch someone else's genitals, play sexual games or have sex putting objects or body parts (like fingers, tongue or penis) inside the vagina, in the mouth or in the anus of a child for sexual stimulation. See rape and statutory rape.\nSometimes there is violent use of children to punish an adult.\nSome examples of non-touching activity include:\n• Showing pornography to a child\n• Deliberately exposing an adult's genitals to a child\n• Photographing a child in sexual poses\n• Encouraging a child to watch or hear sexual acts\n• Inappropriately watching a child undress or use the bathroom\nAs well as the activities described above, there is also the serious and growing problem of people making and downloading sexual images of children on the Internet. To view child sexual abuse images (also known as child pornography) is to participate in the abuse of a child. Those who do so may also be abusing children they know."
- },
- {
-   "category": "V",
-   "title": "Violence against Women",
-   "desc": "Or VAW, also often used interchangeably as Gender Based Violence, are collectively acts of abuse, violence and harm that are primarily or exclusively committed against girls and women. There is no consent to this form of violence by any victim-survivor. Often VAW is considered a hate crime, as a result of misogyny, patriarchy and sometimes a willing matriarchy that targets a specific group, as a primary motive and expressly in this case because they are female-girl-woman. Many harmful traditional practices are now criminalised and liable to punishment if reported. VAW can fit into several broad categories. These include violence carried out by individuals, same sex or opposite, groups as well as state/s."
- },
- {
-   "category": "V",
-   "title": "Violent Use of Children",
-   "desc": ": Some abusive acts are directed against or involve children in order to control or punish the adult victim-survivor (e.g., physical attacks against a child, sexual use of children, forcing children to watch the abuse of the victim-survivor, engaging children in the abuse of the victim-survivor). A perpetrator may use children to maintain control over a partner by not paying child support, requiring the children to spy, requiring that at least one child always be in the company of the victim-survivor, threatening to take children away, involving the victim-survivor in long legal fights over custody, or kidnapping or taking the children hostage as a way to force compliance. Children are also drawn into the assaults and are sometimes injured simply because they are present (e.g., the victim-survivor is holding an infant when pushed against the wall) or because the child attempts to intervene in the fight."
- },
- {
-   "category": "V",
-   "title": "Virgin",
-   "desc": "a person who has never had sexual intercourse of any kind either heterosexual or homosexual."
- },
- {
-   "category": "V",
-   "title": "Virginity testing",
-   "desc": "A virginity test is the practice and process of determining whether a person, usually a girl or woman, is a virgin; i.e., whether she has never engaged in sexual intercourse. The test typically involves a check for the presence of an intact hymen, on the assumption that it can only be torn as a result of sexual intercourse. Virginity testing is widely considered controversial, both because of its implications for the tested girls and women and because it is viewed as unethical in developed societies."
- },
- {
-   "category": "W",
-   "title": "Widowhood rites",
-   "desc": "Widowhood is the state or period of being a widow or a widower. A widow (respectively Widower) is a woman (respectively a man), whose husband (respectively wife) has died and who has not married again. Widowhood rites are traditional or cultural practices usually seen upon the husband’s death; to increase the widow’s grief and sorrow. This one-sided practice has been described as one of the most dehumanising, uncivilised and negative cultural practices in the world, due to its associated abuse and violation of the rights of girls and women, is still rife in many parts of the developing world but is increasingly being challenged by women."
- }
+  {
+    "category": "V",
+    "title": "Violence against Children - Physical, Emotional and Sexual Abuse",
+    "desc": "This violence against a minor of any gender can be done by family members, relatives, friends and neighbours or by different institutions including educational and religious ones. Such abuse and violence are criminal acts and illegal and must be reported. In the case of a child.\n\n1. Physical abuse: Includes bruises, bite, burn, punctures, laceration, hair pulling, hematoma, internal organ damage, subdural hematoma etc.\n\n2. Emotional abuse: insult, terrorizing, spurning, isolating etc. neglect: nutritional, education, medical, clothing etc.\n\n3. Sexual abuse: Includes touching and non-touching activity. Some examples of touching activity include:\n\n• Touching a child's genitals or private parts for sexual stimulation;\n\n• Making a child touch someone else's genitals, play sexual games or have sex putting objects or body parts (like fingers, tongue or penis) inside the vagina, in the mouth or in the anus of a child for sexual stimulation. See rape and statutory rape.\n\nSometimes there is violent use of children to punish an adult.\n\nSome examples of non-touching activity include:\n\n• Showing pornography to a child\n\n• Deliberately exposing an adult's genitals to a child\n\n• Photographing a child in sexual poses\n\n• Encouraging a child to watch or hear sexual acts\n\n• Inappropriately watching a child undress or use the bathroom\n\nAs well as the activities described above, there is also the serious and growing problem of people making and downloading sexual images of children on the Internet. To view child sexual abuse images (also known as child pornography) is to participate in the abuse of a child. Those who do so may also be abusing children they know."
+  },
+  {
+    "category": "V",
+    "title": "Violence against Women",
+    "desc": "Or VAW, also often used interchangeably as Gender Based Violence, are collectively acts of abuse, violence and harm that are primarily or exclusively committed against girls and women. There is no consent to this form of violence by any victim-survivor. Often VAW is considered a hate crime, as a result of misogyny, patriarchy and sometimes a willing matriarchy that targets a specific group, as a primary motive and expressly in this case because they are female-girl-woman. Many harmful traditional practices are now criminalised and liable to punishment if reported. VAW can fit into several broad categories. These include violence carried out by individuals, same sex or opposite, groups as well as state/s."
+  },
+  {
+    "category": "V",
+    "title": "Violent Use of Children",
+    "desc": ": Some abusive acts are directed against or involve children in order to control or punish the adult victim-survivor (e.g., physical attacks against a child, sexual use of children, forcing children to watch the abuse of the victim-survivor, engaging children in the abuse of the victim-survivor). A perpetrator may use children to maintain control over a partner by not paying child support, requiring the children to spy, requiring that at least one child always be in the company of the victim-survivor, threatening to take children away, involving the victim-survivor in long legal fights over custody, or kidnapping or taking the children hostage as a way to force compliance. Children are also drawn into the assaults and are sometimes injured simply because they are present (e.g., the victim-survivor is holding an infant when pushed against the wall) or because the child attempts to intervene in the fight."
+  },
+  {
+    "category": "V",
+    "title": "Virgin",
+    "desc": "a person who has never had sexual intercourse of any kind either heterosexual or homosexual."
+  },
+  {
+    "category": "V",
+    "title": "Virginity testing",
+    "desc": "A virginity test is the practice and process of determining whether a person, usually a girl or woman, is a virgin; i.e., whether she has never engaged in sexual intercourse. The test typically involves a check for the presence of an intact hymen, on the assumption that it can only be torn as a result of sexual intercourse. Virginity testing is widely considered controversial, both because of its implications for the tested girls and women and because it is viewed as unethical in developed societies."
+  },
+  {
+    "category": "W",
+    "title": "Widowhood rites",
+    "desc": "Widowhood is the state or period of being a widow or a widower. A widow (respectively Widower) is a woman (respectively a man), whose husband (respectively wife) has died and who has not married again. Widowhood rites are traditional or cultural practices usually seen upon the husband’s death; to increase the widow’s grief and sorrow. This one-sided practice has been described as one of the most dehumanising, uncivilised and negative cultural practices in the world, due to its associated abuse and violation of the rights of girls and women, is still rife in many parts of the developing world but is increasingly being challenged by women."
+  }
 ]

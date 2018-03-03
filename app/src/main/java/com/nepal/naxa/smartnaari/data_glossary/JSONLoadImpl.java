@@ -58,7 +58,7 @@ public class JSONLoadImpl {
                 });
     }
 
-    private static Observable<List<WordsWithDetailsModel>> cacheGlossaryObj() {
+    public static Observable<List<WordsWithDetailsModel>> cacheGlossaryObj() {
 
         return Observable.create(new ObservableOnSubscribe<List<WordsWithDetailsModel>>() {
             @Override

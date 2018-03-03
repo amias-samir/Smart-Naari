@@ -28,6 +28,12 @@ public class WordsWithDetailsModel implements Parcelable {
         this.error = error;
     }
 
+    public WordsWithDetailsModel(String category, String title, String desc) {
+        this.category = category;
+        this.title = title;
+        this.desc = desc;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(category);
