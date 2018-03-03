@@ -387,7 +387,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
     @OnItemSelected(R.id.spinner_type_of_violence)
-    public void onSpinnerNoConsentClicked() {
+    public void onSpinnerTypeOfVoilenceClicked() {
 
         if (!spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type")) {
 

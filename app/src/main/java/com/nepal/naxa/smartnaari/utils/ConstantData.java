@@ -35,6 +35,15 @@ public class ConstantData {
             "Saptari", "Sarlahi", "Sindhuli", "Sindhupalchok", "Siraha", "Solukhumbu", "Sunsari", "Surkhet", "Syangja", "Tanahu",
             "Taplejung", "Terhathum", "Udayapur"};
 
+    public final static String[] districtListServices = {"All District", "Achham", "Arghakhanchi", "Baglung", "Baitadi", "Bajhang", "Bajura", "Banke", "Bara", "Bardiya", "Bhaktapur",
+            "Bhojpur", "Chitwan", "Dadeldhura", "Dailekh", "Dang", "Darchula", "Dhading", "Dhankuta", "Dhanusa", "Dholkha",
+            "Dolpa", "Doti", "Gorkha", "Gulmi", "Humla", "Ilam", "Jajarkot", "Jhapa", "Jumla", "Kailali", "Kalikot", "Kanchanpur",
+            "Kapilvastu", "Kaski", "Kathmandu", "Kavrepalanchok", "Khotang", "Lalitpur", "Lamjung", "Mahottari", "Makwanpur",
+            "Manang", "Morang", "Mugu", "Mustang", "Myagdi", "Nawalparasi", "Nuwakot", "Okhaldhunga", "Palpa", "Panchthar",
+            "Parbat", "Parsa", "Pyuthan", "Ramechhap", "Rasuwa", "Rautahat", "Rolpa", "Rukum", "Rupandehi", "Salyan", "Sankhuwasabha",
+            "Saptari", "Sarlahi", "Sindhuli", "Sindhupalchok", "Siraha", "Solukhumbu", "Sunsari", "Surkhet", "Syangja", "Tanahu",
+            "Taplejung", "Terhathum", "Udayapur"};
+
     public final static String[] AGE_GROUP = {"below 16", "16-18", "19-24", "25-30", "31-35", "36-40", "41-50", "51-60", "above 60"};
 
     public final static String[] voilenceOccurTime = {"Select Time", "Today", "Yesterday", "Day Before Yesterday", "1 Week Ago", "2 Weeks Ago", "3 Weeks Ago", "1 Month Ago", "2 Months Ago", "3 Months Ago", "4 Months Ago", "5 Months Ago", "6 Months Ago", "1 Year Ago", "More Than a Year Ago"};

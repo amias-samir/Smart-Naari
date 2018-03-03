@@ -80,6 +80,10 @@
         <item name="android:background">@drawable/smart_naari_spinner_bg</item>
     </style>
 
+    <style name="DistrictListServicesSpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/district_list_services_spinner_bg</item>
+    </style>
+
     <style name="SmartNaariInputLayoutTheme" parent="@android:style/TextAppearance">
         <item name="android:background">@drawable/smart_naari_edit_text_bg</item>
 
