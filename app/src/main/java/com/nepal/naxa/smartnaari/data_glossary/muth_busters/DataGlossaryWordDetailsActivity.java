@@ -76,7 +76,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
                     public void onSuccess(List<String> strings) {
                         //TextViewUtils.highlightWordToBlue(strings, tvWordDesc);
 
-                        TextViewUtils.linkWordsToGlossary(strings,tvWordDesc);
+                        TextViewUtils.linkWordsToGlossary(strings, tvWordDesc);
                     }
 
                     @Override
@@ -84,18 +84,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
                     }
                 });
-//        try {
-//            setSpannableTextDescription();
-//        } catch (Exception e) {
-//            showErrorToast("Error");
-//            e.printStackTrace();
-//            //    tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
-//        }
-
     }
-
-
-
 
 
     private void initToolbar() {

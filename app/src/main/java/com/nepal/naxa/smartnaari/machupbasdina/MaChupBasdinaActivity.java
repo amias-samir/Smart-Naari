@@ -387,7 +387,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
     @OnItemSelected(R.id.spinner_type_of_violence)
-    public void onSpinnerNoConsentClicked() {
+    public void onSpinnerTypeOfVoilenceClicked() {
 
         if (!spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type")) {
 
@@ -687,7 +687,10 @@ public class MaChupBasdinaActivity extends BaseActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 showDialog.dismiss();
+
+                ConstantData.isFromMaChupBasdina = true;
                 Intent intent = new Intent(MaChupBasdinaActivity.this, ServicesActivity.class);
+                intent.putExtra(ConstantData.KEY_DISTRICT, spinnerDistrictOfIncident.getSelectedItem().toString().trim().toLowerCase());
                 startActivity(intent);
             }
         });

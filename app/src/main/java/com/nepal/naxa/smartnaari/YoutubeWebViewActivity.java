@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,10 +28,11 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
     String URL = "https://www.youtube.com/embed/47yJ2XCRLZs";
 
 
-//    public class startYoutubeWebViewActivity(Context context, String URL) {
-//        startActivity(new Intent(context, YoutubeWebViewActivity.class));
-//        getIntent().putExtra("url", URL);
-//    }
+    public static void startYouttube(Context context,@NonNull String URL) {
+        Intent i = new Intent(context, YoutubeWebViewActivity.class);
+        i.putExtra("url", URL);
+        context.startActivity(i);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +40,9 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_youtube_web_view);
         ButterKnife.bind(this);
 
-        URL = getIntent().getStringExtra("url");
+        if(getIntent().getStringExtra("url")!=null){
+            URL = getIntent().getStringExtra("url");
+        }
 
         setUpWebView();
 
@@ -57,6 +61,10 @@ public class YoutubeWebViewActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.image_btn_close:
+                finish();
+        }
 
     }
 }

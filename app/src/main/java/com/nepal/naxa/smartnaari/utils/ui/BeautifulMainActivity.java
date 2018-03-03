@@ -36,12 +36,14 @@ import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.SliderLayout;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.XandYDetailsActivity;
+import com.nepal.naxa.smartnaari.YoutubeWebViewActivity;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.calendraevent.EventShowcaseActivity;
 import com.nepal.naxa.smartnaari.celebratingprofessional.CelebratingProfessionalActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
+import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.SmartNariCopyrightActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
@@ -49,7 +51,6 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsActi
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.dataongbv.DefaultWebpageLoadActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
-import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -286,7 +287,7 @@ public class BeautifulMainActivity extends BaseActivity
             @Override
             public boolean onNavigationItemSelected(final MenuItem menuItem) {
                 menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
+//                drawerLayout.closeDrawers();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -320,10 +321,6 @@ public class BeautifulMainActivity extends BaseActivity
         if (menuItem.getTitle().equals("Glossary")) {
             Intent intent = new Intent(BeautifulMainActivity.this, WordsWithDetailsActivity.class);
             startActivity(intent);
-
-        } if (menuItem.getTitle().equals("Friends Of Smart नारी")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
-            startActivity(intent);
         }
 
         if (menuItem.getTitle().equals("Celebrating Professionals")) {
@@ -348,6 +345,10 @@ public class BeautifulMainActivity extends BaseActivity
 
         if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
             Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getTitle().equals("Copyright")){
+            Intent intent = new Intent(BeautifulMainActivity.this, SmartNariCopyrightActivity.class);
             startActivity(intent);
         }
         if (menuItem.getTitle().equals("Disclaimer")) {

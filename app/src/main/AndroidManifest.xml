@@ -320,6 +320,7 @@
        <activity android:name=".YoutubeWebViewActivity"
            android:exported="true"></activity>
 
+
         <activity android:name=".passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -328,9 +329,10 @@
         <activity
             android:name=".dataongbv.DefaultWebpageLoadActivity"
             android:screenOrientation="portrait">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".dataongbv.DataOnGBVActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".dataongbv.DataOnGBVActivity" /> -->
         </activity>
         <activity
             android:name=".donate.DonateActivity"
@@ -383,7 +385,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"></activity>
+        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
+        <activity android:name=".copyrightandprivacypolicy.SmartNariCopyrightActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
     </application>
 
 </manifest>
