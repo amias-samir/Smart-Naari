@@ -226,19 +226,24 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/main.toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="53dp"
             android:background="@color/colorAccent"
             app:layout_anchor="@id/main.framelayout.title"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:title="">
+            app:title=""
+            tools:layout_editor_absoluteY="160dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Space
+                <ImageButton
+                    android:id="@+id/btn_nav_drawer_toggle"
+                    android:layout_marginTop="12dp"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:src="@drawable/ic_menu_white"
                     android:layout_width="@dimen/image_final_width"
                     android:layout_height="@dimen/image_final_width" />
 
