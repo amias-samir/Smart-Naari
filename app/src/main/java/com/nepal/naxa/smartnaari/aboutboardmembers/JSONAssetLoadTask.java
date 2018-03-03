@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.support.annotation.RawRes;
 
 
+import com.nepal.naxa.smartnaari.application.SmartNaari;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,7 +20,7 @@ public class JSONAssetLoadTask extends AsyncTask<Void, Void, String> {
     private JSONAssetLoadListener listener;
     private BufferedReader reader = null;
     private int resourceId;
-    Context context;
+    private Context context;
 
     public JSONAssetLoadTask(@RawRes int resourceId, JSONAssetLoadListener listener) {
         this.listener = listener;
@@ -46,7 +48,7 @@ public class JSONAssetLoadTask extends AsyncTask<Void, Void, String> {
 
 
         try {
-            fIn = context.getResources().openRawResource(resourceId);
+            fIn = SmartNaari.getAppContext().getResources().openRawResource(resourceId);
             isr = new InputStreamReader(fIn);
             input = new BufferedReader(isr);
             String line = "";

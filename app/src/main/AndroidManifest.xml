@@ -246,9 +246,7 @@
         <activity
             android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
             android:exported="true">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".utils.ui.BeautifulMainActivity" />
+
         </activity>
 
         <meta-data
@@ -267,7 +265,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        >
+
         <activity
             android:name=".celebratingprofessional.CelebratingProfessionalActivity"
             android:exported="true">
@@ -282,7 +280,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        <activity android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
+        <activity
+            android:exported="true"
+            android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
@@ -316,9 +316,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-        <activity
-            android:name=".YoutubeWebViewActivity"
-            android:exported="true" />
+
+       <activity android:name=".YoutubeWebViewActivity"
+           android:exported="true"></activity>
+
+
         <activity android:name=".passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

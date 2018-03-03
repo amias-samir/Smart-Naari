@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.application;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
 import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
@@ -18,6 +19,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class SmartNaari extends Application {
 
+    private static Context context;
+
     private DaoSession daoSession;
 
     @Override
@@ -26,10 +29,15 @@ public class SmartNaari extends Application {
         Fabric.with(this, new Crashlytics());
         AppLogger.init();
 
+        context = getApplicationContext();
         daoSession = new DaoMaster(new DbOpenHelper(this, "smart_naari.db").getWritableDb()).newSession();
 
     }
 
+
+    public static Context getAppContext() {
+        return SmartNaari.context;
+    }
 
     public DaoSession getDaoSession() {
         return daoSession;

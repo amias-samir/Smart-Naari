@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +20,19 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
+import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
+import com.nepal.naxa.smartnaari.utils.TextViewUtils;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
 
 public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
@@ -41,33 +54,36 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         initToolbar();
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
+        tvWordDesc.setText(wordsWithDetailsModel.getDesc());
 
-        try{
-            setSpannableTextDescription();
-        }catch (Exception e) {
-            e.printStackTrace();
-            tvWordDesc.setText(wordsWithDetailsModel.getDesc().trim());
-        }
+        JSONLoadImpl
+                .cacheGlossaryObj()
+                .flatMapIterable(new Function<List<WordsWithDetailsModel>, Iterable<WordsWithDetailsModel>>() {
+                    @Override
+                    public Iterable<WordsWithDetailsModel> apply(List<WordsWithDetailsModel> wordsWithDetailsModels) throws Exception {
+                        return wordsWithDetailsModels;
+                    }
+                })
+                .flatMap(new Function<WordsWithDetailsModel, Observable<String>>() {
+                    @Override
+                    public Observable<String> apply(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
+                        return Observable.just(wordsWithDetailsModel.getTitle());
+                    }
+                })
+                .toList()
+                .subscribe(new DisposableSingleObserver<List<String>>() {
+                    @Override
+                    public void onSuccess(List<String> strings) {
+                        //TextViewUtils.highlightWordToBlue(strings, tvWordDesc);
 
-    }
-    
+                        TextViewUtils.linkWordsToGlossary(strings, tvWordDesc);
+                    }
 
-    private void setSpannableTextDescription() throws Exception {
-        String toBeSpannedText = wordsWithDetailsModel.getDesc().trim();
+                    @Override
+                    public void onError(Throwable e) {
 
-        SpannableString spannableString = new SpannableString(toBeSpannedText);
-
-
-        String[] tester = getResources().getStringArray(R.array.checker_for_spannable_text);
-        for (int i = 0; i < tester.length; i++) {
-            int start = toBeSpannedText.indexOf(tester[i]);
-            int end = start + tester[i].length();
-            spannableString.setSpan(new OnSpannedTextClicked(tester[i]), start, end, 0);
-
-            tvWordDesc.setText(spannableString);
-
-        }
-        tvWordDesc.setMovementMethod(new LinkMovementMethod());
+                    }
+                });
     }
 
 
@@ -77,27 +93,14 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close);
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
     }
 
-    private class OnSpannedTextClicked extends ClickableSpan {
 
-        String selectedString;
-
-        public OnSpannedTextClicked(String s) {
-            selectedString = s;
-        }
-
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(view.getContext(), "You selected: " + selectedString, Toast.LENGTH_SHORT).show();
-            //startActivity(new Intent(view.getContext(),WordsWithDetailsActivity.class));
-        }
-    }
 }

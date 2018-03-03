@@ -113,6 +113,9 @@ public class BeautifulMainActivity extends BaseActivity
     @BindView(R.id.beautiful_main_tv_eng_date)
     TextView tvEngDate;
 
+    @BindView(R.id.btn_nav_drawer_toggle)
+    ImageButton btnNavDrawer;
+
     @BindView(R.id.beautiful_main_tv_nep_date)
     TextView tvNepaliDate;
     @BindView(R.id.main_imageview_placeholder_tap_it_stop_it)
@@ -196,10 +199,11 @@ public class BeautifulMainActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+        stopShakeAnimation();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                animateIfSpecialDay();
+                //  animateIfSpecialDay();
             }
         }, TimeUnit.SECONDS.toMillis(3));
 
@@ -309,8 +313,8 @@ public class BeautifulMainActivity extends BaseActivity
         }
 
         if (menuItem.getTitle().equals("About Smart नारी")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(BeautifulMainActivity.this, AboutSmartNaariActivity.class);
+//            startActivity(intent);
         }
 
         if (menuItem.getTitle().equals("Meet The Team")) {
@@ -347,7 +351,7 @@ public class BeautifulMainActivity extends BaseActivity
             Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
             startActivity(intent);
         }
-        if(menuItem.getTitle().equals("Copyright")){
+        if (menuItem.getTitle().equals("Copyright")) {
             Intent intent = new Intent(BeautifulMainActivity.this, SmartNariCopyrightActivity.class);
             startActivity(intent);
         }
@@ -494,13 +498,7 @@ public class BeautifulMainActivity extends BaseActivity
         handleAlphaOnTitle(percentage);
         handleToolbarTitleVisibility(percentage);
 
-        boolean showToolbarIcons = shouldShowToolbarItems(percentage);
-        if (showToolbarIcons) {
-
             ivLogo.setVisibility(View.VISIBLE);
-        } else {
-            ivLogo.setVisibility(View.VISIBLE);
-        }
     }
 
     private boolean shouldShowToolbarItems(float offsetPrecentage) {
@@ -532,6 +530,9 @@ public class BeautifulMainActivity extends BaseActivity
 
             if (!mIsTheTitleVisible) {
                 startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
+                startAlphaAnimation(btnNavDrawer,ALPHA_ANIMATIONS_DURATION,View.INVISIBLEgi);
+
+
                 mIsTheTitleVisible = true;
                 invalidateOptionsMenu();
             }
@@ -540,6 +541,8 @@ public class BeautifulMainActivity extends BaseActivity
 
             if (mIsTheTitleVisible) {
                 startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
+                startAlphaAnimation(btnNavDrawer,ALPHA_ANIMATIONS_DURATION,View.VISIBLE);
+
                 mIsTheTitleVisible = false;
                 invalidateOptionsMenu();
             }
@@ -617,6 +620,17 @@ public class BeautifulMainActivity extends BaseActivity
 
     }
 
+
+    @OnClick(R.id.btn_nav_drawer_toggle)
+    public void onNavDrawerToggleClicked() {
+        if (stopShakeAnimate) {
+            drawerLayout.openDrawer(GravityCompat.START);
+        } else {
+            // stopShakeAnimation();
+            EventShowcaseActivity.start(BeautifulMainActivity.this);
+        }
+
+    }
 
     @Override
     public void onItemClick(View view, ViewModel viewModel) {

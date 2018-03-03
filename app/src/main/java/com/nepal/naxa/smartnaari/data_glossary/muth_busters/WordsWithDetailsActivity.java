@@ -23,6 +23,7 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
         setContentView(R.layout.activity_words_with_details);
 
         initToolbar();
+
+        new JSONLoadImpl().getGlossaryObject();
 
         jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.data_glossary, this, this);
         jsonAssetLoadTask.execute();
