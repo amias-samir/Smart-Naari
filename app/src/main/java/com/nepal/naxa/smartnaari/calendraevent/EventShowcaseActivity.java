@@ -43,6 +43,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.YoutubeWebViewActivity;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
@@ -285,8 +286,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 btnPlayVideo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + "4oB89nvdrdA"));
-                        startActivity(intent);
+                        YoutubeWebViewActivity.startYouttube(EventShowcaseActivity.this, "https://www.youtube.com/watch?v=4oB89nvdrdA");
                     }
                 });
                 break;
@@ -303,8 +303,7 @@ public final class EventShowcaseActivity extends AppCompatActivity {
                 btnPlayVideo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + "PNBhV338zzk"));
-                        startActivity(intent);
+                        YoutubeWebViewActivity.startYouttube(EventShowcaseActivity.this, "https://www.youtube.com/watch?v=PNBhV338zzk");
                     }
                 });
                 break;
