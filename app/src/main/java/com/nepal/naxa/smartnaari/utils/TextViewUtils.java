@@ -1,11 +1,13 @@
 package com.nepal.naxa.smartnaari.utils;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
+import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsModel;
 import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
@@ -46,6 +49,20 @@ public class TextViewUtils {
         }
     }
 
+    public static void linkWordToPrivacyPolicy(String word, TextView textView) {
+
+        String fullText = textView.getText().toString();
+        SpannableStringBuilder span = new SpannableStringBuilder(fullText);
+
+        String testText = fullText.toLowerCase(Locale.US);
+        String testTextToBold = word.toLowerCase(Locale.US);
+
+        int startingIndex = testText.indexOf(testTextToBold);
+        int endingIndex = startingIndex + testTextToBold.length();
+
+        span.setSpan(new GotoPrivacyPolicySpan(word), startingIndex, endingIndex, 0);
+
+    }
 
     public static void linkWordsToGlossary(List<String> wordlist, TextView textView) {
         String fullText = textView.getText().toString();
@@ -64,7 +81,7 @@ public class TextViewUtils {
                 int endingIndex = startingIndex + testTextToBold.length();
 
                 if (startingIndex >= 0 && endingIndex >= 0) {
-                    //builder.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
+                    // span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
                     span.setSpan(new GotoGlossarySpan(textItem), startingIndex, endingIndex, 0);
 
                 }
@@ -100,6 +117,28 @@ public class TextViewUtils {
     }
 
 
+    private static class GotoPrivacyPolicySpan extends ClickableSpan {
+
+        private String text;
+
+        public GotoPrivacyPolicySpan(String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            super.updateDrawState(ds);
+            ds.setColor(Color.BLUE);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(view.getContext(), PrivacyPolicyActivity.class);
+            view.getContext().startActivity(intent);
+        }
+    }
+
     private static class GotoGlossarySpan extends ClickableSpan {
 
         String selectedString;
@@ -109,12 +148,17 @@ public class TextViewUtils {
         }
 
         @Override
+        public void updateDrawState(TextPaint ds) {
+            super.updateDrawState(ds);
+            ds.setColor(Color.BLUE);
+        }
+
+        @Override
         public void onClick(final View view) {
 
             new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
                 @Override
                 public void onFileLoadComplete(String fullText) {
-
 
 
                     new GlossaryDao().searchAndOpenDetail(fullText, selectedString)
@@ -137,7 +181,7 @@ public class TextViewUtils {
 
                                 @Override
                                 public void onError(Throwable e) {
-                                e.printStackTrace();
+                                    e.printStackTrace();
                                 }
 
                                 @Override

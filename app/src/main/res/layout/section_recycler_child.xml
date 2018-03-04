@@ -14,7 +14,7 @@
     android:layout_marginLeft="@dimen/spacing_medium"
     android:singleLine="true"
     android:textAllCaps="true"
-    android:textColor="@color/sectioned_recycler_child"
+
     android:background="@android:color/white"
     android:textSize="@dimen/material_text_body2"
     android:id="@+id/section_text_child"

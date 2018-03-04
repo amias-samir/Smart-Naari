@@ -171,13 +171,13 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
 
 
             String msg;
-            msg = "Read the following steps and tap 'START' when ready\n\n" +
-                    "Tap 'Start' Button \n\n" +
+            msg = "Read the following steps\n\n" +
+                    "1.Tap 'Start' Button \n\n" +
                     "2.Choose " +
                     getString(R.string.app_name) +
-                    " From The List." +
+                    " From The list." +
                     "\n\n" +
-                    "3.Toggle \'Permit drawing over other app\' On";
+                    "3.Toggle \'Permit drawing over other app\' ";
             title.setText(msg);
 
             button.setOnClickListener(new View.OnClickListener() {
@@ -197,8 +197,7 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
     }
 
     private View createDummyView() {
-        LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-        return linearLayout;
+        return new LinearLayout(getApplicationContext());
     }
 
 
