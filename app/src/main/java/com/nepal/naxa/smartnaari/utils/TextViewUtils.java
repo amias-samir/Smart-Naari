@@ -64,7 +64,7 @@ public class TextViewUtils {
                 int endingIndex = startingIndex + testTextToBold.length();
 
                 if (startingIndex >= 0 && endingIndex >= 0) {
-                    //builder.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
+                   // span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
                     span.setSpan(new GotoGlossarySpan(textItem), startingIndex, endingIndex, 0);
 
                 }
