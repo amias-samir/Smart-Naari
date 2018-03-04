@@ -41,6 +41,7 @@
 
     <color name="iron">#CCCCCC</color>
     <color name="blue">#3157be</color>
+    <color name="mild_blue">#3b65d6</color>
     <color name="black_alpha_40">#bf000000</color>
     <color name="bottomsheet_background">#868585</color>
 

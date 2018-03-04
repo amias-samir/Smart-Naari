@@ -11,11 +11,9 @@ import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -29,18 +27,18 @@ import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
-import com.nepal.naxa.smartnaari.utils.Constants;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+import com.nepal.naxa.smartnaari.utils.TextViewUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -129,6 +127,8 @@ public class SignUpActivity extends Activity {
     Spinner spinnerBirthDay;
 
 
+
+
     //todo write style for api < 21 for checkbox
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +143,7 @@ public class SignUpActivity extends Activity {
 
 
 //change all letter to lower case
-        etUserName.setFilters(new InputFilter[] {
+        etUserName.setFilters(new InputFilter[]{
                 new InputFilter.AllCaps() {
                     @Override
                     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -153,20 +153,28 @@ public class SignUpActivity extends Activity {
         });
 
 
-        
+        textViewTermsAndCondition.setText("By Signing up, you are indicating that you agree to the Privacy Policy and Terms.");
+        List<String> wordlist = new ArrayList<>();
+        wordlist.add("Privacy Policy");
+        wordlist.add("Terms");
+        TextViewUtils.highlightWordToBlue(wordlist, textViewTermsAndCondition);
+
+        TextViewUtils.linkWordToPrivacyPolicy("Privacy Policy", textViewTermsAndCondition);
+        TextViewUtils.linkWordToPrivacyPolicy("Terms", textViewTermsAndCondition);
+
 
     }
 
     private void setUpSpinners() {
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = (thisYear-16); i >= (thisYear-106); i--) {
+        for (int i = (thisYear - 16); i >= (thisYear - 106); i--) {
             years.add(Integer.toString(i));
         }
         ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
         spinnerBirthYear.setAdapter(yearAdapter);
 
-        ArrayAdapter<String> monthAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.months);
+        ArrayAdapter<String> monthAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.months);
         spinnerBirthMonth.setAdapter(monthAdapter);
 
         ArrayList<String> days = new ArrayList<String>();
@@ -372,12 +380,12 @@ public class SignUpActivity extends Activity {
             firstName = etFirstName.getText().toString().trim();
             surName = etSurName.getText().toString().trim();
 //            age = etAge.getText().toString().trim();
-            age=spinnerBirthYear.getSelectedItem().toString()
-                    +"/"
-                    +(spinnerBirthMonth.getSelectedItemPosition()+1)
-                    +"/"
-                    +spinnerBirthDay.getSelectedItem().toString();
-            Log.i("Shree",age);
+            age = spinnerBirthYear.getSelectedItem().toString()
+                    + "/"
+                    + (spinnerBirthMonth.getSelectedItemPosition() + 1)
+                    + "/"
+                    + spinnerBirthDay.getSelectedItem().toString();
+            Log.i("Shree", age);
             birthPlace = spBirthPlace.getSelectedItem().toString();
             currentPlace = spCurrentPlace.getSelectedItem().toString();
             email = etEmail.getText().toString().trim();
