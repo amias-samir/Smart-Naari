@@ -21,12 +21,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/tvVolunteers"
+                android:id="@+id/tvAwantika"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
                 android:padding="@dimen/default_padding"
-                android:text="@string/volunteers"
+                android:text="@string/awantika_thapa"
                 android:textSize="@dimen/material_text_subhead"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -36,12 +36,12 @@
                 android:layout_marginRight="@dimen/spacing_medium"/>
 
             <TextView
-                android:id="@+id/tvSmallBusiness"
+                android:id="@+id/tvKrishangi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
                 android:padding="@dimen/default_padding"
-                android:text="@string/small_business"
+                android:text="@string/krishangi_basnyat"
                 android:textSize="@dimen/material_text_subhead"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -51,12 +51,12 @@
                 android:layout_marginRight="@dimen/spacing_medium"/>
 
             <TextView
-                android:id="@+id/tvNgo"
+                android:id="@+id/tvMadhuri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
                 android:padding="@dimen/default_padding"
-                android:text="@string/ngo"
+                android:text="@string/madhuri_rana_singh"
                 android:textSize="@dimen/material_text_subhead"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -66,12 +66,12 @@
                 android:layout_marginRight="@dimen/spacing_medium"/>
 
             <TextView
-                android:id="@+id/tvCorporate"
+                android:id="@+id/tvPoonam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
                 android:padding="@dimen/default_padding"
-                android:text="@string/corporate"
+                android:text="Poonam Thapa"
                 android:textSize="@dimen/material_text_subhead"/>
             <ImageView
                 android:layout_width="match_parent"

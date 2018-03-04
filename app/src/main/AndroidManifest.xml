@@ -245,9 +245,7 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.GlossaryListActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -265,7 +263,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
         <activity
             android:name=".celebratingprofessional.CelebratingProfessionalActivity"
             android:exported="true">
@@ -281,8 +278,8 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:exported="true"
-            android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
+            android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.GlossaryListActivity" />
@@ -316,11 +313,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
-
-       <activity android:name=".YoutubeWebViewActivity"
-           android:exported="true"></activity>
-
-
+        <activity
+            android:name=".YoutubeWebViewActivity"
+            android:exported="true" />
         <activity android:name=".passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -385,6 +380,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+        <activity
+            android:name=".friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".friendsofsmartnaari.FriendsOfSmartNaariActivity" />
+        </activity>
+        <activity
+            android:name=".copyrightandprivacypolicy.SmartNariCopyrightActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
         <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"
             android:screenOrientation="portrait">
             <meta-data
@@ -392,11 +402,11 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
 
-        <activity android:name=".copyrightandprivacypolicy.SmartNariCopyrightActivity"
+        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariVolunteersActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".utils.ui.BeautifulMainActivity" />
+                android:value=".friendsofsmartnaari.FriendsOfSmartNaariActivity" />
         </activity>
     </application>
 

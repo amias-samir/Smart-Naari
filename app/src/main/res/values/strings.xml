@@ -451,6 +451,13 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     </string-array>
 
     <string name="data">Data</string>
+    <string name="volunteers">Volunteers</string>
+    <string name="small_business">Small Business</string>
+    <string name="ngo">NGO</string>
+    <string name="corporate">Corporate</string>
+    <string name="awantika_thapa">Awantika Thapa</string>
+    <string name="krishangi_basnyat">Krishangi Basnyat</string>
+    <string name="madhuri_rana_singh">Madhuri Rana Singh</string>
 
     ?>
 </resources>

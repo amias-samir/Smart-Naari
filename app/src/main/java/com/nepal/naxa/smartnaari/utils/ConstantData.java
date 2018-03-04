@@ -10,6 +10,8 @@ public class ConstantData {
     public static boolean isFromMaChupBasdina = false;
     public static String KEY_DISTRICT = "district";
 
+    public static boolean isFromVolunteerFriends = false;
+    public static String KEY_RECYCLER_POS = "position" ;
 
 
     public final static String[] months={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};

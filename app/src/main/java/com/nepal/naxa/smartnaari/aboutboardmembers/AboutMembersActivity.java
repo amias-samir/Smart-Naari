@@ -15,8 +15,8 @@ import android.view.MenuItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -27,9 +27,13 @@ import java.util.List;
 
 public class AboutMembersActivity extends AppCompatActivity implements JSONAssetLoadListener {
 
+    private static final String TAG = "AboutMembersActivity";
+
     private RecyclerView recyclerView;
     private AboutMembersRecylerViewAdapter adapter;
     private JSONAssetLoadTask jsonAssetLoadTask;
+
+    private int recyclerPosition;
 
     public AboutMembersActivity() {
     }
@@ -41,10 +45,17 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         initToolbar();
 
+        if(ConstantData.isFromVolunteerFriends){
+            Intent intent = getIntent();
+            recyclerPosition =Integer.parseInt( intent.getStringExtra(ConstantData.KEY_RECYCLER_POS));
+            Log.d(TAG, "onCreate: "+recyclerPosition);
+        }
+
         setAboutMembersRecyclerView();
 
         jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this, this);
         jsonAssetLoadTask.execute();
+
 
     }
 
@@ -96,8 +107,16 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         adapter.setMembers(members);
         adapter.notifyDataSetChanged();
-
         Log.e("qqq", "This data is: " + s);
+
+
+        if(ConstantData.isFromVolunteerFriends){
+
+            recyclerView.getLayoutManager().scrollToPosition(recyclerPosition);
+            ConstantData.isFromVolunteerFriends = false;
+        }
+
+
     }
 
     @Override

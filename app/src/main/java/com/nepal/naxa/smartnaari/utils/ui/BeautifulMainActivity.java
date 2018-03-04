@@ -50,6 +50,7 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.GlossaryListActivity
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
+import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
