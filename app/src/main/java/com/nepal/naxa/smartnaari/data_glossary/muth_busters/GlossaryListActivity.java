@@ -29,7 +29,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetLoadListener {
+public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadListener {
     final private String TAG = "WordsWithDetails";
 
     RecyclerView mRecyclerView;
@@ -59,6 +59,12 @@ public class WordsWithDetailsActivity extends BaseActivity implements JSONAssetL
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Data Glossary");
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                return false;
+            }
+        });
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 

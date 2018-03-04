@@ -104,8 +104,8 @@ public class SignUpActivity extends Activity {
     @BindView(R.id.user_contact_no_input_id)
     EditText etContact;
 
-    @BindView(R.id.cb_terms_and_condition)
-    CheckBox cbAgreement;
+//    @BindView(R.id.cb_terms_and_condition)
+//    CheckBox cbAgreement;
 
     ProgressDialog mProgressDlg;
     String jsonToSend = "";
@@ -151,6 +151,9 @@ public class SignUpActivity extends Activity {
                     }
                 }
         });
+
+
+        
 
     }
 
@@ -341,12 +344,12 @@ public class SignUpActivity extends Activity {
         }
 
 
-        if (cbAgreement.isChecked()) {
-            mobileNumber = etContact.getText().toString().trim();
-        } else {
-            Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
-            return false;
-        }
+//        if (cbAgreement.isChecked()) {
+//            mobileNumber = etContact.getText().toString().trim();
+//        } else {
+//            Toasty.error(getApplicationContext(), "You must check the agreement.", Toast.LENGTH_SHORT, true).show();
+//            return false;
+//        }
 
 
         return true;

@@ -188,7 +188,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                     .target(centerPointOfCordinates(midLat, midlong, initLat, initLong))
                     .zoom(10f)
                     .bearing(0.0f)
-                    .tilt(20f)
+                    .tilt(10f)
                     .build();
 
             map.animateCamera(CameraUpdateFactory

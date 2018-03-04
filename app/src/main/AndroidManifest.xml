@@ -244,7 +244,7 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
+            android:name=".data_glossary.muth_busters.GlossaryListActivity"
             android:exported="true">
 
         </activity>
@@ -285,7 +285,7 @@
             android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
+                android:value=".data_glossary.muth_busters.GlossaryListActivity" />
         </activity>
         <activity
             android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"
