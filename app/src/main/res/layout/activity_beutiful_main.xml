@@ -45,7 +45,7 @@
 
                             android:id="@+id/main_imageview_placeholder_tap_it_stop_it"
                             android:layout_width="match_parent"
-                            android:layout_height="300dp"
+                            android:layout_height="245dp"
                             android:scaleType="centerCrop"
                             android:src="@color/colorAccent"
                             android:tint="#11000000"
@@ -55,7 +55,7 @@
                         <ImageView
                             android:id="@+id/main_imageview_placeholder2_tap_it_stop_it"
                             android:layout_width="match_parent"
-                            android:layout_height="300dp"
+                            android:layout_height="245dp"
                             android:scaleType="centerCrop"
 
                             android:tint="#11000000"
