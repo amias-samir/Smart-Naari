@@ -68,8 +68,12 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         Boolean hasAllRequredPermission = false;
         if (hasAllRequredPermission) {
             //not implemeted
+
+
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             showMyCircleActivatedToast();
+            context.startService(new Intent(context, PowerButtonService.class));
+
         } else {
             start(context);
         }
@@ -351,11 +355,12 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
     private boolean allPermissionGranted(int[] grantResults) {
 
-        for (int grantResult : grantResults) {
-            if (grantResult == PackageManager.PERMISSION_DENIED) return false;
-        }
+//        for (int grantResult : grantResults) {
+//            if (grantResult == PackageManager.PERMISSION_DENIED) return false;
+//        }
+//     return true;
 
-        return true;
+        return hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
     @SuppressLint("NewApi")
@@ -364,7 +369,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
             if (Settings.canDrawOverlays(this)) {
                 stepper.setStepAsCompleted(4);
-                stepper.setStepSubtitle(2, "This step has been completed. Press Continue");
+                stepper.setStepSubtitle(4, "This step has been completed. Press Continue");
                 stepper.goToNextStep();
             } else {
                 stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");
