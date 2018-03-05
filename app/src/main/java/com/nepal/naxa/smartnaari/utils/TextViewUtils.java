@@ -49,18 +49,27 @@ public class TextViewUtils {
         }
     }
 
-    public static void linkWordToPrivacyPolicy(String word, TextView textView) {
+    public static void linkWordToPrivacyPolicy(String[] wordlist, TextView textView) {
 
         String fullText = textView.getText().toString();
         SpannableStringBuilder span = new SpannableStringBuilder(fullText);
 
-        String testText = fullText.toLowerCase(Locale.US);
-        String testTextToBold = word.toLowerCase(Locale.US);
 
-        int startingIndex = testText.indexOf(testTextToBold);
-        int endingIndex = startingIndex + testTextToBold.length();
+        for (String word : wordlist) {
 
-        span.setSpan(new GotoPrivacyPolicySpan(word), startingIndex, endingIndex, 0);
+            String testText = fullText.toLowerCase(Locale.US);
+            String testTextToBold = word.toLowerCase(Locale.US);
+
+            int startingIndex = testText.indexOf(testTextToBold);
+            int endingIndex = startingIndex + testTextToBold.length();
+
+            span.setSpan(new GotoPrivacyPolicySpan(word), startingIndex, endingIndex, 0);
+
+        }
+
+
+        textView.setText(span);
+        textView.setMovementMethod(new LinkMovementMethod());
 
     }
 
@@ -122,7 +131,7 @@ public class TextViewUtils {
         private String text;
 
         public GotoPrivacyPolicySpan(String text) {
-            Log.d("TextViewUtils", "GotoPrivacyPolicySpan: "+text);
+            Log.d("TextViewUtils", "GotoPrivacyPolicySpan: " + text);
             this.text = text;
         }
 
