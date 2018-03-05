@@ -66,6 +66,8 @@ public class SettingsChangeActivity extends BaseActivity {
     @OnClick(R.id.settings_enable_disable_mycircle)
     public void onViewClicked() {
 
+//        setMyCircleServiceToggleBtnText();
+
         if (sessionManager.doesHaveIntentBackgroundService()) {
             stopMyCircleService();
         } else {
@@ -88,7 +90,7 @@ public class SettingsChangeActivity extends BaseActivity {
         sessionManager.clearPowerButtonServicePreferences();
         sessionManager.isPowerButtonServiceRunning(true);
         MyCircleOnBoardingActivity.startSafe(this);
-//        btnEnableDisableMycircle.setText("Disable MyCircle");
+        btnEnableDisableMycircle.setText("Disable MyCircle");
 
     }
 
