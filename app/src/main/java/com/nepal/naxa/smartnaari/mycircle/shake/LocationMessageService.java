@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.UserData;
@@ -143,7 +144,7 @@ public class LocationMessageService extends Service implements LocationListener 
             public void run() {
                 prepareToSMS();
             }
-        },TimeUnit.SECONDS.toMillis(5));
+        }, TimeUnit.SECONDS.toMillis(5));
 
     }
 
@@ -226,6 +227,7 @@ public class LocationMessageService extends Service implements LocationListener 
             LocationMessageService.this.locationCountDownTimer.cancel();
         } catch (Exception e) {
             e.printStackTrace();
+            Crashlytics.logException(e);
         }
     }
 
@@ -236,14 +238,13 @@ public class LocationMessageService extends Service implements LocationListener 
 
         } catch (Exception localException) {
             localException.printStackTrace();
+            Crashlytics.logException(localException);
         }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        Log.d(TAG, "onDestroy: ");
 
         if ((this.wakeLock != null) && (this.wakeLock.isHeld())) {
             this.wakeLock.release();
@@ -287,6 +288,7 @@ public class LocationMessageService extends Service implements LocationListener 
         } catch (Exception e) {
             e.printStackTrace();
             reportAndClose();
+            Crashlytics.logException(e);
         }
 
 
@@ -399,10 +401,8 @@ public class LocationMessageService extends Service implements LocationListener 
 
     private void returnLocation() {
         if (location != null) {
-
             Log.d(TAG, "returnLocation: " + location.getLatitude() + " " + location.getLongitude() + " "
                     + location.getAltitude() + " " + location.getAccuracy());
-
         }
 
     }

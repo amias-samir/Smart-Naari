@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.os.Vibrator;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -55,7 +56,7 @@ public class PowerButtonService extends Service {
                     Log.i("Key", "Long press on power button");
 
                     ShakeService.startService(PowerButtonService.this);
-
+                    vibrate();
 
                 } else if ("homekey".equals(reason)) {
                     //home key pressed
@@ -99,6 +100,14 @@ public class PowerButtonService extends Service {
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
         wm.addView(mView, params);
+    }
+
+
+    private void vibrate() {
+        Vibrator vibrator = ((Vibrator) getSystemService(VIBRATOR_SERVICE));
+        if (vibrator != null) {
+            vibrator.vibrate(500L);
+        }
     }
 
     @Override

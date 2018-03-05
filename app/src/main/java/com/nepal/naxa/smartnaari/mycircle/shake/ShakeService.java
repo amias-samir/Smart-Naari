@@ -2,6 +2,8 @@ package com.nepal.naxa.smartnaari.mycircle.shake;
 
 
 import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -9,19 +11,24 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.RemoteViews;
 
 import com.nepal.naxa.smartnaari.R;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
@@ -76,7 +83,7 @@ public class ShakeService extends Service implements SensorEventListener {
     public void onCreate() {
         super.onCreate();
 
-        startForeground(1, new Notification());
+        startForeground(1, createNotification("Shake Device"));
         setupAccelerometer();
 
     }
@@ -131,6 +138,34 @@ public class ShakeService extends Service implements SensorEventListener {
 
         Log.i(TAG, "Shake Service onDestroy() ");
     }
+
+
+    private Notification createNotification(String s) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setTicker(getResources().getString(R.string.action_search));
+        builder.setSmallIcon(R.drawable.ic_logo_notification);
+        builder.setAutoCancel(true);
+
+        Notification notification = builder.build();
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification);
+
+
+        contentView.setTextViewText(R.id.textView, s);
+
+        notification.contentView = contentView;
+
+        if (Build.VERSION.SDK_INT >= 16) {
+            // Inflate and set the layout for the expanded notification view
+            RemoteViews expandedView =
+                    new RemoteViews(getPackageName(), R.layout.notification_expanded);
+            notification.bigContentView = expandedView;
+        }
+//        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        nm.notify(0, notification);
+//
+        return notification;
+    }
+
 
     @Override
     public void onSensorChanged(SensorEvent paramSensorEvent) {
