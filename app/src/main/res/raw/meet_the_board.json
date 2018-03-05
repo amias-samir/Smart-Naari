@@ -1,11 +1,22 @@
 [
   {
+    "person_name": "The Smart नारी Team includes people from a variety of ages and backgrounds; single people, partners, husbands, wives, mothers, fathers and the all-important mother-in-law, all of whom share their experiences like our friends and enthusiasts, YOU, for a fuller understanding of the issues and pressures facing everyone today....",
+    "person_description": "",
+    "smart_naari_post": "",
+    "external_post": "",
+    "external_office": "",
+    "photo": "",
+    "type": "text_header"
+
+  },
+  {
     "person_name": "Poonam Thapa",
     "person_description": "\"For me, it\'s personal and has to do with the loss of my little sister. I am determined to help prevent gender-based violence through different approaches connecting women and men with fairness and respect, and to bring to all a variety of personally useful life skills at the touch of a button\".",
     "smart_naari_post": "Chair",
     "external_post": "Senior Global Health Consultant",
-    "external_office": "Sexual and Reproductive Health, Gender, Inclusion and Community Systems and trained Life Coach.",
-    "photo": "http://naxa.com.np/smartnaari/android/poonam.jpg"
+    "external_office": " Sexual and Reproductive Health, Gender and Community; trained Life Coach",
+    "photo": "http://naxa.com.np/smartnaari/android/poonam.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Madhuri Rana Singh",
@@ -13,54 +24,62 @@
     "smart_naari_post": "Vice Chair",
     "external_post": "Senior Specialist and Activist",
     "external_office": "Gender and Human Rights and trained counsellor",
-    "photo": ""
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Awantika Thapa",
     "person_description": "\"In 24 years of existence, I have experienced stigmas, objectification of my body, biases centred on my gender and misconceptions based on me being a woman. I want to help people view issues with sensitivity and make up their mind based on rationality than illogical standards\".",
-    "smart_naari_post": "General Secretary",
-    "external_post": "Program Officer",
-    "external_office": "Media Advocacy Group",
-    "photo": "http://naxa.com.np/smartnaari/android/awantika.jpg"
+    "smart_naari_post": "General Secretary ",
+    "external_post": "Activist-Educator",
+    "external_office": "Consultant and a happy student of life. ",
+    "photo": "http://naxa.com.np/smartnaari/android/awantika.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Surakshya Sijapati",
-    "person_description": "\"One of the major differences between a thriving society and a broken one is the presence of women who are valued, regardless of who they are.  Nepali women in general are bound by limiting norms, which prevent us from talking about our innermost feelings. At Smart Naari, I felt that all could come into the open and share their views and problems with a sense of security and belonging\".",
-    "smart_naari_post": "Treasurer",
-    "external_post": "Homemaker",
-    "external_office": "Student and Coordinator for Angalo \"Senior Lives Matter\"",
-    "photo": ""
+    "person_description": "\"One of the major differences between a thriving society and a broken one is the presence of women who are valued, regardless of who they are.  Nepali women in general are bound by limiting norms, which prevent us from talking about our innermost feelings. At Smart नारी, I felt that all could come into the open and share their views and problems with a sense of security and belonging\".",
+    "smart_naari_post": "Treasurer ",
+    "external_post": "Home Maker",
+    "external_office": "Student and Coordinator for Angalo Senior Lives Matter",
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Arun Bhandari",
-    "person_description": "\"I work as the interface between technology and social welfare. The drive to develop location-based applications that have social impact on people prompted me to start Naxa.  To me a Smart Naari is one who lives in consciousness, brings greater understanding of others and their situations, brooks no nonsense and always seeks a peaceful solution. The same applies to a Smart Man\".",
+    "person_description": "\"I work as the interface between technology and social welfare. The drive to develop location-based applications that have social impact on people prompted me to start Naxa.  To me a Smart नारी is one who lives in consciousness, brings greater understanding of others and their situations, brooks no nonsense and always seeks a peaceful solution. The same applies to a Smart Man\".",
     "smart_naari_post": "Member",
     "external_post": "Geomatics Engineer",
     "external_office": "Co-Founder Naxa Pvt. Ltd.",
-    "photo": "http://naxa.com.np/smartnaari/android/arun.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/arun.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Bishal KC",
-    "person_description": "\"I am who I am because of self-made women. I grew up watching my mother struggle to become who she is today, supporting the cause of equality and empowerment. She and women like her inspire me, and I truly believe that helping women help themselves, i.e. “SMART NAARI” with all its positive implications will help society as a whole. In Data Nepal we closely follow economic and political indicators of social change, which gave me the idea for a holistic app on prevention of GBV\".",
+    "person_description": "\"I am who I am because of self-made women. I grew up watching my mother struggle to become who she is today, supporting the cause of equality and empowerment. She and women like her inspire me, and I truly believe that helping women help themselves, i.e. \'Smart NAARI\' will help society as a whole. In Data Nepal we closely follow economic and political indicators of social change, which gave me the idea for a holistic App on prevention of GBV\". ",
     "smart_naari_post": "Member",
-    "external_post": "Technical Advisor, Senior Solution Architect",
+    "external_post": "Technical Advisor, Senior Solution Architect ",
     "external_office": "Founder of Data Nepal Pvt. Ltd.",
-    "photo": ""
-  },
+    "photo": "",
+    "type": "board_member"
+  }
+,
   {
     "person_name": "Rishesh KC",
-    "person_description": "\"Only when Shiva is united with Shakti does he have the power to create\'.\"This is a quote from Soundariya Lahari, a famous literary work, reportedly written by Sage Pushpadanta, recited by Shri Adi Shankara and etched on Mt Meru as Ananda Lahari by Ganesh. I have always believed that women and men are created equal and hold equal responsibility to take this planet to a peaceful and flourished future. I hope to see Smart Naari evolve as the forefront of women empowerment in Nepal and beyond, truly advocating for gender and sexual equality and equity\".",
+    "person_description": "\'Only when Shiva is united with Shakti does he have the power to create'. \" This is a quote from Soundariya Lahari, a famous literary work, reportedly written by Sage Pushpadanta, recited by Shri Adi Shankara and etched on Mt Meru as Ananda Lahari by Ganesh. I have always believed that women and men are created equal and hold equal responsibility to take this planet to a peaceful and flourished future. I hope to see Smart नारी evolve as the forefront of women empowerment in Nepal and beyond, truly advocating for gender and sexual equality and equity.\"",
     "smart_naari_post": "Member",
     "external_post": "Director",
-    "external_office": "Ark Ventures, Shodhashala - Centre for Research and Policy Studies, Paradigm Communications PvLtd",
-    "photo": ""
+    "external_office": "Ark Ventures, Shodhashala  Centre for Research and Policy Studies, Paradigm Communications PvLtd",
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Uttam Pudasaini",
-    "person_description": "\"I am passionate about Geo-informatics period! This is the science of structure and character of space and its many interactions. Having said that, the more I explore, the more exciting is its vital domain of investing in all types of people. After all is said and done, it’s only together that we can encourage progressive change both in our hearts and in our lives\".",
+    "person_description": "\"I am passionate about Geo-informatics! This is the science of structure and character of space and its many uses and interactions. Having said that, the more I explore, the more exciting is its vital domain of investing in all types of people, the young and old. After all is said and done, it's only together as men and women that we can encourage progressive change both in our hearts and in our lives.\" ",
     "smart_naari_post": "Member",
     "external_post": "Geomatics Engineer",
     "external_office": "Co-Founder Naxa Pvt. Ltd.",
-    "photo": "http://naxa.com.np/smartnaari/android/uttam.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/uttam.jpg",
+    "type": "board_member"
   }
 ]

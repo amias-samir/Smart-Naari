@@ -2,21 +2,24 @@ package com.nepal.naxa.smartnaari.aboutboardmembers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+import com.nepal.naxa.smartnaari.utils.ConstantData;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -27,9 +30,13 @@ import java.util.List;
 
 public class AboutMembersActivity extends AppCompatActivity implements JSONAssetLoadListener {
 
+    private static final String TAG = "AboutMembersActivity";
+
     private RecyclerView recyclerView;
     private AboutMembersRecylerViewAdapter adapter;
     private JSONAssetLoadTask jsonAssetLoadTask;
+
+    private int recyclerPosition;
 
     public AboutMembersActivity() {
     }
@@ -41,19 +48,27 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         initToolbar();
 
+        if(ConstantData.isFromVolunteerFriends){
+            Intent intent = getIntent();
+            recyclerPosition =Integer.parseInt( intent.getStringExtra(ConstantData.KEY_RECYCLER_POS));
+            Log.d(TAG, "onCreate: "+recyclerPosition);
+        }
+
         setAboutMembersRecyclerView();
 
         jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.meet_the_board, this, this);
         jsonAssetLoadTask.execute();
+
 
     }
 
     private void setAboutMembersRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.rvAboutBoardMembers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.setNestedScrollingEnabled(false);
         adapter = new AboutMembersRecylerViewAdapter(this);
         recyclerView.setAdapter(adapter);
+
 
     }
 
@@ -96,9 +111,36 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
         adapter.setMembers(members);
         adapter.notifyDataSetChanged();
-
         Log.e("qqq", "This data is: " + s);
+
+
+        if(ConstantData.isFromVolunteerFriends){
+//            RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getApplicationContext()) {
+//                @Override protected int getVerticalSnapPreference() {
+//                    return LinearSmoothScroller.SNAP_TO_START;
+//                }
+//            };
+//            smoothScroller.setTargetPosition(recyclerPosition);
+//            recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
+
+                    new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                recyclerView.setNestedScrollingEnabled(true);
+                recyclerView.scrollToPosition(recyclerPosition);
+                Log.d(TAG, "run: recyclerPosition "+recyclerPosition);
+//                recyclerView.setNestedScrollingEnabled(false);
+            }
+        }, 200);
+
+            ConstantData.isFromVolunteerFriends = false;
+
+        }
+
+
     }
+
+
 
     @Override
     public void onFileLoadError(String errorMsg) {

@@ -50,6 +50,7 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.GlossaryListActivity
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
+import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
 import com.nepal.naxa.smartnaari.homescreen.LinePagerIndicatorDecoration;
@@ -350,7 +351,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
 
-        if (menuItem.getTitle().equals("Privacy Policy and Data Protection")) {
+        if (menuItem.getTitle().equals("Privacy Policy and Terms")) {
             Intent intent = new Intent(BeautifulMainActivity.this, PrivacyPolicyActivity.class);
             startActivity(intent);
         }

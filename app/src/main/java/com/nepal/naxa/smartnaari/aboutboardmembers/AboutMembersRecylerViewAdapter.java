@@ -29,10 +29,28 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
     private Context mContext;
     private List<MemberPojo> members = new ArrayList<>();
 
+    private final int TEXT_HEDER = 0, BOARD_MEMBER = 1;
+
 
     public AboutMembersRecylerViewAdapter(Context mContext, List<MemberPojo> members) {
         this.members = members;
         this.mContext = mContext;
+    }
+
+    @Override
+    public int getItemCount() {
+        return members.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        //More to come
+        if (members.get(position).getType().equals("text_header")) {
+            return TEXT_HEDER;
+        } else if (members.get(position).getType().equals("board_member")) {
+            return BOARD_MEMBER;
+        }
+        return -1;
     }
 
     public AboutMembersRecylerViewAdapter(Context mContext) {
@@ -46,34 +64,82 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
     @Override
     public AboutMemberRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater
-                .from(mContext)
-                .inflate(R.layout.item_board_members, parent, false);
-        return new AboutMemberRecyclerViewHolder(v);
+//        View v = LayoutInflater
+//                .from(mContext)
+//                .inflate(R.layout.item_board_members, parent, false);
+//        return new AboutMemberRecyclerViewHolder(v);
+
+        AboutMemberRecyclerViewHolder viewHolder = null;
+
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        switch (viewType) {
+            case TEXT_HEDER:
+                View v1 = inflater.inflate(R.layout.item_board_members, parent, false);
+                viewHolder = new AboutMemberRecyclerViewHolder(v1);
+
+
+                break;
+            case BOARD_MEMBER:
+                View v2 = inflater.inflate(R.layout.item_board_members, parent, false);
+                viewHolder = new AboutMemberRecyclerViewHolder(v2);
+                break;
+        }
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(AboutMemberRecyclerViewHolder holder, int position) {
+
+
+        switch (holder.getItemViewType()) {
+            case TEXT_HEDER:
+                AboutMemberRecyclerViewHolder vh1 = (AboutMemberRecyclerViewHolder) holder;
+                configureViewHolder1(vh1, position);
+                break;
+            case BOARD_MEMBER:
+                AboutMemberRecyclerViewHolder vh2 = (AboutMemberRecyclerViewHolder) holder;
+                configureViewHolder2(vh2, position);
+                break;
+        }
+
+
+
+    }
+
+    private void configureViewHolder1(final AboutMemberRecyclerViewHolder vh1, int position) {
+        MemberPojo cPerson = members.get(position);
+
+
+        vh1.getMemberDescription().setText(cPerson.getPersonName());
+
+        vh1.getMemberImage().setVisibility(View.GONE);
+        vh1.getMemberExternalPostOffice().setVisibility(View.GONE);
+        vh1.getMemberDescriptionToogle().setVisibility(View.GONE);
+        vh1.getMemberSmartNaariPost().setVisibility(View.GONE);
+        vh1.getMemberName().setVisibility(View.GONE);
+    }
+
+    private void configureViewHolder2(AboutMemberRecyclerViewHolder vh2, int position) {
         MemberPojo cPerson = members.get(position);
 
         if (cPerson.getPhoto().equals("")){
-        Glide.with(mContext)
-                .load(R.drawable.nav_user_avatar_default)
-                .into(holder.getMemberImage());
+            Glide.with(mContext)
+                    .load(R.drawable.nav_user_avatar_default)
+                    .into(vh2.getMemberImage());
         }else {
             Glide.with(mContext)
                     .load(cPerson.getPhoto())
-                    .into(holder.getMemberImage());
+                    .into(vh2.getMemberImage());
         }
-        holder.getMemberName().setText(cPerson.getPersonName());
-        holder.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost() + "");
-        holder.getMemberDescription().setText(cPerson.getPersonDescription());
+        vh2.getMemberName().setText(cPerson.getPersonName());
+        vh2.getMemberSmartNaariPost().setText(cPerson.getSmartNaariPost() + "");
+        vh2.getMemberDescription().setText(cPerson.getPersonDescription());
 
-        final ExpandableTextView expandableTextView = holder.getMemberExternalPostOffice();
-        final ImageButton button = holder.getMemberDescriptionToogle();
+        final ExpandableTextView expandableTextView = vh2.getMemberExternalPostOffice();
+        final ImageButton button = vh2.getMemberDescriptionToogle();
         setExpandableText(expandableTextView, button);
         expandableTextView.setText(cPerson.getExternalPost() + "\n" + cPerson.getExternalOffice());
-
     }
 
     private void setExpandableText(final ExpandableTextView expandableTextView, final ImageButton buttonToggle) {
@@ -111,8 +177,5 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
 
     }
 
-    @Override
-    public int getItemCount() {
-        return members.size();
-    }
+
 }

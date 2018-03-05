@@ -23,30 +23,29 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvLBLaboutTeamMembersDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
-            android:padding="@dimen/default_padding"
-            android:text="@string/about_board_top_text"
-            android:background="@color/colorWhite"/>
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--&gt;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+        <!--<TextView-->
+            <!--android:id="@+id/tvLBLaboutTeamMembersDetails"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/spacing_small"-->
+            <!--android:padding="@dimen/default_padding"-->
+            <!--android:text="@string/about_board_top_text"-->
+            <!--android:background="@color/colorWhite" />-->
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvAboutBoardMembers"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true">
+            android:layout_height="wrap_content">
         </android.support.v7.widget.RecyclerView>
 
-        </LinearLayout>
-    </ScrollView>
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
 </LinearLayout>

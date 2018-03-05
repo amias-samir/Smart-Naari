@@ -41,7 +41,7 @@ public class PrivacyPolicyActivity extends BaseActivity {
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Privacy and Policy");
+        toolbar.setTitle("Privacy Policy and Terms");
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();

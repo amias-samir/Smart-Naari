@@ -246,9 +246,7 @@
         <activity
 
             android:name=".data_glossary.muth_busters.GlossaryListActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
 
 
         <meta-data
@@ -385,18 +383,33 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
+            android:name=".friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".friendsofsmartnaari.FriendsOfSmartNaariActivity" />
+        </activity>
+        <activity
             android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
+
         <activity
             android:name=".copyrightandprivacypolicy.SmartNariCopyrightActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
+        </activity>
+
+        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariVolunteersActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".friendsofsmartnaari.FriendsOfSmartNaariActivity" />
         </activity>
         <activity
             android:exported="true"

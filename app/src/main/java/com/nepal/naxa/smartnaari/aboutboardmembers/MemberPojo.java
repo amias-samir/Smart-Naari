@@ -25,6 +25,9 @@ public class MemberPojo {
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("type")
+    @Expose
+    private String type;
 
     public String getPersonName() {
         return personName;
@@ -73,6 +76,15 @@ public class MemberPojo {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }
