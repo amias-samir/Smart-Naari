@@ -671,7 +671,7 @@ public class MyCircleActivity extends BaseActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            MyCircleOnBoardingActivity.startSafe(MyCircleActivity.this);
+                            MyCircleOnBoardingActivity.startSafe(MyCircleActivity.this,false);
                             finish();
                         }
 

@@ -64,7 +64,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void startSafe(Context context) {
+    public static void startSafe(Context context,boolean coldStart) {
         Boolean hasAllRequredPermission = false;
         if (hasAllRequredPermission) {
             //not implemeted
@@ -73,7 +73,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             showMyCircleActivatedToast();
             context.startService(new Intent(context, PowerButtonService.class));
-
+            if(coldStart)context.startActivity(new Intent(context,BeautifulMainActivity.class));
         } else {
             start(context);
         }

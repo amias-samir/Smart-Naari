@@ -89,7 +89,7 @@ public class SettingsChangeActivity extends BaseActivity {
     public void startMyCircleService() {
         sessionManager.clearPowerButtonServicePreferences();
         sessionManager.isPowerButtonServiceRunning(true);
-        MyCircleOnBoardingActivity.startSafe(this);
+        MyCircleOnBoardingActivity.startSafe(this,false);
         btnEnableDisableMycircle.setText("Disable MyCircle");
 
     }
