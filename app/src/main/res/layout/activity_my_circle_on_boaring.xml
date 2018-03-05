@@ -40,12 +40,14 @@
         android:visibility="gone">
 
         <ImageView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tvSucessSetup"
             android:layout_centerHorizontal="true"
 
-            android:src="@drawable/ic_close_red" />
+            android:src="@drawable/thumb_up_outline"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvSucessSetup"
@@ -61,6 +63,8 @@
             android:textSize="@dimen/material_text_subhead" />
 
         <Button
+            android:background="@color/colorAccent"
+            android:id="@+id/btn_open_app"
             style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -122,6 +122,7 @@ public class TextViewUtils {
         private String text;
 
         public GotoPrivacyPolicySpan(String text) {
+            Log.d("TextViewUtils", "GotoPrivacyPolicySpan: "+text);
             this.text = text;
         }
 

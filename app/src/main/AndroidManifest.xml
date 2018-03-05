@@ -244,8 +244,12 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-            android:name=".data_glossary.muth_busters.WordsWithDetailsActivity"
-            android:exported="true"></activity>
+
+            android:name=".data_glossary.muth_busters.GlossaryListActivity"
+            android:exported="true">
+
+        </activity>
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -282,7 +286,7 @@
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".data_glossary.muth_busters.WordsWithDetailsActivity" />
+                android:value=".data_glossary.muth_busters.GlossaryListActivity" />
         </activity>
         <activity
             android:name=".masakchamchu.lifecoachingtest.LifeCoachingTestActivity"

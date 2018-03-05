@@ -1,6 +1,7 @@
 package com.nepal.naxa.smartnaari.mycircle;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -29,6 +31,8 @@ import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
+import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -44,6 +48,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private CoordinatorLayout coordinatorLayout;
     private RelativeLayout layoutVideo, layoutConfigComplete, layoutThankYou;
     private ImageButton btnCloseVideoLayout;
+    private Button btnOpenApp;
     private VerticalStepperFormLayout stepper;
 
 
@@ -66,6 +71,14 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 videoLayoutVisiblity(false);
             }
         });
+
+        btnOpenApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyCircleOnBoardingActivity.this, BeautifulMainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -77,6 +90,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         layoutVideo = (RelativeLayout) findViewById(R.id.layout_video);
         layoutConfigComplete = (RelativeLayout) findViewById(R.id.layout_config_complete);
         btnCloseVideoLayout = (ImageButton) findViewById(R.id.btn_close_video_layout);
+        btnOpenApp = (Button) findViewById(R.id.btn_open_app);
         layoutThankYou = (RelativeLayout) findViewById(R.id.layout_thank_you);
     }
 
@@ -145,13 +159,9 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 "Allow " + getString(R.string.app_name) + " to overlay over other apps"};
 
         String overlayInstruction = "\n\nPress continue and perform the following steps\n\n" +
-                "1.Choose " +
-                getString(R.string.app_name) +
-                " From The list." +
+                "1.Turn on \'Permit drawing over other app\' item " +
                 "\n\n" +
-                "2.Turn on \'Permit drawing over other app\' item " +
-                "\n\n" +
-                "3. Press back button to return to Setup Screen";
+                "2. Press back button to return to Setup Screen";
 
 
         String[] subtitles = {"Press continue when you are ready",
@@ -174,8 +184,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                         showPermissionExplanationDialog();
                         break;
                     case 4:
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:" + getPackageName()));
+                        @SuppressLint("InlinedApi")
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
                         startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
                         break;
 
@@ -188,6 +198,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
             @Override
             public void sendData() {
                 configCompleteLayoutVisiblity(true);
+                startService(new Intent(MyCircleOnBoardingActivity.this, PowerButtonService.class));
+
             }
         }, this)
                 .primaryColor(colorPrimary)
@@ -197,7 +209,6 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 .displayBottomNavigation(false)
                 .init();
     }
-
 
 
     private void showPermissionExplanationDialog() {
@@ -247,6 +258,21 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                     stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");
                 }
                 break;
+        }
+    }
+
+
+    @SuppressLint("NewApi")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
+            if (Settings.canDrawOverlays(this)) {
+                stepper.setStepAsCompleted(4);
+                stepper.setStepSubtitle(2, "This step has been completed. Press Continue");
+                stepper.goToNextStep();
+            } else {
+                stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");
+            }
         }
     }
 

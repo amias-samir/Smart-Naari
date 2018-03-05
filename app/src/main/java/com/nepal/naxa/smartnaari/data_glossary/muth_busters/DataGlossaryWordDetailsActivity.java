@@ -91,6 +91,13 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar.setTitle(wordsWithDetailsModel != null ? wordsWithDetailsModel.getTitle() : "Failed to load");
         toolbar.setTitle("");
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                onBackPressed();
+                return true;
+            }
+        });
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();
@@ -102,5 +109,10 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         }
     }
 
+        @Override
+    public void onBackPressed() {
+        // close view on back button pressed
+        super.onBackPressed();
+    }
 
 }
