@@ -111,8 +111,8 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         player.setSource(Uri.parse("http://naxa.com.np/smartnaari/android/smart_naari.mp4"));
 
 
-        String[] mySteps = {"Start Setup", "Allow SMS And Location Access ", "In Case of Emergency"};
-        String[] subtitles = {"Follow 4 steps to configure MyCircle",
+        String[] mySteps = {"Hello", "Allow SMS And Location Access ", "In Case of Emergency"};
+        String[] subtitles = {"Press continue when you are ready",
                 "Smart नारी needs access to SMS and Location Services to send location data to the people in your MyCircle. ",
                 "Allow smart नारी to overlay over other apps and notify your 'My Circle'"};
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -121,19 +121,17 @@ public class PermissionActivity extends BaseActivity implements VerticalStepperF
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
 
-        // Finding the view
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.vertical_stepper_form);
 
-
-        // Setting up and initializing the form
-        VerticalStepperFormLayout.Builder.newInstance(verticalStepperForm, mySteps, this, this)
+        VerticalStepperFormLayout
+                .Builder
+                .newInstance(verticalStepperForm, mySteps, this, this)
                 .primaryColor(colorPrimary)
                 .primaryDarkColor(colorPrimaryDark)
                 .stepsSubtitles(subtitles)
                 .showVerticalLineWhenStepsAreCollapsed(true)
                 .displayBottomNavigation(false)
                 .init();
-
     }
 
     @Override

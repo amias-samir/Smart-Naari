@@ -10,6 +10,8 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleOnBoardingActivity;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.mycircle.activitydetect.ActivityRecognizedService;
 import com.nepal.naxa.smartnaari.mycircle.location.GeoPointService;
@@ -28,7 +30,7 @@ public class SettingsChangeActivity extends BaseActivity {
     @BindView(R.id.settings_enable_disable_mycircle)
     Button btnEnableDisableMycircle;
     SessionManager sessionManager;
-    AppDataManager appDataManager ;
+    AppDataManager appDataManager;
     @BindView(R.id.settings_user_logout)
     Button btnUserLogout;
 
@@ -85,8 +87,7 @@ public class SettingsChangeActivity extends BaseActivity {
     public void startMyCircleService() {
         sessionManager.clearPowerButtonServicePreferences();
         sessionManager.isPowerButtonServiceRunning(true);
-        Intent intent = new Intent(SettingsChangeActivity.this, PermissionActivity.class);
-        startActivity(intent);
+        MyCircleOnBoardingActivity.startSafe(this);
 //        btnEnableDisableMycircle.setText("Disable MyCircle");
 
     }

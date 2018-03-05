@@ -23,6 +23,7 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleOnBoardingActivity;
 import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
@@ -79,7 +80,7 @@ public class LoginActivity extends BaseActivity {
         myCircleData = new MyCircleData();
 
 //        change all username text to lower case only
-        tvUserName.setFilters(new InputFilter[] {
+        tvUserName.setFilters(new InputFilter[]{
                 new InputFilter.AllCaps() {
                     @Override
                     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -217,8 +218,8 @@ public class LoginActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        Intent intent = new Intent(LoginActivity.this, PermissionActivity.class);
-                        startActivity(intent);
+
+                        MyCircleOnBoardingActivity.startSafe(LoginActivity.this);
                         finish();
                     }
 
