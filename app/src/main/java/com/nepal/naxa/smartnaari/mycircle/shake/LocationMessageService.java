@@ -104,11 +104,10 @@ public class LocationMessageService extends Service implements LocationListener 
         names = new ArrayList<>();
 
         tryDisableKeyguard();
+        showView();
 
         reportProvidersStatus();
         requestLocationUpdates();
-
-        showView();
 
         startCountDown(localTextView);
 
@@ -133,7 +132,19 @@ public class LocationMessageService extends Service implements LocationListener 
 
         if (!gpsOn && !networkOn) {
             Log.d(TAG, "onCreate: No network Provider Present");
+            sendSMSWithoutGPS();
         }
+    }
+
+    private void sendSMSWithoutGPS() {
+        localTextView.setText("GPS is turned off, sending SMS anyway");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                prepareToSMS();
+            }
+        },TimeUnit.SECONDS.toMillis(5));
+
     }
 
     @SuppressLint("MissingPermission")
@@ -154,6 +165,7 @@ public class LocationMessageService extends Service implements LocationListener 
         this.windowManager = ((WindowManager) getSystemService(WINDOW_SERVICE));
         this.inflater = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE));
         this.mView = ((ViewGroup) this.inflater.inflate(R.layout.layout_notification_msg, null));
+        this.mView.bringToFront();
 
         this.params = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 2010, 4194600, -3);
         this.params.y = 50;

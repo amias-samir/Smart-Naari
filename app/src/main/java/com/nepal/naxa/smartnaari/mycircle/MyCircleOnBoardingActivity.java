@@ -29,6 +29,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.afollestad.easyvideoplayer.EasyVideoCallback;
+import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
@@ -53,6 +55,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private Button btnOpenApp;
     private VerticalStepperFormLayout stepper;
     private Snackbar snackbar;
+    private EasyVideoPlayer player;
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -82,6 +85,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         setContentView(R.layout.activity_my_circle_on_boaring);
         bindUI();
         setupSwipeCard();
+        setupVideo();
 
         btnCloseVideoLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +114,16 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         btnCloseVideoLayout = (ImageButton) findViewById(R.id.btn_close_video_layout);
         btnOpenApp = (Button) findViewById(R.id.btn_open_app);
         layoutThankYou = (RelativeLayout) findViewById(R.id.layout_thank_you);
+        player = (EasyVideoPlayer) findViewById(R.id.player);
     }
 
     private void videoLayoutVisiblity(boolean show) {
         layoutVideo.setVisibility(show ? View.VISIBLE : View.GONE);
         setupCard.setVisibility(show ? View.GONE : View.VISIBLE);
+
+        if (!show) {
+            player.pause();
+        }
     }
 
     private void configCompleteLayoutVisiblity(boolean show) {
@@ -248,6 +257,57 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 }).show();
     }
 
+
+    private void setupVideo() {
+
+        player.setCallback(new EasyVideoCallback() {
+            @Override
+            public void onStarted(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPaused(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPreparing(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onPrepared(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onBuffering(int percent) {
+
+            }
+
+            @Override
+            public void onError(EasyVideoPlayer player, Exception e) {
+
+            }
+
+            @Override
+            public void onCompletion(EasyVideoPlayer player) {
+
+            }
+
+            @Override
+            public void onRetry(EasyVideoPlayer player, Uri source) {
+
+            }
+
+            @Override
+            public void onSubmit(EasyVideoPlayer player, Uri source) {
+
+            }
+        });
+        player.setSource(Uri.parse("http://naxa.com.np/smartnaari/android/smart_naari.mp4"));
+    }
 
     private View createDummyView() {
         return new LinearLayout(getApplicationContext());
