@@ -21,6 +21,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -334,7 +335,7 @@ public class LocationMessageService extends Service implements LocationListener 
     private void sendSMS(String message, String number) {
 
         Timber.i("SMS sent to %s", number);
-//         SmsManager.getDefault().sendTextMessage(mobileNoToSendSMS, null, LocationMessageService.this.msg, null, null);
+        SmsManager.getDefault().sendTextMessage(number, null, message, null, null);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         removeContact();
         if (contactNumber.size() <= 0) {

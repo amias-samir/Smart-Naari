@@ -80,14 +80,14 @@ public class LoginActivity extends BaseActivity {
         myCircleData = new MyCircleData();
 
 //        change all username text to lower case only
-        tvUserName.setFilters(new InputFilter[]{
-                new InputFilter.AllCaps() {
-                    @Override
-                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                        return String.valueOf(source).toLowerCase();
-                    }
-                }
-        });
+//        tvUserName.setFilters(new InputFilter[]{
+//                new InputFilter.AllCaps() {
+//                    @Override
+//                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+//                        return String.valueOf(source).toLowerCase();
+//                    }
+//                }
+//        });
     }
 
     private void setupUI() {

@@ -141,18 +141,6 @@ public class SignUpActivity extends Activity {
 
         setUpSpinners();
 
-
-//change all letter to lower case
-        etUserName.setFilters(new InputFilter[]{
-                new InputFilter.AllCaps() {
-                    @Override
-                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                        return String.valueOf(source).toLowerCase();
-                    }
-                }
-        });
-
-
         textViewTermsAndCondition.setText("By Signing up, you are indicating that you agree to the Privacy Policy and Terms.");
         List<String> wordlist = new ArrayList<>();
         wordlist.add("Privacy Policy");
