@@ -80,7 +80,7 @@ public class FriendsOfSmartNaariVolunteersActivity extends AppCompatActivity {
             case R.id.tvAwantika:
                 ConstantData.isFromVolunteerFriends = true ;
                 Intent awentikaIntent = new Intent(FriendsOfSmartNaariVolunteersActivity.this, AboutMembersActivity.class);
-                awentikaIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "2");
+                awentikaIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "3");
                 startActivity(awentikaIntent);
                 break;
 
@@ -90,14 +90,14 @@ public class FriendsOfSmartNaariVolunteersActivity extends AppCompatActivity {
             case R.id.tvMadhuri:
                 ConstantData.isFromVolunteerFriends = true ;
                 Intent madhuriIntent = new Intent(FriendsOfSmartNaariVolunteersActivity.this, AboutMembersActivity.class);
-                madhuriIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "1");
+                madhuriIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "2");
                 startActivity(madhuriIntent);
                 break;
 
             case R.id.tvPoonam:
                 ConstantData.isFromVolunteerFriends = true ;
                 Intent poonamIntent = new Intent(FriendsOfSmartNaariVolunteersActivity.this, AboutMembersActivity.class);
-                poonamIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "0");
+                poonamIntent.putExtra(ConstantData.KEY_RECYCLER_POS, "1");
                 startActivity(poonamIntent);
                 break;
         }

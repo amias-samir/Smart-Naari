@@ -2,15 +2,18 @@ package com.nepal.naxa.smartnaari.aboutboardmembers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -62,9 +65,10 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
     private void setAboutMembersRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.rvAboutBoardMembers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.setNestedScrollingEnabled(false);
         adapter = new AboutMembersRecylerViewAdapter(this);
         recyclerView.setAdapter(adapter);
+
 
     }
 
@@ -111,13 +115,32 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
 
 
         if(ConstantData.isFromVolunteerFriends){
+//            RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getApplicationContext()) {
+//                @Override protected int getVerticalSnapPreference() {
+//                    return LinearSmoothScroller.SNAP_TO_START;
+//                }
+//            };
+//            smoothScroller.setTargetPosition(recyclerPosition);
+//            recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
 
-            recyclerView.getLayoutManager().scrollToPosition(recyclerPosition);
+                    new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                recyclerView.setNestedScrollingEnabled(true);
+                recyclerView.scrollToPosition(recyclerPosition);
+                Log.d(TAG, "run: recyclerPosition "+recyclerPosition);
+//                recyclerView.setNestedScrollingEnabled(false);
+            }
+        }, 200);
+
             ConstantData.isFromVolunteerFriends = false;
+
         }
 
 
     }
+
+
 
     @Override
     public void onFileLoadError(String errorMsg) {

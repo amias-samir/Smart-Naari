@@ -1,11 +1,22 @@
 [
   {
+    "person_name": "The Smart नारी Team includes people from a variety of ages and backgrounds; single people, partners, husbands, wives, mothers, fathers and the all-important mother-in-law, all of whom share their experiences like our friends and enthusiasts, YOU, for a fuller understanding of the issues and pressures facing everyone today....",
+    "person_description": "",
+    "smart_naari_post": "",
+    "external_post": "",
+    "external_office": "",
+    "photo": "",
+    "type": "text_header"
+
+  },
+  {
     "person_name": "Poonam Thapa",
     "person_description": "\"For me, it\'s personal and has to do with the loss of my little sister. I am determined to help prevent gender-based violence through different approaches connecting women and men with fairness and respect, and to bring to all a variety of personally useful life skills at the touch of a button\".",
     "smart_naari_post": "Chair",
     "external_post": "Senior Global Health Consultant",
     "external_office": "Sexual and Reproductive Health, Gender, Inclusion and Community Systems and trained Life Coach.",
-    "photo": "http://naxa.com.np/smartnaari/android/poonam.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/poonam.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Madhuri Rana Singh",
@@ -13,7 +24,8 @@
     "smart_naari_post": "Vice Chair",
     "external_post": "Senior Specialist and Activist",
     "external_office": "Gender and Human Rights and trained counsellor",
-    "photo": ""
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Awantika Thapa",
@@ -21,7 +33,8 @@
     "smart_naari_post": "General Secretary",
     "external_post": "Program Officer",
     "external_office": "Media Advocacy Group",
-    "photo": "http://naxa.com.np/smartnaari/android/awantika.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/awantika.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Surakshya Sijapati",
@@ -29,7 +42,8 @@
     "smart_naari_post": "Treasurer",
     "external_post": "Homemaker",
     "external_office": "Student and Coordinator for Angalo \"Senior Lives Matter\"",
-    "photo": ""
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Arun Bhandari",
@@ -37,7 +51,8 @@
     "smart_naari_post": "Member",
     "external_post": "Geomatics Engineer",
     "external_office": "Co-Founder Naxa Pvt. Ltd.",
-    "photo": "http://naxa.com.np/smartnaari/android/arun.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/arun.jpg",
+    "type": "board_member"
   },
   {
     "person_name": "Bishal KC",
@@ -45,7 +60,8 @@
     "smart_naari_post": "Member",
     "external_post": "Technical Advisor, Senior Solution Architect",
     "external_office": "Founder of Data Nepal Pvt. Ltd.",
-    "photo": ""
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Rishesh KC",
@@ -53,7 +69,8 @@
     "smart_naari_post": "Member",
     "external_post": "Director",
     "external_office": "Ark Ventures, Shodhashala - Centre for Research and Policy Studies, Paradigm Communications PvLtd",
-    "photo": ""
+    "photo": "",
+    "type": "board_member"
   },
   {
     "person_name": "Uttam Pudasaini",
@@ -61,6 +78,7 @@
     "smart_naari_post": "Member",
     "external_post": "Geomatics Engineer",
     "external_office": "Co-Founder Naxa Pvt. Ltd.",
-    "photo": "http://naxa.com.np/smartnaari/android/uttam.jpg"
+    "photo": "http://naxa.com.np/smartnaari/android/uttam.jpg",
+    "type": "board_member"
   }
 ]
