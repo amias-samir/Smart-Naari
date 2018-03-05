@@ -81,13 +81,14 @@
         android:layout_height="200dp"
         android:padding="@dimen/spacing_medium"
         android:visibility="visible"
-        app:contentPadding="@dimen/spacing_medium"
+        app:contentPadding="@dimen/spacing_large"
         app:layout_anchorGravity="bottom"
         card_view:cardCornerRadius="4dp"
         card_view:cardUseCompatPadding="true">
 
 
         <TextView
+            android:textSize="@dimen/material_text_subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="6dp"

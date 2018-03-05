@@ -30,10 +30,12 @@ import android.widget.TextView;
 
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
+import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -50,12 +52,28 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private ImageButton btnCloseVideoLayout;
     private Button btnOpenApp;
     private VerticalStepperFormLayout stepper;
+    private Snackbar snackbar;
 
 
     @RequiresApi(Build.VERSION_CODES.M)
     public static void start(Context context) {
         Intent intent = new Intent(context, MyCircleOnBoardingActivity.class);
         context.startActivity(intent);
+    }
+
+    public static void startSafe(Context context) {
+        Boolean hasAllRequredPermission = false;
+        if (hasAllRequredPermission) {
+            //not implemeted
+        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            showMyCircleActivatedToast();
+        } else {
+            start(context);
+        }
+    }
+
+    private static void showMyCircleActivatedToast() {
+        new ToastUtils().info(SmartNaari.getAppContext(), "My Circle Activated");
     }
 
     @Override
@@ -159,7 +177,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 "Allow " + getString(R.string.app_name) + " to overlay over other apps"};
 
         String overlayInstruction = "\n\nPress continue and perform the following steps\n\n" +
-                "1.Turn on \'Permit drawing over other app\' item " +
+                "1. Turn on \'Permit drawing over other app\' item " +
                 "\n\n" +
                 "2. Press back button to return to Setup Screen";
 
@@ -188,7 +206,9 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
                         startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
                         break;
-
+                    case 5:
+                        snackbar.dismiss();
+                        break;
                     default:
                         stepper.setActiveStepAsCompleted();
 
@@ -197,6 +217,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
             @Override
             public void sendData() {
+                showMyCircleActivatedToast();
                 configCompleteLayoutVisiblity(true);
                 startService(new Intent(MyCircleOnBoardingActivity.this, PowerButtonService.class));
 
@@ -212,6 +233,11 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
 
     private void showPermissionExplanationDialog() {
+
+        if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            stepper.setActiveStepAsCompleted();
+            return;
+        }
 
         DialogFactory.createActionDialog(MyCircleOnBoardingActivity.this, "Allow Permission", "Press allow on upcoming dialogs ")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -248,19 +274,29 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case CODE_REQUEST_PERMISSIONS:
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+                if (allPermissionGranted(grantResults)) {
 
                     stepper.setStepAsCompleted(2);
                     stepper.setStepSubtitle(2, "This step has been completed. Press Continue");
                     stepper.goToNextStep();
                 } else {
                     stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");
+                    stepper.goToPreviousStep();
                 }
                 break;
         }
     }
 
+
+    private boolean allPermissionGranted(int[] grantResults) {
+
+        for (int grantResult : grantResults) {
+            if (grantResult == PackageManager.PERMISSION_DENIED) return false;
+        }
+
+        return true;
+    }
 
     @SuppressLint("NewApi")
     @Override
@@ -272,6 +308,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 stepper.goToNextStep();
             } else {
                 stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");
+                stepper.goToPreviousStep();
             }
         }
     }
@@ -279,9 +316,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private void showVideoSnack() {
 
 
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Confused? Or Want to know more? Watch this video", Snackbar.LENGTH_INDEFINITE);
-
-
+        snackbar = Snackbar.make(coordinatorLayout, "Confused? Or Want to know more? Watch this video", Snackbar.LENGTH_INDEFINITE);
         TextView tv = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);
 
