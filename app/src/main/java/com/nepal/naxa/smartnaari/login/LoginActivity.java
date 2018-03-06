@@ -220,6 +220,7 @@ public class LoginActivity extends BaseActivity {
                     } else {
 
                         MyCircleOnBoardingActivity.startSafe(LoginActivity.this);
+
                         finish();
                     }
 
