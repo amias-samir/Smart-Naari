@@ -179,7 +179,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(26.3484, 80.0509), new LatLng(30.4458,88.2047));
 
             map.setLatLngBoundsForCameraTarget(DISTRICT);
-            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 0);
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 2);
             map.moveCamera(cu);
 
             map.getUiSettings().setZoomControlsEnabled(true);

@@ -42,7 +42,8 @@ public class PowerButtonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        showForegroundNotification("MyCircle is active", "Hold power button & shake phone to send SMS");
+        showForegroundNotification("MyCircle is active"
+                , "Hold power button & shake phone to send SMS");
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.isPowerButtonServiceRunning(true);
 
