@@ -368,8 +368,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
             if (Settings.canDrawOverlays(this)) {
-                stepper.setStepAsCompleted(4);
-                stepper.setStepSubtitle(4, "This step has been completed. Press Continue");
+                stepper.setActiveStepAsCompleted();
+//              stepper.setStepSubtitle(4, "This step has been completed. Press Continue");
                 stepper.goToNextStep();
             } else {
                 stepper.setActiveStepAsUncompleted("Sorry, cannot continue when permission is denied");

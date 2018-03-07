@@ -28,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
@@ -109,10 +110,17 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         }
     }
 
-        @Override
+    @Override
     public void onBackPressed() {
         // close view on back button pressed
         super.onBackPressed();
     }
+
+    @OnClick(R.id.btn_goto_glossary)
+    public void onGotoGlossaryClick() {
+        Intent intent = new Intent(this, GlossaryListActivity.class);
+        startActivity(intent);
+    }
+
 
 }
