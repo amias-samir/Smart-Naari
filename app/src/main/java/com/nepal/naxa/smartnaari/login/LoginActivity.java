@@ -218,7 +218,7 @@ public class LoginActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        
+
                         MyCircleOnBoardingActivity.startSafe(LoginActivity.this,true);
                         finish();
                     }

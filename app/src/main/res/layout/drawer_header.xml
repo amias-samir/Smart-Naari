@@ -50,7 +50,7 @@
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/spacing_large"
         android:elevation="4dp"
-        tools:src="@drawable/nav_user_avatar_default"
+        tools:src="@drawable/default_avatar"
         tools:finalHeight="@dimen/image_final_width"
         tools:finalYPosition="1dp"
         tools:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"

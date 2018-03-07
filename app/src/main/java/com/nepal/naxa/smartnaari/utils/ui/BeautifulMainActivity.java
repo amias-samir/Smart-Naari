@@ -283,7 +283,7 @@ public class BeautifulMainActivity extends BaseActivity
         btnNavMessage = (ImageButton) headerview.findViewById(R.id.btn_nav_user_message);
         btnNavUserProfileUpdate = (ImageButton) headerview.findViewById(R.id.btn_nav_user_profile_update);
         ivNavUserAvatar = (CircleImageView) headerview.findViewById(R.id.iv_nav_user_avatar);
-        ivNavUserAvatar.setImageResource(R.drawable.nav_user_avatar_default);
+        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);
 
