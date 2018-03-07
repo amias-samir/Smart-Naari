@@ -33,6 +33,7 @@ import com.afollestad.easyvideoplayer.EasyVideoCallback;
 import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
+import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.mycircle.common.BaseActivity;
 import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
@@ -56,6 +57,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private VerticalStepperFormLayout stepper;
     private Snackbar snackbar;
     private EasyVideoPlayer player;
+    private TextView tvSwipeCard;
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -64,7 +66,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void startSafe(Context context,boolean coldStart) {
+    public static void startSafe(Context context, boolean coldStart) {
         Boolean hasAllRequredPermission = false;
         if (hasAllRequredPermission) {
             //not implemeted
@@ -73,7 +75,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             showMyCircleActivatedToast();
             context.startService(new Intent(context, PowerButtonService.class));
-            if(coldStart)context.startActivity(new Intent(context,BeautifulMainActivity.class));
+            if (coldStart) context.startActivity(new Intent(context, BeautifulMainActivity.class));
         } else {
             start(context);
         }
@@ -90,6 +92,10 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         bindUI();
         setupSwipeCard();
         setupVideo();
+
+
+        String firstName = new SessionManager(this).getUser().getFirstName();
+        tvSwipeCard.setText(getString(R.string.setup_mycircle, firstName));
 
         btnCloseVideoLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +125,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         btnOpenApp = (Button) findViewById(R.id.btn_open_app);
         layoutThankYou = (RelativeLayout) findViewById(R.id.layout_thank_you);
         player = (EasyVideoPlayer) findViewById(R.id.player);
+        tvSwipeCard = (TextView) findViewById(R.id.tv_swipe_card);
     }
 
     private void videoLayoutVisiblity(boolean show) {
@@ -183,8 +190,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
 
-        String[] mySteps = {"Hello",
-                "An Explanation",
+        String[] mySteps = {"Setup",
+                "Explanation",
                 "Allow SMS And Location Access",
                 "Activate Shake SMS",
                 "Allow " + getString(R.string.app_name) + " to overlay over other apps"};
@@ -196,7 +203,7 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
 
         String[] subtitles = {"Press continue when you are ready",
-                "In Case of Emergency, Smart नारी needs access to SMS and Location Services on your phone to send location data to the people in your MyCircle.",
+                "In case of an emergency Smart नारी needs to access SMS and location on your phone to send request for help to the people in your 'MyCircle'",
                 "",
                 "You can hold the power button and shake however you need to allow smart नारी to overlay over other apps and notify your 'My Circle'" +
                         "\n" + overlayInstruction,};
@@ -215,9 +222,11 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                         showPermissionExplanationDialog();
                         break;
                     case 4:
-                        @SuppressLint("InlinedApi")
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
-                        startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            @SuppressLint("InlinedApi")
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+                            startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
+                        }
                         break;
                     case 5:
                         snackbar.dismiss();
