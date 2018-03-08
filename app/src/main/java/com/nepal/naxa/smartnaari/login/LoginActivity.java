@@ -4,11 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -88,6 +91,30 @@ public class LoginActivity extends BaseActivity {
 //                    }
 //                }
 //        });
+
+
+        tvUserPassword.setInputType( InputType.TYPE_TEXT_VARIATION_URI ); // optional - sets the keyboard to URL mode
+// kill keyboard when enter is pressed
+        tvUserPassword.setOnKeyListener(new View.OnKeyListener()
+        {
+            /**
+             * This listens for the user to press the enter button on
+             * the keyboard and then hides the virtual keyboard
+             */
+            public boolean onKey(View arg0, int arg1, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ( (event.getAction() == KeyEvent.ACTION_DOWN  ) &&
+                        (arg1           == KeyEvent.KEYCODE_ENTER)   )
+                {
+//                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(tvUserPassword.getWindowToken(), 0);
+                    userLogin();
+
+                    return true;
+                }
+                return false;
+            }
+        } );
     }
 
     private void setupUI() {
@@ -107,35 +134,40 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btnLogin:
 
-                hideKeyboard();
-
-                String username = tvUserName.getText().toString();
-                String password = tvUserPassword.getText().toString();
-
-                if (TextUtils.isEmpty(username)) {
-                    showErrorToast("Username is empty");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    showErrorToast("Password is empty");
-                    return;
-                }
-                if (isNetworkDisconnected()) {
-                    showErrorToast("Device is offline.");
-                    return;
-                }
-
-                showLoading("Please Wait!");
-                convertDataToJSON();
-                sendDataToServer();
-
-
+                userLogin();
                 break;
+
             case R.id.btnLinkToSignup:
                 startActivity(new Intent(this, SignUpActivity.class));
                 break;
         }
+    }
+
+
+    private void userLogin (){
+
+        hideKeyboard();
+
+        String username = tvUserName.getText().toString();
+        String password = tvUserPassword.getText().toString();
+
+        if (TextUtils.isEmpty(username)) {
+            showErrorToast("Username is empty");
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            showErrorToast("Password is empty");
+            return;
+        }
+        if (isNetworkDisconnected()) {
+            showErrorToast("Device is offline.");
+            return;
+        }
+
+        showLoading("Please Wait!");
+        convertDataToJSON();
+        sendDataToServer();
     }
 
 
