@@ -463,7 +463,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="awantika_thapa">Awantika Thapa</string>
     <string name="krishangi_basnyat">Krishangi Basnyat</string>
     <string name="madhuri_rana_singh">Madhuri Rana Singh</string>
-    <string name="setup_mycircle"><b>Hello</b> \nWe need to configure your device. Once, that is complete. You will be able to use \'MyCircle\'</string>
+    <string name="setup_mycircle"><b>Hello</b> %s, \nWe need to configure your device. Once, that is complete. You will be able to use your \'MyCircle\'</string>
     <string name="msg_swipe_this_card">SWIPE THIS CARD TO START SETUP</string>
 
     ?>

@@ -115,6 +115,7 @@ dependencies {
 
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     implementation 'com.afollestad:easyvideoplayer:0.3.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
     implementation 'nl.dionsegijn:konfetti:1.1.0'
 
