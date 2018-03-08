@@ -87,8 +87,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
-    @BindView(R.id.spinner_ma_chup_basdina_no_consent)
-    Spinner spinnerNoConsent;
     @BindView(R.id.radio_machupbasdina_victim_myself)
     RadioButton radioVictimMyself;
     @BindView(R.id.radio_machupbasdina_victim_family_members)
