@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
@@ -23,6 +24,10 @@ public class DataOnGBVActivity extends BaseActivity {
     ImageView ivDataNepal;
     @BindView(R.id.iv_nepal_monitor)
     ImageView ivNepalMonitor;
+    @BindView(R.id.tv_data_nepal)
+    TextView tvDataNepal;
+    @BindView(R.id.tv_nepal_monitor)
+    TextView tvNepalMonitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,4 +92,21 @@ public class DataOnGBVActivity extends BaseActivity {
         }
     }
 
+    @OnClick({R.id.tv_data_nepal, R.id.tv_nepal_monitor})
+    public void onTextViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_data_nepal:
+                Intent dataNepalIntent = new Intent(DataOnGBVActivity.this, DefaultWebpageLoadActivity.class);
+                dataNepalIntent.putExtra("toolbar_title", "Data Nepal");
+                dataNepalIntent.putExtra("url", "https://www.datanepal.com/");
+                startActivity(dataNepalIntent);
+                break;
+            case R.id.tv_nepal_monitor:
+                Intent nepalMonitorIntent = new Intent(DataOnGBVActivity.this, DefaultWebpageLoadActivity.class);
+                nepalMonitorIntent.putExtra("toolbar_title", "Nepal Monitor");
+                nepalMonitorIntent.putExtra("url", "https://nepalmonitor.org/");
+                startActivity(nepalMonitorIntent);
+                break;
+        }
+    }
 }

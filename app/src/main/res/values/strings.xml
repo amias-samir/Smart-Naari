@@ -465,6 +465,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="madhuri_rana_singh">Madhuri Rana Singh</string>
     <string name="setup_mycircle"><b>Hello</b> %s, \nWe need to configure your device. Once, that is complete. You will be able to use your \'MyCircle\'</string>
     <string name="msg_swipe_this_card">SWIPE THIS CARD TO START SETUP</string>
+    <string name="nepal_monitor">Nepal Monitor</string>
+    <string name="data_nepal">Data Nepal</string>
 
     ?>
 </resources>
