@@ -18,6 +18,6 @@
     android:background="@android:color/white"
     android:textSize="@dimen/material_text_body2"
     android:id="@+id/section_text_child"
-    android:text="test test" />
+    android:text="" />
 
 <!--</android.support.v7.widget.CardView>-->

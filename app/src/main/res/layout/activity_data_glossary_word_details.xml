@@ -14,7 +14,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_layout_header">
+        android:layout_below="@id/toolbar_layout_header"
+        android:layout_above="@+id/btn_goto_glossary">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
