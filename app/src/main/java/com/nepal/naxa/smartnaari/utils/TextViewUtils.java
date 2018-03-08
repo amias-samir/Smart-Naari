@@ -58,7 +58,7 @@ public class TextViewUtils {
         for (String word : wordlist) {
 
             String testText = fullText.toLowerCase(Locale.US);
-            String testTextToHighlight = "\\b" + word.toLowerCase(Locale.US) + "\\b";
+            String testTextToHighlight =  word.toLowerCase(Locale.US);
 
             int startingIndex = testText.indexOf(testTextToHighlight);
             int endingIndex = startingIndex + testTextToHighlight.length();
@@ -85,7 +85,7 @@ public class TextViewUtils {
             if (textItem != null && !textItem.trim().equals("") && !textItem.equalsIgnoreCase("other")) {
                 //for counting start/end indexes
                 String testText = fullText.toLowerCase(Locale.US);
-                String testTextToBold = textItem.toLowerCase(Locale.US);
+                String testTextToBold =  textItem.toLowerCase(Locale.US) ;
                 int startingIndex = testText.indexOf(testTextToBold);
                 int endingIndex = startingIndex + testTextToBold.length();
 

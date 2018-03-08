@@ -13,7 +13,7 @@
     <string name="my_circle">My Circle</string>
     <string name="about_smart_naari">About Smart नारी</string>
     <string name="meet_the_board">Meet The Team</string>
-    <string name="sn_enthusiasts">Friends Of Smart नारी</string>
+    <string name="sn_enthusiasts">Acknowledging Friends</string>
     <string name="celebrating_professionals">Celebrating Professionals</string>
     <string name="glossary_of_terms">Glossary</string>
     <string name="data_on_gender_based_violence">Data on Gender and GBV</string>
@@ -348,7 +348,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
            <![CDATA[
 <p><strong> Last Update: 18 March 2018 </strong></p>
 <p> </p>
-<p>Smart Naari trusts that the information provided by you during registration is correct. In turn we respect the privacy of our mobile application users, hereby referred to as the App.</p>
+<p>Smart नारी trusts that the information provided by you during registration is correct. In turn we respect the privacy of our mobile application users, hereby referred to as the App.</p>
 <p> </p>
 <p>This Privacy Policy and Terms, hereby referred to as PPT, explains how we collect, use and safeguard your personal information when you visit the App. This means we ensure that all personal information are regarded as confidential and never made public without your consent.  </p>
 <p> </p>
@@ -361,31 +361,31 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 <p>The App is available freely in authorised app stores. It offers free download and allows for user registration and thus collects your personal information, the latter hereby referred to as the “user data.”  However, any functions that require phone calls, text messaging and mobile data will be subject to carrier charges. Users will be asked for permission beforehand for these kind of usage.</p>
 <p> </p>
 <ol>
-  <li>1. <font color = "blue"> What specific user data do we collect?</font></li>
+  <li>1. <font color = "red"> What specific user data do we collect?</font></li>
 </ol>
 <p> </p>
 <p>Your full name, email address, mobile number, your birth date and address as well as device ID (IMEI number) along with the names and mobile numbers of persons you have included in your My Circle or any other groups you may create therein.   </p>
 <p> </p>
 <ol>
-<li>2. <font color = "blue">Why are we collecting the user data?</font></li>
+<li>2. <font color = "red">Why are we collecting the user data?</font></li>
 </ol>
 <p> </p>
 <p>The primary reasons for this engagement is to a) ensure your safety and security i.e. send SMS and locate your whereabouts in case of an emergency, b) link you directly to relevant public services of your choice and NGO support, c) give you access to our life coaching and counselling experts and d) analyse your preferences for various features of the App. We collect user data for your continued engagement with the App.</p>
 <p> </p>
 <ol>
-<li>3. <font color = "blue">How will we utilize the user data</font></li>
+<li>3. <font color = "red">How will we utilize the user data</font></li>
 </ol>
 <p> </p>
 <p>We will utilize the user data for a) your safety and security as described above, b) identify your feedback on features as well as your preferences and c) conduct analysis of your use to generate statistics.</p>
 <p> </p>
 <ol>
-<li>4. <font color = "blue">Who will be collecting the data and have access to it</font></li>
+<li>4. <font color = "red">Who will be collecting the data and have access to it</font></li>
 </ol>
 <p> </p>
-<p>The Technical Team of Smart Nari will be confidentially holding all the user data collected by the App and also ensuring all the safeguards are in place.</p>
+<p>The Technical Team of Smart नारी will be confidentially holding all the user data collected by the App and also ensuring all the safeguards are in place.</p>
 <p> </p>
 <ol>
-<li>5. <font color = "blue">What rights do users of the App have regarding management of their own data</font></li>
+<li>5. <font color = "red">What rights do users of the App have regarding management of their own data</font></li>
 </ol>
 <p> </p>
 <p>Users of the App will be able to change their personal information and update their profile any time after registration. The App will ask for your permission/consent as and when required.   </p>
@@ -395,21 +395,21 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     </string>
     <string name="smart_naari_copyright">
         <![CDATA[
-<p><strong>Smart Naari Registration No: </strong>166760/073/074</p>
+<p><strong>Smart नारी Registration No: </strong>166760/073/074</p>
 <p><strong>Date of Registration: </strong>7 April, 2017</p>
-<p><strong>Smart Naari Pan No: </strong>605967919 </p>
+<p><strong>Smart नारी Pan No: </strong>605967919 </p>
 <p> </p>
-<p>Users are free to download and use the App for informational, educational and research purposes. Use of the original material and content of the App for printing, publication, training or dissemination without crediting or referencing Smart Naari will be considered as infringement of the copyright and intellectual property rights owned by Smart Naari. </p>
+<p>Users are free to download and use the App for informational, educational and research purposes. Use of the original material and content of the App for printing, publication, training or dissemination without crediting or referencing Smart नारी will be considered as infringement of the copyright and intellectual property rights owned by Smart नारी. </p>
 <p> </p>
-<p>Smart Naari, reserves all rights related to the following:    </p>
+<p>Smart नारी, reserves all rights related to the following:    </p>
 <p> </p>
-<p><strong>App Name:</strong> Smart Naari, Smart Nari and Smart Naari in Nepali </p>
-<p><strong>App Logo:</strong> Design and Colours</p>
-<p><strong>App Slogan:</strong> Tap it Stop it</p>
-<p><strong>App Design:</strong> Original name, logo, slogan, features, blogs, games and quizzes.</p>
-<p><strong>App Content:</strong> Title of original features and all original content and writing </p>
-<p><strong>App Photos:</strong> Original as marked </p>
-<p><strong>App Mapping:</strong> Original as marked</p>
+<p><strong>Name:</strong> Smart Naari, Smart Nari and Smart नारी </p>
+<p><strong>Logo:</strong> Design and Colours</p>
+<p><strong>Slogan:</strong> Tap it Stop it</p>
+<p><strong>Design:</strong> Original name, logo, slogan, features, blogs, games and quizzes.</p>
+<p><strong>Content:</strong> Title of original features and all original content and writing </p>
+<p><strong>Photos:</strong> Original as marked </p>
+<p><strong>Mapping:</strong> Original as marked</p>
 <p><br /><strong>Date of copyright: </strong>March 2018 onwards</p>
 ]]>
     </string>
@@ -436,7 +436,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
 ]]>
     </string>
     <string name="disclaimer">Disclaimer</string>
-    <string name="disclaimer_details">The App is intended for informational, educational and research purposes only. The authenticity of the report of abuse, violence and harm is the full responsibility of the App user. Smart Naari only provides information on relevant public services and NGO support and does not take responsibility for access and follow up by the user of the App. Smart Naari will not participate in any criminal investigation or punishment. \n\nThe App focuses on prevention approaches to gender based violence, violence against women and promotion of positive interventions. The information in the App is not intended for use in diagnosis, cure, mitigation, treatment, or prevention of diseases. Social workers and health care providers should exercise their own independent judgment should the user of the App be in touch with them. \n\nIn content of several features, definition is based on our research and understanding of the words and phrases for the use of this App. We have kept glossary as scientific, factual and brief as possible. This is however dependent upon the sources that we consider authentic to the best of our knowledge. \n \nSmart Naari is careful but does not claim full authenticity of information in the public domain that the App may use.  Service information has been taken from relevant official websites or provided by the organisation as acknowledged.</string>
+    <string name="disclaimer_details">The App is intended for informational, educational and research purposes only. The authenticity of the report of abuse, violence and harm is the full responsibility of the App user. Smart नारी only provides information on relevant public services and NGO support and does not take responsibility for access and follow up by the user of the App. Smart नारी will not participate in any criminal investigation or punishment. \n\nThe App focuses on prevention approaches to gender based violence, violence against women and promotion of positive interventions. The information in the App is not intended for use in diagnosis, cure, mitigation, treatment, or prevention of diseases. Social workers and health care providers should exercise their own independent judgment should the user of the App be in touch with them. \n\nIn content of several features, definition is based on our research and understanding of the words and phrases for the use of this App. We have kept glossary as scientific, factual and brief as possible. This is however dependent upon the sources that we consider authentic to the best of our knowledge. \n \nSmart नारी is careful but does not claim full authenticity of information in the public domain that the App may use.  Service information has been taken from relevant official websites or provided by the organisation as acknowledged.</string>
     <string name="showcase_no_consent_details">Permission or agreement is not given voluntarily by a person or persons to another person or persons. It always means the act in whatever form or type is unwelcome.</string>
     <string name="showcase_no_consent">No Consent</string>
     <string name="learn_more">learn More</string>

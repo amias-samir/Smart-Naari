@@ -326,7 +326,7 @@ public class BeautifulMainActivity extends BaseActivity
             Intent intent = new Intent(BeautifulMainActivity.this, GlossaryListActivity.class);
             startActivity(intent);
         }
-        if (menuItem.getTitle().equals("Friends Of Smart नारी")) {
+        if (menuItem.getTitle().equals("Acknowledging Friends")) {
             Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
             startActivity(intent);
         }
