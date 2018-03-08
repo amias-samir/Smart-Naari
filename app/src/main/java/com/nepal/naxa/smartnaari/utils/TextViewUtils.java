@@ -58,10 +58,10 @@ public class TextViewUtils {
         for (String word : wordlist) {
 
             String testText = fullText.toLowerCase(Locale.US);
-            String testTextToBold = word.toLowerCase(Locale.US);
+            String testTextToHighlight = "\\b" + word.toLowerCase(Locale.US) + "\\b";
 
-            int startingIndex = testText.indexOf(testTextToBold);
-            int endingIndex = startingIndex + testTextToBold.length();
+            int startingIndex = testText.indexOf(testTextToHighlight);
+            int endingIndex = startingIndex + testTextToHighlight.length();
 
             span.setSpan(new GotoPrivacyPolicySpan(word), startingIndex, endingIndex, 0);
 

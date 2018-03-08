@@ -52,7 +52,7 @@
     </ScrollView>
 
 
-    <View
+    <RelativeLayout
         android:id="@+id/btn_goto_glossary"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
@@ -64,11 +64,12 @@
         android:textAllCaps="true">
 
         <TextView
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:background="@color/colorWhite"
             android:gravity="center"
             android:text="Goto to glossary"
             android:textAllCaps="true" />
-    </View>
+    </RelativeLayout>
 
 </RelativeLayout>
