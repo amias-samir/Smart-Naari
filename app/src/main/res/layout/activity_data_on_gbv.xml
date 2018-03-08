@@ -49,7 +49,8 @@
                         android:layout_weight="4"
                         android:text="@string/data_nepal"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/default_padding"/>
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/material_text_subhead"/>
 
                 </LinearLayout>
 
@@ -89,7 +90,8 @@
                         android:layout_weight="4"
                         android:text="@string/nepal_monitor"
                         android:gravity="center_vertical"
-                        android:padding="@dimen/default_padding"/>
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/material_text_subhead"/>
 
                 </LinearLayout>
 
