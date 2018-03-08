@@ -143,11 +143,11 @@ public class SignUpActivity extends Activity {
 
         textViewTermsAndCondition.setText("By Signing up, you are indicating that you agree to the Privacy Policy and Terms.");
         List<String> wordlist = new ArrayList<>();
-        wordlist.add("Privacy Policy");
-        wordlist.add("Terms");
+        wordlist.add("Privacy Policy and Terms");
+//        wordlist.add("Terms");
         TextViewUtils.highlightWordToBlue(wordlist, textViewTermsAndCondition);
 
-        TextViewUtils.linkWordToPrivacyPolicy(new String[]{"Privacy Policy","Terms"}, textViewTermsAndCondition);
+        TextViewUtils.linkWordToPrivacyPolicy(new String[]{"Privacy Policy and Terms"}, textViewTermsAndCondition);
 
 
 
