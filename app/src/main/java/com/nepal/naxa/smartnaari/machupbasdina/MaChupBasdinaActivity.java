@@ -119,6 +119,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
+    private int screenWidth ;
 
     private String KEY_USER_ID = "u_id";
     private String KEY_USER_NAME = "u_name";
@@ -152,6 +153,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
         initSpinnerData();
 
 //        initialize tooltagget view
+     if(getScreenWidth() > 480){
+         screenWidth = getScreenWidth()/8;
+     }else {
+         screenWidth = getScreenWidth()/4;
+     }
         toolTargetViewConsentNoconsent();
         RunAnimation();
 
@@ -172,6 +178,14 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private int getScreenWidth(){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+
+        return width;
     }
 
 
@@ -247,44 +261,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
     }
 
-//    private void initTutoShow() {
-//        final TutoShowcase view = TutoShowcase.from(this)
-//                .setListener(new TutoShowcase.Listener() {
-//                    @Override
-//                    public void onDismissed() {
-//
-//
-//                        Toast.makeText(MaChupBasdinaActivity.this, "Tutorial dismissed", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .setContentView(R.layout.tuto_showcase)
-//                .setFitsSystemWindows(true)
-//                .on(R.id.con)
-//                .addCircle()
-//                .withBorder()
-//                .onClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Toast.makeText(MaChupBasdinaActivity.this, "Open Definition", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//
-//
-//                .show();
-//
-//
-//        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                view.dismiss();
-//            }
-//        });
 
 
     private void initToolbar() {
@@ -560,12 +536,16 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         // We load a drawable and create a location to show a tap target here
         // We need the display to get the width and height at this point in time
-        final Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
         // Load our little droid guy
         // Tell our droid buddy where we want him to appear
         final Rect droidTarget = new Rect(0, 0, 0, 0);
         // Using deprecated methods makes you look way cool
-        droidTarget.offset(display.getWidth() / 2, display.getHeight() / 2);
+        droidTarget.offset(width / 2, height / 2);
 
         final SpannableString sassyDesc = new SpannableString("It allows you to go back");
         sassyDesc.setSpan(new StyleSpan(Typeface.ITALIC), sassyDesc.length() - "somtimes".length(), sassyDesc.length(), 0);
@@ -613,7 +593,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 .dimColor(android.R.color.black)
                 .outerCircleColor(R.color.colorAccent)
                 .targetCircleColor(android.R.color.black)
-                .targetRadius(display.getWidth() / 4)
+//                .targetRadius(display.getWidth() / 4)
+                .targetRadius(screenWidth)
                 .transparentTarget(true)
                 .textColor(android.R.color.black)
                 .titleTextDimen(R.dimen.material_text_title)

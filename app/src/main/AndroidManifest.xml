@@ -234,9 +234,9 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".utils.ui.BeautifulMainActivity" />
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
         </activity>
         <activity android:name=".smartparent.SmartParentActivity">
             <meta-data
