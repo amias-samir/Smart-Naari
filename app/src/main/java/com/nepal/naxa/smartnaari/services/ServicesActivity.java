@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
+import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
@@ -191,7 +193,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
             map.setLatLngBoundsForCameraTarget(DISTRICT);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 2);
-            map.moveCamera(cu);
+//            map.moveCamera(cu);
+            map.animateCamera(cu);
+
 
             map.getUiSettings().setZoomControlsEnabled(true);
             map.getUiSettings().setScrollGesturesEnabled(true);
@@ -209,9 +213,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         try {
             final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(minLat, minLong), new LatLng(maxLat,maxLong));
 
+
+
             map.setLatLngBoundsForCameraTarget(DISTRICT);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 0);
-            map.moveCamera(cu);
+//            map.moveCamera(cu);
+            map.animateCamera(cu);
+
 
             map.getUiSettings().setZoomControlsEnabled(true);
             map.getUiSettings().setScrollGesturesEnabled(true);
@@ -466,11 +474,14 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
                 e.printStackTrace();
             }
+
+            districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
             districtLayer.addLayerToMap();
 
             districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(Feature feature) {
+
                     selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
 
                     removeMarkersIfPresent();
