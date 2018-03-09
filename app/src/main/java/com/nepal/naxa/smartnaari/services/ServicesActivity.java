@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
@@ -466,6 +467,22 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
             districtLayer.addLayerToMap();
+
+            districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
+                @Override
+                public void onFeatureClick(Feature feature) {
+                    selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
+
+                    removeMarkersIfPresent();
+                    FilterFromGeoJson filterFromGeoJson = new FilterFromGeoJson();
+                    filterFromGeoJson.execute();
+                    addMarker(selectedDistrict);
+
+
+                    Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
+
+                }
+            });
 
 
         } catch (IOException e) {
