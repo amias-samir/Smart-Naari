@@ -39,7 +39,6 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
     private String postUrl = "";
     private String toolbarTitle = "";
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +54,9 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
         toolbarTitle = intent.getStringExtra("toolbar_title");
         postUrl = intent.getStringExtra("url");
 
-        setupWindowAnimations();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setupWindowAnimations();
+        }
 
         initToolbar();
         loadWebURL();

@@ -66,6 +66,7 @@ import static java.lang.StrictMath.abs;
 public class ServicesActivity extends BaseActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private static final String TAG = "ServicesActivity";
+    private boolean isActivityFirstTimeLoad = true;
 
 
     @BindView(R.id.act_services_recycler_map_legend)
@@ -127,6 +128,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             Intent intent = getIntent();
             selectedDistrict = intent.getStringExtra(ConstantData.KEY_DISTRICT);
         }
+
+
     }
 
     private void initToolbar() {
@@ -152,10 +155,15 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         if (spinnerDistrictListServices.getSelectedItem().toString().equals("All District")) {
 
-            removeMarkersIfPresent();
-            setDistrictGeoJSON();
-            startCluster();
-            setNepalMapCamera();
+            if(isActivityFirstTimeLoad){
+                return;
+            }else {
+                removeMarkersIfPresent();
+                setDistrictGeoJSON();
+                startCluster();
+                setNepalMapCamera();
+            }
+
 
 
         } else {
@@ -171,6 +179,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         }
 
+
+        isActivityFirstTimeLoad = false ;
 
     }
 
@@ -289,7 +299,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
             }
         } else {
-            startCluster();
+
+//            startCluster();
 
         }
 //        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
@@ -455,6 +466,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
             districtLayer.addLayerToMap();
+
+
         } catch (IOException e) {
             Log.d(TAG, "Error ! While Applying GeoJSON to map /n" + e);
             e.printStackTrace();
