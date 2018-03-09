@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingEnd="@dimen/spacing_medium"
-    android:paddingStart="@dimen/spacing_medium"
-    android:paddingTop="@dimen/spacing_small">
+    android:paddingStart="@dimen/spacing_medium">
 
     <ImageView
         android:id="@+id/iv_services_legend_marker"
