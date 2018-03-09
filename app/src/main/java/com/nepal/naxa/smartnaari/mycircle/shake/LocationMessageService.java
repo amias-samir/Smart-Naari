@@ -32,7 +32,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.UserData;
@@ -228,7 +227,7 @@ public class LocationMessageService extends Service implements LocationListener 
             LocationMessageService.this.locationCountDownTimer.cancel();
         } catch (Exception e) {
             e.printStackTrace();
-            Crashlytics.logException(e);
+//            Crashlytics.logException(e);
         }
     }
 
@@ -239,7 +238,7 @@ public class LocationMessageService extends Service implements LocationListener 
 
         } catch (Exception localException) {
             localException.printStackTrace();
-            Crashlytics.logException(localException);
+//            Crashlytics.logException(localException);
         }
     }
 
@@ -289,7 +288,7 @@ public class LocationMessageService extends Service implements LocationListener 
         } catch (Exception e) {
             e.printStackTrace();
             reportAndClose();
-            Crashlytics.logException(e);
+//            Crashlytics.logException(e);
         }
 
 

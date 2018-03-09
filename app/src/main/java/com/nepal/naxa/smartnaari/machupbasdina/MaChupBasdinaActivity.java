@@ -36,7 +36,6 @@ import android.widget.Toast;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.getkeepsafe.taptargetview.TapTargetView;
-import com.github.florent37.tutoshowcase.TutoShowcase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
@@ -187,80 +186,6 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         return width;
     }
-
-
-    private void initTutoShow() {
-        final TutoShowcase view1 = TutoShowcase.from(this)
-                .setListener(new TutoShowcase.Listener() {
-                    @Override
-                    public void onDismissed() {
-                        initTutoShow2();
-                    }
-                })
-                .setContentView(R.layout.tuto_showcase_consent)
-                .setFitsSystemWindows(true)
-                .on(R.id.tvLBL_Consent)
-                .addRoundRect()
-                .onClick(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        searchAndLoadGlossary("Consent");
-                    }
-                })
-                .show();
-
-
-        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                view1.dismiss();
-                initTutoShow2();
-            }
-        });
-    }
-
-    private void initTutoShow2() {
-        final TutoShowcase view = TutoShowcase.from(this)
-                .setListener(new TutoShowcase.Listener() {
-                    @Override
-                    public void onDismissed() {
-                    }
-                })
-                .setContentView(R.layout.tuto_showcase_no_concent)
-                .setFitsSystemWindows(true)
-                .on(R.id.tvLBL_no_consent)
-                .addRoundRect()
-                .onClick(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MaChupBasdinaActivity.this, "Click", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .onClickContentView(R.id.btn_learn_more, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        searchAndLoadGlossary("No Consent");
-                    }
-                })
-                .show();
-
-
-        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.dismiss();
-            }
-        });
-
-    }
-
 
 
     private void initToolbar() {

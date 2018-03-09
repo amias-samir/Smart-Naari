@@ -2,14 +2,12 @@ package com.nepal.naxa.smartnaari.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
-import com.crashlytics.android.Crashlytics;
 import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.DbOpenHelper;
-import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
-import io.fabric.sdk.android.Fabric;
 
 
 /**
@@ -17,7 +15,7 @@ import io.fabric.sdk.android.Fabric;
  * by nishon.tan@gmail.com
  */
 
-public class SmartNaari extends Application {
+public class SmartNaari extends MultiDexApplication {
 
     private static Context context;
 
@@ -26,7 +24,7 @@ public class SmartNaari extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         AppLogger.init();
 
         context = getApplicationContext();

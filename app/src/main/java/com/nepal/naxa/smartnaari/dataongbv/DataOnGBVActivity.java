@@ -1,9 +1,14 @@
 package com.nepal.naxa.smartnaari.dataongbv;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Visibility;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,9 +40,38 @@ public class DataOnGBVActivity extends BaseActivity {
         setContentView(R.layout.activity_data_on_gbv);
         ButterKnife.bind(this);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setupWindowAnimations();
+        }
+
         initToolbar();
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations() {
+        Visibility enterTransition = buildEnterTransition();
+        getWindow().setEnterTransition(enterTransition);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private Visibility buildEnterTransition() {
+        Fade enterTransition = new Fade();
+        enterTransition.setDuration(500);
+        // This view will not be affected by enter transition animation
+//        enterTransition.excludeTarget(R.id.square_red, true);
+        return enterTransition;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private Visibility buildReturnTransition() {
+        Visibility enterTransition = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            enterTransition = new Slide();
+        }
+        enterTransition.setDuration(500);
+        return enterTransition;
+    }
+
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

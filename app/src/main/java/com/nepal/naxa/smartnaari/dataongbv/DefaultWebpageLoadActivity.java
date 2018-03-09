@@ -5,8 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +39,7 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
     private String postUrl = "";
     private String toolbarTitle = "";
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +55,27 @@ public class DefaultWebpageLoadActivity extends BaseActivity {
         toolbarTitle = intent.getStringExtra("toolbar_title");
         postUrl = intent.getStringExtra("url");
 
-
+        setupWindowAnimations();
 
         initToolbar();
         loadWebURL();
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations() {
+        Transition transition;
+            transition = buildEnterTransition();
+
+        getWindow().setEnterTransition(transition);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private Transition buildEnterTransition() {
+        Explode enterTransition = new Explode();
+        enterTransition.setDuration(500);
+        return enterTransition;
+    }
+
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
