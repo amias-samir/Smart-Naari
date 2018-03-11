@@ -41,25 +41,28 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
         ServicesLegendListModel ci = servicesTypeList.get(i);
 
-        contactViewHolder.tvTypeID.setText(ci.serviceTypeID);
-
-
         if(ci.serviceTypeID.trim().equals("police")){
-          contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
+            contactViewHolder.tvTypeID.setText("Police");
+            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
         }
         else if(ci.serviceTypeID.trim().equals("mowcsw")){
+            contactViewHolder.tvTypeID.setText("MoWCsW");
             contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_mowcsw);
 
         }else if(ci.serviceTypeID.trim().equals("gov")){
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_government);
+            contactViewHolder.tvTypeID.setText("Gov");
+            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
 
         }else if(ci.serviceTypeID.trim().equals("ktm ngo")){
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ktm_ngo);
+            contactViewHolder.tvTypeID.setText("KTM NGO");
+            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
 
         }else if(ci.serviceTypeID.trim().equals("ngo")){
+            contactViewHolder.tvTypeID.setText("NGO");
             contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
 
         }else if(ci.serviceTypeID.trim().equals("ocmc")){
+            contactViewHolder.tvTypeID.setText("OCMC");
             contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ocmc);
 
         }else {

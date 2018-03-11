@@ -119,7 +119,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         markerOCMC = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ocmc);
         markerKTMNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ktm_ngo);
         markerNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
-        markerGOV = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_government);
+        markerGOV = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_gov);
         markerMoWCsW = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_mowcsw);
 
         initToolbar();
@@ -481,18 +481,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                 @Override
                 public void onFeatureClick(Feature feature) {
-                    isActivityFirstTimeLoad = false;
 
                     selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
-
-                    midLat = Double.parseDouble(feature.getProperty("centroid_2"));
-                    midlong = Double.parseDouble(feature.getProperty("centroid_1"));
-
-
                     removeMarkersIfPresent();
                     FilterFromGeoJson filterFromGeoJson = new FilterFromGeoJson();
                     filterFromGeoJson.execute();
                     addMarker(selectedDistrict);
+                    isActivityFirstTimeLoad = false;
 
 
                     Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
