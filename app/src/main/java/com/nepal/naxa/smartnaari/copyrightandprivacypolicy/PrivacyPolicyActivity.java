@@ -62,6 +62,10 @@ public class PrivacyPolicyActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
             case R.id.item_call:
                 Intent intent = new Intent(PrivacyPolicyActivity.this, TapItStopItActivity.class);
                 startActivity(intent);
@@ -82,5 +86,10 @@ public class PrivacyPolicyActivity extends BaseActivity {
         textView.setText(htmlAsSpanned);
 
 //        htmlTVSmartNaariPrivacyPolicy.setHtml(getString(R.string.smart_naari_privacy_policy));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

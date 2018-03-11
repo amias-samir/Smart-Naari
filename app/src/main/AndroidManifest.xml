@@ -344,9 +344,9 @@
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity android:name=".copyrightandprivacypolicy.PrivacyPolicyActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".utils.ui.BeautifulMainActivity" />
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
         </activity>
         <activity android:name=".smartparent.TwoToTwelveYearsActivity">
             <meta-data

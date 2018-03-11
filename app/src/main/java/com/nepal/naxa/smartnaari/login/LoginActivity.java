@@ -95,7 +95,7 @@ public class LoginActivity extends BaseActivity {
 //        });
 
 
-        tvUserPassword.setInputType( InputType.TYPE_TEXT_VARIATION_URI ); // optional - sets the keyboard to URL mode
+//        tvUserPassword.setInputType( InputType.TYPE_TEXT_VARIATION_URI ); // optional - sets the keyboard to URL mode
 // kill keyboard when enter is pressed
         tvUserPassword.setOnKeyListener(new View.OnKeyListener()
         {

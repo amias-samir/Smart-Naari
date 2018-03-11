@@ -71,7 +71,7 @@ public class LocationMessageService extends Service implements LocationListener 
 
     private boolean gpsOn = false;
     private boolean networkOn = false;
-    private double locationAccuracy = 100;
+    private double locationAccuracy = 20;
     private int locationCount = 0;
 
 
@@ -367,8 +367,10 @@ public class LocationMessageService extends Service implements LocationListener 
     }
 
     private void removeContact() {
-        names.remove(0);
-        contactNumber.remove(0);
+        if(contactNumber.size()>0) {
+            names.remove(0);
+            contactNumber.remove(0);
+        }
     }
 
     private String generateMessage(Location location) {
