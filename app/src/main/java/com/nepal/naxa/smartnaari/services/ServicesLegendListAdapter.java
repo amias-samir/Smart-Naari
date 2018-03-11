@@ -40,43 +40,44 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
     @Override
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
         ServicesLegendListModel ci = servicesTypeList.get(i);
+        String serviceType = ci.getServiceTypeID();
+        switch (serviceType) {
+            case "police":
+                contactViewHolder.tvTypeID.setText("Police");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
+                break;
 
-        if(ci.serviceTypeID.trim().equals("police")){
-            contactViewHolder.tvTypeID.setText("Police");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
+            case "mowcsw":
+                contactViewHolder.tvTypeID.setText("MoWCsW");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_mowcsw);
+                break;
+
+            case "gov":
+                contactViewHolder.tvTypeID.setText("Gov");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
+                break;
+
+            case "ktm ngo":
+                contactViewHolder.tvTypeID.setText("KTM NGO");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+                break;
+
+            case "ngo":
+                contactViewHolder.tvTypeID.setText("NGO");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+                break;
+
+            case "ocmc":
+                contactViewHolder.tvTypeID.setText("OCMC");
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ocmc);
+                break;
+
+            default:
+                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker);
+                int color = ColorList.COLORFUL_COLORS[i];
+                contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+
         }
-        else if(ci.serviceTypeID.trim().equals("mowcsw")){
-            contactViewHolder.tvTypeID.setText("MoWCsW");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_mowcsw);
-
-        }else if(ci.serviceTypeID.trim().equals("gov")){
-            contactViewHolder.tvTypeID.setText("Gov");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
-
-        }else if(ci.serviceTypeID.trim().equals("ktm ngo")){
-            contactViewHolder.tvTypeID.setText("KTM NGO");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
-
-        }else if(ci.serviceTypeID.trim().equals("ngo")){
-            contactViewHolder.tvTypeID.setText("NGO");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
-
-        }else if(ci.serviceTypeID.trim().equals("ocmc")){
-            contactViewHolder.tvTypeID.setText("OCMC");
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ocmc);
-
-        }else {
-//        int color = ContextCompat.getColor(context, viewModel.getImage());
-            contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker);
-            int color = ColorList.COLORFUL_COLORS[i];
-//        contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
-            contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
-//        ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
-//        contactViewHolder.tvTypeID.getCompoundDrawables()[0].getCurrent().setColorFilter(colorFilter);
-            Log.d(TAG, "onBindViewHolder: " + i + "  ::: " + ColorList.COLORFUL_COLORS[i] + "  ::: " + color);
-        }
-
-
     }
 
 //    private void SetTextViewDrawableColor(TextView textView, int color){
@@ -97,8 +98,8 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
 
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
-        protected TextView tvTypeID ;
-        protected ImageView ivMarkerLegend ;
+        protected TextView tvTypeID;
+        protected ImageView ivMarkerLegend;
 
         public ContactViewHolder(View v) {
             super(v);
