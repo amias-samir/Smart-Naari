@@ -215,7 +215,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
 
 
-            map.setLatLngBoundsForCameraTarget(DISTRICT);
+//            map.setLatLngBoundsForCameraTarget(DISTRICT);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 0);
 //            map.moveCamera(cu);
             map.animateCamera(cu);
@@ -483,10 +483,21 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 public void onFeatureClick(Feature feature) {
 
                     selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
+
+                    midLat = Double.parseDouble(feature.getProperty("centroid_2"));
+                    midlong = Double.parseDouble(feature.getProperty("centroid_1"));
+
+                    minLat = Double.parseDouble(feature.getProperty("y_min"));
+                    minLong = Double.parseDouble(feature.getProperty("x_min"));
+
+                    maxLat = Double.parseDouble(feature.getProperty("y_max"));
+                    maxLong = Double.parseDouble(feature.getProperty("x_max"));
+
+
                     removeMarkersIfPresent();
-                    FilterFromGeoJson filterFromGeoJson = new FilterFromGeoJson();
-                    filterFromGeoJson.execute();
                     addMarker(selectedDistrict);
+                    setDistrictMapCamera();
+                    ConstantData.isFromMaChupBasdina = false;
                     isActivityFirstTimeLoad = false;
 
 
@@ -539,13 +550,18 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
                             midLat = Double.parseDouble(properties.getString("centroid_2"));
                             midlong = Double.parseDouble(properties.getString("centroid_1"));
+                            minLat = Double.parseDouble(properties.getString("y_min"));
+                            minLong = Double.parseDouble(properties.getString("x_min"));
+                            maxLat = Double.parseDouble(properties.getString("y_max"));
+                            maxLong = Double.parseDouble(properties.getString("x_max"));
 
-                            JSONArray boundryJarray = jobj.getJSONArray("bbox");
-                            Log.d(TAG, "doInBackground: boundry"+boundryJarray.toString());
-                            minLat = boundryJarray.getDouble(1);
-                            minLong = boundryJarray.getDouble(0);
-                            maxLat = boundryJarray.getDouble(3);
-                            maxLong = boundryJarray.getDouble(2);
+
+//                            JSONArray boundryJarray = jobj.getJSONArray("bbox");
+//                            Log.d(TAG, "doInBackground: boundry"+boundryJarray.toString());
+//                            minLat = boundryJarray.getDouble(1);
+//                            minLong = boundryJarray.getDouble(0);
+//                            maxLat = boundryJarray.getDouble(3);
+//                            maxLong = boundryJarray.getDouble(2);
                         }
                     }
                 }
