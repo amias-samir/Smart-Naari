@@ -50,6 +50,8 @@ import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 public class LoginActivity extends BaseActivity {
 
     private static String TAG = "LoginActivity";
+    private long timeStampWhenBackWasPressed;
+
 
     @BindView(R.id.btnLogin)
     Button btnLogin;
@@ -237,7 +239,8 @@ public class LoginActivity extends BaseActivity {
                 myCircleData.setContactName5(userDetail.getUserData().getCircleName5());
 
                 Log.d(TAG, "handleLoginSucess: SAMIR" + myCircleData.getContactName2());
-                sessionManager.saveUserCircle(myCircleData);
+                sessionManager.saveUserCircle(myCircleData
+                );
 
 
                 if (sessionManager.doesUserHaveCircle()) {
@@ -287,4 +290,30 @@ public class LoginActivity extends BaseActivity {
         Intent intent = new Intent(LoginActivity.this, TapItStopItActivity.class);
         startActivity(intent);
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        doubleTapToExit();
+    }
+
+    private void doubleTapToExit() {
+        long timeRangeForDoubleTap = 3000;
+        long totalAcceptedDelay = timeStampWhenBackWasPressed + timeRangeForDoubleTap;
+        long currentTime = System.currentTimeMillis();
+        if (totalAcceptedDelay > currentTime) {
+
+            finishAffinity();
+            System.exit(0);
+
+//            finish();
+            return;
+        }
+
+        showInfoToast(getString(R.string.app_exit_msg));
+        timeStampWhenBackWasPressed = System.currentTimeMillis();
+    }
+
+
 }

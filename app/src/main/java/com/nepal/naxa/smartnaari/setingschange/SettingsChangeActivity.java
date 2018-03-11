@@ -20,6 +20,7 @@ import com.nepal.naxa.smartnaari.mycircle.powerbutton.PowerButtonService;
 import com.nepal.naxa.smartnaari.mycircle.shake.LocationMessageService;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
 import com.nepal.naxa.smartnaari.splashscreen.SplashScreenActivity;
+import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

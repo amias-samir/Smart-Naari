@@ -521,7 +521,10 @@ public class BeautifulMainActivity extends BaseActivity
         long totalAcceptedDelay = timeStampWhenBackWasPressed + timeRangeForDoubleTap;
         long currentTime = System.currentTimeMillis();
         if (totalAcceptedDelay > currentTime) {
-            finish();
+
+            finishAffinity();
+            System.exit(0);
+//            finish();
             return;
         }
 
