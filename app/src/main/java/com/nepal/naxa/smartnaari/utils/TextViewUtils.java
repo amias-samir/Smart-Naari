@@ -28,6 +28,7 @@ import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.IntStream;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -38,6 +39,8 @@ import io.reactivex.observers.DisposableObserver;
  */
 
 public class TextViewUtils {
+
+    private static final String TAG = "TextViewUtils";
 
 
     public static void highlightWordToBlue(List<String> wordlist, TextView textView) {
@@ -79,6 +82,9 @@ public class TextViewUtils {
 
         SpannableStringBuilder span = new SpannableStringBuilder(fullText);
 
+        int prevStartingIndex = -1, prevEndingIndex = -1;
+
+
         for (String textItem : wordlist) {
 
 
@@ -89,10 +95,29 @@ public class TextViewUtils {
                 int startingIndex = testText.indexOf(testTextToBold);
                 int endingIndex = startingIndex + testTextToBold.length();
 
-                if (startingIndex >= 0 && endingIndex >= 0) {
-                    // span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
-                    span.setSpan(new GotoGlossarySpan(textItem), startingIndex, endingIndex, 0);
 
+//                check space at the beginning and ending of word
+//                String wordWithSpace[0]  = Character.toString(testText.charAt(0));
+
+
+                if (startingIndex >= 0 && endingIndex >= 0) {
+//                    if(startingIndex != prevStartingIndex && endingIndex != prevEndingIndex) {
+//                         span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
+
+                    String wordWithSpace[] = {""};
+                    for (int index = startingIndex-1; index <= endingIndex; index++) {
+                        StringBuilder stringBuilder = new StringBuilder();
+                        wordWithSpace[0] = wordWithSpace[0] + stringBuilder.append(Character.toString(testText.charAt(index)));
+                    }
+
+                    if((" " + textItem+ " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem+ ",").equalsIgnoreCase(wordWithSpace[0])
+                            || (" " + textItem+ ".").equalsIgnoreCase(wordWithSpace[0])) {
+                        span.setSpan(new GotoGlossarySpan( textItem ), startingIndex, endingIndex, 0);
+
+                    }
+//                        prevStartingIndex = startingIndex ;
+//                        prevEndingIndex = endingIndex ;
+//                    }
                 }
             }
         }
@@ -154,7 +179,9 @@ public class TextViewUtils {
         String selectedString;
 
         public GotoGlossarySpan(String s) {
-            selectedString = s;
+            selectedString =  s ;
+
+            Log.d(TAG, "GotoGlossarySpan: "+ selectedString);
         }
 
         @Override

@@ -1,28 +1,16 @@
 package com.nepal.naxa.smartnaari.data_glossary.muth_busters;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
-import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
 import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
 import com.nepal.naxa.smartnaari.utils.TextViewUtils;
-import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import java.util.List;
 
@@ -30,9 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 
 public class DataGlossaryWordDetailsActivity extends BaseActivity {
@@ -68,7 +54,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
                 .flatMap(new Function<WordsWithDetailsModel, Observable<String>>() {
                     @Override
                     public Observable<String> apply(WordsWithDetailsModel wordsWithDetailsModel) throws Exception {
-                        return Observable.just(wordsWithDetailsModel.getTitle());
+                        return Observable.just(wordsWithDetailsModel.getTitle().trim());
                     }
                 })
                 .toList()
