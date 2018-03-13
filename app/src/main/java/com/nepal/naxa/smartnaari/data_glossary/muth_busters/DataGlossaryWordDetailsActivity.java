@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.YoutubeWebViewActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
 import com.nepal.naxa.smartnaari.utils.TextViewUtils;
@@ -29,7 +30,12 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
     TextView tvWordTitle;
     @BindView(R.id.tv_word_desc)
     TextView tvWordDesc;
+    @BindView(R.id.btn_watch_video)
+    RelativeLayout btnWatchVideo;
     private WordsWithDetailsModel wordsWithDetailsModel;
+
+
+    String videoURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +50,6 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
         tvWordDesc.setText(wordsWithDetailsModel.getDesc());
-
-        Linkify.addLinks(tvWordDesc, Linkify.ALL);
-
-
 
 
         JSONLoadImpl
@@ -78,6 +80,26 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
                     }
                 });
+
+
+        if (wordsWithDetailsModel.getTitle().trim().equalsIgnoreCase("Consent")) {
+
+            videoURL = wordsWithDetailsModel.getVideo_URL();
+            btnWatchVideo.setVisibility(View.VISIBLE);
+//            List<String> wordlist = new ArrayList<>();
+//            wordlist.add("https://www.youtube.com/watch?v=fGoWLWS4-kU");
+//            TextViewUtils.highlightURLToBlue(wordlist, tvWordDesc);
+//            TextViewUtils.linkWordToYoutubeActivity(new String[]{"https://www.youtube.com/watch?v=fGoWLWS4-kU"}, tvWordDesc);
+        }
+        if (wordsWithDetailsModel.getTitle().trim().equalsIgnoreCase("No Consent")) {
+            videoURL = wordsWithDetailsModel.getVideo_URL();
+            btnWatchVideo.setVisibility(View.VISIBLE);
+
+//            List<String> wordlist = new ArrayList<>();
+//            wordlist.add("https://www.youtube.com/watch?v=g0qGqYZDqf4");
+//            TextViewUtils.highlightURLToBlue(wordlist, tvWordDesc);
+//            TextViewUtils.linkWordToYoutubeActivity(new String[]{"https://www.youtube.com/watch?v=g0qGqYZDqf4"}, tvWordDesc);
+        }
     }
 
 
@@ -115,7 +137,12 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         startActivity(intent);
     }
 
-
+    @OnClick(R.id.btn_watch_video)
+    public void onWatchVideoClick() {
+        Intent intent = new Intent(DataGlossaryWordDetailsActivity.this, YoutubeWebViewActivity.class);
+        intent.putExtra("url", videoURL);
+        startActivity(intent);
+    }
 
 
 }

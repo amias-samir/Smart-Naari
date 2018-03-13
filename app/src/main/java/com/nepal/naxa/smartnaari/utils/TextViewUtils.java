@@ -2,36 +2,28 @@ package com.nepal.naxa.smartnaari.utils;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.YoutubeWebViewActivity;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsModel;
-import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
-import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.IntStream;
 
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 
 /**
@@ -51,6 +43,14 @@ public class TextViewUtils {
             textView.setText(Html.fromHtml(fullText));
         }
     }
+    public static void highlightURLToBlue(List<String> wordlist, TextView textView) {
+        String fullText = textView.getText().toString();
+        for (String word : wordlist) {
+
+            fullText = fullText.replaceAll(word, "<font color='blue'>" + word + "</font>");
+            textView.setText(Html.fromHtml(fullText));
+        }
+    }
 
     public static void linkWordToPrivacyPolicy(String[] wordlist, TextView textView) {
 
@@ -61,12 +61,37 @@ public class TextViewUtils {
         for (String word : wordlist) {
 
             String testText = fullText.toLowerCase(Locale.US);
-            String testTextToHighlight =  word.toLowerCase(Locale.US);
+            String testTextToHighlight = word.toLowerCase(Locale.US);
 
             int startingIndex = testText.indexOf(testTextToHighlight);
             int endingIndex = startingIndex + testTextToHighlight.length();
 
             span.setSpan(new GotoPrivacyPolicySpan(word), startingIndex, endingIndex, 0);
+
+        }
+
+
+        textView.setText(span);
+        textView.setMovementMethod(new LinkMovementMethod());
+
+    }
+
+
+    public static void linkWordToYoutubeActivity(String[] wordlist, TextView textView) {
+
+        String fullText = textView.getText().toString();
+        SpannableStringBuilder span = new SpannableStringBuilder(fullText);
+
+
+        for (String word : wordlist) {
+
+            String testText = fullText.toLowerCase(Locale.US);
+            String testTextToHighlight = word.toLowerCase(Locale.US);
+
+            int startingIndex = testText.indexOf(testTextToHighlight);
+            int endingIndex = startingIndex + testTextToHighlight.length();
+
+            span.setSpan(new GotoYoutubeActivity(word), startingIndex, endingIndex, 0);
 
         }
 
@@ -91,7 +116,7 @@ public class TextViewUtils {
             if (textItem != null && !textItem.trim().equals("") && !textItem.equalsIgnoreCase("other")) {
                 //for counting start/end indexes
                 String testText = fullText.toLowerCase(Locale.US);
-                String testTextToBold =  textItem.toLowerCase(Locale.US) ;
+                String testTextToBold = textItem.toLowerCase(Locale.US);
                 int startingIndex = testText.indexOf(testTextToBold);
                 int endingIndex = startingIndex + testTextToBold.length();
 
@@ -105,14 +130,14 @@ public class TextViewUtils {
 //                         span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
 
                     String wordWithSpace[] = {""};
-                    for (int index = startingIndex-1; index <= endingIndex; index++) {
+                    for (int index = startingIndex - 1; index <= endingIndex; index++) {
                         StringBuilder stringBuilder = new StringBuilder();
                         wordWithSpace[0] = wordWithSpace[0] + stringBuilder.append(Character.toString(testText.charAt(index)));
                     }
 
-                    if((" " + textItem+ " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem+ ",").equalsIgnoreCase(wordWithSpace[0])
-                            || (" " + textItem+ ".").equalsIgnoreCase(wordWithSpace[0])) {
-                        span.setSpan(new GotoGlossarySpan( textItem ), startingIndex, endingIndex, 0);
+                    if ((" " + textItem + " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem + ",").equalsIgnoreCase(wordWithSpace[0])
+                            || (" " + textItem + ".").equalsIgnoreCase(wordWithSpace[0])) {
+                        span.setSpan(new GotoGlossarySpan(textItem), startingIndex, endingIndex, 0);
 
                     }
 //                        prevStartingIndex = startingIndex ;
@@ -179,9 +204,9 @@ public class TextViewUtils {
         String selectedString;
 
         public GotoGlossarySpan(String s) {
-            selectedString =  s ;
+            selectedString = s;
 
-            Log.d(TAG, "GotoGlossarySpan: "+ selectedString);
+            Log.d(TAG, "GotoGlossarySpan: " + selectedString);
         }
 
         @Override
@@ -233,6 +258,30 @@ public class TextViewUtils {
 
                 }
             }).execute();
+        }
+    }
+
+    private static class GotoYoutubeActivity extends ClickableSpan {
+
+        private String text;
+
+        public GotoYoutubeActivity(String text) {
+            Log.d("TextViewUtils", "GotoYoutubeActivitySpan: " + text);
+            this.text = text;
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            super.updateDrawState(ds);
+            ds.setColor(Color.BLUE);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(view.getContext(), YoutubeWebViewActivity.class);
+            intent.putExtra("url", text);
+            view.getContext().startActivity(intent);
         }
     }
 }

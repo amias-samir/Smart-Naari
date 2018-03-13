@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar_layout_header"
-        android:layout_above="@+id/btn_goto_glossary">
+        android:layout_above="@+id/btn_watch_video">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -46,15 +46,32 @@
                     android:layout_margin="@dimen/spacing_medium"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:textAllCaps="false"
-                    android:autoLink="all"
-                    android:clickable="true"
                     android:textSize="@dimen/material_text_body1" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </ScrollView>
 
+    <RelativeLayout
+        android:id="@+id/btn_watch_video"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorWhite"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Watch Video"
+        android:textAllCaps="true"
+        android:layout_above="@id/btn_goto_glossary"
+        android:visibility="gone">
 
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="Watch Video"
+            android:textAllCaps="true" />
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/btn_goto_glossary"
         android:layout_width="match_parent"

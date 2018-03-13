@@ -13,11 +13,13 @@ public class WordsWithDetailsModel implements Parcelable {
     private String title;
     private String desc;
     private String error;
+    private String video_URL ;
 
     public WordsWithDetailsModel(Parcel in) {
         category = in.readString();
         title = in.readString();
         desc = in.readString();
+        video_URL = in.readString();
     }
 
     public String getError() {
@@ -39,6 +41,7 @@ public class WordsWithDetailsModel implements Parcelable {
         dest.writeString(category);
         dest.writeString(title);
         dest.writeString(desc);
+        dest.writeString(video_URL);
     }
 
     @Override
@@ -80,6 +83,14 @@ public class WordsWithDetailsModel implements Parcelable {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getVideo_URL() {
+        return video_URL;
+    }
+
+    public void setVideo_URL(String video_URL) {
+        this.video_URL = video_URL;
     }
 
 }

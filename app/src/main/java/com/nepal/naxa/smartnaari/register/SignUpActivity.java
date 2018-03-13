@@ -146,7 +146,6 @@ public class SignUpActivity extends Activity {
         wordlist.add("Privacy Policy and Terms");
 //        wordlist.add("Terms");
         TextViewUtils.highlightWordToBlue(wordlist, textViewTermsAndCondition);
-
         TextViewUtils.linkWordToPrivacyPolicy(new String[]{"Privacy Policy and Terms"}, textViewTermsAndCondition);
 
 
