@@ -46,6 +46,8 @@
                     android:layout_margin="@dimen/spacing_medium"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:textAllCaps="false"
+                    android:autoLink="all"
+                    android:clickable="true"
                     android:textSize="@dimen/material_text_body1" />
 
             </LinearLayout>

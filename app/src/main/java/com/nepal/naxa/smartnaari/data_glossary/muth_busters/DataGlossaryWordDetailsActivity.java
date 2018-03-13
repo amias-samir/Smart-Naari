@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -42,6 +43,10 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
         tvWordTitle.setText(wordsWithDetailsModel.getTitle().trim());
         tvWordDesc.setText(wordsWithDetailsModel.getDesc());
+
+        Linkify.addLinks(tvWordDesc, Linkify.ALL);
+
+
 
         JSONLoadImpl
                 .cacheGlossaryObj()
