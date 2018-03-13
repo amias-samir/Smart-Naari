@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.util.Linkify;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
@@ -45,6 +46,7 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         tvWordDesc.setText(wordsWithDetailsModel.getDesc());
 
         Linkify.addLinks(tvWordDesc, Linkify.ALL);
+
 
 
 
@@ -112,6 +114,8 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         Intent intent = new Intent(this, GlossaryListActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }
