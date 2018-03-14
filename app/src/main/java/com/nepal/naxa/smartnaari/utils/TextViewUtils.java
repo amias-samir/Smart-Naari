@@ -121,19 +121,19 @@ public class TextViewUtils {
                 int endingIndex = startingIndex + testTextToBold.length();
 
 
-//                check space at the beginning and ending of word
-//                String wordWithSpace[0]  = Character.toString(testText.charAt(0));
-
-
                 if (startingIndex >= 0 && endingIndex >= 0) {
 //                    if(startingIndex != prevStartingIndex && endingIndex != prevEndingIndex) {
 //                         span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
 
                     String wordWithSpace[] = {""};
                     for (int index = startingIndex - 1; index <= endingIndex; index++) {
-                        StringBuilder stringBuilder = new StringBuilder();
-                        wordWithSpace[0] = wordWithSpace[0] + stringBuilder.append(Character.toString(testText.charAt(index)));
+                        if(index < testText.length()) {
+                            StringBuilder stringBuilder = new StringBuilder();
+                            wordWithSpace[0] = wordWithSpace[0] + stringBuilder.append(Character.toString(testText.charAt(index)));
+//                            Log.e(TAG, "linkWordsToGlossary: " + " index =  " + index);
+                        }
                     }
+//                    Log.e(TAG, "linkWordsToGlossary: "+wordWithSpace[0] );
 
                     if ((" " + textItem + " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem + ",").equalsIgnoreCase(wordWithSpace[0])
                             || (" " + textItem + ".").equalsIgnoreCase(wordWithSpace[0])) {
@@ -217,6 +217,8 @@ public class TextViewUtils {
 
         @Override
         public void onClick(final View view) {
+
+            Log.e(TAG, "linkWordsToGlossary: Span ::: " + selectedString );
 
             new JSONAssetLoadTask(R.raw.data_glossary, new JSONAssetLoadListener() {
                 @Override
