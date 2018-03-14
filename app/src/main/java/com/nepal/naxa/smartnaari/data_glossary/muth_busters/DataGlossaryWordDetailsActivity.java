@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -15,6 +16,9 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
 import com.nepal.naxa.smartnaari.utils.TextViewUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,10 +73,15 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
                 .toList()
                 .subscribe(new DisposableSingleObserver<List<String>>() {
                     @Override
-                    public void onSuccess(List<String> strings) {
+                    public void onSuccess(List<String> titleList) {
                         //TextViewUtils.highlightWordToBlue(strings, tvWordDesc);
 
-                        TextViewUtils.linkWordsToGlossary(strings, tvWordDesc);
+                        String[] stringArray = titleList.toArray(new String[0]);
+                        Arrays.sort(stringArray, Collections.<String>reverseOrder());
+                         List<String>sortedTitleList = Arrays.asList(stringArray );
+
+                        TextViewUtils.linkWordsToGlossary(sortedTitleList, tvWordDesc);
+
                     }
 
                     @Override
@@ -86,19 +95,10 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
             videoURL = wordsWithDetailsModel.getVideo_URL();
             btnWatchVideo.setVisibility(View.VISIBLE);
-//            List<String> wordlist = new ArrayList<>();
-//            wordlist.add("https://www.youtube.com/watch?v=fGoWLWS4-kU");
-//            TextViewUtils.highlightURLToBlue(wordlist, tvWordDesc);
-//            TextViewUtils.linkWordToYoutubeActivity(new String[]{"https://www.youtube.com/watch?v=fGoWLWS4-kU"}, tvWordDesc);
         }
         if (wordsWithDetailsModel.getTitle().trim().equalsIgnoreCase("No Consent")) {
             videoURL = wordsWithDetailsModel.getVideo_URL();
             btnWatchVideo.setVisibility(View.VISIBLE);
-
-//            List<String> wordlist = new ArrayList<>();
-//            wordlist.add("https://www.youtube.com/watch?v=g0qGqYZDqf4");
-//            TextViewUtils.highlightURLToBlue(wordlist, tvWordDesc);
-//            TextViewUtils.linkWordToYoutubeActivity(new String[]{"https://www.youtube.com/watch?v=g0qGqYZDqf4"}, tvWordDesc);
         }
     }
 

@@ -121,13 +121,14 @@ public class TextViewUtils {
                 int endingIndex = startingIndex + testTextToBold.length();
 
 
+
                 if (startingIndex >= 0 && endingIndex >= 0) {
-//                    if(startingIndex != prevStartingIndex && endingIndex != prevEndingIndex) {
+                    if(startingIndex != prevStartingIndex && endingIndex != prevEndingIndex) {
 //                         span.setSpan(new StyleSpan(Typeface.BOLD), startingIndex, endingIndex, 0);
 
                     String wordWithSpace[] = {""};
                     for (int index = startingIndex - 1; index <= endingIndex; index++) {
-                        if(index < testText.length()) {
+                        if(index < testText.length() ) {
                             StringBuilder stringBuilder = new StringBuilder();
                             wordWithSpace[0] = wordWithSpace[0] + stringBuilder.append(Character.toString(testText.charAt(index)));
 //                            Log.e(TAG, "linkWordsToGlossary: " + " index =  " + index);
@@ -136,13 +137,13 @@ public class TextViewUtils {
 //                    Log.e(TAG, "linkWordsToGlossary: "+wordWithSpace[0] );
 
                     if ((" " + textItem + " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem + ",").equalsIgnoreCase(wordWithSpace[0])
-                            || (" " + textItem + ".").equalsIgnoreCase(wordWithSpace[0])) {
+                            || (" " + textItem + ".").equalsIgnoreCase(wordWithSpace[0])|| ("(" + textItem + ")").equalsIgnoreCase(wordWithSpace[0])) {
                         span.setSpan(new GotoGlossarySpan(textItem), startingIndex, endingIndex, 0);
 
                     }
-//                        prevStartingIndex = startingIndex ;
-//                        prevEndingIndex = endingIndex ;
-//                    }
+                        prevStartingIndex = startingIndex ;
+                        prevEndingIndex = endingIndex ;
+                    }
                 }
             }
         }
