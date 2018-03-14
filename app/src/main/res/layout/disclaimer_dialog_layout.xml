@@ -17,9 +17,6 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/bottom_layout"
                 >
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent">-->
                     <TextView
                         android:layout_alignParentTop="true"
                         android:layout_width="match_parent"
@@ -31,8 +28,6 @@
                         android:layout_margin="@dimen/spacing_large"
                         android:textColor="@color/textPrimary"
                         />
-                <!--</RelativeLayout>-->
-         
 
             </ScrollView>
 
