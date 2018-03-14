@@ -43,6 +43,9 @@ public class TutorialsActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home :
+                onBackPressed();
+                break;
 
             case R.id.item_call:
                 Intent intent = new Intent(TutorialsActivity.this, TapItStopItActivity.class);

@@ -45,6 +45,10 @@ public class CelebratingProfessionalActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            case android.R.id.home :
+                onBackPressed();
+                break;
+
             case R.id.item_call:
                 Intent intent = new Intent(CelebratingProfessionalActivity.this, TapItStopItActivity.class);
                 startActivity(intent);
@@ -52,5 +56,10 @@ public class CelebratingProfessionalActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

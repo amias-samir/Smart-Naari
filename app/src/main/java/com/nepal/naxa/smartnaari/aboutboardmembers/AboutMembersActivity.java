@@ -18,6 +18,7 @@ import android.widget.ScrollView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 
@@ -28,7 +29,7 @@ import java.util.List;
  * Created by Majestic on 11/29/2017.
  */
 
-public class AboutMembersActivity extends AppCompatActivity implements JSONAssetLoadListener {
+public class AboutMembersActivity extends BaseActivity implements JSONAssetLoadListener {
 
     private static final String TAG = "AboutMembersActivity";
 
@@ -91,6 +92,10 @@ public class AboutMembersActivity extends AppCompatActivity implements JSONAsset
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case android.R.id.home :
+                onBackPressed();
+                break;
 
             case R.id.item_call:
                 Intent intent = new Intent(AboutMembersActivity.this, TapItStopItActivity.class);

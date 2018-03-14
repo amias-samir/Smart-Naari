@@ -14,18 +14,25 @@
             >
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_above="@id/bottom_layout"
                 >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dialog_text_details"
-                android:padding="@dimen/default_padding"
-                android:text="Dialog Text Details"
-                android:layout_margin="@dimen/spacing_large"
-                android:textColor="@color/textPrimary"
-                />
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dialog_text_details"
+                        android:padding="@dimen/default_padding"
+                        android:text="Dialog Text Details"
+                        android:gravity="top"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:textColor="@color/textPrimary"
+                        />
+                <!--</RelativeLayout>-->
+         
 
             </ScrollView>
 
