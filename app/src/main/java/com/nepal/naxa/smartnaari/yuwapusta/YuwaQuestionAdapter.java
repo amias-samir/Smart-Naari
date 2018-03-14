@@ -21,6 +21,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +46,7 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<YuwaQuestion> items;
     private OnItemClickListener onItemClickListener;
     private Context context;
+    private final static int FADE_DURATION = 500; //FADE_DURATION in milliseconds
 
 
 
@@ -89,6 +93,12 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                   ((ViewHolder) holder).answer.setHtml(item.getAnswer());
 
         }
+        setScaleAnimation(holder.itemView);
+    }
+    private void setScaleAnimation(View view) {
+        ScaleAnimation anim = new ScaleAnimation(1.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(FADE_DURATION);
+        view.startAnimation(anim);
     }
 
 
@@ -115,13 +125,6 @@ public class YuwaQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
-
-
-//        @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
-//        TextView question;
-//        @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
-//        TextView answer;
-//
         @BindView(R.id.list_item_yuwa_pusta_question_tv_question)
         HtmlTextView question;
         @BindView(R.id.list_item_yuwa_pusta_question_tv_answer)
