@@ -24,6 +24,7 @@
             android:layout_below="@id/text"
             android:layout_marginLeft="@dimen/spacing_medium"
             android:layout_marginRight="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
             android:scaleType="fitCenter" />
 
         <TextView

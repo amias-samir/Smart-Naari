@@ -55,7 +55,7 @@
             <item
                 android:id="@+id/item_setting_change"
                 android:icon="@drawable/ic_menuitem_setting_change"
-                android:title="Setting/Change" />
+                android:title="Settings/Change" />
 
 
         </menu>

@@ -126,9 +126,10 @@
         <activity
             android:name=".aboutboardmembers.AboutMembersActivity"
             android:exported="true">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity
             android:name=".homescreen.DetailActivity"
@@ -207,8 +208,8 @@
 
         <activity
             android:name=".yuwapusta.YuwaPustaActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -216,9 +217,9 @@
         </activity>
         <activity
             android:name=".yuwapusta.AskOwlActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
             android:parentActivityName=".yuwapusta.YuwaPustaActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -229,31 +230,30 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
-        <activity android:name=".smartparent.SmartParentActivity"
+        <activity
+            android:name=".smartparent.SmartParentActivity"
             android:screenOrientation="portrait">
-        <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
-
             android:name=".data_glossary.muth_busters.GlossaryListActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            />
-
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="2b2f7cc04d8fcabb1a720c50d2fd95a9a26e953d" />
 
-        <activity android:name=".YuwaPustaQueryDetailsActivity"
-            android:screenOrientation="portrait"
-            >
+        <activity
+            android:name=".YuwaPustaQueryDetailsActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity" />
@@ -261,32 +261,33 @@
         <activity
             android:name=".aboutsmartnaari.AboutSmartNaariActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            >
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity
             android:name=".celebratingprofessional.CelebratingProfessionalActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity
             android:name=".setingschange.SettingsChangeActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.DataGlossaryWordDetailsActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".data_glossary.muth_busters.GlossaryListActivity" />
@@ -339,21 +340,24 @@
         <activity
             android:name=".donate.DonateActivity"
             android:screenOrientation="portrait">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity android:name=".tutorials.TutorialsActivity">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
-        <activity android:name=".copyrightandprivacypolicy.PrivacyPolicyActivity"
-            android:screenOrientation="portrait"
-            >
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+        <activity
+            android:name=".copyrightandprivacypolicy.PrivacyPolicyActivity"
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity android:name=".smartparent.TwoToTwelveYearsActivity">
             <meta-data
@@ -374,9 +378,9 @@
             android:name=".calendraevent.EventShowcaseActivity"
             android:exported="true"
             android:theme="@style/AppTheme.Popup" />
-        <activity android:name=".tapitstopit.TapItStopItActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".tapitstopit.TapItStopItActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".userprofileupdate.UserProfileUpdateActivity"
             android:screenOrientation="portrait">
@@ -387,9 +391,10 @@
         <activity
             android:name=".dataongbv.DataOnGBVActivity"
             android:screenOrientation="portrait">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
         </activity>
         <activity
             android:name=".friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity"
@@ -401,30 +406,31 @@
         <activity
             android:name=".friendsofsmartnaari.FriendsOfSmartNaariActivity"
             android:screenOrientation="portrait">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
-        </activity>
 
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
+        </activity>
         <activity
             android:name=".copyrightandprivacypolicy.SmartNariCopyrightActivity"
             android:screenOrientation="portrait">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".utils.ui.BeautifulMainActivity" />-->
-        </activity>
 
-        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariVolunteersActivity"
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
+        </activity>
+        <activity
+            android:name=".friendsofsmartnaari.FriendsOfSmartNaariVolunteersActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".friendsofsmartnaari.FriendsOfSmartNaariActivity" />
         </activity>
         <activity
-            android:exported="true"
             android:name=".mycircle.MyCircleOnBoardingActivity"
-            android:screenOrientation="portrait"
-            />
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mycircle.MyCircleProtectorActivity"></activity>
     </application>
 
 </manifest>
