@@ -60,6 +60,7 @@ import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
+import com.nepal.naxa.smartnaari.mycircle.MyCircleProtectorActivity;
 import com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler.HotPotComplexRecyclerViewActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
@@ -308,8 +309,11 @@ public class BeautifulMainActivity extends BaseActivity
     private void handleNavigation(MenuItem menuItem) {
 
         if (menuItem.getTitle().equals("My Circle")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
+//            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
+//            startActivity(intent);
+            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleProtectorActivity.class);
             startActivity(intent);
+
         }
 
         if (menuItem.getTitle().equals("About Smart नारी")) {

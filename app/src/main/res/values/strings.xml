@@ -467,6 +467,12 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="msg_swipe_this_card">SWIPE THIS CARD TO START SETUP</string>
     <string name="nepal_monitor">Nepal Monitor</string>
     <string name="data_nepal">Data Nepal</string>
+    <string name="create_your_own_password_to_protect_your_my_circle">Create your Own Password to protect your \'My Circle\'.</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="change_password">change password</string>
+    <string name="old_password">Old Password</string>
 
     ?>
 </resources>

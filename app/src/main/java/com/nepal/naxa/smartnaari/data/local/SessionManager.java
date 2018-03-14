@@ -16,6 +16,7 @@ import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_MY_CIRCLE_PASSWORD;
 
 /**
  * Created on 10/9/17
@@ -27,10 +28,12 @@ public class SessionManager {
     private String TAG = "SessionManager";
 
     private SharedPreferenceUtils utils;
+    private SharedPreferenceUtils passwordUtils;
     private Gson gson;
 
     public SessionManager(Context context) {
         utils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PREF_NETWORK_CACHE);
+        passwordUtils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PASSWORD_CACHE);
         gson = new Gson();
     }
 
@@ -157,6 +160,15 @@ public class SessionManager {
     }
 
 //    ================================ end of checking background servive status====================== //
+
+
+//    my circle password
+    public void saveUserMyCirclePassword(String password){
+        passwordUtils.setValue(KEY_USER_MY_CIRCLE_PASSWORD, password);
+    }
+    public String getUserMyCirclePassword(){
+        return passwordUtils.getStringValue(KEY_USER_MY_CIRCLE_PASSWORD, null);
+    }
 
 
     public void logoutUser (){

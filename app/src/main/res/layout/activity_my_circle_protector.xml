@@ -1,9 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nepal.naxa.smartnaari.mycircle.MyCircleProtectorActivity">
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/dialog_text_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:padding="@dimen/default_padding"
+            android:text="@string/create_your_own_password_to_protect_your_my_circle"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/material_text_title"/>
+
+        <!--create password-->
+        <LinearLayout
+            android:id="@+id/create_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_text_details"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_small"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvNewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/new_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/new_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <TextView
+                android:id="@+id/tvConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/confirm_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+        </LinearLayout>
+
+        <!--Enter password-->
+        <LinearLayout
+            android:id="@+id/enter_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/create_password_layout"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_small"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvEnterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/enter_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_enter_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+
+            <TextView
+                android:id="@+id/btn_change_password"
+                android:layout_margin="@dimen/default_padding"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_password"
+                android:textColor="@color/blue"
+                android:gravity="right"
+                android:textStyle="italic"/>
+
+
+        </LinearLayout>
+
+        <!--change password-->
+        <LinearLayout
+            android:id="@+id/change_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/enter_password_layout"
+            android:layout_marginLeft="@dimen/spacing_xxlarge"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_small"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvOldPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/old_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_old_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/old_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <TextView
+                android:id="@+id/tvChangeNewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/new_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_change_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/new_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <TextView
+                android:id="@+id/tvChangeConfirmNewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:gravity="left"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/confirm_password"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead" />
+
+            <EditText
+                android:id="@+id/tv_my_circle_change_confirm_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@id/tv_perpetrator"
+                android:layout_toRightOf="@id/tv_perpetrator"
+                android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                android:ems="10"
+                android:gravity="left"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/material_text_subhead" />
+
+        </LinearLayout>
+
+        <!--button layout-->
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/change_password_layout"
+            android:layout_marginTop="@dimen/spacing_xxlarge"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_close_dialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dialog_text_details"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:stateListAnimator="@null"
+                android:text="Cancel"
+                android:textColor="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/btn_agree_dialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dialog_text_details"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:stateListAnimator="@null"
+                android:text="Confirm"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
