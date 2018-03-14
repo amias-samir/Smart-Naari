@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -30,6 +33,7 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
     private List<MemberPojo> members = new ArrayList<>();
 
     private final int TEXT_HEDER = 0, BOARD_MEMBER = 1;
+    private final static int FADE_DURATION = 1000; //FADE_DURATION in milliseconds
 
 
     public AboutMembersRecylerViewAdapter(Context mContext, List<MemberPojo> members) {
@@ -85,6 +89,7 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
                 viewHolder = new AboutMemberRecyclerViewHolder(v2);
                 break;
         }
+
         return viewHolder;
     }
 
@@ -96,10 +101,12 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
             case TEXT_HEDER:
                 AboutMemberRecyclerViewHolder vh1 = (AboutMemberRecyclerViewHolder) holder;
                 configureViewHolder1(vh1, position);
+                setScaleAnimation(((AboutMemberRecyclerViewHolder) holder).itemView);
                 break;
             case BOARD_MEMBER:
                 AboutMemberRecyclerViewHolder vh2 = (AboutMemberRecyclerViewHolder) holder;
                 configureViewHolder2(vh2, position);
+                setScaleAnimation(((AboutMemberRecyclerViewHolder) holder).itemView);
                 break;
         }
 
@@ -118,6 +125,7 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
         vh1.getMemberDescriptionToogle().setVisibility(View.GONE);
         vh1.getMemberSmartNaariPost().setVisibility(View.GONE);
         vh1.getMemberName().setVisibility(View.GONE);
+
     }
 
     private void configureViewHolder2(AboutMemberRecyclerViewHolder vh2, int position) {
@@ -177,5 +185,12 @@ public class AboutMembersRecylerViewAdapter extends RecyclerView.Adapter<AboutMe
 
     }
 
+
+
+    private void setScaleAnimation(View view) {
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(FADE_DURATION);
+        view.startAnimation(anim);
+    }
 
 }
