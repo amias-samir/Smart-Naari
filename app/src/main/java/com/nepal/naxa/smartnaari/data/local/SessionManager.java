@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_INTENT_SERVICE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_IS_USER_MY_CIRCLE_FIRST_TIME_;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_MY_CIRCLE_PASSWORD;
@@ -28,12 +29,10 @@ public class SessionManager {
     private String TAG = "SessionManager";
 
     private SharedPreferenceUtils utils;
-    private SharedPreferenceUtils passwordUtils;
     private Gson gson;
 
     public SessionManager(Context context) {
         utils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PREF_NETWORK_CACHE);
-        passwordUtils = SharedPreferenceUtils.getInstance(context, SharedPreferenceUtils.PASSWORD_CACHE);
         gson = new Gson();
     }
 
@@ -163,11 +162,20 @@ public class SessionManager {
 
 
 //    my circle password
-    public void saveUserMyCirclePassword(String password){
-        passwordUtils.setValue(KEY_USER_MY_CIRCLE_PASSWORD, password);
+
+    public boolean isMyCircleFirstTimeLoad(){
+        return utils.getBooleanValue(KEY_IS_USER_MY_CIRCLE_FIRST_TIME_, true);
+    }
+
+    public void setIsMyCircleFirstTimeLoad (Boolean aboolean){
+        utils.setValue(KEY_IS_USER_MY_CIRCLE_FIRST_TIME_, aboolean);
+    }
+
+    public void setUserMyCirclePassword(String password){
+        utils.setValue(KEY_USER_MY_CIRCLE_PASSWORD, password);
     }
     public String getUserMyCirclePassword(){
-        return passwordUtils.getStringValue(KEY_USER_MY_CIRCLE_PASSWORD, null);
+        return utils.getStringValue(KEY_USER_MY_CIRCLE_PASSWORD, null);
     }
 
 
