@@ -112,6 +112,12 @@ public class MyCircleProtectorActivity extends BaseActivity {
     public void changePassword(){
         if (tvMyCircleOldPassword.getText().toString().trim().equals(sessionManager.getUserMyCirclePassword())) {
 
+            if(tvMyCircleChangeNewPassword.getText().toString().trim().isEmpty() ){
+                tvMyCircleChangeNewPassword.setFocusable(true);
+                showErrorToast("Empty Password Field");
+                return;
+            }
+
             if (tvMyCircleChangeNewPassword.getText().toString().trim().equals(tvMyCircleChangeConfirmNewPassword.getText().toString().trim())) {
 
                 sessionManager.setUserMyCirclePassword(tvMyCircleChangeConfirmNewPassword.getText().toString().trim());
@@ -151,6 +157,11 @@ public class MyCircleProtectorActivity extends BaseActivity {
     }
 
     public void createPassword(){
+        if (tvMyCircleNewPassword.getText().toString().trim().isEmpty()){
+            tvMyCircleNewPassword.setFocusable(true);
+            showErrorToast("Empty password field");
+            return;
+        }
 
         if(tvMyCircleNewPassword.getText().toString().trim().equals(tvMyCircleConfirmPassword.getText().toString().trim())){
 

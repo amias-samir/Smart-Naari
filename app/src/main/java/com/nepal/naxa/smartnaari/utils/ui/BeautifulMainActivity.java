@@ -131,6 +131,7 @@ public class BeautifulMainActivity extends BaseActivity
 
     ImageButton btnNavMessage, btnNavUserProfileUpdate;
     CircleImageView ivNavUserAvatar;
+    TextView tvNavUserName ;
 
 
     private boolean mIsTheTitleVisible = false;
@@ -153,10 +154,15 @@ public class BeautifulMainActivity extends BaseActivity
     private boolean stopShakeAnimate;
 
 
+    SessionManager sessionManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beutiful_main);
+
+        sessionManager = new SessionManager(this);
 
         bindActivity();
         ButterKnife.bind(this);
@@ -284,7 +290,11 @@ public class BeautifulMainActivity extends BaseActivity
         btnNavMessage = (ImageButton) headerview.findViewById(R.id.btn_nav_user_message);
         btnNavUserProfileUpdate = (ImageButton) headerview.findViewById(R.id.btn_nav_user_profile_update);
         ivNavUserAvatar = (CircleImageView) headerview.findViewById(R.id.iv_nav_user_avatar);
+        tvNavUserName = (TextView) headerview.findViewById(R.id.tv_nav_user_name);
+
+        tvNavUserName.setText(sessionManager.getUser().getUsername());
         ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);
 

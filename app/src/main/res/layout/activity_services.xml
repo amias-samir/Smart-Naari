@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@color/greenishwhite"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -37,18 +37,20 @@
             <!--android:id="@+id/progressBar"-->
             <!--android:backgroundTint="@color/colorAccent"/>-->
     <!--</FrameLayout>-->
-
+<LinearLayout
+    android:id="@+id/act_services_title_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/app_bar_layout"
+    android:orientation="vertical">
     <RelativeLayout
-
-        android:id="@+id/act_services_title_wrapper"
         android:layout_width="match_parent"
         android:layout_height="@dimen/services_cover_photo_height"
-        android:layout_below="@id/app_bar_layout"
-        android:background="@color/greenishwhat"
         android:gravity="center">
 
 
         <ImageView
+            android:id="@+id/iv_header_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/grid_services" />
@@ -62,21 +64,16 @@
             android:text="Time is of essence"
             android:textStyle="bold" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Spinner
-                android:id="@+id/spinner_district_list_services"
-                style="@style/DistrictListServicesSpinnerTheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center_vertical"
-                android:layout_toEndOf="@id/tv_type_of_violence"
-                android:layout_toRightOf="@id/tv_type_of_violence"
-                android:gravity="center" />
-        </FrameLayout>
     </RelativeLayout>
+    <Spinner
+        android:layout_below="@id/iv_header_image"
+        android:id="@+id/spinner_district_list_services"
+        style="@style/DistrictListServicesSpinnerTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center" />
+</LinearLayout>
 
 
     <fragment

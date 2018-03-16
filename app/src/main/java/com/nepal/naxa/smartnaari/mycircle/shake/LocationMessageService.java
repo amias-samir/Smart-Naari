@@ -334,7 +334,7 @@ public class LocationMessageService extends Service implements LocationListener 
     private void sendSMS(String message, String number) {
 
         Timber.i("SMS sent to %s", number);
-        SmsManager.getDefault().sendTextMessage(number, null, message, null, null);
+//        SmsManager.getDefault().sendTextMessage(number, null, message, null, null);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         removeContact();
         if (contactNumber.size() <= 0) {

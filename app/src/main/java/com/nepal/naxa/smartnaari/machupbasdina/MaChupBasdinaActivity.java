@@ -339,7 +339,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
             return false;
         }
 
-        if (spinnerVoilenceOccur.getSelectedItem().toString().isEmpty() || spinnerVoilenceOccur.getSelectedItem().toString().equals("Select time")) {
+        if (spinnerVoilenceOccur.getSelectedItem().toString().isEmpty() || spinnerVoilenceOccur.getSelectedItem().toString().trim().equals("Select Time")) {
 
             showInfoToast("Please select voilence occured time.");
             return false;

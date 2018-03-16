@@ -333,9 +333,12 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
                 android.Manifest.permission.VIBRATE,
                 android.Manifest.permission.SYSTEM_ALERT_WINDOW,
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CALL_PHONE,
                 android.Manifest.permission.WAKE_LOCK};
 
-        if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+        if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+        && hasPermission(Manifest.permission.CALL_PHONE)) {
             stepper.setActiveStepAsCompleted();
         } else {
             requestPermissionsSafely(requiredPermissions, CODE_REQUEST_PERMISSIONS);
@@ -369,7 +372,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 //        }
 //     return true;
 
-        return hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION);
+        return hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.CALL_PHONE)
+                && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
     @SuppressLint("NewApi")

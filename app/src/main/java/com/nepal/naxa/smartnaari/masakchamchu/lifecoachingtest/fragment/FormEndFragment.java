@@ -85,6 +85,7 @@ public class FormEndFragment extends Fragment implements LifeCoachingTestActivit
 
 
     private void notifyLastFragment() {
+        listener = (onFormFinishedListener) getActivity();
         try {
             listener.lastFragment();
         } catch (ClassCastException cce) {
