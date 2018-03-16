@@ -1,24 +1,7 @@
 package com.nepal.naxa.smartnaari.utils.date;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-
-import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.application.SmartNaari;
-
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeComparator;
-import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -28,7 +11,7 @@ public class NepaliDate {
 
     private static final int OFFSET = 2;
     private static String[] nepaliMonths = new String[]{"बैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कार्तिक", "मंसिर", "पौष", "माघ", "फाल्गुन", "चैत"};
-    private static String[] nepaliDays = new String[]{"आइतवार", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार", "शनिवार"};
+    private static String[] nepaliDays = new String[]{ "", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार","शनिवार","आइतवार"};
 
     private static String formatNepaliDate(LocalDateTime localDateTime) throws NepaliDateException {
 
@@ -39,7 +22,7 @@ public class NepaliDate {
 
         Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
         Timber.i(nepaliDateTime.getDayOfWeek() + "");
-        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[0];
+        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dayIndex];
 
     }
 

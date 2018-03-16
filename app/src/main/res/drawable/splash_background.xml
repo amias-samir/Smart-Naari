@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:drawable="@color/colorPrimary"/>
+    <!--<item-->
+        <!--android:drawable="@drawable/toolbar_gradient"-->
+        <!--/>-->
+
+    <!--<item-->
+        <!--android:gravity="center"-->
+        <!--android:height="@dimen/spacing_xlarge"-->
+        <!--android:width="@dimen/spacing_xlarge">-->
+        <!--<bitmap android:src="@drawable/logo">-->
+
+        <!--</bitmap>-->
+    <!--</item>-->
 
     <item>
         <bitmap
-            android:src="@drawable/smart_naari_splash_image"/>
+            android:src="@drawable/smart_naari_splash_image"
+            />
     </item>
 
 </layer-list>

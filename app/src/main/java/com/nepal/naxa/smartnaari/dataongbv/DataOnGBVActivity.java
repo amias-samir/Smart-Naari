@@ -105,6 +105,7 @@ public class DataOnGBVActivity extends BaseActivity {
             case R.id.item_call:
                 Intent intent = new Intent(DataOnGBVActivity.this, TapItStopItActivity.class);
                 startActivity(intent);
+
                 return true;
         }
 
@@ -119,6 +120,7 @@ public class DataOnGBVActivity extends BaseActivity {
                 dataNepalIntent.putExtra("toolbar_title", "Data Nepal");
                 dataNepalIntent.putExtra("url", "https://www.datanepal.com/");
                 startActivity(dataNepalIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
 
             case R.id.iv_nepal_monitor:
@@ -126,6 +128,7 @@ public class DataOnGBVActivity extends BaseActivity {
                 nepalMonitorIntent.putExtra("toolbar_title", "Nepal Monitor");
                 nepalMonitorIntent.putExtra("url", "https://nepalmonitor.org/");
                 startActivity(nepalMonitorIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
         }
     }

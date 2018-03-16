@@ -333,6 +333,8 @@ public class BeautifulMainActivity extends BaseActivity
         if (menuItem.getTitle().equals("Acknowledging Friends")) {
             Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
             startActivity(intent);
+//            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
         }
 
         if (menuItem.getTitle().equals("Celebrating Professionals")) {
