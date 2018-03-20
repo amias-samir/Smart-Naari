@@ -6,12 +6,15 @@ package com.nepal.naxa.smartnaari.utils;
 
 public class ConstantData {
 
+    public static final String KEY_DATA = "data";
 
     public static boolean isFromMaChupBasdina = false;
     public static String KEY_DISTRICT = "district";
 
     public static boolean isFromVolunteerFriends = false;
     public static String KEY_RECYCLER_POS = "position" ;
+
+    public static boolean isFromAskAnOwl  = false;
 
 
     public final static String[] months={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};

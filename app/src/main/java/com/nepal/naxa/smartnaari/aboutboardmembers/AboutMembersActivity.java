@@ -120,21 +120,13 @@ public class AboutMembersActivity extends BaseActivity implements JSONAssetLoadL
 
 
         if(ConstantData.isFromVolunteerFriends){
-//            RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getApplicationContext()) {
-//                @Override protected int getVerticalSnapPreference() {
-//                    return LinearSmoothScroller.SNAP_TO_START;
-//                }
-//            };
-//            smoothScroller.setTargetPosition(recyclerPosition);
-//            recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
+
 
                     new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                recyclerView.setNestedScrollingEnabled(true);
                 recyclerView.scrollToPosition(recyclerPosition);
                 Log.d(TAG, "run: recyclerPosition "+recyclerPosition);
-//                recyclerView.setNestedScrollingEnabled(false);
             }
         }, 200);
 

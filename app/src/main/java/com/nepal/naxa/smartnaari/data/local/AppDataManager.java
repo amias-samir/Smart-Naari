@@ -21,7 +21,9 @@ import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.ServicesDataDao;
 import com.nepal.naxa.smartnaari.debug.Dump;
 import com.nepal.naxa.smartnaari.homescreen.ViewModel;
+import com.nepal.naxa.smartnaari.yuwapusta.GreenDAODataPaginationService;
 
+import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -108,8 +110,23 @@ public class AppDataManager extends BaseActivity {
 //});
     }
 
-    public List<YuwaQuestion> getAllYuwaQuestions() {
-        return daoSession.getYuwaQuestionDao().loadAll();
+    public List<YuwaQuestion> getAllYuwaQuestions(int page) {
+        List<YuwaQuestion> list = new ArrayList<>();
+
+//        return daoSession.getYuwaQuestionDao().queryBuilder().orderDesc(YuwaQuestionDao.Properties.Id).list();
+
+        // 10 is the items per page i want to get
+        GreenDAODataPaginationService userDAOPagination = new GreenDAODataPaginationService(daoSession.getYuwaQuestionDao(),10,daoSession.getYuwaQuestionDao().getClass());
+        try {
+            ArrayList <Object> users = userDAOPagination.getRecordsForPage(1);
+             list = (List<YuwaQuestion>)(List<?>)userDAOPagination.getRecordsForPage(page);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        return daoSession.getYuwaQuestionDao().loadAll();
+        return list;
+
     }
 //=====================================================================================//
 

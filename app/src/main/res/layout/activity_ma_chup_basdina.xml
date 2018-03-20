@@ -450,7 +450,7 @@
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:text="@string/report"
                     android:textAllCaps="false"
-                    android:textColor="@color/textSecondary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18dp" />
 
             </RelativeLayout>

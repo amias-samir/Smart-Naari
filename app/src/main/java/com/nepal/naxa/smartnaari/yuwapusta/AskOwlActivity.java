@@ -31,6 +31,7 @@ import com.nepal.naxa.smartnaari.data.network.AskAnOwlResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.json.JSONException;
@@ -139,6 +140,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -206,7 +208,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
         try {
 
             String makeAnonymous = "no";
-            if(cbMakeAnonymous.isChecked()){
+            if (cbMakeAnonymous.isChecked()) {
                 makeAnonymous = "yes";
             }
 
@@ -247,8 +249,14 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
 
                         switch (status) {
                             case "200":
-                                showInfoToast(data);
                                 hideLoading();
+//                                showInfoToast(data);
+
+                                ConstantData.isFromAskAnOwl = true;
+                                showInfoToast("Thank you for your query. \nWe will respond you as soon as possible");
+                                Intent intent = new Intent(AskOwlActivity.this, YuwaPustaActivity.class);
+                                startActivity(intent);
+
                                 break;
                             case "201":
                                 showInfoToast(data);

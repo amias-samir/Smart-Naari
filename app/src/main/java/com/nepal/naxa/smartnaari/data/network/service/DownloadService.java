@@ -168,7 +168,7 @@ public class DownloadService extends IntentService {
 
                 Log.i(TAG, response.body().getData().size() + " Yuwa Pusta posts downloaded ");
 
-                int i = appDataManager.getAllYuwaQuestions().size();
+                int i = appDataManager.getAllYuwaQuestions(0).size();
                 Log.i(TAG, i + " yuwa posts present in database");
 
                 broadCastFinish();

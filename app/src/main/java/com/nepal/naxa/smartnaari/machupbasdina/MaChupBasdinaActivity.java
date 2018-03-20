@@ -335,13 +335,13 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         if (spinnerTypeOfViolence.getSelectedItem().toString().isEmpty() || spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Voilence Type")) {
 
-            showInfoToast("Please select voilence type.");
+            showInfoToast("Please select violence type.");
             return false;
         }
 
         if (spinnerVoilenceOccur.getSelectedItem().toString().isEmpty() || spinnerVoilenceOccur.getSelectedItem().toString().trim().equals("Select Time")) {
 
-            showInfoToast("Please select voilence occured time.");
+            showInfoToast("Please select violence occurred time.");
             return false;
         }
 
