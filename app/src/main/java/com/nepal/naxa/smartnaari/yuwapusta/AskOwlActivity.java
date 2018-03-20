@@ -256,6 +256,7 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
                                 showInfoToast("Thank you for your query. \nWe will respond you as soon as possible");
                                 Intent intent = new Intent(AskOwlActivity.this, YuwaPustaActivity.class);
                                 startActivity(intent);
+                                finish();
 
                                 break;
                             case "201":
