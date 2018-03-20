@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,9 +44,9 @@ import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STA
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_RUNNING;
 
 
-public class YuwaPustaActivity extends BaseActivity  {
+public class YuwaPustaActivity extends BaseActivity {
 
-    private static final String TAG ="YuwaPustaActivity" ;
+    private static final String TAG = "YuwaPustaActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.yuwa_pusta_iv_header)
@@ -57,13 +57,15 @@ public class YuwaPustaActivity extends BaseActivity  {
     RecyclerView yuwaPustaActRvOwlslist;
     @BindView(R.id.yuwa_pusta_act_rv_reviewslist)
     RecyclerView questionList;
+    @BindView(R.id.btn_load_more)
+    Button btnLoadMore;
+
+    private int totalQuerySize, pageCounter = 1;
 
     private SwipeRefreshLayout swipeContainer;
 
     List<YuwaQuestion> yuwaQuestions = new ArrayList<YuwaQuestion>();
 
-    // Store a member variable for the listener
-    private EndlessRecyclerViewScrollListener scrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +74,16 @@ public class YuwaPustaActivity extends BaseActivity  {
         ButterKnife.bind(this);
         initToolbar();
 
-        if(ConstantData.isFromAskAnOwl) {
+        if (ConstantData.isFromAskAnOwl) {
             syncAllData();
 
-        }else {
+        } else {
             initHorizontalRecyclerView();
-            initQuestionsRecyclerView(0);
+            initQuestionsRecyclerView(1);
         }
 
+
+        totalQuerySize = appDataManager.getQeryrListSizeFr0mDatabase();
 
         int color = ContextCompat.getColor(getApplicationContext(), R.color.colorAccent);
         SpanUtils.setColor(header, "Yuwa Pusta", "Yuwa", color);
@@ -109,8 +113,6 @@ public class YuwaPustaActivity extends BaseActivity  {
             }
 
         });
-
-
         questionList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
@@ -140,48 +142,8 @@ public class YuwaPustaActivity extends BaseActivity  {
             }
         });
 
-
-        recyclerScrollViewListner();
-        
     }
 
-    private void recyclerScrollViewListner (){
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        questionList.setLayoutManager(linearLayoutManager);
-        // Retain an instance so that you can call `resetState()` for fresh searches
-        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
-
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                // Triggered only when new data needs to be appended to the list
-                // Add whatever code is needed to append new items to the bottom of the list
-
-
-                loadNextDataFromApi(page);
-//                scrollListener.resetState();
-            }
-        };
-        // Adds the scroll listener to RecyclerView
-        questionList.addOnScrollListener(scrollListener);
-    }
-
-    private void loadNextDataFromApi(int page) {
-        swipeContainer.setRefreshing(true);
-
-        Log.d(TAG, "loadNextDataFromApi: "+page);
-        initQuestionsRecyclerView(page);
-
-
-//        // 1. First, clear the array of data
-//        yuwaQuestions.clear();
-//// 2. Notify the adapter of the update
-//        yuwaQuestionAdapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
-//// 3. Reset endless scroll listener when performing a new search
-//        scrollListener.resetState();
-
-
-
-    }
 
     private void initHorizontalRecyclerView() {
         List<OwlData> owlslist = appDataManager.getOwls();
@@ -208,29 +170,21 @@ public class YuwaPustaActivity extends BaseActivity  {
     }
 
     private void initQuestionsRecyclerView(int page) {
-
-        if(page == 0){
-            yuwaQuestions = appDataManager.getAllYuwaQuestions(1);
-        }else {
-            yuwaQuestions.clear();
-            yuwaQuestions = appDataManager.getAllYuwaQuestions(page);
-        }
+        yuwaQuestions.addAll(appDataManager.getAllYuwaQuestions(page));
 
         final YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
         yuwaQuestionAdapter.notifyDataSetChanged();
         questionList.setAdapter(yuwaQuestionAdapter);
-
-//        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        questionList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         questionList.setNestedScrollingEnabled(false);
 
-        if(swipeContainer != null && swipeContainer.isRefreshing() ){
+        if (swipeContainer != null && swipeContainer.isRefreshing()) {
             swipeContainer.setRefreshing(false);
         }
-        if(ConstantData.isFromAskAnOwl){
+        if (ConstantData.isFromAskAnOwl) {
 //            questionList.smoothScrollToPosition(yuwaQuestions.size()-1);
             ConstantData.isFromAskAnOwl = false;
         }
-
 
 
     }
@@ -269,7 +223,6 @@ public class YuwaPustaActivity extends BaseActivity  {
     }
 
 
-
     @OnClick(R.id.btn_ask_a_owl)
     public void toAskAOwnActivity() {
         Intent toAskOwlActivity = new Intent(this, AskOwlActivity.class);
@@ -294,7 +247,7 @@ public class YuwaPustaActivity extends BaseActivity  {
 
                         initQuestionsRecyclerView(1);
 
-                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s",appDataManager.getLastSyncDateTime(YuwaQuestion.class));
+                        AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
                 }
             }
@@ -307,4 +260,24 @@ public class YuwaPustaActivity extends BaseActivity  {
         this.startService(toDownloadService);
     }
 
+    @OnClick(R.id.btn_load_more)
+    public void onViewClicked() {
+
+
+        if (totalQuerySize == questionList.getChildCount()) {
+            showInfoToast("No new data");
+        } else {
+            loadNextDataFromApi(pageCounter + 1);
+            pageCounter++;
+        }
+
+    }
+
+    private void loadNextDataFromApi(int page) {
+
+        Log.d(TAG, "loadNextDataFromApi: " + page);
+//        yuwaQuestions.clear();
+        swipeContainer.setRefreshing(true);
+        initQuestionsRecyclerView(page);
+    }
 }

@@ -128,6 +128,11 @@ public class AppDataManager extends BaseActivity {
         return list;
 
     }
+
+    public int getQeryrListSizeFr0mDatabase (){
+
+        return (int)daoSession.getYuwaQuestionDao().count();
+    }
 //=====================================================================================//
 
     //============================= services list ========================================//
