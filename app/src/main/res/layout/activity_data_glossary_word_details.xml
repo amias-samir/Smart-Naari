@@ -34,7 +34,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_medium"
                     android:textAppearance="@android:style/TextAppearance.Small"
-
                     android:textColor="@color/textPrimary"
                     android:textSize="@dimen/material_text_headline" />
 
@@ -46,7 +45,10 @@
                     android:layout_margin="@dimen/spacing_medium"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/material_text_body1" />
+                    android:textSize="@dimen/material_text_body1"
+                    android:lineSpacingExtra="@dimen/spacing_small"
+                    android:lineSpacingMultiplier="1.05"
+                    />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
