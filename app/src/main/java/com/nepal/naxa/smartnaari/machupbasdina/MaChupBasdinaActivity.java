@@ -44,6 +44,7 @@ import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
@@ -56,12 +57,14 @@ import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.net.SocketTimeoutException;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.disposables.Disposable;
@@ -399,11 +402,9 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<MaChupBasdinaResponse> call = apiService.getMaChupBasdinaDetails(jsonToSend);
-        call.enqueue(new Callback<MaChupBasdinaResponse>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<MaChupBasdinaResponse>() {
             @Override
             public void onResponse(Call<MaChupBasdinaResponse> call, Response<MaChupBasdinaResponse> response) {
-                Log.d(TAG, "onPostExecute: " + response.toString());
-
                 hideLoading();
 
                 if (response.body() == null) {
@@ -451,8 +452,15 @@ public class MaChupBasdinaActivity extends BaseActivity {
             @Override
             public void onFailure(Call<MaChupBasdinaResponse> call, Throwable t) {
                 hideLoading();
+                String message = "Internet Connection Error!, please try again later";
+
+                if (t instanceof SocketTimeoutException) {
+                    message = "slow internet connection, please try again later";
+                }
+                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
+
             }
-        });
+        }));
     }
 
 

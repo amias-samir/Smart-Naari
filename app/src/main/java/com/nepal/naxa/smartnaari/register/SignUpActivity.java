@@ -481,7 +481,6 @@ public class SignUpActivity extends Activity {
                    return;
                }
                 handleSuccess(response.body().getData());
-
             }
 
             private void handleSuccess(String data) {
@@ -494,13 +493,11 @@ public class SignUpActivity extends Activity {
                 if(mProgressDlg != null && mProgressDlg.isShowing()){
                     mProgressDlg.dismiss();
                 }
-
-                String message = "Internet Connection Error!";
+                String message = "Internet Connection Error!, please try again later";
 
                 if (t instanceof SocketTimeoutException) {
-                    message = "slow internet connection";
+                    message = "slow internet connection, please try again later";
                 }
-
                 Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
         }));

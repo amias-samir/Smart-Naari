@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
@@ -41,6 +42,7 @@ import java.net.SocketTimeoutException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -267,14 +269,12 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onFailure(Call<UserDetail> call, Throwable t) {
                 hideLoading();
-
-                String message = "Some Error Occured!";
+                String message = "Internet Connection Error!, please try again later";
 
                 if (t instanceof SocketTimeoutException) {
-                    message = "Socket Time out. Please try again.";
+                    message = "slow internet connection, please try again later";
                 }
-
-                showErrorToast(message);
+                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
         }));
     }

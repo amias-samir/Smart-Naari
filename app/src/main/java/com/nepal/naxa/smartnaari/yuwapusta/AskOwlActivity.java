@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
@@ -37,11 +38,13 @@ import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -278,6 +281,12 @@ public class AskOwlActivity extends BaseActivity implements YuwaQuestionAdapter.
             @Override
             public void onFailure(Call<AskAnOwlResponse> call, Throwable t) {
                 hideLoading();
+                String message = "Internet Connection Error!, please try again later";
+
+                if (t instanceof SocketTimeoutException) {
+                    message = "slow internet connection, please try again later";
+                }
+                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
         }));
     }

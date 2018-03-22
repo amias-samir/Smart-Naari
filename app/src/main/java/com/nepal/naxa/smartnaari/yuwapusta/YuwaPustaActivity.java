@@ -94,8 +94,14 @@ public class YuwaPustaActivity extends BaseActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                if(isNetworkConnected()){
+                    syncAllData();
+                }else {
+                    swipeContainer.setRefreshing(false);
+                    showErrorToast("No Internet Conection");
+                    return;
+                }
 
-                syncAllData();
 
             }
         });
@@ -242,13 +248,17 @@ public class YuwaPustaActivity extends BaseActivity {
                         showInfoToast("Syncing Data");
                         break;
                     case STATUS_ERROR:
+                        swipeContainer.setRefreshing(false);
+                        showErrorToast("Unable to Sync Data, Please try again later");
                         break;
                     case STATUS_FINISHED:
 
+                        pageCounter = 1 ;
+                        yuwaQuestions.clear();
                         initQuestionsRecyclerView(1);
-
                         AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
                         break;
+
                 }
             }
         });
