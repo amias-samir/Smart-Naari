@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Network;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -23,7 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
+import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
@@ -36,6 +39,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -394,26 +398,7 @@ public class SignUpActivity extends Activity {
         } else {
             return;
         }
-
-
     }
-
-
-//    @OnClick(R.id.user_age_input_id)
-//    public void getDOB_BtnClicked() {
-//        Calendar cal = Calendar.getInstance(TimeZone.getDefault()); // Get current date
-//
-//// Create the DatePickerDialog instance
-//        DatePickerDialog datePicker = new DatePickerDialog(this,
-//                R.style.AppTheme, datePickerListener,
-//                cal.get(Calendar.YEAR),
-//                cal.get(Calendar.MONTH),
-//                cal.get(Calendar.DAY_OF_MONTH));
-//        datePicker.setCancelable(false);
-//        datePicker.setTitle("Select the date");
-//openYearView(datePicker);
-//        datePicker.show();
-//    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void openYearView(DatePickerDialog datePicker) {
@@ -485,45 +470,40 @@ public class SignUpActivity extends Activity {
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<SignUpDetailsResponse> call = apiService.getSignupDetails(jsonData);
-        call.enqueue(new Callback<SignUpDetailsResponse>() {
+        call.enqueue(new ErrorSupportCallback<>(new Callback<SignUpDetailsResponse>() {
             @Override
             public void onResponse(Call<SignUpDetailsResponse> call, Response<SignUpDetailsResponse> response) {
-                Log.d("SUSAN", "onPostExecute: " + response.toString());
+               if(mProgressDlg != null && mProgressDlg.isShowing()){
+                   mProgressDlg.dismiss();
+               }
+               if(response.body() == null){
+                   Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT);
+                   return;
+               }
+                handleSuccess(response.body().getData());
 
-                if (response.body() != null) {
-                    String status = "";
-                    String data = "";
+            }
 
-                    try {
-
-                        status = response.body().getStatus();
-                        data = response.body().getData();
-
-                        switch (status) {
-                            case "200":
-                                mProgressDlg.dismiss();
-                                Toasty.success(getApplicationContext(), data + "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
-                                startActivity(new Intent(getApplication(), LoginActivity.class));
-                                break;
-                            case "201":
-                                mProgressDlg.dismiss();
-                                Toasty.error(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
-                                break;
-                            case "406":
-                                mProgressDlg.dismiss();
-                                Toasty.error(getApplicationContext(), data, Toast.LENGTH_SHORT, true).show();
-                                break;
-                        }
-                    } catch (Exception e) {
-                        e.getLocalizedMessage();
-                    }
-                }
+            private void handleSuccess(String data) {
+                Toasty.success(getApplicationContext(), data+ "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
+                startActivity(new Intent(getApplication(), LoginActivity.class));
             }
 
             @Override
             public void onFailure(Call<SignUpDetailsResponse> call, Throwable t) {
-                mProgressDlg.dismiss();
+                if(mProgressDlg != null && mProgressDlg.isShowing()){
+                    mProgressDlg.dismiss();
+                }
+
+                String message = "Internet Connection Error!";
+
+                if (t instanceof SocketTimeoutException) {
+                    message = "slow internet connection";
+                }
+
+                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
-        });
+        }));
     }
+
 }

@@ -16,6 +16,8 @@
     <color name="textSecondary">#e9c1c1</color>
     <color name="textSubtitle">#868585</color>
     <color name="textPrimary">#454545</color>
+    <color name="kashmirGreenLight">#d9d9bd</color>
+    <color name="kashmirBlueDark">#000033</color>
     <color name="bottomsheet_text_color">#c7c7c7</color>
 
     <color name="black">#000000</color>

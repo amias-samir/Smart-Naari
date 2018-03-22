@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity">
+    tools:context="com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity"
+    android:background="@color/kashmirGreenLight">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -28,24 +29,13 @@
         android:layout_below="@id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<org.sufficientlysecure.htmltextview.HtmlTextView-->
-            <!--android:background="@color/colorWhite"-->
-            <!--android:textColor="@color/colorGray"-->
-            <!--android:id="@+id/about_smart_naari"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/spacing_medium"-->
-            <!--android:text="@string/smart_naari_app_details"-->
-            <!--android:textAlignment="center"-->
-            <!--android:textSize="@dimen/material_text_subhead"-->
-            <!--android:textAppearance="@android:style/TextAppearance.Small" />-->
 
             <TextView
                 android:layout_marginTop="@dimen/spacing_large"
@@ -55,6 +45,7 @@
                 android:visibility="visible"
                 android:layout_margin="@dimen/activity_vertical_margin"
                 android:padding="@dimen/spacing_small"
+                android:textColor="@color/textPrimary"
                 />
         </LinearLayout>
     </ScrollView>

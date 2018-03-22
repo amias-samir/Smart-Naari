@@ -220,11 +220,8 @@ public class LoginActivity extends BaseActivity {
             }
 
             private void handleLoginSucess(UserDetail userDetail) {
-
-
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.saveUser(userDetail.getUserData());
-
 
                 myCircleData.setUserId(userDetail.getUserData().getUserId());
                 myCircleData.setContactNumber1(userDetail.getUserData().getCircleMobileNumber1());
@@ -265,8 +262,6 @@ public class LoginActivity extends BaseActivity {
                     finish();
 
                 }
-
-
             }
 
             @Override
