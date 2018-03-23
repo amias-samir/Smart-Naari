@@ -126,6 +126,9 @@ dependencies {
 //    multidex
     compile 'com.android.support:multidex:1.0.1'
 
+//    text font
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+
     // Testing-only dependencies
 //    androidTestCompile 'com.android.support.test:runner:1.0.1'
 //    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'

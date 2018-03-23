@@ -4,10 +4,14 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.common.CustomViewWithTypefaceSupport;
 import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.DbOpenHelper;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
 /**
@@ -25,6 +29,12 @@ public class SmartNaari extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
 //        Fabric.with(this, new Crashlytics());
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("font/CaviarDreams.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)
+                        .build()
+        );
         AppLogger.init();
 
         context = getApplicationContext();

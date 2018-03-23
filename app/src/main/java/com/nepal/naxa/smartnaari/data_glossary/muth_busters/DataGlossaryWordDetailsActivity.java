@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.data_glossary.muth_busters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -25,6 +26,7 @@ import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableSingleObserver;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DataGlossaryWordDetailsActivity extends BaseActivity {
 
@@ -142,5 +144,8 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         startActivity(intent);
     }
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }

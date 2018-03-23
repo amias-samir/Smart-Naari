@@ -26,7 +26,8 @@
                         android:text="Dialog Text Details"
                         android:gravity="top"
                         android:layout_margin="@dimen/spacing_large"
-                        android:textColor="@color/textPrimary"
+                        android:lineSpacingExtra="@dimen/spacing_small"
+                        android:lineSpacingMultiplier="1.02"
                         />
 
             </ScrollView>
