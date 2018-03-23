@@ -11,16 +11,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import at.blogc.android.views.ExpandableTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Majestic on 9/12/2017.
@@ -35,6 +40,16 @@ public class IAmAmazingActivity extends AppCompatActivity {
     ExpandableTextView etvPersonOfTheMonthDescription;
     @BindView(R.id.btn_toggle_i_am_amazing)
     Button btnToggleIAmAmazing;
+    @BindView(R.id.btn_go_to_ma_chup_basdina)
+    ImageButton btnGoToMaChupBasdina;
+    @BindView(R.id.btn_go_to_services)
+    ImageButton btnGoToServices;
+    @BindView(R.id.btn_go_to_ma_sakshyam_chhu)
+    ImageButton btnGoToMaSakshyamChhu;
+    @BindView(R.id.btn_go_to_yuwa_pusta)
+    ImageButton btnGoToYuwaPusta;
+    @BindView(R.id.btn_go_to_smart_parenting)
+    ImageButton btnGoToSmartParenting;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +77,7 @@ public class IAmAmazingActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -75,7 +91,7 @@ public class IAmAmazingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setExpandableText(final at.blogc.android.views.ExpandableTextView expandableTextView, final Button buttonToggle) {
+    private void setExpandableText(final ExpandableTextView expandableTextView, final Button buttonToggle) {
 
         expandableTextView.setInterpolator(new OvershootInterpolator());
 
@@ -103,5 +119,36 @@ public class IAmAmazingActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @OnClick({R.id.btn_go_to_ma_chup_basdina, R.id.btn_go_to_services, R.id.btn_go_to_ma_sakshyam_chhu, R.id.btn_go_to_yuwa_pusta, R.id.btn_go_to_smart_parenting})
+    public void onBottomViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_go_to_ma_chup_basdina:
+                Intent intent = new Intent(IAmAmazingActivity.this, MaChupBasdinaActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_go_to_services:
+                Intent intent2 = new Intent(IAmAmazingActivity.this, ServicesActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case R.id.btn_go_to_ma_sakshyam_chhu:
+                Intent intent3 = new Intent(IAmAmazingActivity.this, MaSakchamChuMainActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case R.id.btn_go_to_yuwa_pusta:
+                Intent intent4 = new Intent(IAmAmazingActivity.this, YuwaPustaActivity.class);
+                startActivity(intent4);
+                finish();
+                break;
+            case R.id.btn_go_to_smart_parenting:
+                Intent intent5 = new Intent(IAmAmazingActivity.this, SmartParentActivity.class);
+                startActivity(intent5);
+                finish();
+                break;
+        }
     }
 }

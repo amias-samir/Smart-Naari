@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,11 @@ import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.debug.AppLogger;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
@@ -59,6 +65,16 @@ public class YuwaPustaActivity extends BaseActivity {
     RecyclerView questionList;
     @BindView(R.id.btn_load_more)
     Button btnLoadMore;
+    @BindView(R.id.btn_go_to_ma_chup_basdina)
+    ImageButton btnGoToMaChupBasdina;
+    @BindView(R.id.btn_go_to_services)
+    ImageButton btnGoToServices;
+    @BindView(R.id.btn_go_to_a_sakshyam_chhu)
+    ImageButton btnGoToASakshyamChhu;
+    @BindView(R.id.btn_go_to_smart_parenting)
+    ImageButton btnGoToSmartParenting;
+    @BindView(R.id.btn_go_to_i_am_amazing)
+    ImageButton btnGoToIAmAmazing;
 
     private int totalQuerySize, pageCounter = 1;
 
@@ -94,9 +110,9 @@ public class YuwaPustaActivity extends BaseActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(isNetworkConnected()){
+                if (isNetworkConnected()) {
                     syncAllData();
-                }else {
+                } else {
                     swipeContainer.setRefreshing(false);
                     showErrorToast("No Internet Conection");
                     return;
@@ -253,7 +269,7 @@ public class YuwaPustaActivity extends BaseActivity {
                         break;
                     case STATUS_FINISHED:
 
-                        pageCounter = 1 ;
+                        pageCounter = 1;
                         yuwaQuestions.clear();
                         initQuestionsRecyclerView(1);
                         AppLogger.d("Last Sync Date Time for Yuwa Pusta Posts is %s", appDataManager.getLastSyncDateTime(YuwaQuestion.class));
@@ -291,4 +307,34 @@ public class YuwaPustaActivity extends BaseActivity {
         initQuestionsRecyclerView(page);
     }
 
+    @OnClick({R.id.btn_go_to_ma_chup_basdina, R.id.btn_go_to_services, R.id.btn_go_to_a_sakshyam_chhu, R.id.btn_go_to_smart_parenting, R.id.btn_go_to_i_am_amazing})
+    public void onBottomViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_go_to_ma_chup_basdina:
+                Intent intent = new Intent(YuwaPustaActivity.this, MaChupBasdinaActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_go_to_services:
+                Intent intent2 = new Intent(YuwaPustaActivity.this, ServicesActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case R.id.btn_go_to_a_sakshyam_chhu:
+                Intent intent3 = new Intent(YuwaPustaActivity.this, MaSakchamChuMainActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case R.id.btn_go_to_smart_parenting:
+                Intent intent4 = new Intent(YuwaPustaActivity.this, SmartParentActivity.class);
+                startActivity(intent4);
+                finish();
+                break;
+            case R.id.btn_go_to_i_am_amazing:
+                Intent intent5 = new Intent(YuwaPustaActivity.this, IAmAmazingActivity.class);
+                startActivity(intent5);
+                finish();
+                break;
+        }
+    }
 }

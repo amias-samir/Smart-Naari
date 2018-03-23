@@ -10,12 +10,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +39,16 @@ public class SmartParentActivity extends AppCompatActivity {
     Button btnEarlyTeens;
     @BindView(R.id.btnMidTeens)
     Button btnMidTeens;
+    @BindView(R.id.btn_go_to_ma_chup_basdina)
+    ImageButton btnGoToMaChupBasdina;
+    @BindView(R.id.btn_go_to_services)
+    ImageButton btnGoToServices;
+    @BindView(R.id.btn_go_to_ma_sakshyam_chhu)
+    ImageButton btnGoToMaSakshyamChhu;
+    @BindView(R.id.btn_go_to_yuwa_pusta)
+    ImageButton btnGoToYuwaPusta;
+    @BindView(R.id.btn_go_to_i_am_amazing)
+    ImageButton btnGoToIAmAmazing;
 
 
     @Override
@@ -70,6 +85,7 @@ public class SmartParentActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -98,6 +114,37 @@ public class SmartParentActivity extends AppCompatActivity {
             case R.id.btnMidTeens:
                 Intent midTeensIntent = new Intent(SmartParentActivity.this, MidTeensActivity.class);
                 startActivity(midTeensIntent);
+                break;
+        }
+    }
+
+    @OnClick({R.id.btn_go_to_ma_chup_basdina, R.id.btn_go_to_services, R.id.btn_go_to_ma_sakshyam_chhu, R.id.btn_go_to_yuwa_pusta, R.id.btn_go_to_i_am_amazing})
+    public void onBottomViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_go_to_ma_chup_basdina:
+                Intent intent = new Intent(SmartParentActivity.this, MaChupBasdinaActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_go_to_services:
+                Intent intent1 = new Intent(SmartParentActivity.this, ServicesActivity.class);
+                startActivity(intent1);
+                finish();
+                break;
+            case R.id.btn_go_to_ma_sakshyam_chhu:
+                Intent intent2 = new Intent(SmartParentActivity.this, MaSakchamChuMainActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case R.id.btn_go_to_yuwa_pusta:
+                Intent intent3 = new Intent(SmartParentActivity.this, YuwaPustaActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case R.id.btn_go_to_i_am_amazing:
+                Intent intent4 = new Intent(SmartParentActivity.this, IAmAmazingActivity.class);
+                startActivity(intent4);
+                finish();
                 break;
         }
     }

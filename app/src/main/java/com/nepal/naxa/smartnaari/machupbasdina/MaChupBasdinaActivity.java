@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +26,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -49,10 +49,14 @@ import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.DataGlossaryWordDetailsActivity;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsModel;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import org.json.JSONObject;
 
@@ -117,11 +121,21 @@ public class MaChupBasdinaActivity extends BaseActivity {
     TextView txtLBLUnderstanding;
     @BindView(R.id.tv_type_of_violence)
     TextView tvTypeOfViolence;
+    @BindView(R.id.btn_go_to_services)
+    ImageButton btnGoToServices;
+    @BindView(R.id.btn_go_to_sakshyam_chhu)
+    ImageButton btnGoToSakshyamChhu;
+    @BindView(R.id.btn_go_to_yuwa_pusta)
+    ImageButton btnGoToYuwaPusta;
+    @BindView(R.id.btn_go_to_smart_parenting)
+    ImageButton btnGoToSmartParenting;
+    @BindView(R.id.btn_go_to_i_am_amazing)
+    ImageButton btnGoToIAmAmazing;
 
 
     private String u_id = "", u_name = "", u_address = "", u_ph_num = "", u_email = "", reporting_for = "Myself", incident_district = "",
             voilence_type = "", voilence_occur_time = "", prepetrator = "", desc_GBV = "";
-    private int screenWidth ;
+    private int screenWidth;
 
     private String KEY_USER_ID = "u_id";
     private String KEY_USER_NAME = "u_name";
@@ -155,11 +169,11 @@ public class MaChupBasdinaActivity extends BaseActivity {
         initSpinnerData();
 
 //        initialize tooltagget view
-     if(getScreenWidth() > 480){
-         screenWidth = getScreenWidth()/8;
-     }else {
-         screenWidth = getScreenWidth()/4;
-     }
+        if (getScreenWidth() > 480) {
+            screenWidth = getScreenWidth() / 8;
+        } else {
+            screenWidth = getScreenWidth() / 4;
+        }
         toolTargetViewConsentNoconsent();
         RunAnimation();
 
@@ -182,7 +196,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
         });
     }
 
-    private int getScreenWidth(){
+    private int getScreenWidth() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
@@ -457,7 +471,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
-                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "" + message, Toast.LENGTH_LONG, true).show();
 
             }
         }));
@@ -736,4 +750,34 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
 
+    @OnClick({R.id.btn_go_to_services, R.id.btn_go_to_sakshyam_chhu, R.id.btn_go_to_yuwa_pusta, R.id.btn_go_to_smart_parenting, R.id.btn_go_to_i_am_amazing})
+    public void onBottoBarViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_go_to_services:
+                Intent intent = new Intent(MaChupBasdinaActivity.this, ServicesActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_go_to_sakshyam_chhu:
+                Intent intent1 = new Intent(MaChupBasdinaActivity.this, MaSakchamChuMainActivity.class);
+                startActivity(intent1);
+                finish();
+                break;
+            case R.id.btn_go_to_yuwa_pusta:
+                Intent intent2 = new Intent(MaChupBasdinaActivity.this, YuwaPustaActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case R.id.btn_go_to_smart_parenting:
+                Intent intent3 = new Intent(MaChupBasdinaActivity.this, SmartParentActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case R.id.btn_go_to_i_am_amazing:
+                Intent intent4 = new Intent(MaChupBasdinaActivity.this, IAmAmazingActivity.class);
+                startActivity(intent4);
+                finish();
+                break;
+        }
+    }
 }

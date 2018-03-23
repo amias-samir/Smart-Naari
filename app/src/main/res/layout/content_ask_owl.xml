@@ -136,10 +136,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/wrapper_text_QuestionToOwl"
             android:layout_gravity="center"
-            android:drawableEnd="@drawable/ic_right_arrow"
-            android:drawableRight="@drawable/ic_right_arrow"
+            android:background="@drawable/button_red_background"
+            android:drawableRight="@drawable/ic_right_arrow_white"
             android:text="@string/general_btn_form_submission"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorWhite"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_below="@+id/btn_ask_a_owl"

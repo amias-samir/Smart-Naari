@@ -10,10 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.masakchamchu.lifecoachingtest.LifeCoachingTestActivity;
+import com.nepal.naxa.smartnaari.services.ServicesActivity;
+import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +37,16 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
     Button btMainActivityFreeonlinecource;
     @BindView(R.id.bt_main_activity_bookanappointment)
     Button btMainActivityBookanappointment;
+    @BindView(R.id.btn_go_to_ma_chup_basdina)
+    ImageButton btnGoToMaChupBasdina;
+    @BindView(R.id.btn_go_to_services)
+    ImageButton btnGoToServices;
+    @BindView(R.id.btn_go_to_yuwa_pusta)
+    ImageButton btnGoToYuwaPusta;
+    @BindView(R.id.btn_go_to_smart_parenting)
+    ImageButton btnGoToSmartParenting;
+    @BindView(R.id.btn_go_to_i_am_amazing)
+    ImageButton btnGoToIAmAmazing;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +72,7 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -87,6 +103,37 @@ public class MaSakchamChuMainActivity extends AppCompatActivity {
             case R.id.bt_main_activity_bookanappointment:
                 Intent bookAppointmentIntent = new Intent(MaSakchamChuMainActivity.this, BookAnAppointmentActivity.class);
                 startActivity(bookAppointmentIntent);
+                break;
+        }
+    }
+
+    @OnClick({R.id.btn_go_to_ma_chup_basdina, R.id.btn_go_to_services, R.id.btn_go_to_yuwa_pusta, R.id.btn_go_to_smart_parenting, R.id.btn_go_to_i_am_amazing})
+    public void onBottomViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_go_to_ma_chup_basdina:
+                Intent intent = new Intent(MaSakchamChuMainActivity.this, MaChupBasdinaActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_go_to_services:
+                Intent intent2 = new Intent(MaSakchamChuMainActivity.this, ServicesActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case R.id.btn_go_to_yuwa_pusta:
+                Intent intent3 = new Intent(MaSakchamChuMainActivity.this, YuwaPustaActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case R.id.btn_go_to_smart_parenting:
+                Intent intent4 = new Intent(MaSakchamChuMainActivity.this, SmartParentActivity.class);
+                startActivity(intent4);
+                finish();
+                break;
+            case R.id.btn_go_to_i_am_amazing:
+                Intent intent5 = new Intent(MaSakchamChuMainActivity.this, IAmAmazingActivity.class);
+                startActivity(intent5);
+                finish();
                 break;
         }
     }
