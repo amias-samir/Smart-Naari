@@ -3,10 +3,12 @@ package com.nepal.naxa.smartnaari.copyrightandprivacypolicy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,9 +16,16 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutsmartnaari.AboutSmartNaariActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.common.JustifyTextView;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,8 +92,6 @@ public class PrivacyPolicyActivity extends BaseActivity {
         String htmlAsString = getString(R.string.smart_naari_privacy_policy);      // used by WebView
         Spanned htmlAsSpanned = Html.fromHtml(htmlAsString); // used by TextView
 
-        // set the html content on a TextView
-//        TextView textView = (TextView) findViewById(R.id.textView);
         textView.setText(htmlAsSpanned);
 
 //        htmlTVSmartNaariPrivacyPolicy.setHtml(getString(R.string.smart_naari_privacy_policy));
