@@ -367,7 +367,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                         }
 
                         location = new LatLng(lat, lon);
-
                         switch (serviceOfficeType.trim()){
                             case "police":
                                 policeAddMarker(location, servicesData.get(i));
@@ -390,7 +389,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
                             default:
                                 addDefaultmarker(location,servicesData.get(i));
-
                         }
                     }
                 } catch (Exception e) {
@@ -464,6 +462,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 //    ==========================
 
     private void setDistrictGeoJSON() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
         //set district layer
         try {
             try {
@@ -475,34 +477,39 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
 
-            districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
-            districtLayer.addLayerToMap();
-
-            districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
+            runOnUiThread(new Runnable() {
                 @Override
-                public void onFeatureClick(Feature feature) {
+                public void run() {
+                    districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
+                    districtLayer.addLayerToMap();
 
-                    selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
+                    districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
+                        @Override
+                        public void onFeatureClick(Feature feature) {
 
-                    midLat = Double.parseDouble(feature.getProperty("centroid_2"));
-                    midlong = Double.parseDouble(feature.getProperty("centroid_1"));
+                            selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
 
-                    minLat = Double.parseDouble(feature.getProperty("y_min"));
-                    minLong = Double.parseDouble(feature.getProperty("x_min"));
+                            midLat = Double.parseDouble(feature.getProperty("centroid_2"));
+                            midlong = Double.parseDouble(feature.getProperty("centroid_1"));
 
-                    maxLat = Double.parseDouble(feature.getProperty("y_max"));
-                    maxLong = Double.parseDouble(feature.getProperty("x_max"));
+                            minLat = Double.parseDouble(feature.getProperty("y_min"));
+                            minLong = Double.parseDouble(feature.getProperty("x_min"));
 
-
-                    removeMarkersIfPresent();
-                    addMarker(selectedDistrict);
-                    setDistrictMapCamera();
-                    ConstantData.isFromMaChupBasdina = false;
-                    isActivityFirstTimeLoad = false;
+                            maxLat = Double.parseDouble(feature.getProperty("y_max"));
+                            maxLong = Double.parseDouble(feature.getProperty("x_max"));
 
 
-                    Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
+                            removeMarkersIfPresent();
+                            addMarker(selectedDistrict);
+                            setDistrictMapCamera();
+                            ConstantData.isFromMaChupBasdina = false;
+                            isActivityFirstTimeLoad = false;
 
+
+                            Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
+
+                        }
+                    });
                 }
             });
 
@@ -512,8 +519,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             e.printStackTrace();
 
         }
+        }
+    }).start();
+
+
 
     }
+
 
     private class FilterFromGeoJson extends AsyncTask<Void, Void, List<LatLng>> {
         @Override
@@ -555,13 +567,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                             maxLat = Double.parseDouble(properties.getString("y_max"));
                             maxLong = Double.parseDouble(properties.getString("x_max"));
 
-
-//                            JSONArray boundryJarray = jobj.getJSONArray("bbox");
-//                            Log.d(TAG, "doInBackground: boundry"+boundryJarray.toString());
-//                            minLat = boundryJarray.getDouble(1);
-//                            minLong = boundryJarray.getDouble(0);
-//                            maxLat = boundryJarray.getDouble(3);
-//                            maxLong = boundryJarray.getDouble(2);
                         }
                     }
                 }
@@ -591,6 +596,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         this.map = getMap();
 
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -613,7 +619,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                             }
 
                             location = new LatLng(lat, lon);
-
                             switch (serviceOfficeType.trim()){
                                 case "police":
                                     policeAddMarker(location, servicesData.get(i));
@@ -633,18 +638,27 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                                 case "OCMC":
                                     OCMCAddMarker(location, servicesData.get(i));
                                     break;
-                                    default:
 
+                                default:
+                                    addDefaultmarker(location,servicesData.get(i));
                             }
+
                         }
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    showErrorToast("Server sent bad data");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+//                            e.printStackTrace();
+                            showErrorToast("Server sent bad data");
+                        }
+                    });
+
                 }
             }
         }).run();
     }
+
 
 
     public void policeAddMarker (LatLng location, ServicesData servicesData){
