@@ -79,6 +79,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_ERROR;
 import static com.nepal.naxa.smartnaari.data.network.service.DownloadService.STATUS_FINISHED;
@@ -781,4 +782,5 @@ public class BeautifulMainActivity extends BaseActivity
             default:
         }
     }
+
 }

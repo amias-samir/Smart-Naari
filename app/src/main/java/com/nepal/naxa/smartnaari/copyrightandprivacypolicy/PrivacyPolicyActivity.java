@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.copyrightandprivacypolicy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -19,6 +20,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PrivacyPolicyActivity extends BaseActivity {
 
@@ -91,5 +93,10 @@ public class PrivacyPolicyActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -144,8 +144,4 @@ public class DataGlossaryWordDetailsActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }

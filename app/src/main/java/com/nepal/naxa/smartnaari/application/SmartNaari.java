@@ -30,7 +30,7 @@ public class SmartNaari extends MultiDexApplication {
         super.onCreate();
 //        Fabric.with(this, new Crashlytics());
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("font/CaviarDreams.ttf")
+                        .setDefaultFontPath("font/merriweather-light.ttf")
                         .setFontAttrId(R.attr.fontPath)
                         .addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)
                         .build()

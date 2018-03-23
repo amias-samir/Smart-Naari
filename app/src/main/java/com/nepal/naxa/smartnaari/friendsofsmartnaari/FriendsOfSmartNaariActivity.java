@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.friendsofsmartnaari;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,7 @@ import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FriendsOfSmartNaariActivity extends BaseActivity {
 
@@ -90,4 +92,6 @@ public class FriendsOfSmartNaariActivity extends BaseActivity {
                 break;
         }
     }
+
+
 }

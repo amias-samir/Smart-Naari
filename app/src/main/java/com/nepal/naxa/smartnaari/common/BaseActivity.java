@@ -21,6 +21,7 @@ import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 
 import es.dmoral.toasty.Toasty;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created on 10/9/17
@@ -118,5 +119,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+
+//    Inject into Context CUSTOM FONT
+//    Wrap the Activity Context: CalligraphyContextWrapper
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

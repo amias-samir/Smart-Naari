@@ -29,6 +29,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadListener {
     final private String TAG = "WordsWithDetails";
 
@@ -217,4 +219,6 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 //        }
 //        super.onBackPressed();
 //    }
+
+
 }

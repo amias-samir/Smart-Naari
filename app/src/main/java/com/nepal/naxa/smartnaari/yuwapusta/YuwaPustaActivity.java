@@ -290,4 +290,5 @@ public class YuwaPustaActivity extends BaseActivity {
         swipeContainer.setRefreshing(true);
         initQuestionsRecyclerView(page);
     }
+
 }
