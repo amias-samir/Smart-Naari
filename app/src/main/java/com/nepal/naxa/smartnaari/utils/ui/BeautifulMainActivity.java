@@ -461,7 +461,7 @@ public class BeautifulMainActivity extends BaseActivity
         MenuItem notification = menu.findItem(R.id.item_notification);
 
 
-        tapItStopIt.setVisible(mIsTheTitleVisible);
+        tapItStopIt.setVisible(true);
         notification.setVisible(false);
 
 
@@ -470,13 +470,18 @@ public class BeautifulMainActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case android.R.id.home:
                 // drawerLayout.openDrawer(GravityCompat.START);
                 break;
 
             case R.id.item_call:
-                Intent intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                 intent = new Intent(BeautifulMainActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.item_donation:
+                 intent = new Intent(BeautifulMainActivity.this, DonateActivity.class);
                 startActivity(intent);
                 break;
 

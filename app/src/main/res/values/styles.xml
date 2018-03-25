@@ -24,7 +24,7 @@
     </style>
     <style name="TextAppearance.FontPath" parent="android:TextAppearance">
         <!-- Custom Attr-->
-        <item name="fontPath">font/merriweather-light.ttf</item>
+        <item name="fontPath">font/ColabThi.otf</item>
     </style>
 
 
