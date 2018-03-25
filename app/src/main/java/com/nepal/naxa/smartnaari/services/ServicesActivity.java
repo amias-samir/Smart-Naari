@@ -2,15 +2,20 @@ package com.nepal.naxa.smartnaari.services;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -288,6 +293,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             }
         });
 
+
+
         getServicesData();
         removeMarkersIfPresent();
 
@@ -315,6 +322,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 //        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
 //        ==========================
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -424,6 +432,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         }
         return false;
     }
+
 
 
     private void delayBeforeSheetOpen(final ServicesData servicesData) {

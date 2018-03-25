@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.services;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
+import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,22 +69,28 @@ TextView tvofficeEmail, tvOfficeCheifLandline, tvOfficeCheifMobileNo ;
 String district = servicesData.getDistrict();
             String officeDistrict = district.substring(0, 1).toUpperCase() + district.substring(1);
 
-            tvOfficeName.setText("Office Name : "+servicesData.getOfficeName().trim());
+            tvOfficeName.setText(servicesData.getOfficeName().trim());
             tvOfficeType.setText("Office Type : "+servicesData.getOfficeType().trim());
-            tvOfficeAddress.setText("Office Address : "+ officeDistrict.trim());
+            tvOfficeAddress.setText(officeDistrict.trim());
 
+
+            tvofficeEmail.setVisibility(TextUtils.isEmpty(servicesData.getOfficeEmail())?View.GONE:View.VISIBLE);
             tvofficeEmail.setText("Email: "+servicesData.getOfficeEmail().trim());
             Linkify.addLinks(tvofficeEmail, Linkify.EMAIL_ADDRESSES);
 
-            tvOfficeCheifLandline.setText("Office Cheif's Landline. : "+servicesData.getOfficeCheifLandline().trim());
+            tvOfficeCheifLandline.setVisibility(TextUtils.isEmpty(servicesData.getOfficeCheifLandline())?View.GONE:View.VISIBLE);
+            tvOfficeCheifLandline.setText("Office Chief's Landline. : "+servicesData.getOfficeCheifLandline().trim());
             Linkify.addLinks(tvOfficeCheifLandline, Linkify.PHONE_NUMBERS);
 
-            tvOfficeLandline.setText("Office Cheif's Mobile no. : "+servicesData.getOfficeCheifMobileNumber().trim());
+            tvOfficeCheifMobileNo.setVisibility(TextUtils.isEmpty(servicesData.getOfficeCheifMobileNumber())?View.GONE:View.VISIBLE);
+            tvOfficeCheifMobileNo.setText("Office Chief's Mobile no. : "+servicesData.getOfficeCheifMobileNumber().trim());
             Linkify.addLinks(tvOfficeCheifMobileNo, Linkify.PHONE_NUMBERS);
 
+            tvOfficeContactDutyPerson.setVisibility(TextUtils.isEmpty(servicesData.getContactDutyPersonContactNumber())?View.GONE:View.VISIBLE);
             tvOfficeContactDutyPerson.setText("Contact Duty Person's no. : "+servicesData.getContactDutyPersonContactNumber().trim());
             Linkify.addLinks(tvOfficeContactDutyPerson, Linkify.PHONE_NUMBERS);
 
+            tvOfficeLandline.setVisibility(TextUtils.isEmpty(servicesData.getOfficeLandline())?View.GONE:View.VISIBLE);
             tvOfficeLandline.setText("Office Landline no : "+servicesData.getOfficeLandline().trim());
             Linkify.addLinks(tvOfficeLandline, Linkify.PHONE_NUMBERS);
 //        Glide.with(this).load(servicesData.getPhotoPath()).into(backdrop);
