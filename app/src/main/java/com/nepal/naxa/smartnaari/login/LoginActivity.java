@@ -204,10 +204,10 @@ public class LoginActivity extends BaseActivity {
 
                 Log.e(TAG, "onResponse: "+response.body().getData().toString() );
 
-//                if (response == null) {
-//                    showErrorToast(null);
-//                    return;
-//                }
+                if (response == null) {
+                    showErrorToast("Null Response");
+                    return;
+                }
 
                 handleLoginResponse(response.body());
             }

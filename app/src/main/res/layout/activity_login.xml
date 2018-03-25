@@ -92,7 +92,7 @@
             android:gravity="center"
             android:text="Login"
             android:textAllCaps="false"
-            android:textColor="@color/inactiveText"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/material_text_headline"
             android:textStyle="normal" />
 
@@ -146,12 +146,11 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginLeft="@dimen/spacing_large"
-                android:layout_marginRight="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_marginStart="@dimen/spacing_mlarge"
+                android:layout_marginLeft="@dimen/spacing_mlarge"
+                android:layout_marginRight="@dimen/spacing_mlarge"
+                android:layout_marginEnd="@dimen/spacing_mlarge"
                 android:layout_marginBottom="@dimen/spacing_large"
-
                 android:id="@+id/registerBeTheOneLBL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

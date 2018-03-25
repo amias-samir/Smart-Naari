@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
+import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
@@ -52,6 +53,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
 //public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
@@ -461,6 +463,8 @@ public class SignUpActivity extends Activity {
 
             signUpRetrofitAPI(jsonToSend);
 
+            Log.d("Signup", "convertDataToJson: "+jsonToSend.toString());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -470,21 +474,36 @@ public class SignUpActivity extends Activity {
 
         NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<SignUpDetailsResponse> call = apiService.getSignupDetails(jsonData);
-        call.enqueue(new ErrorSupportCallback<>(new Callback<SignUpDetailsResponse>() {
+        call.enqueue(new Callback<SignUpDetailsResponse>() {
             @Override
             public void onResponse(Call<SignUpDetailsResponse> call, Response<SignUpDetailsResponse> response) {
                if(mProgressDlg != null && mProgressDlg.isShowing()){
                    mProgressDlg.dismiss();
                }
                if(response.body() == null){
-                   Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT);
+                   Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT).show();
                    return;
                }
-                handleSuccess(response.body().getData());
+
+              handleSignupResponse(response.body());
             }
 
-            private void handleSuccess(String data) {
-                Toasty.success(getApplicationContext(), data+ "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
+            private void handleSignupResponse(SignUpDetailsResponse signUpDetailsResponse) {
+                switch (signUpDetailsResponse.getStatus()) {
+                    case REQUEST_OK:
+                        handleSuccess(signUpDetailsResponse);
+                        break;
+
+                    default:
+                        Toasty.error(getApplicationContext(), signUpDetailsResponse.getData(), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+
+
+            private void handleSuccess(SignUpDetailsResponse signUpDetailsResponse) {
+
+                Toasty.success(getApplicationContext(), signUpDetailsResponse.getData()+ "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
                 startActivity(new Intent(getApplication(), LoginActivity.class));
             }
 
@@ -500,7 +519,7 @@ public class SignUpActivity extends Activity {
                 }
                 Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
-        }));
+        });
     }
 
 }
