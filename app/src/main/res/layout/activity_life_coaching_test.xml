@@ -41,20 +41,23 @@
         android:weightSum="2">
 
         <Button
+
             android:id="@+id/prevBtn"
-            style="@style/Base.Widget.AppCompat.Button"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="prevFragment"
             android:background="@drawable/button_red_background"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/colorWhite"
             android:text="Previous"
             android:layout_marginRight="@dimen/spacing_large"
             android:layout_marginLeft="@dimen/spacing_medium"
             android:textAllCaps="false"/>
 
         <Button
+            android:textColor="@color/colorWhite"
+
             android:id="@+id/nextBtn"
             style="@style/Base.Widget.AppCompat.Button"
             android:layout_width="0dp"
@@ -62,7 +65,6 @@
             android:layout_weight="1"
             android:onClick="nextFragment"
             android:background="@drawable/button_red_background"
-            android:textColor="@color/textSecondary"
             android:text="Next"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_medium"

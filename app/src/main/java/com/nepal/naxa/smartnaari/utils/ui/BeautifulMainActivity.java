@@ -177,10 +177,10 @@ public class BeautifulMainActivity extends BaseActivity
         setupDrawerLayout();
 
 
-        Glide.with(this)
-                .load(R.drawable.food_1).into(placeholder);
-        Glide.with(this)
-                .load(R.drawable.food_2).into(placeholder2);
+//        Glide.with(this)
+//                .load(R.drawable.food_1).into(placeholder);
+//        Glide.with(this)
+//                .load(R.drawable.food_2).into(placeholder2);
 
 
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
