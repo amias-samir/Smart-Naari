@@ -19,6 +19,6 @@
         android:gravity="center"
         android:text="Marker"
         android:textSize="@dimen/material_text_small_caption"
-        android:paddingTop="@dimen/spacing_small"/>
-
+        android:paddingTop="@dimen/spacing_small"
+        android:textColor="@color/black"/>
 </LinearLayout>

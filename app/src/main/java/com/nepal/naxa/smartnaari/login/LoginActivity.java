@@ -47,6 +47,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_401;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 
 public class LoginActivity extends BaseActivity {
@@ -195,20 +196,21 @@ public class LoginActivity extends BaseActivity {
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
 
         Call<UserDetail> call = apiService.getUserData(jsonToSend);
-        call.enqueue(new ErrorSupportCallback<>(new Callback<UserDetail>() {
+        call.enqueue(new Callback<UserDetail>() {
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
 
                 hideLoading();
 
-                if (response == null) {
-                    showErrorToast(null);
-                    return;
-                }
+                Log.e(TAG, "onResponse: "+response.body().getData().toString() );
+
+//                if (response == null) {
+//                    showErrorToast(null);
+//                    return;
+//                }
 
                 handleLoginResponse(response.body());
             }
-
             private void handleLoginResponse(UserDetail userDetail) {
                 switch (userDetail.getStatus()) {
                     case REQUEST_OK:
@@ -270,13 +272,12 @@ public class LoginActivity extends BaseActivity {
             public void onFailure(Call<UserDetail> call, Throwable t) {
                 hideLoading();
                 String message = "Internet Connection Error!, please try again later";
-
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
                 Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
             }
-        }));
+        });
     }
 
 
