@@ -57,7 +57,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="24dp"
                             android:scaleType="centerCrop"
-
                             android:tint="#11000000"
                             app:layout_collapseMode="parallax"
                             app:layout_collapseParallaxMultiplier="0.9" />
@@ -179,8 +178,8 @@
                                 android:id="@+id/main_imageview_placeholder"
                                 android:layout_width="match_parent"
                                 android:layout_height="300dp"
-                                android:scaleType="centerCrop"
-
+                                android:scaleType="fitXY"
+                                android:src="@drawable/food_1"
                                 android:tint="#11000000"
                                 app:layout_collapseMode="parallax"
                                 app:layout_collapseParallaxMultiplier="0.9" />
@@ -189,8 +188,8 @@
                                 android:id="@+id/main_imageview_placeholder2"
                                 android:layout_width="match_parent"
                                 android:layout_height="300dp"
-                                android:scaleType="centerCrop"
-
+                                android:scaleType="fitXY"
+                                android:src="@drawable/food_2"
                                 android:tint="#11000000"
                                 app:layout_collapseMode="parallax"
                                 app:layout_collapseParallaxMultiplier="0.9" />
