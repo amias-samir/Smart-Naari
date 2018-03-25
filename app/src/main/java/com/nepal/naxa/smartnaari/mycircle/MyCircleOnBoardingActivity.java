@@ -254,6 +254,17 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        if(layoutVideo.isShown()){
+            videoLayoutVisiblity(false);
+        }
+        else {
+            super.onBackPressed();
+        }
+
+    }
+
     private void showPermissionExplanationDialog() {
 
         if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {

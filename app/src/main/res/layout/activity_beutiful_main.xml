@@ -245,7 +245,7 @@
                     android:id="@+id/btn_nav_drawer_toggle"
                     android:layout_marginTop="12dp"
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:src="@drawable/ic_action_dehaze"
+                    android:src="@drawable/ic_menu_white"
                     android:layout_width="@dimen/image_final_width"
                     android:layout_height="@dimen/image_final_width" />
 
