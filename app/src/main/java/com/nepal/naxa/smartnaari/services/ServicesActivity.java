@@ -3,19 +3,15 @@ package com.nepal.naxa.smartnaari.services;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -34,7 +30,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -42,7 +37,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
-import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
@@ -266,6 +260,15 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
 
+    public boolean isGPSOn(){
+        try{
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }catch (NullPointerException e){
+            return false;
+        }
+       }
+
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(final GoogleMap googleMap) {
@@ -274,8 +277,16 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(centerNepallatLong, 5.6f));
 
         if (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            googleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+                @Override
+                public boolean onMyLocationButtonClick() {
+                    if (!isGPSOn()){
+                        showInfoToast("Turn on GPS");
+                    }
+                    return false;
+                }
+            });
             googleMap.setMyLocationEnabled(true);
-
         } else {
             requestPermissionsSafely(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
@@ -408,15 +419,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
     private void removeMarkersIfPresent() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+
                 for (Marker marker : markersPresentOnMap) {
                     marker.remove();
                 }
                 markersPresentOnMap.clear();
-            }
-        }).run();
+
+
     }
 
 
@@ -470,69 +479,48 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 //    ==========================
 
-    private void setDistrictGeoJSON() {
+    private void setDistrictGeoJSON()  {
 
-        new Thread(new Runnable() {
+        try{
+            districtLayer = new GeoJsonLayer(map, R.raw.district_bounds_centroid,
+                    getApplicationContext());
+            districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
+            districtLayer.addLayerToMap();
+        }catch (IOException | JSONException e){
+
+        }
+
+    }
+
+
+    private void setOnDistictTapListener(GeoJsonLayer geoJsonLayer){
+        geoJsonLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
             @Override
-            public void run() {
-        //set district layer
-        try {
-            try {
-                districtLayer = new GeoJsonLayer(map, R.raw.district_bounds_centroid,
-                        getApplicationContext());
-            } catch (JSONException e) {
-                Log.d(TAG, "Error ! while parsing GeoJSON raw file /n" + e);
+            public void onFeatureClick(Feature feature) {
 
-                e.printStackTrace();
+                selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
+
+                midLat = Double.parseDouble(feature.getProperty("centroid_2"));
+                midlong = Double.parseDouble(feature.getProperty("centroid_1"));
+
+                minLat = Double.parseDouble(feature.getProperty("y_min"));
+                minLong = Double.parseDouble(feature.getProperty("x_min"));
+
+                maxLat = Double.parseDouble(feature.getProperty("y_max"));
+                maxLong = Double.parseDouble(feature.getProperty("x_max"));
+
+
+                removeMarkersIfPresent();
+                addMarker(selectedDistrict);
+                setDistrictMapCamera();
+                ConstantData.isFromMaChupBasdina = false;
+                isActivityFirstTimeLoad = false;
+
+
+                Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
+
             }
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
-                    districtLayer.addLayerToMap();
-
-                    districtLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
-                        @Override
-                        public void onFeatureClick(Feature feature) {
-
-                            selectedDistrict = feature.getProperty("DISTRICT").toLowerCase().trim();
-
-                            midLat = Double.parseDouble(feature.getProperty("centroid_2"));
-                            midlong = Double.parseDouble(feature.getProperty("centroid_1"));
-
-                            minLat = Double.parseDouble(feature.getProperty("y_min"));
-                            minLong = Double.parseDouble(feature.getProperty("x_min"));
-
-                            maxLat = Double.parseDouble(feature.getProperty("y_max"));
-                            maxLong = Double.parseDouble(feature.getProperty("x_max"));
-
-
-                            removeMarkersIfPresent();
-                            addMarker(selectedDistrict);
-                            setDistrictMapCamera();
-                            ConstantData.isFromMaChupBasdina = false;
-                            isActivityFirstTimeLoad = false;
-
-
-                            Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
-
-                        }
-                    });
-                }
-            });
-
-
-        } catch (IOException e) {
-            Log.d(TAG, "Error ! While Applying GeoJSON to map /n" + e);
-            e.printStackTrace();
-
-        }
-        }
-    }).start();
-
-
-
+        });
     }
 
 

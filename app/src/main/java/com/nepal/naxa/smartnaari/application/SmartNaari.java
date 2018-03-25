@@ -29,12 +29,12 @@ public class SmartNaari extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
 //        Fabric.with(this, new Crashlytics());
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("font/merriweather-light.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)
-                        .build()
-        );
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+//                        .setDefaultFontPath("font/JosefinSans_Regular.ttf")
+//                        .setFontAttrId(R.attr.fontPath)
+//                        .addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)
+//                        .build()
+//        );
         AppLogger.init();
 
         context = getApplicationContext();

@@ -33,6 +33,7 @@
                     app:layout_collapseParallaxMultiplier="0.9">
 
                     <ViewSwitcher
+
                         android:id="@+id/toolbar_image_switcher_tap_it_stop_it"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
 
                             android:id="@+id/main_imageview_placeholder_tap_it_stop_it"
                             android:layout_width="match_parent"
-                            android:layout_height="245dp"
+                            android:layout_height="210dp"
                             android:scaleType="centerCrop"
                             android:src="@color/colorAccent"
                             android:tint="#11000000"
@@ -64,6 +65,7 @@
 
 
                     <Button
+                        android:visibility="gone"
                         android:id="@+id/btn_tap_it_stop_it"
                         style="@style/BootstrapButtonTapItStopIt"
                         android:layout_width="wrap_content"
