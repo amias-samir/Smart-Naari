@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
@@ -26,9 +27,12 @@ import com.nepal.naxa.smartnaari.utils.ui.ToastUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -177,6 +181,12 @@ public class DownloadService extends IntentService {
 
             @Override
             public void onFailure(Call<YuwaPustaResponse> call, Throwable t) {
+//                String message = "Connection Error !!!\nUnable to sync data";
+//
+//                if(t instanceof SocketTimeoutException){
+//                    message = "Slow internet connection, please try again later";
+//                }
+//                Toasty.error(getApplicationContext(), message, Toast.LENGTH_SHORT , true).show();
 
             }
         }));
@@ -200,7 +210,6 @@ public class DownloadService extends IntentService {
 
 
         NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
-//        Call<ServicesResponse> call = apiService.getServices(appDataManager.getLastSyncDateTime(ServicesData.class));
         Call<ServicesResponse> call = apiService.getServices(jsonToSendLastSyncDate);
         Log.d(TAG, "getServices: Date"+ jsonToSendLastSyncDate);
 //        Call<ServicesResponse> call = apiService.getServices("2017-10-12 05:38:36");
@@ -231,6 +240,7 @@ public class DownloadService extends IntentService {
 
                 t.getMessage();
                 Log.e(TAG, "onFailure: "+t.getMessage() );
+
             }
         }));
     }

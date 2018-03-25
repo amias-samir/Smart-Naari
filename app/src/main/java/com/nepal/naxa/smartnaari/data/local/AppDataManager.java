@@ -72,11 +72,11 @@ public class AppDataManager extends BaseActivity {
 //    ============================================================//
 
     //================================ yuwa pusta question answer =======================//
-    public void prepareToSaveYuwaQuestions(List<YuwaQuestion> yuwaQuestion) {
+    public void prepareToSaveYuwaQuestions(final List<YuwaQuestion> yuwaQuestion) {
         //loop
-//new Thread(new Runnable() {
-//    @Override
-//    public void run() {
+new Thread(new Runnable() {
+    @Override
+    public void run() {
 
         Log.d(TAG, "prepareToSaveYuwaQuestions: "+yuwaQuestion.size());
 
@@ -106,8 +106,8 @@ public class AppDataManager extends BaseActivity {
             }
 
         }
-//    }
-//});
+    }
+}).start();
     }
 
     public List<YuwaQuestion> getAllYuwaQuestions(int page) {
@@ -136,12 +136,12 @@ public class AppDataManager extends BaseActivity {
 //=====================================================================================//
 
     //============================= services list ========================================//
-    public void prepareToSaveServices(List<ServicesData> servicesData) {
+    public void prepareToSaveServices(final List<ServicesData> servicesData) {
 //        if (Thread.currentThread() == Looper.getMainLooper().getThread())Log.d("Samir","Main");
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
         Log.e(TAG, "prepareToServicesData: " + "!!!!!!! row size !!!!!!! \n row size :" + servicesData.size());
 
         //loop
@@ -171,8 +171,8 @@ public class AppDataManager extends BaseActivity {
                 e.printStackTrace();
             }
         }
-//            }
-//        });
+            }
+        }).start();
     }
 
     public List<ServicesData> getAllServicesdata() {
@@ -231,9 +231,9 @@ public class AppDataManager extends BaseActivity {
     //    ======================================= HotPotOfPassion ===========================//
     public void prepareToSaveHotPotOfPassion(final List<HotPotOfPassionData> hotPotOfPassionData) {
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
         //loop
         for (int i = 0; i < hotPotOfPassionData.size(); i++) {
             try {
@@ -258,8 +258,8 @@ public class AppDataManager extends BaseActivity {
                 e.printStackTrace();
             }
         }
-//            }
-//        });
+            }
+        }).start();
     }
 
     public List<HotPotOfPassionData> getAllHotPotOfPassiondata() {
@@ -288,6 +288,8 @@ public class AppDataManager extends BaseActivity {
             }
         }
 
+
+        Log.e(TAG, "getLastSyncDateTime:->-> "+classname+ ":::   "+dateTime );
 
         return dateTime;
 
