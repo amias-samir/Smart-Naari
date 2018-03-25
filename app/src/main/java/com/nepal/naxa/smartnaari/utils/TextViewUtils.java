@@ -23,6 +23,7 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.WordsWithDetailsMode
 
 import java.util.List;
 import java.util.Locale;
+import java.util.StringJoiner;
 
 import io.reactivex.observers.DisposableObserver;
 
@@ -105,6 +106,8 @@ public class TextViewUtils {
         String fullText = textView.getText().toString();
         textView.setText(fullText);
 
+        Log.e(TAG, "linkWordsToGlossary: "+fullText );
+
         SpannableStringBuilder span = new SpannableStringBuilder(fullText);
 
         int prevStartingIndex = -1, prevEndingIndex = -1;
@@ -134,7 +137,7 @@ public class TextViewUtils {
 //                            Log.e(TAG, "linkWordsToGlossary: " + " index =  " + index);
                         }
                     }
-//                    Log.e(TAG, "linkWordsToGlossary: "+wordWithSpace[0] );
+                    Log.e(TAG, "linkWordsToGlossary: "+wordWithSpace[0] );
 
                     if ((" " + textItem + " ").equalsIgnoreCase(wordWithSpace[0]) || (" " + textItem + ",").equalsIgnoreCase(wordWithSpace[0])
                             || (" " + textItem + ".").equalsIgnoreCase(wordWithSpace[0])|| ("(" + textItem + ")").equalsIgnoreCase(wordWithSpace[0])) {
