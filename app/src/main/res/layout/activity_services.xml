@@ -81,7 +81,8 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/act_services_title_wrapper" />
+        android:layout_below="@id/act_services_title_wrapper"
+      />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/act_services_recycler_map_legend"

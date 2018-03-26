@@ -80,12 +80,6 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
         }
     }
 
-//    private void SetTextViewDrawableColor(TextView textView, int color){
-//
-//        ColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
-//        holder.markerTitle.getCompoundDrawables()[0].setColorFilter(colorFilter);
-//        Log.e("qwert",color+ " ");
-//    }
 
     @Override
     public ServicesLegendListAdapter.ContactViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

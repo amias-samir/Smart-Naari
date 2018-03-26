@@ -26,6 +26,7 @@
     <!-- start service on android system boot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+
     <application
         android:name=".application.SmartNaari"
         android:allowBackup="true"

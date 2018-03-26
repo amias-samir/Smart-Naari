@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:background="@color/colorWhite"
             android:gravity="center"
-            android:text="Go to to glossary"
+            android:text="Go to glossary"
             android:textAllCaps="true" />
     </RelativeLayout>
 

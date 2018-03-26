@@ -83,6 +83,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     Marker amarker;
     @BindView(R.id.spinner_district_list_services)
     Spinner spinnerDistrictListServices;
+
+    ArrayAdapter distArrayAdpt;
+
     String selectedDistrict;
     double minLat, minLong, midLat, midlong, maxLat, maxLong;
     LatLng startingLatLong, midLatLong;
@@ -116,7 +119,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         markerPolice = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_police);
         markerOCMC = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ocmc);
-        markerKTMNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ktm_ngo);
+        markerKTMNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
         markerNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
         markerGOV = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_gov);
         markerMoWCsW = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_mowcsw);
@@ -147,9 +150,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
 
     private void initDistrictSpinner() {
-        ArrayAdapter<String> distArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListServices);
-        distArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDistrictListServices.setAdapter(distArray);
+        distArrayAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListServices);
+        distArrayAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDistrictListServices.setAdapter(distArrayAdpt);
     }
 
     @OnItemSelected(R.id.spinner_district_list_services)
@@ -157,21 +160,18 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         if (spinnerDistrictListServices.getSelectedItem().toString().equals("All District")) {
 
-            if(isActivityFirstTimeLoad){
+            if (isActivityFirstTimeLoad) {
                 return;
-            }else {
+            } else {
                 removeMarkersIfPresent();
-                setDistrictGeoJSON();
                 startCluster();
                 setNepalMapCamera();
             }
 
 
-
         } else {
             selectedDistrict = spinnerDistrictListServices.getSelectedItem().toString().trim().toLowerCase();
             removeMarkersIfPresent();
-            setDistrictGeoJSON();
             new FilterFromGeoJson().execute();
             try {
                 addMarker(selectedDistrict);
@@ -182,13 +182,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         }
 
 
-        isActivityFirstTimeLoad = false ;
+        isActivityFirstTimeLoad = false;
 
     }
 
-    private void setNepalMapCamera(){
+    private void setNepalMapCamera() {
         try {
-            final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(26.3484, 80.0509), new LatLng(30.4458,88.2047));
+            final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(26.3484, 80.0509), new LatLng(30.4458, 88.2047));
 
             map.setLatLngBoundsForCameraTarget(DISTRICT);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 2);
@@ -210,8 +210,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     private void setDistrictMapCamera() {
 
         try {
-            final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(minLat, minLong), new LatLng(maxLat,maxLong));
-
+            final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(minLat, minLong), new LatLng(maxLat, maxLong));
 
 
 //            map.setLatLngBoundsForCameraTarget(DISTRICT);
@@ -224,10 +223,31 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             map.getUiSettings().setScrollGesturesEnabled(true);
             map.getUiSettings().setRotateGesturesEnabled(true);
 
+            setSpinnerOnfeatureSelection();
+
         } catch (Exception e) {
             e.printStackTrace();
             Log.e(TAG, "setDistrictMapCamera: ERROR");
         }
+    }
+
+    public void setSpinnerOnfeatureSelection() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final int districtPos = distArrayAdpt.getPosition(selectedDistrict.substring(0, 1).toUpperCase() + selectedDistrict.substring(1));
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //set spinner
+                        spinnerDistrictListServices.setSelection(districtPos);
+//                        districtLayer.addLayerToMap();
+
+                    }
+                });
+            }
+        }).start();
     }
 
 
@@ -249,25 +269,23 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         recyclerMapLegend.setAdapter(ca);
         appDataManager.getAllUniqueServicesType();
 
-//        recyclerMapLegend.setLayoutManager(new LinearLayoutManager(this,
-//                LinearLayoutManager.HORIZONTAL, false));
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recyclerMapLegend.setLayoutManager(gridLayoutManager);
-
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_xxsmall);
         recyclerMapLegend.addItemDecoration(new GridSpacingItemDecoration(3, spacingInPixels, true, 0));
 
     }
 
 
-    public boolean isGPSOn(){
-        try{
+    public boolean isGPSOn() {
+        try {
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return false;
         }
-       }
+    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -281,7 +299,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             googleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
                 @Override
                 public boolean onMyLocationButtonClick() {
-                    if (!isGPSOn()){
+                    if (!isGPSOn()) {
                         showInfoToast("Turn on GPS");
                     }
                     return false;
@@ -299,12 +317,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void onMyLocationChange(Location arg0) {
                 // TODO Auto-generated method stub
                 LatLng location = new LatLng(arg0.getLatitude(), arg0.getLongitude());
-
-//                googleMap.addMarker(new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title("It's Me!"));
-//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10.5f));
             }
         });
-
 
 
         getServicesData();
@@ -315,11 +329,12 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             return;
         }
         map = googleMap;
-        setDistrictGeoJSON();
+        loadDistrictGeoJSON();
 
         if (ConstantData.isFromMaChupBasdina) {
+
             removeMarkersIfPresent();
-            setDistrictGeoJSON();
+//            loadDistrictGeoJSON();
             new FilterFromGeoJson().execute();
             try {
                 addMarker(selectedDistrict);
@@ -387,7 +402,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                         }
 
                         location = new LatLng(lat, lon);
-                        switch (serviceOfficeType.trim()){
+                        switch (serviceOfficeType.trim()) {
                             case "police":
                                 policeAddMarker(location, servicesData.get(i));
                                 break;
@@ -408,23 +423,29 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                                 break;
 
                             default:
-                                addDefaultmarker(location,servicesData.get(i));
+                                addDefaultmarker(location, servicesData.get(i));
                         }
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showErrorToast("Server sent bad data");
+                } catch (final Exception e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            e.printStackTrace();
+                            showErrorToast("Server sent bad data");
+                        }
+                    });
+
                 }
             }
-        }).run();
+        }).start();
     }
 
     private void removeMarkersIfPresent() {
 
-                for (Marker marker : markersPresentOnMap) {
-                    marker.remove();
-                }
-                markersPresentOnMap.clear();
+        for (Marker marker : markersPresentOnMap) {
+            marker.remove();
+        }
+        markersPresentOnMap.clear();
 
 
     }
@@ -442,7 +463,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         }
         return false;
     }
-
 
 
     private void delayBeforeSheetOpen(final ServicesData servicesData) {
@@ -467,8 +487,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
     protected void startCluster() {
-//        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
-
 //        mClusterManager = new ClusterManager<ServicesData>(this, getMap());
 //        getMap().setOnCameraIdleListener(mClusterManager);
 
@@ -480,22 +498,34 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 //    ==========================
 
-    private void setDistrictGeoJSON()  {
+    private void loadDistrictGeoJSON() {
 
-        try{
-            districtLayer = new GeoJsonLayer(map, R.raw.district_bounds_centroid,
-                    getApplicationContext());
-            districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
-            districtLayer.addLayerToMap();
-            setOnDistictTapListener(districtLayer);
-        }catch (IOException | JSONException e){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    districtLayer = new GeoJsonLayer(map, R.raw.district_bounds_centroid,
+                            getApplicationContext());
+                    districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            districtLayer.addLayerToMap();
+                            setOnDistictTapListener(districtLayer);
+                        }
+                    });
 
-        }
+                } catch (IOException | JSONException e) {
+
+                }
+            }
+        }).start();
 
     }
 
 
-    private void setOnDistictTapListener(GeoJsonLayer geoJsonLayer){
+
+    private void setOnDistictTapListener(GeoJsonLayer geoJsonLayer) {
         geoJsonLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
             @Override
             public void onFeatureClick(Feature feature) {
@@ -511,16 +541,12 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 maxLat = Double.parseDouble(feature.getProperty("y_max"));
                 maxLong = Double.parseDouble(feature.getProperty("x_max"));
 
-
                 removeMarkersIfPresent();
                 addMarker(selectedDistrict);
                 setDistrictMapCamera();
                 ConstantData.isFromMaChupBasdina = false;
                 isActivityFirstTimeLoad = false;
-
-
-                Log.e(TAG, "onFeatureClick: "+feature.getProperty("DISTRICT").toLowerCase().trim() );
-
+//                Log.e(TAG, "onFeatureClick: " + feature.getProperty("DISTRICT").toLowerCase().trim());
             }
         });
     }
@@ -618,7 +644,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                             }
 
                             location = new LatLng(lat, lon);
-                            switch (serviceOfficeType.trim()){
+                            switch (serviceOfficeType.trim()) {
                                 case "police":
                                     policeAddMarker(location, servicesData.get(i));
                                     break;
@@ -639,85 +665,128 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                                     break;
 
                                 default:
-                                    addDefaultmarker(location,servicesData.get(i));
+                                    addDefaultmarker(location, servicesData.get(i));
                             }
 
                         }
                     }
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            e.printStackTrace();
-                            showErrorToast("Server sent bad data");
+                            e.printStackTrace();
+                    showErrorToast("Server sent bad data");
                         }
                     });
 
                 }
             }
-        }).run();
+        }).start();
     }
 
 
+    public void policeAddMarker(final LatLng location,final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerPolice));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
 
-    public void policeAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerPolice));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
     }
 
-    public void MoWCsWAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerMoWCsW));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
+    public void MoWCsWAddMarker(final LatLng location, final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerMoWCsW));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
+
     }
 
-    public void KtmNGOAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerKTMNGO));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
+    public void KtmNGOAddMarker(final LatLng location, final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerKTMNGO));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
+
     }
 
-    public void NGOAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerNGO));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
+    public void NGOAddMarker(final LatLng location, final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerNGO));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
+
     }
 
-    public void GovAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerGOV));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
+    public void GovAddMarker(final LatLng location, final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerGOV));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
+
     }
 
-    public void OCMCAddMarker (LatLng location, ServicesData servicesData){
-        amarker = map.addMarker(new MarkerOptions().position(location)
-                .title(servicesData.getOfficeName())
-                .icon(markerOCMC));
-        amarker.setTag(servicesData);
-        markersPresentOnMap.add(amarker);
+    public void OCMCAddMarker(final LatLng location, final ServicesData servicesData) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                amarker = map.addMarker(new MarkerOptions().position(location)
+                        .title(servicesData.getOfficeName())
+                        .icon(markerOCMC));
+                amarker.setTag(servicesData);
+                markersPresentOnMap.add(amarker);
+            }
+        });
+
     }
 
-    public void addDefaultmarker(LatLng location, ServicesData servicesData){
+    public void addDefaultmarker(final LatLng location, final ServicesData servicesData) {
+
         for (int j = 0; j < appDataManager.getAllUniqueServicesType().size(); j++) {
 //                            Log.e(TAG, "runAddMarkerSAMIR: " + "services type loop count -->"+ j);
             if (appDataManager.getAllUniqueServicesType().get(j).equals(servicesData.getOfficeType())) {
 
-                amarker = map.addMarker(new MarkerOptions().position(location)
-                        .title(servicesData.getOfficeName())
-                        .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[j])));
-                amarker.setTag(servicesData);
-                markersPresentOnMap.add(amarker);
+                final int finalJ = j;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        amarker = map.addMarker(new MarkerOptions().position(location)
+                                .title(servicesData.getOfficeName())
+                                .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[finalJ])));
+                        amarker.setTag(servicesData);
+                        markersPresentOnMap.add(amarker);
+                    }
+                });
+
             }
 
         }
