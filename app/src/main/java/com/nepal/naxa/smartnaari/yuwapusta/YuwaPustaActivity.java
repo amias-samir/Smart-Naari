@@ -169,6 +169,11 @@ public class YuwaPustaActivity extends BaseActivity {
 
     private void initHorizontalRecyclerView() {
         List<OwlData> owlslist = appDataManager.getOwls();
+
+        if(owlslist == null){
+            return;
+        }
+
         RecyclerViewAdapter horizontalRecyclerViewAdapter = new RecyclerViewAdapter(owlslist);
 
         yuwaPustaActRvOwlslist.setAdapter(horizontalRecyclerViewAdapter);
@@ -192,7 +197,13 @@ public class YuwaPustaActivity extends BaseActivity {
     }
 
     private void initQuestionsRecyclerView(int page) {
+
+        if(appDataManager.getAllYuwaQuestions(page) == null){
+            return;
+        }
+
         yuwaQuestions.addAll(appDataManager.getAllYuwaQuestions(page));
+
 
         final YuwaQuestionAdapter yuwaQuestionAdapter = new YuwaQuestionAdapter(yuwaQuestions);
         yuwaQuestionAdapter.notifyDataSetChanged();
