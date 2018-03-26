@@ -129,6 +129,8 @@ dependencies {
 //    text font
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 
+   // compile 'com.github.bkhezry:ExtraMapUtils:v1.2.0'
+
     // Testing-only dependencies
 //    androidTestCompile 'com.android.support.test:runner:1.0.1'
 //    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'

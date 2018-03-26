@@ -430,8 +430,13 @@
             android:name=".mycircle.MyCircleOnBoardingActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity android:name=".mycircle.MyCircleProtectorActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+
+            android:name=".mycircle.MyCircleProtectorActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:exported="true"
+            android:name=".services.ServicesActivityNew" />
     </application>
 
 </manifest>

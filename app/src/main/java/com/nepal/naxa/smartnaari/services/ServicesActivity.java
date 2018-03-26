@@ -123,7 +123,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         initToolbar();
         initDistrictSpinner();
-        initMapLegend();
+
 
 //        if from MaChupBasdina Activity
         if (ConstantData.isFromMaChupBasdina) {
@@ -273,6 +273,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
+        initMapLegend();
         LatLng centerNepallatLong = new LatLng(27.9713, 84.5956);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(centerNepallatLong, 5.6f));
 
@@ -486,6 +487,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                     getApplicationContext());
             districtLayer.getDefaultPolygonStyle().setStrokeWidth(2);
             districtLayer.addLayerToMap();
+            setOnDistictTapListener(districtLayer);
         }catch (IOException | JSONException e){
 
         }

@@ -459,10 +459,13 @@ public class BeautifulMainActivity extends BaseActivity
 
         MenuItem tapItStopIt = menu.findItem(R.id.item_call);
         MenuItem notification = menu.findItem(R.id.item_notification);
+        MenuItem itemDonation = menu.findItem(R.id.item_donation);
 
 
-        tapItStopIt.setVisible(true);
-        notification.setVisible(false);
+
+        tapItStopIt.setVisible(mIsTheTitleVisible);
+        notification.setVisible(mIsTheTitleVisible);
+        itemDonation.setVisible(mIsTheTitleVisible);
 
 
         return true;
