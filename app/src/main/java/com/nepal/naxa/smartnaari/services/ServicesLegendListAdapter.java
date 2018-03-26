@@ -2,6 +2,8 @@ package com.nepal.naxa.smartnaari.services;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,38 +46,50 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
         switch (serviceType) {
             case "police":
                 contactViewHolder.tvTypeID.setText("Police");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_police);
+                int color1 = ColorList.policeMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color1, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             case "mowcsw":
                 contactViewHolder.tvTypeID.setText("MoWCsW");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_mowcsw);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_mowcsw);
+                int color2 = ColorList.MoWCsWMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color2, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             case "gov":
                 contactViewHolder.tvTypeID.setText("Gov");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
+                int color3 = ColorList.GOVMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color3, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             case "ktm ngo":
                 contactViewHolder.tvTypeID.setText("KTM NGO");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+                int color4 = ColorList.NGOMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color4, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             case "ngo":
                 contactViewHolder.tvTypeID.setText("NGO");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ngo);
+                int color5 = ColorList.NGOMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color5, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             case "ocmc":
                 contactViewHolder.tvTypeID.setText("OCMC");
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ocmc);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_ocmc);
+                int color6 = ColorList.OCMCMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color6, PorterDuff.Mode.SRC_ATOP);
                 break;
 
             default:
-                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker);
-                int color = ColorList.COLORFUL_COLORS[i];
-                contactViewHolder.ivMarkerLegend.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+//                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker);
+                int color7 = ColorList.DefaultMarkerLegend;
+                contactViewHolder.ivMarkerLegend.setColorFilter(color7, PorterDuff.Mode.SRC_ATOP);
 
         }
     }

@@ -93,8 +93,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     private GoogleMap map;
     private List<Marker> markersPresentOnMap;
 
-    BitmapDescriptor markerPolice, markerOCMC, markerKTMNGO, markerNGO, markerGOV, markerMoWCsW;
-    Bitmap markerPolice1;
 
     //cluster testing
     private ClusterManager<ServicesData> mClusterManager;
@@ -117,12 +115,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         appDataManager = new AppDataManager(getApplicationContext());
         markersPresentOnMap = new ArrayList<>();
 
-        markerPolice = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_police);
-        markerOCMC = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ocmc);
-        markerKTMNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
-        markerNGO = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_ngo);
-        markerGOV = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_gov);
-        markerMoWCsW = BitmapDescriptorFactory.fromResource(R.drawable.ic_marker_mowcsw);
 
         initToolbar();
         initDistrictSpinner();
@@ -212,12 +204,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         try {
             final LatLngBounds DISTRICT = new LatLngBounds(new LatLng(minLat, minLong), new LatLng(maxLat, maxLong));
 
-
 //            map.setLatLngBoundsForCameraTarget(DISTRICT);
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(DISTRICT, 0);
 //            map.moveCamera(cu);
             map.animateCamera(cu);
-
 
             map.getUiSettings().setZoomControlsEnabled(true);
             map.getUiSettings().setScrollGesturesEnabled(true);
@@ -233,21 +223,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
     public void setSpinnerOnfeatureSelection() {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final int districtPos = distArrayAdpt.getPosition(selectedDistrict.substring(0, 1).toUpperCase() + selectedDistrict.substring(1));
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //set spinner
-                        spinnerDistrictListServices.setSelection(districtPos);
-//                        districtLayer.addLayerToMap();
-
-                    }
-                });
-            }
-        }).start();
+        //set spinner
+        final int districtPos = distArrayAdpt.getPosition(selectedDistrict.substring(0, 1).toUpperCase() + selectedDistrict.substring(1));
+        spinnerDistrictListServices.setSelection(districtPos);
     }
 
 
@@ -266,8 +244,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
         ca = new ServicesLegendListAdapter(this, resultCur);
+        ca.notifyDataSetChanged();
         recyclerMapLegend.setAdapter(ca);
-        appDataManager.getAllUniqueServicesType();
 
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
@@ -524,7 +502,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
 
-
     private void setOnDistictTapListener(GeoJsonLayer geoJsonLayer) {
         geoJsonLayer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
             @Override
@@ -675,7 +652,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                         @Override
                         public void run() {
                             e.printStackTrace();
-                    showErrorToast("Server sent bad data");
+                            showErrorToast("Server sent bad data");
                         }
                     });
 
@@ -685,13 +662,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     }
 
 
-    public void policeAddMarker(final LatLng location,final ServicesData servicesData) {
+    public void policeAddMarker(final LatLng location, final ServicesData servicesData) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerPolice));
+                        .icon(ColorList.getMarkerIcon(ColorList.policeMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -705,7 +682,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerMoWCsW));
+                        .icon(ColorList.getMarkerIcon(ColorList.MoWCsWMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -719,7 +696,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerKTMNGO));
+                        .icon(ColorList.getMarkerIcon(ColorList.NGOMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -733,7 +710,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerNGO));
+                        .icon(ColorList.getMarkerIcon(ColorList.NGOMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -747,7 +724,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerGOV));
+                        .icon(ColorList.getMarkerIcon(ColorList.GOVMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -761,7 +738,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(markerOCMC));
+                        .icon(ColorList.getMarkerIcon(ColorList.OCMCMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
@@ -781,7 +758,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                     public void run() {
                         amarker = map.addMarker(new MarkerOptions().position(location)
                                 .title(servicesData.getOfficeName())
-                                .icon(BitmapDescriptorFactory.defaultMarker(ColorList.MarkerColorList[finalJ])));
+                                .icon(BitmapDescriptorFactory.defaultMarker()));
                         amarker.setTag(servicesData);
                         markersPresentOnMap.add(amarker);
                     }

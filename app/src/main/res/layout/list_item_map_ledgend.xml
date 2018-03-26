@@ -10,6 +10,7 @@
         android:id="@+id/iv_services_legend_marker"
         android:layout_width="@dimen/small_icon_size"
         android:layout_height="@dimen/small_icon_size"
+        android:src="@drawable/ic_default_marker_24dp"
         />
 
     <TextView
