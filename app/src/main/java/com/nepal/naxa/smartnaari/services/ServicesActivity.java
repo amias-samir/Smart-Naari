@@ -40,7 +40,9 @@ import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
+import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
+import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ColorList;
@@ -120,6 +122,9 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         initDistrictSpinner();
 
 
+
+        getUserCurrentDistrict();
+
 //        if from MaChupBasdina Activity
         if (ConstantData.isFromMaChupBasdina) {
             Intent intent = getIntent();
@@ -127,6 +132,25 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         }
 
 
+    }
+
+    private void getUserCurrentDistrict (){
+        SessionManager sessionManager ;
+        UserData userData ;
+        sessionManager = new SessionManager(this);
+        userData = sessionManager.getUser();
+        String District = userData.getCurrentDistrict().trim().toLowerCase();
+
+        Log.d(TAG, "getUserCurrentDistrict: "+selectedDistrict);
+        setSpinnerOnfeatureSelection(District);
+
+//        removeMarkersIfPresent();
+//        new FilterFromGeoJson().execute();
+//        try {
+//            addMarker(selectedDistrict);
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+//        }
     }
 
     private void initToolbar() {
@@ -213,7 +237,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             map.getUiSettings().setScrollGesturesEnabled(true);
             map.getUiSettings().setRotateGesturesEnabled(true);
 
-            setSpinnerOnfeatureSelection();
+            setSpinnerOnfeatureSelection(selectedDistrict);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -221,10 +245,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         }
     }
 
-    public void setSpinnerOnfeatureSelection() {
+    public void setSpinnerOnfeatureSelection(String district) {
 
         //set spinner
-        final int districtPos = distArrayAdpt.getPosition(selectedDistrict.substring(0, 1).toUpperCase() + selectedDistrict.substring(1));
+        final int districtPos = distArrayAdpt.getPosition(district.substring(0, 1).toUpperCase() + district.substring(1));
         spinnerDistrictListServices.setSelection(districtPos);
     }
 
