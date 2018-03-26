@@ -692,7 +692,7 @@ public class MyCircleActivity extends BaseActivity {
                 String message = getString(R.string.general_error_msg);
 
                 if (t instanceof SocketTimeoutException) {
-                    message = getString(R.string.network_error_timeout);
+                    message = "slow internet connection, please try again later";
                 }
 
                 showErrorToast(message);

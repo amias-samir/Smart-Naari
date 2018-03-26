@@ -1,12 +1,12 @@
 package com.nepal.naxa.smartnaari.passion_of_life.heteregenouscomplexrecycler;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.nepal.naxa.smartnaari.R;
@@ -23,7 +23,7 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     // The items to display in your RecyclerView
     private List<Object> items;
 
-    private final int USER = 0, IMAGE = 1;
+    private final int BLOG = 0, IMAGE = 1;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ComplexRecyclerViewAdapter(List<Object> items) {
@@ -40,7 +40,7 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     public int getItemViewType(int position) {
         //More to come
         if (items.get(position) instanceof HotPotBlogRecipe) {
-            return USER;
+            return BLOG;
         } else if (items.get(position) instanceof HotPotImage) {
             return IMAGE;
         }
@@ -55,7 +55,7 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 
         switch (viewType) {
-            case USER:
+            case BLOG:
                 View v1 = inflater.inflate(R.layout.layout_hotpot_viewholder1, viewGroup, false);
                 viewHolder = new ViewHolder1(v1);
 
@@ -74,7 +74,7 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         //More to come
 
         switch (viewHolder.getItemViewType()) {
-            case USER:
+            case BLOG:
                 ViewHolder1 vh1 = (ViewHolder1) viewHolder;
                 configureViewHolder1(vh1, position);
                 break;
@@ -113,8 +113,11 @@ public class ComplexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
                         vh1.getExpandedContentlayout().setVisibility(View.VISIBLE);
+                        vh1.getExpandCollapseBtn().setBackground(vh1.getExpandCollapseBtn().getContext().getResources().getDrawable(R.drawable.ic_circle_up_arrow_white));
                     }else {
                         vh1.getExpandedContentlayout().setVisibility(View.GONE);
+                        vh1.getExpandCollapseBtn().setBackground(vh1.getExpandCollapseBtn().getContext().getResources().getDrawable(R.drawable.ic_circle_down_white));
+
 
                     }
                 }
