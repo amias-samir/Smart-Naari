@@ -363,8 +363,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
                 startActivity(intent);
                 break;
             case R.id.item_list_menu:
-                Intent intentListMenu = new Intent(ServicesActivity.this, ServicesListActivity.class);
-                startActivity(intentListMenu);
+                if (!isGPSOn()) {
+                    showInfoToast("Turn on GPS");
+                }else {
+                    Intent intentListMenu = new Intent(ServicesActivity.this, ServicesListActivity.class);
+                    startActivity(intentListMenu);
+                    finish();
+                }
                 return true;
         }
 

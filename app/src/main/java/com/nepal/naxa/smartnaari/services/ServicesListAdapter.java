@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -20,10 +21,12 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
     private static final String TAG = "ServicesLegendAdapter";
     private List<ServicesData> servicesList;
+    private List<Float> servicesDistanceList;
     Context context;
 
-    public ServicesListAdapter(Context context, List<ServicesData> cList) {
+    public ServicesListAdapter(Context context, List<ServicesData> cList, List<Float>servicesDistanceList) {
         this.servicesList = cList;
+        this.servicesDistanceList = servicesDistanceList;
         this.context = context;
     }
 
@@ -50,7 +53,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
         ServicesData ci = servicesList.get(i);
         contactViewHolder.tvServicesName.setText(ci.getOfficeName().trim());
         contactViewHolder.tvServicesAddress.setText(ci.getDistrict().trim());
-        contactViewHolder.tvServicesDistance.setText("102.3 Km.");
+        contactViewHolder.tvServicesDistance.setText(meterToKMConverter(servicesDistanceList.get(i)));
     }
 
 
@@ -63,6 +66,26 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             tvServicesAddress = (TextView) v.findViewById(R.id.tv_services_address);
             tvServicesDistance = (TextView) v.findViewById(R.id.tv_services_distance);
         }
+    }
+
+
+    public String meterToKMConverter (Float distance){
+
+        String convertedDistance = "distance in K.m";
+        Float distanceInKm ;
+        if(distance > 1000){
+            distanceInKm = distance/1000;
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            float twoDigitsDistance = Float.valueOf(decimalFormat.format(distanceInKm));
+            convertedDistance = twoDigitsDistance + " kms";
+
+        }else {
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            float twoDigitsDistance = Float.valueOf(decimalFormat.format(distance));
+            convertedDistance = twoDigitsDistance + " meters";
+        }
+
+        return convertedDistance;
     }
 
 }

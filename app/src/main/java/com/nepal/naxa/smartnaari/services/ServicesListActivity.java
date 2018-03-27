@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,9 +21,16 @@ import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,8 +40,12 @@ public class ServicesListActivity extends BaseActivity {
     @BindView(R.id.services_list_recyclerView)
     RecyclerView servicesListRecyclerView;
 
-    AppDataManager appDataManager ;
-    List<ServicesData> servicesData ;
+    AppDataManager appDataManager;
+    List<ServicesData> servicesData;
+
+    Map<ServicesData, Float> hashMapWithDistance;
+    List<ServicesData> sortedServicesList;
+    List<Float> sortedServicesDistanceList;
 
     public static List<ServicesData> resultCur = new ArrayList<>();
     public static List<ServicesData> filteredList = new ArrayList<>();
@@ -51,10 +63,7 @@ public class ServicesListActivity extends BaseActivity {
 
         getServicesDataFromDatabase();
 
-        initServicesList();
-
-
-
+        sortingServiceData();
 
     }
 
@@ -87,6 +96,7 @@ public class ServicesListActivity extends BaseActivity {
             case R.id.item_map_menu:
                 Intent mapIntent = new Intent(ServicesListActivity.this, ServicesActivity.class);
                 startActivity(mapIntent);
+                finish();
                 break;
 
             case R.id.item_call:
@@ -98,22 +108,24 @@ public class ServicesListActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getServicesDataFromDatabase (){
+    public void getServicesDataFromDatabase() {
         servicesData = appDataManager.getAllServicesdata();
+
     }
 
-    private void initServicesList() {
+    private void initServicesList(List<ServicesData> servicesData, List<Float> servicesDistance) {
 
         try {
             resultCur.clear();
-            for (int i = 0; i < servicesData.size(); i++) {
+          resultCur.addAll(servicesData);
 
-                resultCur.add(servicesData.get(i));
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ca = new ServicesListAdapter(this, resultCur);
+        if (servicesData == null) {
+            return;
+        }
+        ca = new ServicesListAdapter(this, resultCur, servicesDistance);
         ca.notifyDataSetChanged();
         servicesListRecyclerView.setAdapter(ca);
 
@@ -126,29 +138,84 @@ public class ServicesListActivity extends BaseActivity {
     }
 
 
+    public void sortingServiceData() {
 
-//    public static List<ServicesData> sortServiceData(List<ServicesData> servicesData, final double myLatitude,final double myLongitude) {
-//
-//        Comparator comp = new Comparator<Location>() {
-//            @Override
-//            public int compare(Location o, Location o2) {
-//
-//
-//
-//                float[] result1 = new float[3];
-//                android.location.Location.distanceBetween(myLatitude, myLongitude, o.Lat, o.Long, result1);
-//                Float distance1 = result1[0];
-//
-//                float[] result2 = new float[3];
-//                android.location.Location.distanceBetween(myLatitude, myLongitude, o2.Lat, o2.Long, result2);
-//                Float distance2 = result2[0];
-//
-//                return distance1.compareTo(distance2);
-//            }
-//        };
-//
-//        Collections.sort(servicesData, comp);
-//        return servicesData;
-//    }
+        hashMapWithDistance = new HashMap<ServicesData, Float>();
 
+        final double myLat = 27.700769;
+        final double myLon = 85.300140;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (servicesData.size() > 1) {
+//                    sortServiceData(servicesData, myLat, myLon);
+                    for (int i = 0; i < servicesData.size(); i++) {
+                        double latfirst = Double.parseDouble(servicesData.get(i).getServiceLat());
+                        double longfirst = Double.parseDouble(servicesData.get(i).getServiceLon());
+
+                        float[] result1 = new float[3];
+                        Location.distanceBetween(myLat, myLon, latfirst, longfirst, result1);
+                        Float distance1 = result1[0];
+
+                        hashMapWithDistance.put(servicesData.get(i), distance1);
+                    }
+                    sortMapByValuesWithDuplicates(hashMapWithDistance);
+                }
+            }
+        }).start();
+    }
+
+    private void sortMapByValuesWithDuplicates(Map passedMap) {
+        List mapKeys = new ArrayList(passedMap.keySet());
+        List mapValues = new ArrayList(passedMap.values());
+        Collections.sort(mapValues);
+//        Collections.sort(mapKeys);
+
+        LinkedHashMap sortedMap = new LinkedHashMap();
+
+        Iterator valueIt = mapValues.iterator();
+        while (valueIt.hasNext()) {
+            Object val = valueIt.next();
+            Iterator keyIt = mapKeys.iterator();
+
+            while (keyIt.hasNext()) {
+                Object key = keyIt.next();
+                Object comp1 = passedMap.get(key);
+                Float comp2 = Float.parseFloat(val.toString());
+
+                if (comp1.equals(comp2)) {
+                    passedMap.remove(key);
+                    mapKeys.remove(key);
+                    sortedMap.put((ServicesData) key, (Float) val);
+                    break;
+                }
+            }
+        }
+        //Getting Set of keys from HashMap
+        Set<ServicesData> keySet = sortedMap.keySet();
+        //Creating an ArrayList of keys by passing the keySet
+        sortedServicesList = new ArrayList<ServicesData>(keySet);
+
+
+        //Getting Collection of values from HashMap
+        Collection<Float> values = sortedMap.values();
+        //Creating an ArrayList of values
+        sortedServicesDistanceList = new ArrayList<Float>(values);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                initServicesList(sortedServicesList, sortedServicesDistanceList);
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent mapIntent = new Intent(ServicesListActivity.this, ServicesActivity.class);
+        startActivity(mapIntent);
+        finish();
+    }
 }
