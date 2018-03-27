@@ -123,12 +123,13 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
 
 
-        getUserCurrentDistrict();
 
 //        if from MaChupBasdina Activity
         if (ConstantData.isFromMaChupBasdina) {
             Intent intent = getIntent();
             selectedDistrict = intent.getStringExtra(ConstantData.KEY_DISTRICT);
+        }else {
+            getUserCurrentDistrict();
         }
 
 
