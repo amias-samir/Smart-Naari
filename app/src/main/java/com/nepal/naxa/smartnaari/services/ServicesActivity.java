@@ -144,14 +144,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
         Log.d(TAG, "getUserCurrentDistrict: "+selectedDistrict);
         setSpinnerOnfeatureSelection(District);
-
-//        removeMarkersIfPresent();
-//        new FilterFromGeoJson().execute();
-//        try {
-//            addMarker(selectedDistrict);
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
-//        }
     }
 
     private void initToolbar() {
@@ -357,6 +349,8 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        MenuItem listViewServices = menu.findItem(R.id.item_list_menu);
+        listViewServices.setVisible(true);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -367,6 +361,10 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             case R.id.item_call:
                 Intent intent = new Intent(ServicesActivity.this, TapItStopItActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.item_list_menu:
+                Intent intentListMenu = new Intent(ServicesActivity.this, ServicesListActivity.class);
+                startActivity(intentListMenu);
                 return true;
         }
 
