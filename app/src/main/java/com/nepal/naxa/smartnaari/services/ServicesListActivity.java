@@ -110,7 +110,6 @@ public class ServicesListActivity extends BaseActivity {
 
     public void getServicesDataFromDatabase() {
         servicesData = appDataManager.getAllServicesdata();
-
     }
 
     private void initServicesList(List<ServicesData> servicesData, List<Float> servicesDistance) {
