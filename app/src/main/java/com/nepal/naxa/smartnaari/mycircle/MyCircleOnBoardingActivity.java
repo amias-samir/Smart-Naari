@@ -66,19 +66,39 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
+    //    https://stackoverflow.com/questions/36936914/list-of-android-permissions-normal-permissions-and-dangerous-permissions-in-api
     public static void startSafe(Context context, boolean coldStart) {
-        Boolean hasAllRequredPermission = false;
-        if (hasAllRequredPermission) {
-            //not implemeted
+        Boolean hasAllRequredPermission = hackHasPermission(context, Manifest.permission.SEND_SMS)
+                && hackHasPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                && hackHasPermission(context, Manifest.permission.CALL_PHONE)
+                && hackCanDrawOverlay(context);
 
 
-        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || hasAllRequredPermission) {
             showMyCircleActivatedToast();
             context.startService(new Intent(context, PowerButtonService.class));
-            if (coldStart) context.startActivity(new Intent(context, BeautifulMainActivity.class));
+
+            if (coldStart) {
+                context.startActivity(new Intent(context, BeautifulMainActivity.class));
+            }
+
         } else {
             start(context);
         }
+    }
+
+    @Deprecated
+    public static boolean hackHasPermission(Context context, String permission) {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    @Deprecated
+    public static boolean hackCanDrawOverlay(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Settings.canDrawOverlays(context);
+        }
+        return true;
     }
 
     private static void showMyCircleActivatedToast() {
@@ -256,10 +276,9 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if(layoutVideo.isShown()){
+        if (layoutVideo.isShown()) {
             videoLayoutVisiblity(false);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
 
@@ -341,15 +360,12 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
         String[] requiredPermissions = new String[]{
                 android.Manifest.permission.SEND_SMS,
-                android.Manifest.permission.VIBRATE,
-                android.Manifest.permission.SYSTEM_ALERT_WINDOW,
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.CALL_PHONE,
-                android.Manifest.permission.WAKE_LOCK};
+                Manifest.permission.CALL_PHONE};
 
 
         if (hasPermission(Manifest.permission.SEND_SMS) && hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-        && hasPermission(Manifest.permission.CALL_PHONE)) {
+                && hasPermission(Manifest.permission.CALL_PHONE)) {
             stepper.setActiveStepAsCompleted();
         } else {
             requestPermissionsSafely(requiredPermissions, CODE_REQUEST_PERMISSIONS);
