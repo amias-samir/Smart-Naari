@@ -155,7 +155,10 @@ public class MyCircleActivity extends BaseActivity {
 
         sessionManager = new SessionManager(this);
         myCircleData = new MyCircleData();
-        myCircleData = sessionManager.getMyCircleContact();
+
+        if(sessionManager.doesUserHaveCircle()) {
+            myCircleData = sessionManager.getMyCircleContact();
+        }
 
         final SpannableStringBuilder sb = new SpannableStringBuilder("For my Saftey");
 
@@ -258,49 +261,14 @@ public class MyCircleActivity extends BaseActivity {
     @OnClick({R.id.btnSelectContactNo, R.id.btnDone})
     public void onBtnClicked(View view) {
         switch (view.getId()) {
-//
-//            case R.id.btnSelectContactNo:
-//
-//                myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString());
-//                myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString());
-//                myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString());
-//                myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString());
-//                myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString());
-//
-//                first_contact = myCircleData.getContactNumber1();
-//                second_contact = myCircleData.getContactNumber2();
-//                third_contact = myCircleData.getContactNumber3();
-//                fourth_contact = myCircleData.getContactNumber4();
-//                fifth_contact = myCircleData.getContactNumber5();
-//
-//
-//                if (hasPermission(Manifest.permission.READ_CONTACTS)) {
-//
-//                    if (first_contact.equals("") || second_contact.equals("") || third_contact.equals("") ||
-//                            fourth_contact.equals("") || fifth_contact.equals("")) {
-////                    Intent intentContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-////                    startActivityForResult(intentContact, PICK_CONTACT);
-//                        // using native contacts selection
-//                        // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
-//                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_CONTACTS);
-//                    } else {
-//                        showInfoToast("You can only add five phone number");
-//
-//                    }
-//                } else {
-//                    requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), 01);
-//                }
-//
-//                break;
-
 
             case R.id.btnDone:
 
-                myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString());
-                myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString());
-                myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString());
-                myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString());
-                myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString());
+                myCircleData.setContactNumber1(tvFirstContact.getEditText().getText().toString().trim());
+                myCircleData.setContactNumber2(tvSecondContact.getEditText().getText().toString().trim());
+                myCircleData.setContactNumber3(tvThirdContact.getEditText().getText().toString().trim());
+                myCircleData.setContactNumber4(tvFourthContact.getEditText().getText().toString().trim());
+                myCircleData.setContactNumber5(tvFifthContact.getEditText().getText().toString().trim());
 
                 first_contact = myCircleData.getContactNumber1();
                 second_contact = myCircleData.getContactNumber2();
