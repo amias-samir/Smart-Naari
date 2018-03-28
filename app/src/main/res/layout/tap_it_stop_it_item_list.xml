@@ -7,12 +7,16 @@
     android:layout_marginBottom="@dimen/spacing_xsmall"
     >
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="@dimen/spacing_xsmall">
+
 
         <TextView
             android:id="@+id/tap_it_stop_it_dialog_name"
@@ -22,13 +26,15 @@
             android:text="Contact Name"
             android:padding="@dimen/spacing_small"
             android:gravity="left"
+            android:layout_marginRight="@dimen/spacing_xxsmall"
             />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/spacing_xxsmall">
             <TextView
                 android:id="@+id/tap_it_stop_it_dialog_number"
                 android:layout_width="match_parent"
@@ -37,7 +43,8 @@
                 android:text="numbers"
                 android:padding="@dimen/spacing_small"
                 android:gravity="center"
-                android:drawableLeft="@drawable/ic_phone_forwarded"/>
+                android:drawableLeft="@drawable/ic_phone_forwarded"
+                />
 
             <TextView
                 android:id="@+id/tap_it_stop_it_dialog_number2"
@@ -51,7 +58,27 @@
                 android:visibility="gone"/>
         </LinearLayout>
 
-
     </LinearLayout>
+    <ImageView
+        android:layout_below="@id/top_layout"
+        android:layout_marginTop="@dimen/spacing_xxsmall"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        />
+
+    <FrameLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+
+        >
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            />
+    </FrameLayout>
+</RelativeLayout>
 
 </LinearLayout>

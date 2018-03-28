@@ -103,7 +103,7 @@ public class ServicesListActivity extends BaseActivity {
 //                    Drawer.closeDrawers();
                     int position = recyclerView.getChildPosition(child);
 
-                    delayBeforeSheetOpen(servicesData.get(position));
+                    delayBeforeSheetOpen(sortedServicesList.get(position));
 
                     return true;
                 }

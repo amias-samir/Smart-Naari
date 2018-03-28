@@ -436,8 +436,7 @@
         <activity
             android:name=".services.ServicesActivityNew"
             android:exported="true" />
-        <activity android:name=".services.ServicesListActivity"></activity>
-
+        <activity android:name=".services.ServicesListActivity" />
         <activity
             android:name=".common.GeoPointActivity"
             android:screenOrientation="portrait" />
