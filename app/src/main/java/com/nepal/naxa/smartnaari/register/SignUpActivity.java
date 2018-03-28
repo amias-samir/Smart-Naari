@@ -4,30 +4,26 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Network;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
-import com.nepal.naxa.smartnaari.data.network.UserDetail;
-import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
@@ -131,8 +127,16 @@ public class SignUpActivity extends Activity {
     Spinner spinnerBirthMonth;
     @BindView(R.id.spinner_birth_day)
     Spinner spinnerBirthDay;
-
-
+    @BindView(R.id.rlFirstInputPage)
+    LinearLayout rlFirstInputPage;
+    @BindView(R.id.rlSecondInputPage)
+    LinearLayout rlSecondInputPage;
+    @BindView(R.id.btnPrev)
+    Button btnPrev;
+    @BindView(R.id.btnNext)
+    Button btnNext;
+    @BindView(R.id.rlTermsAndCondition)
+    RelativeLayout rlTermsAndCondition;
 
 
     //todo write style for api < 21 for checkbox
@@ -153,7 +157,6 @@ public class SignUpActivity extends Activity {
 //        wordlist.add("Terms");
         TextViewUtils.highlightWordToBlue(wordlist, textViewTermsAndCondition);
         TextViewUtils.linkWordToPrivacyPolicy(new String[]{"Privacy Policy and Terms"}, textViewTermsAndCondition);
-
 
 
     }
@@ -357,10 +360,132 @@ public class SignUpActivity extends Activity {
     }
 
 
+    public boolean validateUserFirstPageDetails() {
+        userName = etUserName.getText().toString().trim();
+        if (userName.equals("")) {
+            Toasty.error(getApplicationContext(), "Username field is empty", Toast.LENGTH_SHORT, true).show();
+            etUserName.requestFocus();
+            return false;
+        }
+
+
+        password = etPassword.getText().toString().trim();
+        if (password.equals("")) {
+            Toasty.error(getApplicationContext(), "Password field is empty", Toast.LENGTH_SHORT, true).show();
+            etPassword.requestFocus();
+
+            return false;
+        }
+
+
+        confirmPassword = etConformPassword.getText().toString().trim();
+        if (confirmPassword.equals("")) {
+            Toasty.error(getApplicationContext(), "Confirm password field is empty", Toast.LENGTH_SHORT, true).show();
+            etConformPassword.requestFocus();
+
+            return false;
+        } else {
+            if (confirmPassword.equals(password)) {
+            } else {
+                Toasty.error(getApplicationContext(), "Password didn't matched.\n Try again", Toast.LENGTH_SHORT, true).show();
+                etConformPassword.requestFocus();
+
+                return false;
+            }
+        }
+
+
+        firstName = etFirstName.getText().toString().trim();
+        if (firstName.equals("")) {
+            Toasty.error(getApplicationContext(), "Name field is empty", Toast.LENGTH_SHORT, true).show();
+            etFirstName.requestFocus();
+            return false;
+        }
+
+
+        surName = etSurName.getText().toString().trim();
+        if (surName.equals("")) {
+            Toasty.error(getApplicationContext(), "Sur name field is empty", Toast.LENGTH_SHORT, true).show();
+            etSurName.requestFocus();
+            return false;
+        }
+
+        mobileNumber = etContact.getText().toString().trim();
+        if (mobileNumber.equals("")) {
+            Toasty.error(getApplicationContext(), "Contact field is empty", Toast.LENGTH_SHORT, true).show();
+            etContact.requestFocus();
+            return false;
+        }
+        if (mobileNumber.length() < 10) {
+            Toasty.error(getApplicationContext(), "Invalid mobile number", Toast.LENGTH_SHORT, true).show();
+            etContact.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateUserSecondPageDetails() {
+        int id = rgGender.getCheckedRadioButtonId();
+        if (id != -1) {
+            switch (id) {
+                case R.id.radio_sex_male:
+                    gender = "Male";
+                    break;
+                case R.id.radio_sex_female:
+                    gender = "Female";
+                    break;
+                case R.id.radio_sex_other:
+                    gender = "Others";
+                    break;
+            }
+        } else {
+            Toasty.error(getApplicationContext(), "No gender selected.", Toast.LENGTH_SHORT, true).show();
+            rgGender.requestFocus();
+            return false;
+        }
+
+
+        birthPlace = spBirthPlace.getSelectedItem().toString();
+        if (birthPlace.equals("Birth District")) {
+            Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
+            spBirthPlace.requestFocus();
+            return false;
+        }
+
+
+        currentPlace = spCurrentPlace.getSelectedItem().toString();
+        if (currentPlace.equals("Current District")) {
+            Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
+            spCurrentPlace.requestFocus();
+            return false;
+        }
+
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        email = etEmail.getText().toString().trim();
+        if (!email.equals("")) {
+            if (email.matches(emailPattern)) {
+//                Toasty.success(getApplicationContext(), "Valid email address", Toast.LENGTH_SHORT, true).show();
+            } else {
+                Toasty.error(getApplicationContext(), "Invalid email address. \n Try again.", Toast.LENGTH_SHORT, true).show();
+                etEmail.requestFocus();
+                return false;
+            }
+        } else {
+            Toasty.error(getApplicationContext(), "Email field is empty", Toast.LENGTH_SHORT, true).show();
+            etEmail.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+
     @OnClick(R.id.btnSignUp)
     public void SignUpBtnClicked() {
 
-        if (validateUserDetails()) {
+        if (validateUserSecondPageDetails()) {
 
             mProgressDlg.setMessage("Please Wait...\nSigning In");
             mProgressDlg.setIndeterminate(false);
@@ -463,7 +588,7 @@ public class SignUpActivity extends Activity {
 
             signUpRetrofitAPI(jsonToSend);
 
-            Log.d("Signup", "convertDataToJson: "+jsonToSend.toString());
+            Log.d("Signup", "convertDataToJson: " + jsonToSend.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -477,15 +602,15 @@ public class SignUpActivity extends Activity {
         call.enqueue(new Callback<SignUpDetailsResponse>() {
             @Override
             public void onResponse(Call<SignUpDetailsResponse> call, Response<SignUpDetailsResponse> response) {
-               if(mProgressDlg != null && mProgressDlg.isShowing()){
-                   mProgressDlg.dismiss();
-               }
-               if(response.body() == null){
-                   Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT).show();
-                   return;
-               }
+                if (mProgressDlg != null && mProgressDlg.isShowing()) {
+                    mProgressDlg.dismiss();
+                }
+                if (response.body() == null) {
+                    Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-              handleSignupResponse(response.body());
+                handleSignupResponse(response.body());
             }
 
             private void handleSignupResponse(SignUpDetailsResponse signUpDetailsResponse) {
@@ -503,13 +628,14 @@ public class SignUpActivity extends Activity {
 
             private void handleSuccess(SignUpDetailsResponse signUpDetailsResponse) {
 
-                Toasty.success(getApplicationContext(), signUpDetailsResponse.getData()+ "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
+                Toasty.success(getApplicationContext(), signUpDetailsResponse.getData() + "\n Please Login with your Username", Toast.LENGTH_SHORT, true).show();
                 startActivity(new Intent(getApplication(), LoginActivity.class));
+                finish();
             }
 
             @Override
             public void onFailure(Call<SignUpDetailsResponse> call, Throwable t) {
-                if(mProgressDlg != null && mProgressDlg.isShowing()){
+                if (mProgressDlg != null && mProgressDlg.isShowing()) {
                     mProgressDlg.dismiss();
                 }
                 String message = "Internet Connection Error!, please try again later";
@@ -517,9 +643,38 @@ public class SignUpActivity extends Activity {
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
-                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "" + message, Toast.LENGTH_LONG, true).show();
             }
         });
     }
 
+    @OnClick({R.id.btnPrev, R.id.btnNext})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnPrev:
+
+                rlFirstInputPage.setVisibility(View.VISIBLE);
+                rlSecondInputPage.setVisibility(View.GONE);
+                rlTermsAndCondition.setVisibility(View.GONE);
+                btnPrev.setVisibility(View.GONE);
+                btnNext.setVisibility(View.VISIBLE);
+                btnSignUp.setVisibility(View.GONE);
+
+                break;
+
+            case R.id.btnNext:
+                if (validateUserFirstPageDetails()) {
+                    rlFirstInputPage.setVisibility(View.GONE);
+                    rlSecondInputPage.setVisibility(View.VISIBLE);
+                    rlTermsAndCondition.setVisibility(View.VISIBLE);
+                    btnNext.setVisibility(View.GONE);
+                    btnPrev.setVisibility(View.VISIBLE);
+                    btnSignUp.setVisibility(View.VISIBLE);
+                } else {
+                    return;
+                }
+
+                break;
+        }
+    }
 }

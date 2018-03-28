@@ -10,6 +10,7 @@
         android:id="@+id/iv_services_legend_marker"
         android:layout_width="@dimen/small_icon_size"
         android:layout_height="@dimen/small_icon_size"
+        android:src="@drawable/ic_default_marker_24dp"
         />
 
     <TextView
@@ -18,6 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Marker"
+        android:textStyle="bold"
         android:textSize="@dimen/material_text_small_caption"
         android:paddingTop="@dimen/spacing_small"
         android:textColor="@color/black"/>

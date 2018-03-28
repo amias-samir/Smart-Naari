@@ -464,7 +464,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
         tapItStopIt.setVisible(mIsTheTitleVisible);
-        notification.setVisible(mIsTheTitleVisible);
+//        notification.setVisible(mIsTheTitleVisible);
         itemDonation.setVisible(mIsTheTitleVisible);
 
 

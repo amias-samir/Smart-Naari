@@ -431,12 +431,16 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-
             android:name=".mycircle.MyCircleProtectorActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:exported="true"
-            android:name=".services.ServicesActivityNew" />
+            android:name=".services.ServicesActivityNew"
+            android:exported="true" />
+        <activity android:name=".services.ServicesListActivity"></activity>
+
+        <activity
+            android:name=".common.GeoPointActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
