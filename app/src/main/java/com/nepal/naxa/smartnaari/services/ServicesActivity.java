@@ -478,7 +478,6 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.e(TAG, "runDelayedBeforeSheet: SAMIR" + servicesData.getOfficeName());
                 PlaceDetailsBottomSheet placeDetailsBottomSheet = PlaceDetailsBottomSheet.getInstance(servicesData);
                 placeDetailsBottomSheet.show(getSupportFragmentManager(), "a");
 

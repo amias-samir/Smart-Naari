@@ -3,28 +3,30 @@ package com.nepal.naxa.smartnaari.services;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
+import com.nepal.naxa.smartnaari.common.GeoPointActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
-import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -37,8 +39,24 @@ import butterknife.ButterKnife;
 
 public class ServicesListActivity extends BaseActivity {
 
+    private static final String TAG = "ServicesListActivity" ;
     @BindView(R.id.services_list_recyclerView)
     RecyclerView servicesListRecyclerView;
+
+    public static final int GEOPOINT_RESULT_CODE = 1994;
+    public static final String LOCATION_RESULT = "LOCATION_RESULT";
+    boolean isGpsTaken = false;
+    double initLat;
+    double myLat;
+    double initLong;
+    double myLong;
+    ArrayList<LatLng> listCf = new ArrayList<LatLng>();
+    List<Location> gpslocation = new ArrayList<>();
+
+    static final Integer LOCATION = 0x1;
+    static final Integer GPS_SETTINGS = 0x8;
+
+
 
     AppDataManager appDataManager;
     List<ServicesData> servicesData;
@@ -61,10 +79,47 @@ public class ServicesListActivity extends BaseActivity {
 
         appDataManager = new AppDataManager(this);
 
+
+
         getServicesDataFromDatabase();
 
-        sortingServiceData();
+        getUserCurrenLocation();
 
+        final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+        servicesListRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+//                    Drawer.closeDrawers();
+                    int position = recyclerView.getChildPosition(child);
+
+                    delayBeforeSheetOpen(servicesData.get(position));
+
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
     private void initToolbar() {
@@ -75,6 +130,39 @@ public class ServicesListActivity extends BaseActivity {
 
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+
+    private void getUserCurrenLocation (){
+        Intent toGeoPointActivity = new Intent(this, GeoPointActivity.class);
+        startActivityForResult(toGeoPointActivity, GEOPOINT_RESULT_CODE);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GEOPOINT_RESULT_CODE) {
+            switch (resultCode) {
+                case RESULT_OK:
+                    String location = data.getStringExtra(LOCATION_RESULT);
+
+                    String string = location;
+                    String[] parts = string.split(" ");
+                    String split_lat = parts[0]; // 004
+                    String split_lon = parts[1]; // 034556
+
+                    if (!split_lat.equals("") && !split_lon.equals("")) {
+                        myLat = Double.parseDouble(split_lat);
+                        myLong = Double.parseDouble(split_lon);
+                        showLoading("Please wait ... \nCalculating distance");
+                        sortingServiceData();
+                    }else {
+                        showInfoToast("Cannot calculate distance");
+                    }
+
+                    break;
+            }
         }
     }
 
@@ -134,15 +222,14 @@ public class ServicesListActivity extends BaseActivity {
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_xxsmall);
         servicesListRecyclerView.addItemDecoration(new GridSpacingItemDecoration(1, spacingInPixels, true, 0));
 
+        hideLoading();
+
     }
 
 
     public void sortingServiceData() {
 
         hashMapWithDistance = new HashMap<ServicesData, Float>();
-
-        final double myLat = 27.700769;
-        final double myLon = 85.300140;
 
         new Thread(new Runnable() {
             @Override
@@ -154,7 +241,7 @@ public class ServicesListActivity extends BaseActivity {
                         double longfirst = Double.parseDouble(servicesData.get(i).getServiceLon());
 
                         float[] result1 = new float[3];
-                        Location.distanceBetween(myLat, myLon, latfirst, longfirst, result1);
+                        Location.distanceBetween(myLat, myLong, latfirst, longfirst, result1);
                         Float distance1 = result1[0];
 
                         hashMapWithDistance.put(servicesData.get(i), distance1);
@@ -209,6 +296,21 @@ public class ServicesListActivity extends BaseActivity {
             }
         });
 
+    }
+
+
+    private void delayBeforeSheetOpen(final ServicesData servicesData) {
+        Log.e(TAG, "delayBeforeSheetOpen: ");
+
+        int ANIMATE_DELAY = 250;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                PlaceDetailsBottomSheet placeDetailsBottomSheet = PlaceDetailsBottomSheet.getInstance(servicesData);
+                placeDetailsBottomSheet.show(getSupportFragmentManager(), "a");
+
+            }
+        }, ANIMATE_DELAY);
     }
 
     @Override

@@ -77,12 +77,12 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             distanceInKm = distance/1000;
             DecimalFormat decimalFormat = new DecimalFormat("#.##");
             float twoDigitsDistance = Float.valueOf(decimalFormat.format(distanceInKm));
-            convertedDistance = twoDigitsDistance + " kms";
+            convertedDistance = twoDigitsDistance + " kms away";
 
         }else {
             DecimalFormat decimalFormat = new DecimalFormat("#.##");
             float twoDigitsDistance = Float.valueOf(decimalFormat.format(distance));
-            convertedDistance = twoDigitsDistance + " meters";
+            convertedDistance = twoDigitsDistance + " meters away";
         }
 
         return convertedDistance;

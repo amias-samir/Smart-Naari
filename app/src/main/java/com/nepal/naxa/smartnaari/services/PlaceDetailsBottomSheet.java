@@ -1,5 +1,7 @@
 package com.nepal.naxa.smartnaari.services;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
@@ -34,6 +37,8 @@ public class PlaceDetailsBottomSheet extends BottomSheetDialogFragment {
 //    Unbinder unbinder;
 
 TextView tvofficeEmail, tvOfficeCheifLandline, tvOfficeCheifMobileNo ;
+
+ImageView ivGetDirection ;
 
 
     public static PlaceDetailsBottomSheet getInstance(ServicesData servicesData) {
@@ -62,6 +67,19 @@ TextView tvofficeEmail, tvOfficeCheifLandline, tvOfficeCheifMobileNo ;
         tvOfficeCheifMobileNo = (TextView)rootView.findViewById(R.id.office_cheif_mobile);
         tvOfficeContactDutyPerson = (TextView)rootView. findViewById(R.id.office_contact_duty_person);
         tvOfficeLandline = (TextView)rootView. findViewById(R.id.office_landline);
+
+        ivGetDirection = (ImageView)rootView.findViewById(R.id.ivbtn_get_map_direction);
+
+        ivGetDirection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double lat = Double.parseDouble(servicesData.getServiceLat());
+                double lon = Double.parseDouble(servicesData.getServiceLon());
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?daddr=" + lat + "," + lon));
+                startActivity(intent);
+            }
+        });
 
 
         try {
