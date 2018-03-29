@@ -2,12 +2,10 @@ package com.nepal.naxa.smartnaari.data.local;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Looper;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.application.SmartNaari;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
@@ -19,17 +17,13 @@ import com.nepal.naxa.smartnaari.data.network.OwlData;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.data.network.ServicesDataDao;
-import com.nepal.naxa.smartnaari.debug.Dump;
-import com.nepal.naxa.smartnaari.homescreen.ViewModel;
-import com.nepal.naxa.smartnaari.yuwapusta.GreenDAODataPaginationService;
+import com.nepal.naxa.smartnaari.common.greendaopaginationservice.GreenDAODataPaginationService;
 
-import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_OWL_LIST;

@@ -34,6 +34,7 @@ import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.mycircle.mycirclecircularview.MyCircleCircularViewActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
@@ -635,7 +636,7 @@ public class MyCircleActivity extends BaseActivity {
                         sessionManager.saveUserCircle(myCircleData);
 
                         if (sessionManager.doesHaveIntentBackgroundService()) {
-                            Intent intent = new Intent(MyCircleActivity.this, BeautifulMainActivity.class);
+                            Intent intent = new Intent(MyCircleActivity.this, MyCircleCircularViewActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

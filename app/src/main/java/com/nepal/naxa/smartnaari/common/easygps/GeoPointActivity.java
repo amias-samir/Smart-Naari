@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.nepal.naxa.smartnaari.common;
+package com.nepal.naxa.smartnaari.common.easygps;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ignore="NamespaceTypo">
+
+    <!--first person -->
+    <RelativeLayout
+        android:id="@+id/person1_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePerson1"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/nav_user_avatar_default"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
+        <TextView
+            android:id="@+id/namePerson1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:text="Name 1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2" />
+
+        <TextView
+            android:id="@+id/numberPerson1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namePerson1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="number1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2"
+            android:background="@color/halfWhiteTransparent"/>
+
+    </RelativeLayout>
+
+    <!--second person -->
+    <RelativeLayout
+        android:id="@+id/person2_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePerson2"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/nav_user_avatar_default"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
+        <TextView
+            android:id="@+id/namePerson2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:text="Name 2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2" />
+
+        <TextView
+            android:id="@+id/numberPerson2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namePerson2"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="number2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2"
+            android:background="@color/halfWhiteTransparent"/>
+
+    </RelativeLayout>
+
+    <!--third person -->
+    <RelativeLayout
+        android:id="@+id/person3_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePerson3"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/nav_user_avatar_default"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
+        <TextView
+            android:id="@+id/namePerson3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:text="Name 3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2" />
+
+        <TextView
+            android:id="@+id/numberPerson3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namePerson3"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="number3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2"
+            android:background="@color/halfWhiteTransparent"/>
+
+    </RelativeLayout>
+
+    <!--fourth person -->
+    <RelativeLayout
+        android:id="@+id/person4_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePerson4"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/nav_user_avatar_default"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
+        <TextView
+            android:id="@+id/namePerson4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:text="Name 4"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2" />
+
+        <TextView
+            android:id="@+id/numberPerson4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namePerson4"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="number4"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2"
+            android:background="@color/halfWhiteTransparent"/>
+
+    </RelativeLayout>
+
+    <!--fifth person -->
+    <RelativeLayout
+        android:id="@+id/person5_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagePerson5"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/nav_user_avatar_default"
+            app:finalHeight="@dimen/image_final_width"
+            app:finalYPosition="1dp"
+            app:layout_behavior="com.nepal.naxa.smartnaari.utils.ui.AvatarImageBehavior"
+            app:startHeight="2dp"
+            app:startToolbarPosition="2dp"
+            app:startXPosition="2dp" />
+
+        <TextView
+            android:id="@+id/namePerson5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:text="Name 5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2" />
+
+        <TextView
+            android:id="@+id/numberPerson5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namePerson5"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="number5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_body2"
+            android:background="@color/halfWhiteTransparent"/>
+
+    </RelativeLayout>
+
+
+</merge>

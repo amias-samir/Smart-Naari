@@ -18,7 +18,7 @@ import android.view.View;
 import com.google.android.gms.maps.model.LatLng;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
-import com.nepal.naxa.smartnaari.common.GeoPointActivity;
+import com.nepal.naxa.smartnaari.common.easygps.GeoPointActivity;
 import com.nepal.naxa.smartnaari.data.local.AppDataManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;

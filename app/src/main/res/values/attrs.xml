@@ -7,4 +7,25 @@
         <attr name="startHeight" format="dimension"/>
         <attr name="finalHeight" format="dimension"/>
     </declare-styleable>
+
+<!-- circular layout attr-->
+    <!--* reference https://github.com/szugyi-->
+    <declare-styleable name="CircleLayoutParent">
+        <attr name="isRotating" format="boolean" />
+        <attr name="radius" format="dimension" />
+        <attr name="speed" format="integer" />
+        <attr name="firstChildPosition">
+            <enum name="East" value="0" />
+            <enum name="South" value="90" />
+            <enum name="West" value="180" />
+            <enum name="North" value="270" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LayoutViewAttachedToCircularlayout">
+        <attr name="name" format="string" />
+    </declare-styleable>
+
+    <!--end of circular layout-->
+
 </resources>

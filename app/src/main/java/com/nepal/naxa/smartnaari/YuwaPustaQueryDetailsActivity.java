@@ -1,15 +1,12 @@
 package com.nepal.naxa.smartnaari;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.model.YuwaQuestion;
-import com.nepal.naxa.smartnaari.utils.SpanUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 

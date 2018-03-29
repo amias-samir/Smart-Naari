@@ -1,4 +1,4 @@
-package com.nepal.naxa.smartnaari.common;
+package com.nepal.naxa.smartnaari.common.customtextfont;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.view.View;
 
 /**
  * @author Samir Dangal
+ * reference https://github.com/chrisjenx/Calligraphy
  */
 public class CustomViewWithTypefaceSupport extends View {
 

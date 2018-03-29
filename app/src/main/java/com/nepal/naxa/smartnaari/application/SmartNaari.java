@@ -1,11 +1,10 @@
 package com.nepal.naxa.smartnaari.application;
 
-import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.nepal.naxa.smartnaari.R;
-import com.nepal.naxa.smartnaari.common.CustomViewWithTypefaceSupport;
+import com.nepal.naxa.smartnaari.common.customtextfont.CustomViewWithTypefaceSupport;
 import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
 import com.nepal.naxa.smartnaari.data.local.model.DaoSession;
 import com.nepal.naxa.smartnaari.data.local.model.DbOpenHelper;

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.mycircle.mycirclecircularview.MyCircleCircularViewActivity;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
 
 import butterknife.BindView;
@@ -125,7 +126,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
 
                 showInfoToast("Password changed successfully");
 
-                Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleActivity.class);
+                Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleCircularViewActivity.class);
                 startActivity(intent);
                 finish();
             }else {
@@ -145,7 +146,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
     public void loginToMyCircle(){
         if (tvMyCircleEnterPassword.getText().toString().trim().equals(sessionManager.getUserMyCirclePassword())) {
 
-            Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleActivity.class);
+            Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleCircularViewActivity.class);
             startActivity(intent);
             finish();
 
@@ -168,7 +169,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
             sessionManager.setIsMyCircleFirstTimeLoad(false);
             sessionManager.setUserMyCirclePassword(tvMyCircleConfirmPassword.getText().toString());
             showInfoToast("Password created successfully");
-            Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleActivity.class);
+            Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleCircularViewActivity.class);
             startActivity(intent);
             finish();
 

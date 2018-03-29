@@ -20,7 +20,7 @@ import java.util.List;
 public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleViewHolder> implements Filterable {
 
     private final Context mContext;
-    private final static int FADE_DURATION = 1000; //FADE_DURATION in milliseconds
+    private final static int FADE_DURATION = 500; //FADE_DURATION in milliseconds
 
     private boolean isFiltered = false;
 

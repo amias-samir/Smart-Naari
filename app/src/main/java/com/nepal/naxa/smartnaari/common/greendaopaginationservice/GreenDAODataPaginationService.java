@@ -1,4 +1,4 @@
-package com.nepal.naxa.smartnaari.yuwapusta;
+package com.nepal.naxa.smartnaari.common.greendaopaginationservice;
 
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Created by samir on 3/19/2018.
+ * reference https://github.com/vininaag/greenDAOPagination
+ *
  */
 
 public class GreenDAODataPaginationService {

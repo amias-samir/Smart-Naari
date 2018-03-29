@@ -52,8 +52,6 @@ import retrofit2.Response;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
-//public class SignUpActivity extends Activity implements AdapterView.OnItemSelectedListener {
-//public class SignUpActivity extends Activity implements View.OnFocusChangeListener {
 public class SignUpActivity extends Activity {
 
     @BindView(R.id.btnSignUp)

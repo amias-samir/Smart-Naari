@@ -1,4 +1,4 @@
-package com.nepal.naxa.smartnaari.common;
+package com.nepal.naxa.smartnaari.common.justifytext;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 /**
  * Created by Samir on 3/23/2018.
+ * reference https://github.com/ufo22940268/android-justifiedtextview
  */
 
 public class JustifyTextView extends TextView {
