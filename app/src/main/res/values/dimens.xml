@@ -1,5 +1,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="spacing_xxxsmall">1dp</dimen>
     <dimen name="spacing_xxsmall">2dp</dimen>
     <dimen name="spacing_xsmall">4dp</dimen>
     <dimen name="spacing_small">6dp</dimen>
@@ -67,6 +68,10 @@
     <!-- yuwa query list max hight -->
     <dimen name="yuwa_query_list_max_height">150dp</dimen>
     <dimen name="services_cover_photo_height">120dp</dimen>
+
+    <!--tap it stop id dialog line -->
+    <dimen name="tap_it_stop_it_line_margin_bottom">20dp</dimen>
+
 
 
 </resources>
