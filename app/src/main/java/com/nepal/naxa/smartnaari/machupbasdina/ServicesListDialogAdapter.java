@@ -30,10 +30,10 @@ public class ServicesListDialogAdapter extends RecyclerView.Adapter<ServicesList
         ServicesData ci = itemList.get(i);
         contactViewHolder.servicesName.setText(i+1+". "+ci.getOfficeName().trim());
 
-        contactViewHolder.tvContactDutyPerson.setText(ci.getContactDutyPersonContactNumber().trim());
+        contactViewHolder.tvContactDutyPerson.setText("Mobile no(s). \n"+ci.getContactDutyPersonContactNumber().trim());
         Linkify.addLinks(contactViewHolder.tvContactDutyPerson, Linkify.PHONE_NUMBERS);
 
-        contactViewHolder.tvOffielandLine.setText(ci.getOfficeLandline().trim());
+        contactViewHolder.tvOffielandLine.setText("Landline no(s). \n"+ci.getOfficeLandline().trim());
         Linkify.addLinks(contactViewHolder.tvOffielandLine, Linkify.PHONE_NUMBERS);
 
 
