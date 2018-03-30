@@ -164,6 +164,7 @@ public class BeautifulMainActivity extends BaseActivity
         setContentView(R.layout.activity_beutiful_main);
 
         sessionManager = new SessionManager(this);
+        sessionManager.setIsMyCircleFirstTimeLoad(false);
 
         bindActivity();
         ButterKnife.bind(this);

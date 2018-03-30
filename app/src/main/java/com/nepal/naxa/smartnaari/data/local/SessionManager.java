@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_INTENT_SERVICE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_HAS_USER_LEARNED_APP;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_IS_USER_MY_CIRCLE_FIRST_TIME_;
+import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_IS_USER_MY_CIRCLE_PROTECTOR_FIRST_TIME_;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_MY_CIRCLE;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_DATA;
 import static com.nepal.naxa.smartnaari.data.local.SharedPreferenceUtils.KEY_USER_MY_CIRCLE_PASSWORD;
@@ -39,7 +40,6 @@ public class SessionManager {
 //    ========================Circle sharedpref  data operation===================================//
 
     public void saveUserCircle(MyCircleData myCircleData) {
-
 
         Log.d(TAG, "saveUserCircle: SAMIR Contct name:= "+myCircleData.getContactName2());
         Dump.object(TAG, myCircleData);
@@ -71,18 +71,39 @@ public class SessionManager {
 //todo
 // Data aairaako xa but GSON to JSON convert vairaa chhaina
 
-
         Log.d(TAG, "saveUserCircle: SAMIR JSON:= "+json);
         utils.setValue(KEY_MY_CIRCLE, json);
     }
 
     public MyCircleData getMyCircleContact() {
-        MyCircleData myCircleData;
+        MyCircleData myCircleData = new MyCircleData();
 
         String json = utils.getStringValue(KEY_MY_CIRCLE, null);
-        myCircleData = gson.fromJson(json, MyCircleData.class);
+//        myCircleData = gson.fromJson(json, MyCircleData.class);
+
+        if(json == null){
+
+        }else {
+            try {
+                JSONObject jsonObject = new JSONObject(json);
+                myCircleData.setContactNumber1(jsonObject.getString("n1"));
+                myCircleData.setContactNumber2(jsonObject.getString("n2"));
+                myCircleData.setContactNumber3(jsonObject.getString("n3"));
+                myCircleData.setContactNumber4(jsonObject.getString("n4"));
+                myCircleData.setContactNumber5(jsonObject.getString("n5"));
+                myCircleData.setContactName1(jsonObject.getString("c1"));
+                myCircleData.setContactName2(jsonObject.getString("c2"));
+                myCircleData.setContactName3(jsonObject.getString("c3"));
+                myCircleData.setContactName4(jsonObject.getString("c4"));
+                myCircleData.setContactName5(jsonObject.getString("c5"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         Log.d(TAG, "getMyCircleContact: JSON:= "+json);
+        Log.d(TAG, "getMyCircleContact: JSON:= "+myCircleData.getContactNumber1());
+
 
         return myCircleData;
     }
@@ -111,8 +132,15 @@ public class SessionManager {
         UserData userData;
 
         String json = utils.getStringValue(KEY_USER_DATA, null);
+
         userData = gson.fromJson(json, UserData.class);
 
+        Log.d(TAG, "getUser: JSON == "+json);
+//        Log.d(TAG, "getUser: 1 == "+userData.getCircleMobileNumber1());
+//        Log.d(TAG, "getUser: 2 == "+userData.getCircleMobileNumber2());
+//        Log.d(TAG, "getUser: 3 == "+userData.getCircleMobileNumber3());
+//        Log.d(TAG, "getUser: 4 == "+userData.getCircleMobileNumber4());
+//        Log.d(TAG, "getUser: 5 == "+userData.getCircleMobileNumber5());
         return userData;
     }
 
@@ -124,13 +152,13 @@ public class SessionManager {
 
     public boolean doesUserHaveCircle() {
 
-        UserData userData = getUser();
+        MyCircleData userData = getMyCircleContact();
 
-        return ( !TextUtils.isEmpty(userData.getCircleMobileNumber1()) ||
-                !TextUtils.isEmpty(userData.getCircleMobileNumber2()) ||
-                !TextUtils.isEmpty(userData.getCircleMobileNumber3()) ||
-                !TextUtils.isEmpty(userData.getCircleMobileNumber4()) ||
-                !TextUtils.isEmpty(userData.getCircleMobileNumber5()) );
+        return ( !TextUtils.isEmpty(userData.getContactNumber1()) ||
+                !TextUtils.isEmpty(userData.getContactNumber1()) ||
+                !TextUtils.isEmpty(userData.getContactNumber1()) ||
+                !TextUtils.isEmpty(userData.getContactNumber1()) ||
+                !TextUtils.isEmpty(userData.getContactNumber1()) );
 
 
     }
@@ -160,15 +188,20 @@ public class SessionManager {
 
 //    ================================ end of checking background servive status====================== //
 
-
-//    my circle password
-
     public boolean isMyCircleFirstTimeLoad(){
         return utils.getBooleanValue(KEY_IS_USER_MY_CIRCLE_FIRST_TIME_, true);
     }
 
-    public void setIsMyCircleFirstTimeLoad (Boolean aboolean){
+    public void setIsMyCircleFirstTimeLoad(Boolean aboolean){
         utils.setValue(KEY_IS_USER_MY_CIRCLE_FIRST_TIME_, aboolean);
+    }
+//    my circle password
+    public boolean isMyCircleProtectorFirstTimeLoad(){
+        return utils.getBooleanValue(KEY_IS_USER_MY_CIRCLE_PROTECTOR_FIRST_TIME_, true);
+    }
+
+    public void setIsMyCircleProtectorFirstTimeLoad(Boolean aboolean){
+        utils.setValue(KEY_IS_USER_MY_CIRCLE_PROTECTOR_FIRST_TIME_, aboolean);
     }
 
     public void setUserMyCirclePassword(String password){

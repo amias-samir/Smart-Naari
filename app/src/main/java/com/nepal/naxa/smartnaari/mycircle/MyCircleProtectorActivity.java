@@ -2,7 +2,6 @@ package com.nepal.naxa.smartnaari.mycircle;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +60,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         sessionManager = new SessionManager(this);
-        if(sessionManager.isMyCircleFirstTimeLoad()){
+        if(sessionManager.isMyCircleProtectorFirstTimeLoad()){
             createPasswordLayout.setVisibility(View.VISIBLE);
             enterPasswordLayout.setVisibility(View.GONE);
             changePasswordLayout.setVisibility(View.GONE);
@@ -93,7 +92,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
                 break;
             case R.id.btn_agree_dialog:
 
-                if(sessionManager.isMyCircleFirstTimeLoad()){
+                if(sessionManager.isMyCircleProtectorFirstTimeLoad()){
                     createPassword();
 
 
@@ -122,7 +121,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
             if (tvMyCircleChangeNewPassword.getText().toString().trim().equals(tvMyCircleChangeConfirmNewPassword.getText().toString().trim())) {
 
                 sessionManager.setUserMyCirclePassword(tvMyCircleChangeConfirmNewPassword.getText().toString().trim());
-                sessionManager.setIsMyCircleFirstTimeLoad(false);
+                sessionManager.setIsMyCircleProtectorFirstTimeLoad(false);
 
                 showInfoToast("Password changed successfully");
 
@@ -166,7 +165,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
 
         if(tvMyCircleNewPassword.getText().toString().trim().equals(tvMyCircleConfirmPassword.getText().toString().trim())){
 
-            sessionManager.setIsMyCircleFirstTimeLoad(false);
+            sessionManager.setIsMyCircleProtectorFirstTimeLoad(false);
             sessionManager.setUserMyCirclePassword(tvMyCircleConfirmPassword.getText().toString());
             showInfoToast("Password created successfully");
             Intent intent = new Intent(MyCircleProtectorActivity.this, MyCircleCircularViewActivity.class);

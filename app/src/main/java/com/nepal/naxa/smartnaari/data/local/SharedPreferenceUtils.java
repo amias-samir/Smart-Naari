@@ -40,6 +40,7 @@ public class SharedPreferenceUtils {
     public static final String KEY_HAS_INTENT_SERVICE = "has_intent_service";
     public static final String KEY_USER_MY_CIRCLE_PASSWORD = "my_circle_password";
     public static final String KEY_IS_USER_MY_CIRCLE_FIRST_TIME_ = "my_circle_first_time";
+    public static final String KEY_IS_USER_MY_CIRCLE_PROTECTOR_FIRST_TIME_ = "my_circle_protector_first_time";
 
     private SharedPreferenceUtils(Context context, String name) {
         mContext = context;

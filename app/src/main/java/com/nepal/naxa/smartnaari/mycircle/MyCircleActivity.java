@@ -157,7 +157,7 @@ public class MyCircleActivity extends BaseActivity {
         sessionManager = new SessionManager(this);
         myCircleData = new MyCircleData();
 
-        if(sessionManager.doesUserHaveCircle()) {
+        if (sessionManager.doesUserHaveCircle()) {
             myCircleData = sessionManager.getMyCircleContact();
         }
 
@@ -635,13 +635,15 @@ public class MyCircleActivity extends BaseActivity {
 
                         sessionManager.saveUserCircle(myCircleData);
 
+
                         if (sessionManager.doesHaveIntentBackgroundService()) {
+
                             Intent intent = new Intent(MyCircleActivity.this, MyCircleCircularViewActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            MyCircleOnBoardingActivity.startSafe(MyCircleActivity.this,false);
-                            finish();
+                                MyCircleOnBoardingActivity.startSafe(MyCircleActivity.this, false);
+                                finish();
                         }
 
 
@@ -827,12 +829,12 @@ public class MyCircleActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.select_first_contact_from_list:
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
-                        // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
-                        startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIRST_CONTACTS);
-                        REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS ;
+                    // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
+                    startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIRST_CONTACTS);
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS;
                 } else {
                     requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIRST_CONTACTS;
                 }
                 break;
 
@@ -840,10 +842,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_SECOND_CONTACTS);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS;
                 } else {
                     requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_SECOND_CONTACTS;
                 }
                 break;
 
@@ -851,10 +853,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_THIRD_CONTACTS);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS;
                 } else {
                     requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_THIRD_CONTACTS;
 
                 }
                 break;
@@ -863,10 +865,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FOURTH_CONTACTS);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS;
                 } else {
                     requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FOURTH_CONTACTS;
                 }
                 break;
 
@@ -874,10 +876,10 @@ public class MyCircleActivity extends BaseActivity {
                 if (hasPermission(Manifest.permission.READ_CONTACTS)) {
                     // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
                     startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIFTH_CONTACTS);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS;
                 } else {
                     requestPermissionsSafely((new String[]{Manifest.permission.READ_CONTACTS}), PICK_CONTACT);
-                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS ;
+                    REQUEST_CODE_PICK_CONTACTS = REQUEST_CODE_PICK_FIFTH_CONTACTS;
                 }
                 break;
         }
@@ -892,19 +894,19 @@ public class MyCircleActivity extends BaseActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIRST_CONTACTS){
+                    if (REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIRST_CONTACTS) {
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIRST_CONTACTS);
                     }
-                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_SECOND_CONTACTS){
+                    if (REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_SECOND_CONTACTS) {
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_SECOND_CONTACTS);
                     }
-                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_THIRD_CONTACTS){
+                    if (REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_THIRD_CONTACTS) {
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_THIRD_CONTACTS);
                     }
-                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FOURTH_CONTACTS){
+                    if (REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FOURTH_CONTACTS) {
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FOURTH_CONTACTS);
                     }
-                    if(REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIFTH_CONTACTS){
+                    if (REQUEST_CODE_PICK_CONTACTS == REQUEST_CODE_PICK_FIFTH_CONTACTS) {
                         startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_FIFTH_CONTACTS);
                     }
 

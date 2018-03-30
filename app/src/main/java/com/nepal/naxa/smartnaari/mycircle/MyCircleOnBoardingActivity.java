@@ -59,6 +59,8 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
     private EasyVideoPlayer player;
     private TextView tvSwipeCard;
 
+    SessionManager sessionManager ;
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     public static void start(Context context) {
@@ -76,10 +78,17 @@ public class MyCircleOnBoardingActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || hasAllRequredPermission) {
             showMyCircleActivatedToast();
-            context.startService(new Intent(context, PowerButtonService.class));
 
-            if (coldStart) {
+
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+                context.startService(new Intent(context, PowerButtonService.class));
                 context.startActivity(new Intent(context, BeautifulMainActivity.class));
+            }else {
+                context.startService(new Intent(context, PowerButtonService.class));
+
+                if (coldStart) {
+                    context.startActivity(new Intent(context, BeautifulMainActivity.class));
+                }
             }
 
         } else {

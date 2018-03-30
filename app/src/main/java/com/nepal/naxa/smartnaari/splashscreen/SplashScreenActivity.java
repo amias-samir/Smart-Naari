@@ -22,7 +22,7 @@ public class SplashScreenActivity extends BaseActivity {
 
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        if (sessionManager.isUserSessionActive() && sessionManager.doesUserHaveCircle()) {
+        if ( sessionManager.isUserSessionActive() && sessionManager.doesUserHaveCircle() ) {
 
             Intent intent = new Intent(this, BeautifulMainActivity.class);
             startActivity(intent);
