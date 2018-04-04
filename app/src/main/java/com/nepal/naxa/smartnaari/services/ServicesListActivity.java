@@ -47,9 +47,9 @@ public class ServicesListActivity extends BaseActivity {
     public static final String LOCATION_RESULT = "LOCATION_RESULT";
     boolean isGpsTaken = false;
     double initLat;
-    double myLat;
+    double myLat = 0.0;
     double initLong;
-    double myLong;
+    double myLong = 0.0;
     ArrayList<LatLng> listCf = new ArrayList<LatLng>();
     List<Location> gpslocation = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class ServicesListActivity extends BaseActivity {
 
         getServicesDataFromDatabase();
 
-        getUserCurrenLocation();
+            getUserCurrenLocation();
 
         final GestureDetector mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
 
@@ -146,6 +146,8 @@ public class ServicesListActivity extends BaseActivity {
             switch (resultCode) {
                 case RESULT_OK:
                     String location = data.getStringExtra(LOCATION_RESULT);
+
+                    Log.d(TAG, "onActivityResult: "+location.toString());
 
                     String string = location;
                     String[] parts = string.split(" ");
