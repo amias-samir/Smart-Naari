@@ -444,7 +444,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
                         switch (status) {
                             case "200":
-                                showInfoToast(data);
+//                                showInfoToast(data);
                                 hideLoading();
                                 showServicesListDialog(data);
 
@@ -456,8 +456,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
                                 break;
                             case "406":
-                                showInfoToast(data);
                                 hideLoading();
+                                showInfoToast(data);
                                 break;
 
                             default:
@@ -633,14 +633,14 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
 
-        DialogFactory.createActionDialog(context, "Go Back?", "You will lose any selected for typed information")
-                .setPositiveButton("Go Back", new DialogInterface.OnClickListener() {
+        DialogFactory.createActionDialog(context, "Warning!", "You have not submitted your report. Do you want to discard?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         MaChupBasdinaActivity.super.onBackPressed();
 
                     }
-                }).setNegativeButton("Dismiss", null)
+                }).setNegativeButton("No", null)
                 .show();
 
     }
