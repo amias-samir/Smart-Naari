@@ -474,6 +474,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="change_password">change password</string>
     <string name="old_password">Old Password</string>
     <string name="edit_circle">Edit Circle</string>
+    <string name="birth_district">Birth District</string>
+    <string name="current_district">Current District</string>
 
     ?>
 </resources>
