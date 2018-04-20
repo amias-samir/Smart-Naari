@@ -437,7 +437,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
                         switch (status) {
                             case "200":
-                                showInfoToast(data);
+//                                showInfoToast(data);
                                 hideLoading();
                                 showServicesListDialog(data);
 
@@ -449,8 +449,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
                                 break;
                             case "406":
-                                showInfoToast(data);
                                 hideLoading();
+                                showInfoToast(data);
                                 break;
 
                             default:
