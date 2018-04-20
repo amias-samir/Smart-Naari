@@ -433,7 +433,7 @@
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:src="@drawable/grid_services"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/btn_go_to_sakshyam_chhu"
@@ -446,7 +446,7 @@
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:src="@drawable/grid_ma_saksam_chu"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/btn_go_to_yuwa_pusta"
@@ -459,7 +459,7 @@
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:src="@drawable/grid_yuwa_pusta"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/btn_go_to_smart_parenting"
@@ -472,7 +472,7 @@
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:src="@drawable/grid_smart_parenting"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/btn_go_to_i_am_amazing"
@@ -485,7 +485,7 @@
                 android:gravity="center"
                 android:padding="@dimen/default_padding"
                 android:src="@drawable/i_am_amazing_green"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
 
