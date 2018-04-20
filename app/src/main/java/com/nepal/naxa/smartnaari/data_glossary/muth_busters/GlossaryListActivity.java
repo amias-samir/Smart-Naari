@@ -2,6 +2,7 @@ package com.nepal.naxa.smartnaari.data_glossary.muth_busters;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data_glossary.JSONLoadImpl;
+import com.nepal.naxa.smartnaari.masakchamchu.IAmAmazingActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -61,18 +64,11 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Data Glossary");
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
-            }
-        });
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
-
         if (actionBar != null) {
-
-            actionBar.setDisplayHomeAsUpEnabled(false);
+//            actionBar.setTitle("");
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -116,11 +112,15 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
-            return true;
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
+            //noinspection SimplifiableIfStatement
+            case R.id.action_search:
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
