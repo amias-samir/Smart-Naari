@@ -11,6 +11,7 @@ import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mapbox.services.commons.utils.TextUtils;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
@@ -53,6 +55,8 @@ import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.getAPIClient;
 
 public class SignUpActivity extends Activity {
+
+    private static final String TAG = "SignUpActivity";
 
     @BindView(R.id.btnSignUp)
     Button btnSignUp;
@@ -135,7 +139,13 @@ public class SignUpActivity extends Activity {
     Button btnNext;
     @BindView(R.id.rlTermsAndCondition)
     RelativeLayout rlTermsAndCondition;
+    @BindView(R.id.tv_user_birth_place_input_id)
+    AutoCompleteTextView tvUserBirthPlace;
+    @BindView(R.id.tv_user_current_place_input_id)
+    AutoCompleteTextView tvUserCurrentPlace;
 
+    ArrayAdapter<String> birthDistArray;
+    ArrayAdapter<String> currentDistArray;
 
     //todo write style for api < 21 for checkbox
     @Override
@@ -148,6 +158,8 @@ public class SignUpActivity extends Activity {
         mProgressDlg = new ProgressDialog(this);
 
         setUpSpinners();
+
+        setUpAutoCompleteDistrict();
 
         textViewTermsAndCondition.setText("By Signing up, you are indicating that you agree to the Privacy Policy and Terms.");
         List<String> wordlist = new ArrayList<>();
@@ -186,6 +198,13 @@ public class SignUpActivity extends Activity {
         ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.currentDistrictListEnglish);
         currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCurrentPlace.setAdapter(currentDistArray);
+    }
+
+    private void setUpAutoCompleteDistrict(){
+        currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
+        birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
+        tvUserBirthPlace.setAdapter(birthDistArray);
+        tvUserCurrentPlace.setAdapter(currentDistArray);
     }
 
     private void setupUI() {
@@ -444,18 +463,35 @@ public class SignUpActivity extends Activity {
         }
 
 
-        birthPlace = spBirthPlace.getSelectedItem().toString();
-        if (birthPlace.equals("Birth District")) {
-            Toasty.error(getApplicationContext(), "Birth place field is empty", Toast.LENGTH_SHORT, true).show();
-            spBirthPlace.requestFocus();
+//        birthPlace = spBirthPlace.getSelectedItem().toString();
+        birthPlace = tvUserBirthPlace.getText().toString();
+        int birthDistPos = birthDistArray.getPosition(birthPlace);
+        Log.d(TAG, "validateUserSecondPageDetails: BirthDistrict"+birthDistPos);
+
+        if (TextUtils.isEmpty(birthPlace)) {
+            Toasty.error(getApplicationContext(), "Birth District field is empty", Toast.LENGTH_SHORT, true).show();
+            tvUserBirthPlace.requestFocus();
+            return false;
+        }
+        if(birthDistPos < 0){
+            Toasty.error(getApplicationContext(), "Birth District is invalid", Toast.LENGTH_SHORT, true).show();
+            tvUserBirthPlace.requestFocus();
             return false;
         }
 
 
-        currentPlace = spCurrentPlace.getSelectedItem().toString();
-        if (currentPlace.equals("Current District")) {
-            Toasty.error(getApplicationContext(), "Current place field is empty", Toast.LENGTH_SHORT, true).show();
-            spCurrentPlace.requestFocus();
+//        currentPlace = spCurrentPlace.getSelectedItem().toString();
+        currentPlace = tvUserCurrentPlace.getText().toString();
+        int currentDistPos = currentDistArray.getPosition(currentPlace);
+        Log.d(TAG, "validateUserSecondPageDetails: currentDistrict"+currentDistPos);
+        if (TextUtils.isEmpty(currentPlace)) {
+            Toasty.error(getApplicationContext(), "Current District field is empty", Toast.LENGTH_SHORT, true).show();
+            tvUserCurrentPlace.requestFocus();
+            return false;
+        }
+        if(currentDistPos < 0){
+            Toasty.error(getApplicationContext(), "Current District is invalid", Toast.LENGTH_SHORT, true).show();
+            tvUserCurrentPlace.requestFocus();
             return false;
         }
 
