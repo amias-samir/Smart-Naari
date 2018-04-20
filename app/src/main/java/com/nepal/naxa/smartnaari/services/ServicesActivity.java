@@ -122,27 +122,25 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
         initDistrictSpinner();
 
 
-
-
 //        if from MaChupBasdina Activity
         if (ConstantData.isFromMaChupBasdina) {
             Intent intent = getIntent();
             selectedDistrict = intent.getStringExtra(ConstantData.KEY_DISTRICT);
-        }else {
+        } else {
             getUserCurrentDistrict();
         }
 
 
     }
 
-    private void getUserCurrentDistrict (){
-        SessionManager sessionManager ;
-        UserData userData ;
+    private void getUserCurrentDistrict() {
+        SessionManager sessionManager;
+        UserData userData;
         sessionManager = new SessionManager(this);
         userData = sessionManager.getUser();
         String District = userData.getCurrentDistrict().trim().toLowerCase();
 
-        Log.d(TAG, "getUserCurrentDistrict: "+selectedDistrict);
+        Log.d(TAG, "getUserCurrentDistrict: " + selectedDistrict);
         setSpinnerOnfeatureSelection(District);
     }
 
@@ -365,7 +363,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             case R.id.item_list_menu:
                 if (!isGPSOn()) {
                     showInfoToast("Turn on GPS");
-                }else {
+                } else {
                     Intent intentListMenu = new Intent(ServicesActivity.this, ServicesListActivity.class);
                     startActivity(intentListMenu);
                     finish();
