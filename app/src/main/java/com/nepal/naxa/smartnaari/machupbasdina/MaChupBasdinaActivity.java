@@ -153,6 +153,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
 
     ServicesListDialogAdapter servicesListDialogAdapter;
+    SessionManager sessionManager ;
 
 
     @Override
@@ -160,6 +161,8 @@ public class MaChupBasdinaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ma_chup_basdina);
         ButterKnife.bind(this);
+
+        sessionManager = new SessionManager(this);
 
 
         //initialize toolbar
@@ -319,21 +322,25 @@ public class MaChupBasdinaActivity extends BaseActivity {
     }
 
     public void initSpinnerData() {
-        ArrayAdapter<String> birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListEnglish);
-        birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDistrictOfIncident.setAdapter(birthDistArray);
+        ArrayAdapter<String> currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListEnglish);
+        currentDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDistrictOfIncident.setAdapter(currentDistArray);
 
         ArrayAdapter<String> voilenceType = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.voilenceType);
         voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTypeOfViolence.setAdapter(voilenceType);
 
         ArrayAdapter<String> voilenceOccurTimeArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.voilenceOccurTime);
-        birthDistArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        voilenceOccurTimeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVoilenceOccur.setAdapter(voilenceOccurTimeArray);
 
 //        ArrayAdapter<String> noConsent = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.noConsentType);
 //        voilenceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        spinnerNoConsent.setAdapter(noConsent);
+
+        //set spinner
+        final int districtPos = currentDistArray.getPosition(sessionManager.getUser().getCurrentDistrict());
+        spinnerDistrictOfIncident.setSelection(districtPos);
     }
 
     public boolean validateData() {
