@@ -473,6 +473,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="confirm_password">Confirm Password</string>
     <string name="change_password">change password</string>
     <string name="old_password">Old Password</string>
+    <string name="edit_circle">Edit Circle</string>
 
     ?>
 </resources>
