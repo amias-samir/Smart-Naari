@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.application;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.evernote.android.job.JobManager;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.customtextfont.CustomViewWithTypefaceSupport;
 import com.nepal.naxa.smartnaari.data.local.model.DaoMaster;
@@ -38,7 +39,7 @@ public class SmartNaari extends MultiDexApplication {
 
         context = getApplicationContext();
         daoSession = new DaoMaster(new DbOpenHelper(this, "smart_naari.db").getWritableDb()).newSession();
-
+        JobManager.create(this).addJobCreator(new SmartNaariJobCreator());
     }
 
 

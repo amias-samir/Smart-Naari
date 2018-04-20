@@ -131,6 +131,9 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.5.0'
 
+    implementation 'com.evernote:android-job:1.2.5'
+
+
     // compile 'com.github.bkhezry:ExtraMapUtils:v1.2.0'
 
     // Testing-only dependencies

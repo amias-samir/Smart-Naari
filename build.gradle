@@ -45,11 +45,11 @@ allprojects {
 
 ext {
     // SDK and tools
-    buildToolsVersion = '25.0.2'
-    compileSdkVersion = 25
+    buildToolsVersion = '26.0.2'
+    compileSdkVersion = 26
     minSdkVersion = 16
     targetSdkVersion = 25
 
     // Application dependencies
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '26.0.2'
 }

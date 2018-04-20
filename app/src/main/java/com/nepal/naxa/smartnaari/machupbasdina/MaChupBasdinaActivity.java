@@ -153,7 +153,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
 
     ServicesListDialogAdapter servicesListDialogAdapter;
-    SessionManager sessionManager ;
+    SessionManager sessionManager;
 
 
     @Override
@@ -450,18 +450,20 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
                                 break;
                             case "201":
-                                showInfoToast(data);
-                                hideLoading();
 
+                                hideLoading();
+                                DialogFactory.createSimpleOkErrorDialog(MaChupBasdinaActivity.this, "Information", data).show();
 
                                 break;
                             case "406":
-                                showInfoToast(data);
+
                                 hideLoading();
+                                DialogFactory.createSimpleOkErrorDialog(MaChupBasdinaActivity.this, "Information", data).show();
+
                                 break;
 
                             default:
-                                showInfoToast(data);
+                                DialogFactory.createSimpleOkErrorDialog(MaChupBasdinaActivity.this, "Information", data).show();
                                 hideLoading();
                         }
                     } catch (Exception e) {
