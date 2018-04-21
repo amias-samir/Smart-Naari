@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,8 +41,11 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
     RecyclerView mRecyclerView;
     SimpleAdapter mAdapter;
+    SimpleAdapter mFilteredAdapter;
+    SimpleSectionedRecyclerViewAdapter mSectionedAdapter;
 
     private SearchView searchView;
+    private boolean isFiltering = false;
 
 
     private JSONAssetLoadTask jsonAssetLoadTask;
@@ -53,6 +58,8 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
         setContentView(R.layout.activity_words_with_details);
 
         initToolbar();
+
+        mFilteredAdapter = new SimpleAdapter(this, wordsWithDetailsList);
 
         new JSONLoadImpl().getGlossaryObject();
 
@@ -90,18 +97,49 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
         // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // filter recycler view when query submitted
-//                mAdapterFiltered.getFilter().filter(query);
-                mAdapter.getFilter().filter(query);
+            public boolean onQueryTextSubmit(final String query) {
+
+                if(TextUtils.isEmpty(query)){
+                    isFiltering = false;
+                    setSectionedRecycleView(mAdapter);
+                }else {
+                    // filter recycler view when query submitted
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 0.55s = 5000ms
+                            isFiltering = true;
+                            mFilteredAdapter.getFilter().filter(query);
+                            setSectionedRecycleView(mFilteredAdapter);
+                        }
+                    }, 500);
+
+
+                }
+
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String query) {
+            public boolean onQueryTextChange(final String query) {
                 // filter recycler view when text is changed
 //                mAdapterFiltered.getFilter().filter(query);
-                mAdapter.getFilter().filter(query);
+                if(TextUtils.isEmpty(query)){
+                    isFiltering = false;
+                    setSectionedRecycleView(mAdapter);
+                }else {
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 0.55s = 5000ms
+                            isFiltering = true;
+                            mFilteredAdapter.getFilter().filter(query);
+                            setSectionedRecycleView(mFilteredAdapter);
+                        }
+                    }, 500);
+                }
                 return false;
             }
         });
@@ -120,6 +158,7 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
             //noinspection SimplifiableIfStatement
             case R.id.action_search:
+                mAdapter.notifyDataSetChanged();
                 return true;
         }
 
@@ -135,7 +174,10 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
         Log.e(TAG, "SAMIR This data is: " + s);
 
-        setSectionedRecycleView();
+
+        mAdapter = new SimpleAdapter(this, wordsWithDetailsList);
+        mFilteredAdapter = new SimpleAdapter(this, wordsWithDetailsList);
+        setSectionedRecycleView(mAdapter);
 
     }
 
@@ -145,50 +187,51 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
     }
 
 
-    public void setSectionedRecycleView() {
+    public void setSectionedRecycleView(SimpleAdapter simpleAdapter) {
         //My RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerList);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
-        //Your RecyclerView.Adapter
-//        ArrayList<String> dataGlossaryList = new ArrayList<>();
-//        for (int i = 0; i < wordsWithDetailsList.size(); i++) {
-//            dataGlossaryList.add(wordsWithDetailsList.get(i).getTitle());
-//        }
-//        String[] stringArray = dataGlossaryList.toArray(new String[0]);
-//        mAdapter = new SimpleAdapter(this, stringArray, wordsWithDetailsList);
 
-        mAdapter = new SimpleAdapter(this, wordsWithDetailsList);
 
-        //This is the code to provide a sectioned list
-        String category = wordsWithDetailsList.get(0).getCategory();
+if(isFiltering){
+    mSectionedAdapter = new
+            SimpleSectionedRecyclerViewAdapter(this, R.layout.section, R.id.section_text, simpleAdapter);
+    mRecyclerView.setAdapter(mSectionedAdapter);
+    simpleAdapter.notifyDataSetChanged();
+    mSectionedAdapter.notifyDataSetChanged();
 
-        List<SimpleSectionedRecyclerViewAdapter.Section> sections =
-                new ArrayList<SimpleSectionedRecyclerViewAdapter.Section>();
-        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(0, ""+category));
+}else {
+    //This is the code to provide a sectioned list
+    String category = wordsWithDetailsList.get(0).getCategory();
 
-        for (int i = 0; i < wordsWithDetailsList.size(); i++) {
-            if(!category.equals(wordsWithDetailsList.get(i).getCategory())){
-                category = wordsWithDetailsList.get(i).getCategory();
-                sections.add(new SimpleSectionedRecyclerViewAdapter.Section(i, ""+wordsWithDetailsList.get(i).getCategory()));
-            }
+    List<SimpleSectionedRecyclerViewAdapter.Section> sections =
+            new ArrayList<SimpleSectionedRecyclerViewAdapter.Section>();
+    sections.add(new SimpleSectionedRecyclerViewAdapter.Section(0, "" + category));
 
+    for (int i = 0; i < wordsWithDetailsList.size(); i++) {
+        if (!category.equals(wordsWithDetailsList.get(i).getCategory())) {
+            category = wordsWithDetailsList.get(i).getCategory();
+            sections.add(new SimpleSectionedRecyclerViewAdapter.Section(i, "" + wordsWithDetailsList.get(i).getCategory()));
         }
-
-
-        //Add your adapter to the sectionAdapter
-        SimpleSectionedRecyclerViewAdapter.Section[] dummy = new SimpleSectionedRecyclerViewAdapter.Section[sections.size()];
-        SimpleSectionedRecyclerViewAdapter mSectionedAdapter = new
-                SimpleSectionedRecyclerViewAdapter(this, R.layout.section, R.id.section_text, mAdapter);
-        mSectionedAdapter.setSections(sections.toArray(dummy));
-
-
-        //Apply this adapter to the RecyclerView
-        mRecyclerView.setAdapter(mSectionedAdapter);
     }
 
+    //Add your adapter to the sectionAdapter
+    SimpleSectionedRecyclerViewAdapter.Section[] dummy = new SimpleSectionedRecyclerViewAdapter.Section[sections.size()];
+    mSectionedAdapter = new
+            SimpleSectionedRecyclerViewAdapter(this, R.layout.section, R.id.section_text, simpleAdapter);
+    mSectionedAdapter.setSections(sections.toArray(dummy));
+
+
+    //Apply this adapter to the RecyclerView
+    mRecyclerView.setAdapter(mSectionedAdapter);
+    simpleAdapter.notifyDataSetChanged();
+    mSectionedAdapter.notifyDataSetChanged();
+}
+
+    }
 
     private void whiteNotificationBar(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -200,25 +243,15 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
     }
 
 
-    private void hideSectionHeader (){
-        CardView sectionHeader = (CardView)findViewById(R.id.cardView_section_header);
-        sectionHeader.setVisibility(CardView.GONE);
+    @Override
+    public void onBackPressed() {
+        // close search view on back button pressed
+        if (!searchView.isIconified()) {
+            searchView.setIconified(true);
+            return;
+        }
+        super.onBackPressed();
     }
-    private void showSectionHeader (){
-        CardView sectionHeader = (CardView)findViewById(R.id.cardView_section_header);
-        sectionHeader.setVisibility(CardView.VISIBLE);
-    }
-
-//    @Override
-//    public void onBackPressed() {
-//        // close search view on back button pressed
-//        if (!searchView.isIconified()) {
-//            searchView.setIconified(true);
-//            showSectionHeader();
-//            return;
-//        }
-//        super.onBackPressed();
-//    }
 
 
 }

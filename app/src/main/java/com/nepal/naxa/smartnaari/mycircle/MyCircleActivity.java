@@ -161,7 +161,7 @@ public class MyCircleActivity extends BaseActivity {
             myCircleData = sessionManager.getMyCircleContact();
         }
 
-        final SpannableStringBuilder sb = new SpannableStringBuilder("For my Saftey");
+        final SpannableStringBuilder sb = new SpannableStringBuilder("For my Safety");
 
         final StyleSpan bss1 = new StyleSpan(Typeface.BOLD); // Span to make text bold
         final StyleSpan bss2 = new StyleSpan(Typeface.BOLD); //Span to make text italic
