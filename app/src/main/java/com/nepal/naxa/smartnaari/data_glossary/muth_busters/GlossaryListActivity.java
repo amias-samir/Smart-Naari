@@ -59,7 +59,8 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
         initToolbar();
 
-        mFilteredAdapter = new SimpleAdapter(this, wordsWithDetailsList);
+
+//        mFilteredAdapter = new SimpleAdapter(this, wordsWithDetailsList);
 
         new JSONLoadImpl().getGlossaryObject();
 
@@ -96,6 +97,7 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
         // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(final String query) {
 
@@ -108,10 +110,12 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            // Do something after 0.55s = 5000ms
+                            // Do something after 0.55s = 500ms
                             isFiltering = true;
                             mFilteredAdapter.getFilter().filter(query);
-                            setSectionedRecycleView(mFilteredAdapter);
+                            if(mFilteredAdapter != null) {
+                                setSectionedRecycleView(mFilteredAdapter);
+                            }
                         }
                     }, 500);
 
@@ -133,10 +137,12 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            // Do something after 0.55s = 5000ms
+                            // Do something after 0.55s = 500ms
                             isFiltering = true;
                             mFilteredAdapter.getFilter().filter(query);
-                            setSectionedRecycleView(mFilteredAdapter);
+                            if(mFilteredAdapter != null) {
+                                setSectionedRecycleView(mFilteredAdapter);
+                            }
                         }
                     }, 500);
                 }
@@ -250,6 +256,7 @@ if(isFiltering){
             searchView.setIconified(true);
             return;
         }
+        fileList();
         super.onBackPressed();
     }
 

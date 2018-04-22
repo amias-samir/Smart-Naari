@@ -153,8 +153,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     @Override
     public int getItemCount() {
         if (isFiltered) {
-            return wordListFiltered.size();
-
+            if(wordListFiltered != null) {
+                return wordListFiltered.size();
+            }else {
+                return  0;
+            }
         } else {
             return mData.size();
 
