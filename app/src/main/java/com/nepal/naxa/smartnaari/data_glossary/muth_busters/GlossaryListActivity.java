@@ -59,11 +59,7 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
 
         initToolbar();
 
-
-//        mFilteredAdapter = new SimpleAdapter(this, wordsWithDetailsList);
-
         new JSONLoadImpl().getGlossaryObject();
-
         jsonAssetLoadTask = new JSONAssetLoadTask(R.raw.data_glossary, this, this);
         jsonAssetLoadTask.execute();
 
@@ -93,7 +89,6 @@ public class GlossaryListActivity extends BaseActivity implements JSONAssetLoadL
                 .getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
-//        wordFilterRecyclerInitialize();
 
         // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
