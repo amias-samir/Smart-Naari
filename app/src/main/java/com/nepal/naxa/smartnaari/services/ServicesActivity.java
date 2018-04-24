@@ -157,7 +157,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
 
 
     private void initDistrictSpinner() {
-        distArrayAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.districtListServices);
+        distArrayAdpt = new ArrayAdapter<String>(this, R.layout.services_spinner_item_layout, ConstantData.districtListServices);
         distArrayAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDistrictListServices.setAdapter(distArrayAdpt);
     }

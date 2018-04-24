@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -310,10 +311,15 @@ public class MaChupBasdinaActivity extends BaseActivity {
 
         if (!spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type")) {
 
-            tvTypeOfViolence.setTextColor(getResources().getColor(R.color.blue));
+//            tvTypeOfViolence.setTextColor(getResources().getColor(R.color.blue));
+
+            SpannableString content = new SpannableString(getResources().getString(R.string.types_of_voilence));
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            tvTypeOfViolence.setText(content);
 
             Animation a = AnimationUtils.loadAnimation(this, R.anim.shake);
             a.reset();
+
             tvTypeOfViolence.clearAnimation();
             tvTypeOfViolence.startAnimation(a);
 

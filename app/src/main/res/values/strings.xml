@@ -476,6 +476,8 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="edit_circle">Edit Circle</string>
     <string name="birth_district">Birth District</string>
     <string name="current_district">Current District</string>
+    <string name="consent"><u>Consent</u></string>
+    <string name="no_consent"><u>No Consent</u></string>
 
     ?>
 </resources>

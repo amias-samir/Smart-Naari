@@ -109,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Consent"
+                            android:text="@string/consent"
                             android:textColor="@color/colorWhite"
                             android:textSize="@dimen/material_text_subhead"
                             android:textStyle="bold"
@@ -121,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="No Consent"
+                            android:text="@string/no_consent"
                             android:textColor="@color/colorWhite"
                             android:textSize="@dimen/material_text_subhead"
                             android:textStyle="bold" />
