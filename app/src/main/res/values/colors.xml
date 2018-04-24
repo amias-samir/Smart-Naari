@@ -72,4 +72,6 @@
     <color name="colorRed_A400">#FF1744</color>
     <color name="colorRed_900">#B71C1C</color>
 
+    <color name="expListView_background">#e6e4e4</color>
+
 </resources>

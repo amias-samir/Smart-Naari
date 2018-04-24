@@ -60,7 +60,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,6 +94,7 @@
 
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/bt_main_activity_takeatest"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_medium"
@@ -128,6 +130,14 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Coming Soon"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/material_text_title"/>
         </LinearLayout>
     </ScrollView>
 

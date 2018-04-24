@@ -9,12 +9,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutboardmembers.AboutMembersActivity;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
+
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +35,7 @@ public class FriendsOfSmartNaariActivity extends BaseActivity {
     TextView tvNGO;
     @BindView(R.id.tvCorporate)
     TextView tvCorporate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

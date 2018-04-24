@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:textSize="@dimen/material_text_title"
     android:gravity="left"
-    android:textStyle="bold"
     android:textColor="@color/black"
-    android:padding="@dimen/default_padding"
-    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/default_padding"
+    android:paddingRight="@dimen/default_padding"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
     />
