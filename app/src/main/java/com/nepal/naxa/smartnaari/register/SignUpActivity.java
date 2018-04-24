@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.register;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,9 +29,11 @@ import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.login.LoginActivity;
+import com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.TextViewUtils;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -710,5 +713,19 @@ public class SignUpActivity extends Activity {
 
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        DialogFactory.createActionDialog(this, "Warning!", "Your data will be lost. Do you want to exit Sign Up?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SignUpActivity.super.onBackPressed();
+
+                    }
+                }).setNegativeButton("No", null)
+                .show();
     }
 }

@@ -45,18 +45,8 @@ public class ServicesListActivity extends BaseActivity {
 
     public static final int GEOPOINT_RESULT_CODE = 1994;
     public static final String LOCATION_RESULT = "LOCATION_RESULT";
-    boolean isGpsTaken = false;
-    double initLat;
     double myLat = 0.0;
-    double initLong;
     double myLong = 0.0;
-    ArrayList<LatLng> listCf = new ArrayList<LatLng>();
-    List<Location> gpslocation = new ArrayList<>();
-
-    static final Integer LOCATION = 0x1;
-    static final Integer GPS_SETTINGS = 0x8;
-
-
 
     AppDataManager appDataManager;
     List<ServicesData> servicesData;

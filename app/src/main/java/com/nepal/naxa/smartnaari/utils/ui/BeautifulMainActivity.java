@@ -93,7 +93,7 @@ public class BeautifulMainActivity extends BaseActivity
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
 
     //    Facebook Page URL
-    public static String FACEBOOK_URL = "https://www.facebook.com/naxa.np";
+    public static String FACEBOOK_URL = "https://www.facebook.com/smartnaari.org/";
     public static String FACEBOOK_PAGE_ID = "naxa.np";
 
 
