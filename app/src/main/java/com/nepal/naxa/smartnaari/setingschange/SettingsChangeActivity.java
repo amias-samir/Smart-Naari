@@ -79,10 +79,10 @@ public class SettingsChangeActivity extends BaseActivity {
 
     public void setMyCircleServiceToggleBtnText() {
         if (sessionManager.doesHaveIntentBackgroundService()) {
-            btnEnableDisableMycircle.setText("Disable MyCircle");
+            btnEnableDisableMycircle.setText("Disable My Circle");
 
         } else {
-            btnEnableDisableMycircle.setText("Enable MyCircle");
+            btnEnableDisableMycircle.setText("Enable My Circle");
         }
     }
 
@@ -91,7 +91,7 @@ public class SettingsChangeActivity extends BaseActivity {
         sessionManager.clearPowerButtonServicePreferences();
         sessionManager.isPowerButtonServiceRunning(true);
         MyCircleOnBoardingActivity.startSafe(this,false);
-        btnEnableDisableMycircle.setText("Disable MyCircle");
+        btnEnableDisableMycircle.setText("Disable My Circle");
 
     }
 
@@ -111,7 +111,7 @@ public class SettingsChangeActivity extends BaseActivity {
 //        Intent service = new Intent(this, PowerButtonService.class);
 //        this.stopService(service);
 
-        btnEnableDisableMycircle.setText("Enable MyCircle");
+        btnEnableDisableMycircle.setText("Enable My Circle");
 
     }
 
