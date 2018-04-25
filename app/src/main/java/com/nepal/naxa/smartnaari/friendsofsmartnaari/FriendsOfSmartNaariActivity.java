@@ -59,6 +59,7 @@ public class FriendsOfSmartNaariActivity extends BaseActivity {
         }
     }
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;

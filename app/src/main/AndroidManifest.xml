@@ -446,8 +446,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".mycircle.mycirclecircularview.MyCircleCircularViewActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity"
+            android:exported="true"
+            >
+        </activity>
     </application>
 
 </manifest>

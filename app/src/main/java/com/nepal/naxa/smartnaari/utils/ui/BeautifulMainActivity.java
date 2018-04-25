@@ -50,6 +50,7 @@ import com.nepal.naxa.smartnaari.data_glossary.muth_busters.GlossaryListActivity
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
+import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -343,7 +344,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
         if (menuItem.getTitle().equals("Acknowledging Friends")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
+            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariExpandableActivity.class);
             startActivity(intent);
 //            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 

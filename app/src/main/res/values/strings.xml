@@ -463,7 +463,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="awantika_thapa">Awantika Thapa</string>
     <string name="krishangi_basnyat">Krishangi Basnyat</string>
     <string name="madhuri_rana_singh">Madhuri Rana Singh</string>
-    <string name="setup_mycircle"><b>Hello</b> %s, \nWe need to configure your device. Once, that is complete. You will be able to use your \'MyCircle\'</string>
+    <string name="setup_mycircle"><b>Hello</b> %s, \nWe need to configure your device. Once, that is complete. You will be able to use your \'My Circle\'</string>
     <string name="msg_swipe_this_card">SWIPE THIS CARD TO START SETUP</string>
     <string name="nepal_monitor">Nepal Monitor</string>
     <string name="data_nepal">Data Nepal</string>
@@ -478,6 +478,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="current_district">Current District</string>
     <string name="consent"><u>Consent</u></string>
     <string name="no_consent"><u>No Consent</u></string>
+    <string name="acknowledging_friends_text">Without our key contributors, our fight against Gender Based Violence would be so much less. Smart नारी would like to say a heartfelt thank you.</string>
 
     ?>
 </resources>
