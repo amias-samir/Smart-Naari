@@ -59,7 +59,7 @@ android {
             //setProperty("archivesBaseName", gitHash())
         }
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
 }
 
 greendao {
@@ -130,6 +130,8 @@ dependencies {
 //    text font
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.5.0'
+
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
 
     // compile 'com.github.bkhezry:ExtraMapUtils:v1.2.0'
 

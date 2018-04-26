@@ -69,7 +69,9 @@ public class UserData {
     @Expose
     private String circleName5;
 
-
+    @SerializedName("user_image_path")
+    @Expose
+    private String imagePath;
 
     public String getUserId() {
         return userId;
@@ -229,5 +231,13 @@ public class UserData {
 
     public void setCircleName5(String circleName5) {
         this.circleName5 = circleName5;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
