@@ -1,6 +1,8 @@
 
 package com.nepal.naxa.smartnaari.data.network;
 
+import android.net.Uri;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

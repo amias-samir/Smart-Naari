@@ -612,7 +612,7 @@ public class SignUpActivity extends Activity {
 
             header.put("username", userName);
             header.put("password", password);
-            header.put("first_name", confirmPassword);
+            header.put("first_name", firstName);
             header.put("surname", surName);
             header.put("dob", age);
             header.put("gender", gender);
