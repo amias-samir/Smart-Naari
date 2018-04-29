@@ -36,9 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
-
-        <!--file provider-->
+        <!-- file provider -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.nepal.naxa.smartnaari.fileprovider"
@@ -46,9 +44,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-
-            </meta-data>
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
 
         <!-- ======================= auto start services on system boot ==================== -->
@@ -402,8 +398,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".userprofileupdate.UserProfileUpdateActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".utils.ui.BeautifulMainActivity" />
@@ -462,16 +458,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".mycircle.mycirclecircularview.MyCircleCircularViewActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name=".friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity"
-            android:exported="true"
-            >
-        </activity>
-
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+        <activity android:name=".login.ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>
