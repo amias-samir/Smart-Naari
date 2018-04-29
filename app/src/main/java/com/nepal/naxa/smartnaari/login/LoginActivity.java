@@ -1,17 +1,16 @@
 package com.nepal.naxa.smartnaari.login;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputFilter;
+import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,18 +20,19 @@ import android.widget.Toast;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.data.network.GetPinResponse;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
+import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
-import com.nepal.naxa.smartnaari.data.network.retrofit.ErrorSupportCallback;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleActivity;
 import com.nepal.naxa.smartnaari.mycircle.MyCircleOnBoardingActivity;
-import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.ui.BeautifulMainActivity;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,12 +47,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_401;
 import static com.nepal.naxa.smartnaari.data.network.UrlClass.REQUEST_OK;
 
 public class LoginActivity extends BaseActivity {
 
     private static String TAG = "LoginActivity";
+    @BindView(R.id.tv_forgot_your_password)
+    TextView tvForgotYourPassword;
     private long timeStampWhenBackWasPressed;
 
 
@@ -72,10 +73,14 @@ public class LoginActivity extends BaseActivity {
 
 
     String jsonToSend = null;
+    String resetPasswordJson = null;
+
     ProgressDialog mProgressDlg;
     MyCircleData myCircleData;
     @BindView(R.id.top_img)
     ImageView topImgTapItStopIt;
+
+    private String mobNoToResetPW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,17 +105,15 @@ public class LoginActivity extends BaseActivity {
 
 //        tvUserPassword.setInputType( InputType.TYPE_TEXT_VARIATION_URI ); // optional - sets the keyboard to URL mode
 // kill keyboard when enter is pressed
-        tvUserPassword.setOnKeyListener(new View.OnKeyListener()
-        {
+        tvUserPassword.setOnKeyListener(new View.OnKeyListener() {
             /**
              * This listens for the user to press the enter button on
              * the keyboard and then hides the virtual keyboard
              */
             public boolean onKey(View arg0, int arg1, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
-                if ( (event.getAction() == KeyEvent.ACTION_DOWN  ) &&
-                        (arg1           == KeyEvent.KEYCODE_ENTER)   )
-                {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (arg1 == KeyEvent.KEYCODE_ENTER)) {
 //                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 //                    imm.hideSoftInputFromWindow(tvUserPassword.getWindowToken(), 0);
                     userLogin();
@@ -119,7 +122,7 @@ public class LoginActivity extends BaseActivity {
                 }
                 return false;
             }
-        } );
+        });
     }
 
     private void setupUI() {
@@ -149,7 +152,7 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    private void userLogin (){
+    private void userLogin() {
 
         hideKeyboard();
 
@@ -202,7 +205,7 @@ public class LoginActivity extends BaseActivity {
 
                 hideLoading();
 
-                Log.e(TAG, "onResponse: "+response.body().getData().toString() );
+                Log.e(TAG, "onResponse: " + response.body().getData().toString());
 
                 if (response == null) {
                     showErrorToast("Null Response");
@@ -211,6 +214,7 @@ public class LoginActivity extends BaseActivity {
 
                 handleLoginResponse(response.body());
             }
+
             private void handleLoginResponse(UserDetail userDetail) {
                 switch (userDetail.getStatus()) {
                     case REQUEST_OK:
@@ -255,7 +259,7 @@ public class LoginActivity extends BaseActivity {
                         finish();
                     } else {
 
-                        MyCircleOnBoardingActivity.startSafe(LoginActivity.this,true);
+                        MyCircleOnBoardingActivity.startSafe(LoginActivity.this, true);
                         finish();
                     }
 
@@ -275,7 +279,7 @@ public class LoginActivity extends BaseActivity {
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
-                Toasty.error(getApplicationContext(), ""+message, Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "" + message, Toast.LENGTH_LONG, true).show();
             }
         });
     }
@@ -312,4 +316,114 @@ public class LoginActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.tv_forgot_your_password)
+    public void onForgotPasswordViewClicked() {
+
+        showDialogBox();
+
+    }
+
+
+    public void sendResetPasswordRequestoServer() {
+
+        try {
+
+            JSONObject header = new JSONObject();
+
+            header.put("mobile_no", mobNoToResetPW);
+//            header.put("email", userData.getEmail());
+            resetPasswordJson = header.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        NetworkApiInterface apiService = NetworkApiClient.getAPIClient().create(NetworkApiInterface.class);
+
+        Call<GetPinResponse> call = apiService.getPasswordResetPin(resetPasswordJson);
+        call.enqueue(new Callback<GetPinResponse>() {
+            @Override
+            public void onResponse(Call<GetPinResponse> call, Response<GetPinResponse> response) {
+
+                hideLoading();
+
+
+                if (response.body() == null) {
+                    showErrorToast("Null Response");
+                    return;
+                }
+                Log.e(TAG, "onResponse: reset pin" + response.body().getPin().toString());
+
+                handleLoginResponse(response.body());
+            }
+
+            private void handleLoginResponse(GetPinResponse getPinResponse) {
+                switch (getPinResponse.getStatus()) {
+                    case REQUEST_OK:
+
+                        handleLoginSucess(getPinResponse);
+                        break;
+                    default:
+                        showErrorToast("Error occurred !!!\nPlease try again later");
+                        break;
+                }
+            }
+
+            private void handleLoginSucess(GetPinResponse getPinResponse) {
+
+                hideLoading();
+
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                intent.putExtra("mobile", mobNoToResetPW);
+                intent.putExtra("pin", getPinResponse.getPin());
+                startActivity(intent);
+                finish();
+
+            }
+
+            @Override
+            public void onFailure(Call<GetPinResponse> call, Throwable t) {
+                hideLoading();
+                String message = "Internet Connection Error!, please try again later";
+                if (t instanceof SocketTimeoutException) {
+                    message = "slow internet connection, please try again later";
+                }
+                Toasty.error(getApplicationContext(), "" + message, Toast.LENGTH_LONG, true).show();
+            }
+        });
+    }
+
+
+    private void showDialogBox() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter Registered mobile no.");
+
+// Set up the input
+        final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mobNoToResetPW = input.getText().toString();
+                dialog.dismiss();
+
+                showLoading("Sending Request");
+
+                sendResetPasswordRequestoServer();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
 }

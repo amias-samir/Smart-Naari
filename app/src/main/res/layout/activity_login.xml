@@ -122,6 +122,20 @@
             android:textStyle="normal" />
 
         <TextView
+            android:id="@+id/tv_forgot_your_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/spacing_xxlarge"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center"
+            android:text="forgot your password?"
+            android:textStyle="italic"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/material_text_body1" />
+
+
+        <TextView
             android:layout_width="@dimen/spacing_xxlarge"
             android:layout_height="@dimen/spacing_xxlarge"
             android:layout_gravity="center"

@@ -479,6 +479,7 @@ extraordinary potential! Let's cherish and celebrate this    <b>amazing</b> life
     <string name="consent"><u>Consent</u></string>
     <string name="no_consent"><u>No Consent</u></string>
     <string name="acknowledging_friends_text">Without our key contributors, our fight against Gender Based Violence would be so much less. Smart नारी would like to say a heartfelt thank you.</string>
+    <string name="enter_pin_to_reset_pw_text">Please enter your Pin which we have sent you in your registered Email to reset your Password.</string>
 
     ?>
 </resources>

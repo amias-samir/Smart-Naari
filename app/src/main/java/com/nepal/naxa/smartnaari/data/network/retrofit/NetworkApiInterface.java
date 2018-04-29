@@ -1,9 +1,11 @@
 package com.nepal.naxa.smartnaari.data.network.retrofit;
 
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
+import com.nepal.naxa.smartnaari.data.network.GetPinResponse;
 import com.nepal.naxa.smartnaari.data.network.HotPotOfPassionDetails;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.PasswordResetResponse;
 import com.nepal.naxa.smartnaari.data.network.ProfileUpdateResponse;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
@@ -59,6 +61,15 @@ public interface NetworkApiInterface {
     @FormUrlEncoded
     @POST("Smartapi/get_content")
     Call<HotPotOfPassionDetails> getHotPotOfPassion(@Field("data") String data);
+
+
+    @FormUrlEncoded
+    @POST("UpdateController/password_reset")
+    Call<GetPinResponse> getPasswordResetPin(@Field("data_pin") String data);
+
+    @FormUrlEncoded
+    @POST("UpdateController/password_reset")
+    Call<PasswordResetResponse> getPasswordResetResponse(@Field("data_password") String data);
 
     @Multipart
     @POST("smartapi/profile_update")
