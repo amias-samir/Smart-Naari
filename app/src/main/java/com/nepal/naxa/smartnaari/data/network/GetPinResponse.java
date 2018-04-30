@@ -17,9 +17,14 @@ public class GetPinResponse {
     @Expose
     String pin ;
 
-    public GetPinResponse(String status, String pin) {
+    @SerializedName("msg")
+    @Expose
+    String msg ;
+
+    public GetPinResponse(String status, String pin, String msg) {
         this.status = status;
         this.pin = pin;
+        this.msg = msg;
     }
 
     public String getStatus() {
@@ -36,5 +41,13 @@ public class GetPinResponse {
 
     public void setPin(String pin) {
         this.pin = pin;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

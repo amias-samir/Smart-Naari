@@ -541,8 +541,8 @@ public class SignUpActivity extends Activity {
                     + "/"
                     + spinnerBirthDay.getSelectedItem().toString();
             Log.i("Shree", age);
-            birthPlace = spBirthPlace.getSelectedItem().toString();
-            currentPlace = spCurrentPlace.getSelectedItem().toString();
+            birthPlace = tvUserBirthPlace.getText().toString();
+            currentPlace = tvUserCurrentPlace.getText().toString();
             email = etEmail.getText().toString().trim();
             mobileNumber = etContact.getText().toString().trim();
 

@@ -10,7 +10,7 @@ public class ProfileUpdateResponse {
 
     @SerializedName("status")
     String status;
-    @SerializedName("data")
+    @SerializedName("msg")
     String data;
 
     public String getStatus() {

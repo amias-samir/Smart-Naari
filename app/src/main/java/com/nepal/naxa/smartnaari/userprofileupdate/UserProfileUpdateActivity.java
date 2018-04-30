@@ -125,6 +125,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
     SessionManager sessionManager ;
     UserData userData;
 
+    private boolean hasNewImage = false ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,8 +142,9 @@ public class UserProfileUpdateActivity extends BaseActivity {
         initToolbar();
         setUpSpinners();
         setUpAutoCompleteDistrict();
-
         initPreviousDataSetup();
+
+
     }
 
     private void initToolbar() {
@@ -205,6 +208,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
                     .with(this)
                     .load(userData.getImagePath())
                     .into(ivMemberImage);
+        }else {
+            ivMemberImage.setImageResource(R.drawable.default_avatar);
         }
 
     }
@@ -235,7 +240,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
         String year = parts[2]; // day
 
         spinnerBirthYear.setSelection(yearAdapter.getPosition(year));
-        spinnerBirthMonth.setSelection(month);
+        spinnerBirthMonth.setSelection(month - 1);
         spinnerBirthDay.setSelection(dayAdapter.getPosition(day));
     }
 
@@ -319,6 +324,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
 //                imagePath = result.getUri().toString();
                 Log.d(TAG, "onActivityResult: URI"+result.getUri().toString());
+
+                hasNewImage = true ;
 
 
                 Toast.makeText(
@@ -483,7 +490,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
         Calendar calendar = Calendar.getInstance();
         long timeInMillis = calendar.getTimeInMillis();
 
-        imagePath = userData.getUsername() + timeInMillis+".jpeg";
+        imagePath = userData.getUsername() + timeInMillis+".jpg";
 
         File file1 = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), imagePath);
@@ -513,7 +520,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
         Uri ImageToBeUploaded = null;
         File ImageFile = null;
-        if(!TextUtils.isEmpty(saveToExternalSorage(bitmap))){
+        if(hasNewImage){
+            saveToExternalSorage(bitmap);
 
             File file1 = new File(Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES), imagePath);
@@ -533,7 +541,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
              body = null;
         }else {
                 RequestBody imageRequestBody = RequestBody.create(MediaType.parse(getContentResolver().getType(ImageToBeUploaded)), ImageFile);
-               body = MultipartBody.Part.createFormData("photo", ImageFile.getName(), imageRequestBody);
+               body = MultipartBody.Part.createFormData("user_pic", ImageFile.getName(), imageRequestBody);
+            Log.d(TAG, "sendDataToServer: imageFile name"+ImageFile.getName());
             }
 
         RequestBody data = RequestBody.create(MediaType.parse("text/plain"), jsonData);
@@ -547,17 +556,19 @@ public class UserProfileUpdateActivity extends BaseActivity {
                     mProgressDlg.dismiss();
                 }
                 if (response.body() == null) {
-                    Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_SHORT).show();
+                    Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 handleProfileUpdateResponse(response.body());
+                Log.d(TAG, "onResponse: got response");
             }
 
             private void handleProfileUpdateResponse(ProfileUpdateResponse profileUpdateResponse) {
                 switch (profileUpdateResponse.getStatus()) {
                     case REQUEST_OK:
                         handleSuccess(profileUpdateResponse);
+                        Log.d(TAG, "handleProfileUpdateResponse: 200");
                         break;
 
                     default:
@@ -587,6 +598,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
                 Toasty.success(getApplicationContext(), profileUpdateResponse.getData(), Toast.LENGTH_SHORT, true).show();
 //                startActivity(new Intent(getApplication(), LoginActivity.class));
 //                finish();
+
             }
 
             @Override
@@ -595,11 +607,12 @@ public class UserProfileUpdateActivity extends BaseActivity {
                     mProgressDlg.dismiss();
                 }
                 String message = "Internet Connection Error!, please try again later";
+                Log.d(TAG, "onFailure: ");
 
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
-                Toasty.error(getApplicationContext(), "" + message, Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "Failed to update" + message, Toast.LENGTH_LONG, true).show();
             }
         });
     }

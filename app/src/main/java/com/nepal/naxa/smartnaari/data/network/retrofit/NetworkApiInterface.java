@@ -72,7 +72,7 @@ public interface NetworkApiInterface {
     Call<PasswordResetResponse> getPasswordResetResponse(@Field("data_password") String data);
 
     @Multipart
-    @POST("smartapi/profile_update")
+    @POST("UpdateController/profile_update")
     Call<ProfileUpdateResponse> getProfileUpdateDetails(@Part MultipartBody.Part file,
                                                         @Part("data") RequestBody jsonToSend);
 }
