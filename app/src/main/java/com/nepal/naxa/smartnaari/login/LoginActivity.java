@@ -3,6 +3,7 @@ package com.nepal.naxa.smartnaari.login;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -408,8 +410,16 @@ public class LoginActivity extends BaseActivity {
         input.setBackground(getResources().getDrawable(R.drawable.edit_text_boarder_recg_white_bg_red_boarder));
         input.setHint("Enter your mobile no.");
         input.setGravity(Gravity.CENTER);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+
+        );
+        params.setMargins(16, 20, 16, 20);
+        input.setLayoutParams(params);
+//        input.setBackgroundTintList( ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)) );
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+        input.setInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_VARIATION_PHONETIC);
         builder.setView(input);
 
 // Set up the buttons
