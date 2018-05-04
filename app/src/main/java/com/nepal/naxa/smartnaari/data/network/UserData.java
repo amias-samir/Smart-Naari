@@ -71,7 +71,7 @@ public class UserData {
     @Expose
     private String circleName5;
 
-    @SerializedName("user_image_path")
+    @SerializedName("pic_path")
     @Expose
     private String imagePath;
 

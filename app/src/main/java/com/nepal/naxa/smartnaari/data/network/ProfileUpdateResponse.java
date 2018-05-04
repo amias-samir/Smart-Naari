@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.data.network;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -9,9 +10,16 @@ import com.google.gson.annotations.SerializedName;
 public class ProfileUpdateResponse {
 
     @SerializedName("status")
+    @Expose
     String status;
+
     @SerializedName("msg")
+    @Expose
     String data;
+
+    @SerializedName("data")
+    @Expose
+    private UserData userData;
 
     public String getStatus() {
         return status;
@@ -27,5 +35,13 @@ public class ProfileUpdateResponse {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public UserData getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 }

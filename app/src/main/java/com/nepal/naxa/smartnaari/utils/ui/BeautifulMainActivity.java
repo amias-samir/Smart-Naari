@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -44,6 +45,7 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.SmartNariCopyrightActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.GlossaryListActivity;
@@ -296,7 +298,18 @@ public class BeautifulMainActivity extends BaseActivity
         tvNavUserName = (TextView) headerview.findViewById(R.id.tv_nav_user_name);
 
         tvNavUserName.setText(sessionManager.getUser().getUsername());
-        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+//        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+
+        UserData userData = sessionManager.getUser();
+        if(!TextUtils.isEmpty(userData.getImagePath())){
+
+            Glide
+                    .with(this)
+                    .load(userData.getImagePath())
+                    .into(ivNavUserAvatar);
+        }else {
+            ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+        }
 
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);

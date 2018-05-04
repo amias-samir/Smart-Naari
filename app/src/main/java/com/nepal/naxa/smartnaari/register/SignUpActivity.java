@@ -718,7 +718,7 @@ public class SignUpActivity extends Activity {
     @Override
     public void onBackPressed() {
 
-        DialogFactory.createActionDialog(this, "Warning!", "Your data will be lost. Do you want to exit Sign Up?")
+        DialogFactory.createActionDialog(this, "Warning!", "Your data will be lost. Do you want to exit Sign up?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

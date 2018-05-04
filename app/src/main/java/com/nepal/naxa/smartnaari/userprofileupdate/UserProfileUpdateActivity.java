@@ -3,7 +3,6 @@ package com.nepal.naxa.smartnaari.userprofileupdate;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +38,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
@@ -71,7 +69,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
     ArrayAdapter<String> birthDistArray;
     ArrayAdapter<String> currentDistArray;
 
-    String imagePath = null;
+    String imageName = null;
 
     ProgressDialog mProgressDlg;
     String jsonToSend = "";
@@ -143,7 +141,6 @@ public class UserProfileUpdateActivity extends BaseActivity {
         setUpSpinners();
         setUpAutoCompleteDistrict();
         initPreviousDataSetup();
-
 
     }
 
@@ -322,7 +319,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
                 ivMemberImage.setImageURI(result.getUri());
 
-//                imagePath = result.getUri().toString();
+//                imageName = result.getUri().toString();
                 Log.d(TAG, "onActivityResult: URI"+result.getUri().toString());
 
                 hasNewImage = true ;
@@ -490,10 +487,10 @@ public class UserProfileUpdateActivity extends BaseActivity {
         Calendar calendar = Calendar.getInstance();
         long timeInMillis = calendar.getTimeInMillis();
 
-        imagePath = userData.getUsername() + timeInMillis+".jpg";
+        imageName = userData.getUsername() + timeInMillis+".jpg";
 
         File file1 = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), imagePath);
+                Environment.DIRECTORY_PICTURES), imageName);
 //        if (!file1.mkdirs()) {
 //            Toast.makeText(getApplicationContext(), "Not Created", Toast.LENGTH_SHORT).show();
 //        }
@@ -504,48 +501,44 @@ public class UserProfileUpdateActivity extends BaseActivity {
             thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
-            Toast.makeText(getApplicationContext(), "Saved " + imagePath, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Saved " + imageName, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Log.d(TAG, "saveToExternalSorage: "+imagePath);
-        return imagePath;
+        Log.d(TAG, "saveToExternalSorage: "+ imageName);
+        return imageName;
     }
 
+    Uri ImageToBeUploaded ;
+    File imageFile ;
+    MultipartBody.Part body = null ;
+    Bitmap bitmap;
     private void sendDataToServer(String jsonData) {
 
         BitmapDrawable drawable = (BitmapDrawable) ivMemberImage.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
+        bitmap = drawable.getBitmap();
 
-        Uri ImageToBeUploaded = null;
-        File ImageFile = null;
         if(hasNewImage){
-            saveToExternalSorage(bitmap);
-
             File file1 = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_PICTURES), imagePath);
-            String image_Path = file1.toString();
-            Log.e(TAG, "sendDataToServer: "+image_Path);
-            ImageFile = new File(image_Path);
+                    Environment.DIRECTORY_PICTURES), saveToExternalSorage(bitmap));
+            String image_Path = file1.getAbsolutePath();
+//            Log.d(TAG, "sendDataToServer: imagePath "+image_Path);
 
+            imageFile = new File(image_Path);
+            if (imageFile.exists()) {
+//                Log.d(TAG, "sendDataToServer: image file exist");
+                RequestBody surveyBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
+                body = MultipartBody.Part.createFormData("user_pic", imageFile.getName(), surveyBody);
 
-            ImageToBeUploaded = FileProvider.getUriForFile(
-                    UserProfileUpdateActivity.this,
-                    "com.nepal.naxa.smartnaari.fileprovider", ImageFile);
+            }else {
+                body = null;
+            }
         }
 
-        MultipartBody.Part body;
-        NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
-        if(TextUtils.isEmpty(imagePath)) {
-             body = null;
-        }else {
-                RequestBody imageRequestBody = RequestBody.create(MediaType.parse(getContentResolver().getType(ImageToBeUploaded)), ImageFile);
-               body = MultipartBody.Part.createFormData("user_pic", ImageFile.getName(), imageRequestBody);
-            Log.d(TAG, "sendDataToServer: imageFile name"+ImageFile.getName());
-            }
 
         RequestBody data = RequestBody.create(MediaType.parse("text/plain"), jsonData);
+        NetworkApiInterface apiService = getAPIClient().create(NetworkApiInterface.class);
         Call<ProfileUpdateResponse> call = apiService.getProfileUpdateDetails(body, data);
 
 
@@ -581,24 +574,15 @@ public class UserProfileUpdateActivity extends BaseActivity {
             private void handleSuccess(ProfileUpdateResponse profileUpdateResponse) {
 
                 UserData userData = sessionManager.getUser();
-                 userData.setUsername(userName);
-                 userData.setFirstName(firstName);
-                 userData.setSurname(surName);
-                userData.setPersonalMobileNumber(mobileNumber);
-                userData.setDob(age);
-                 userData.setGender(gender);
-                 userData.setCurrentDistrict(currentPlace);
-                 userData.setBirthDistrict(birthPlace);
-                 userData.setEmail(email);
-                 userData.setImagePath(imagePath);
 
-
-                sessionManager.saveUser(userData);
-
+                if(hasNewImage) {
+                    UserData userDataNew = profileUpdateResponse.getUserData();
+                    userDataNew.setImagePath(userData.getImagePath());
+                    sessionManager.saveUser(userDataNew);
+                }else {
+                    sessionManager.saveUser(profileUpdateResponse.getUserData());
+                }
                 Toasty.success(getApplicationContext(), profileUpdateResponse.getData(), Toast.LENGTH_SHORT, true).show();
-//                startActivity(new Intent(getApplication(), LoginActivity.class));
-//                finish();
-
             }
 
             @Override
@@ -612,7 +596,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
                 if (t instanceof SocketTimeoutException) {
                     message = "slow internet connection, please try again later";
                 }
-                Toasty.error(getApplicationContext(), "Failed to update" + message, Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "Failed to update ", Toast.LENGTH_LONG, true).show();
             }
         });
     }
