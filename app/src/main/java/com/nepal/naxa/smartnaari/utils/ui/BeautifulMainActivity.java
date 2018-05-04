@@ -160,6 +160,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     SessionManager sessionManager;
+    UserData userData;
 
 
     @Override
@@ -168,6 +169,8 @@ public class BeautifulMainActivity extends BaseActivity
         setContentView(R.layout.activity_beutiful_main);
 
         sessionManager = new SessionManager(this);
+        userData = sessionManager.getUser();
+
         sessionManager.setIsMyCircleFirstTimeLoad(false);
 
         bindActivity();
@@ -180,13 +183,6 @@ public class BeautifulMainActivity extends BaseActivity
         mAppBarLayout.addOnOffsetChangedListener(this);
         setupActionBar();
         setupDrawerLayout();
-
-
-//        Glide.with(this)
-//                .load(R.drawable.food_1).into(placeholder);
-//        Glide.with(this)
-//                .load(R.drawable.food_2).into(placeholder2);
-
 
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
 
@@ -288,9 +284,8 @@ public class BeautifulMainActivity extends BaseActivity
         }
     }
 
-    UserData userData = sessionManager.getUser();
-    private void setupDrawerLayout() {
 
+    private void setupDrawerLayout() {
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View headerview = navigationView.getHeaderView(0);
 //        navigationView.setOnClickListener(this);
@@ -301,7 +296,7 @@ public class BeautifulMainActivity extends BaseActivity
 
         tvNavUserName.setText(sessionManager.getUser().getUsername());
 //        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
-        
+
         if(!TextUtils.isEmpty(userData.getImagePath())){
 
             if(NetworkUtils.isNetworkDisconnected(this)) {
