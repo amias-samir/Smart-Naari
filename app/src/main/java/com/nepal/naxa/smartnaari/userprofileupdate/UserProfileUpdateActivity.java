@@ -31,6 +31,7 @@ import com.nepal.naxa.smartnaari.data.network.ProfileUpdateResponse;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
+import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -60,11 +61,11 @@ import static com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient.g
 
 public class UserProfileUpdateActivity extends BaseActivity {
 
-    private static final String TAG ="ProfileUpdate" ;
+    private static final String TAG = "ProfileUpdate";
 
-    public static String  KEY_MALE = "Male";
-    public static String  KEY_FEMALE = "Female";
-    public static String  KEY_OTHERS = "Others";
+    public static String KEY_MALE = "Male";
+    public static String KEY_FEMALE = "Female";
+    public static String KEY_OTHERS = "Others";
 
     ArrayAdapter<String> birthDistArray;
     ArrayAdapter<String> currentDistArray;
@@ -120,10 +121,10 @@ public class UserProfileUpdateActivity extends BaseActivity {
     FloatingActionButton fabTakeUserPhoto;
 
 
-    SessionManager sessionManager ;
+    SessionManager sessionManager;
     UserData userData;
 
-    private boolean hasNewImage = false ;
+    private boolean hasNewImage = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,14 +179,14 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
     }
 
-    private void setUpAutoCompleteDistrict(){
+    private void setUpAutoCompleteDistrict() {
         currentDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
         birthDistArray = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ConstantData.birthDistrictListEnglish);
         tvUserBirthPlace.setAdapter(birthDistArray);
         tvUserCurrentPlace.setAdapter(currentDistArray);
     }
 
-    private void initPreviousDataSetup(){
+    private void initPreviousDataSetup() {
 
         tvUserFirstname.setText(userData.getFirstName());
         tvUserSurname.setText(userData.getSurname());
@@ -199,19 +200,37 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
         initRadioGenderButton(userData);
 
-        if(!TextUtils.isEmpty(userData.getImagePath())){
+        if (!TextUtils.isEmpty(userData.getImagePath())) {
 
-            Glide
-                    .with(this)
-                    .load(userData.getImagePath())
-                    .into(ivMemberImage);
-        }else {
+            if(NetworkUtils.isNetworkDisconnected(this)) {
+                Glide
+                        .with(this)
+                        .load(userData.getImagePath())
+                        .into(ivMemberImage);
+            }else {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.get(getApplicationContext()).clearDiskCache();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Glide
+                                        .with(getApplicationContext())
+                                        .load(userData.getImagePath())
+                                        .into(ivMemberImage);
+                            }
+                        });
+                    }
+                }).start();
+            }
+        } else {
             ivMemberImage.setImageResource(R.drawable.default_avatar);
         }
 
     }
 
-    private void initSpinnerDOB(UserData userData){
+    private void initSpinnerDOB(UserData userData) {
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = (thisYear - 16); i >= (thisYear - 106); i--) {
@@ -228,9 +247,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
         ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, days);
 
 
-
         String rawDOB = userData.getDob();
-        Log.d(TAG, "initSpinnerDOB: "+rawDOB);
+        Log.d(TAG, "initSpinnerDOB: " + rawDOB);
         String[] parts = rawDOB.split("/");
         String day = parts[0]; // year
         int month = Integer.parseInt(parts[1]); // month
@@ -241,30 +259,29 @@ public class UserProfileUpdateActivity extends BaseActivity {
         spinnerBirthDay.setSelection(dayAdapter.getPosition(day));
     }
 
-    private void initRadioGenderButton(UserData userData){
+    private void initRadioGenderButton(UserData userData) {
 
-        if(userData.getGender().equals(KEY_MALE)){
+        if (userData.getGender().equals(KEY_MALE)) {
             radioSexMale.setChecked(true);
             radioSexFemale.setChecked(false);
             radioSexOther.setChecked(false);
 
         }
 
-        if(userData.getGender().equals(KEY_FEMALE)){
+        if (userData.getGender().equals(KEY_FEMALE)) {
             radioSexMale.setChecked(false);
             radioSexFemale.setChecked(true);
             radioSexOther.setChecked(false);
 
         }
 
-        if(userData.getGender().equals(KEY_OTHERS)){
+        if (userData.getGender().equals(KEY_OTHERS)) {
             radioSexMale.setChecked(false);
             radioSexFemale.setChecked(false);
             radioSexOther.setChecked(true);
 
         }
     }
-
 
 
     public void onRadioButtonClicked(View view) {
@@ -293,7 +310,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btnUpdateProfile:
 
-                if(validateUserDetails()){
+                if (validateUserDetails()) {
                     mProgressDlg.setMessage("Please Wait...\nUpdating profile");
                     mProgressDlg.setIndeterminate(false);
                     mProgressDlg.setCancelable(false);
@@ -320,9 +337,9 @@ public class UserProfileUpdateActivity extends BaseActivity {
                 ivMemberImage.setImageURI(result.getUri());
 
 //                imageName = result.getUri().toString();
-                Log.d(TAG, "onActivityResult: URI"+result.getUri().toString());
+                Log.d(TAG, "onActivityResult: URI" + result.getUri().toString());
 
-                hasNewImage = true ;
+                hasNewImage = true;
 
 
                 Toast.makeText(
@@ -342,7 +359,6 @@ public class UserProfileUpdateActivity extends BaseActivity {
             tvUserName.requestFocus();
             return false;
         }
-
 
 
         firstName = tvUserFirstname.getText().toString().trim();
@@ -391,14 +407,14 @@ public class UserProfileUpdateActivity extends BaseActivity {
         //        birthPlace = spBirthPlace.getSelectedItem().toString();
         birthPlace = tvUserBirthPlace.getText().toString();
         int birthDistPos = birthDistArray.getPosition(birthPlace);
-        Log.d(TAG, "validateUserSecondPageDetails: BirthDistrict"+birthDistPos);
+        Log.d(TAG, "validateUserSecondPageDetails: BirthDistrict" + birthDistPos);
 
         if (TextUtils.isEmpty(birthPlace)) {
             Toasty.error(getApplicationContext(), "Birth District field is empty", Toast.LENGTH_SHORT, true).show();
             tvUserBirthPlace.requestFocus();
             return false;
         }
-        if(birthDistPos < 0){
+        if (birthDistPos < 0) {
             Toasty.error(getApplicationContext(), "Birth District is invalid", Toast.LENGTH_SHORT, true).show();
             tvUserBirthPlace.requestFocus();
             return false;
@@ -408,13 +424,13 @@ public class UserProfileUpdateActivity extends BaseActivity {
 //        currentPlace = spCurrentPlace.getSelectedItem().toString();
         currentPlace = tvUserCurrentPlace.getText().toString();
         int currentDistPos = currentDistArray.getPosition(currentPlace);
-        Log.d(TAG, "validateUserSecondPageDetails: currentDistrict"+currentDistPos);
+        Log.d(TAG, "validateUserSecondPageDetails: currentDistrict" + currentDistPos);
         if (TextUtils.isEmpty(currentPlace)) {
             Toasty.error(getApplicationContext(), "Current District field is empty", Toast.LENGTH_SHORT, true).show();
             tvUserCurrentPlace.requestFocus();
             return false;
         }
-        if(currentDistPos < 0){
+        if (currentDistPos < 0) {
             Toasty.error(getApplicationContext(), "Current District is invalid", Toast.LENGTH_SHORT, true).show();
             tvUserCurrentPlace.requestFocus();
             return false;
@@ -487,7 +503,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
         Calendar calendar = Calendar.getInstance();
         long timeInMillis = calendar.getTimeInMillis();
 
-        imageName = userData.getUsername() + timeInMillis+".jpg";
+        imageName = userData.getUsername() + timeInMillis + ".jpg";
 
         File file1 = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), imageName);
@@ -506,20 +522,21 @@ public class UserProfileUpdateActivity extends BaseActivity {
             e.printStackTrace();
         }
 
-        Log.d(TAG, "saveToExternalSorage: "+ imageName);
+        Log.d(TAG, "saveToExternalSorage: " + imageName);
         return imageName;
     }
 
-    Uri ImageToBeUploaded ;
-    File imageFile ;
-    MultipartBody.Part body = null ;
+    Uri ImageToBeUploaded;
+    File imageFile;
+    MultipartBody.Part body = null;
     Bitmap bitmap;
+
     private void sendDataToServer(String jsonData) {
 
         BitmapDrawable drawable = (BitmapDrawable) ivMemberImage.getDrawable();
         bitmap = drawable.getBitmap();
 
-        if(hasNewImage){
+        if (hasNewImage) {
             File file1 = new File(Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES), saveToExternalSorage(bitmap));
             String image_Path = file1.getAbsolutePath();
@@ -531,7 +548,7 @@ public class UserProfileUpdateActivity extends BaseActivity {
                 RequestBody surveyBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
                 body = MultipartBody.Part.createFormData("user_pic", imageFile.getName(), surveyBody);
 
-            }else {
+            } else {
                 body = null;
             }
         }
@@ -575,12 +592,25 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
                 UserData userData = sessionManager.getUser();
 
-                if(hasNewImage) {
-                    UserData userDataNew = profileUpdateResponse.getUserData();
-                    userDataNew.setImagePath(userData.getImagePath());
-                    sessionManager.saveUser(userDataNew);
-                }else {
-                    sessionManager.saveUser(profileUpdateResponse.getUserData());
+                userData.setImagePath(profileUpdateResponse.getUserData().getImagePath());
+                userData.setFirstName(profileUpdateResponse.getUserData().getFirstName());
+                userData.setSurname(profileUpdateResponse.getUserData().getSurname());
+                userData.setPersonalMobileNumber(profileUpdateResponse.getUserData().getPersonalMobileNumber());
+                userData.setDob(profileUpdateResponse.getUserData().getDob());
+                userData.setGender(profileUpdateResponse.getUserData().getGender());
+                userData.setCurrentDistrict(profileUpdateResponse.getUserData().getCurrentDistrict());
+                userData.setBirthDistrict(profileUpdateResponse.getUserData().getBirthDistrict());
+                userData.setEmail(profileUpdateResponse.getUserData().getEmail());
+
+                Log.d(TAG, "handleSuccess: "+profileUpdateResponse.getUserData().getImagePath());
+
+
+                if (hasNewImage) {
+                    sessionManager.saveUser(userData);
+                } else {
+//                    UserData userDataNew = profileUpdateResponse.getUserData();
+//                    userDataNew.setImagePath(userData.getImagePath());
+                    sessionManager.saveUser(userData);
                 }
                 Toasty.success(getApplicationContext(), profileUpdateResponse.getData(), Toast.LENGTH_SHORT, true).show();
             }

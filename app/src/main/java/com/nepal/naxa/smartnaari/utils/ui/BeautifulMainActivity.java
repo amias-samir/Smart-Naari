@@ -71,6 +71,7 @@ import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
 import com.nepal.naxa.smartnaari.userprofileupdate.UserProfileUpdateActivity;
+import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -287,6 +288,7 @@ public class BeautifulMainActivity extends BaseActivity
         }
     }
 
+    UserData userData = sessionManager.getUser();
     private void setupDrawerLayout() {
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -299,14 +301,31 @@ public class BeautifulMainActivity extends BaseActivity
 
         tvNavUserName.setText(sessionManager.getUser().getUsername());
 //        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
-
-        UserData userData = sessionManager.getUser();
+        
         if(!TextUtils.isEmpty(userData.getImagePath())){
 
-            Glide
-                    .with(this)
-                    .load(userData.getImagePath())
-                    .into(ivNavUserAvatar);
+            if(NetworkUtils.isNetworkDisconnected(this)) {
+                Glide
+                        .with(this)
+                        .load(userData.getImagePath())
+                        .into(ivNavUserAvatar);
+            }else {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.get(getApplicationContext()).clearDiskCache();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Glide
+                                        .with(getApplicationContext())
+                                        .load(userData.getImagePath())
+                                        .into(ivNavUserAvatar);
+                            }
+                        });
+                    }
+                }).start();
+            }
         }else {
             ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
         }
