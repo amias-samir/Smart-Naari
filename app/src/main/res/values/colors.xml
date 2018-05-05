@@ -17,13 +17,11 @@
     <color name="textSubtitle">#868585</color>
     <color name="textPrimary">#454545</color>
     <color name="kashmirGreenLight">#d9d9bd</color>
-    <color name="kashmirBlueDark">#000033</color>
     <color name="bottomsheet_text_color">#c7c7c7</color>
 
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
     <color name="halfWhiteTransparent">#8bffffff</color>
-    <color name="colorPrimaryDarkTransparent">#c7c7c7</color>
     <color name="colorLoginIncaseText">#454545</color>
     <color name="colorMaChupBasdinaHeaderLower">#FE9A9A</color>
     <color name="colorMaChupBasdinaHeaderUpper">#F9F9F9</color>
@@ -36,20 +34,15 @@
     <color name="greenishwhite">#3a39a64a</color>
     <color name="crimepunis">#64fabf12</color>
     <color name="mythbus">#64fef503</color>
-    <color name="consndnoncons">#64fc0202</color>
 
     <color name="empower">#008F45</color>
     <color name="inactiveText">#E3E3E3</color>
 
-    <color name="iron">#CCCCCC</color>
     <color name="blue">#3157be</color>
-    <color name="mild_blue">#3b65d6</color>
     <color name="black_alpha_40">#bf000000</color>
-    <color name="bottomsheet_background">#868585</color>
 
     <color name="black_alpha">#52000000</color>
     <color name="sectioned_recycler_head">#868585</color>
-    <color name="sectioned_recycler_child">#9f9f9f</color>
     <color name="cardview_elevation">#42000000</color>
 
 

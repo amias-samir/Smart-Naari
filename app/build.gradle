@@ -129,7 +129,7 @@ dependencies {
 
 //    text font
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.5.0'
+//    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.5.0'
 
     compile 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
 
