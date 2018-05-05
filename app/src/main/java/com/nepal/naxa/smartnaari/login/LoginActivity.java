@@ -1,5 +1,6 @@
 package com.nepal.naxa.smartnaari.login;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,11 +10,13 @@ import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -324,7 +327,7 @@ public class LoginActivity extends BaseActivity {
     @OnClick(R.id.tv_forgot_your_password)
     public void onForgotPasswordViewClicked() {
 
-        showDialogBox();
+        showForgotPasswordDialog();
 
     }
 
@@ -399,48 +402,49 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    private void showDialogBox() {
+    public void showForgotPasswordDialog() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Enter Registered mobile no.");
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        final Dialog showDialog = new Dialog(this);
+        showDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        showDialog.setContentView(R.layout.action_dialog_edittext_layout);
+
+//         initialize
+        TextView tvHeader = (TextView) showDialog.findViewById(R.id.dialog_text_details);
+//        tvHeader.setVisibility(View.GONE);
+        tvHeader.setText("Enter Your Registered Mobile No.");
+        final TextView tvMobileNumberInput = (TextView) showDialog.findViewById(R.id.tv_edit_text_input_id);
+        tvMobileNumberInput.setInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_VARIATION_PHONETIC);
+        tvMobileNumberInput.setHint("Enter Mobile No.");
+        Button btnClose = (Button) showDialog.findViewById(R.id.btn_close_dialog);
+        Button btnSubmit = (Button) showDialog.findViewById(R.id.btn_agree_dialog);
 
 
-// Set up the input
-        final EditText input = new EditText(this);
-        input.setBackground(getResources().getDrawable(R.drawable.edit_text_boarder_recg_white_bg_red_boarder));
-        input.setHint("Enter your mobile no.");
-        input.setGravity(Gravity.CENTER);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+//        showDialog.setTitle("Enter Your Registered Mobile No.");
+//        showDialog.getActionBar();
+        showDialog.show();
+        showDialog.getWindow().setLayout((width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        );
-        params.setMargins(16, 20, 16, 20);
-        input.setLayoutParams(params);
-//        input.setBackgroundTintList( ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)) );
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_VARIATION_PHONETIC);
-        builder.setView(input);
-
-// Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mobNoToResetPW = input.getText().toString();
-                dialog.dismiss();
-
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                mobNoToResetPW = tvMobileNumberInput.getText().toString();
+                showDialog.dismiss();
                 showLoading("Sending Request");
 
                 sendResetPasswordRequestoServer();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showDialog.dismiss();
             }
         });
-
-        builder.show();
     }
 }

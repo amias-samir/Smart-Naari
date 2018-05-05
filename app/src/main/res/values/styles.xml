@@ -20,7 +20,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
-        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:windowBackground">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
     </style>
 

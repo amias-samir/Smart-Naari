@@ -3,9 +3,13 @@ package com.nepal.naxa.smartnaari.login;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +23,9 @@ import com.nepal.naxa.smartnaari.data.network.PasswordResetResponse;
 import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiClient;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
+import com.nepal.naxa.smartnaari.masakchamchu.MaSakchamChuMainActivity;
 import com.nepal.naxa.smartnaari.register.SignUpActivity;
+import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONException;
@@ -75,8 +81,22 @@ public class ForgotPasswordActivity extends BaseActivity {
 
         passwordResetLayout.setVisibility(View.GONE);
 
+        initToolbar();
+
     }
 
+    private void initToolbar() {
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Forgot Password");
+        setSupportActionBar(toolbar);
+
+        final ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+//            actionBar.setHomeAsUpIndicator(R.color.colorAccent);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
     @OnClick({R.id.btn_pin_submit, R.id.btn_password_reset})
     public void onViewClicked(View view) {
@@ -123,6 +143,29 @@ public class ForgotPasswordActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
+            case R.id.item_call:
+                Intent intent = new Intent(ForgotPasswordActivity.this, TapItStopItActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void sendResetPasswordRequestoServer(String newPassword) {
