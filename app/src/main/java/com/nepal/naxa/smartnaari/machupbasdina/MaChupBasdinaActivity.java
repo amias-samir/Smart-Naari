@@ -644,15 +644,24 @@ public class MaChupBasdinaActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
 
-        DialogFactory.createActionDialog(context, "Warning!", "You have not submitted your report. Do you want to discard?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        MaChupBasdinaActivity.super.onBackPressed();
+        if (spinnerTypeOfViolence.getSelectedItem().toString().equals("Select Type") && spinnerVoilenceOccur.getSelectedItem().toString().equals("Select Time") &&
+                TextUtils.isEmpty(tvPerpetrator.getText().toString()) && TextUtils.isEmpty(tvDescGBVInputId.getText().toString()) &&
+                reporting_for.equals("Myself")) {
 
-                    }
-                }).setNegativeButton("No", null)
-                .show();
+            super.onBackPressed();
+
+        }else {
+            DialogFactory.createActionDialog(context, "Warning!", "You have not submitted your report. Do you want to discard?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MaChupBasdinaActivity.super.onBackPressed();
+
+                        }
+                    }).setNegativeButton("No", null)
+                    .show();
+        }
+
 
     }
 
