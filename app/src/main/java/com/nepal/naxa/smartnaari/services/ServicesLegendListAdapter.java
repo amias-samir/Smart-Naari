@@ -61,7 +61,7 @@ public class ServicesLegendListAdapter extends RecyclerView.Adapter<ServicesLege
             case "gov":
                 contactViewHolder.tvTypeID.setText("Gov");
 //                contactViewHolder.ivMarkerLegend.setBackgroundResource(R.drawable.ic_marker_gov);
-                int color3 = ColorList.GOVMarkerLegend;
+                int color3 = ColorList.OCMCMarkerLegend;
                 contactViewHolder.ivMarkerLegend.setColorFilter(color3, PorterDuff.Mode.SRC_ATOP);
                 break;
 

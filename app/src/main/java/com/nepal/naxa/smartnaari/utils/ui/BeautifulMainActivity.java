@@ -351,7 +351,7 @@ public class BeautifulMainActivity extends BaseActivity
         if (menuItem.getTitle().equals("My Circle")) {
 //            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
 //            startActivity(intent);
-            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleProtectorActivity.class);
+            Intent intent = new Intent(BeautifulMainActivity.this, MyCircleActivity.class);
             startActivity(intent);
 
         }

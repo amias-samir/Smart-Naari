@@ -749,7 +749,7 @@ public class ServicesActivity extends BaseActivity implements OnMapReadyCallback
             public void run() {
                 amarker = map.addMarker(new MarkerOptions().position(location)
                         .title(servicesData.getOfficeName())
-                        .icon(ColorList.getMarkerIcon(ColorList.GOVMarker)));
+                        .icon(ColorList.getMarkerIcon(ColorList.OCMCMarker)));
                 amarker.setTag(servicesData);
                 markersPresentOnMap.add(amarker);
             }
