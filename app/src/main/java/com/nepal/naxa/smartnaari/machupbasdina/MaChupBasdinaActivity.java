@@ -41,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadListener;
 import com.nepal.naxa.smartnaari.aboutboardmembers.JSONAssetLoadTask;
+import com.nepal.naxa.smartnaari.application.NotificationJob;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.ServicesData;
@@ -447,7 +448,7 @@ public class MaChupBasdinaActivity extends BaseActivity {
 //                                showInfoToast(data);
                                 hideLoading();
                                 showServicesListDialog(data);
-
+                                new NotificationJob().showNotificationImmediately();
                                 break;
                             case "201":
 

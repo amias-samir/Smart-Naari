@@ -23,7 +23,6 @@
     <dimen name="textInputLayout_min_height">150dp</dimen>
 
 
-
     <dimen name="material_text_button">14sp</dimen>
     <dimen name="material_text_menu">14sp</dimen>
     <dimen name="material_text_caption">12sp</dimen>
@@ -50,13 +49,11 @@
     <dimen name="fab_margin">16dp</dimen>
 
 
-
     <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
 
     <dimen name="ma_chup_basdina_header_upper">90dp</dimen>
     <dimen name="ma_chup_basdina_header_lower">180dp</dimen>
     <dimen name="cover_photo_height">150dp</dimen>
-
 
 
     <!-- sectioned recycler vew card margin -->
@@ -71,7 +68,6 @@
 
     <!--tap it stop id dialog line -->
     <dimen name="tap_it_stop_it_line_margin_bottom">20dp</dimen>
-
 
 
 </resources>

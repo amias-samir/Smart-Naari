@@ -13,26 +13,26 @@ public class NotificationJob extends Job {
 
     @Override
     @NonNull
-    protected Result onRunJob(Params params) {
+    protected Result onRunJob(@NonNull Params params) {
         NotificationUtils.createServicesFeedbackNotification();
         return Result.SUCCESS;
     }
 
-    private int scheduleNotification(int days) {
+    public void showNotificationInFewDays(int days) {
         int jobId = new JobRequest.Builder(NotificationJob.TAG)
                 .setExact(TimeUnit.DAYS.toMillis(days))
                 .build()
                 .schedule();
-        return jobId;
+
     }
 
-    private int showNotificationImmediately() {
+    public void showNotificationImmediately() {
         int jobId = new JobRequest.Builder(NotificationJob.TAG)
                 .startNow()
                 .build()
                 .schedule();
 
-        return jobId;
+
     }
 
     private void cancelJob(int jobId) {

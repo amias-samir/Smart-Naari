@@ -11,18 +11,20 @@ public class NepaliDate {
 
     private static final int OFFSET = 2;
     private static String[] nepaliMonths = new String[]{"बैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कार्तिक", "मंसिर", "पौष", "माघ", "फाल्गुन", "चैत"};
-    private static String[] nepaliDays = new String[]{ "", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार","शनिवार","आइतवार"};
+    private static String[] nepaliDays = new String[]{"", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार", "शनिवार", "आइतवार"};
 
     private static String formatNepaliDate(LocalDateTime localDateTime) throws NepaliDateException {
 
-        LocalDateTime nepaliDateTime = getNepaliDateTime(localDateTime);
-        int monthIndex = nepaliDateTime.getMonthOfYear() - 1;
-        int dayIndex = localDateTime.getDayOfWeek();
+//        LocalDateTime nepaliDateTime = getNepaliDateTime(localDateTime);
+//        int monthIndex = nepaliDateTime.getMonthOfYear() - 1;
+//        int dayIndex = localDateTime.getDayOfWeek();
+//
+//
+//        Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
+//        Timber.i(nepaliDateTime.getDayOfWeek() + "");
+//        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dayIndex];
 
-
-        Timber.i(nepaliDateTime.toString(DateTimeFormat.mediumDate()));
-        Timber.i(nepaliDateTime.getDayOfWeek() + "");
-        return nepaliMonths[monthIndex] + " " + nepaliDateTime.getDayOfMonth() + "," + nepaliDays[dayIndex];
+        return getNepaliDateTimeString(localDateTime);
 
     }
 
@@ -51,6 +53,33 @@ public class NepaliDate {
 
     }
 
+
+    private static String getNepaliDateTimeString(LocalDateTime localDateTime) throws NepaliDateException {
+        // We have defined our own Epoch for Bikram Sambat:
+        //   1-1-2007 BS / 13-4-1950 AD
+        final long MS_PER_DAY = 86400000L;
+        final long BS_EPOCH_TS = -622359900000L; // 1950-4-13 AD
+        final long BS_YEAR_ZERO = 2007L;
+
+        int year = 2007;
+        int days;
+        days = (int) Math.floor((localDateTime.toDateTime().getMillis() - BS_EPOCH_TS) / MS_PER_DAY) + 1;
+
+        while (days > 0) {
+            for (int m = 1; m <= 12; ++m) {
+                int dM = NepaliDaysInMonth(year, m);
+                if (days <= dM) {
+
+                    String dateTime = year + "-" + m + "-" + days;
+                    return dateTime;
+                }
+                days -= dM;
+            }
+            ++year;
+        }
+
+        throw new NepaliDateException("Date outside supported range: " + localDateTime.getYear() + " AD");
+    }
 
     private static LocalDateTime getNepaliDateTime(LocalDateTime localDateTime) throws NepaliDateException {
 

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nepal.naxa.smartnaari.R;
+import com.nepal.naxa.smartnaari.application.NotificationJob;
 import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
 import com.nepal.naxa.smartnaari.data.network.MyCircleData;
@@ -86,6 +87,8 @@ public class LoginActivity extends BaseActivity {
 
         mProgressDlg = new ProgressDialog(this);
         myCircleData = new MyCircleData();
+
+
 
 //        change all username text to lower case only
 //        tvUserName.setFilters(new InputFilter[]{

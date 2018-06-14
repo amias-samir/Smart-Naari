@@ -440,10 +440,13 @@
         <activity
             android:name=".common.easygps.GeoPointActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".mycircle.mycirclecircularview.MyCircleCircularViewActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".mycircle.mycirclecircularview.MyCircleCircularViewActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".machupbasdina.MaChupBasdinaFeedBackForm"
+            android:label="@string/title_activity_ma_chup_basdina_feed_back_form"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
