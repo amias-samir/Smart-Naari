@@ -129,7 +129,7 @@
             android:layout_marginRight="@dimen/spacing_xxlarge"
             android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center"
-            android:text="forgot your password?"
+            android:text="@string/forgot_your_password"
             android:textStyle="italic"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/material_text_body1" />

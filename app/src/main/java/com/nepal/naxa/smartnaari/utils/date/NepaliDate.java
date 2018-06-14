@@ -1,5 +1,7 @@
 package com.nepal.naxa.smartnaari.utils.date;
 
+import android.util.Log;
+
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -10,6 +12,7 @@ import static java.lang.String.format;
 public class NepaliDate {
 
     private static final int OFFSET = 2;
+    private static final String TAG = "NepaliDate";
     private static String[] nepaliMonths = new String[]{"बैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कार्तिक", "मंसिर", "पौष", "माघ", "फाल्गुन", "चैत"};
     private static String[] nepaliDays = new String[]{ "", "सोमवार", "मगलवार", "बुधवार", "बिहिवार", "शुक्रवार","शनिवार","आइतवार"};
 
@@ -71,6 +74,7 @@ public class NepaliDate {
                 if (days <= dM) {
 
                     String dateTime = year + "-" + m + "-" + days;
+                    Log.e(TAG, "getNepaliDateTime: "+dateTime);
                     return new LocalDateTime(dateTime);
                 }
                 days -= dM;
