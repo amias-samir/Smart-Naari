@@ -45,8 +45,7 @@
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-            </meta-data>
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
 
         <!-- ======================= auto start services on system boot ==================== -->
@@ -462,8 +461,8 @@
             android:name=".mycircle.mycirclecircularview.MyCircleCircularViewActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity"
-            android:exported="true"></activity>
+            android:name=".machupbasdina.MaChupBasdinaFeedBackForm"
+            android:label="@string/title_activity_ma_chup_basdina_feed_back_form" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->

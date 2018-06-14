@@ -202,12 +202,12 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
         if (!TextUtils.isEmpty(userData.getImagePath())) {
 
-            if(NetworkUtils.isNetworkDisconnected(this)) {
+            if (NetworkUtils.isNetworkDisconnected(this)) {
                 Glide
                         .with(this)
                         .load(userData.getImagePath())
                         .into(ivMemberImage);
-            }else {
+            } else {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -250,9 +250,9 @@ public class UserProfileUpdateActivity extends BaseActivity {
         String rawDOB = userData.getDob();
         Log.d(TAG, "initSpinnerDOB: " + rawDOB);
         String[] parts = rawDOB.split("/");
-        String day = parts[0]; // year
+        String year = parts[0]; // year
         int month = Integer.parseInt(parts[1]); // month
-        String year = parts[2]; // day
+        String day = parts[2]; // day
 
         spinnerBirthYear.setSelection(yearAdapter.getPosition(year));
         spinnerBirthMonth.setSelection(month - 1);
@@ -569,9 +569,8 @@ public class UserProfileUpdateActivity extends BaseActivity {
                     Toasty.error(getApplicationContext(), "null response", Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                Log.d(TAG, "onResponse: got response" + response.body().toString());
                 handleProfileUpdateResponse(response.body());
-                Log.d(TAG, "onResponse: got response");
             }
 
             private void handleProfileUpdateResponse(ProfileUpdateResponse profileUpdateResponse) {
@@ -592,26 +591,29 @@ public class UserProfileUpdateActivity extends BaseActivity {
 
                 UserData userData = sessionManager.getUser();
 
-                userData.setImagePath(profileUpdateResponse.getUserData().getImagePath());
-                userData.setFirstName(profileUpdateResponse.getUserData().getFirstName());
-                userData.setSurname(profileUpdateResponse.getUserData().getSurname());
-                userData.setPersonalMobileNumber(profileUpdateResponse.getUserData().getPersonalMobileNumber());
-                userData.setDob(profileUpdateResponse.getUserData().getDob());
-                userData.setGender(profileUpdateResponse.getUserData().getGender());
-                userData.setCurrentDistrict(profileUpdateResponse.getUserData().getCurrentDistrict());
-                userData.setBirthDistrict(profileUpdateResponse.getUserData().getBirthDistrict());
-                userData.setEmail(profileUpdateResponse.getUserData().getEmail());
-
-                Log.d(TAG, "handleSuccess: "+profileUpdateResponse.getUserData().getImagePath());
-
-
                 if (hasNewImage) {
-                    sessionManager.saveUser(userData);
+                    userData.setImagePath(profileUpdateResponse.getUserData().getImagePath());
+                    userData.setFirstName(profileUpdateResponse.getUserData().getFirstName());
+                    userData.setSurname(profileUpdateResponse.getUserData().getSurname());
+                    userData.setPersonalMobileNumber(profileUpdateResponse.getUserData().getPersonalMobileNumber());
+                    userData.setDob(profileUpdateResponse.getUserData().getDob());
+                    userData.setGender(profileUpdateResponse.getUserData().getGender());
+                    userData.setCurrentDistrict(profileUpdateResponse.getUserData().getCurrentDistrict());
+                    userData.setBirthDistrict(profileUpdateResponse.getUserData().getBirthDistrict());
+                    userData.setEmail(profileUpdateResponse.getUserData().getEmail());
+                    Log.d(TAG, "handleSuccess: " + profileUpdateResponse.getUserData().getImagePath());
                 } else {
-//                    UserData userDataNew = profileUpdateResponse.getUserData();
-//                    userDataNew.setImagePath(userData.getImagePath());
-                    sessionManager.saveUser(userData);
+                    userData.setFirstName(tvUserFirstname.getText().toString());
+                    userData.setSurname(tvUserSurname.getText().toString());
+                    userData.setPersonalMobileNumber(tvUserContactNo.getText().toString());
+                    userData.setDob(age);
+                    userData.setGender(gender);
+                    userData.setCurrentDistrict(tvUserCurrentPlace.getText().toString());
+                    userData.setBirthDistrict(tvUserBirthPlace.getText().toString());
+                    userData.setEmail(tvUserEmailInputId.getText().toString());
                 }
+
+                sessionManager.saveUser(userData);
                 Toasty.success(getApplicationContext(), profileUpdateResponse.getData(), Toast.LENGTH_SHORT, true).show();
             }
 

@@ -255,6 +255,11 @@
     <string name="edit_circle">Edit Circle</string>
     <string name="birth_district">Birth District</string>
     <string name="current_district">Current District</string>
+    <string name="title_activity_ma_chup_basdina_feed_back_form">MaChupBasdinaFeedBackForm</string>
+    <string name="feeback_form_title">\'Ma Chup Basdina\' feedback form</string>
+    <string name="who_helped_you">Who helped you?</string>
+    <string name="submit">Submit</string>
+    <string name="how_was_the_info_helpful">How was the info helpful?</string>
     <string name="consent"><u>Consent</u></string>
     <string name="no_consent"><u>No Consent</u></string>
     <string name="acknowledging_friends_text">Without our key contributors, our fight against Gender Based Violence would be so much less. Smart नारी would like to say a heartfelt thank you.</string>

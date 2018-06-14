@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nepal.naxa.smartnaari.machupbasdina.MaChupBasdinaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_menu_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--heade layout-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--<include layout="@layout/toolbar_layout"-->
+                <!--android:id="@id/toolbar"/>-->
+
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/app_bar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/elevation_high"
+                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+                    <android.support.v7.widget.Toolbar
+
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?actionBarSize"
+                        android:background="?attr/colorPrimary"
+
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+                </android.support.design.widget.AppBarLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/app_bar_layout"
+                    android:orientation="vertical">
+                    <!--header Upper-->
+                    <RelativeLayout
+                        android:id="@+id/headerTopLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ma_chup_basdina_header_upper"
+                        android:background="@color/colorMaChupBasdinaHeaderUpper">
+
+                    </RelativeLayout>
+                    <!--Header Lower-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ma_chup_basdina_header_upper"
+                        android:layout_below="@+id/headerTopLayout"
+                        android:background="@color/colorMaChupBasdinaHeaderLower" />
+
+                    <!--ma chup badina image layout-->
+                    <FrameLayout
+                        android:id="@+id/maChupBasdinaImgFrameLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp">
+
+                        <ImageView
+                            android:id="@+id/imgViewMaChupBasdina"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:src="@drawable/grid_ma_chup_basdina" />
+                    </FrameLayout>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:text="@string/feeback_form_title"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/material_text_subhead"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/tv_who_helped"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/default_padding"
+                    android:text="@string/who_helped_you"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_subhead" />
+
+                <EditText
+                    android:id="@+id/et_who_helped"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_vertical"
+
+                    android:background="@drawable/edit_text_boarder_recg_white_bg_red_boarder"
+                    android:ems="10"
+                    android:gravity="left"
+
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/default_padding"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textSecondary"
+                    android:textSize="@dimen/material_text_subhead" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/txtLBLDescGBV"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/default_padding"
+                    android:text="@string/how_was_the_info_helpful"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/material_text_subhead" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ti_how_was_info_helpfull"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="500">
+
+                    <EditText
+
+                        style="@style/SmartNaariInputLayoutTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left|start"
+                        android:inputType="text|textMultiLine"
+                        android:minHeight="@dimen/textInputLayout_min_height"
+                        android:padding="@dimen/default_padding"
+                        android:scrollbars="vertical" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:id="@+id/btn_upload_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/button_red_background"
+                    android:drawableRight="@drawable/ic_right_arrow_white"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!--bottomBar otherPage link-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/bottom_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardElevation="@dimen/spacing_medium">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <ImageButton
+                android:id="@+id/btn_go_to_services"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginRight="@dimen/spacing_xxsmall"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/grid_services" />
+
+            <ImageButton
+                android:id="@+id/btn_go_to_sakshyam_chhu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginRight="@dimen/spacing_xxsmall"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/grid_ma_saksam_chu" />
+
+            <ImageButton
+                android:id="@+id/btn_go_to_yuwa_pusta"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginRight="@dimen/spacing_xxsmall"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/grid_yuwa_pusta" />
+
+            <ImageButton
+                android:id="@+id/btn_go_to_smart_parenting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginRight="@dimen/spacing_xxsmall"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/grid_smart_parenting" />
+
+            <ImageButton
+                android:id="@+id/btn_go_to_i_am_amazing"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginRight="@dimen/spacing_xxsmall"
+                android:layout_weight="1"
+                android:background="@drawable/button_dialog_white_close"
+                android:gravity="center"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/i_am_amazing_green" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
