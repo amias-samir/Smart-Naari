@@ -3,11 +3,13 @@ package com.nepal.naxa.smartnaari.register;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,7 +25,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mapbox.services.commons.utils.TextUtils;
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.retrofit.NetworkApiInterface;
@@ -31,6 +32,7 @@ import com.nepal.naxa.smartnaari.login.LoginActivity;
 import com.nepal.naxa.smartnaari.utils.ConstantData;
 import com.nepal.naxa.smartnaari.utils.SpanUtils;
 import com.nepal.naxa.smartnaari.utils.TextViewUtils;
+import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -538,8 +540,8 @@ public class SignUpActivity extends Activity {
                     + "/"
                     + spinnerBirthDay.getSelectedItem().toString();
             Log.i("Shree", age);
-            birthPlace = spBirthPlace.getSelectedItem().toString();
-            currentPlace = spCurrentPlace.getSelectedItem().toString();
+            birthPlace = tvUserBirthPlace.getText().toString();
+            currentPlace = tvUserCurrentPlace.getText().toString();
             email = etEmail.getText().toString().trim();
             mobileNumber = etContact.getText().toString().trim();
 
@@ -609,7 +611,7 @@ public class SignUpActivity extends Activity {
 
             header.put("username", userName);
             header.put("password", password);
-            header.put("first_name", confirmPassword);
+            header.put("first_name", firstName);
             header.put("surname", surName);
             header.put("dob", age);
             header.put("gender", gender);
@@ -710,5 +712,19 @@ public class SignUpActivity extends Activity {
 
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        DialogFactory.createActionDialog(this, "Warning!", "Your data will be lost. Do you want to exit Sign up?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SignUpActivity.super.onBackPressed();
+
+                    }
+                }).setNegativeButton("No", null)
+                .show();
     }
 }

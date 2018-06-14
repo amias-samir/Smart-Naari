@@ -1,6 +1,8 @@
 
 package com.nepal.naxa.smartnaari.data.network;
 
+import android.net.Uri;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -69,7 +71,9 @@ public class UserData {
     @Expose
     private String circleName5;
 
-
+    @SerializedName("pic_path")
+    @Expose
+    private String imagePath;
 
     public String getUserId() {
         return userId;
@@ -229,5 +233,22 @@ public class UserData {
 
     public void setCircleName5(String circleName5) {
         this.circleName5 = circleName5;
+    }
+
+    public String getImagePath() {
+//        if (imagePath.equals("")){
+//            return null;
+//        }else {
+            return imagePath;
+//        }
+    }
+
+    public void setImagePath(String imagePath) {
+//        if(imagePath == null) {
+//            this.imagePath = "";
+//        }else {
+            this.imagePath = imagePath;
+
+//        }
     }
 }

@@ -36,6 +36,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- file provider -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.nepal.naxa.smartnaari.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
         <!-- ======================= auto start services on system boot ==================== -->
         <receiver
             android:name=".mycircle.powerbutton.BootUpReceiver"
@@ -244,8 +256,12 @@
         </activity>
         <activity
             android:name=".data_glossary.muth_busters.GlossaryListActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".utils.ui.BeautifulMainActivity" /> -->
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -383,6 +399,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".userprofileupdate.UserProfileUpdateActivity"
+            android:exported="true"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -445,8 +462,11 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".machupbasdina.MaChupBasdinaFeedBackForm"
-            android:label="@string/title_activity_ma_chup_basdina_feed_back_form"
-            android:theme="@style/AppTheme"></activity>
+            android:label="@string/title_activity_ma_chup_basdina_feed_back_form" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+        <activity android:name=".login.ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>

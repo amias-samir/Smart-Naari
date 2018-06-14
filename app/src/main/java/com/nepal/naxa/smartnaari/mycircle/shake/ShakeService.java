@@ -2,8 +2,6 @@ package com.nepal.naxa.smartnaari.mycircle.shake;
 
 
 import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +14,7 @@ import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,9 +25,8 @@ import android.widget.RemoteViews;
 
 import com.nepal.naxa.smartnaari.R;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 
 
 /**

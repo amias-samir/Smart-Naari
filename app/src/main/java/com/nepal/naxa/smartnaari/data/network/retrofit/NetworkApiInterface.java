@@ -1,20 +1,27 @@
 package com.nepal.naxa.smartnaari.data.network.retrofit;
 
 import com.nepal.naxa.smartnaari.data.local.model.YuwaPustaResponse;
+import com.nepal.naxa.smartnaari.data.network.GetPinResponse;
 import com.nepal.naxa.smartnaari.data.network.HotPotOfPassionDetails;
 import com.nepal.naxa.smartnaari.data.network.MyCircleDetails;
 import com.nepal.naxa.smartnaari.data.network.OwlWrapper;
+import com.nepal.naxa.smartnaari.data.network.PasswordResetResponse;
+import com.nepal.naxa.smartnaari.data.network.ProfileUpdateResponse;
 import com.nepal.naxa.smartnaari.data.network.ServicesResponse;
 import com.nepal.naxa.smartnaari.data.network.SignUpDetailsResponse;
 import com.nepal.naxa.smartnaari.data.network.UserDetail;
 import com.nepal.naxa.smartnaari.data.network.AskAnOwlResponse;
 import com.nepal.naxa.smartnaari.data.network.service.MaChupBasdinaResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 
 public interface NetworkApiInterface {
@@ -54,5 +61,19 @@ public interface NetworkApiInterface {
     @FormUrlEncoded
     @POST("Smartapi/get_content")
     Call<HotPotOfPassionDetails> getHotPotOfPassion(@Field("data") String data);
+
+
+    @FormUrlEncoded
+    @POST("UpdateController/password_reset")
+    Call<GetPinResponse> getPasswordResetPin(@Field("data_pin") String data);
+
+    @FormUrlEncoded
+    @POST("UpdateController/password_reset")
+    Call<PasswordResetResponse> getPasswordResetResponse(@Field("data_password") String data);
+
+    @Multipart
+    @POST("UpdateController/profile_update")
+    Call<ProfileUpdateResponse> getProfileUpdateDetails(@Part MultipartBody.Part file,
+                                                        @Part("data") RequestBody jsonToSend);
 }
 

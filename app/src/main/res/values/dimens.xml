@@ -13,11 +13,9 @@
 
     <dimen name="elevation_low">9dp</dimen>
     <dimen name="elevation_high">12dp</dimen>
-    <dimen name="status_bar_height">25dp</dimen>
 
     <dimen name="button_height">30dp</dimen>
     <dimen name="button_height_medium">45dp</dimen>
-    <dimen name="line_size">100dp</dimen>
 
     <!--ma chup bsdin GBV desc min height-->
     <dimen name="textInputLayout_min_height">150dp</dimen>
@@ -33,21 +31,14 @@
     <dimen name="material_text_title">20sp</dimen>
     <dimen name="material_text_headline">24sp</dimen>
     <dimen name="material_text_display1">34sp</dimen>
-    <dimen name="material_text_display2">45sp</dimen>
-    <dimen name="material_text_display3">56sp</dimen>
-    <dimen name="material_text_display4">112sp</dimen>
 
 
     <dimen name="default_padding">10dp</dimen>
-    <dimen name="or_textview_padding">6dp</dimen>
-    <dimen name="below_tap_it_icon_text_margin">24dp</dimen>
 
     <dimen name="large_icon_size">82dp</dimen>
     <dimen name="big_icon_size">64dp</dimen>
     <dimen name="medium_icon_size">32dp</dimen>
     <dimen name="small_icon_size">24dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-
 
     <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
 

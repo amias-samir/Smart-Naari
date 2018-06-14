@@ -67,6 +67,7 @@ public class MyCircleProtectorActivity extends BaseActivity {
         }else {
             createPasswordLayout.setVisibility(View.GONE);
             changePasswordLayout.setVisibility(View.GONE);
+            dialogTextDetails.setText("Enter your Password to see your 'My Circle' contact list");
             enterPasswordLayout.setVisibility(View.VISIBLE);
         }
 
@@ -76,6 +77,8 @@ public class MyCircleProtectorActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_change_password:
+
+                dialogTextDetails.setText(getResources().getString(R.string.create_your_own_password_to_protect_your_my_circle));
                 createPasswordLayout.setVisibility(View.GONE);
                 enterPasswordLayout.setVisibility(View.GONE);
                 changePasswordLayout.setVisibility(View.VISIBLE);

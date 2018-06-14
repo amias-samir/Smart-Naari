@@ -3,13 +3,11 @@ package com.nepal.naxa.smartnaari.mycircle.powerbutton;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.os.Vibrator;
-import android.provider.Settings;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -20,11 +18,8 @@ import android.widget.LinearLayout;
 
 import com.nepal.naxa.smartnaari.R;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
-import com.nepal.naxa.smartnaari.mycircle.PermissionActivity;
-import com.nepal.naxa.smartnaari.mycircle.setting.SettingsActivity;
 import com.nepal.naxa.smartnaari.mycircle.shake.ShakeService;
 import com.nepal.naxa.smartnaari.setingschange.SettingsChangeActivity;
-import com.nepal.naxa.smartnaari.utils.ui.DialogFactory;
 
 
 /**

@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -44,12 +45,14 @@ import com.nepal.naxa.smartnaari.common.BaseActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.PrivacyPolicyActivity;
 import com.nepal.naxa.smartnaari.copyrightandprivacypolicy.SmartNariCopyrightActivity;
 import com.nepal.naxa.smartnaari.data.local.SessionManager;
+import com.nepal.naxa.smartnaari.data.network.UserData;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadResultReceiver;
 import com.nepal.naxa.smartnaari.data.network.service.DownloadService;
 import com.nepal.naxa.smartnaari.data_glossary.muth_busters.GlossaryListActivity;
 import com.nepal.naxa.smartnaari.dataongbv.DataOnGBVActivity;
 import com.nepal.naxa.smartnaari.donate.DonateActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariActivity;
+import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariExpandableActivity;
 import com.nepal.naxa.smartnaari.friendsofsmartnaari.FriendsOfSmartNaariSmallBusinessActivity;
 import com.nepal.naxa.smartnaari.homescreen.GridSpacingItemDecoration;
 import com.nepal.naxa.smartnaari.homescreen.HorizontalRecyclerViewAdapter;
@@ -68,6 +71,7 @@ import com.nepal.naxa.smartnaari.smartparent.SmartParentActivity;
 import com.nepal.naxa.smartnaari.tapitstopit.TapItStopItActivity;
 import com.nepal.naxa.smartnaari.tutorials.TutorialsActivity;
 import com.nepal.naxa.smartnaari.userprofileupdate.UserProfileUpdateActivity;
+import com.nepal.naxa.smartnaari.utils.NetworkUtils;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDate;
 import com.nepal.naxa.smartnaari.utils.date.NepaliDateException;
 import com.nepal.naxa.smartnaari.yuwapusta.YuwaPustaActivity;
@@ -93,7 +97,7 @@ public class BeautifulMainActivity extends BaseActivity
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
 
     //    Facebook Page URL
-    public static String FACEBOOK_URL = "https://www.facebook.com/naxa.np";
+    public static String FACEBOOK_URL = "https://www.facebook.com/smartnaari.org/";
     public static String FACEBOOK_PAGE_ID = "naxa.np";
 
 
@@ -156,6 +160,7 @@ public class BeautifulMainActivity extends BaseActivity
 
 
     SessionManager sessionManager;
+    UserData userData;
 
 
     @Override
@@ -164,6 +169,8 @@ public class BeautifulMainActivity extends BaseActivity
         setContentView(R.layout.activity_beutiful_main);
 
         sessionManager = new SessionManager(this);
+        userData = sessionManager.getUser();
+
         sessionManager.setIsMyCircleFirstTimeLoad(false);
 
         bindActivity();
@@ -176,13 +183,6 @@ public class BeautifulMainActivity extends BaseActivity
         mAppBarLayout.addOnOffsetChangedListener(this);
         setupActionBar();
         setupDrawerLayout();
-
-
-//        Glide.with(this)
-//                .load(R.drawable.food_1).into(placeholder);
-//        Glide.with(this)
-//                .load(R.drawable.food_2).into(placeholder2);
-
 
         startAlphaAnimation(mTitle, 0, View.INVISIBLE);
 
@@ -284,8 +284,8 @@ public class BeautifulMainActivity extends BaseActivity
         }
     }
 
-    private void setupDrawerLayout() {
 
+    private void setupDrawerLayout() {
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View headerview = navigationView.getHeaderView(0);
 //        navigationView.setOnClickListener(this);
@@ -295,7 +295,35 @@ public class BeautifulMainActivity extends BaseActivity
         tvNavUserName = (TextView) headerview.findViewById(R.id.tv_nav_user_name);
 
         tvNavUserName.setText(sessionManager.getUser().getUsername());
-        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+//        ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+
+        if(!TextUtils.isEmpty(userData.getImagePath())){
+
+            if(NetworkUtils.isNetworkDisconnected(this)) {
+                Glide
+                        .with(this)
+                        .load(userData.getImagePath())
+                        .into(ivNavUserAvatar);
+            }else {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.get(getApplicationContext()).clearDiskCache();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Glide
+                                        .with(getApplicationContext())
+                                        .load(userData.getImagePath())
+                                        .into(ivNavUserAvatar);
+                            }
+                        });
+                    }
+                }).start();
+            }
+        }else {
+            ivNavUserAvatar.setImageResource(R.drawable.default_avatar);
+        }
 
         btnNavMessage.setOnClickListener(this);
         btnNavUserProfileUpdate.setOnClickListener(this);
@@ -343,7 +371,7 @@ public class BeautifulMainActivity extends BaseActivity
             startActivity(intent);
         }
         if (menuItem.getTitle().equals("Acknowledging Friends")) {
-            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariActivity.class);
+            Intent intent = new Intent(BeautifulMainActivity.this, FriendsOfSmartNaariExpandableActivity.class);
             startActivity(intent);
 //            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 

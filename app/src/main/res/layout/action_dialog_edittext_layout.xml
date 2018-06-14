@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_text_details"
+                android:padding="@dimen/default_padding"
+                android:text="Dialog Text Details"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:textColor="@color/colorWhite"
+                />
+            <EditText
+                android:layout_below="@id/dialog_text_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_edit_text_input_id"
+                android:padding="@dimen/default_padding"
+                android:hint="Dialog Text Hint"
+                android:gravity="center"
+                android:textColorHint="@color/textPrimary"
+                android:background="@color/colorWhite"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:textColor="@color/black"
+                />
+
+
+
+
+            <LinearLayout
+                android:layout_below="@id/tv_edit_text_input_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_xxxlarge"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/spacing_large">
+
+                <Button
+                    android:layout_below="@id/dialog_text_details"
+                    android:id="@+id/btn_close_dialog"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/button_pressed"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding"
+                    android:stateListAnimator="@null"
+                    android:textColor="@color/colorAccent"
+                    android:text="Cancel"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    />
+
+                <Button
+                    android:layout_below="@id/dialog_text_details"
+                    android:id="@+id/btn_agree_dialog"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/button_pressed"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding"
+                    android:stateListAnimator="@null"
+                    android:textColor="@color/colorAccent"
+                    android:text="Submit"
+                    android:layout_marginRight="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
