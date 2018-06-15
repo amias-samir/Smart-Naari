@@ -71,7 +71,7 @@ public class LocationMessageService extends Service implements LocationListener 
 
     private boolean gpsOn = false;
     private boolean networkOn = false;
-    private double locationAccuracy = 20;
+    private double locationAccuracy = 50;
     private int locationCount = 0;
 
 

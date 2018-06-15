@@ -30,7 +30,7 @@ public class GeoPointService extends Service implements LocationListener {
     private Location location;
     private boolean gpsOn = false;
     private boolean networkOn = false;
-    private double locationAccuracy = 20;
+    private double locationAccuracy = 50;
     private int locationCount = 0;
     private String TAG = this.getClass().getSimpleName();
 
